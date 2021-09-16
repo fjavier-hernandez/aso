@@ -21,6 +21,7 @@ theme:
   logo: "imagenes/logofp.png"
   features:
     - header.autohide
+    - toc.integrate
 
 extra:
   search:
