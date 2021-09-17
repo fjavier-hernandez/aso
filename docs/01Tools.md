@@ -101,12 +101,6 @@
 * **Modificadores**, que cambian el comportamiento estándar del comando para adaptarlo a las necesidades.
 * **Argumentos**, elementos necesarios para realizar la acción del comando.
 
-## Shell Script en GNU/Linux
-
-* Un Shell script (guión) es un archivo de texto que contiene una serie de comandos que, ordenados de forma específica, realizan la tarea para la que fueron diseñados, es decir, es un programa escrito de comandos Shell para ser ejecutados de forma secuencial.
-* De esta forma se pueden automatizar tareas repetitivas ahorrando tiempo al administrador.
-* Un programa escrito en shell se denomina shellscript, programa shell o simplemente un shell.
-
 ### Principales comandos
 
 | Comando                           | Acción                                  |
@@ -126,6 +120,12 @@
 | **fdisk**                         | administra particiones                  |
 | **echo**                          | imprime por pantalla                    |
 | **#**                             | comentarios                             |
+
+## Shell Script en GNU/Linux
+
+* Un Shell script (guión) es un archivo de texto que contiene una serie de comandos que, ordenados de forma específica, realizan la tarea para la que fueron diseñados, es decir, es un programa escrito de comandos Shell para ser ejecutados de forma secuencial.
+* De esta forma se pueden automatizar tareas repetitivas ahorrando tiempo al administrador.
+* Un programa escrito en shell se denomina shellscript, programa shell o simplemente un shell.
 
 ### Creación Shell scripts
 
