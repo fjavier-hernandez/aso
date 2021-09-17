@@ -292,22 +292,64 @@
       
         <li class="md-nav__item">
   <a href="#shell-script-en-gnulinux" class="md-nav__link">
-    Shell Script en GNU/Linux.
+    Shell Script en GNU/Linux
   </a>
   
-    <nav class="md-nav" aria-label="Shell Script en GNU/Linux.">
+    <nav class="md-nav" aria-label="Shell Script en GNU/Linux">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#creacion-shell-scripts" class="md-nav__link">
-    Creación Shell scripts.
+  <a href="#principales-comandos" class="md-nav__link">
+    Principales comandos
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejemplo-shellscript" class="md-nav__link">
-    Ejemplo Shellscript
+  <a href="#creacion-shell-scripts" class="md-nav__link">
+    Creación Shell scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-primer-shellscript" class="md-nav__link">
+    El primer Shellscript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    echo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-de-entorno" class="md-nav__link">
+    Variables de entorno
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aritmeticos" class="md-nav__link">
+    Aritméticos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros" class="md-nav__link">
+    Parámetros
   </a>
   
 </li>
@@ -453,13 +495,84 @@
 <li><strong>Modificadores</strong>, que cambian el comportamiento estándar del comando para adaptarlo a las necesidades.</li>
 <li><strong>Argumentos</strong>, elementos necesarios para realizar la acción del comando.</li>
 </ul>
-<h2 id="shell-script-en-gnulinux">Shell Script en GNU/Linux.<a class="headerlink" href="#shell-script-en-gnulinux" title="Permanent link">&para;</a></h2>
+<h2 id="shell-script-en-gnulinux">Shell Script en GNU/Linux<a class="headerlink" href="#shell-script-en-gnulinux" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Un Shell script (guión) es un archivo de texto que contiene una serie de comandos que, ordenados de forma específica, realizan la tarea para la que fueron diseñados, es decir, es un programa escrito de comandos Shell para ser ejecutados de forma secuencial.</li>
 <li>De esta forma se pueden automatizar tareas repetitivas ahorrando tiempo al administrador.</li>
 <li>Un programa escrito en shell se denomina shellscript, programa shell o simplemente un shell.</li>
 </ul>
-<h3 id="creacion-shell-scripts">Creación Shell scripts.<a class="headerlink" href="#creacion-shell-scripts" title="Permanent link">&para;</a></h3>
+<h3 id="principales-comandos">Principales comandos<a class="headerlink" href="#principales-comandos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ls</strong></td>
+<td>muestra el contenido de una carpeta</td>
+</tr>
+<tr>
+<td><strong>cd</strong></td>
+<td>cambiar de directorio</td>
+</tr>
+<tr>
+<td><strong>mkdir</strong></td>
+<td>crear directorios</td>
+</tr>
+<tr>
+<td><strong>shutdown</strong></td>
+<td>apaga el equipo (<em>restart</em> o <em>reboot</em>)</td>
+</tr>
+<tr>
+<td><strong>clear</strong></td>
+<td>limpia la pantalla</td>
+</tr>
+<tr>
+<td><strong>date/cal</strong></td>
+<td>muestra hora/calendario del sistema</td>
+</tr>
+<tr>
+<td><strong>who</strong></td>
+<td>muestra quien está conectado</td>
+</tr>
+<tr>
+<td><strong>uname</strong></td>
+<td>muestra información del sistema</td>
+</tr>
+<tr>
+<td><strong>df</strong></td>
+<td>muestra estado del disco</td>
+</tr>
+<tr>
+<td><strong>fsck</strong></td>
+<td>comprueba integridad de discos</td>
+</tr>
+<tr>
+<td><strong>mount</strong></td>
+<td>monta particiones y volúmenes</td>
+</tr>
+<tr>
+<td><strong>unmount</strong></td>
+<td>desmonta particiones y volúmenes</td>
+</tr>
+<tr>
+<td><strong>fdisk</strong></td>
+<td>administra particiones</td>
+</tr>
+<tr>
+<td><strong>echo</strong></td>
+<td>imprime por pantalla</td>
+</tr>
+<tr>
+<td><strong>#</strong></td>
+<td>comentarios</td>
+</tr>
+</tbody>
+</table>
+<h3 id="creacion-shell-scripts">Creación Shell scripts<a class="headerlink" href="#creacion-shell-scripts" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Para crear un script utilizaremos cualquiera de los editores de texto plano como <em>vi</em>, <em>vim</em> , <em>nano</em>.</li>
 <li>Después de crear el archivo hay que dotarlo de permisos de lectura y ejecución. </li>
@@ -477,7 +590,7 @@
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">. script.sh</span>
 <span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">./ script.sh</span>
 </code></pre></div></li>
-<li>definir la carpeta dentro de la variable de entorno <strong>PATH</strong>. Y ejecutamos directamente con el nombre del script.
+<li>definir la carpeta dentro de la variable de entorno <strong>PATH</strong>. O editar el fichero <strong>.bashrc</strong>. Ya se podría ejecutar directamente el fichero con el nombre del script.
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">mkdir /home/administrador/scripts</span>
 <span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">PATH=$PATH:/home/administrador/scripts</span>
 <span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">export PATH</span>
@@ -490,7 +603,7 @@
 <li>Cuando el programa termina, el subshell muere y el terminal original toma el control del sistema. </li>
 <li>Esto no ocurre si se usa la opción de PATH, la cual ejecuta el contenido del shell script en el mismo terminal donde fue invocado.</li>
 </ul>
-<h3 id="ejemplo-shellscript">Ejemplo Shellscript<a class="headerlink" href="#ejemplo-shellscript" title="Permanent link">&para;</a></h3>
+<h3 id="el-primer-shellscript">El primer Shellscript<a class="headerlink" href="#el-primer-shellscript" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Crea un ejemplo llamado <em>listar.sh</em></li>
 </ul>
@@ -508,14 +621,188 @@
 <span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">ls -la</span>
 <span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">echo “Listado realizado el “$(date)</span>
 </code></pre></div>
-<h3 id="actividades-iniciales">Actividades iniciales<a class="headerlink" href="#actividades-iniciales" title="Permanent link">&para;</a></h3>
+<h3 id="echo">echo<a class="headerlink" href="#echo" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>echo</strong> (para usar las opciones hay utilizar el modificador <strong>-e</strong>)<ul>
+<li><strong>\</strong>    barra</li>
+<li><strong>\n</strong>    nueva línea</li>
+<li><strong>\t</strong>    tabulador horizontal</li>
+<li><strong>\v</strong>    tabulador vertical</li>
+<li><strong>\b</strong>    espacio atrás</li>
+</ul>
+</li>
+</ul>
+<h3 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p>Todavía no hemos estudiado como realizar operaciones, impresiones por pantalla y trabajar con parámetros, pero con un poco de investigación se puede llegar a la solución de las siguientes actividades.  </p>
+<p>Es un parámetro que cambia su valor durante la ejecución del programa</p>
 </li>
 <li>
-<p>Escribe el código de los shell scripts que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: <strong>ejX.sh</strong>, donde la <strong>X</strong> representa el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al <strong>Moodle del módulo</strong>. </p>
+<p>Se da un nombre para identificarla y recuperarla, antecedido por el carácter $</p>
 </li>
+<li>
+<p>El nombre esta compuesto por letras y números y por el carácter subrayado “<strong>_</strong>”. </p>
+</li>
+<li>
+<p>Deben empezar por letra o “<strong>_</strong>”</p>
+</li>
+<li>
+<p>En shellscript no se declaran y no importa el tipo</p>
+</li>
+<li>
+<p>Ejemplo:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#! /bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">#Este es mi segundo script</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">MIVARIABLE=‘Administración de Sistemas Operativos ASO’</span>
+<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">echo $MIVARIABLE</span>
+</code></pre></div>
+<h3 id="variables-de-entorno">Variables de entorno<a class="headerlink" href="#variables-de-entorno" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>$BASH</strong></td>
+<td>Ruta del programa Bash</td>
+</tr>
+<tr>
+<td><strong>$HOME</strong></td>
+<td>Ruta completa del home del usuario</td>
+</tr>
+<tr>
+<td><strong>$PATH</strong></td>
+<td>Lista los directorios de donde busca los programas</td>
+</tr>
+<tr>
+<td><strong>$RANDOM</strong></td>
+<td>Devuelve un valor numérico aleatorio</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aritmeticos">Aritméticos<a class="headerlink" href="#aritmeticos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Símbolo</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>+</strong></td>
+<td>suma</td>
+</tr>
+<tr>
+<td><strong>-</strong></td>
+<td>resta</td>
+</tr>
+<tr>
+<td>*</td>
+<td>multiplicación</td>
+</tr>
+<tr>
+<td><strong>/</strong></td>
+<td>división</td>
+</tr>
+<tr>
+<td><strong>%</strong></td>
+<td>modulo (resto)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">#Esto es mi tercer script</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="l l-Scalar l-Scalar-Plain">NUMERO=4</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="l l-Scalar l-Scalar-Plain">let SUMA=NUMERO+3</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="l l-Scalar l-Scalar-Plain">echo $SUMA</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">NUMERO=5</span>
+<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">let SUMA=NUMERO+5</span>
+<span class="linenos" data-linenos="11 "></span><span class="l l-Scalar l-Scalar-Plain">echo $SUMA</span>
+<span class="linenos" data-linenos="12 "></span><span class="l l-Scalar l-Scalar-Plain">NUMERO=10</span>
+<span class="linenos" data-linenos="13 "></span><span class="l l-Scalar l-Scalar-Plain">let SUMA=NUMERO-10</span>
+</code></pre></div>
+<h3 id="parametros">Parámetros<a class="headerlink" href="#parametros" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Son especificaciones que se le hacen al programa al momento de llamarlo para obtener un efecto diferente.</p>
+</li>
+<li>
+<p>Introducen un valor, cadena o variable dentro del script.</p>
+</li>
+<li>
+<p>Utilización de parámetros:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Símbolo</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>$1</strong></td>
+<td>representa el 1º parámetro pasado al script</td>
+</tr>
+<tr>
+<td><strong>$2</strong></td>
+<td>representa el 2º parámetro</td>
+</tr>
+<tr>
+<td><strong>$3</strong></td>
+<td>representa el 3º parámetro (podemos usar hasta $9)</td>
+</tr>
+<tr>
+<td><strong>$</strong>*</td>
+<td>representa todos los parámetros separados por espacio</td>
+</tr>
+<tr>
+<td><strong>$#</strong></td>
+<td>representa el número de parámetros que se han pasado</td>
+</tr>
+<tr>
+<td><strong>$0</strong></td>
+<td>representa el parámetro 0, es decir, el nombre del script o el nombre de la función</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">echo ‘El primer parámetro que se ha pasado es ‘ $1</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">echo ‘El tercer parámetro que se ha pasado es ‘ $3</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain">echo ‘El conjunto de todos los parámetros</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">‘ $*</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain">echo ‘Me has pasado un total de ‘ $# ‘ parámetros’”</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nt">echo ‘El parámetro 0 es </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">‘ $0</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">#Fin del script</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">./scriptFeo.sh  Caballo  Perro  675 Nueva</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="l l-Scalar l-Scalar-Plain">El primer parámetro que se ha pasado es Caballo</span>
+<span class="linenos" data-linenos="12 "></span><span class="l l-Scalar l-Scalar-Plain">El tercer parámetro que se ha pasado es 675</span>
+<span class="linenos" data-linenos="13 "></span><span class="nt">El conjunto de todos los parámetros </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Caballo Perro 675 Nueva</span>
+<span class="linenos" data-linenos="14 "></span><span class="l l-Scalar l-Scalar-Plain">Me has pasado un total de 4 parámetros</span>
+<span class="linenos" data-linenos="15 "></span><span class="nt">El parámetro 0 es </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./scriptFeo.sh</span>
+</code></pre></div>
+<h3 id="actividades-iniciales">Actividades iniciales<a class="headerlink" href="#actividades-iniciales" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Escribe el código de los shell scripts que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: <strong>ejX.sh</strong>, donde la <strong>X</strong> representa el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al <strong>Moodle del módulo</strong>. </li>
 </ul>
 <ol start="101">
 <li>
