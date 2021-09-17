@@ -244,8 +244,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#principales-autores" class="md-nav__link">
-    Principales Autores
+  <a href="#principales-actores" class="md-nav__link">
+    Principales Actores
   </a>
   
 </li>
@@ -272,8 +272,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#terminal-de-comandos" class="md-nav__link">
-    Terminal de comandos
+  <a href="#shell" class="md-nav__link">
+    Shell
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formato-comandos" class="md-nav__link">
+    Formato comandos
   </a>
   
 </li>
@@ -284,9 +291,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scripts-de-linux-bash" class="md-nav__link">
-    Scripts de Linux. (bash)
+  <a href="#shell-script-en-gnulinux" class="md-nav__link">
+    Shell Script en GNU/Linux.
   </a>
+  
+    <nav class="md-nav" aria-label="Shell Script en GNU/Linux.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creacion-shell-scripts" class="md-nav__link">
+    Creación Shell scripts.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -335,29 +355,34 @@
 <h3 id="breve-historia">Breve Historia<a class="headerlink" href="#breve-historia" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>1969</strong> La empresa AT&amp;T desarrolla el sistema operativo UNIX y vendido posteriormente a Novell.</li>
-<li><strong>1983</strong> Richard Stallman comienza el proyecto GNU (GNU is Not Unix) para crear un sistema operativo tipo UNIX pero de software libre.<ul>
-<li>Software libre: Aquel software, que una vez adquirido (no tiene porque ser gratuito), puede ser usado, copiado, modificado y redistribuido.</li>
+<li><strong>1983</strong> Richard Stallman comienza el proyecto GNU (GNU is Not Unix) para crear un SO tipo UNIX pero de software libre.<ul>
+<li>Software libre: Aquel software, que una vez adquirido (no tiene porque ser gratuito), puede ser usado, copiado, modificado y redistribuido, con cambios o mejoras.</li>
 </ul>
 </li>
-<li><strong>1985</strong> Microsoft publica Windows, un sistema operativo con interfaz gráfica de usuario (GUI) para su propio sistema operativo MS-DOS.</li>
-<li><strong>1991</strong> Linus Torvald comienza a programar el sistema operativo Linux (Linus + UNIX). El código era totalmente nuevo, pero emulaba el funcionamiento del sistema operativo MINIX (Tanenbaum), que era un clon de UNIX.</li>
+<li><strong>1985</strong> Microsoft publica Windows, un sistema operativo con interfaz gráfica de usuario (GUI) para su sistema operativo MS-DOS.</li>
+<li><strong>1991</strong> Linus Torvald comienza a programar el sistema operativo Linux (Linus + UNIX). El código era totalmente nuevo, pero emulaba el funcionamiento del sistema operativo MINIX (Tanenbaum), con estructura de micronucleo.</li>
 <li><strong>1992</strong> Se juntan el proyecto Linux y GNU → GNU/Linux.</li>
 <li><strong>2001</strong> Se lanza el primer sistema operativo MAC (MAC OS X) con interfaz de escritorio. MAC está basado en UNIX.</li>
 </ul>
-<h3 id="principales-autores">Principales Autores<a class="headerlink" href="#principales-autores" title="Permanent link">&para;</a></h3>
+<h3 id="principales-actores">Principales Actores<a class="headerlink" href="#principales-actores" title="Permanent link">&para;</a></h3>
 <figure>
   <img src="imagenes/01/HistoriaLinux.png" />
-  <figcaption>Principales Autores GNU/Linux</figcaption>
+  <figcaption>Principales Actores en la creación de GNU/Linux</figcaption>
 </figure>
 
 <h3 id="caracteristicas">Características<a class="headerlink" href="#caracteristicas" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Software Libre → Cualquiera puede usarlo o descargarlo.<ul>
-<li>Licencias GPL (General Public License) de GNU.</li>
+<li><strong>Software Libre</strong> → Cualquiera puede usarlo o descargarlo.<ul>
+<li>Licencias GPL (General Public License) de GNU. La Licencia Pública General de GNU o más conocida por su nombre en inglés <strong>GNU General Public License</strong> es una licencia de derecho de autor ampliamente usada en el mundo del software libre y código abierto, ​ y garantiza a los usuarios finales la libertad de usar, estudiar, compartir y modificar el software.</li>
 </ul>
 </li>
-<li>Código Abierto → Cualquiera puede ver y modificar el código.</li>
+<li><strong>Código Abierto</strong> → Cualquiera puede ver y modificar el código.</li>
 </ul>
+<figure>
+  <img src="imagenes/01/CaracteristicasLinux.png" width="850"/>
+  <figcaption>Tabla con algunas características de Linux</figcaption>
+</figure>
+
 <h3 id="distribuciones">Distribuciones<a class="headerlink" href="#distribuciones" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Gratuitas:<ul>
@@ -377,17 +402,34 @@
 </ul>
 <h3 id="principales-distribuciones">Principales distribuciones<a class="headerlink" href="#principales-distribuciones" title="Permanent link">&para;</a></h3>
 <figure>
-  <img src="imagenes/01/distribuciones.png" />
+  <img src="imagenes/01/distribuciones.png"/>
   <figcaption>Algunas Distribuciones de Linux</figcaption>
 </figure>
 
-<h3 id="terminal-de-comandos">Terminal de comandos<a class="headerlink" href="#terminal-de-comandos" title="Permanent link">&para;</a></h3>
+<h3 id="shell">Shell<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h3>
 <ul>
-<li>En un terminal (Shell) es posible crear cualquier comando que el usuario necesite, incluso para las tareas más específicas. </li>
-<li>Es buena práctica que el administrador del sistema tenga conocimientos en el manejo del terminal así como en la programación de scripts.</li>
+<li>En informática, el <strong>shell o intérprete de órdenes</strong> o intérprete de comandos es el programa informático que provee una interfaz de usuario para acceder a los servicios del sistema operativo. Dependiendo del tipo de interfaz que empleen, los shells pueden ser:<ul>
+<li>De líneas texto (<strong>CLI</strong>, Command-Line Interface, interfaz de línea de comandos),</li>
+<li>Gráficos (<strong>GUI</strong>, Graphical User Interface, interfaz gráfica de usuario),</li>
+<li>De lenguaje natural (<strong>NUI</strong>, Natural User Interface, interfaz natural de usuario).</li>
 </ul>
+</li>
+<li>En un terminal (Shell) es posible crear cualquier comando que el usuario necesite, incluso para las tareas más específicas.</li>
+<li>Debido a estar directamente conectado al Kernel a diferencia de las palicaciones como se puede observar en la siguiente figura.</li>
+</ul>
+<figure>
+  <img src="imagenes/01/EstructuraLinux.png" width="500"/>
+  <figcaption>Estructura de Linux</figcaption>
+</figure>
+
+<ul>
+<li>Por lo tanto, es buena práctica que el administrador del sistema tenga conocimientos en el manejo del terminal así como en la programación de scripts.</li>
+<li>Linux dispone de varios Shell diferentes <em>csh</em>, <em>bash</em>, <em>sh</em>, <em>ksh</em>, <em>zsh</em>, etc... </li>
+<li>En este tema utilizaremos el Shell <strong>bash</strong>. </li>
+</ul>
+<h3 id="formato-comandos">Formato comandos<a class="headerlink" href="#formato-comandos" title="Permanent link">&para;</a></h3>
 <figure style="float: right;">
-    <img src="imagenes/01/CaseSensitive.png" width="250">
+    <img src="imagenes/01/CaseSensitive.png" width="230">
     <figcaption></figcaption>
     </figure>
 
@@ -397,15 +439,79 @@
 <li><strong>Modificadores</strong>, que cambian el comportamiento estándar del comando para adaptarlo a las necesidades.</li>
 <li><strong>Argumentos</strong>, elementos necesarios para realizar la acción del comando.</li>
 </ul>
-<h2 id="scripts-de-linux-bash">Scripts de Linux. (bash)<a class="headerlink" href="#scripts-de-linux-bash" title="Permanent link">&para;</a></h2>
+<h2 id="shell-script-en-gnulinux">Shell Script en GNU/Linux.<a class="headerlink" href="#shell-script-en-gnulinux" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Linux dispone de varios Shell diferentes <em>csh</em>, <em>bash</em>, <em>sh</em>, <em>ksh</em>, <em>zsh</em>, etc... </li>
-<li>En este tema utilizaremos el Shell bash. </li>
-<li>En Linux los procedimientos de comandos se conocen como scripts (guiones).</li>
+<li>Un Shell script (guión) es un archivo de texto que contiene una serie de comandos que, ordenados de forma específica, realizan la tarea para la que fueron diseñados, es decir, es un programa escrito de comandos Shell para ser ejecutados de forma secuencial.</li>
+<li>De esta forma se pueden automatizar tareas repetitivas ahorrando tiempo al administrador.</li>
 <li>Un programa escrito en shell se denomina shellscript, programa shell o simplemente un shell.</li>
-<li>un shellscript es un archivo de texto que contiene una serie de comandos que, ordenados de alguna forma específica, realizan la tarea para la que fueron diseñados. </li>
-<li>Para crear un script utilizaremos cualquiera de los editores de texto plano como vi,vim ,nano,joe,etc. </li>
 </ul>
+<h3 id="creacion-shell-scripts">Creación Shell scripts.<a class="headerlink" href="#creacion-shell-scripts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Para crear un script utilizaremos cualquiera de los editores de texto plano como <em>vi</em>, <em>vim</em> , <em>nano</em>.</li>
+<li>Después de crear el archivo hay que dotarlo de permisos de lectura y ejecución. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">chmod ugo=rx script.sh</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Para ejecutar el archivo: ubicados en la carpeta que contiene el archivo, se pueden utilizar tres formas:</p>
+<ul>
+<li>se teclea el nombre del archivo en el terminal precedido del comando <strong>sh</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sh script.sh</span>
+</code></pre></div></li>
+<li>precedido de un punto <em>.</em>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">. script.sh</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">./ script.sh</span>
+</code></pre></div></li>
+<li>definir la carpeta dentro de la variable de entorno <strong>PATH</strong>. Y ejecutamos directamente con el nombre del script.
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">mkdir /home/administrador/scripts</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">PATH=$PATH:/home/administrador/scripts</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">export PATH</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Cualquiera de estas dos primeras formas ejecutará el contenido del shell script en un subshell o hilo del terminal original. El programa se ejecuta hasta que se terminan las órdenes del archivo, se recibe una señal de finalización, se encuentra un error sintáctico o se llega a una orden <strong>exit</strong>.</p>
+</li>
+<li>Cuando el programa termina, el subshell muere y el terminal original toma el control del sistema. </li>
+<li>
+<p>Esto no ocurre si se usa la opción de PATH, la cual ejecuta el contenido del shell script en el mismo terminal donde fue invocado.</p>
+</li>
+<li>
+<p>Crea un ejemplo: listar.sh</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">cd ~</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">mkdir scripts</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">cd scripts</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">touch listar.sh</span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">nano listar.sh</span>
+</code></pre></div>
+<ul>
+<li>Genera, guarda y prueba el siguiente código.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#! /bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">clear</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">ls -la</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">echo “Listado realizado el “$(date)</span>
+</code></pre></div>
+<ul>
+<li>Actividades de investigación en clase.</li>
+</ul>
+<ol>
+<li>Crea un shell script que muestre por pantalla el mensaje <strong>“¡Hola Mundo!”</strong>.</li>
+<li>Realiza un shell script que admita un <em>único parámetro</em> correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando <strong>wc</strong>.</li>
+<li>
+<p>Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.</p>
+<ul>
+<li>a%b</li>
+<li>a/c</li>
+<li>2 * b + 3 * (a-c)</li>
+<li>a * (b/c)</li>
+<li>(a*c)%</li>
+</ul>
+</li>
+</ol>
                 
               
               
