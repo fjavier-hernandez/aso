@@ -305,6 +305,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejemplo-shellscript" class="md-nav__link">
+    Ejemplo Shellscript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividades-iniciales" class="md-nav__link">
+    Actividades iniciales
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -474,12 +488,11 @@
 <p>Cualquiera de estas dos primeras formas ejecutará el contenido del shell script en un subshell o hilo del terminal original. El programa se ejecuta hasta que se terminan las órdenes del archivo, se recibe una señal de finalización, se encuentra un error sintáctico o se llega a una orden <strong>exit</strong>.</p>
 </li>
 <li>Cuando el programa termina, el subshell muere y el terminal original toma el control del sistema. </li>
-<li>
-<p>Esto no ocurre si se usa la opción de PATH, la cual ejecuta el contenido del shell script en el mismo terminal donde fue invocado.</p>
-</li>
-<li>
-<p>Crea un ejemplo: listar.sh</p>
-</li>
+<li>Esto no ocurre si se usa la opción de PATH, la cual ejecuta el contenido del shell script en el mismo terminal donde fue invocado.</li>
+</ul>
+<h3 id="ejemplo-shellscript">Ejemplo Shellscript<a class="headerlink" href="#ejemplo-shellscript" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Crea un ejemplo llamado <em>listar.sh</em></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">cd ~</span>
 <span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">mkdir scripts</span>
@@ -495,12 +508,22 @@
 <span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">ls -la</span>
 <span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">echo “Listado realizado el “$(date)</span>
 </code></pre></div>
+<h3 id="actividades-iniciales">Actividades iniciales<a class="headerlink" href="#actividades-iniciales" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Actividades de investigación en clase.</li>
+<li>
+<p>Todavía no hemos estudiado como realizar operaciones, impresiones por pantalla y trabajar con parámetros, pero con un poco de investigación se puede llegar a la solución de las siguientes actividades.  </p>
+</li>
+<li>
+<p>Escribe el código de los shell scripts que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: <strong>ejX.sh</strong>, donde la <strong>X</strong> representa el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al <strong>Moodle del módulo</strong>. </p>
+</li>
 </ul>
-<ol>
-<li>Crea un shell script que muestre por pantalla el mensaje <strong>“¡Hola Mundo!”</strong>.</li>
-<li>Realiza un shell script que admita un <em>único parámetro</em> correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando <strong>wc</strong>.</li>
+<ol start="101">
+<li>
+<p>Crea un shell script que muestre por pantalla el mensaje <strong>“¡Hola Mundo!”</strong>.</p>
+</li>
+<li>
+<p>Realiza un shell script que admita un <em>único parámetro</em> correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando <strong>wc</strong>.</p>
+</li>
 <li>
 <p>Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.</p>
 <ul>
