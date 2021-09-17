@@ -137,7 +137,9 @@ chmod ugo=rx script.sh
 * Cuando el programa termina, el subshell muere y el terminal original toma el control del sistema. 
 * Esto no ocurre si se usa la opción de PATH, la cual ejecuta el contenido del shell script en el mismo terminal donde fue invocado.
 
-* Crea un ejemplo: listar.sh
+### Ejemplo Shellscript
+
+* Crea un ejemplo llamado *listar.sh*
 
 ``` yaml
 cd ~
@@ -156,11 +158,17 @@ ls -la
 echo “Listado realizado el “$(date)
 ```
 
-* Actividades de investigación en clase.
+### Actividades iniciales
 
-1. Crea un shell script que muestre por pantalla el mensaje **“¡Hola Mundo!”**.
-2. Realiza un shell script que admita un *único parámetro* correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando **wc**.
-3. Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.
+* Todavía no hemos estudiado como realizar operaciones, impresiones por pantalla y trabajar con parámetros, pero con un poco de investigación se puede llegar a la solución de las siguientes actividades.  
+
+* Escribe el código de los shell scripts que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: **ejX.sh**, donde la **X** representa el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al **Moodle del módulo**. 
+
+101. Crea un shell script que muestre por pantalla el mensaje **“¡Hola Mundo!”**.
+
+102. Realiza un shell script que admita un *único parámetro* correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando **wc**.
+
+103. Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.
 
     * a%b
     * a/c
