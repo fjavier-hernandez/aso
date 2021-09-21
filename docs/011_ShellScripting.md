@@ -108,13 +108,13 @@
 
 | Comando      | Acción                               | Comando      | Acción                                  |
 | ------------ | ------------------------------------ | ------------ | --------------------------------------- |
-| **ls**       | muestra el contenido de una carpeta  | **uname**    | muestra información del sistema         |
-| **df**       | muestra estado del disco             | **cd**       | cambiar de directorio                   |
-| **fsck**     | comprueba integridad de discos       | **mkdir**    | crear directorios                       |
-| **mount**    | monta particiones y volúmenes        | **shutdown** | apaga el equipo (*restart* o *reboot*)  |
-| **unmount**  | desmonta particiones y volúmenes     | **clear**    | limpia la pantalla                      |
-| **fdisk**    | administra particiones               | **date/cal** | muestra hora/calendario del sistema     |
-| **echo**     | imprime por pantalla                 | **who**      | muestra quien está conectado            |
+| `ls `      | muestra el contenido de una carpeta  | `uname`    | muestra información del sistema         |
+| `df`       | muestra estado del disco             | `cd`       | cambiar de directorio                   |
+| `fsck`     | comprueba integridad de discos       | `mkdir`    | crear directorios                       |
+| `mount`    | monta particiones y volúmenes        | `shutdown` | apaga el equipo (*restart* o *reboot*)  |
+| `unmount`  | desmonta particiones y volúmenes     | `clear`    | limpia la pantalla                      |
+| `fdisk`    | administra particiones               | `date/cal` | muestra hora/calendario del sistema     |
+| `echo`     | imprime por pantalla                 | `who`      | muestra quien está conectado            |
 
 ## Shell Script en GNU/Linux
 
@@ -181,11 +181,11 @@ echo “Listado realizado el “$(date)
 * A esta regla existe una excepción:
 
 ``` yaml
-#!/bin/sh
+    #!/bin/bash
 ```
 
 !!! info
-    * indica el terminal que será utilizado por el shell script, no un comentario.
+    * Indica el terminal que será utilizado por el shell script, no un comentario.
     * Esta línea debe ser la primera del fichero que, aún siendo opcional, indica el tipo de lenguaje en el que ha sido escrito el programa.
     * Si la versión de GNU/Linux dispone de el terminal especificado en esta línea, ejecutará el código con él, si no es así, utilizará el que por defecto tenga asignado el usuario que lo ejecuta.
 
@@ -199,12 +199,12 @@ echo “Listado realizado el “$(date)
 
 | Símbolo                           | Función                                                                                       |
 | --------------------------------- | --------------------------------------------------------------------------------------------- |
-| **$1**                            | representa el 1º parámetro pasado al script                                                   |
-| **$2**                            | representa el 2º parámetro                                                                    |
-| **$3**                            | representa el 3º parámetro (podemos usar hasta $9)                                            |
-| **$***                            | representa todos los parámetros separados por espacio                                         |
-| **$#**                            | representa el número de parámetros que se han pasado                                          |
-| **$0**                            | representa el parámetro 0, es decir, el nombre del script o el nombre de la función           |
+| `$1`                            | representa el 1º parámetro pasado al script                                                   |
+| `$2`                            | representa el 2º parámetro                                                                    |
+| `$3 `                           | representa el 3º parámetro (podemos usar hasta $9)                                            |
+| `$*`                            | representa todos los parámetros separados por espacio                                         |
+| `$#`                            | representa el número de parámetros que se han pasado                                          |
+| `$0 `                           | representa el parámetro 0, es decir, el nombre del script o el nombre de la función           |
 
 * Ejemplo:
 
@@ -226,11 +226,11 @@ El parámetro 0 es : ./script.sh
 ```
 
 !!! info
-    * Argumento especial **$?**
+    * Argumento especial `$?`
     * Contiene el valor que devuelve la ejecución de un comando. 
     * Puede tener dos valores: **cero** si se ha **ejecutado bien** y se interpreta como verdadero, o **distinto de cero** si se ha **ejecutado mal** y se interpreta como falso.
-        * **0**  -> Si el último comando se ejecutó con éxito
-        * **!0** -> Si el último comando no de ejecutó con éxito
+        * `0`  -> Si el último comando se ejecutó con éxito
+        * `!0` -> Si el último comando no de ejecutó con éxito
 
 ### Variables
 
@@ -239,7 +239,7 @@ El parámetro 0 es : ./script.sh
 
 !!! info
     * En shellscript **no se declaran y no importa el tipo**.
-    * El nombre de la variable puede estar compuesto por **letras y números** y por el carácter subrayado “**_**”.
+    * El nombre de la variable puede estar compuesto por **letras y números** y por el carácter subrayado “`_`”.
 
 * Ejemplo:
 
@@ -253,7 +253,7 @@ echo $MIVARIABLE
 ```
 
 !!! warning 
-    * Deben empezar por **letra** o “**_**”
+    * Deben empezar por **letra** o “`_`”
     * En ningún caso pueden empezar por un número, ya que esa nomenclatura está reservada a los parámetros.
     * El contenido de estas variables será siempre tomado como si fuesen cadenas alfanuméricas, es decir, serán tratadas como cadenas de texto. Por lo tanto se necesitan operandos o comandos específicos para realizar operaciones con valores numéricos de las variables. Explicado en el apartado de **Operadores Aritméticos**.
 
@@ -267,10 +267,10 @@ Ejemplo de principales variables de entorno:
 
 | Variable                          | Función                                               |
 | --------------------------------- | ----------------------------------------------------- |
-| **$BASH**                         | Ruta del programa Bash                                |
-| **$HOME**                         | Ruta completa del home del usuario                    |
-| **$PATH**                         | Lista los directorios de donde busca los programas    |
-| **$RANDOM**                       | Devuelve un valor numérico aleatorio                  |
+| `$BASH`                         | Ruta del programa Bash                                |
+| `$HOME`                         | Ruta completa del home del usuario                    |
+| `$PATH`                         | Lista los directorios de donde busca los programas    |
+| `$RANDOM`                       | Devuelve un valor numérico aleatorio                  |
 
 ### Entrada y salida del Shell Script
 
@@ -280,12 +280,15 @@ Ejemplo de principales variables de entorno:
 
 #### echo
 * Su tarea es la de mostrar información con mensajes de texto lanzados por pantalla
-    * **echo** (para usar las opciones hay utilizar el modificador **-e**)
-    * **\\**	barra
-    * **\n**	nueva línea
-    * **\t**	tabulador horizontal
-    * **\v**	tabulador vertical
-    * **\b**	espacio atrás
+
+| Modificador | Función  |
+| ------------| -------- |
+| `-e`| para usar las opciones hay utilizar el modificador  |
+| `\c`  | Sirve para eliminar el salto de línea natural del comando **echo**.  |
+| `\n`  | nueva línea.  |
+| `\t`  | tabulador horizontal.  |
+| `\v`  | tabulador vertical.  |
+
 
 !!! info
     * Si se antepone el símbolo del dólar delante de una variable, mostrará su contenido
@@ -386,45 +389,47 @@ let SUMA=NUMERO-10
 
     | Operador | Acción |  
     |:-----:|------------------------------------------------|
-    | **-eq** | Comprueba si dos números son iguales.          |
-    | **-ne** | Detecta si dos números son diferentes.         |   
-    | **-gt** | Revisa si la izquierda es mayor que derecha.   |  
-    | **-lt** | Verifica si la izquierda es menor que derecha. | 
-    | **-ge** | Coteja si la izquierda es mayor o igual que derecha.   |  
-    | **-le** | Constata si la izquierda es menor o igual que derecha. |
+    | `-eq` | Comprueba si dos números son iguales.          |
+    | `-ne`| Detecta si dos números son diferentes.         |   
+    | `-gt` | Revisa si la izquierda es mayor que derecha.   |  
+    | `-lt` | Verifica si la izquierda es menor que derecha. | 
+    | `-ge` | Coteja si la izquierda es mayor o igual que derecha.   |  
+    | `-le` | Constata si la izquierda es menor o igual que derecha. |
 
     **2.** **Operadores relacionales para cadenas de texto o de cuerda**
 
     | Operador | Acción |  
     |:-----:|------------------------------------------------|
-    | **-z** | Comprueba si la longitud de la cadena es cero.          |
-    | **-n** | Evalúa si la longitud de la cadena no es cero.         |   
-    | **=** | Verifica si las cadenas son iguales.   |  
-    | **!=** | Coteja si las cadenas son diferentes. | 
-    | **cadena** | Revisa si la cadena es nula.   |  
+    | `-z` | Comprueba si la longitud de la cadena es cero.          |
+    | `-n` | Evalúa si la longitud de la cadena no es cero.         |   
+    | `=` | Verifica si las cadenas son iguales.   |  
+    | `!=` | Coteja si las cadenas son diferentes. | 
+    | `cadena` | Revisa si la cadena es nula.   |  
     
     **3.** **Operadores relacionales para archivos y directorios**
 
     | Operador | Acción |  
     |:-----:|------------------------------------------------|
-    | **-a** | Comprueba si la longitud de la cadena es cero.          |
-    | **-r** | Evalúa si la longitud de la cadena no es cero.         |   
-    | **-w** | Verifica si las cadenas son iguales.   |  
-    | **-x** | Coteja si las cadenas son diferentes. | 
-    | **-f** | Revisa si la cadena es nula.   |  
-    | **-d** | Compulsa si existe y es un directorio.   |  
-    | **-h** | Coteja si existe y es un enlace.   |  
-    | **-s** | Revisa si existe el archivo y su tamaño es mayor a cero.   |  
+    | `-a` | Comprueba si existe el archivo.           |
+    | `-r` | Evalúa si la longitud de la cadena no es cero.         |   
+    | `-w` | Confirma si existe el archivo y tiene permisos de escritura.  |  
+    | `-x` | Constata si existe el archivo y tiene permisos de ejecución.  | 
+    | `-f` | Escruta si existe y es un fichero regular.    |  
+    | `-d` | Escruta si existe y es un fichero regular.    |  
+    | `-h` | Coteja si existe y es un enlace.     |  
+    | `-s` | Revisa si existe el archivo y su tamaño es mayor a cero.   |  
 
 #### lógicos
 
-* Se utilizan para evaluar condiciones, no elementos. 
+* Se utilizan para evaluar condiciones, no elementos.
 * Comprueba el resultado de dos operandos y devuelve verdadero o falso en función del valor que arrojen los operandos.
-
 * Los tipos son:
-    1. **$$**   ->  **AND**, devuelve verdadero si todas condiciones que evalúa son verdaderas. Se puede representar como **-a** o con el carácter **$$**.
-    2. **||**   ->  **OR**, da como resultado verdadero si alguna de las condiciones que evalúa es verdadera. Se representa como **-o** o a través del carácter **||**.  
-    3. **!**    ->  **negación**, invierte el significado del operando. El resultado es verdadero si el operando convertido es falso; el resultado es falso si el operando convertido es verdadero. Se utiliza el carácter **!** o la palabra **not**. 
+
+ | Operador | Acción |  
+    |:-----:|------------------------------------------------|
+    | `$$` | `AND`, devuelve verdadero si todas condiciones que evalúa son verdaderas. Se puede representar: `-a` o `$$`.|
+    | `||` | `OR`, da como resultado verdadero si alguna de las condiciones que evalúa es verdadera. Se representar: `-o` o `||`.|   
+    | `!` | `negación`, invierte el significado del operando. de verdadero a falso, y viceversa. Con `!` o `not`.  |  
 
 !!! info
     Para realizar cálculos aritméticos es necesario utilizar expresiones como **expr**, **let** o los **expansores**.
@@ -479,22 +484,6 @@ echo $(($1 + $var + 1))
 !!! tip
     **Consejo de uso**, ya que es mucho más intuitivo que las anteriores expresiones.
 
-### Actividades iniciales
-
-* Escribe el código de los shell scripts que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: **ejX.sh**, donde la **X** representa el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al **Moodle del módulo**. 
-
-101. Crea un shell script que muestre por pantalla el mensaje **“¡Hola Mundo!”**.
-
-102. Realiza un shell script que admita un *único parámetro* correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando **wc**.
-
-103. Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.
-
-    * a%b
-    * a/c
-    * 2 * b + 3 * (a-c)
-    * a * (b/c)
-    * (a*c)%
-
 ### Redirecciones
 
 * Una **redirección** consiste en trasladar la información de un fichero de dispositivo a otro.
@@ -502,12 +491,10 @@ echo $(($1 + $var + 1))
     
     | Símbolo | Acción |  
     |:-----:|------------------------------------------------|
-    | **<** | redirecciona la entrada desde el fichero **stdin** (entrada estándar)|
-    | **>** | envía la salida de **stdout** (salida estándar) a un fichero especificado|
-    | **>>** | añade la salida de **stdout** (salida estándar) a un fichero especificado|
-    | **>>** | añade la salida de **stdout** (salida estándar) a un fichero especificado|
-    | **2>** | envía la salida de **stderr** (error estándar) a un fichero especificado|
-   
+    | `<` | redirecciona la entrada desde el fichero **stdin** (entrada estándar)|
+    | `>` | envía la salida de **stdout** (salida estándar) a un fichero especificado|
+    | `>>` | añade la salida de **stdout** (salida estándar) a un fichero especificado|
+    | `2>` | envía la salida de **stderr** (error estándar) a un fichero especificado|
 * Ejemplo:
 
 ``` yaml
@@ -715,22 +702,55 @@ esac
 ```
 <figure>
   <img src="imagenes/01/EstructuraAlternativaMultiple.png" width="600"/>
-  <figcaption>EstructuraAlternativaMultiple.</figcaption>
+  <figcaption>Estructura Alternativa Multiple.</figcaption>
 </figure>
 
 #### Estructuras de iteración
 
+* Son operaciones que se deben ejecutar un número repetido de veces para resolver un problema.
+* El conjunto de instrucciones que se ejecuta dentro de esta estructura, se denomina ciclo, bucle o lazo.
+* `Iteración` es cada una de las pasadas o ejecuciones de todas las instrucciones contenidas en el bucle.
+* Estas repeticiones de código van a depender de la evaluación de una condición o del valor de una variable.
+* Es posible repetir un código hasta que se cumpla o deje de cumplir una condición pero también se posible la repetición tantas veces como indique una variable.
+
+!!! warning
+    Hay que tener mucho cuidado a la hora de diseñar estas estructuras y no caer en el error de construir **bucles infinitos**, es decir, estructuras que nunca dejarán de ejecutarse ya que no tienen condición de salida o, si la tienen, ésta nunca se va a cumplir.
+
+* Para utilizar esta estructura en algoritmos, se usan:
+
+1. **Contador:** es una variable cuyo valor se incrementa o decrementa en una cantidad constante cada vez que se produce un determinado suceso o acción. Los contadores se utilizan con la finalidad de contar sucesos o acciones internas de un bucle.
+
+!!! info
+    La inicialización consiste en asignarle al contador un valor. Se situará antes y fuera del bucle.
+
+2. **Acumulador o Totalizador** es una variable que suma sobre sí misma un conjunto de valores para de esta manera tener el total de todos ellos en una sola variable. 
+
+!!! info
+    La diferencia entre un contador y un acumulador es que mientras el primero va aumentando de uno en uno, el acumulador va aumentando en una cantidad variable.
+
+3. **Banderas**, conocidas también como interruptores, switch, flags o conmutadores. Son variables que pueden tomar solamente dos valores
+durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los valores booleanos verdadero o falso. 
+
+!!! info
+    Se les suele llamar interruptores porque cuando toman un valor están simulando un interruptor abierto/cerrado o encendido/apagado.
+
+<figure>
+  <img src="imagenes/01/EstructuraIterativa.png" width="300"/>
+  <figcaption>Estructura Iterativa.</figcaption>
+</figure>
+
 ##### Las estructuras while y until
 
-* Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. El funcionamiento es lógico:
+Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. El funcionamiento es lógico:
 
-    * Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa. Si es verdadera entra en el bucle y ejecuta el código que contiene.
+    * Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa. 
+    * Si es verdadera entra en el bucle y ejecuta el código que contiene.
     * Al finalizar la ejecución, al iterar, vuelve a evaluar la condición y vuelve a repetir la operación anterior.
 
 !!! warning
     Al construir una estructura while es preciso asegurarse que en algún momento de su ejecución la condición dejará de cumplirse y se romperá el ciclo, si no, éste será infinito, a menos que el usuario o el sistema interrumpa su ejecución.
 
-* **WHILE**
+* `WHILE`
 ``` yaml
 while [ expresión ]
 do
@@ -738,7 +758,7 @@ do
 done
 ```
 
-* **UNTIL**
+* `UNTIL`
 ``` yaml
 until [ expresión ]
 do
@@ -746,9 +766,87 @@ do
 done
 ```
 
+!!! info
+    La diferencia es que un `until` se ejecuta como mínimo una vez, ya que ejecuta el código y luego comprueba, mientras que el `while` es posible que nunca se ejecute, ya que es posible que la condición de entrada nunca se cumpla.
+
+* Ejemplo:
+
+``` yaml
+while [ expresión ]
+#! /bin/bash
+read -p “Escribe un número: “ num
+i=1
+while [ $i -le 10 ]
+do
+    let res=num*i
+    echo “$i x $num = $res”
+    let i=i+1
+done
+```
+!!! info
+    Este código imprime por pantalla la tabla de multiplicar del número que el usuario ha especificado. Las líneas contenidas entre `do` y `done` se ejecutarán mientras i sea menor o igual a diez. Al final de cada iteración el valor de i se incrementa en uno (es un contador) por lo que en diez iteraciones la condición dejará de cumplirse y el bucle se romperá.
+
+##### La estructuras for
+
+* Esta estructura permite repetir código por cada elemento de un conjunto determinado.
+* No necesita condición de salida ya que al finalizar los elementos del conjunto acabará con su *ejecución.
+* la forma general es:
+
+``` yaml
+for variable in conjunto
+do
+    estas líneas se repiten una vez por cada elemento del conjunto
+    variable toma los valores del conjunto, uno en cada iteración
+done
+```
+* Ejemplo:
+
+``` yaml
+#! /bin/bash
+read -p “Escribe la dirección de una carpeta: “ car
+for i in $(ls $car)
+do
+    if [ -f $i ]
+    then
+        echo “$i es un archivo de tipo regular”
+    elif [ -d $i ]
+    then
+        echo “$i es un archivo de tipo directorio”
+    else
+        echo “$i es otro tipo de archivo o no existe”
+    fi
+done
+```
+!!! info 
+    Este ejemplo se van a mostrar los nombres de los ficheros que contiene un directorio y dirá si es un directorio o un fichero.
+
+###### Romper un bucle de forma deliberada
+
+No sólo es posible terminar un bucle cuando se cumpla una condición o cuando se terminen los elementos de un conjunto, shell script proporciona dos formas de alterar el funcionamiento de la estructura en un bucle y romperla en función de las necesidades del programa:
+
+1. `break` rompe el bucle que lo contiene y continúa la ejecución del script.
+2. `continue` rompe la iteración que lo contiene, pero mantiene el bucle, que continuará con la siguiente iteración hasta que termine su ejecución.
+3. `exit` detiene la ejecución del script. Este comando no es exclusivo de las estructuras iterativas, pero cobra especial sentido en este ámbito.
+
+## Actividades
+
+### Actividades iniciales
+
+101. Crea un shell script que muestre por pantalla el mensaje “**¡Hola Mundo!**”.
+
+102. Realiza un shell script que admita un único parámetro correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando `wc`.
+
+103. Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.
+    * a%b
+    * a/c
+    * 2 * b + 3 * (a-c)
+    * a * (b/c)
+    * (a*c)%b
+
+
 ### Actividades de desarrollo UD1_01
 
-104. Modifica el shell script realizado en el ejercicio **103** para comprobar si el fichero existe. En tal caso debe contar el número de líneas del mismo a través del comando wc y mostrar un mensaje indicando dicho número. Si el fichero no existe, debe mostrar un mensaje de error y salir.
+104. Modifica el shell script realizado en el ejercicio **102** para comprobar si el fichero existe. En tal caso debe contar el número de líneas del mismo a través del comando wc y mostrar un mensaje indicando dicho número. Si el fichero no existe, debe mostrar un mensaje de error y salir.
 
 105. Crea un shell script que al ejecutarlo muestre por pantalla uno de estos mensajes **“Buenos días”**, **“Buenas tardes”** o **“Buenas noches”**, en función de la hora que sea en el sistema (de 8:00 de la mañana a 15:00 será mañana, de 15:00 a 20:00 será tarde y el resto será noche). Para obtener la hora del sistema utiliza el comando date.
 
@@ -760,3 +858,17 @@ done
     * **Borrar** (borrar el archivo).
 
 107. Crea un shell script que sume los números del 1 al 1000 mediante una estructura **mientras** y **desde**.
+
+### Actividades de desarrollo UD1_02
+
+108. Construye los siguientes tres shell script utilizando estructuras iterativas:
+    a) el primero ej108A.sh, que pida un número e indique si se trata de un número par y si es número primo.
+    b) el tercero ej108B.sh, que muestre las 10 primeras tablas de multiplicar por pantalla. Existirá un tiempo de espera de dos segundos entre tabla (usa el comando sleep para ello).
+
+109. Crea un shell script para jugar a “Doble o Nada”. Consistirá en adivinar un número entre 1 y 10 (este número será generado al azar por el ordenador, para ello debes utilizar la función $RANDOM de la siguiente manera numero=$RANDOM % 10). Añade al juego las siguientes características:
+    a) El jugador apuesta una cantidad de un valor inicial de 100 puntos.
+    b) Si sale cara obtiene el doble de la cantidad apostada. Si sale cruz pierde todo lo apostado.
+    c) El shell script debe llevar la cuenta de las tiradas y de la cantidad ganada.
+    d) Al final de la partida mostrará un informe por pantalla a modo de resumen.
+
+110. Modificar el shell script anterior para que permita ir jugando hasta que el jugador decida abandonar el juego (para ello deberá pulsar la tecla “x” del teclado), o no tenga más dinero que apostar. Tampoco podrá apostar más dinero del que dispone en su “cartera virtual”.

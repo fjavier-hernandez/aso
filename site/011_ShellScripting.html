@@ -385,13 +385,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#actividades-iniciales" class="md-nav__link">
-    Actividades iniciales
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#redirecciones" class="md-nav__link">
     Redirecciones
   </a>
@@ -439,9 +432,36 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+    <nav class="md-nav" aria-label="Actividades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actividades-iniciales" class="md-nav__link">
+    Actividades iniciales
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#actividades-de-desarrollo-ud1_01" class="md-nav__link">
     Actividades de desarrollo UD1_01
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividades-de-desarrollo-ud1_02" class="md-nav__link">
+    Actividades de desarrollo UD1_02
   </a>
   
 </li>
@@ -608,45 +628,45 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>ls</strong></td>
+<td><code>ls</code></td>
 <td>muestra el contenido de una carpeta</td>
-<td><strong>uname</strong></td>
+<td><code>uname</code></td>
 <td>muestra información del sistema</td>
 </tr>
 <tr>
-<td><strong>df</strong></td>
+<td><code>df</code></td>
 <td>muestra estado del disco</td>
-<td><strong>cd</strong></td>
+<td><code>cd</code></td>
 <td>cambiar de directorio</td>
 </tr>
 <tr>
-<td><strong>fsck</strong></td>
+<td><code>fsck</code></td>
 <td>comprueba integridad de discos</td>
-<td><strong>mkdir</strong></td>
+<td><code>mkdir</code></td>
 <td>crear directorios</td>
 </tr>
 <tr>
-<td><strong>mount</strong></td>
+<td><code>mount</code></td>
 <td>monta particiones y volúmenes</td>
-<td><strong>shutdown</strong></td>
+<td><code>shutdown</code></td>
 <td>apaga el equipo (<em>restart</em> o <em>reboot</em>)</td>
 </tr>
 <tr>
-<td><strong>unmount</strong></td>
+<td><code>unmount</code></td>
 <td>desmonta particiones y volúmenes</td>
-<td><strong>clear</strong></td>
+<td><code>clear</code></td>
 <td>limpia la pantalla</td>
 </tr>
 <tr>
-<td><strong>fdisk</strong></td>
+<td><code>fdisk</code></td>
 <td>administra particiones</td>
-<td><strong>date/cal</strong></td>
+<td><code>date/cal</code></td>
 <td>muestra hora/calendario del sistema</td>
 </tr>
 <tr>
-<td><strong>echo</strong></td>
+<td><code>echo</code></td>
 <td>imprime por pantalla</td>
-<td><strong>who</strong></td>
+<td><code>who</code></td>
 <td>muestra quien está conectado</td>
 </tr>
 </tbody>
@@ -713,12 +733,12 @@
 <li>Cuando el terminal encuentra una línea que comienza con este carácter, ignora todo lo que existe desde él hasta el final de línea.</li>
 <li>A esta regla existe una excepción:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#!/bin/sh</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>    <span class="c1">#!/bin/bash</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <ul>
-<li>indica el terminal que será utilizado por el shell script, no un comentario.</li>
+<li>Indica el terminal que será utilizado por el shell script, no un comentario.</li>
 <li>Esta línea debe ser la primera del fichero que, aún siendo opcional, indica el tipo de lenguaje en el que ha sido escrito el programa.</li>
 <li>Si la versión de GNU/Linux dispone de el terminal especificado en esta línea, ejecutará el código con él, si no es así, utilizará el que por defecto tenga asignado el usuario que lo ejecuta.</li>
 </ul>
@@ -744,27 +764,27 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>$1</strong></td>
+<td><code>$1</code></td>
 <td>representa el 1º parámetro pasado al script</td>
 </tr>
 <tr>
-<td><strong>$2</strong></td>
+<td><code>$2</code></td>
 <td>representa el 2º parámetro</td>
 </tr>
 <tr>
-<td><strong>$3</strong></td>
+<td><code>$3</code></td>
 <td>representa el 3º parámetro (podemos usar hasta $9)</td>
 </tr>
 <tr>
-<td><strong>$</strong>*</td>
+<td><code>$*</code></td>
 <td>representa todos los parámetros separados por espacio</td>
 </tr>
 <tr>
-<td><strong>$#</strong></td>
+<td><code>$#</code></td>
 <td>representa el número de parámetros que se han pasado</td>
 </tr>
 <tr>
-<td><strong>$0</strong></td>
+<td><code>$0</code></td>
 <td>representa el parámetro 0, es decir, el nombre del script o el nombre de la función</td>
 </tr>
 </tbody>
@@ -790,11 +810,11 @@
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <ul>
-<li>Argumento especial <strong>$?</strong></li>
+<li>Argumento especial <code>$?</code></li>
 <li>Contiene el valor que devuelve la ejecución de un comando. </li>
 <li>Puede tener dos valores: <strong>cero</strong> si se ha <strong>ejecutado bien</strong> y se interpreta como verdadero, o <strong>distinto de cero</strong> si se ha <strong>ejecutado mal</strong> y se interpreta como falso.<ul>
-<li><strong>0</strong>  -&gt; Si el último comando se ejecutó con éxito</li>
-<li><strong>!0</strong> -&gt; Si el último comando no de ejecutó con éxito</li>
+<li><code>0</code>  -&gt; Si el último comando se ejecutó con éxito</li>
+<li><code>!0</code> -&gt; Si el último comando no de ejecutó con éxito</li>
 </ul>
 </li>
 </ul>
@@ -808,7 +828,7 @@
 <p class="admonition-title">Info</p>
 <ul>
 <li>En shellscript <strong>no se declaran y no importa el tipo</strong>.</li>
-<li>El nombre de la variable puede estar compuesto por <strong>letras y números</strong> y por el carácter subrayado “<strong>_</strong>”.</li>
+<li>El nombre de la variable puede estar compuesto por <strong>letras y números</strong> y por el carácter subrayado “<code>_</code>”.</li>
 </ul>
 </div>
 <ul>
@@ -824,7 +844,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <ul>
-<li>Deben empezar por <strong>letra</strong> o “<strong>_</strong>”</li>
+<li>Deben empezar por <strong>letra</strong> o “<code>_</code>”</li>
 <li>En ningún caso pueden empezar por un número, ya que esa nomenclatura está reservada a los parámetros.</li>
 <li>El contenido de estas variables será siempre tomado como si fuesen cadenas alfanuméricas, es decir, serán tratadas como cadenas de texto. Por lo tanto se necesitan operandos o comandos específicos para realizar operaciones con valores numéricos de las variables. Explicado en el apartado de <strong>Operadores Aritméticos</strong>.</li>
 </ul>
@@ -847,19 +867,19 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>$BASH</strong></td>
+<td><code>$BASH</code></td>
 <td>Ruta del programa Bash</td>
 </tr>
 <tr>
-<td><strong>$HOME</strong></td>
+<td><code>$HOME</code></td>
 <td>Ruta completa del home del usuario</td>
 </tr>
 <tr>
-<td><strong>$PATH</strong></td>
+<td><code>$PATH</code></td>
 <td>Lista los directorios de donde busca los programas</td>
 </tr>
 <tr>
-<td><strong>$RANDOM</strong></td>
+<td><code>$RANDOM</code></td>
 <td>Devuelve un valor numérico aleatorio</td>
 </tr>
 </tbody>
@@ -872,16 +892,38 @@
 </ul>
 <h4 id="echo">echo<a class="headerlink" href="#echo" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Su tarea es la de mostrar información con mensajes de texto lanzados por pantalla<ul>
-<li><strong>echo</strong> (para usar las opciones hay utilizar el modificador <strong>-e</strong>)</li>
-<li><strong>\</strong>    barra</li>
-<li><strong>\n</strong>    nueva línea</li>
-<li><strong>\t</strong>    tabulador horizontal</li>
-<li><strong>\v</strong>    tabulador vertical</li>
-<li><strong>\b</strong>    espacio atrás</li>
+<li>Su tarea es la de mostrar información con mensajes de texto lanzados por pantalla</li>
 </ul>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Modificador</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-e</code></td>
+<td>para usar las opciones hay utilizar el modificador</td>
+</tr>
+<tr>
+<td><code>\c</code></td>
+<td>Sirve para eliminar el salto de línea natural del comando <strong>echo</strong>.</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>nueva línea.</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>tabulador horizontal.</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>tabulador vertical.</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <ul>
@@ -1025,27 +1067,27 @@
 </thead>
 <tbody>
 <tr>
-<td align="center"><strong>-eq</strong></td>
+<td align="center"><code>-eq</code></td>
 <td>Comprueba si dos números son iguales.</td>
 </tr>
 <tr>
-<td align="center"><strong>-ne</strong></td>
+<td align="center"><code>-ne</code></td>
 <td>Detecta si dos números son diferentes.</td>
 </tr>
 <tr>
-<td align="center"><strong>-gt</strong></td>
+<td align="center"><code>-gt</code></td>
 <td>Revisa si la izquierda es mayor que derecha.</td>
 </tr>
 <tr>
-<td align="center"><strong>-lt</strong></td>
+<td align="center"><code>-lt</code></td>
 <td>Verifica si la izquierda es menor que derecha.</td>
 </tr>
 <tr>
-<td align="center"><strong>-ge</strong></td>
+<td align="center"><code>-ge</code></td>
 <td>Coteja si la izquierda es mayor o igual que derecha.</td>
 </tr>
 <tr>
-<td align="center"><strong>-le</strong></td>
+<td align="center"><code>-le</code></td>
 <td>Constata si la izquierda es menor o igual que derecha.</td>
 </tr>
 </tbody>
@@ -1060,23 +1102,23 @@
 </thead>
 <tbody>
 <tr>
-<td align="center"><strong>-z</strong></td>
+<td align="center"><code>-z</code></td>
 <td>Comprueba si la longitud de la cadena es cero.</td>
 </tr>
 <tr>
-<td align="center"><strong>-n</strong></td>
+<td align="center"><code>-n</code></td>
 <td>Evalúa si la longitud de la cadena no es cero.</td>
 </tr>
 <tr>
-<td align="center"><strong>=</strong></td>
+<td align="center"><code>=</code></td>
 <td>Verifica si las cadenas son iguales.</td>
 </tr>
 <tr>
-<td align="center"><strong>!=</strong></td>
+<td align="center"><code>!=</code></td>
 <td>Coteja si las cadenas son diferentes.</td>
 </tr>
 <tr>
-<td align="center"><strong>cadena</strong></td>
+<td align="center"><code>cadena</code></td>
 <td>Revisa si la cadena es nula.</td>
 </tr>
 </tbody>
@@ -1091,35 +1133,35 @@
 </thead>
 <tbody>
 <tr>
-<td align="center"><strong>-a</strong></td>
-<td>Comprueba si la longitud de la cadena es cero.</td>
+<td align="center"><code>-a</code></td>
+<td>Comprueba si existe el archivo.</td>
 </tr>
 <tr>
-<td align="center"><strong>-r</strong></td>
+<td align="center"><code>-r</code></td>
 <td>Evalúa si la longitud de la cadena no es cero.</td>
 </tr>
 <tr>
-<td align="center"><strong>-w</strong></td>
-<td>Verifica si las cadenas son iguales.</td>
+<td align="center"><code>-w</code></td>
+<td>Confirma si existe el archivo y tiene permisos de escritura.</td>
 </tr>
 <tr>
-<td align="center"><strong>-x</strong></td>
-<td>Coteja si las cadenas son diferentes.</td>
+<td align="center"><code>-x</code></td>
+<td>Constata si existe el archivo y tiene permisos de ejecución.</td>
 </tr>
 <tr>
-<td align="center"><strong>-f</strong></td>
-<td>Revisa si la cadena es nula.</td>
+<td align="center"><code>-f</code></td>
+<td>Escruta si existe y es un fichero regular.</td>
 </tr>
 <tr>
-<td align="center"><strong>-d</strong></td>
-<td>Compulsa si existe y es un directorio.</td>
+<td align="center"><code>-d</code></td>
+<td>Escruta si existe y es un fichero regular.</td>
 </tr>
 <tr>
-<td align="center"><strong>-h</strong></td>
+<td align="center"><code>-h</code></td>
 <td>Coteja si existe y es un enlace.</td>
 </tr>
 <tr>
-<td align="center"><strong>-s</strong></td>
+<td align="center"><code>-s</code></td>
 <td>Revisa si existe el archivo y su tamaño es mayor a cero.</td>
 </tr>
 </tbody>
@@ -1128,19 +1170,32 @@
 </ul>
 <h4 id="logicos">lógicos<a class="headerlink" href="#logicos" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Se utilizan para evaluar condiciones, no elementos. </li>
-<li>
-<p>Comprueba el resultado de dos operandos y devuelve verdadero o falso en función del valor que arrojen los operandos.</p>
-</li>
-<li>
-<p>Los tipos son:</p>
-<ol>
-<li><strong>$$</strong>   -&gt;  <strong>AND</strong>, devuelve verdadero si todas condiciones que evalúa son verdaderas. Se puede representar como <strong>-a</strong> o con el carácter <strong>$$</strong>.</li>
-<li><strong>||</strong>   -&gt;  <strong>OR</strong>, da como resultado verdadero si alguna de las condiciones que evalúa es verdadera. Se representa como <strong>-o</strong> o a través del carácter <strong>||</strong>.  </li>
-<li><strong>!</strong>    -&gt;  <strong>negación</strong>, invierte el significado del operando. El resultado es verdadero si el operando convertido es falso; el resultado es falso si el operando convertido es verdadero. Se utiliza el carácter <strong>!</strong> o la palabra <strong>not</strong>. </li>
-</ol>
-</li>
+<li>Se utilizan para evaluar condiciones, no elementos.</li>
+<li>Comprueba el resultado de dos operandos y devuelve verdadero o falso en función del valor que arrojen los operandos.</li>
+<li>Los tipos son:</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th align="center">Operador</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>$$</code></td>
+<td><code>AND</code>, devuelve verdadero si todas condiciones que evalúa son verdaderas. Se puede representar: <code>-a</code> o <code>$$</code>.</td>
+</tr>
+<tr>
+<td align="center"><code>||</code></td>
+<td><code>OR</code>, da como resultado verdadero si alguna de las condiciones que evalúa es verdadera. Se representar: <code>-o</code> o <code>||</code>.</td>
+</tr>
+<tr>
+<td align="center"><code>!</code></td>
+<td><code>negación</code>, invierte el significado del operando. de verdadero a falso, y viceversa. Con <code>!</code> o <code>not</code>.</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Para realizar cálculos aritméticos es necesario utilizar expresiones como <strong>expr</strong>, <strong>let</strong> o los <strong>expansores</strong>.</p>
@@ -1203,28 +1258,6 @@
 <p class="admonition-title">Tip</p>
 <p><strong>Consejo de uso</strong>, ya que es mucho más intuitivo que las anteriores expresiones.</p>
 </div>
-<h3 id="actividades-iniciales">Actividades iniciales<a class="headerlink" href="#actividades-iniciales" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Escribe el código de los shell scripts que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: <strong>ejX.sh</strong>, donde la <strong>X</strong> representa el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al <strong>Moodle del módulo</strong>. </li>
-</ul>
-<ol start="101">
-<li>
-<p>Crea un shell script que muestre por pantalla el mensaje <strong>“¡Hola Mundo!”</strong>.</p>
-</li>
-<li>
-<p>Realiza un shell script que admita un <em>único parámetro</em> correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando <strong>wc</strong>.</p>
-</li>
-<li>
-<p>Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.</p>
-<ul>
-<li>a%b</li>
-<li>a/c</li>
-<li>2 * b + 3 * (a-c)</li>
-<li>a * (b/c)</li>
-<li>(a*c)%</li>
-</ul>
-</li>
-</ol>
 <h3 id="redirecciones">Redirecciones<a class="headerlink" href="#redirecciones" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Una <strong>redirección</strong> consiste en trasladar la información de un fichero de dispositivo a otro.</li>
@@ -1239,30 +1272,27 @@
 </thead>
 <tbody>
 <tr>
-<td align="center"><strong>&lt;</strong></td>
+<td align="center"><code>&lt;</code></td>
 <td>redirecciona la entrada desde el fichero <strong>stdin</strong> (entrada estándar)</td>
 </tr>
 <tr>
-<td align="center"><strong>&gt;</strong></td>
+<td align="center"><code>&gt;</code></td>
 <td>envía la salida de <strong>stdout</strong> (salida estándar) a un fichero especificado</td>
 </tr>
 <tr>
-<td align="center"><strong>&gt;&gt;</strong></td>
+<td align="center"><code>&gt;&gt;</code></td>
 <td>añade la salida de <strong>stdout</strong> (salida estándar) a un fichero especificado</td>
 </tr>
 <tr>
-<td align="center"><strong>&gt;&gt;</strong></td>
-<td>añade la salida de <strong>stdout</strong> (salida estándar) a un fichero especificado</td>
-</tr>
-<tr>
-<td align="center"><strong>2&gt;</strong></td>
+<td align="center"><code>2&gt;</code></td>
 <td>envía la salida de <strong>stderr</strong> (error estándar) a un fichero especificado</td>
+</tr>
+<tr>
+<td align="center">* Ejemplo:</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p>Ejemplo:</p>
 </li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sh script.sh 2&gt;/dev/null</span>
@@ -1475,27 +1505,64 @@
 </code></pre></div>
 <figure>
   <img src="imagenes/01/EstructuraAlternativaMultiple.png" width="600"/>
-  <figcaption>EstructuraAlternativaMultiple.</figcaption>
+  <figcaption>Estructura Alternativa Multiple.</figcaption>
 </figure>
 
 <h4 id="estructuras-de-iteracion">Estructuras de iteración<a class="headerlink" href="#estructuras-de-iteracion" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Son operaciones que se deben ejecutar un número repetido de veces para resolver un problema.</li>
+<li>El conjunto de instrucciones que se ejecuta dentro de esta estructura, se denomina ciclo, bucle o lazo.</li>
+<li><code>Iteración</code> es cada una de las pasadas o ejecuciones de todas las instrucciones contenidas en el bucle.</li>
+<li>Estas repeticiones de código van a depender de la evaluación de una condición o del valor de una variable.</li>
+<li>Es posible repetir un código hasta que se cumpla o deje de cumplir una condición pero también se posible la repetición tantas veces como indique una variable.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Hay que tener mucho cuidado a la hora de diseñar estas estructuras y no caer en el error de construir <strong>bucles infinitos</strong>, es decir, estructuras que nunca dejarán de ejecutarse ya que no tienen condición de salida o, si la tienen, ésta nunca se va a cumplir.</p>
+</div>
+<ul>
+<li>Para utilizar esta estructura en algoritmos, se usan:</li>
+</ul>
+<ol>
+<li><strong>Contador:</strong> es una variable cuyo valor se incrementa o decrementa en una cantidad constante cada vez que se produce un determinado suceso o acción. Los contadores se utilizan con la finalidad de contar sucesos o acciones internas de un bucle.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>La inicialización consiste en asignarle al contador un valor. Se situará antes y fuera del bucle.</p>
+</div>
+<ol start="2">
+<li><strong>Acumulador o Totalizador</strong> es una variable que suma sobre sí misma un conjunto de valores para de esta manera tener el total de todos ellos en una sola variable. </li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>La diferencia entre un contador y un acumulador es que mientras el primero va aumentando de uno en uno, el acumulador va aumentando en una cantidad variable.</p>
+</div>
+<ol start="3">
+<li><strong>Banderas</strong>, conocidas también como interruptores, switch, flags o conmutadores. Son variables que pueden tomar solamente dos valores
+durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los valores booleanos verdadero o falso. </li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Se les suele llamar interruptores porque cuando toman un valor están simulando un interruptor abierto/cerrado o encendido/apagado.</p>
+</div>
+<figure>
+  <img src="imagenes/01/EstructuraIterativa.png" width="300"/>
+  <figcaption>Estructura Iterativa.</figcaption>
+</figure>
+
 <h5 id="las-estructuras-while-y-until">Las estructuras while y until<a class="headerlink" href="#las-estructuras-while-y-until" title="Permanent link">&para;</a></h5>
-<ul>
-<li>
 <p>Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. El funcionamiento es lógico:</p>
-<ul>
-<li>Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa. Si es verdadera entra en el bucle y ejecuta el código que contiene.</li>
-<li>Al finalizar la ejecución, al iterar, vuelve a evaluar la condición y vuelve a repetir la operación anterior.</li>
-</ul>
-</li>
-</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>* Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa. 
+<span class="linenos" data-linenos="2 "></span>* Si es verdadera entra en el bucle y ejecuta el código que contiene.
+<span class="linenos" data-linenos="3 "></span>* Al finalizar la ejecución, al iterar, vuelve a evaluar la condición y vuelve a repetir la operación anterior.
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Al construir una estructura while es preciso asegurarse que en algún momento de su ejecución la condición dejará de cumplirse y se romperá el ciclo, si no, éste será infinito, a menos que el usuario o el sistema interrumpa su ejecución.</p>
 </div>
 <ul>
 <li>
-<p><strong>WHILE</strong>
+<p><code>WHILE</code>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">while [ expresión ]</span>
 <span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
 <span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">código se repite MIENTRAS la expresión sea verdadera</span>
@@ -1503,7 +1570,7 @@
 </code></pre></div></p>
 </li>
 <li>
-<p><strong>UNTIL</strong>
+<p><code>UNTIL</code>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">until [ expresión ]</span>
 <span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
 <span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">código se repite HASTA que la expresión sea verdadera</span>
@@ -1511,10 +1578,91 @@
 </code></pre></div></p>
 </li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>La diferencia es que un <code>until</code> se ejecuta como mínimo una vez, ya que ejecuta el código y luego comprueba, mientras que el <code>while</code> es posible que nunca se ejecute, ya que es posible que la condición de entrada nunca se cumpla.</p>
+</div>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">while [ expresión ]</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">#! /bin/bash</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">read -p “Escribe un número</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">“ num</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain">i=1</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain">while [ $i -le 10 ]</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="l l-Scalar l-Scalar-Plain">let res=num*i</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo “$i x $num = $res”</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="l l-Scalar l-Scalar-Plain">let i=i+1</span>
+<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Este código imprime por pantalla la tabla de multiplicar del número que el usuario ha especificado. Las líneas contenidas entre <code>do</code> y <code>done</code> se ejecutarán mientras i sea menor o igual a diez. Al final de cada iteración el valor de i se incrementa en uno (es un contador) por lo que en diez iteraciones la condición dejará de cumplirse y el bucle se romperá.</p>
+</div>
+<h5 id="la-estructuras-for">La estructuras for<a class="headerlink" href="#la-estructuras-for" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Esta estructura permite repetir código por cada elemento de un conjunto determinado.</li>
+<li>No necesita condición de salida ya que al finalizar los elementos del conjunto acabará con su *ejecución.</li>
+<li>la forma general es:</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">for variable in conjunto</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">estas líneas se repiten una vez por cada elemento del conjunto</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">variable toma los valores del conjunto, uno en cada iteración</span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+</code></pre></div>
+* Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">#! /bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nt">read -p “Escribe la dirección de una carpeta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">“ car</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">for i in $(ls $car)</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="l l-Scalar l-Scalar-Plain">if [ -f $i ]</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="l l-Scalar l-Scalar-Plain">then</span>
+<span class="linenos" data-linenos=" 7 "></span>        <span class="l l-Scalar l-Scalar-Plain">echo “$i es un archivo de tipo regular”</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">elif [ -d $i ]</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="l l-Scalar l-Scalar-Plain">then</span>
+<span class="linenos" data-linenos="10 "></span>        <span class="l l-Scalar l-Scalar-Plain">echo “$i es un archivo de tipo directorio”</span>
+<span class="linenos" data-linenos="11 "></span>    <span class="l l-Scalar l-Scalar-Plain">else</span>
+<span class="linenos" data-linenos="12 "></span>        <span class="l l-Scalar l-Scalar-Plain">echo “$i es otro tipo de archivo o no existe”</span>
+<span class="linenos" data-linenos="13 "></span>    <span class="l l-Scalar l-Scalar-Plain">fi</span>
+<span class="linenos" data-linenos="14 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Este ejemplo se van a mostrar los nombres de los ficheros que contiene un directorio y dirá si es un directorio o un fichero.</p>
+</div>
+<h6 id="romper-un-bucle-de-forma-deliberada">Romper un bucle de forma deliberada<a class="headerlink" href="#romper-un-bucle-de-forma-deliberada" title="Permanent link">&para;</a></h6>
+<p>No sólo es posible terminar un bucle cuando se cumpla una condición o cuando se terminen los elementos de un conjunto, shell script proporciona dos formas de alterar el funcionamiento de la estructura en un bucle y romperla en función de las necesidades del programa:</p>
+<ol>
+<li><code>break</code> rompe el bucle que lo contiene y continúa la ejecución del script.</li>
+<li><code>continue</code> rompe la iteración que lo contiene, pero mantiene el bucle, que continuará con la siguiente iteración hasta que termine su ejecución.</li>
+<li><code>exit</code> detiene la ejecución del script. Este comando no es exclusivo de las estructuras iterativas, pero cobra especial sentido en este ámbito.</li>
+</ol>
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<h3 id="actividades-iniciales">Actividades iniciales<a class="headerlink" href="#actividades-iniciales" title="Permanent link">&para;</a></h3>
+<ol start="101">
+<li>
+<p>Crea un shell script que muestre por pantalla el mensaje “<strong>¡Hola Mundo!</strong>”.</p>
+</li>
+<li>
+<p>Realiza un shell script que admita un único parámetro correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando <code>wc</code>.</p>
+</li>
+<li>
+<p>Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.</p>
+<ul>
+<li>a%b</li>
+<li>a/c</li>
+<li>2 * b + 3 * (a-c)</li>
+<li>a * (b/c)</li>
+<li>(a*c)%b</li>
+</ul>
+</li>
+</ol>
 <h3 id="actividades-de-desarrollo-ud1_01">Actividades de desarrollo UD1_01<a class="headerlink" href="#actividades-de-desarrollo-ud1_01" title="Permanent link">&para;</a></h3>
 <ol start="104">
 <li>
-<p>Modifica el shell script realizado en el ejercicio <strong>103</strong> para comprobar si el fichero existe. En tal caso debe contar el número de líneas del mismo a través del comando wc y mostrar un mensaje indicando dicho número. Si el fichero no existe, debe mostrar un mensaje de error y salir.</p>
+<p>Modifica el shell script realizado en el ejercicio <strong>102</strong> para comprobar si el fichero existe. En tal caso debe contar el número de líneas del mismo a través del comando wc y mostrar un mensaje indicando dicho número. Si el fichero no existe, debe mostrar un mensaje de error y salir.</p>
 </li>
 <li>
 <p>Crea un shell script que al ejecutarlo muestre por pantalla uno de estos mensajes <strong>“Buenos días”</strong>, <strong>“Buenas tardes”</strong> o <strong>“Buenas noches”</strong>, en función de la hora que sea en el sistema (de 8:00 de la mañana a 15:00 será mañana, de 15:00 a 20:00 será tarde y el resto será noche). Para obtener la hora del sistema utiliza el comando date.</p>
@@ -1531,6 +1679,24 @@
 </li>
 <li>
 <p>Crea un shell script que sume los números del 1 al 1000 mediante una estructura <strong>mientras</strong> y <strong>desde</strong>.</p>
+</li>
+</ol>
+<h3 id="actividades-de-desarrollo-ud1_02">Actividades de desarrollo UD1_02<a class="headerlink" href="#actividades-de-desarrollo-ud1_02" title="Permanent link">&para;</a></h3>
+<ol start="108">
+<li>
+<p>Construye los siguientes tres shell script utilizando estructuras iterativas:
+    a) el primero ej108A.sh, que pida un número e indique si se trata de un número par y si es número primo.
+    b) el tercero ej108B.sh, que muestre las 10 primeras tablas de multiplicar por pantalla. Existirá un tiempo de espera de dos segundos entre tabla (usa el comando sleep para ello).</p>
+</li>
+<li>
+<p>Crea un shell script para jugar a “Doble o Nada”. Consistirá en adivinar un número entre 1 y 10 (este número será generado al azar por el ordenador, para ello debes utilizar la función $RANDOM de la siguiente manera numero=$RANDOM % 10). Añade al juego las siguientes características:
+    a) El jugador apuesta una cantidad de un valor inicial de 100 puntos.
+    b) Si sale cara obtiene el doble de la cantidad apostada. Si sale cruz pierde todo lo apostado.
+    c) El shell script debe llevar la cuenta de las tiradas y de la cantidad ganada.
+    d) Al final de la partida mostrará un informe por pantalla a modo de resumen.</p>
+</li>
+<li>
+<p>Modificar el shell script anterior para que permita ir jugando hasta que el jugador decida abandonar el juego (para ello deberá pulsar la tecla “x” del teclado), o no tenga más dinero que apostar. Tampoco podrá apostar más dinero del que dispone en su “cartera virtual”.</p>
 </li>
 </ol>
                 
