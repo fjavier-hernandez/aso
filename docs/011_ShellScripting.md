@@ -743,9 +743,9 @@ durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los
 
 Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. El funcionamiento es lógico:
 
-    * Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa. 
-    * Si es verdadera entra en el bucle y ejecuta el código que contiene.
-    * Al finalizar la ejecución, al iterar, vuelve a evaluar la condición y vuelve a repetir la operación anterior.
+* Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa. 
+* Si es verdadera entra en el bucle y ejecuta el código que contiene.
+* Al finalizar la ejecución, al iterar, vuelve a evaluar la condición y vuelve a repetir la operación anterior.
 
 !!! warning
     Al construir una estructura while es preciso asegurarse que en algún momento de su ejecución la condición dejará de cumplirse y se romperá el ciclo, si no, éste será infinito, a menos que el usuario o el sistema interrumpa su ejecución.
