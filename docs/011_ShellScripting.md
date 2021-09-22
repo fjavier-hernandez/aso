@@ -861,14 +861,15 @@ No sólo es posible terminar un bucle cuando se cumpla una condición o cuando s
 
 ### Actividades de desarrollo UD1_02
 
-108. Construye los siguientes tres shell script utilizando estructuras iterativas:
-    a) el primero ej108A.sh, que pida un número e indique si se trata de un número par y si es número primo.
-    b) el tercero ej108B.sh, que muestre las 10 primeras tablas de multiplicar por pantalla. Existirá un tiempo de espera de dos segundos entre tabla (usa el comando sleep para ello).
+108. Construye los siguientes dos shell script utilizando estructuras iterativas:
+    1. el primero ej108A.sh, que pida un número e indique si se trata de un número par y si es número primo.
+    2. el tercero ej108B.sh, que muestre las 10 primeras tablas de multiplicar por pantalla. Existirá un tiempo de espera de dos segundos entre tabla (usa el comando sleep para ello).
 
-109. Crea un shell script para jugar a “Doble o Nada”. Consistirá en adivinar un número entre 1 y 10 (este número será generado al azar por el ordenador, para ello debes utilizar la función $RANDOM de la siguiente manera numero=$RANDOM % 10). Añade al juego las siguientes características:
-    a) El jugador apuesta una cantidad de un valor inicial de 100 puntos.
-    b) Si sale cara obtiene el doble de la cantidad apostada. Si sale cruz pierde todo lo apostado.
-    c) El shell script debe llevar la cuenta de las tiradas y de la cantidad ganada.
-    d) Al final de la partida mostrará un informe por pantalla a modo de resumen.
+109. Crea un shell script para jugar a “Doble o Nada”. Consistirá en adivinar un número entre 1 y 10 (este número será generado al azar por el ordenador, para ello debes utilizar la función `$RANDOM` de la siguiente manera `numero=$RANDOM % 10`). 
+* Añade al juego las siguientes características:
+    1. El jugador apuesta una cantidad de un valor inicial de 100 puntos.
+    2. Si sale cara obtiene el doble de la cantidad apostada. Si sale cruz pierde todo lo apostado.
+    3. El shell script debe llevar la cuenta de las tiradas y de la cantidad ganada.
+    4. Al final de la partida mostrará un informe por pantalla a modo de resumen.
 
 110. Modificar el shell script anterior para que permita ir jugando hasta que el jugador decida abandonar el juego (para ello deberá pulsar la tecla “x” del teclado), o no tenga más dinero que apostar. Tampoco podrá apostar más dinero del que dispone en su “cartera virtual”.
