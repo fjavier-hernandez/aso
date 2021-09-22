@@ -355,12 +355,12 @@ echo “$var1+$var2”
 
 | Símbolo                           | Función                  |
 | :---------------------------------: | ------------------------ |
-| +                             | suma                     |
-| -                             | resta                    |
-| *                                 | multiplicación           |
-| /                             | división                 |
-| %                             | modulo (resto)           |
-| =                             | asignación               |
+| `+`                             | suma                     |
+| `-`                             | resta                    |
+| `*`                                 | multiplicación           |
+| `/`                             | división                 |
+| `%`                             | modulo (resto)           |
+| `=`                             | asignación               |
 
 * Ejemplo:
 
@@ -427,7 +427,7 @@ let SUMA=NUMERO-10
 
  | Operador | Acción |  
     |:-----:|------------------------------------------------|
-    | `$$` | `AND`, devuelve verdadero si todas condiciones que evalúa son verdaderas. Se puede representar: `-a` o `$$`.|
+    | `&&` | `AND`, devuelve verdadero si todas condiciones que evalúa son verdaderas. Se puede representar: `-a` o `$$`.|
     | `||` | `OR`, da como resultado verdadero si alguna de las condiciones que evalúa es verdadera. Se representar: `-o` o `||`.|   
     | `!` | `negación`, invierte el significado del operando. de verdadero a falso, y viceversa. Con `!` o `not`.  |  
 
@@ -857,13 +857,13 @@ No sólo es posible terminar un bucle cuando se cumpla una condición o cuando s
     * **Ordenar** (ordenar los registros alfabéticamente).
     * **Borrar** (borrar el archivo).
 
-107. Crea un shell script que sume los números del 1 al 1000 mediante una estructura **mientras** y **desde**.
+107. Crea un shell script que sume los números del 1 al 1000 mediante una estructura `for`, `while` y `until`.
 
 ### Actividades de desarrollo UD1_02
 
 108. Construye los siguientes dos shell script utilizando estructuras iterativas:
-    1. el primero ej108A.sh, que pida un número e indique si se trata de un número par y si es número primo.
-    2. el tercero ej108B.sh, que muestre las 10 primeras tablas de multiplicar por pantalla. Existirá un tiempo de espera de dos segundos entre tabla (usa el comando sleep para ello).
+    1. el primero `ej108A.sh`, que pida un número e indique si se trata de un número par y si es número primo.
+    2. el tercero `ej108B.sh`, que muestre las 10 primeras tablas de multiplicar por pantalla. Existirá un tiempo de espera de dos segundos entre tabla (usa el comando sleep para ello).
 
 109. Crea un shell script para jugar a “Doble o Nada”. Consistirá en adivinar un número entre 1 y 10 (este número será generado al azar por el ordenador, para ello debes utilizar la función `$RANDOM` de la siguiente manera `numero=$RANDOM % 10`). 
 * Añade al juego las siguientes características:
