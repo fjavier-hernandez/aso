@@ -427,7 +427,7 @@ let SUMA=NUMERO-10
 
  | Operador | Acción |  
     |:-----:|------------------------------------------------|
-    | `&&` | `AND`, devuelve verdadero si todas condiciones que evalúa son verdaderas. Se puede representar: `-a` o `$$`.|
+    | `&&` | `AND`, devuelve verdadero si todas condiciones que evalúa son verdaderas. Se puede representar: `-a` o `&&`.|
     | `||` | `OR`, da como resultado verdadero si alguna de las condiciones que evalúa es verdadera. Se representar: `-o` o `||`.|   
     | `!` | `negación`, invierte el significado del operando. de verdadero a falso, y viceversa. Con `!` o `not`.  |  
 
