@@ -789,7 +789,7 @@ done
 ##### La estructuras for
 
 * Esta estructura permite repetir código por cada elemento de un conjunto determinado.
-* No necesita condición de salida ya que al finalizar los elementos del conjunto acabará con su *ejecución.
+* No necesita condición de salida ya que al finalizar los elementos del conjunto acabará con su ejecución.
 * la forma general es:
 
 ``` yaml
