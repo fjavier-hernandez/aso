@@ -425,9 +425,43 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#control-de-flujo" class="md-nav__link">
     Control de flujo
+  </a>
+  
+    <nav class="md-nav" aria-label="Control de flujo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-condicionales" class="md-nav__link">
+    Estructuras condicionales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-de-iteracion" class="md-nav__link">
+    Estructuras de iteración
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vectores-en-shell-script" class="md-nav__link">
+    Vectores en shell script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-en-shell-script" class="md-nav__link">
+    Funciones en shell script
   </a>
   
 </li>
@@ -1353,7 +1387,7 @@
   <figcaption>Simbología diagramas.</figcaption>
 </figure>
 
-<h3 id="control-de-flujo">Control de flujo<a class="headerlink" href="#control-de-flujo" title="Permanent link">&para;</a></h3>
+<h2 id="control-de-flujo">Control de flujo<a class="headerlink" href="#control-de-flujo" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Controlar el flujo es determinar el orden en el que se ejecutarán las instrucciones en un programa.</li>
 <li>Si no existiese las estructuras de control del flujo, todo el código se ejecutarían de forma secuencial, es decir, empezarían por la primera instrucción y se ejecutarían una a una hasta llegar a la última.</li>
@@ -1381,14 +1415,14 @@
 </ol>
 </li>
 </ul>
-<h4 id="estructuras-condicionales-alternativas-o-de-seleccion">Estructuras condicionales alternativas o de selección<a class="headerlink" href="#estructuras-condicionales-alternativas-o-de-seleccion" title="Permanent link">&para;</a></h4>
+<h3 id="estructuras-condicionales">Estructuras condicionales<a class="headerlink" href="#estructuras-condicionales" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Las estructuras de selección permiten ejecutar diferentes instrucciones dependiendo del valor de una variable o expresión.</li>
 <li>También se les llama ramificaciones, estructuras de decisión o alternativas.</li>
 <li>Cuando se usan, no todas las instrucciones del programa se ejecutan, solo las especificadas para el valor de la variable durante esa ejecución.</li>
 <li>Las estructuras de selección más comunes son las que proporcionan ramificaciones dobles (<strong>if</strong>) y múltiples (<strong>elif</strong> y <strong>case</strong>).</li>
 </ul>
-<h5 id="estructura-alternativa-doble-if">Estructura alternativa doble: <strong>if</strong><a class="headerlink" href="#estructura-alternativa-doble-if" title="Permanent link">&para;</a></h5>
+<h4 id="estructura-alternativa-doble-if">Estructura alternativa doble: <strong>if</strong><a class="headerlink" href="#estructura-alternativa-doble-if" title="Permanent link">&para;</a></h4>
 <ul>
 <li>La forma general de la orden <strong>if</strong> es:</li>
 </ul>
@@ -1418,7 +1452,7 @@
 <p class="admonition-title">Warning</p>
 <p>Hay que recordar siempre cerrar esta estructura para indicarle al terminal donde termina, en este caso, se cierra con la palabra reservada <strong>fi</strong>.</p>
 </div>
-<h5 id="estructura-alternativa-multiple-if-then-else">Estructura alternativa multiple if then else<a class="headerlink" href="#estructura-alternativa-multiple-if-then-else" title="Permanent link">&para;</a></h5>
+<h4 id="estructura-alternativa-multiple-if-then-else">Estructura alternativa multiple if then else<a class="headerlink" href="#estructura-alternativa-multiple-if-then-else" title="Permanent link">&para;</a></h4>
 <ul>
 <li>En este caso se contempla también la posibilidad de ejecutar alguna acción si no se cumple la expresión.</li>
 <li>La forma general del <strong>if then else</strong> es:</li>
@@ -1445,7 +1479,7 @@
 <span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">fi</span>
 </code></pre></div></li>
 </ul>
-<h5 id="la-estructura-if-then-elif-else">La estructura if then elif else<a class="headerlink" href="#la-estructura-if-then-elif-else" title="Permanent link">&para;</a></h5>
+<h4 id="la-estructura-if-then-elif-else">La estructura if then elif else<a class="headerlink" href="#la-estructura-if-then-elif-else" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Permite una segunda evaluación para ejecutar código a través de la estructura <strong>elif</strong>.</li>
 <li>Es posible colocar tantos elif como condiciones se requiera evaluar.</li>
@@ -1485,7 +1519,7 @@
 <p class="admonition-title">Warning</p>
 <p>El último caso se realiza con la sentencia <strong>else</strong>.</p>
 </div>
-<h5 id="la-estructura-case">La estructura case<a class="headerlink" href="#la-estructura-case" title="Permanent link">&para;</a></h5>
+<h4 id="la-estructura-case">La estructura case<a class="headerlink" href="#la-estructura-case" title="Permanent link">&para;</a></h4>
 <ul>
 <li>La estructura case permite realizar varias acciones en función del valor de una variable.</li>
 <li>La limitación que tan sólo se comprueba si es igual a ese valor.</li>
@@ -1508,7 +1542,7 @@
   <figcaption>Estructura Alternativa Multiple.</figcaption>
 </figure>
 
-<h4 id="estructuras-de-iteracion">Estructuras de iteración<a class="headerlink" href="#estructuras-de-iteracion" title="Permanent link">&para;</a></h4>
+<h3 id="estructuras-de-iteracion">Estructuras de iteración<a class="headerlink" href="#estructuras-de-iteracion" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Son operaciones que se deben ejecutar un número repetido de veces para resolver un problema.</li>
 <li>El conjunto de instrucciones que se ejecuta dentro de esta estructura, se denomina ciclo, bucle o lazo.</li>
@@ -1550,7 +1584,7 @@ durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los
   <figcaption>Estructura Iterativa.</figcaption>
 </figure>
 
-<h5 id="las-estructuras-while-y-until">Las estructuras while y until<a class="headerlink" href="#las-estructuras-while-y-until" title="Permanent link">&para;</a></h5>
+<h4 id="las-estructuras-while-y-until">Las estructuras while y until<a class="headerlink" href="#las-estructuras-while-y-until" title="Permanent link">&para;</a></h4>
 <p>Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. El funcionamiento es lógico:</p>
 <ul>
 <li>Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa. </li>
@@ -1601,7 +1635,7 @@ durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los
 <p class="admonition-title">Info</p>
 <p>Este código imprime por pantalla la tabla de multiplicar del número que el usuario ha especificado. Las líneas contenidas entre <code>do</code> y <code>done</code> se ejecutarán mientras i sea menor o igual a diez. Al final de cada iteración el valor de i se incrementa en uno (es un contador) por lo que en diez iteraciones la condición dejará de cumplirse y el bucle se romperá.</p>
 </div>
-<h5 id="la-estructuras-for">La estructuras for<a class="headerlink" href="#la-estructuras-for" title="Permanent link">&para;</a></h5>
+<h4 id="la-estructuras-for">La estructuras for<a class="headerlink" href="#la-estructuras-for" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Esta estructura permite repetir código por cada elemento de un conjunto determinado.</li>
 <li>No necesita condición de salida ya que al finalizar los elementos del conjunto acabará con su ejecución.</li>
@@ -1633,13 +1667,174 @@ durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los
 <p class="admonition-title">Info</p>
 <p>Este ejemplo se van a mostrar los nombres de los ficheros que contiene un directorio y dirá si es un directorio o un fichero.</p>
 </div>
-<h6 id="romper-un-bucle-de-forma-deliberada">Romper un bucle de forma deliberada<a class="headerlink" href="#romper-un-bucle-de-forma-deliberada" title="Permanent link">&para;</a></h6>
+<h5 id="romper-un-bucle-de-forma-deliberada">Romper un bucle de forma deliberada<a class="headerlink" href="#romper-un-bucle-de-forma-deliberada" title="Permanent link">&para;</a></h5>
 <p>No sólo es posible terminar un bucle cuando se cumpla una condición o cuando se terminen los elementos de un conjunto, shell script proporciona dos formas de alterar el funcionamiento de la estructura en un bucle y romperla en función de las necesidades del programa:</p>
 <ol>
 <li><code>break</code> rompe el bucle que lo contiene y continúa la ejecución del script.</li>
 <li><code>continue</code> rompe la iteración que lo contiene, pero mantiene el bucle, que continuará con la siguiente iteración hasta que termine su ejecución.</li>
 <li><code>exit</code> detiene la ejecución del script. Este comando no es exclusivo de las estructuras iterativas, pero cobra especial sentido en este ámbito.</li>
 </ol>
+<h3 id="vectores-en-shell-script">Vectores en shell script<a class="headerlink" href="#vectores-en-shell-script" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Un vector es una estructura de datos que permite almacenar una colección de elementos.</li>
+<li>Por el hecho de tratarse de una estructura de datos es posible realizar operaciones sobre él como buscar, eliminar y agregar elementos a su estructura.</li>
+<li>Los elementos se encuentran ordenados en función de como han sido introducidos en la estructura.</li>
+<li>Para acceder a cada elemento será necesario especificar la posición que ocupan dentro de ella, teniendo presente que la numeración de los vectores comienza desde cero, no desde uno.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Un buen ejemplo de uso sería, por ejemplo, para recoger el listado de archivos que hay en una carpeta.</p>
+</div>
+<figure>
+  <img src="imagenes/01/EsquemaVector.png" width="500"/>
+  <figcaption>Esquema de un vector de doce elementos.</figcaption>
+</figure>
+
+<p>Para definir un vector disponemos de dos formas:</p>
+<ol>
+<li><strong>Implícita:</strong> hace referencia a que el vector ha sido declarado y al mismo tiempo se han inicializado sus valores.</li>
+<li><strong>Explícitamente:</strong> cuando el vector no requiere que se inicialice mientras se declara, es decir, pueden ser inicializados con posterioridad.</li>
+</ol>
+<p>Para declarar un vector hay que utilizar la siguiente estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">declare -a meses=(&quot;enero&quot; &quot;febrero&quot; &quot;marzo&quot;)</span>
+</code></pre></div>
+<p>También es posible utilizar alguna expresión para completar un vector, como con el operador rango ...</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">declare -a letras=( {N..Z} {s..z} )</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">echo ${letras[*]}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Esto creará un vector con el siguiente contenido y lo mostrará por pantalla así:</li>
+<li>N O P Q R S T U V W X Y Z s t u v w x y z</li>
+</ul>
+</div>
+<ul>
+<li>Para añadir un elemento a la estructura se debe indicar el índice o posición que ocupará el nuevo dato.</li>
+<li>Si el índice es mayor que la última posición de la estructura, se escribirá al final de la misma.</li>
+<li>Si se usa un índice que ya contiene un dato, éste será sobrescrito.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">meses[3]=&quot;abril&quot;</span>
+</code></pre></div>
+<ul>
+<li>Para mostrar el contenido del vector:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">echo ${meses[*]}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Mostrará: 
+enero febrero marzo abril</p>
+</div>
+<ul>
+<li>Es buena idea conocer el número de elementos que contiene un vector para poder introducir datos de forma correcta y no sobrescribir por accidente algún valor ya almacenado. Así es posible utilizar:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>${meses[*]}</code></td>
+<td>Muestra todos los valores del vector</td>
+</tr>
+<tr>
+<td align="center"><code>${!meses[*]}</code></td>
+<td>Muestra todos los índices del vector</td>
+</tr>
+<tr>
+<td align="center"><code>${#meses[*]}</code></td>
+<td>Devuelve el número de valores del vector</td>
+</tr>
+<tr>
+<td align="center"><code>${#meses[0]}</code></td>
+<td>Imprime la longitud del primer dato del vector</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Para recorrer los valores que contiene esta estructura se puede utilizar un bucle <strong>for</strong></li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">for item in ${meses[*]}</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo $item</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+</code></pre></div>
+* También se puede utilizar sus índices para mostrar los datos contenidos.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">for index in ${!meses[*]}</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo ${meses[$index]}</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+</code></pre></div>
+<ul>
+<li>Es una estructura muy útil en la que se puede guardar cualquier tipo de información, como por ejemplo los ficheros que contiene una carpeta:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">i=0;</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">for fichero in $(ls -a)</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">ficheros[$i]=$fichero;</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">let i=i+1;</span>
+<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+</code></pre></div>
+<h3 id="funciones-en-shell-script">Funciones en shell script<a class="headerlink" href="#funciones-en-shell-script" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Una función es un conjunto de líneas de código que se identifican a través de un identificador y que se ejecutan al invocar ese identificador.</li>
+<li>Se podría definir como un shell script dentro de un shell script.</li>
+<li>Sirve para organizarlo en unidades lógicas más pequeñas de manera que sea más fácil mantenerlo.</li>
+<li>Las funciones aceptan parámetros, de idéntica manera que los shell script, por lo que su uso también es muy intuitivo.</li>
+<li>La estructura de una función queda definida de la siguiente manera:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">function nombre_función(){</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="l l-Scalar l-Scalar-Plain">código que se ejecutará al llamar a la función</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li><code>source</code></li>
+<li>Para incluir el código de un fichero en otro tan sólo será necesario utilizar la palabra source seguida de la ruta de ese fichero. * * También es posible usar el punto para poder cargarlo:</li>
+<li><code>source funciones.sh</code> o <code>./funciones.sh</code></li>
+</ul>
+</div>
+<ul>
+<li>Las funciones suelen declararse al inicio del documento y luego utilizadas a lo largo del programa.</li>
+<li>
+<p>Uno de los objetivos es optimizar el código, mediante el "aprovechamiento" de código. Cuando un conjunto de líneas de código se repiten, es posible agruparlas bajo un nombre y utilizar ese nombre en lugar de repetir este código.</p>
+</li>
+<li>
+<p>Ejemplo:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">#! /bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">function imprimir_tabla(){</span>
+<span class="linenos" data-linenos=" 3 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo “Tabla del número $1”</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="l l-Scalar l-Scalar-Plain">for i in 1 2 3 4 5 6 7 8 9 10</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="l l-Scalar l-Scalar-Plain">do</span>
+<span class="linenos" data-linenos=" 6 "></span>        <span class="l l-Scalar l-Scalar-Plain">let res=$1*i</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo “$i x $1 = $res”</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">done</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">read -p “Escribe un número</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">“ num</span>
+<span class="linenos" data-linenos="11 "></span><span class="l l-Scalar l-Scalar-Plain">imprimir_tabla $num</span>
+<span class="linenos" data-linenos="12 "></span><span class="l l-Scalar l-Scalar-Plain">imprimir_tabla 5</span>
+<span class="linenos" data-linenos="13 "></span><span class="err">}</span>
+</code></pre></div>
+<ul>
+<li>En este ejemplo se ha construido una función para imprimir la tabla de multiplicar de un número pasado como parámetro.</li>
+<li>En la siguiente línea le pedimos al programa que imprima la tabla del número cinco. </li>
+<li>No se ha necesitado escribir el código que imprime la su tabla de multiplicar de nuevo, ya que con invocar el nombre de la función el programa ya sabe que código debe ejecutar.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>Nótese que el valor de <code>$1</code> no se pasa como parámetro del shell script, si no como parámetro a la función imprimir_tabla tras haberlo preguntado al usuario.</li>
+<li>Hay que tener en cuenta que las variables que se declaran dentro de una función existen únicamente dentro de ella. Si es preciso utilizar una variable fuera de una función se puede usar <code>return</code>, que devuelve un valor fuera de ella, o usar la palabra reservada <code>GLOBAL</code></li>
+<li>Es preferible utilizar el primer método para que devuelva un valor que será recogido en otra variable fuera de la función que lo originó.</li>
+</ul>
+</div>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <h3 id="actividades-iniciales">Actividades iniciales<a class="headerlink" href="#actividades-iniciales" title="Permanent link">&para;</a></h3>
 <ol start="101">
