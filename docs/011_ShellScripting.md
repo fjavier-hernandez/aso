@@ -555,7 +555,7 @@ En la siguiente figura se puede observar **simbología** para diseñar diagramas
   <figcaption>Simbología diagramas.</figcaption>
 </figure>
 
-### Control de flujo
+## Control de flujo
 
 * Controlar el flujo es determinar el orden en el que se ejecutarán las instrucciones en un programa.
 * Si no existiese las estructuras de control del flujo, todo el código se ejecutarían de forma secuencial, es decir, empezarían por la primera instrucción y se ejecutarían una a una hasta llegar a la última.
@@ -575,14 +575,14 @@ En la siguiente figura se puede observar **simbología** para diseñar diagramas
     2. **Estructuras Iterativas**, cuando necesario ejecutar algunas instrucciones repetidas veces.
         * Ejemplo de utilización con la sentencia: **for**.
 
-#### Estructuras condicionales alternativas o de selección
+### Estructuras condicionales
 
 * Las estructuras de selección permiten ejecutar diferentes instrucciones dependiendo del valor de una variable o expresión.
 * También se les llama ramificaciones, estructuras de decisión o alternativas.
 * Cuando se usan, no todas las instrucciones del programa se ejecutan, solo las especificadas para el valor de la variable durante esa ejecución.
 * Las estructuras de selección más comunes son las que proporcionan ramificaciones dobles (**if**) y múltiples (**elif** y **case**).
 
-##### Estructura alternativa doble: **if**
+#### Estructura alternativa doble: **if**
 
 * La forma general de la orden **if** es:
 
@@ -612,7 +612,7 @@ fi
 !!! warning
     Hay que recordar siempre cerrar esta estructura para indicarle al terminal donde termina, en este caso, se cierra con la palabra reservada **fi**.
 
-##### Estructura alternativa multiple if then else
+#### Estructura alternativa multiple if then else
 
 * En este caso se contempla también la posibilidad de ejecutar alguna acción si no se cumple la expresión.
 * La forma general del **if then else** es:
@@ -641,7 +641,7 @@ else
 fi
 ```
 
-##### La estructura if then elif else
+#### La estructura if then elif else
 
 * Permite una segunda evaluación para ejecutar código a través de la estructura **elif**.
 * Es posible colocar tantos elif como condiciones se requiera evaluar.
@@ -681,7 +681,7 @@ fi
 !!! warning
     El último caso se realiza con la sentencia **else**.
 
-##### La estructura case
+#### La estructura case
 
 * La estructura case permite realizar varias acciones en función del valor de una variable.
 * La limitación que tan sólo se comprueba si es igual a ese valor.
@@ -705,7 +705,7 @@ esac
   <figcaption>Estructura Alternativa Multiple.</figcaption>
 </figure>
 
-#### Estructuras de iteración
+### Estructuras de iteración
 
 * Son operaciones que se deben ejecutar un número repetido de veces para resolver un problema.
 * El conjunto de instrucciones que se ejecuta dentro de esta estructura, se denomina ciclo, bucle o lazo.
@@ -739,7 +739,7 @@ durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los
   <figcaption>Estructura Iterativa.</figcaption>
 </figure>
 
-##### Las estructuras while y until
+#### Las estructuras while y until
 
 Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. El funcionamiento es lógico:
 
@@ -786,7 +786,7 @@ done
 !!! info
     Este código imprime por pantalla la tabla de multiplicar del número que el usuario ha especificado. Las líneas contenidas entre `do` y `done` se ejecutarán mientras i sea menor o igual a diez. Al final de cada iteración el valor de i se incrementa en uno (es un contador) por lo que en diez iteraciones la condición dejará de cumplirse y el bucle se romperá.
 
-##### La estructuras for
+#### La estructuras for
 
 * Esta estructura permite repetir código por cada elemento de un conjunto determinado.
 * No necesita condición de salida ya que al finalizar los elementos del conjunto acabará con su ejecución.
@@ -820,13 +820,155 @@ done
 !!! info 
     Este ejemplo se van a mostrar los nombres de los ficheros que contiene un directorio y dirá si es un directorio o un fichero.
 
-###### Romper un bucle de forma deliberada
+##### Romper un bucle de forma deliberada
 
 No sólo es posible terminar un bucle cuando se cumpla una condición o cuando se terminen los elementos de un conjunto, shell script proporciona dos formas de alterar el funcionamiento de la estructura en un bucle y romperla en función de las necesidades del programa:
 
 1. `break` rompe el bucle que lo contiene y continúa la ejecución del script.
 2. `continue` rompe la iteración que lo contiene, pero mantiene el bucle, que continuará con la siguiente iteración hasta que termine su ejecución.
 3. `exit` detiene la ejecución del script. Este comando no es exclusivo de las estructuras iterativas, pero cobra especial sentido en este ámbito.
+
+### Vectores en shell script
+
+* Un vector es una estructura de datos que permite almacenar una colección de elementos.
+* Por el hecho de tratarse de una estructura de datos es posible realizar operaciones sobre él como buscar, eliminar y agregar elementos a su estructura.
+* Los elementos se encuentran ordenados en función de como han sido introducidos en la estructura.
+* Para acceder a cada elemento será necesario especificar la posición que ocupan dentro de ella, teniendo presente que la numeración de los vectores comienza desde cero, no desde uno.
+
+!!! info
+    Un buen ejemplo de uso sería, por ejemplo, para recoger el listado de archivos que hay en una carpeta.
+
+<figure>
+  <img src="imagenes/01/EsquemaVector.png" width="500"/>
+  <figcaption>Esquema de un vector de doce elementos.</figcaption>
+</figure>
+
+Para definir un vector disponemos de dos formas:
+
+1. **Implícita:** hace referencia a que el vector ha sido declarado y al mismo tiempo se han inicializado sus valores.
+2. **Explícitamente:** cuando el vector no requiere que se inicialice mientras se declara, es decir, pueden ser inicializados con posterioridad.
+
+Para declarar un vector hay que utilizar la siguiente estructura:
+
+``` yaml
+declare -a meses=("enero" "febrero" "marzo")
+```
+
+También es posible utilizar alguna expresión para completar un vector, como con el operador rango ...
+
+``` yaml
+declare -a letras=( {N..Z} {s..z} )
+echo ${letras[*]}
+```
+
+!!! info
+    * Esto creará un vector con el siguiente contenido y lo mostrará por pantalla así:
+    * N O P Q R S T U V W X Y Z s t u v w x y z
+
+* Para añadir un elemento a la estructura se debe indicar el índice o posición que ocupará el nuevo dato.
+* Si el índice es mayor que la última posición de la estructura, se escribirá al final de la misma.
+* Si se usa un índice que ya contiene un dato, éste será sobrescrito.
+
+``` yaml
+meses[3]="abril"
+```
+
+* Para mostrar el contenido del vector:
+
+``` yaml
+echo ${meses[*]}
+```
+
+!!! info
+    Mostrará: 
+    enero febrero marzo abril
+
+* Es buena idea conocer el número de elementos que contiene un vector para poder introducir datos de forma correcta y no sobrescribir por accidente algún valor ya almacenado. Así es posible utilizar:
+
+| Comando | Acción |  
+|:-----:|------------------------------------------------|
+| `${meses[*]}` | Muestra todos los valores del vector|
+| `${!meses[*]}` | Muestra todos los índices del vector|
+| `${#meses[*]}` | Devuelve el número de valores del vector|
+| `${#meses[0]}` | Imprime la longitud del primer dato del vector|
+
+* Para recorrer los valores que contiene esta estructura se puede utilizar un bucle **for**
+
+``` yaml
+for item in ${meses[*]}
+do
+    echo $item
+done
+```
+* También se puede utilizar sus índices para mostrar los datos contenidos.
+
+``` yaml
+for index in ${!meses[*]}
+do
+    echo ${meses[$index]}
+done
+```
+
+* Es una estructura muy útil en la que se puede guardar cualquier tipo de información, como por ejemplo los ficheros que contiene una carpeta:
+
+``` yaml
+i=0;
+for fichero in $(ls -a)
+do
+    ficheros[$i]=$fichero;
+    let i=i+1;
+done
+```
+### Funciones en shell script
+
+* Una función es un conjunto de líneas de código que se identifican a través de un identificador y que se ejecutan al invocar ese identificador.
+* Se podría definir como un shell script dentro de un shell script.
+* Sirve para organizarlo en unidades lógicas más pequeñas de manera que sea más fácil mantenerlo.
+* Las funciones aceptan parámetros, de idéntica manera que los shell script, por lo que su uso también es muy intuitivo.
+* La estructura de una función queda definida de la siguiente manera:
+
+``` yaml
+function nombre_función(){
+    código que se ejecutará al llamar a la función
+}
+```
+
+!!! info
+    * `source`
+    * Para incluir el código de un fichero en otro tan sólo será necesario utilizar la palabra source seguida de la ruta de ese fichero. * * También es posible usar el punto para poder cargarlo:
+    * `source funciones.sh` o `./funciones.sh`
+
+* Las funciones suelen declararse al inicio del documento y luego utilizadas a lo largo del programa.
+* Uno de los objetivos es optimizar el código, mediante el "aprovechamiento" de código. Cuando un conjunto de líneas de código se repiten, es posible agruparlas bajo un nombre y utilizar ese nombre en lugar de repetir este código.
+
+* Ejemplo:
+
+``` yaml
+#! /bin/bash
+function imprimir_tabla(){
+    echo “Tabla del número $1”
+    for i in 1 2 3 4 5 6 7 8 9 10
+    do
+        let res=$1*i
+    echo “$i x $1 = $res”
+    done
+}
+read -p “Escribe un número: “ num
+imprimir_tabla $num
+imprimir_tabla 5
+}
+```
+
+* En este ejemplo se ha construido una función para imprimir la tabla de multiplicar de un número pasado como parámetro.
+* En la siguiente línea le pedimos al programa que imprima la tabla del número cinco. 
+* No se ha necesitado escribir el código que imprime la su tabla de multiplicar de nuevo, ya que con invocar el nombre de la función el programa ya sabe que código debe ejecutar.
+
+!!! warning
+    * Nótese que el valor de `$1` no se pasa como parámetro del shell script, si no como parámetro a la función imprimir_tabla tras haberlo preguntado al usuario.
+    * Hay que tener en cuenta que las variables que se declaran dentro de una función existen únicamente dentro de ella. Si es preciso utilizar una variable fuera de una función se puede usar `return`, que devuelve un valor fuera de ella, o usar la palabra reservada `GLOBAL`
+    * Es preferible utilizar el primer método para que devuelva un valor que será recogido en otra variable fuera de la función que lo originó.
+
+
 
 ## Actividades
 
