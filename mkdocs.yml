@@ -6,6 +6,7 @@ nav:
   - "Inicio": "index.md"
   - "1.- Tools: Scripting y Docker":
     - "1.1- ShellScripting": "011_ShellScripting.md"
+    - "1.2- PowerShell": "012_PowerShell.md"
 #  - "": ""
 
 theme:

@@ -18,7 +18,7 @@
     4. Se han realizado cambios y adaptaciones de guiones del sistema.
     5. Se han creado y probado guiones de administración de servicios.
     6. Se han creado y probado guiones de automatización de tareas.
-    7. Se han implantado guiones en sistemas libres.
+    7. Se han implantado guiones en **sistemas libres**.
     8. Se han consultado y utilizado librerías de funciones.
     9. Se han documentado los guiones creados.
 
@@ -972,6 +972,9 @@ imprimir_tabla 5
 
 ## Actividades
 
+!!! note
+    Escribe el código de los scripts en **ShellScript** que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.
+
 ### Actividades iniciales
 
 101. Crea un shell script que muestre por pantalla el mensaje “**¡Hola Mundo!**”.
@@ -1015,3 +1018,14 @@ imprimir_tabla 5
     4. Al final de la partida mostrará un informe por pantalla a modo de resumen.
 
 110. Modificar el shell script anterior para que permita ir jugando hasta que el jugador decida abandonar el juego (para ello deberá pulsar la tecla “x” del teclado), o no tenga más dinero que apostar. Tampoco podrá apostar más dinero del que dispone en su “cartera virtual”.
+
+### Actividades de desarrollo UD1_03
+
+111. Realiza un script que permita crear un informe de las **IP libres** en la red en la que se encuentra el equipo. Debe contener las siguientes opciones:
+    1. El informe contendrá un **listado de todas las IP de la red** a la que pertenece el equipo indicando si está libe o no (usa el comando ping).
+    2. En el informe debe aparecer el **tipo de red** (rango CIDR) en el que está inmerso el ordenador con el **nombre de la red**, su **broadcast** y su **máscara de subred**. Esta información la podéis obtener desde el comando ifconfig.
+
+!!! note
+    Para facilitar los cálculos asumimos que el equipo donde se ejecuta el script se encuentra en una única red, es decir, solo posee una tarjeta de red.
+
+112. Crea un script que rellene un **vector** con cien valores aleatorios y muestre en pantalla en una sola línea los valores generados.
