@@ -281,6 +281,261 @@ los operadores tipo lógicos devuelven tan sólo un valor booleano que puede ten
 |`-contains`| Contiene un valor. |`1,2,3 -contains 2` es verdadero|
 |`-notcontains`| No contiene un valor. |`1,2,3 -notcontains 2`es falso|
 
+## Control del flujo en PowerShell
+
+En esta parte se indicará tan sólo la sintaxis de las estructuras alternativas e iterativas, ya que los conceptos teóricos ya se han abordado en el apartado de Shellscript.
+
+### Alternativa Simple
+
+``` yaml
+    if ( condición ){
+        ejecutar este código si la condición es verdadera
+    }
+```
+
+### Alternativa doble
+
+``` yaml
+    if ( condición ) {
+        ejecutar este código si la condición es verdadera
+    } else {
+        ejecutar este código si la condición es falsa
+    }
+```
+
+### Alternativa múltiple
+
+``` yaml
+    if ( condición1 ) {
+        ejecutar este código si la condición1 es verdadera
+    } elseif ( condición2 ) {
+        ejecutar este código si la condición2 es verdadera
+    } else {
+        ejecutar este código si todas las condiciones son falsas
+    }
+```
+
+### El equivalente a case en GNU/Linux
+
+``` yaml
+    switch ($valor){
+        opción1 { código a ejecutar si opción1 coincide con $valor }
+        opción2 { código a ejecutar si opción2 coincide con $valor }
+        opciónN { código a ejecutar si opciónN coincide con $valor }
+        default { código a ejecutar si ninguna de las opciones coincide }
+    }
+```
+
+!!! example
+    ``` yaml
+        $saludo = Read-Host "Escribe un saludo"
+        switch ($saludo){
+            "Buenos días" { Write-Host "Saludaste en Castellano" }
+            "Bon dia" { Write-Host "Saludaste en Catalán" }
+            "Bo dias" { Write-Host "Saludaste en Gallego" }
+            "Egun on" { Write-Host "Saludaste en Euskera" }
+            "Good morning" { Write-Host "Saludaste en Inglés" }
+            "Bonjour" { Write-Host "Saludaste en Francés" }
+            "Buon Giorno" { Write-Host "Saludaste en Italiano" }
+            "Bom día" { Write-Host "Saludaste en Portugués" }
+            "Guten Tag" { Write-Host "Saludaste en Alemán" }
+            {$_ -is [string]} { Write Host "La variable que has pasado es una cadena" }
+            default { "Eso no parece un saludo" }
+        }
+    ```
+
+!!! note
+    * Existe la posibilidad de colocar operadores lógicos como opciones de un `switch`, si estos operadores lógicos devuelven un valor verdadero, se ejecutará esa parte del código, si se evalúa a falso, no realizará esa parte del código. 
+    * El carácter $_ hace referencia a la variable $saludo, de ese modo es posible realizar operaciones lógicas con el valor pasado.
+
+* Además de todo esto, `switch` posee una serie de opciones que no están presentes en GNU/Linux, aunque es posible realizarlas de otra manera.
+
+| Operador      | Descripción                             | 
+| ------------- | ------------------------------- |
+|`-wildcard` | Sólo aplicable a `[string]`. Indica si cumple un patrón determinado.|
+|`-exact` | Sólo aplicable a `[string]`. Debe coincidir exactamente con alguno de los patrones.|
+|`-casesensitive`| Sólo aplicable a `[string]`. Debe coincidir en mayúsculas y minúsculas.|
+|`-file` | La entrada es un archivo. Se evaluará cada línea del archivo.|
+|`-regex` |Sólo aplicable a `[string]`. Permite usar expresiones regulares en la comparación.|
+
+!!! example
+    `-regex`
+    ``` yaml
+    $target = 'https://bing.com'
+    switch -Regex ($target){
+        '^ftp\://.*$' { "$_ is an ftp address"; Break }
+        '^\w+@\w+\.com|edu|org$' { "$_ is an email address"; Break }
+        '^(http[s]?)\://.*$' { "$_ is a web address that uses $($matches[1])"; Break }
+    }
+    ```
+
+!!! example
+    `-wildcard`
+    ``` yaml
+    switch -wildcard ( Read-Host "Escribe u número de teléfono" ){
+        "8*" { Write-Host "Es un teléfono fijo: $_"; break }
+        "9*" { Write-Host "Es un teléfono fijo: $_"; break }
+        "6*" { Write-Host "Es un teléfono móvil: $_"; break }
+        default { "$_ no parece un teléfono" }
+    }
+    ```
+* El comando break que aparece al final de cada opción indica que si encuentra una coincidencia no siga buscando más y rompa el switch, ahorrándose así el resto de comprobaciones.
+
+### Estructuras iterativas
+
+#### while
+
+A diferencia de lo que ocurría en GNU/Linux, en PowerShell existen diferencias entre las estructuras **while, do while** y **do until**. En este caso, la única de las tres que evaluará la condición al inicio del bloque de código será la primera. El resto comprueba la condición al final del bloque ejecutando como mínimo una vez el código que contiene.
+
+``` yaml
+while ( condición ){
+    bloque de código a ejecutar mientras condición sea verdadera
+}
+```
+
+``` yaml
+do {
+    bloque de código a ejecutar mientras condición sea verdadera
+} while ( condición )
+```
+
+Existe una variante de esta estructura que se crea sustituyendo el **while por un until**. Esto cambia el sentido de la condición y es este caso el bloque se repite hasta que la condición se cumpla. Esta estructura no es muy utilizada, pero siempre es bueno contar con herramientas extra.
+
+#### for
+
+También la estructura `for` es sensiblemente diferente que en shellscript. Esta estructura en PowerShell tiene más que ver con los lenguajes de programación y se utiliza cuando el programador sabe el número de iteraciones que hay que realizar para solucionar un problema.
+
+``` yaml
+for ( inicialización; condición; incremento ){
+    bloque de código a ejecutar mientras condición sea verdadera
+}
+```
+
+* Por ejemplo, la creación de la tabla de multiplicar de un número especificado por el usuario. Para resolver este problema sí se conoce el número de iteraciones necesarias, concretamente diez.
+
+!!! example
+    ``` yaml
+    $numero = Read-Host "Dame un número"
+    Write-Host "Esta es la tabla del $num"
+    for ( $i=0; $i -lt 11; $i++){
+        Write-Host " $i x $numero = "($i*$numero)
+    }
+    ```
+
+#### foreach
+
+La estructura `foreach` en PowerShell es el equivalente a for en shellscript. Está pensada para recorrer un conjunto de valores y ejecutar el bloque de código una vez por cada elemento del conjunto.
+
+``` yaml
+foreach ( elemento in conjunto ){
+    bloque de código a ejecutar por cada elemento del conjunto
+}
+```
+
+Al igual que ocurre en GNU/Linux, el conjunto puede serlo de cualquier tipo de  objetos, incluso los ficheros de una carpeta. En el siguiente ejemplo se buscan los ficheros que en su nombre contengan la cadena de texto que el usuario ha especificado:
+
+!!! example
+    ``` yaml
+    $ruta = "C:\Users\Administrador\Desktop"
+    $busca = Read-Host "Escribe el texto a buscar"
+    foreach ($archivo in Get-ChildItem $ruta){
+        if ($archivo.Name.IndexOf($busca) -ge 0){
+        Write-Host $archivo.Name
+        }
+    }
+    ```
+
+!!! note
+    Las opciones que ofrece PowerShell en cuanto a estructuras de control parece una oferta más completa que la de shellscript, aunque para las tareas que se van a realizar en este módulo, ambos sistemas poseen herramientas suficientes.
+
+### Vectores
+
+* PowerShell considera como un vector a toda colección de objetos, sea cual sea su tipo. 
+* Los elementos que lo conforman pueden estar separados por comas, estar expresados por el operador de rango `..` o ser el resultado de alguna expresión que devuelva una colección, como así lo hacen muchos cmdlets.
+
+!!! example
+    ``` yaml
+    $Vacia = @{}
+    $Enteros = 1,2,3,4,5
+    $Texto = “Lunes”,“Martes”,”Miércoles”, “Jueves”,”Viernes”
+    $EnterosRango = 1..10
+    ```
+
+De esta forma se han definido cuatro vectores; el segundo contendrá enteros y el tercero cadenas de caracteres. La última línea asigna los valores desde el 1 al 10 utilizando el operador rango `..` .
+
+!!! note
+    El operador de **rango** representa una secuencia de enteros, con los límites superior e inferior separados por dos puntos decimales. Permite expresar el rango en orden ascendente o descendente, así como también que los límites inferior o superior sean establecidos por medio de variables que contengan enteros.
+
+* Un vector también puede definirse como el resultado de una expresión.
+
+!!! example
+    ``` yaml
+    $EnterosFor = @(For($i;$i < 5;$i++){$i})
+    $Comando = Get-Process | Sort-Object ProcessName
+    ```
+
+En la primera línea ``$enteros`` será completado a través del resultado de una estructura iterativa, mientras que la segunda contendrá el resultado del cmdlet indicado. Además de todas estas formas de declaración, también se puede realizar a través del cmdlet ``New-Variable``
+
+!!! example
+    ``` yaml
+    New-Variable -Name Enteros -Value 1,2,3,4,5 -Force
+    New-Variable -Name Texto -Value "Lunes","Martes","Miércoles","Jueves","Viernes" –Force
+    New-Variable -Name EnterosRango -Value (1..5) -Force
+    New-Variable -Name EnterosFor -value (. {For($i=1;$i -lt 5;$i++){$i}}) -Force
+    ```
+
+!!! note
+    El atributo `-Force` sobrescribe la variable si esta ya existe, de ese modo no saltará ningún error a la hora de definir estas variables.
+
+* Para obtener el número de elementos de un vector se utiliza el método Length, si se aplica a un elemento del vector, devolverá el tamaño de este elemento, no del vector completo.
+
+!!! example
+    ``` yaml
+    $Texto.Length # mostrará 5 por pantalla
+    $Texto[2].Length # mostrará 9, las letras de “Miércoles”
+    ```
+
+* Para añadir elementos al final de un vector se utiliza el operador `+=`.
+
+!!! example
+    ``` yaml
+    $Enteros += 6
+    $Texto += “Sábado”, “Domingo”
+    ```
+
+!!! note
+    La primera línea añade el entero 6 al vector `$Enteros`, mientras que en la segunda se añaden los elementos “Sábado” y “Domingo” al vector `$Texto`.
+
+* Para eliminar un elemento de un vector PowerShell no ofrece un sistema parecido al de añadir valores, sino que tendrá que reescribirse el vector de nuevo sin los valores no deseados.
+
+### Funciones
+
+También en PowerShell es posible utilizar funciones a través de la siguiente estructura:
+
+``` yaml
+Function <NOMBRE> {
+    Param (<Parametro>,<Parametro>,...)
+        Comandos PowerShell
+}
+```
+
+!!! warning
+    El paso de parámetros a una función se realiza de idéntica forma que en shell script. **La principal diferencia** entre las funciones usadas en shell script es que ahora es preferible **declarar y tipar** antes de iniciar con el código de la función.
+
+!!! example
+    ```yaml
+    Function Get-Sumar {
+        param ([integer] $a, [integer] $b)
+        $sumar = $a + $b
+        Write-Host “La suma es $sumar”
+    }
+    ```
+
+!!! note
+    Si se ejecuta la siguiente instrucción: `Get-Sumar 2 8` La salida del terminal será `La suma es 10`.
+
+Si se necesita que las funciones estén disponibles durante la sesión del usuario o si es necesario enlazarlas desde otro script, se deberá utilizar la notación de punto, del mismo modo que ocurría en shell script.
+
 ## Actividades PowerShell
 
 !!! note
