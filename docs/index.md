@@ -29,13 +29,12 @@ A continuación se muestran las unidades didácticas y una estimación temporal 
 
 1. Tools: Scripting y Docker. (18h)
     * Scripts de Linux. (bash).
-    * Procedimientos bat. (cmd).
     * Scripts de PowerShell.
     * Introducción a Docker.
 2. Administración de servicio de directorio. (24h)
     * LDAP.
-    * Directorio Activo con Windows Server. (18h)
-3. Administración de procesos del sistema.
+    * Directorio Activo con Windows Server. 
+3. Administración de procesos del sistema. (18h)
     * El planificador. Algoritmos de planificación de procesos.
     * Sincronización, Interrupciones y excepciones.
     * Secuencia de arranque del sistema.

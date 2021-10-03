@@ -549,3 +549,17 @@ Si se necesita que las funciones estén disponibles durante la sesión del usuar
 
 115. Crea un script que si no se le pasa ningún argumento nos lo diga.
 
+### Actividades de desarrollo UD1_04
+
+116. Diseña un script PowerShell que pida al usuario dos número (comprobando que sean números) y muestre por pantalla el mayor de ellos o si son iguales.
+
+117. Crea un script PowerShell que al ejecutarlo muestre por pantalla uno de estos mensajes **“Buenos días”**, **“Buenas tardes”** o **“Buenas noches”**, en función de la hora que sea en el sistema (de 8:00 de la mañana a 15:00 será mañana, de 15:00 a 20:00 será tarde y el resto será noche). Usa el `cmdlet Get-Date`.
+
+118. Construye tres script PowerShell utilizando estructuras iterativas:
+    1. el primero **ej118A.ps1**, que imprima la **tabla de multiplicar** de un número preguntado al usuario. Este
+    número debe ser entero positivo.
+    2. el segundo **ej118B.ps1**, que pida un número e indique si se trata de un número par y si es número primo.
+    3. el tercero **ej118C.ps1**, que muestre las diez primeras tablas de multiplicar por pantalla. Hay un tiempo de espera de un segundo entre ellas. Utiliza las estructuras **while, do while, for y foreach y el cmdlet Start-Sleep.**
+
+119. Diseña un script PowerShell que lea un vector con 365 temperaturas y calcule la media y cuantos días han estado por encima y cuantos por debajo de ella. Rellena el vector con valores aleatorios entre -5 y 35, para ello usa Get-Random.
+

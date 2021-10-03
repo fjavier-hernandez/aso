@@ -7,6 +7,7 @@ nav:
   - "1.- Tools: Scripting y Docker":
     - "1.1- ShellScripting": "011_ShellScripting.md"
     - "1.2- PowerShell": "012_PowerShell.md"
+    - "1.3- Docker": "013_Docker.md"
 #  - "": ""
 
 theme:
