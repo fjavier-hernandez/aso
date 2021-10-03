@@ -2,17 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/index.html</loc>
-         <lastmod>2021-10-01</lastmod>
+         <lastmod>2021-10-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/011_ShellScripting.html</loc>
-         <lastmod>2021-10-01</lastmod>
+         <lastmod>2021-10-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/012_PowerShell.html</loc>
-         <lastmod>2021-10-01</lastmod>
+         <lastmod>2021-10-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://javierhernadez81.github.io/aso2122/013_Docker.html</loc>
+         <lastmod>2021-10-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

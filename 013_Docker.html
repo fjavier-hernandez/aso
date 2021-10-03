@@ -1,0 +1,760 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/013_Docker.html">
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>1.3- Docker - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#02a6f2">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-blue" data-md-color-accent="teal">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#docker" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.3- Docker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- Tools: Scripting y Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- Tools: Scripting y Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- Tools: Scripting y Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="011_ShellScripting.html" class="md-nav__link">
+        1.1- ShellScripting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="012_PowerShell.html" class="md-nav__link">
+        1.2- PowerShell
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          1.3- Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="013_Docker.html" class="md-nav__link md-nav__link--active">
+        1.3- Docker
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-previos" class="md-nav__link">
+    Conceptos Previos
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptos Previos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#virtualizacion-hipervisores" class="md-nav__link">
+    Virtualización: hipervisores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenedores" class="md-nav__link">
+    Contenedores
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenedores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maquinas-virtuales-vs-contenedores" class="md-nav__link">
+    Máquinas Virtuales VS Contenedores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-principales-contenedores" class="md-nav__link">
+    Características principales Contenedores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristicas-principales-docker" class="md-nav__link">
+    Características principales Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-docker" class="md-nav__link">
+    Arquitectura Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microservicios" class="md-nav__link">
+    Microservicios
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    Instalación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#principales-comandos" class="md-nav__link">
+    Principales Comandos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-contenedor" class="md-nav__link">
+    Primer Contenedor
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
+<figure style="float: right;">
+    <img src="imagenes/01/DockerImage.png" width="350"/>
+    <figcaption>Logo Docker.</figcaption>
+</figure>
+
+<p><strong>Docker</strong> (estibador en ingles) es un <strong>Sistema de Virtualización de Aplicaciones mediante contenedores</strong>, creado por <em>Solomon Hykes</em> y su equipo de ingenieros.</p>
+<ul>
+<li>En <strong>2013</strong> se convirtió en un proyecto de <strong>software libre (licencia Apache)</strong> en el que participan cada vez más empresas. </li>
+<li>La <strong>versión 1.0</strong> se publicó en <strong>junio de 2014</strong> y ha tenido un desarrollo muy rápido.</li>
+<li>En marzo de <strong>2017</strong>, Docker anunció una desarrollo todavía más rápido, pasando a publicar una nueva versión cada mes. La numeración de las versiones adoptó al formato AA.MM (la primera fue <strong>Docker 17.03</strong>).</li>
+<li>En <strong>julio de 2018</strong>, Docker anunció que volvían a un desarrollo más pausado. A partir de <strong>Docker 18.09</strong> habría una versión "estable" cada seis meses</li>
+</ul>
+<h2 id="conceptos-previos">Conceptos Previos<a class="headerlink" href="#conceptos-previos" title="Permanent link">&para;</a></h2>
+<h3 id="virtualizacion-hipervisores">Virtualización: hipervisores<a class="headerlink" href="#virtualizacion-hipervisores" title="Permanent link">&para;</a></h3>
+<p>En general, el objetivo de la virtualización es poder utilizar simultáneamente en un mismo ordenador dos o más sistemas operativos.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>De acuerdo con esta definición, instalar dos sistemas operativos en un ordenador (<strong>Windows y Linux</strong>, por ejemplo) y poder elegir uno u otro mediante un arranque dual <strong>no se considera virtualización</strong>, puesto que mediante un arranque dual no podemos ejecutar a la vez ambos sistemas.</li>
+<li>Y tampoco sería virtualización la simulación, que consiste en imitar el aspecto visual del sistema imitado. Por ejemplo, podríamos instalar un tema de escritorio en <strong>GNOME</strong> o <strong>KDE</strong> que imitara el escritorio de Windows. El problema de esta simulación sería que realmente no estaríamos utilizando Windows sino simplemente algo que parece Windows. Así que, por ejemplo, no podríamos instalar una aplicación de Windows puesto que el sistema operativo sería Linux, que no acepta instaladores de Windows.</li>
+</ul>
+</div>
+<ul>
+<li>Para poder hablar de virtualización tienen que estar <strong><em>funcionando a la vez varios sistemas operativos</em></strong>.</li>
+<li>Los sistemas operativos son los encargados de la gestión del hardware y requieren un control completo del mismo, por lo que dos sistemas operativos no pueden en principio estar funcionando a la vez sobre el mismo hardware.</li>
+<li>La solución para la virtualización es la existencia de un <strong>hipervisor</strong> (en inglés, hypervisor).</li>
+</ul>
+<h4 id="ventajas-virtualizacion">Ventajas Virtualización<a class="headerlink" href="#ventajas-virtualizacion" title="Permanent link">&para;</a></h4>
+<p>La virtualización tiene muchas aplicaciones interesantes:</p>
+<ul>
+<li>La más habitual es poder ejecutar aplicaciones que no están disponibles para el sistema operativo host, pero sí para otro sistema operativo que se instalaría como guest.</li>
+<li>La virtualización permite la conservación del software. Debido al progreso del hardware, los procesadores antiguos dejan de fabricarse y los sistemas operativos y aplicaciones antiguos dejan de desarrollarse y dejan de funcionar en el hardware moderno. Pero si el sistema operativo puede instalarse como guest, puede seguir utilizándose para siempre.</li>
+<li>La virtualización permite depurar y comprobar el funcionamiento de los programas y los sistemas operativos. Si un programa provoca un fallo de funcionamiento total, si se está ejecutando como guest, el sistema host puede recoger información sobre el motivo del fallo.</li>
+<li>La virtualización permite un mejor aprovechamiento del hardware, ya que un mismo ordenador puede contener muchos sistemas guests utilizados por usuarios diferentes, aislados unos de otros.</li>
+</ul>
+<h4 id="hipervisor">Hipervisor<a class="headerlink" href="#hipervisor" title="Permanent link">&para;</a></h4>
+<p>El hipervisor es la pieza fundamental de la virtualización. Tradicionalmente, se distinguen dos tipos de hipervisores:</p>
+<ul>
+<li>Los hipervisores de <strong>tipo 1</strong>, denominados «<strong><em>hipervisores bare metal</em></strong>», dichos hipervisores están en contacto directo con el hardware de la máquina, sin necesidad de ningún sistema operativo previo.</li>
+<li>Los hipervisores de <strong>tipo 2</strong>, denominados «<strong><em>alojados</em></strong>», y son una aplicación más del sistema operativo instalado en la máquina y el hipervisor accede al hardware de la máquina a través de ese sistema operativo.</li>
+</ul>
+<figure>
+  <img src="imagenes/01/HipervisorTipo.png"/>
+  <figcaption>Tipos de Hipervisor.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>En el caso de los hipervisores de <strong>tipo 2</strong>, el sistema operativo que tiene el control del hardware recibe el nombre de host (anfitrión). Es el sistema operativo que se instaló primero en el ordenador y el que se pone en marcha al arrancar el ordenador. Los demás sistemas operativos reciben el nombre de guests (huéspedes) y pueden ejecutarse o no a voluntad del usuario.</li>
+<li>En el caso de los hipervisores de <strong>tipo 1</strong> no hay un sistema operativo host, todos los sistemas operativos son guests del hipervisor.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>VMware ESXi</strong> o <strong>Xen</strong> son hipervisores de <strong><em>tipo 1</em></strong>. <strong>Hyper-V</strong> de Microsoft se puede considerar un hipervisor de <strong><em>tipo 1</em></strong>, porque aunque necesita que esté instalado primero Windows para poder instalar <strong>Hyper-V</strong>, una vez instalado convierte a Windows en un guest más de <strong>Hyper-V</strong> (aunque con acceso prioritario con respecto al resto de guests). <strong>KVM</strong>, al estar integrado en el kernel de Linux, se puede considerar tanto de <strong><em>tipo 1</em></strong> como de <strong><em>tipo 2</em></strong>. <strong>VirtualBox</strong> es un hipervisor de <strong><em>tipo 2</em></strong>.</p>
+</div>
+<h2 id="contenedores">Contenedores<a class="headerlink" href="#contenedores" title="Permanent link">&para;</a></h2>
+<p>El problema de los hipervisores y las máquinas virtuales es que cada máquina virtual es independiente de las demás. Al no reutilizarse ningún componente, se ocupa <strong>mucho espacio tanto en disco como en memoria</strong> y el <strong>tiempo de ejecución siempre será mayor</strong> que si sólo hubiera un sistema operativo (sobre todo en el caso de <strong>hipervisores de tipo 2</strong>).</p>
+<p>Para resolver este problema se crearon los <strong>contenedores</strong> en los que se utilizan mecanismos existentes en el sistema operativo para aislar las aplicaciones, pero compartiendo el mayor número posible de componentes del sistema operativo o incluso de las aplicaciones.</p>
+<p><strong>Un contenedor</strong> es el equivalente a una máquina virtual de la virtualización clásica, pero mucho más ligera porque utiliza recursos del sistema operativo del host. Las aplicaciones de cada contenedor "ven" un sistema operativo, que puede ser diferente en cada contenedor, pero quien realiza el trabajo es el sistema operativo común que hay por debajo.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><strong>Los contenedores</strong> suelen ser elementos efímeros. La facilidad con la que pueden crearse y ponerse en marcha hace más fácil crear un nuevo contenedor que modificar uno ya existente. Por ello, los datos generados por las aplicaciones no se suelen guardar en los contenedores, sino fuera de ellos. </li>
+<li>Su ligereza hace más fácil tener varios contenedores con una aplicación en cada uno de ellos que tener un único contenedor con varias aplicaciones en él. Por ello, un aspecto importante de los contenedores es su orquestación, es decir, la administración simultánea de muchos contenedores, una de las herramientas más utilizadas es <strong><a href="https://kubernetes.io/es/">Kubernetes</a></strong>.</li>
+</ul>
+</div>
+<h3 id="maquinas-virtuales-vs-contenedores">Máquinas Virtuales VS Contenedores<a class="headerlink" href="#maquinas-virtuales-vs-contenedores" title="Permanent link">&para;</a></h3>
+<figure>
+  <img src="imagenes/01/ContenedoresVsMaquinaV.png"/>
+  <figcaption>Contenedores Vs Máquinas Virtuales.</figcaption>
+</figure>
+
+<h3 id="caracteristicas-principales-contenedores">Características principales Contenedores<a class="headerlink" href="#caracteristicas-principales-contenedores" title="Permanent link">&para;</a></h3>
+<p>En resumen los contenedores:</p>
+<ul>
+<li>Consisten en <strong>Agrupar y Aislar Aplicaciones o grupos de aplicaciones que se ejecutan sobre un mismo núcleo de sistema operativo</strong>.</li>
+<li>Su característica principal se basa en su <strong>propio sistema de archivos ejecutable en cualquier Sistema Operativo</strong>.</li>
+<li>No es necesario emular el <em>HW</em> y <em>SW</em> completo como en las máquinas virtuales, por lo tanto son mucho más <strong>ligeros</strong>.</li>
+<li>Soluciona problemas de espacio y compatibilidades a la hora de puesta en marcha en servidores de producción.</li>
+<li>La ventaja de los contenedores es su ligereza, puesto que comparten el máximo de componentes con el sistema operativo host, y su rapidez, ya que gracias a que apenas añaden capas adicionales consiguen casi velocidades nativas.</li>
+<li>Los contenedores suelen ser elementos efímeros. La facilidad con la que pueden crearse y ponerse en marcha hace más fácil crear un nuevo contenedor que modificar uno ya existente. Por ello, los datos generados por las aplicaciones no se suelen guardar en los contenedores, sino fuera de ellos. </li>
+</ul>
+<h2 id="caracteristicas-principales-docker">Características principales Docker<a class="headerlink" href="#caracteristicas-principales-docker" title="Permanent link">&para;</a></h2>
+<figure style="float: right;">
+    <img src="imagenes/01/DockerLema.png" width="500"/>
+    <figcaption>Lema Docker.</figcaption>
+</figure>
+
+<ul>
+<li>Docker es una API amigable del tipo <strong>Open Source</strong>.</li>
+<li>Genera un <strong>proceso aislado</strong> del resto de los procesos de la máquina gracias a: Ejecutar sobre su propio sistema de ficheros, con su propio espacio de usuarios y procesos, y sus propias interfaces de red... </li>
+<li>Es por ello que a veces se dice que un contenedor es una <strong>máquina virtual ligera</strong></li>
+<li>Es <strong>Modular</strong> ya que esta dividido en varios componentes.</li>
+<li>Es <strong>portable e inmutable</strong> utilizando la plataforma <strong>DockerHub</strong>.</li>
+<li>Su es lema <strong><em>“Build, Ship and Run, any app,”</em></strong>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Aunque un contenedor puede incluir cualquier número de aplicaciones, lo habitual es que un contenedor contenga una sola aplicación (y los programas necesarios para ponerse en marcha). </p>
+</div>
+<h2 id="arquitectura-docker">Arquitectura Docker<a class="headerlink" href="#arquitectura-docker" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Docker Engine ("Motor" del Gestor Docker)</strong>: el cual basado en la arquitectura de <strong>Cliente-Servidor</strong> (que pueden estar en la misma máquina, o en distintas), y realizada por mediante una <strong>API de REST</strong> que utiliza <strong>HTTP</strong>.<ul>
+<li><strong>API REST</strong>: interfaz de programación con un estilo de arquitectura software para sistemas hipermedia distribuidos como la World Wide Web.</li>
+</ul>
+</li>
+<li><strong>"Daemon Docker" (Servicio)</strong>: lleva a cabo Gestión y enlace de los componentes del gestor.</li>
+<li><strong>Imágenes</strong>: Las imágenes son una especie de plantillas que contienen como mínimo todo el software que necesita la aplicación para ponerse en marcha. están formadas por una colección ordenada de: <em>Sistemas Archivos</em>; <em>Repositorios</em>; <em>Comandos</em>; <em>Parámetros</em>; <em>Aplicaciones</em>.</li>
+<li><strong>Contenedores</strong>: son el conjunto de procesos que encapsulan e identifican a una Imagen. Pueden ser:<ul>
+<li>Creado, inicializado, parado, vuelto a ejecutar y destruido.</li>
+</ul>
+</li>
+<li><strong>Registros</strong> son imágenes son guardadas en registros para: Almacenar o Distribuir.<ul>
+<li>Se realiza en <strong>Docker Hub</strong> y pueden ser  Públicos y Privados.</li>
+</ul>
+</li>
+</ol>
+<figure>
+    <img src="imagenes/01/ComponentesDocker.png"/>
+    <figcaption>Componentes de Docker.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>El componente básico de Docker es el <strong>Docker Engine</strong>, pero Docker ofrece también una serie de herramientas para administrar, distribuir e instalar contenedores: <strong>Docker Compose</strong>, <strong>Docker Swarm</strong>.</li>
+<li>Las <strong>imágenes</strong> se pueden crear a partir de otras imágenes más básicas incluyendo software adicional en forma de capas. Todos los contenedores creados a partir de una imagen contienen el mismo software, aunque en el momento de su creación se pueden personalizar algunos detalles</li>
+</ul>
+</div>
+<h2 id="microservicios">Microservicios<a class="headerlink" href="#microservicios" title="Permanent link">&para;</a></h2>
+<p>Uno de los objetivos principales de la configuración e implantación con Docker es es solucionar los problemas de:</p>
+<ul>
+<li><strong><em>Errores de dependencias</em></strong> entre diferentes Sistemas Operativos de los trabajadores y máquinas de puesta en marcha.</li>
+<li>Evitar la <strong><em>Elevada carga y capacidad</em></strong> de las Máquinas Virtuales.</li>
+<li>
+<p>Caida de todos los servicios instalados de forma monolítica en los servidores.</p>
+</li>
+<li>
+<p>Tipos de despliegue:</p>
+<ul>
+<li><strong>Monolítico</strong> → Todos los servicios en la misma máquina.</li>
+<li><strong>SOA</strong> → Diferentes Máquinas una con cada Servicio conectadas</li>
+<li><strong>MicroServicios</strong> →División más pequeña de los servicios.</li>
+</ul>
+</li>
+</ul>
+<figure>
+    <img src="imagenes/01/Microservicios.png"/>
+    <figcaption>Momolítico Vs Microservicios.</figcaption>
+</figure>
+
+<h2 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h2>
+<p>Para la Instalación de <strong>Docker</strong> es recomendable seguir la documentación oficial. Además se recomienda Instalar máquina Ubuntu Server última versión e instalar Docker en ella.</p>
+<ul>
+<li>Docker for Mac:<ul>
+<li><strong><a href="https://docs.docker.com/docker-for-mac/install/">Instalación Mac</a></strong></li>
+</ul>
+</li>
+<li>Docker for Windows:<ul>
+<li><strong><a href="https://docs.docker.com/docker-for-windows/install/">Instalación Windows</a></strong></li>
+</ul>
+</li>
+<li>Docker for ubuntu:<ul>
+<li><strong><a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/">Instalación Ubuntu</a></strong></li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><strong>Docker</strong> empezó estando disponible solamente para distribuciones GNU/Linux, pero desde <strong>junio de 2016</strong> también está disponible como aplicación nativa en Windows Server 2016 y Windows 10.</li>
+<li><strong>Docker</strong> utiliza la virtualización ofrecida por el sistema operativo. En el caso de Windows 10, eso significa que para usar Docker de forma nativa hay que activar <strong>Hyper-V</strong> que, por desgracia, es incompatible con VirtualBox. Para poder utilizar Docker en Windows 7 o en Windows 10 sin <strong>Hyper-V</strong>, Docker ofrece desde agosto de 2015 <strong><a href="https://github.com/docker-archive/toolbox">Docker Toolbox</a></strong>, que realmente es una máquina virtual (que se ejecuta en VirtualBox) que contiene Docker.</li>
+</ul>
+</div>
+<h2 id="principales-comandos">Principales Comandos<a class="headerlink" href="#principales-comandos" title="Permanent link">&para;</a></h2>
+<p>A continuación se muestran los comandos más utilizados:</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker info</code></td>
+<td>obtener información relativa a docker</td>
+<td><code>docker start</code></td>
+<td>(docker container start) inicia la ejecución</td>
+</tr>
+<tr>
+<td><code>docker run</code></td>
+<td>(docker container run) crea y ejecuta el contenedor</td>
+<td><code>docker rm</code></td>
+<td>(docker container eliminar) elimina el contenedor</td>
+</tr>
+<tr>
+<td><code>docker build</code></td>
+<td>crea una imagen</td>
+<td><code>docker cp</code></td>
+<td>(docker container copiar)</td>
+</tr>
+<tr>
+<td><code>docker ps</code></td>
+<td>muestra la lista de contenedores creados</td>
+<td><code>docker logs</code></td>
+<td>(docker container logs) muestra los errores</td>
+</tr>
+<tr>
+<td><code>docker inspect</code></td>
+<td>(docker container inspect) información detallada de los contenedores</td>
+<td><code>docker stats</code></td>
+<td>(docker container stats) muestra el estado</td>
+</tr>
+<tr>
+<td><code>docker stop</code></td>
+<td>(docker container stop) detiene la ejecución del contenedor</td>
+<td><code>docker system prune</code></td>
+<td>limpiar todo el sistena de contenedores imágenes y volumenes</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><a href="https://dockerlabs.collabnix.com/docker/cheatsheet/">Chuleta de Comandos</a></strong></li>
+</ul>
+<figure>
+    <img src="imagenes/01/ChuletaComandos.png"/>
+    <figcaption>Chuleta Docker.</figcaption>
+</figure>
+
+<h2 id="primer-contenedor">Primer Contenedor<a class="headerlink" href="#primer-contenedor" title="Permanent link">&para;</a></h2>
+<p>A continuación se muestra un ejemplo guiado de la creación del contenedor <strong>"Hello World"</strong></p>
+<ol>
+<li>Comprobación que inicialmente no hay ningún contenedor creado (la opción <code>-a</code> hace que se muestren también los contenedores detenidos, sin ella se muestran sólo los contenedor que estén en marcha):</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker ps -a</span>
+</code></pre></div>
+o también</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker container ls -a</span>
+</code></pre></div>
+<ol start="2">
+<li>Compruebe que inicialmente tampoco disponemos de ninguna imagen:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker image ls</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Docker</strong> crea los contenedores a partir de imágenes locales (ya descargadas), pero si al crear el contenedor no se dispone de la imagen local, Docker descarga la imagen de su repositorio.</p>
+</div>
+<ol start="3">
+<li>La orden más simple para crear un contenedor sigue esta estructura:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker run IMAGEN</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker run hello-world</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Como no tenemos todavía la imagen en nuestro ordenador, <strong>Docker</strong> descarga la imagen, crea el contenedor y lo pone en marcha. En este caso, la aplicación que contiene el contenedor <strong>hello-world</strong> simplemente escribe un mensaje de salida al arrancar e inmediatamente se detiene el contenedor.</p>
+</div>
+<p>Si listamos de nuevo imagenes y contenedores, las veremos creadas.</p>
+<ul>
+<li>Cada contenedor tiene un <strong>identificador (ID)</strong> y un nombre distinto. Docker "bautiza" los contenedores con un "<strong>nombre peculiar</strong>", compuesto de un adjetivo y un apellido.</li>
+<li>Podemos crear <strong>tantos contenedores como queramos</strong> a partir de una imagen. Una vez la imagen está disponible localmente, Docker no necesita descargarla y el proceso de creación del contenedor es inmediato (aunque en el caso de <strong>hello-world</strong> la descarga es rápida, con imágenes más grandes la descarga inicial puede tardar un rato).</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul>
+<li>Normalmente se aconseja usar siempre la opción <code>-d</code>, que arranca el contenedor en segundo plano (<strong>detached</strong>) y permite seguir teniendo acceso a la shell (aunque con hello-world no es estrictamente necesario porque el contenedor hello-world se detiene automáticamente tras mostrar el mensaje).</li>
+<li>Al crear el contenedor hello-world con la opción <code>-d</code> no se muestra el mensaje, simplemente muestra el identificador completo del contenedor.</li>
+</ul>
+</div>
+<ul>
+<li>
+<p>Los contenedores se pueden destruir mediante el comando rm, haciendo referencia a ellos mediante su nombre o su id. <strong>No es necesario indicar el id completo</strong>, basta con escribir los primeros caracteres (de manera que no haya ambigüedades).</p>
+</li>
+<li>
+<p>Además podemos dar nombre a los contenedores al crearlos:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker run -d --name=hola-1 hello-world</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="012_PowerShell.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 1.2- PowerShell" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              1.2- PowerShell
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
