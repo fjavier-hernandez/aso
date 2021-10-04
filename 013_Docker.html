@@ -284,8 +284,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#virtualizacion-hipervisores" class="md-nav__link">
-    Virtualización: hipervisores
+  <a href="#virtualizacion-hipervisor" class="md-nav__link">
+    Virtualización: Hipervisor
   </a>
   
 </li>
@@ -323,8 +323,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#caracteristicas-principales-docker" class="md-nav__link">
-    Características principales Docker
+  <a href="#caracteristicas-principales-de-docker" class="md-nav__link">
+    Características principales de Docker
   </a>
   
 </li>
@@ -401,12 +401,12 @@
 <ul>
 <li>En <strong>2013</strong> se convirtió en un proyecto de <strong>software libre (licencia Apache)</strong> en el que participan cada vez más empresas. </li>
 <li>La <strong>versión 1.0</strong> se publicó en <strong>junio de 2014</strong> y ha tenido un desarrollo muy rápido.</li>
-<li>En marzo de <strong>2017</strong>, Docker anunció una desarrollo todavía más rápido, pasando a publicar una nueva versión cada mes. La numeración de las versiones adoptó al formato AA.MM (la primera fue <strong>Docker 17.03</strong>).</li>
-<li>En <strong>julio de 2018</strong>, Docker anunció que volvían a un desarrollo más pausado. A partir de <strong>Docker 18.09</strong> habría una versión "estable" cada seis meses</li>
+<li>En marzo de <strong>2017</strong>, Docker anunció un desarrollo todavía más rápido, pasando a publicar una nueva versión cada mes. La numeración de las versiones adoptó al formato AA.MM (la primera fue <strong>Docker 17.03</strong>).</li>
+<li>En <strong>julio de 2018</strong>, Docker anunció que volvían a un desarrollo más pausado. A partir de <strong>Docker 18.09</strong> habría una versión "estable" cada seis meses.</li>
 </ul>
 <h2 id="conceptos-previos">Conceptos Previos<a class="headerlink" href="#conceptos-previos" title="Permanent link">&para;</a></h2>
-<h3 id="virtualizacion-hipervisores">Virtualización: hipervisores<a class="headerlink" href="#virtualizacion-hipervisores" title="Permanent link">&para;</a></h3>
-<p>En general, el objetivo de la virtualización es poder utilizar simultáneamente en un mismo ordenador dos o más sistemas operativos.</p>
+<h3 id="virtualizacion-hipervisor">Virtualización: Hipervisor<a class="headerlink" href="#virtualizacion-hipervisor" title="Permanent link">&para;</a></h3>
+<p>En general, el objetivo de la virtualización es poder utilizar <strong>simultáneamente</strong> en un mismo ordenador dos o más sistemas operativos. Por lo tanto, para poder hablar de virtualización tienen que estar <strong>funcionando a la vez varios sistemas operativos</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
@@ -415,17 +415,16 @@
 </ul>
 </div>
 <ul>
-<li>Para poder hablar de virtualización tienen que estar <strong><em>funcionando a la vez varios sistemas operativos</em></strong>.</li>
 <li>Los sistemas operativos son los encargados de la gestión del hardware y requieren un control completo del mismo, por lo que dos sistemas operativos no pueden en principio estar funcionando a la vez sobre el mismo hardware.</li>
 <li>La solución para la virtualización es la existencia de un <strong>hipervisor</strong> (en inglés, hypervisor).</li>
 </ul>
 <h4 id="ventajas-virtualizacion">Ventajas Virtualización<a class="headerlink" href="#ventajas-virtualizacion" title="Permanent link">&para;</a></h4>
 <p>La virtualización tiene muchas aplicaciones interesantes:</p>
 <ul>
-<li>La más habitual es poder ejecutar aplicaciones que no están disponibles para el sistema operativo host, pero sí para otro sistema operativo que se instalaría como guest.</li>
-<li>La virtualización permite la conservación del software. Debido al progreso del hardware, los procesadores antiguos dejan de fabricarse y los sistemas operativos y aplicaciones antiguos dejan de desarrollarse y dejan de funcionar en el hardware moderno. Pero si el sistema operativo puede instalarse como guest, puede seguir utilizándose para siempre.</li>
-<li>La virtualización permite depurar y comprobar el funcionamiento de los programas y los sistemas operativos. Si un programa provoca un fallo de funcionamiento total, si se está ejecutando como guest, el sistema host puede recoger información sobre el motivo del fallo.</li>
-<li>La virtualización permite un mejor aprovechamiento del hardware, ya que un mismo ordenador puede contener muchos sistemas guests utilizados por usuarios diferentes, aislados unos de otros.</li>
+<li>La más habitual es <strong>poder ejecutar aplicaciones que no están disponibles para el sistema operativo host</strong>, pero sí para otro sistema operativo que se instalaría como guest.</li>
+<li>La virtualización permite <strong>la conservación del software</strong>. Debido al progreso del hardware, los procesadores antiguos dejan de fabricarse y los sistemas operativos y aplicaciones antiguos dejan de desarrollarse y dejan de funcionar en el hardware moderno. Pero si el sistema operativo puede instalarse como guest, puede seguir utilizándose para siempre.</li>
+<li>La virtualización <strong>permite depurar y comprobar el funcionamiento de los programas y los sistemas operativos</strong>. Si un programa provoca un fallo de funcionamiento total, si se está ejecutando como guest, el sistema host puede recoger información sobre el motivo del fallo.</li>
+<li>La virtualización permite un mejor <strong>aprovechamiento del hardware</strong>, ya que un mismo ordenador puede contener muchos sistemas guests utilizados por usuarios diferentes, aislados unos de otros.</li>
 </ul>
 <h4 id="hipervisor">Hipervisor<a class="headerlink" href="#hipervisor" title="Permanent link">&para;</a></h4>
 <p>El hipervisor es la pieza fundamental de la virtualización. Tradicionalmente, se distinguen dos tipos de hipervisores:</p>
@@ -447,17 +446,24 @@
 </div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><strong>VMware ESXi</strong> o <strong>Xen</strong> son hipervisores de <strong><em>tipo 1</em></strong>. <strong>Hyper-V</strong> de Microsoft se puede considerar un hipervisor de <strong><em>tipo 1</em></strong>, porque aunque necesita que esté instalado primero Windows para poder instalar <strong>Hyper-V</strong>, una vez instalado convierte a Windows en un guest más de <strong>Hyper-V</strong> (aunque con acceso prioritario con respecto al resto de guests). <strong>KVM</strong>, al estar integrado en el kernel de Linux, se puede considerar tanto de <strong><em>tipo 1</em></strong> como de <strong><em>tipo 2</em></strong>. <strong>VirtualBox</strong> es un hipervisor de <strong><em>tipo 2</em></strong>.</p>
+<ul>
+<li><strong>Tipo 1</strong>: ejemplos de este tipo de hipervisores son <em>VMware ESXi</em> o <em>Xen</em>, los cuales son utilizados a nivel de centro de datos. <strong>Hyper-V</strong> de Microsoft se puede considerar un hipervisor de <strong><em>tipo 1</em></strong>, porque aunque necesita que esté instalado primero Windows para poder instalar <em>Hyper-V</em>, una vez instalado convierte a Windows en un guest más de <strong>Hyper-V</strong> (aunque con acceso prioritario con respecto al resto de guests). </li>
+<li><strong>Tipo 1</strong>/<strong>Tipo 2</strong>: <em>KVM</em>, al estar integrado en el kernel de Linux, se puede considerar tanto de <strong><em>tipo 1</em></strong> como de <strong><em>tipo 2</em></strong>. </li>
+<li><strong>Tipo 2</strong>: <em>VirtualBox</em> es un hipervisor de <strong><em>tipo 2</em></strong>.</li>
+</ul>
 </div>
 <h2 id="contenedores">Contenedores<a class="headerlink" href="#contenedores" title="Permanent link">&para;</a></h2>
 <p>El problema de los hipervisores y las máquinas virtuales es que cada máquina virtual es independiente de las demás. Al no reutilizarse ningún componente, se ocupa <strong>mucho espacio tanto en disco como en memoria</strong> y el <strong>tiempo de ejecución siempre será mayor</strong> que si sólo hubiera un sistema operativo (sobre todo en el caso de <strong>hipervisores de tipo 2</strong>).</p>
-<p>Para resolver este problema se crearon los <strong>contenedores</strong> en los que se utilizan mecanismos existentes en el sistema operativo para aislar las aplicaciones, pero compartiendo el mayor número posible de componentes del sistema operativo o incluso de las aplicaciones.</p>
-<p><strong>Un contenedor</strong> es el equivalente a una máquina virtual de la virtualización clásica, pero mucho más ligera porque utiliza recursos del sistema operativo del host. Las aplicaciones de cada contenedor "ven" un sistema operativo, que puede ser diferente en cada contenedor, pero quien realiza el trabajo es el sistema operativo común que hay por debajo.</p>
+<p>Para resolver este problema se crearon los <strong>contenedores</strong> en los que se <strong>utilizan mecanismos existentes en el sistema operativo para aislar las aplicaciones</strong>, pero compartiendo el mayor número posible de componentes del sistema operativo o incluso de las aplicaciones.</p>
+<ul>
+<li>Como definición, <strong>Un contenedor</strong> es el equivalente a una máquina virtual de la virtualización clásica, pero mucho <strong>más ligera porque utiliza recursos del sistema operativo del hos</strong>t. </li>
+<li>Las aplicaciones de cada contenedor "ven" un sistema operativo, que puede ser diferente en cada contenedor, pero quien <strong>realiza el trabajo es el sistema operativo común que hay por debajo</strong>.</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
-<li><strong>Los contenedores</strong> suelen ser elementos efímeros. La facilidad con la que pueden crearse y ponerse en marcha hace más fácil crear un nuevo contenedor que modificar uno ya existente. Por ello, los datos generados por las aplicaciones no se suelen guardar en los contenedores, sino fuera de ellos. </li>
-<li>Su ligereza hace más fácil tener varios contenedores con una aplicación en cada uno de ellos que tener un único contenedor con varias aplicaciones en él. Por ello, un aspecto importante de los contenedores es su orquestación, es decir, la administración simultánea de muchos contenedores, una de las herramientas más utilizadas es <strong><a href="https://kubernetes.io/es/">Kubernetes</a></strong>.</li>
+<li><strong>Los contenedores</strong> suelen ser elementos <strong>efímeros</strong>. La facilidad con la que pueden crearse y ponerse en marcha hace más fácil crear un nuevo contenedor que modificar uno ya existente. Por ello, los datos generados por las aplicaciones no se suelen guardar en los contenedores, sino fuera de ellos. </li>
+<li>Su ligereza hace más fácil tener varios contenedores con una aplicación en cada uno de ellos que tener un único contenedor con varias aplicaciones en él. Por ello, un <strong>aspecto importante de los contenedores es su orquestación</strong>, es decir, la administración simultánea de muchos contenedores, una de las herramientas más utilizadas es <strong><a href="https://kubernetes.io/es/">Kubernetes</a></strong>.</li>
 </ul>
 </div>
 <h3 id="maquinas-virtuales-vs-contenedores">Máquinas Virtuales VS Contenedores<a class="headerlink" href="#maquinas-virtuales-vs-contenedores" title="Permanent link">&para;</a></h3>
@@ -471,33 +477,31 @@
 <ul>
 <li>Consisten en <strong>Agrupar y Aislar Aplicaciones o grupos de aplicaciones que se ejecutan sobre un mismo núcleo de sistema operativo</strong>.</li>
 <li>Su característica principal se basa en su <strong>propio sistema de archivos ejecutable en cualquier Sistema Operativo</strong>.</li>
-<li>No es necesario emular el <em>HW</em> y <em>SW</em> completo como en las máquinas virtuales, por lo tanto son mucho más <strong>ligeros</strong>.</li>
-<li>Soluciona problemas de espacio y compatibilidades a la hora de puesta en marcha en servidores de producción.</li>
-<li>La ventaja de los contenedores es su ligereza, puesto que comparten el máximo de componentes con el sistema operativo host, y su rapidez, ya que gracias a que apenas añaden capas adicionales consiguen casi velocidades nativas.</li>
-<li>Los contenedores suelen ser elementos efímeros. La facilidad con la que pueden crearse y ponerse en marcha hace más fácil crear un nuevo contenedor que modificar uno ya existente. Por ello, los datos generados por las aplicaciones no se suelen guardar en los contenedores, sino fuera de ellos. </li>
+<li>No es necesario emular el <em>HW</em> y <em>SW</em> completo como en las máquinas virtuales, por lo tanto son mucho más <strong>ligeros</strong>, comparten el máximo de componentes con el sistema operativo host, y su rapidez, ya que gracias a que apenas añaden capas adicionales consiguen casi velocidades nativas.</li>
+<li>Soluciona problemas de <strong>espacio y compatibilidades a la hora de puesta en marcha</strong> en servidores de producción.</li>
+<li>Los contenedores suelen ser elementos <strong>efímeros</strong>.</li>
 </ul>
-<h2 id="caracteristicas-principales-docker">Características principales Docker<a class="headerlink" href="#caracteristicas-principales-docker" title="Permanent link">&para;</a></h2>
-<figure style="float: right;">
-    <img src="imagenes/01/DockerLema.png" width="500"/>
-    <figcaption>Lema Docker.</figcaption>
-</figure>
-
+<h2 id="caracteristicas-principales-de-docker">Características principales de Docker<a class="headerlink" href="#caracteristicas-principales-de-docker" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Docker es una API amigable del tipo <strong>Open Source</strong>.</li>
 <li>Genera un <strong>proceso aislado</strong> del resto de los procesos de la máquina gracias a: Ejecutar sobre su propio sistema de ficheros, con su propio espacio de usuarios y procesos, y sus propias interfaces de red... </li>
-<li>Es por ello que a veces se dice que un contenedor es una <strong>máquina virtual ligera</strong></li>
 <li>Es <strong>Modular</strong> ya que esta dividido en varios componentes.</li>
 <li>Es <strong>portable e inmutable</strong> utilizando la plataforma <strong>DockerHub</strong>.</li>
 <li>Su es lema <strong><em>“Build, Ship and Run, any app,”</em></strong>.</li>
 </ul>
+<figure>
+    <img src="imagenes/01/DockerLema.png" width="700"/>
+    <figcaption>Lema Docker.</figcaption>
+</figure>
+
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Aunque un contenedor puede incluir cualquier número de aplicaciones, lo habitual es que un contenedor contenga una sola aplicación (y los programas necesarios para ponerse en marcha). </p>
+<p>Aunque un contenedor puede incluir cualquier número de aplicaciones, lo habitual es que un contenedor <strong>contenga una sola aplicación</strong> (y los programas necesarios para ponerse en marcha). </p>
 </div>
 <h2 id="arquitectura-docker">Arquitectura Docker<a class="headerlink" href="#arquitectura-docker" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Docker Engine ("Motor" del Gestor Docker)</strong>: el cual basado en la arquitectura de <strong>Cliente-Servidor</strong> (que pueden estar en la misma máquina, o en distintas), y realizada por mediante una <strong>API de REST</strong> que utiliza <strong>HTTP</strong>.<ul>
-<li><strong>API REST</strong>: interfaz de programación con un estilo de arquitectura software para sistemas hipermedia distribuidos como la World Wide Web.</li>
+<li><strong>API REST</strong>: interfaz de programación con un estilo de arquitectura software para sistemas hipermedia distribuidos como la <em>World Wide Web</em>.</li>
 </ul>
 </li>
 <li><strong>"Daemon Docker" (Servicio)</strong>: lleva a cabo Gestión y enlace de los componentes del gestor.</li>
@@ -526,8 +530,8 @@
 <h2 id="microservicios">Microservicios<a class="headerlink" href="#microservicios" title="Permanent link">&para;</a></h2>
 <p>Uno de los objetivos principales de la configuración e implantación con Docker es es solucionar los problemas de:</p>
 <ul>
-<li><strong><em>Errores de dependencias</em></strong> entre diferentes Sistemas Operativos de los trabajadores y máquinas de puesta en marcha.</li>
-<li>Evitar la <strong><em>Elevada carga y capacidad</em></strong> de las Máquinas Virtuales.</li>
+<li><strong>Errores de dependencias</strong> entre diferentes Sistemas Operativos de los trabajadores y máquinas de puesta en marcha.</li>
+<li>Evitar la <strong>Elevada carga y capacidad</strong> de las Máquinas Virtuales.</li>
 <li>
 <p>Caida de todos los servicios instalados de forma monolítica en los servidores.</p>
 </li>
@@ -535,7 +539,7 @@
 <p>Tipos de despliegue:</p>
 <ul>
 <li><strong>Monolítico</strong> → Todos los servicios en la misma máquina.</li>
-<li><strong>SOA</strong> → Diferentes Máquinas una con cada Servicio conectadas</li>
+<li><strong>SOA (Service Oriented Architecture)</strong> → Diferentes Máquinas una con cada Servicio conectadas.</li>
 <li><strong>MicroServicios</strong> →División más pequeña de los servicios.</li>
 </ul>
 </li>
