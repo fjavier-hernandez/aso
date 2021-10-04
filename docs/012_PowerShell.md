@@ -563,3 +563,26 @@ Si se necesita que las funciones estén disponibles durante la sesión del usuar
 
 119. Diseña un script PowerShell que lea un vector con 365 temperaturas y calcule la media y cuantos días han estado por encima y cuantos por debajo de ella. Rellena el vector con valores aleatorios entre -5 y 35, para ello usa Get-Random.
 
+### Actividades de desarrollo UD1_05
+
+120. Crea un script PowerShell que rellene un vector con diez números de **forma aleatoria** y que los **muestre** por pantalla de la siguiente forma:
+    * en **orden inverso** a como han sido introducidos los valores.
+    * los valores ordenados de **menor a mayor** en una sola línea.
+    * los valores ordenados de **mayor a menor** en una sola línea la suma total de sus valores.
+    * cantidad de valores pares que contiene el vector.
+    * la **suma total** de números impares.
+    * la **media aritmética** de los valores que contiene el vector.
+
+121. Crea un script PowerShell para que haga una **copias de seguridad** de todos los archivos del directorio de trabajo del usuario actual. Deberá realizar las siguientes acciones:
+    * **comprobará** si el archivo ya existe en la copia de seguridad, si es así comprobará cual de los dos es más reciente y que tamaño tienen. Si es más reciente o posee un tamaño mayor, lo copiará. En cualquier otro caso, no lo copia.
+    * llevará un **registro** de todos los archivos copiados cada vez que se ejecute mediante un archivo de bitácora. Guarda este fichero el directorio que contiene el script.
+
+Crea una **función** para cada tarea realizada en este script.
+
+122. Diseña un script PowerShell que muestre un menú al usuario con cuatro operaciones disponibles: **Crear directorio, Eliminar directorio, Mostrar directorio, Informe de directorio, Copia de directorio y Salir**. Una vez elegida una opción correcta, el programa debe **solicitar un nombre de directorio** y hacer la operación seleccionada. Tras esto debe mostrar un mensaje con el resultado de la operación. Crea una función para cada una de estas opciones.
+    * Si se elige la opción **Informe de directorio**, mostrará por pantalla el número de ficheros que contiene, cuantos son carpetas, cuantos directorios y el tamaño total de ellos. Si la carpeta no existe, mostrará un error.
+    * Si elige la opción **Copia de directorio**, preguntará la carpeta de destino y mostrará fichero a fichero la copia.
+
+123. Realiza un script PowerShell que permita crear un informe de las IP libres en la red en la que se encuentra el equipo. Debe contener las siguientes opciones:
+    * **el informe contendrá** un listado de todas las IP de la red a la que pertenece el equipo indicando si está libre o no (usa el comando ping).
+    * en el informe debe aparecer el **tipo de red** (A, B o C) en el que está inmerso el ordenador con el **nombre de la red, su broadcast y su máscara de subred.**
