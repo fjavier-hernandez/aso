@@ -258,7 +258,7 @@ Docker simplifica enormemente la creación de contenedores, y eso lleva a tratar
 !!! Note
     Los volúmenes son independientes de los contenedores, por lo que también podemos conservar los datos aunque se destruya el contenedor, reutilizarlos con otro contenedor, etc.
 
-### Opciones y ejemplo de Volumen
+### Opciones y ejemplo
 
 * Opciones:
 
