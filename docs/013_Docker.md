@@ -230,3 +230,267 @@ Si listamos de nuevo imagenes y contenedores, las veremos creadas.
 ``` yaml
 sudo docker run -d --name=hola-1 hello-world
 ```
+
+## Volúmenes
+
+Docker simplifica enormemente la creación de contenedores, y eso lleva a tratar los contenedores como un **elemento efímero**, que se crea cuando se necesita y que no importa que se destruya puesto que puede ser reconstruido una y otra vez a partir de su imagen.
+
+!!! warning
+    Pero si la aplicación o aplicaciones incluidas en el contenedor generan datos y esos datos se guardan en el propio contenedor, en el **momento en que se destruyera el contenedor perderíamos esos datos**.
+
+* **El objetivo principal** de los volumenes es **no perder datos si borro el contenedor y mejorar rendimiento del Docker**.  Para conseguir la persistencia de los datos, se pueden emplear dos técnicas:
+
+    1. **Los directorios enlazados (bind)**, en la que la información se guarda fuera de Docker, en la máquina host (por ejemplo si lo ejecutamos en la máquina virtual de Ubuntu o la máquina física de Lliurex en clase).
+
+    2. **Los volúmenes**, en la que la información se guarda mediante Docker, pero en unos elementos llamados ***volúmenes***, independientes de las imágenes y los contenedores. Además los volumens se pueden catalogar en dos tipos.
+
+        1. **Volúmenes de Datos**: es como si montará un disco en el contenedor y por defecto se realizan en un path temporal.
+        2. **Volúmenes de Host**: Mismo concepto pero indicándole el path.
+
+!!! Tip
+    Aconsejable utilizar la técnica de ***volumenes***, ya que, La ventaja frente a los directorios enlazados es que pueden ser gestionados por Docker. Otro detalle importante es que el acceso al contenido de los volúmenes sólo se puede hacer a través de algún contenedor que utilice el volumen.
+
+<figure>
+    <img src="imagenes/01/VolumeDocker.png"/>
+    <figcaption>Gráfico técnicas de persistencia de datos.</figcaption>
+</figure>
+
+!!! Note
+    Los volúmenes son independientes de los contenedores, por lo que también podemos conservar los datos aunque se destruya el contenedor, reutilizarlos con otro contenedor, etc.
+
+### Opciones y ejemplo de Volumen
+
+* Opciones:
+
+`Docker volume (create|Is|inspect|rm)`
+
+!!! Example Volumen
+    ```yaml
+    sudo docker run -d -P --name=apache-volume-1 \
+    --mount type=volume,source=vol-apache,target=/app \
+    bitnami/apache
+    ```
+
+!!! Note
+    * La opción `--mount` permite crear el volumen. La opción tiene tres argumentos separados por comas pero sin espacios: `type=volume,source=NOMBRE-DEL-VOLUMEN,target=DESTINO-EN-CONTENEDOR`. El directorio de destino debe existir previamente.
+    * la opción `-P` hace que Docker asigne de forma aleatoria un puerto de la máquina virtual al puerto asignado a Apache en el contenedor. La imagen bitnami/apache asigna a Apache el puerto 8080 del contenedor para conexiones http y el puerto 8443 para conexiones https.
+
+* Si se creara una página de incio del apache diferente a la de defecto podríamos copiarla en el volumen y esta cambiaría:
+
+```yaml
+nano index.html
+```
+
+* Nueva página de inicio:
+
+``` yaml
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Apache en Docker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <h1>¡Hola de nuevo, Mundo!</h1>
+</body>
+</html>
+```
+
+* Para cambiar la página de inicio del apache se debe copiar dentro del volumen creado.
+```yaml
+sudo docker cp index.html apache-volume-1:app/
+```
+
+* Si accedemos al servidor apache aparecerá la nueva página. Además podemos crear un nuevo contenedor con este volumen:
+``` yaml
+sudo docker run -d -P --name=apache-volume-2 \
+--mount type=volume,source=vol-apache,target=/app \
+bitnami/apache
+```
+
+!!! Warning 
+    Si se intenta borrar el volumen del ejemplo anterior mientras los contenedores están en marcha, Docker muestra un **mensaje de error que indica los contenedores afectados**.
+
+
+## Redes
+
+Cuando se crean diferentes servicios o aplicaciones en contenedores distintos (siguiendo la premisa de microservicios), estos no estas conectados entre sí, en el caso que necesitarán conexión se utilizarían "redes Docker". Este mecanismo funciona de manera distinta según la red docker donde estén conectados los contenedores.
+
+<figure>
+    <img src="imagenes/01/NetworkDocker.png" width="450"/>
+    <figcaption>Representación Redes Docker.</figcaption>
+</figure>
+
+### Opciones y tipos
+
+* Opciones:
+
+`docker network (create | Is | inspect | rm)`
+
+A continuación se introducen los distintos tipos de redes que nos ofrece docker:
+
+* **Bridge** → por defecto. Todos los contenedores están en la misma red, separada del Host.
+* **Host** → Cuando quiero que los contenedores estén en mi misma red.
+* **None** → contenedores aislados.
+
+<figure>
+    <img src="imagenes/01/GraficoRedDocker.png" width="750"/>
+    <figcaption>Escenario de ejemplo de una Red Docker.</figcaption>
+</figure>
+
+!!! warning
+    El uso de contenedores conectados a la red por defecto no está recomendado en entornos de producción. se podrían enlazar contenedores con el bridge por defecto con el flag `--link`.
+
+!!! Tip
+    La opción recomendable es definir una red bridge y crear los contenedores conectados a dicha red. El mayor problema es que ambos contenedores compartirían las variables de entorno y esto puede causar problemas de desarrollo.
+
+* Por ejemplo:
+``` yaml
+docker network create mired
+```
+
+* Se crean los contenedores conectados a dicha red:
+``` yaml
+docker run -d --name servidor_mysql --network mired \
+-e MYSQL_DATABASE=bd_wp -e MYSQL_USER=user_wp -e MYSQL_PASSWORD=asdasd \
+-e MYSQL_ROOT_PASSWORD=asdasd mariadb
+docker run -d --name servidor --network mired josedom24/aplicacionweb:v1
+```
+
+!!! Note
+    En este caso no se comparten las variables de entorno.
+
+## Tools
+
+Existen dos opciones destacables en Docker para agilizar el despliegue de Imagenes y contenedores: Dockerfile y Docker-compose
+
+* **Dockerfile**: es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.
+
+!!! Summary
+    Imágenes→ docker build → docker_file
+
+* **Docker-compose**: es una herramienta que permite simplificar el uso de Docker. A partir de archivos YAML es mas sencillo crear contendores, conectarlos, habilitar puertos, volumenes, etc.
+
+!!! Summary
+    Contenedores→ docker run → docker_compose.yml
+
+### Dockerfile
+
+Las instrucciones principales que pueden utilizarse en un Dockerfile son:
+
+<figure>
+    <img src="imagenes/01/InstruccionesDockefile.png" width="850"/>
+</figure>
+
+* Ver también: [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+
+!!! Example
+    A continuación se muestra un ejemplo para la realización de la práctica de ampliación extraido de [Apache oficial de docker](https://hub.docker.com/_/httpd).
+
+1. **Primer paso**: generar imagen con un **Dockerfile**.
+
+* Se crea el archivo de texto dockerfile.
+```yaml
+mkdir docker
+touch dockerfile
+nano dockerfile
+```
+
+* Se edita el dockerfile.
+``` yaml
+docker build -t javier/my-apache2 .
+docker run -dit --name my-running-app -p 8080:80 my-apache2
+```
+
+!!! Warning
+    * **Mucho cuidado** con el último punto de la instucción de build, tiene un espacio antes. Es el último argumento (y el único imprescindible) es el nombre del archivo Dockerfile que tiene que utilizar para generar la imagen. Como en este caso se encuentra en el mismo directorio y tiene el nombre predeterminado Dockerfile, se puede escribir simplemente punto (`.`).
+    * Para indicar el nombre de la imagen se debe añadir la opción `-t`. El nombre de la imagen debe seguir el patrón `nombre-de-usuario/nombre-de-imagen`. Si la imagen sólo se va a utilizar localmente, el nombre de usuario y de la imagen pueden ser cualquier palabra.
+
+2. **Segundo paso**: subir imagen al Docker Hub.
+
+* Se debe generar una cuenta de Docker Hub con la cuenta corporativa de Office 365: [Sign Up](https://hub.docker.com/signup)
+* Con el comando `docker login`, se realiza el acceso a la plataforma desde el terminal:
+``` yaml
+docker login
+```
+
+* Con el comando `docker push`, se realiza el "Upload" de la imagen.
+
+``` yaml
+docker push javier/my-apache2
+```
+
+* Por último Se debe comprobar accediendo a la platadorma de Docker Hub.
+
+<figure>
+    <img src="imagenes/01/DockerHub.png"/>
+</figure>
+
+
+### Docker-compose
+
+* **Docker-compose** es otro proyecto open source que permite definir aplicaciones muilti-contenedor de una manera sencilla y declarativa.
+
+* Es una alternativa más cómoda al uso de los comandos docker run y docker build, que resultan un tanto tediosos cuando trabajamos con aplicaciones de varios componentes.
+
+* Se define un fichero `docker-compose.yml` que se puede observar en el ejemplo realizado en la práctica en el último apartado.
+
+!!! Example
+    A continuación se muestra un ejemplo para la realización de la práctica de ampliación: [Instalación Wordpress](https://docs.docker.com/samples/wordpress/)
+
+1. **Primer Paso**: instalación de Docker-compose.
+
+* [Install Docker Compose](https://docs.docker.com/compose/install/)
+
+2. **Segundo paso**: Crear directorio del proyecto y dentro el archivo `yaml`.
+
+```yaml
+mkdir my_wordpress
+touch docker-compose.yml
+nano dockerfile
+```
+3. **Tercer paso**: se edita el `yaml`.
+
+``` yaml
+version: "3.9"
+    
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    volumes:
+      - wordpress_data:/var/www/html
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+volumes:
+  db_data: {}
+  wordpress_data: {}
+```
+
+4. **Cuarto paso**: en la carpeta creada del proyecto se ejecuta el comando de `docker-compose up -d`
+
+``` yaml
+docker-compose up -d
+```
+
+* Por último Se comprueba que se ha creado el contenedor.

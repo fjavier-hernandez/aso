@@ -364,6 +364,73 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#volumenes" class="md-nav__link">
+    Volúmenes
+  </a>
+  
+    <nav class="md-nav" aria-label="Volúmenes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opciones-y-ejemplo-de-volumen" class="md-nav__link">
+    Opciones y ejemplo de Volumen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redes" class="md-nav__link">
+    Redes
+  </a>
+  
+    <nav class="md-nav" aria-label="Redes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opciones-y-tipos" class="md-nav__link">
+    Opciones y tipos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    Tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    Dockerfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    Docker-compose
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -685,6 +752,297 @@ o también</p>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker run -d --name=hola-1 hello-world</span>
 </code></pre></div>
+<h2 id="volumenes">Volúmenes<a class="headerlink" href="#volumenes" title="Permanent link">&para;</a></h2>
+<p>Docker simplifica enormemente la creación de contenedores, y eso lleva a tratar los contenedores como un <strong>elemento efímero</strong>, que se crea cuando se necesita y que no importa que se destruya puesto que puede ser reconstruido una y otra vez a partir de su imagen.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Pero si la aplicación o aplicaciones incluidas en el contenedor generan datos y esos datos se guardan en el propio contenedor, en el <strong>momento en que se destruyera el contenedor perderíamos esos datos</strong>.</p>
+</div>
+<ul>
+<li>
+<p><strong>El objetivo principal</strong> de los volumenes es <strong>no perder datos si borro el contenedor y mejorar rendimiento del Docker</strong>.  Para conseguir la persistencia de los datos, se pueden emplear dos técnicas:</p>
+<ol>
+<li>
+<p><strong>Los directorios enlazados (bind)</strong>, en la que la información se guarda fuera de Docker, en la máquina host (por ejemplo si lo ejecutamos en la máquina virtual de Ubuntu o la máquina física de Lliurex en clase).</p>
+</li>
+<li>
+<p><strong>Los volúmenes</strong>, en la que la información se guarda mediante Docker, pero en unos elementos llamados <strong><em>volúmenes</em></strong>, independientes de las imágenes y los contenedores. Además los volumens se pueden catalogar en dos tipos.</p>
+<ol>
+<li><strong>Volúmenes de Datos</strong>: es como si montará un disco en el contenedor y por defecto se realizan en un path temporal.</li>
+<li><strong>Volúmenes de Host</strong>: Mismo concepto pero indicándole el path.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Aconsejable utilizar la técnica de <strong><em>volumenes</em></strong>, ya que, La ventaja frente a los directorios enlazados es que pueden ser gestionados por Docker. Otro detalle importante es que el acceso al contenido de los volúmenes sólo se puede hacer a través de algún contenedor que utilice el volumen.</p>
+</div>
+<figure>
+    <img src="imagenes/01/VolumeDocker.png"/>
+    <figcaption>Gráfico técnicas de persistencia de datos.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Los volúmenes son independientes de los contenedores, por lo que también podemos conservar los datos aunque se destruya el contenedor, reutilizarlos con otro contenedor, etc.</p>
+</div>
+<h3 id="opciones-y-ejemplo-de-volumen">Opciones y ejemplo de Volumen<a class="headerlink" href="#opciones-y-ejemplo-de-volumen" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Opciones:</li>
+</ul>
+<p><code>Docker volume (create|Is|inspect|rm)</code></p>
+<div class="admonition example volumen">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker run -d -P --name=apache-volume-1 \</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">--mount type=volume,source=vol-apache,target=/app \</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">bitnami/apache</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>La opción <code>--mount</code> permite crear el volumen. La opción tiene tres argumentos separados por comas pero sin espacios: <code>type=volume,source=NOMBRE-DEL-VOLUMEN,target=DESTINO-EN-CONTENEDOR</code>. El directorio de destino debe existir previamente.</li>
+<li>la opción <code>-P</code> hace que Docker asigne de forma aleatoria un puerto de la máquina virtual al puerto asignado a Apache en el contenedor. La imagen bitnami/apache asigna a Apache el puerto 8080 del contenedor para conexiones http y el puerto 8443 para conexiones https.</li>
+</ul>
+</div>
+<ul>
+<li>Si se creara una página de incio del apache diferente a la de defecto podríamos copiarla en el volumen y esta cambiaría:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">nano index.html</span>
+</code></pre></div>
+<ul>
+<li>Nueva página de inicio:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">&lt;html lang=&quot;es&quot;&gt;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">&lt;head&gt;</span>
+<span class="linenos" data-linenos=" 4 "></span>  <span class="l l-Scalar l-Scalar-Plain">&lt;meta charset=&quot;utf-8&quot;&gt;</span>
+<span class="linenos" data-linenos=" 5 "></span>  <span class="l l-Scalar l-Scalar-Plain">&lt;title&gt;Apache en Docker&lt;/title&gt;</span>
+<span class="linenos" data-linenos=" 6 "></span>  <span class="l l-Scalar l-Scalar-Plain">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="l l-Scalar l-Scalar-Plain">&lt;/head&gt;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">&lt;body&gt;</span>
+<span class="linenos" data-linenos="10 "></span>  <span class="l l-Scalar l-Scalar-Plain">&lt;h1&gt;¡Hola de nuevo, Mundo!&lt;/h1&gt;</span>
+<span class="linenos" data-linenos="11 "></span><span class="l l-Scalar l-Scalar-Plain">&lt;/body&gt;</span>
+<span class="linenos" data-linenos="12 "></span><span class="l l-Scalar l-Scalar-Plain">&lt;/html&gt;</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Para cambiar la página de inicio del apache se debe copiar dentro del volumen creado.
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker cp index.html apache-volume-1:app/</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Si accedemos al servidor apache aparecerá la nueva página. Además podemos crear un nuevo contenedor con este volumen:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker run -d -P --name=apache-volume-2 \</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">--mount type=volume,source=vol-apache,target=/app \</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">bitnami/apache</span>
+</code></pre></div></p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Si se intenta borrar el volumen del ejemplo anterior mientras los contenedores están en marcha, Docker muestra un <strong>mensaje de error que indica los contenedores afectados</strong>.</p>
+</div>
+<h2 id="redes">Redes<a class="headerlink" href="#redes" title="Permanent link">&para;</a></h2>
+<p>Cuando se crean diferentes servicios o aplicaciones en contenedores distintos (siguiendo la premisa de microservicios), estos no estas conectados entre sí, en el caso que necesitarán conexión se utilizarían "redes Docker". Este mecanismo funciona de manera distinta según la red docker donde estén conectados los contenedores.</p>
+<figure>
+    <img src="imagenes/01/NetworkDocker.png" width="450"/>
+    <figcaption>Representación Redes Docker.</figcaption>
+</figure>
+
+<h3 id="opciones-y-tipos">Opciones y tipos<a class="headerlink" href="#opciones-y-tipos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Opciones:</li>
+</ul>
+<p><code>docker network (create | Is | inspect | rm)</code></p>
+<p>A continuación se introducen los distintos tipos de redes que nos ofrece docker:</p>
+<ul>
+<li><strong>Bridge</strong> → por defecto. Todos los contenedores están en la misma red, separada del Host.</li>
+<li><strong>Host</strong> → Cuando quiero que los contenedores estén en mi misma red.</li>
+<li><strong>None</strong> → contenedores aislados.</li>
+</ul>
+<figure>
+    <img src="imagenes/01/GraficoRedDocker.png" width="750"/>
+    <figcaption>Escenario de ejemplo de una Red Docker.</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>El uso de contenedores conectados a la red por defecto no está recomendado en entornos de producción. se podrían enlazar contenedores con el bridge por defecto con el flag <code>--link</code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>La opción recomendable es definir una red bridge y crear los contenedores conectados a dicha red. El mayor problema es que ambos contenedores compartirían las variables de entorno y esto puede causar problemas de desarrollo.</p>
+</div>
+<ul>
+<li>
+<p>Por ejemplo:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker network create mired</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Se crean los contenedores conectados a dicha red:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker run -d --name servidor_mysql --network mired \</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-e MYSQL_DATABASE=bd_wp -e MYSQL_USER=user_wp -e MYSQL_PASSWORD=asdasd \</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">-e MYSQL_ROOT_PASSWORD=asdasd mariadb</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">docker run -d --name servidor --network mired josedom24/aplicacionweb:v1</span>
+</code></pre></div></p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>En este caso no se comparten las variables de entorno.</p>
+</div>
+<h2 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h2>
+<p>Existen dos opciones destacables en Docker para agilizar el despliegue de Imagenes y contenedores: Dockerfile y Docker-compose</p>
+<ul>
+<li><strong>Dockerfile</strong>: es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.</li>
+</ul>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
+<p>Imágenes→ docker build → docker_file</p>
+</div>
+<ul>
+<li><strong>Docker-compose</strong>: es una herramienta que permite simplificar el uso de Docker. A partir de archivos YAML es mas sencillo crear contendores, conectarlos, habilitar puertos, volumenes, etc.</li>
+</ul>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
+<p>Contenedores→ docker run → docker_compose.yml</p>
+</div>
+<h3 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
+<p>Las instrucciones principales que pueden utilizarse en un Dockerfile son:</p>
+<figure>
+    <img src="imagenes/01/InstruccionesDockefile.png" width="850"/>
+</figure>
+
+<ul>
+<li>Ver también: <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles</a></li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>A continuación se muestra un ejemplo para la realización de la práctica de ampliación extraido de <a href="https://hub.docker.com/_/httpd">Apache oficial de docker</a>.</p>
+</div>
+<ol>
+<li><strong>Primer paso</strong>: generar imagen con un <strong>Dockerfile</strong>.</li>
+</ol>
+<ul>
+<li>
+<p>Se crea el archivo de texto dockerfile.
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">mkdir docker</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">touch dockerfile</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">nano dockerfile</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Se edita el dockerfile.
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker build -t javier/my-apache2 .</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">docker run -dit --name my-running-app -p 8080:80 my-apache2</span>
+</code></pre></div></p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><strong>Mucho cuidado</strong> con el último punto de la instucción de build, tiene un espacio antes. Es el último argumento (y el único imprescindible) es el nombre del archivo Dockerfile que tiene que utilizar para generar la imagen. Como en este caso se encuentra en el mismo directorio y tiene el nombre predeterminado Dockerfile, se puede escribir simplemente punto (<code>.</code>).</li>
+<li>Para indicar el nombre de la imagen se debe añadir la opción <code>-t</code>. El nombre de la imagen debe seguir el patrón <code>nombre-de-usuario/nombre-de-imagen</code>. Si la imagen sólo se va a utilizar localmente, el nombre de usuario y de la imagen pueden ser cualquier palabra.</li>
+</ul>
+</div>
+<ol start="2">
+<li><strong>Segundo paso</strong>: subir imagen al Docker Hub.</li>
+</ol>
+<ul>
+<li>Se debe generar una cuenta de Docker Hub con la cuenta corporativa de Office 365: <a href="https://hub.docker.com/signup">Sign Up</a></li>
+<li>
+<p>Con el comando <code>docker login</code>, se realiza el acceso a la plataforma desde el terminal:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker login</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Con el comando <code>docker push</code>, se realiza el "Upload" de la imagen.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker push javier/my-apache2</span>
+</code></pre></div>
+<ul>
+<li>Por último Se debe comprobar accediendo a la platadorma de Docker Hub.</li>
+</ul>
+<figure>
+    <img src="imagenes/01/DockerHub.png"/>
+</figure>
+
+<h3 id="docker-compose">Docker-compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Docker-compose</strong> es otro proyecto open source que permite definir aplicaciones muilti-contenedor de una manera sencilla y declarativa.</p>
+</li>
+<li>
+<p>Es una alternativa más cómoda al uso de los comandos docker run y docker build, que resultan un tanto tediosos cuando trabajamos con aplicaciones de varios componentes.</p>
+</li>
+<li>
+<p>Se define un fichero <code>docker-compose.yml</code> que se puede observar en el ejemplo realizado en la práctica en el último apartado.</p>
+</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>A continuación se muestra un ejemplo para la realización de la práctica de ampliación: <a href="https://docs.docker.com/samples/wordpress/">Instalación Wordpress</a></p>
+</div>
+<ol>
+<li><strong>Primer Paso</strong>: instalación de Docker-compose.</li>
+</ol>
+<ul>
+<li><a href="https://docs.docker.com/compose/install/">Install Docker Compose</a></li>
+</ul>
+<ol start="2">
+<li><strong>Segundo paso</strong>: Crear directorio del proyecto y dentro el archivo <code>yaml</code>.</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">mkdir my_wordpress</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">touch docker-compose.yml</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">nano dockerfile</span>
+</code></pre></div>
+3. <strong>Tercer paso</strong>: se edita el <code>yaml</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.9&quot;</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nt">services</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 4 "></span>  <span class="nt">db</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mysql:5.7</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 7 "></span>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/mysql</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="10 "></span>      <span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">somewordpress</span>
+<span class="linenos" data-linenos="11 "></span>      <span class="nt">MYSQL_DATABASE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="12 "></span>      <span class="nt">MYSQL_USER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="13 "></span>      <span class="nt">MYSQL_PASSWORD</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span>  <span class="nt">wordpress</span><span class="p">:</span>
+<span class="linenos" data-linenos="16 "></span>    <span class="nt">depends_on</span><span class="p">:</span>
+<span class="linenos" data-linenos="17 "></span>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">db</span>
+<span class="linenos" data-linenos="18 "></span>    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">wordpress:latest</span>
+<span class="linenos" data-linenos="19 "></span>    <span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="20 "></span>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wordpress_data:/var/www/html</span>
+<span class="linenos" data-linenos="21 "></span>    <span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos="22 "></span>      <span class="p p-Indicator">-</span> <span class="s">&quot;8000:80&quot;</span>
+<span class="linenos" data-linenos="23 "></span>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="linenos" data-linenos="24 "></span>    <span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="25 "></span>      <span class="nt">WORDPRESS_DB_HOST</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">db:3306</span>
+<span class="linenos" data-linenos="26 "></span>      <span class="nt">WORDPRESS_DB_USER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="27 "></span>      <span class="nt">WORDPRESS_DB_PASSWORD</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="28 "></span>      <span class="nt">WORDPRESS_DB_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="29 "></span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="30 "></span>  <span class="nt">db_data</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+<span class="linenos" data-linenos="31 "></span>  <span class="nt">wordpress_data</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+</code></pre></div>
+<ol start="4">
+<li><strong>Cuarto paso</strong>: en la carpeta creada del proyecto se ejecuta el comando de <code>docker-compose up -d</code></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker-compose up -d</span>
+</code></pre></div>
+<ul>
+<li>Por último Se comprueba que se ha creado el contenedor.</li>
+</ul>
                 
               
               
