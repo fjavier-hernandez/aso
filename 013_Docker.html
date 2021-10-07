@@ -384,8 +384,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#opciones-y-ejemplo" class="md-nav__link">
-    Opciones y ejemplo
+  <a href="#ventajas-volumenes" class="md-nav__link">
+    Ventajas Volúmenes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones" class="md-nav__link">
+    Opciones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    Ejemplo
   </a>
   
 </li>
@@ -701,7 +715,7 @@
 </tbody>
 </table>
 <ul>
-<li><strong><a href="https://dockerlabs.collabnix.com/docker/cheatsheet/">Chuleta de Comandos</a></strong></li>
+<li><strong><a href="https://github.com/sergarb1/CursoIntroduccionADocker/raw/main/FuentesCurso/Docker%20CheatSheet%20COMPLETA.pdf">Chuleta de Comandos</a></strong></li>
 </ul>
 <figure>
     <img src="imagenes/01/ChuletaComandos.png"/>
@@ -790,6 +804,21 @@ o también</p>
 <p class="admonition-title">Tip</p>
 <p>Aconsejable utilizar la técnica de <strong><em>volumenes</em></strong>, ya que, La ventaja frente a los directorios enlazados es que pueden ser gestionados por Docker. Otro detalle importante es que el acceso al contenido de los volúmenes sólo se puede hacer a través de algún contenedor que utilice el volumen.</p>
 </div>
+<h3 id="ventajas-volumenes">Ventajas Volúmenes<a class="headerlink" href="#ventajas-volumenes" title="Permanent link">&para;</a></h3>
+<p>Los volúmenes tienen varias ventajas sobre los directorios enlazados:</p>
+<ul>
+<li>Los volúmenes son más fáciles de respaldar o migrar que enlazar montajes.</li>
+<li>Puede administrar volúmenes mediante los comandos de la CLI de Docker o la API de Docker.</li>
+<li>Los volúmenes funcionan tanto en contenedores de Linux como de Windows.</li>
+<li>Los volúmenes se pueden compartir de forma más segura entre varios contenedores.</li>
+<li>Los controladores de volumen le permiten almacenar volúmenes en hosts remotos o proveedores en la nube, para cifrar el contenido de los volúmenes o para agregar otras funciones.</li>
+<li>Los nuevos volúmenes pueden tener su contenido precargado por un contenedor.</li>
+<li>Los volúmenes en Docker Desktop tienen un rendimiento mucho mayor que los directorios enlazados de hosts de Mac y Windows.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Además, los volúmenes suelen ser una mejor opción que los datos persistentes en la capa de escritura de un contenedor, porque un volumen no aumenta el tamaño de los contenedores que lo usan y el contenido del volumen existe fuera del ciclo de vida de un contenedor determinado.</p>
+</div>
 <figure>
     <img src="imagenes/01/VolumeDocker.png"/>
     <figcaption>Gráfico técnicas de persistencia de datos.</figcaption>
@@ -799,23 +828,55 @@ o también</p>
 <p class="admonition-title">Note</p>
 <p>Los volúmenes son independientes de los contenedores, por lo que también podemos conservar los datos aunque se destruya el contenedor, reutilizarlos con otro contenedor, etc.</p>
 </div>
-<h3 id="opciones-y-ejemplo">Opciones y ejemplo<a class="headerlink" href="#opciones-y-ejemplo" title="Permanent link">&para;</a></h3>
+<h3 id="opciones">Opciones<a class="headerlink" href="#opciones" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Opciones:</li>
 </ul>
-<p><code>Docker volume (create|Is|inspect|rm)</code></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err">`</span><span class="l l-Scalar l-Scalar-Plain">Docker volume (create|Is|inspect|rm)`</span>
+</code></pre></div>
+<ul>
+<li>para crear el volumen a la vez que creamos y ejecutamos un contenedor se utilzan las opciones <code>v</code> o <code>--mount</code></li>
+</ul>
+<p>En general, <code>--mount</code> más explícito y detallado. La mayor diferencia es que la sintaxis de <code>-v</code> combina todas las opciones juntas en un campo, mientras que la sintaxis <code>--mount</code>  las separa. A continuación se muestra una comparación de la sintaxis de cada "flag".</p>
+<ul>
+<li>
+<p><code>-v</code> o <code>--volume</code> : consta de tres campos, separados por dos puntos ( :). Los campos deben estar en el orden correcto y el significado de cada campo no es inmediatamente obvio.</p>
+<ul>
+<li>En el caso de volúmenes con nombre, el primer campo es el nombre del volumen y es único en una máquina host determinada. Para volúmenes anónimos, se omite el primer campo.</li>
+<li>El segundo campo es la ruta donde se monta el archivo o directorio en el contenedor.</li>
+<li>El tercer campo es opcional y es una lista de opciones separadas por comas, como <code>ro</code> (readonly). </li>
+</ul>
+</li>
+<li>
+<p><code>--mount</code>: Consta de varios pares clave-valor, separados por comas (cada uno formado por una <key>=<value> dupla). La sintaxis de <code>--mount</code> es más detallada que <code>-v</code> o <code>--volume</code>; además el orden de las claves no es significativo, por lo tanto el valor de las "flags" son más fáciles de entender. </p>
+</li>
+<li>Valores de las duplas:<ul>
+<li><strong>type</strong>: puede ser <code>bind</code>, <code>volume</code> o <code>tmpfs</code>.</li>
+<li><strong>source</strong>: Para volúmenes con nombre, este es el nombre del volumen. Para volúmenes anónimos, este campo se omite. Puede especificarse como source o src.</li>
+<li><strong>destination</strong>: toma como valor de la ruta en el archivo o directorio está montado en el contenedor. Puede ser especificado como destination, <code>dst</code> o <code>target</code>.</li>
+<li><strong>readonly</strong>: si está presente, hace que el montaje de enlace se monte en el contenedor como de solo lectura. Puede especificarse como <code>readonly</code> o <code>ro</code>.</li>
+<li><strong>volume-opt</strong> se puede especificar más de una vez, toma un par clave-valor que consta del nombre de la opción y su valor. Ejemplo: <code>volume-opt=type=nfs</code></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Todas las opciones de volúmenes están disponibles para los indicadores <code>--mount</code> y <code>-v</code>, por que a la hora de elegir uno u otro depende del técnico para su facilidad de configuración donde por su sintaxis a priori sería mejor <code>--mount</code>.</p>
+</div>
+<h3 id="ejemplo">Ejemplo<a class="headerlink" href="#ejemplo" title="Permanent link">&para;</a></h3>
+<p>A continuación se muestra un ejemplo de creación del servidor web NGINX.</p>
 <div class="admonition example volumen">
 <p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker run -d -P --name=apache-volume-1 \</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">--mount type=volume,source=vol-apache,target=/app \</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">bitnami/apache</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker run -d \</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">--name nginx1 -p 8080:80 \</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">--mount type=volume,source=myvol1,target=/usr/share/nginx/html \</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">nginx:latest</span>
 </code></pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
-<li>La opción <code>--mount</code> permite crear el volumen. La opción tiene tres argumentos separados por comas pero sin espacios: <code>type=volume,source=NOMBRE-DEL-VOLUMEN,target=DESTINO-EN-CONTENEDOR</code>. El directorio de destino debe existir previamente.</li>
-<li>la opción <code>-P</code> hace que Docker asigne de forma aleatoria un puerto de la máquina virtual al puerto asignado a Apache en el contenedor. La imagen bitnami/apache asigna a Apache el puerto 8080 del contenedor para conexiones http y el puerto 8443 para conexiones https.</li>
+<li>Si en lugar de la opción <code>-p 8080:80</code> se utiliza la opción <code>-P</code> hace que Docker asigne de forma aleatoria un puerto de la máquina virtual al puerto asignado a Nginx en el contenedor.</li>
 </ul>
 </div>
 <ul>
@@ -842,15 +903,33 @@ o también</p>
 <ul>
 <li>
 <p>Para cambiar la página de inicio del apache se debe copiar dentro del volumen creado.
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker cp index.html apache-volume-1:app/</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker cp index.html nginx1:/usr/share/nginx/html</span>
 </code></pre></div></p>
 </li>
 <li>
-<p>Si accedemos al servidor apache aparecerá la nueva página. Además podemos crear un nuevo contenedor con este volumen:
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo docker run -d -P --name=apache-volume-2 \</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">--mount type=volume,source=vol-apache,target=/app \</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">bitnami/apache</span>
+<p>Si accedemos al servidor apache aparecerá la nueva página. </p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Si aparece el error forbiden 403, es debido a permisos del index.html, debemos entrar en container y cambiar los permisos.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker exec -it nginx1 /bin/bash</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">cd /usr/share/nginx/html</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">chown -R root:root index.html</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Además podemos crear un nuevo contenedor con este volumen:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker run -d \</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="l l-Scalar l-Scalar-Plain">--name nginx2 -p 8080:80 \</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">--mount type=volume,source=myvol1,target=/usr/share/nginx/html \</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">nginx:latest</span>
 </code></pre></div></p>
+</li>
+<li>
+<p>Se comprueba que el nuevo contenedor muestra la nueva página index.html</p>
 </li>
 </ul>
 <div class="admonition warning">
@@ -899,7 +978,7 @@ o también</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker run -d --name servidor_mysql --network mired \</span>
 <span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-e MYSQL_DATABASE=bd_wp -e MYSQL_USER=user_wp -e MYSQL_PASSWORD=asdasd \</span>
 <span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">-e MYSQL_ROOT_PASSWORD=asdasd mariadb</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">docker run -d --name servidor --network mired josedom24/aplicacionweb:v1</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">docker run -d --name servidor --network mired javierhernandez/aplicacionweb:v1</span>
 </code></pre></div></p>
 </li>
 </ul>
@@ -948,11 +1027,23 @@ o también</p>
 </code></pre></div></p>
 </li>
 <li>
-<p>Se edita el dockerfile.
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker build -t javier/my-apache2 .</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">docker run -dit --name my-running-app -p 8080:80 my-apache2</span>
-</code></pre></div></p>
+<p>Ejemplo edición Dockerfile.</p>
 </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># syntax=docker/dockerfile:1</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">FROM nginx:alpine</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">RUN apk update</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">COPY index.html/ /usr/share/nginx/html/</span>
+</code></pre></div>
+<div class="admonition nota">
+<p class="admonition-title">Nota</p>
+<p>Se puede probar a introducir el volumen en el docker file: <code>VOLUME /myvol1</code></p>
+</div>
+<ul>
+<li>Se crea la imagen y el contenedor.
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span> <span class="l l-Scalar l-Scalar-Plain">docker build -t franciscojav1981/my-nginx .</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">docker run -dit --name my-nginx -p 8081:80 franciscojav1981/my-nginx</span>
+</code></pre></div></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -967,7 +1058,7 @@ o también</p>
 <ul>
 <li>Se debe generar una cuenta de Docker Hub con la cuenta corporativa de Office 365: <a href="https://hub.docker.com/signup">Sign Up</a></li>
 <li>
-<p>Con el comando <code>docker login</code>, se realiza el acceso a la plataforma desde el terminal:
+<p>Con el comando <code>docker login</code>, se realiza el acceso a la plataforma desde el terminal, introduciendo usuario y contraseña.
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker login</span>
 </code></pre></div></p>
 </li>
@@ -975,7 +1066,7 @@ o también</p>
 <p>Con el comando <code>docker push</code>, se realiza el "Upload" de la imagen.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker push javier/my-apache2</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">docker push franciscojav1981/my-nginx</span>
 </code></pre></div>
 <ul>
 <li>Por último Se debe comprobar accediendo a la platadorma de Docker Hub.</li>
@@ -1011,7 +1102,7 @@ o también</p>
 </ol>
 <p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">mkdir my_wordpress</span>
 <span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">touch docker-compose.yml</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">nano dockerfile</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">nano docker-compose.yml</span>
 </code></pre></div>
 3. <strong>Tercer paso</strong>: se edita el <code>yaml</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.9&quot;</span>
