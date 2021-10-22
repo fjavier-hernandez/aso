@@ -1,0 +1,662 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/022_LDAP.html">
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>2.2- LDAP - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ldap" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.2- LDAP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- Tools: Scripting y Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- Tools: Scripting y Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- Tools: Scripting y Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="011_ShellScripting.html" class="md-nav__link">
+        1.1- ShellScripting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="012_PowerShell.html" class="md-nav__link">
+        1.2- PowerShell
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="013_Docker.html" class="md-nav__link">
+        1.3- Docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- Administración de servicios de directorio
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- Administración de servicios de directorio" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- Administración de servicios de directorio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="021_Introduccion_SD.html" class="md-nav__link">
+        2.1- Introducción de servicios de directorio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.2- LDAP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="022_LDAP.html" class="md-nav__link md-nav__link--active">
+        2.2- LDAP
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#autenticar-usuarios" class="md-nav__link">
+    AUTENTICAR USUARIOS
+  </a>
+  
+    <nav class="md-nav" aria-label="AUTENTICAR USUARIOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pam" class="md-nav__link">
+    PAM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nss" class="md-nav__link">
+    NSS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-de-nomenclatura-ldap" class="md-nav__link">
+    Modelo de Nomenclatura LDAP
+  </a>
+  
+    <nav class="md-nav" aria-label="Modelo de Nomenclatura LDAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entrada" class="md-nav__link">
+    Entrada
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades-iniciales" class="md-nav__link">
+    Actividades Iniciales
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="ldap">LDAP<a class="headerlink" href="#ldap" title="Permanent link">&para;</a></h1>
+<p>El <strong>LDAP (Lightweight Directory Access Protocol)</strong> es un protocolo a nivel de aplicación que da acceso a un servicio de directorio ordenado y distribuido para la búsqueda de la información de un entrono de red.</p>
+<ul>
+<li>
+<p>En la década de los 80, la especificación de directorio <strong>X.500</strong> vio la luz. El protocolo que daba acceso a la información contenida en él, fue DAP
+(Directory Access Protocol) y estaba basado en la <strong>pila de protocolos OSI (Open Systems Interconexion)</strong>. Gracias al auge de Internet, la pila de protocolos TCP/IP cobraron especial protagonismo y su uso fue generalizado en cualquier infraestructura de red, incluidas las LAN.</p>
+</li>
+<li>
+<p>Ante esta situación, en <strong>1993</strong> se implementó el protocolo <strong>LDAP</strong> que utilizaba la pila de protocolos TCP/IP para el acceso a la información contenido en un servicio de directorio. El funcionamiento de LDAP es <strong>relativamente simple</strong>: un cliente se inicia una sesión en un servidor LDAP solicitando alguna información.</p>
+</li>
+</ul>
+<figure>
+  <img src="imagenes/02/LDAP.png" width="700"/>
+  <figcaption>Esquema de funcionamiento del protocolo LDAP</figcaption>
+</figure>
+
+<div class="admonition conclusión">
+<p class="admonition-title">Conclusión</p>
+<ul>
+<li><strong>LDAP, es un protocolo que ofrece el acceso a un servicio de directorio</strong> implementado sobre un entorno de red, con el objeto de acceder a una determinada información. Puede ejecutarse sobre TCP/IP o sobre cualquier otro servicio de transferencia orientado a la conexión.</li>
+<li>Podemos considerarlo como un <strong>sistema de almacenamiento de red al que se pueden realizar consultas.</strong></li>
+</ul>
+</div>
+<ul>
+<li>Antes de trabajar con LDAP, hay varios conceptos importantes que deben entenderse. El primer paso importante para dar el acceso comentado se basa en la <strong>autentificación de usuarios</strong>.</li>
+</ul>
+<h2 id="autenticar-usuarios">AUTENTICAR USUARIOS<a class="headerlink" href="#autenticar-usuarios" title="Permanent link">&para;</a></h2>
+<p>Existen diferentes formas de autenticar usuarios en una red linux, pero una de las más usadas es la combinación de tres herramientas diferentes: <strong>NSS</strong>, <strong>PAM</strong> y <strong>LDAP</strong>.</p>
+<ul>
+<li>La idea consiste en disponer de un servidor que facilite la acción de <strong>autenticar usuarios</strong>, de modo, que éstos recurran al servidor cada vez que un cliente necesite identificarse. De esta forma, <strong>la cuenta de usuario no es específica de un equipo cliente</strong>, si no que será válida en cualquier equipo de la red que haya sido debidamente configurado.</li>
+</ul>
+<figure>
+  <img src="imagenes/02/AutenticarLDAP.png" width="700"/>
+  <figcaption>Herramientas autenticación usuarios en Unix</figcaption>
+</figure>
+
+<h3 id="pam">PAM<a class="headerlink" href="#pam" title="Permanent link">&para;</a></h3>
+<p><strong>Pluggable Authentication Module (PAM)</strong>: o módulo de autenticación conectable en español, es un mecanismo para integrar múltiples esquemas de autenticación de bajo nivel en una interfaz de programación de aplicaciones (API) de alto nivel.</p>
+<ul>
+<li>
+<p>Es decir, Establece una <strong>interfaz entre los programas de usuario y distintos métodos de autenticación</strong>. De esta forma, el método de autenticación, se hace <strong>transparente para los programas</strong>.</p>
+</li>
+<li>
+<p>La idea se basa en la creación de <strong>módulos de autenticación</strong>. Esto hace que, <strong>sin realizar modificaciones en el sistema</strong>, podamos utilizar métodos que vayan desde el <strong>uso típico</strong> de un nombre de usuario y una contraseña, hasta aceptar <strong>contraseñas de un solo uso</strong>, <strong>restringir el acceso</strong> a determinados horarios o establecer políticas de autenticación específicas para cada usuario o grupos de usuarios.</p>
+</li>
+</ul>
+<figure>
+  <img src="imagenes/02/estructuraPAM.png" width="700"/>
+  <figcaption>Esquema de la estructura PAM</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>En la actualidad, <strong>PAM es el método que utilizan la mayoría de las aplicaciones</strong> y herramientas de UNIX para autenticar usuarios.</p>
+</div>
+<h3 id="nss">NSS<a class="headerlink" href="#nss" title="Permanent link">&para;</a></h3>
+<p><strong>Name Service Switch</strong> es un servicio que <strong>permite la resolución de nombres de usuario y contraseñas</strong> (o grupos) mediante el acceso a diferentes orígenes de información.</p>
+<ul>
+<li>En condiciones normales, esta información se encuentra en los archivos locales del sistema operativo, en concreto en <ul>
+<li><em>/etc/passwd</em>, <em>/etc/shadow</em> y <em>/etc/group</em></li>
+</ul>
+</li>
+<li>pero puede proceder de otras fuentes, como <strong>DNS (Domain Name System)</strong>, <strong>NIS (Network Information Service)</strong>, <strong>LDAP (Lightweight Directory Access Protocol)</strong> o <strong>WINS (Windows Internet Name Service)</strong>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Este servicio esta gestionado desde el fichero: <strong>/etc/nsswitch.conf</strong></p>
+</div>
+<h2 id="modelo-de-nomenclatura-ldap">Modelo de Nomenclatura LDAP<a class="headerlink" href="#modelo-de-nomenclatura-ldap" title="Permanent link">&para;</a></h2>
+<p>La estructura básica de LDAP es un árbol de nodos llamado <strong>Directory Information Tree (DIT)</strong> donde cada nodo es una entrada. Cada entrada se define por un <strong>DN (Distinguished Name)</strong> y contiene un conjunto de atributos. Este DN es una cadena que indica la ruta en el árbol de dicha entrada y será único en todo el árbol. Un ejemplo del aspecto que ofrece un DN sería el siguiente:</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>cn=usuario1,ou=usuarios,dc=midominio,dc=es</strong></p>
+</div>
+<p>Puede verse que cada componente (la coma es el carácter separador) se muestra como un par <strong>«atributo=valor»</strong> donde el atributo es una abreviatura usada por LDAP. En el ejemplo anterior la estructura representada es:</p>
+<h3 id="entrada">Entrada<a class="headerlink" href="#entrada" title="Permanent link">&para;</a></h3>
+<p>Una <strong>entrada LDAP</strong> es una recopilación de información sobre una entidad. Cada entrada consta de tres componentes principales:</p>
+<ul>
+<li>Nombre distinguido DN y RDN (Relative Distinguished Name)</li>
+<li>Colección de atributos</li>
+<li>Colección de clases de objetos</li>
+</ul>
+<p>Cada uno de estos se describe con más detalle a continuación.</p>
+<h4 id="dn-y-rdn">DN y RDN<a class="headerlink" href="#dn-y-rdn" title="Permanent link">&para;</a></h4>
+<p><strong>El nombre distinguido de una entrada, a menudo denominado DN</strong>, identifica de forma única esa entrada y su posición en la jerarquía del árbol de información de directorio (DIT). <strong>El DN de una entrada LDAP es muy parecido a la ruta a un archivo en un sistema de archivos</strong>.</p>
+<ul>
+<li>Un <strong>DN LDAP se compone de cero o más elementos</strong> denominados nombres distinguidos relativos o <strong>RDN</strong>. Cada RDN se compone de uno o más (generalmente solo uno) pares de atributo-valor. </li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li><strong>"uid = john.doe"</strong> representa un RDN compuesto por un atributo llamado "uid" con un valor de "john.doe".</li>
+<li>Si un RDN tiene varios pares de atributo-valor, están separados por signos más, como <strong>"givenName = John + sn = Doe"</strong>.</li>
+</ul>
+</div>
+<h5 id="dse">DSE<a class="headerlink" href="#dse" title="Permanent link">&para;</a></h5>
+<p><strong>El nombre distinguido especial compuesto por cero RDN</strong> (y por lo tanto tiene una representación de cadena que es solo una <strong>cadena vacía</strong>) a veces se denomina <strong>"DN nulo"</strong> y hace referencia a un tipo especial de entrada llamado <strong>DSE raíz</strong> que proporciona información sobre el contenido y las capacidades de el servidor de directorio.</p>
+<h5 id="multiples-rdn">Múltiples RDN<a class="headerlink" href="#multiples-rdn" title="Permanent link">&para;</a></h5>
+<p>Para DN con <strong>múltiples RDN</strong>, el orden de los RDN especifica la posición de la entrada asociada en el DIT. Los RDN están separados por comas, y cada RDN en un DN representa un nivel en la jerarquía en orden descendente (es decir, acercándose a la raíz del árbol, que se denomina contexto de nomenclatura).</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>el DN <strong>"uid = john.doe, ou = People, dc = example, dc = com"</strong> tiene cuatro RDN.</p>
+</div>
+<h4 id="atributos">Atributos<a class="headerlink" href="#atributos" title="Permanent link">&para;</a></h4>
+<p>Cada <strong>atributo</strong> de una entrada tendrá un <strong>tipo</strong> y un <strong>valor</strong> con el formato atributo/valor que permite caracterizar un aspecto del objeto que define la entrada. Estos atributos tienen nombres que hacen referencia a su contenido y pueden ser de dos tipos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>1. **Atributos normales**: Son los atributos que identifican al objeto
+<span class="linenos" data-linenos="2 "></span>2. **Atributos operativos**: Son los atributos que utiliza el servidor para administrar el directorio
+</code></pre></div>
+<p>Entre los atributos que suelen utilizarse habitualmente, encontramos los siguientes, aunque puede haber muchos mas:</p>
+<ul>
+<li><strong>dn</strong> (distinguished name): nombre distintivo de una entrada, contiene un conjunto de atributos y es de carácter único.</li>
+<li><strong>dc</strong> (domain component): se refiere al componente del dominio, ya sea un componente, una etiqueta o un nombre de dominio DNS.</li>
+<li><strong>ou</strong> (organizational unit): unidad organizativa.</li>
+<li><strong>cn</strong> (common name): nombre común.</li>
+<li><strong>sn</strong> (surname): apellido.</li>
+<li><strong>uid</strong> (userid): nombre de usuario.</li>
+<li><strong>mail:</strong> dirección de e-mail.</li>
+<li><strong>telephoneNumber:</strong> número de teléfono.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li><strong>DN</strong> cn=John Smith, o=airius.com, c=DE </li>
+<li><strong>RDN</strong> cn=John Smith + DN of ancestor o=airius.com, c=DE</li>
+</ul>
+</div>
+<figure>
+  <img src="imagenes/02/NomenclaturaLDAP.png" width="700"/>
+  <figcaption>Modelo de nomenclatura LDAP</figcaption>
+</figure>
+
+<h4 id="clases-de-objetos">Clases de objetos<a class="headerlink" href="#clases-de-objetos" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Las clases de objeto son <strong>elementos de esquema que especifican colecciones de tipos de atributos</strong> que pueden estar relacionados con un tipo particular de objeto, proceso u otra entidad. </li>
+<li>Cada entrada tiene una clase de objeto estructural, que indica qué <strong>tipo de objeto representa una entrada</strong> (por ejemplo, si es información sobre una persona, un grupo, un dispositivo, un servicio, etc.)</li>
+<li>también puede tener cero o más objetos auxiliares. clases que sugieren características adicionales para esa entrada.</li>
+<li>Al igual que los tipos de atributos, las clases de objetos <strong>deben tener un identificador de objeto</strong>, pero también <strong>pueden tener cero o más nombres</strong>.</li>
+</ul>
+<h2 id="actividades-iniciales">Actividades Iniciales<a class="headerlink" href="#actividades-iniciales" title="Permanent link">&para;</a></h2>
+<p><a href="Practica01_LDAP.html">Configuración básica e instalación de OpenLDAP</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="021_Introduccion_SD.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 2.1- Introducción de servicios de directorio" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              2.1- Introducción de servicios de directorio
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>

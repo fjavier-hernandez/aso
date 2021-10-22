@@ -1,0 +1,147 @@
+
+## El modelo de nomenclatura 
+
+El modelo de nomenclatura LDAP define cómo se identifican y organizan las entradas**. Las entradas se organizan dentro del DIT (Directory Information Tree) según el DN (Distinguished Name) de la empresa.
+
+Una **entrada LDAP** es una recopilación de información sobre una entidad. Cada entrada consta de tres componentes principales:
+
+* Nombre distinguido DN y RDN (Relative Distinguished Name)
+* Colección de atributos
+* Colección de clases de objetos
+
+Cada uno de estos se describe con más detalle a continuación.
+
+### DN y RDN
+
+**El nombre distinguido de una entrada, a menudo denominado DN**, identifica de forma única esa entrada y su posición en la jerarquía del árbol de información de directorio (DIT). **El DN de una entrada LDAP es muy parecido a la ruta a un archivo en un sistema de archivos**.
+
+* Un **DN LDAP se compone de cero o más elementos** denominados nombres distinguidos relativos o **RDN**. Cada RDN se compone de uno o más (generalmente solo uno) pares de atributo-valor. 
+
+!!! example
+    * **"uid = john.doe"** representa un RDN compuesto por un atributo llamado "uid" con un valor de "john.doe".
+    * Si un RDN tiene varios pares de atributo-valor, están separados por signos más, como **"givenName = John + sn = Doe"**.
+
+#### DSE
+
+**El nombre distinguido especial compuesto por cero RDN** (y por lo tanto tiene una representación de cadena que es solo una **cadena vacía**) a veces se denomina **"DN nulo"** y hace referencia a un tipo especial de entrada llamado **DSE raíz** que proporciona información sobre el contenido y las capacidades de el servidor de directorio.
+
+#### Múltiples RDN
+
+Para DN con **múltiples RDN**, el orden de los RDN especifica la posición de la entrada asociada en el DIT. Los RDN están separados por comas, y cada RDN en un DN representa un nivel en la jerarquía en orden descendente (es decir, acercándose a la raíz del árbol, que se denomina contexto de nomenclatura).
+    
+!!! example
+    el DN **"uid = john.doe, ou = People, dc = example, dc = com"** tiene cuatro RDN.
+
+### Atributos
+
+* Los atributos **contienen los datos de una entrada**. Cada atributo tiene un tipo de atributo, cero o más opciones de atributo y un conjunto de valores que comprenden los datos reales.
+* Los **tipos de atributos** son elementos de esquema que especifican cómo los clientes y servidores LDAP deben tratar los atributos. 
+* Todos los tipos de atributos deben tener un **identificador de objeto (OID)** y cero o más nombres que puedan usarse para hacer referencia a atributos de ese tipo. 
+* También deben tener una sintaxis de atributo, que especifica el tipo de datos que se pueden almacenar en los atributos de ese tipo, y un conjunto de **reglas de coincidencia**, que indican cómo se deben realizar las comparaciones con los valores de los atributos de ese tipo. 
+* Los tipos de atributo también pueden indicar **si un atributo puede tener múltiples valores** en la misma entrada y si el atributo está destinado a contener datos de usuario (un atributo de usuario) o se utiliza para la operación del servidor (un atributo operacional). 
+* **Los atributos operativos** se utilizan normalmente para la **configuración** y / o información de estado.
+
+!!! note
+    Las opciones de atributo no se usan con tanta frecuencia, pero pueden usarse para proporcionar algunos metadatos sobre un atributo. Por ejemplo, las opciones de atributos pueden usarse para proporcionar diferentes versiones de un valor en diferentes idiomas.
+
+### Clases de objetos
+
+* Las clases de objeto son **elementos de esquema que especifican colecciones de tipos de atributos** que pueden estar relacionados con un tipo particular de objeto, proceso u otra entidad. 
+* Cada entrada tiene una clase de objeto estructural, que indica qué **tipo de objeto representa una entrada** (por ejemplo, si es información sobre una persona, un grupo, un dispositivo, un servicio, etc.)
+* también puede tener cero o más objetos auxiliares. clases que sugieren características adicionales para esa entrada.
+* Al igual que los tipos de atributos, las clases de objetos **deben tener un identificador de objeto**, pero también **pueden tener cero o más nombres**. 
+* Las clases de objeto también pueden enumerar un conjunto de tipos de atributos requeridos (de modo que cualquier entrada con esa clase de objeto también debe incluir esos atributos) y / o un conjunto de tipos de atributos opcionales (de modo que cualquier entrada con esa clase de objeto pueda incluir opcionalmente esos atributos) .
+
+
+Identificadores de objeto (OID)
+===============================
+
+Un identificador de objeto (OID) es una cadena que se utiliza para identificar de forma única varios elementos en el protocolo LDAP, así como en otras áreas de la informática. Los OID consisten en una secuencia de números separados por puntos (por ejemplo, "1.2.840.113556.1.4.473" es el OID que representa el control de solicitud de clasificación del lado del servidor). En LDAP, los OID se utilizan para identificar elementos como elementos de esquema (como tipos de atributos, clases de objetos, sintaxis, reglas de coincidencia, etc.), controles y solicitudes y respuestas extendidas. En el caso de los elementos del esquema, también puede haber nombres fáciles de usar que se pueden usar en lugar de los OID.
+
+Consulte [Comprensión del esquema LDAP](https://ldap.com/understanding-ldap-schema/) para obtener más información sobre el uso de OID en el esquema. Consulte la [Guía de referencia de LDAP OID](https://ldap.com/ldap-oid-reference-guide/) para obtener una lista de varios OID utilizados en LDAP.
+
+Filtros de búsqueda
+===================
+
+Los filtros de búsqueda se utilizan para definir criterios para identificar entradas que contienen ciertos tipos de información. Hay varios tipos diferentes de filtros de búsqueda:
+
+-   Los filtros de presencia se pueden utilizar para identificar entradas en las que un atributo especificado tiene al menos un valor.
+-   Pueden usarse filtros de igualdad para identificar entradas en las que un atributo específico tiene un valor particular.
+-   Los filtros de subcadena se pueden utilizar para identificar entradas en las que un atributo especificado tiene al menos un valor que coincide con una subcadena determinada.
+-   Se pueden usar filtros mayores o iguales para identificar entradas en las que un atributo especificado tiene al menos un valor que se considera mayor o igual que un valor dado.
+-   Se pueden usar filtros menores o iguales para identificar entradas en las que un atributo especificado tiene al menos un valor que se considera menor o igual a un valor dado.
+-   Pueden usarse filtros de coincidencia aproximada para identificar entradas en las que un atributo específico tiene un valor que es aproximadamente igual a un valor dado. Tenga en cuenta que no existe una definición oficial de "aproximadamente igual a" y, por lo tanto, este comportamiento puede variar de un servidor a otro. Algunos servidores utilizan un algoritmo de "sonidos como" como una de las variantes de Soundex o Metaphone.
+-   Se pueden usar filtros de coincidencia extensibles para proporcionar tipos de coincidencia más avanzados, incluido el uso de reglas de coincidencia personalizadas y / o atributos de coincidencia dentro del DN de una entrada.
+-   Los filtros AND se pueden usar para identificar entradas que coincidan con todos los filtros encapsulados dentro del AND.
+-   Pueden usarse filtros OR para identificar entradas que coincidan con al menos uno de los filtros encapsulados dentro del OR.
+-   Los filtros NOT se pueden usar para negar el resultado del filtro encapsulado (es decir, si un filtro coincide con una entrada, entonces un filtro NOT que encapsula ese filtro coincidente no coincidirá con la entrada, y si un filtro no coincide con una entrada, entonces un NO filtro que encapsula ese filtro no coincidente coincidirá con la entrada).
+
+La lógica utilizada para realizar la coincidencia está encapsulada en reglas de coincidencia, que se especifican en las definiciones de tipo de atributo. Diferentes reglas de coincidencia pueden usar una lógica diferente para tomar la determinación. Por ejemplo, la regla de coincidencia caseIgnoreMatch ignorará las diferencias en las mayúsculas al comparar dos cadenas, mientras que la regla de coincidencia caseExactMatch no lo hará. Muchas reglas de coincidencia son específicas para ciertos tipos de datos (por ejemplo, la regla de coincidencia de nombre distinguido espera operar solo en valores que son DN y puede hacer cosas como ignorar espacios insignificantes entre componentes DN y RDN, ignorar diferencias en el orden de los elementos en un RDN multivalor , etc.).
+
+Consulte la página [Filtros LDAP](https://ldap.com/ldap-filters/) para obtener una descripción más completa de los filtros LDAP y sus representaciones de cadenas. Consulte la página [Operación de búsqueda LDAP](https://ldap.com/the-ldap-search-operation/) para obtener más información sobre las operaciones de búsqueda. Consulte la página [Comprensión del esquema LDAP](https://ldap.com/understanding-ldap-schema/) para obtener más información sobre las reglas de coincidencia y otros elementos del esquema.
+
+Buscar DN base y ámbitos
+========================
+
+Todas las solicitudes de búsqueda incluyen un elemento DN base, que especifica la parte del DIT en la que buscar entradas coincidentes, y un alcance, que especifica qué parte de ese subárbol debe considerarse. Los ámbitos de búsqueda definidos incluyen:
+
+-   El ámbito de baseObject (a menudo denominado simplemente "base") indica que solo se debe considerar la entrada especificada por el DN de la base de búsqueda.
+-   El alcance singleLevel (a menudo denominado "uno" o "un nivel") indica que solo se deben considerar las entradas inmediatamente debajo del DN base de búsqueda (pero no la entrada base en sí).
+-   El alcance wholeSubtree (a menudo denominado "sub") indica que la entrada especificada como el DN base de búsqueda y todas las entradas debajo de él (a cualquier profundidad) deben ser consideradas.
+-   El alcance del subárbol subordinado indica que se deben considerar todas las entradas por debajo del DN de la base de búsqueda (a cualquier profundidad), pero no la entrada de la base de búsqueda en sí.
+
+Consulte [La operación de búsqueda LDAP](https://ldap.com/the-ldap-search-operation/) para obtener más información sobre los componentes y el comportamiento de una operación de búsqueda LDAP.
+
+Modificaciones y tipos de modificaciones
+========================================
+
+Los clientes LDAP pueden utilizar una solicitud de modificación para realizar cambios en los datos almacenados en una entrada. Una solicitud de modificación especifica el DN de la entrada para actualizar y una lista de las modificaciones para aplicar a esa entrada. Cada modificación tiene un tipo de modificación, un nombre de atributo y un conjunto opcional de valores de atributo.
+
+Los tipos de modificación definidos incluyen:
+
+-   El tipo de modificación de agregar indica que se deben agregar uno o más valores de atributo a la entrada. Esto se puede usar para agregar un atributo completamente nuevo o para agregar nuevos valores a un atributo existente. Siempre es necesario especificar al menos un valor de atributo para un tipo de modificación de adición.
+-   El tipo de modificación de eliminación indica que uno o más valores de atributo, o un atributo completo, deben eliminarse de la entrada. Si una modificación de eliminación incluye uno o más valores de atributo, solo se eliminarán esos valores. Si una modificación de eliminación no incluye ningún valor, se eliminará todo el atributo.
+-   El tipo de modificación de reemplazo indica que el conjunto de valores para un atributo especificado debe reemplazarse con un nuevo conjunto (que puede incluir o no valores ya presentes en la entrada). Si una modificación de reemplazo tiene uno o más valores de atributo, esos valores se utilizarán para el atributo asociado. Si una modificación de reemplazo no tiene ningún valor, el atributo asociado se eliminará de la entrada, si existe.
+-   El tipo de modificación de incremento indica que el valor entero para el atributo especificado debe incrementarse en la cantidad especificada (o reducirse si el valor de incremento es negativo).
+
+Consulte [La operación de modificación de LDAP](https://ldap.com/the-ldap-modify-operation/) para obtener más información sobre los componentes y el comportamiento de una operación de modificación de LDAP.
+
+URL de LDAP
+===========
+
+Una URL LDAP encapsula una serie de piezas de información que pueden usarse para hacer referencia a un servidor de directorio, una entrada específica en un servidor de directorio o criterios de búsqueda para identificar entradas coincidentes dentro de un servidor de directorio. Las URL de LDAP se utilizan con mayor frecuencia en las referencias (como se describe a continuación) y en algunas API de cliente pueden utilizarse para especificar algunas propiedades para establecer conexiones.
+
+Consulte la página de [URL de LDAP](https://ldap.com/ldap-urls/) para obtener más información sobre el contenido y la representación de cadenas de las URL de LDAP.
+
+Control S
+=========
+
+Un control es una pieza de información que se puede incluir en una solicitud o respuesta LDAP para proporcionar información adicional sobre esa solicitud o respuesta, o para cambiar la forma en que debe ser interpretada por el servidor (en el caso de una solicitud) o el cliente. (en el caso de una respuesta). Por ejemplo, el control de solicitud de clasificación del lado del servidor se puede incluir en una solicitud de búsqueda para indicar que el servidor debe clasificar las entradas coincidentes de una manera particular antes de enviarlas al cliente.
+
+Los controles LDAP tienen tres elementos:
+
+-   Un identificador de objeto (OID) que identifica de forma única el tipo de control. Este es un elemento obligatorio.
+-   Una criticidad. Esta es una bandera que indica cómo debe comportarse el servidor si no reconoce un control de solicitud proporcionado, o si no puede admitir el control en el contexto en el que se solicitó. Un carácter crítico de "verdadero" indica que el control es una parte crítica de la solicitud y que el servidor debe rechazar la solicitud si no puede admitir el control. Una criticidad de "falso" indica que el control es más una parte "agradable de tener" de la solicitud, y que si el servidor no puede admitir el control, entonces debe seguir adelante y procesar la operación como si el control no se hubiera incluido. La criticidad no entra en juego si el servidor admite el control dentro del contexto de la solicitud.
+-   Un valor opcional, que puede proporcionar información adicional para su uso en el procesamiento del control. Por ejemplo, para un control de solicitud de clasificación del lado del servidor, el valor de control debe especificar el orden de clasificación deseado. La codificación de un control varía según el tipo de control.
+
+Referencias
+===========
+
+Una referencia es un tipo de respuesta LDAP que indica que el servidor no pudo procesar la operación solicitada, pero sugiere que la solicitud podría tener éxito si lo intenta en otro lugar (por ejemplo, en un servidor diferente y / o en una ubicación diferente en el DIT). Las referencias pueden devolverse por varias razones, que incluyen:
+
+-   El cliente solicitó una operación que tenía como objetivo una entrada que no existía en el servidor al que se estableció la conexión, pero el servidor pudo sugerir dónde podría estar esa entrada.
+-   El cliente solicitó una operación que tenía como objetivo una entrada que existía en el servidor, pero el servidor actualmente no puede procesar esa solicitud por alguna razón. Por ejemplo, el cliente envió una solicitud de escritura a una réplica de solo lectura y la réplica pudo redirigir la solicitud a un servidor con capacidad de escritura.
+-   Los datos incluyen un tipo especial de entrada de referencia (a veces llamada "referencia inteligente") que hace que el servidor genere una referencia basada en el contenido de esa entrada cada vez que un cliente solicita algo en o debajo de ella.
+
+Además de los resultados de la operación de referencia, existe un tipo de respuesta relacionada para las operaciones de búsqueda denominada referencia de resultado de búsqueda, que puede usarse para indicar que parte de la búsqueda puede realizarse en un servidor diferente. Esto es particularmente útil en los casos en que el conjunto de datos es demasiado grande para caber en un servidor y diferentes partes del DIT están divididas en diferentes servidores.
+
+Entradas de alias
+=================
+
+Una entrada de alias es un tipo especial de entrada que apunta a otra entrada en el DIT, de la misma manera que un enlace simbólico apunta a otro archivo en el sistema de archivos.
+
+Las entradas de alias son principalmente beneficiosas para las operaciones de búsqueda, ya que pueden usarse para hacer que una entrada en una ubicación del DIT parezca estar en otra ubicación. Esto puede ser útil, por ejemplo, en los casos en los que la existencia de una entrada en un subárbol en particular se usa para hacer alguna determinación, como la pertenencia a un grupo o como un medio para significar una autorización para algún propósito. Las solicitudes de búsqueda incluyen un elemento que indica cómo se deben manejar los alias encontrados durante la búsqueda.
+
+Las operaciones que no son de búsqueda que tienen como objetivo una entrada de alias no seguirán al alias. No se puede utilizar un alias como identificación de destino para una operación de vinculación. Los alias deben ser entradas de hoja, porque no es posible agregar una entrada debajo de una entrada de alias.
+
+Tenga en cuenta que no todos los servidores de directorio admiten alias. Si se pretende que una aplicación sea compatible con una amplia gama de servidores de directorio, debe evitar el uso de alias.
