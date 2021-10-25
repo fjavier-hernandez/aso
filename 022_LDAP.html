@@ -390,11 +390,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modelo-de-nomenclatura-ldap" class="md-nav__link">
-    Modelo de Nomenclatura LDAP
+  <a href="#modelo-de-informacion-de-ldap" class="md-nav__link">
+    Modelo de Información de LDAP
   </a>
   
-    <nav class="md-nav" aria-label="Modelo de Nomenclatura LDAP">
+    <nav class="md-nav" aria-label="Modelo de Información de LDAP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -404,8 +404,29 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#clases-de-objetos-objectclasses" class="md-nav__link">
+    Clases de objetos (objectClasses)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atributos" class="md-nav__link">
+    Atributos
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldif" class="md-nav__link">
+    LDIF
+  </a>
   
 </li>
       
@@ -475,7 +496,7 @@
 <li>La idea consiste en disponer de un servidor que facilite la acción de <strong>autenticar usuarios</strong>, de modo, que éstos recurran al servidor cada vez que un cliente necesite identificarse. De esta forma, <strong>la cuenta de usuario no es específica de un equipo cliente</strong>, si no que será válida en cualquier equipo de la red que haya sido debidamente configurado.</li>
 </ul>
 <figure>
-  <img src="imagenes/02/AutenticarLDAP.png" width="700"/>
+  <img src="imagenes/02/AutenticarLDAP.png" width="550"/>
   <figcaption>Herramientas autenticación usuarios en Unix</figcaption>
 </figure>
 
@@ -511,19 +532,39 @@
 <p class="admonition-title">Note</p>
 <p>Este servicio esta gestionado desde el fichero: <strong>/etc/nsswitch.conf</strong></p>
 </div>
-<h2 id="modelo-de-nomenclatura-ldap">Modelo de Nomenclatura LDAP<a class="headerlink" href="#modelo-de-nomenclatura-ldap" title="Permanent link">&para;</a></h2>
-<p>La estructura básica de LDAP es un árbol de nodos llamado <strong>Directory Information Tree (DIT)</strong> donde cada nodo es una entrada. Cada entrada se define por un <strong>DN (Distinguished Name)</strong> y contiene un conjunto de atributos. Este DN es una cadena que indica la ruta en el árbol de dicha entrada y será único en todo el árbol. Un ejemplo del aspecto que ofrece un DN sería el siguiente:</p>
+<h2 id="modelo-de-informacion-de-ldap">Modelo de Información de LDAP<a class="headerlink" href="#modelo-de-informacion-de-ldap" title="Permanent link">&para;</a></h2>
+<p>La estructura básica de LDAP es un árbol de nodos llamado <strong>Directory Information Tree (DIT)</strong> donde cada <strong>objeto o nodo</strong> es una entrada. La parte superior del árbol se llama comúnmente <strong>raíz</strong> (también conocida como <strong>base</strong> o <strong>sufijo</strong> ).</p>
+<p>Cada entrada se define por un <strong>DN (Distinguished Name)</strong> y contiene un conjunto de atributos. Este DN es una cadena que indica la ruta en el árbol de dicha entrada y será único en todo el árbol. Un ejemplo del aspecto que ofrece un DN sería el siguiente:</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><strong>cn=usuario1,ou=usuarios,dc=midominio,dc=es</strong></p>
+<ul>
+<li><strong>cn=usuario1,ou=usuarios,dc=midominio,dc=es</strong></li>
+<li>Puede verse que cada componente (la coma es el carácter separador) se muestra como un par <strong>«atributo=valor»</strong> donde el atributo es una abreviatura usada por LDAP.</li>
+</ul>
 </div>
-<p>Puede verse que cada componente (la coma es el carácter separador) se muestra como un par <strong>«atributo=valor»</strong> donde el atributo es una abreviatura usada por LDAP. En el ejemplo anterior la estructura representada es:</p>
+<p>Cada <strong>entrada</strong> en el árbol tiene una <em>entrada principal</em> (objeto) y cero o más <em>entradas secundarias</em> (objetos). Cada entrada secundaria (objeto) es un hermano de las otras entradas secundarias de su padre.</p>
+<p>Cada entrada se compone de (es una instancia de) una o más <strong>clases de objeto</strong> (<strong>objectClasses</strong>). Las <strong>objectClasses</strong> contienen cero o más atributos. Los atributos tienen nombres (y a veces abreviaturas o <strong>alias</strong>) y normalmente contienen datos. </p>
+<ul>
+<li>A continuación se muestra un diagrama para entender mejor estos conceptos:</li>
+</ul>
+<figure>
+  <img src="imagenes/02/ModeloLDAP.png" width="700"/>
+  <figcaption>Modelo de información (datos) LDAP DIT</figcaption>
+</figure>
+
+<p><strong>Resumen:</strong></p>
+<ol>
+<li>Cada <strong>entrada</strong> (1) se compone de una o más <strong>clases de objetos</strong> (2)</li>
+<li>Cada <strong>objectClass</strong> (2) tiene un nombre y es un contenedor de atributos (su definición identifica los atributos que puede o debe contener)</li>
+<li>Cada <strong>atributo</strong> (3) tiene un nombre, contiene datos y es miembro de una o más <strong>clases de objetos</strong> (2)</li>
+<li>Cuando se completa el DIT, cada <strong>entrada</strong> se identificará de forma única (en relación con su entrada principal) en la jerarquía por los datos que contiene (en sus atributos que están contenidos en su (s) objectClasses (s)).</li>
+</ol>
 <h3 id="entrada">Entrada<a class="headerlink" href="#entrada" title="Permanent link">&para;</a></h3>
 <p>Una <strong>entrada LDAP</strong> es una recopilación de información sobre una entidad. Cada entrada consta de tres componentes principales:</p>
 <ul>
 <li>Nombre distinguido DN y RDN (Relative Distinguished Name)</li>
-<li>Colección de atributos</li>
-<li>Colección de clases de objetos</li>
+<li>Colección de clases de objetos (objectClasses)</li>
+<li>Atributos</li>
 </ul>
 <p>Cada uno de estos se describe con más detalle a continuación.</p>
 <h4 id="dn-y-rdn">DN y RDN<a class="headerlink" href="#dn-y-rdn" title="Permanent link">&para;</a></h4>
@@ -546,11 +587,29 @@
 <p class="admonition-title">Example</p>
 <p>el DN <strong>"uid = john.doe, ou = People, dc = example, dc = com"</strong> tiene cuatro RDN.</p>
 </div>
-<h4 id="atributos">Atributos<a class="headerlink" href="#atributos" title="Permanent link">&para;</a></h4>
+<h3 id="clases-de-objetos-objectclasses">Clases de objetos (objectClasses)<a class="headerlink" href="#clases-de-objetos-objectclasses" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Las clases de objeto son <strong>elementos de esquema que especifican colecciones de tipos de atributos</strong> que pueden estar relacionados con un tipo particular de objeto, proceso u otra entidad.</li>
+<li>Las <strong>clases de objetos</strong> son, esencialmente, <strong>contenedores de atributos</strong> y se describen utilizando definiciones <strong>ASN.1</strong> .</li>
+<li>Cada <strong>objectClass tiene un nombre único</strong>.</li>
+<li>Existe un número confuso de <strong>clases de objetos</strong> <strong>PREDEFINIDAS</strong>, cada una de las cuales contiene un montón de <strong>atributos</strong> adecuados para casi todas las implementaciones LDAP comunes.</li>
+</ul>
+<p>Las clases de objetos tienen tres características principales:</p>
+<ol>
+<li>La <strong>clase de objeto</strong> define si un miembro de atributo <strong>MUST</strong> ( obligatorio ) estar presente o <strong>MAY</strong> ( opcional ) estar presente.</li>
+<li>Cada <strong>clase de objeto</strong> tiene un tipo que pueden ser <em>estructurales</em>, <em>auxiliar</em> o <em>RESUMEN</em>. En esta etapa es suficiente saber que debe haber una, y solo una, <strong>clase de objeto</strong> <em>ESTRUCTURAL </em>en una entrada y que puede haber cero o más clases de objeto <em>AUXILIAR</em>.</li>
+<li>Una <strong>clase de objeto</strong> puede ser parte de una jerarquía, en cuyo caso <strong>hereda</strong> todas las características de su (s) clase (s) de objeto principal (incluidos todos los atributos que contiene).</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>objectClasses</strong> son contenedores y controlan qué atributos se pueden agregar a cada entrada, pero por lo demás tienden a permanecer en segundo plano en lo que respecta al acceso e interrogación (búsqueda) del DIT. <strong>Los atributos y las entradas son los elementos realmente visibles</strong>.</p>
+</div>
+<h3 id="atributos">Atributos<a class="headerlink" href="#atributos" title="Permanent link">&para;</a></h3>
 <p>Cada <strong>atributo</strong> de una entrada tendrá un <strong>tipo</strong> y un <strong>valor</strong> con el formato atributo/valor que permite caracterizar un aspecto del objeto que define la entrada. Estos atributos tienen nombres que hacen referencia a su contenido y pueden ser de dos tipos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>1. **Atributos normales**: Son los atributos que identifican al objeto
-<span class="linenos" data-linenos="2 "></span>2. **Atributos operativos**: Son los atributos que utiliza el servidor para administrar el directorio
-</code></pre></div>
+<ol>
+<li><strong>Atributos normales</strong> : Son los atributos que identifican al objeto</li>
+<li><strong>Atributos operativos</strong> : Son los atributos que utiliza el servidor para administrar el directorio</li>
+</ol>
 <p>Entre los atributos que suelen utilizarse habitualmente, encontramos los siguientes, aunque puede haber muchos mas:</p>
 <ul>
 <li><strong>dn</strong> (distinguished name): nombre distintivo de una entrada, contiene un conjunto de atributos y es de carácter único.</li>
@@ -574,13 +633,94 @@
   <figcaption>Modelo de nomenclatura LDAP</figcaption>
 </figure>
 
-<h4 id="clases-de-objetos">Clases de objetos<a class="headerlink" href="#clases-de-objetos" title="Permanent link">&para;</a></h4>
+<h4 id="caracteristicas-de-atributos">Características de Atributos<a class="headerlink" href="#caracteristicas-de-atributos" title="Permanent link">&para;</a></h4>
+<p>Cada <strong>atributo</strong> tiene un nombre único (<strong>y una forma abreviada o alias</strong>) y normalmente contiene datos. Los atributos siempre están asociados con (son miembros de) una o más <strong>ObjectClasses</strong> . Los atributos tienen una serie de características interesantes:</p>
+<ol>
+<li>Todos los <strong>atributos</strong> son miembros de una o más <strong>clases de objeto</strong>.</li>
+<li>Cada <strong>atributo</strong> define el tipo de datos (la palabra clave es SINTAXIS) que puede contener. Los tipos de datos pueden ser: <em>Strings</em>, <em>Numbers (Integer)</em>, <em>Time</em>, <em>Telephone Numbers</em>, <em>Boolean</em>, <em>Binary</em>, <em>Distinguished Name</em>, <em>Bit Strings</em>, <em>LDAP Supported Syntaxes</em>.</li>
+<li>Los atributos pueden formar parte de una <em>jerarquía</em>, en cuyo caso el atributo <em>hijo hereda todas las características del atributo padre</em>. En el caso de los atributos, se usa una jerarquía para simplificar y acortar las definiciones de atributos (en ASN.1) donde muchos atributos comparten propiedades comunes como la longitud máxima o si son o no sensibles a mayúsculas y minúsculas, etc. ningún otro significado.</li>
+<li>Los atributos pueden ser opcionales (la palabra clave es <strong>MAY</strong>) u obligatorios (la palabra clave es <strong>MUST</strong>) como se describe en las definiciones <em>ASN.1</em> para la clase de objeto de la que son miembros. Un atributo puede ser opcional en una clase de objeto y obligatorio en otra. Es la clase de objeto la que determina esta propiedad.</li>
+<li>Los <strong>atributos</strong> aparentemente son <strong>aleatorios</strong> que se recogen de todas partes de la documentación; es confuso al principio, pero proviene de la característica opcional de la mayoría de los atributos. Permite un enfoque de '<em>pick-n-mix</em>' para poblar una entrada. Se puede buscar el atributo que se desee, y buscar la clase de objeto de la que es miembro (puede haber más de uno) y confirmar que todos los demás atributos que no se desean utilizar en la clase de objeto sean opcionales. Se puede revisar en <a href="http://zytrax.com/books/ldap/ape/index.html#attributes">Atributos comunmente utilizados</a>.</li>
+<li>Los atributos pueden tener un valor <em>ÚNICO</em> o <em>MÚLTIPLE</em> (como se describe en sus definiciones ASN.1 ). <ol>
+<li><strong>VALOR ÚNICO</strong> significa que solo un valor de datos puede estar presente para el atributo . </li>
+<li><strong>MULTIVALOR</strong> significa que el atributo puede aparecer varias veces en una clase de <strong>entrada / objeto</strong> con diferentes valores de datos. 
+Si el atributo describe, por ejemplo, una dirección de correo electrónico, puede haber una, dos o 500 definiciones del atributo, cada una con una dirección de correo diferente (es múltipl ); este es uno de los varios métodos para tratar los alias de correo electrónico en los diseños de directorios. En este caso el valor predeterminado de un atributo es MULTIVALOR (permitir múltiples valores).</li>
+</ol>
+</li>
+<li>Los atributos tienen nombres y, a veces, un alias (como se describe en sus definiciones ASN.1), por ejemplo, el atributo con un nombre de cn es un miembro del objectClass llamado person (y muchos otros) y tiene un alias de commonName . Se puede utilizar commonName o cn para hacer referencia a este atributo .</li>
+<li>En cada nivel de la jerarquía, <strong>los datos contenidos en un atributo se pueden utilizar para identificar de forma única la entrada</strong>. Puede ser cualquier atributo de la entrada. Incluso puede ser una combinación de dos o más atributos.</li>
+<li>Los valores de atributo seleccionados para contener los datos únicos a veces se denominan atributos de nomenclatura o el nombre distinguido relativo (RDN), ya comentados.</li>
+</ol>
+<h2 id="ldif">LDIF<a class="headerlink" href="#ldif" title="Permanent link">&para;</a></h2>
+<p>La adición de entradas se puede realizar de diversas formas, una de las cuales es mediante el uso de <strong>archivos de intercambio de datos LDAP (LDIF)</strong>.</p>
 <ul>
-<li>Las clases de objeto son <strong>elementos de esquema que especifican colecciones de tipos de atributos</strong> que pueden estar relacionados con un tipo particular de objeto, proceso u otra entidad. </li>
-<li>Cada entrada tiene una clase de objeto estructural, que indica qué <strong>tipo de objeto representa una entrada</strong> (por ejemplo, si es información sobre una persona, un grupo, un dispositivo, un servicio, etc.)</li>
-<li>también puede tener cero o más objetos auxiliares. clases que sugieren características adicionales para esa entrada.</li>
-<li>Al igual que los tipos de atributos, las clases de objetos <strong>deben tener un identificador de objeto</strong>, pero también <strong>pueden tener cero o más nombres</strong>.</li>
+<li>Los <strong>LDIF</strong> son archivos de texto que describen la jerarquía del árbol, el árbol de <strong>información del directorio (DIT)</strong>, y los datos que se agregarán a cada atributo. </li>
+<li>El siguiente es un ejemplo simple de un archivo LDIF que configura un DN raíz (dc = ejemplo, dc = com) y agrega tres entradas secundarias debajo de una entrada de <strong>personas</strong>.</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">## version not strictly necessary (and some implementations reject it) but generally good practice</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">## DEFINE DIT ROOT/BASE/SUFFIX ####</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">## uses RFC 2377 (domain name) format</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">## dcObject is an AUXILIARY objectclass and MUST</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">## have a STRUCTURAL objectclass (organization in this case)</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># this is an ENTRY sequence and is preceded by a BLANK line</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dc=example,dc=com</span>
+<span class="linenos" data-linenos="13 "></span><span class="nt">dc</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="linenos" data-linenos="14 "></span><span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">The best company in the whole world</span>
+<span class="linenos" data-linenos="15 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dcObject</span>
+<span class="linenos" data-linenos="16 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">organization</span>
+<span class="linenos" data-linenos="17 "></span><span class="nt">o</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Example, Inc.</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">## FIRST Level hierarchy - people </span>
+<span class="linenos" data-linenos="20 "></span><span class="c1"># this is an ENTRY sequence and is preceded by a BLANK line</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ou=people, dc=example,dc=com</span>
+<span class="linenos" data-linenos="23 "></span><span class="nt">ou</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">people</span>
+<span class="linenos" data-linenos="24 "></span><span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">All people in organisation</span>
+<span class="linenos" data-linenos="25 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">organizationalUnit</span>
+<span class="linenos" data-linenos="26 "></span>
+<span class="linenos" data-linenos="27 "></span><span class="c1">## SECOND Level hierarchy - people entries </span>
+<span class="linenos" data-linenos="28 "></span><span class="c1"># this is an ENTRY sequence and is preceded by a BLANK line</span>
+<span class="linenos" data-linenos="29 "></span>
+<span class="linenos" data-linenos="30 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=Robert Smith,ou=people,dc=example,dc=com</span>
+<span class="linenos" data-linenos="31 "></span><span class="nt">objectclass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">inetOrgPerson</span>
+<span class="linenos" data-linenos="32 "></span><span class="nt">cn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Robert Smith</span>
+<span class="linenos" data-linenos="33 "></span><span class="nt">cn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Robert</span>
+<span class="linenos" data-linenos="34 "></span><span class="nt">sn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Smith</span>
+<span class="linenos" data-linenos="35 "></span><span class="nt">uid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rsmith</span>
+<span class="linenos" data-linenos="36 "></span><span class="nt">mail</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">robert@example.com</span>
+<span class="linenos" data-linenos="37 "></span><span class="nt">mail</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">r.smith@example.com</span>
+<span class="linenos" data-linenos="38 "></span><span class="nt">ou</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sales</span>
+<span class="linenos" data-linenos="39 "></span>
+<span class="linenos" data-linenos="40 "></span><span class="c1">## SECOND Level hierarchy - people entries </span>
+<span class="linenos" data-linenos="41 "></span><span class="c1"># this is an ENTRY sequence and is preceded by a BLANK line</span>
+<span class="linenos" data-linenos="42 "></span>
+<span class="linenos" data-linenos="43 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=Bill Smith,ou=people,dc=example,dc=com</span>
+<span class="linenos" data-linenos="44 "></span><span class="nt">objectclass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">inetOrgPerson</span>
+<span class="linenos" data-linenos="45 "></span><span class="nt">cn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Bill Smith</span>
+<span class="linenos" data-linenos="46 "></span><span class="nt">cn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">William</span>
+<span class="linenos" data-linenos="47 "></span><span class="nt">sn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Smith</span>
+<span class="linenos" data-linenos="48 "></span><span class="nt">uid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bsmith</span>
+<span class="linenos" data-linenos="49 "></span><span class="nt">mail</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bill@example.com</span>
+<span class="linenos" data-linenos="50 "></span><span class="nt">mail</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">b.smith@example.com</span>
+<span class="linenos" data-linenos="51 "></span><span class="nt">ou</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">support</span>
+<span class="linenos" data-linenos="52 "></span>
+<span class="linenos" data-linenos="53 "></span><span class="c1">## SECOND Level hierarchy - people entries </span>
+<span class="linenos" data-linenos="54 "></span><span class="c1"># this is an ENTRY sequence and is preceded by a BLANK line</span>
+<span class="linenos" data-linenos="55 "></span>
+<span class="linenos" data-linenos="56 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=John Smith,ou=people,dc=example,dc=com</span>
+<span class="linenos" data-linenos="57 "></span><span class="nt">objectclass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">inetOrgPerson</span>
+<span class="linenos" data-linenos="58 "></span><span class="nt">cn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">John Smith</span>
+<span class="linenos" data-linenos="59 "></span><span class="nt">sn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">smith</span>
+<span class="linenos" data-linenos="60 "></span><span class="nt">uid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jsmith</span>
+<span class="linenos" data-linenos="61 "></span><span class="nt">mail</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jim@example.com</span>
+<span class="linenos" data-linenos="62 "></span><span class="nt">mail</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">j.smith@example.com</span>
+<span class="linenos" data-linenos="63 "></span><span class="nt">ou</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">accounting</span>
+</code></pre></div>
 <h2 id="actividades-iniciales">Actividades Iniciales<a class="headerlink" href="#actividades-iniciales" title="Permanent link">&para;</a></h2>
 <p><a href="Practica01_LDAP.html">Configuración básica e instalación de OpenLDAP</a></p>
                 
