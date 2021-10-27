@@ -431,8 +431,42 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#esquema-ldap" class="md-nav__link">
+    Esquema LDAP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herramientas-de-gestion-de-usuarios" class="md-nav__link">
+    Herramientas de gestión de usuarios.
+  </a>
+  
+    <nav class="md-nav" aria-label="Herramientas de gestión de usuarios.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ldap-utils" class="md-nav__link">
+    ldap-utils
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#actividades-iniciales" class="md-nav__link">
     Actividades Iniciales
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades-desarrollo-ud2_01" class="md-nav__link">
+    Actividades Desarrollo UD2_01
   </a>
   
 </li>
@@ -721,8 +755,98 @@ Si el atributo describe, por ejemplo, una dirección de correo electrónico, pue
 <span class="linenos" data-linenos="62 "></span><span class="nt">mail</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">j.smith@example.com</span>
 <span class="linenos" data-linenos="63 "></span><span class="nt">ou</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">accounting</span>
 </code></pre></div>
+<h2 id="esquema-ldap">Esquema LDAP<a class="headerlink" href="#esquema-ldap" title="Permanent link">&para;</a></h2>
+<p>El <strong>esquema</strong> es una parte importante de LDAP. Similar a la definición del esquema de la base de datos, el esquema LDAP define la estructura y las reglas que debe seguir un directorio LDAP, como qué atributos tendrá una clase de objeto, qué estructura tienen estos atributos, etc. </p>
+<ul>
+<li>El <strong>servidor LDAP</strong> proporciona una manera de <strong>identificar categorías, atributos</strong> y otra información en el directorio LDAP, para que el servidor LDAP pueda reconocerlos. <strong>Para realizarlo se utlizan esquemas</strong>, que no es más que una <strong>unidad de empaquetado conveniente para contener clases de objetos y atributos muy similares</strong>.</li>
+<li><strong>La principal diferencia</strong> con las bases de datos relacionales del protocolo LDAP es que estas ya estan predefinidas en los esquemas. por lo que nos ahorramos en insertar y definir las tablas de información.</li>
+<li>En <strong>OpenLDAP</strong> los esquemas instalados se encuentran en cn = schema, cn = config y se pueden instalar esquemas adicionales usando este procedimiento.</li>
+</ul>
+<p>El siguiente diagrama ilustra el uso de esquemas como unidades de empaquetado:</p>
+<figure>
+  <img src="imagenes/02/EsquemaLdap.png" width="700"/>
+  <figcaption>Ejemplo de la definición de Esquemas en LDAP</figcaption>
+</figure>
+
+<p>A nivel de comandos se pueden ver los esquemas predefinidos con:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">cd /etc/ldap/slapd.d/cn\=config/</span>
+</code></pre></div>
+<p>En el directorio <code>cn\=schema</code> se pueden ver los esquemas y ademas se pueden añadir más, pero no suele ser frecuente.</p>
+<p>Para buscar los esquemas se puede utilizar:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{3\}inetorgperson.ldif|awk &#39;{print $5}&#39;</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{2\}inetorgperson.ldif|awk &#39;{print $5}&#39;</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{2\}nis.ldif|awk &#39;{print $5}&#39;</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{1\}cosine.ldif|awk &#39;{print $5}&#39;</span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{0\}core.ldif|awk &#39;{print $5}&#39;</span>
+</code></pre></div></p>
+<h2 id="herramientas-de-gestion-de-usuarios">Herramientas de gestión de usuarios.<a class="headerlink" href="#herramientas-de-gestion-de-usuarios" title="Permanent link">&para;</a></h2>
+<p>Una vez configurado el servidor LDAP, para la utilización normal debemos aprender cómo se anñaden nuevos usuarios o se modifican los atributos de los existentes.</p>
+<ul>
+<li>
+<p>Para los objetos iniciales del directorio, primero se debe escribir un fichero en formato <strong>LDIF</strong> que incluya todos los atributos de la entrada y añaadirla al directorio con slapadd. En la <a href="#Actividades Desarrollo UD2_01">Actividades Desarrollo UD2_01</a>, se realizará un ejemplo guiado al respecto.</p>
+</li>
+<li>
+<p>Este método es totalmente inadecuado para la utilización cuando el directorio está activo. Existen varias formas de actualizar las entradas del directorio o añadir nuevas, y en primer lugar veremos la utilización de las herramientas incluidas en el paquete <strong>ldap-utils</strong>.</p>
+</li>
+</ul>
+<h3 id="ldap-utils">ldap-utils<a class="headerlink" href="#ldap-utils" title="Permanent link">&para;</a></h3>
+<p>Para realizar modificaciones de los objetos del directorio directamente desde la línea de comandos, se pueden utilizar las herramientas del paquete <code>ldap-utils</code>, a continuación se describen algunas de ellas.</p>
+<h4 id="mostrar-entradas">Mostrar entradas<a class="headerlink" href="#mostrar-entradas" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>ldapsearch</code> - buscar y mostrar entradas</li>
+</ul>
+<h4 id="manipular-entradas">Manipular entradas<a class="headerlink" href="#manipular-entradas" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><code>ldapmodify</code> - modificar una entrada</p>
+</li>
+<li>
+<p><code>ldapadd</code> - agregar una nueva entrada</p>
+</li>
+<li>
+<p><code>ldapdelete</code> - eliminar y entrar</p>
+</li>
+<li>
+<p><code>ldapmodrdn</code> - cambiar el nombre de una entrada</p>
+</li>
+<li>
+<p><code>ldappasswd</code> : cambie la contraseña de una entrada <strong>NOTA</strong>: Esto no es un reemplazo para <code>passwd</code></p>
+</li>
+</ul>
+<h4 id="operaciones">Operaciones<a class="headerlink" href="#operaciones" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><code>ldapwhoami</code> : muestra con qué entrada estoy vinculado al servidor</p>
+</li>
+<li>
+<p><code>ldapcompare</code> : compara un campo en la entrada con algún valor</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>En <strong>ldapmodify</strong> Cuando use esto para editar <code>cn = config</code>, se debe tener en cuenta que ubuntu no establece un <code>rootpw</code> al principio, por lo que se deberá agregar <code>-Y EXTERNAL</code> en su comando para ejecutarlo como root local.</p>
+</div>
+<h4 id="ldapsearch">ldapsearch<a class="headerlink" href="#ldapsearch" title="Permanent link">&para;</a></h4>
+<p>El comando <code>ldapsearch</code> puede devolver la información LDAP para <nombre de usuario> directamente desde LDAP (asumiendo, por supuesto, que está utilizando LDAP para la autenticación).</p>
+<p><code>$ ldapsearch -x uid = &lt;nombre de usuario&gt;</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Esto requiere que establezca sus valores predeterminados correctamente en <code>/etc/ldap/ldap.conf</code> para apuntar a su servidor LDAP.</p>
+</div>
+<p>Una línea de comando más completa que especifica el DN de enlace de administrador es:</p>
+<p><code>$ ldapsearch -x -D 'cn = &lt;su administrador&gt;, dc = ejemplo, dc = com'</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><code>-x</code> Se Utiliza autenticación simple.</li>
+<li><code>-D</code> bind DN (usuario que puede leer entradas de la base de datos)  </li>
+</ul>
+</div>
 <h2 id="actividades-iniciales">Actividades Iniciales<a class="headerlink" href="#actividades-iniciales" title="Permanent link">&para;</a></h2>
 <p><a href="Practica01_LDAP.html">Configuración básica e instalación de OpenLDAP</a></p>
+<p><a name="Actividades Desarrollo UD2_01"></a></p>
+<h2 id="actividades-desarrollo-ud2_01">Actividades Desarrollo UD2_01<a class="headerlink" href="#actividades-desarrollo-ud2_01" title="Permanent link">&para;</a></h2>
+<p><a href="Practica02_LDAP.html">Creación de usuarios y grupos OpenLDAP</a></p>
                 
               
               

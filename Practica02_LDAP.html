@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica01_LDAP.html">
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica02_LDAP.html">
       
       <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>Practica01 LDAP - Administración de Sistemas Operativos</title>
+        <title>Practica02 LDAP - Administración de Sistemas Operativos</title>
       
     
     
@@ -77,11 +77,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#configuracion-basica-del-servidor" class="md-skip">
-          Saltar a contenido
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -107,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Practica01 LDAP
+              Practica02 LDAP
             
           </span>
         </div>
@@ -354,66 +349,129 @@
               
                 
                 
-                  <h1>Practica01 LDAP</h1>
+                  <h1>Practica02 LDAP</h1>
                 
-                <h2 id="configuracion-basica-del-servidor">Configuración básica del servidor<a class="headerlink" href="#configuracion-basica-del-servidor" title="Permanent link">&para;</a></h2>
-<p>Vamos a comenzar por modificar el contenido del fichero /etc/hosts para indicar un FQDN a nuestro servidor. El objetivo de este cambio es que cuando hagamos referencia a pandora.ldap, nuestro sistema entienda que nos estamos refiriendo al servidor. Esto, además, facilitará la labor de configuración de nuestro servicio de directorio.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Primeramente se puede utilizar IP fijas en el aula que serán: <code>192.168.5.1X</code>, modificando el archivo <code>/etc/netplan/00-installer-config.yaml</code></p>
-</div>
-<p><img alt="" src="imagenes/02/NetplanEx.png" width="600px" /></p>
-<p>A continuación se modifica el archivo Hots para cambiar el nombre de la máquina en el dominio configurado.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/hosts
+                <p>Con nuestro servicio instalado y configurado, el siguiente paso es crear la estructura básica del directorio. Es decir, crearemos la estructura jerárquica del árbol (DIT -- Directory Information Tree).</p>
+<p>Una de las formas más sencillas de añadir entradas al directorio es mediante ficheros LDIF (LDAP Data Interchange Format). Básicamente se tratan de ficheros en texto plano con un formato particular que debemos conocer para poder construirlos correctamente. El formato básico de una entrada es el siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span># comentario
+<span class="linenos" data-linenos="2 "></span>dn: &lt;nombre distintivo único&gt;
+<span class="linenos" data-linenos="3 "></span>&lt;atributo&gt;: &lt;valor&gt;
+<span class="linenos" data-linenos="4 "></span>&lt;atributo&gt;: &lt;valor&gt;
+<span class="linenos" data-linenos="5 "></span>...
 </code></pre></div>
-<p><img alt="" src="https://blog.juananpc.es/wp-content/uploads/2021/07/00.png" /></p>
-<p>Otra opción puede ser.</p>
-<p><img alt="" src="imagenes/02/hosts.png" width="600px" /></p>
-<h2 id="implantacion-del-servicio-openldap">Implantación del Servicio OpenLDAP<a class="headerlink" href="#implantacion-del-servicio-openldap" title="Permanent link">&para;</a></h2>
-<p>Ahora vamos a ver, en forma de guía práctica, la implantación del servicio OpenLDAP en nuestro servidor Ubuntu 20.04</p>
-<p>En primer lugar, vamos a instalar los paquetes necesarios en nuestro servidor. </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt install slapd ldap-utils
+<p>Teniendo en cuenta lo anteriormente mencionado, procedemos a crear un fichero base que contenga los tipos de objetos básicos del directorio. </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano base.ldif
 </code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>A priori se podría revisar con antelación los paquetes a instalar con: <code>apt show slapd</code></p>
-</div>
-<p><img alt="" src="imagenes/02/InfoPaqueteLdap.png" width="600px" /></p>
-<p>Seguidamente se instala el paquete de LDAP.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/01-1.png" /></p>
-<p>Automáticamente nos aparecerá una ventana donde introduciremos la contraseña de administrador para el directorio LDAP. Seguidamente terminará el proceso de instalación.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/02.png" /></p>
-<p>Podemos comprobar que se ha instalado correctamente ejecutando el comando slapcat. Dicho comando nos mostrará en formato LDIF el contenido de las entradas existentes en el servicio de directorio.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo slapcat
+<p>En él vamos a crear dos entradas referentes a unidades organizativas: «usuarios» y «grupos». Las unidades organizativas, como su propio nombre indica, son atributos que nos van a servir para estructurar de forma idónea nuestro árbol del directorio LDAP. Estas dos entradas serán la base de nuestro árbol ya que de ellas dependerán varias entradas más adelante.</p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/12.png" /></p>
+<p>Una vez creado el fichero base.ldif, procedemos a cargarlo en directorio LDAP. Para ello ejecutamos la siguiente instrucción:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo ldapadd -x -D cn=admin,dc=pandora,dc=ldap -W -f base.ldif
 </code></pre></div>
-<img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/03.png" /></p>
-<p>Además se puede comprobar que el servicio esta corriendo con</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>systemctl status slapd.service
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/14.png" /></p>
+<p>Una vez cargadas las entradas, vamos a proceder a crear nuevas entradas que colgarán de las unidades organizativas que acabamos de crear. Vamos a crear una entrada para un grupo y una entrada para un usuario.</p>
+<p>Antes que nada, como buena práctica de seguridad, vamos a generar una contraseña cifrada para asignárselas a los usuarios en el fichero LDIF que vamos a crear. Para ello ejecutamos el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>slappasswd
 </code></pre></div>
-<img alt="" src="imagenes/02/LdapRunning.png" /></p>
-<p>También se puede comprobar si el servicio de directorio OpenLdap esta escuchando por el <code>puerto 389</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ss -lntp
+<p>Escribimos la contraseña dos veces y nos devolverá la misma cifrada por el algoritmo criptográfico SSHA.</p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/15.png" /></p>
+<p>Ahora que tenemos la contraseña cifrada creamos nuestro fichero content.ldif, donde vamos a crear dos entradas: un grupo llamado devops que colgará de la unidad organizativa grupos y un usuario llamado mordecai que colgará de la unidad organizativa usuarios y a su vez pertenecerá al grupo devops.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano content.ldif
 </code></pre></div>
-<p><img alt="" src="imagenes/02/PortLdap.png" /></p>
-<p>Ahora vamos a realizar la configuración de nuestro servicio de directorio usando el asistente de slapd. Para ello ejecutamos la siguiente instrucción:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo dpkg-reconfigure slapd
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/16.png" /></p>
+<p>De la misma forma que anteriormente, procedemos a cargar las entradas en el directorio LDAP ejecutando la siguiente instrucción:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo ldapadd -x -D cn=admin,dc=pandora,dc=ldap -W -f content.ldif
 </code></pre></div>
-<p>El primer paso del asistente nos pregunta si queremos omitir la configuración del servidor OpenLDAP. Elegiremos que NO para poder configurarlo.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/04.png" /></p>
-<p>A continuación nos pregunta por el dominio en el que se encuentra nuestro servidor, esto va a formar parte del DN del directorio LDAP. Al haberlo indicado anteriormente en el fichero /etc/hosts, automáticamente el asistente lo recoge y solo debemos darle a OK. Si no lo hubiésemos indicado, habría que indicarlo manualmente.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/05.png" /></p>
-<p>Luego nos pregunta por el nombre de la organización a la que va a pertenecer nuestro servidor LDAP. Se puede elegir una contraseña facil para la práctica como <strong>pandora</strong>. Pulsamos OK.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/06.png" /></p>
-<p>Ahora nos vuelve a pedir la contraseña de administrador del directorio LDAP. Esta que pongamos va a machacar la que indicamos en el proceso de instalación y será la definitiva. Como suele pasar, la deberemos introducir dos veces para evitar errores tipográficos.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/07.png" /></p>
-<p>Seguidamente nos pregunta si queremos que se elimine la base de datos del directorio LDAP cuando se borre el paquete slapd del sistema. Le diremos que NO.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/09.png" /></p>
-<p>Y por último nos pregunta si queremos mover los datos de alguna antigua base de datos de directorio LDAP a la nueva que estamos configurando. En nuestro caso, como no tenemos ninguna antigua no va afectar en nada, lo dejaremos en SI y finalizaremos la configuración.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/10.png" /></p>
-<p>Una vez finalizado el asistente, volvemos a ejecutar el comando slapcat y veremos como se han modificado los valores de los atributos de las entradas, con los datos que nosotros acabamos de indicar. </p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/17.png" /></p>
+<p>Llegados a este punto ya tenemos una estructura jerárquica del árbol creada de la siguiente manera:</p>
+<p><img alt="" src="https://blog.juananpc.es/wp-content/uploads/2021/07/arbol.png" /></p>
+<p>Para poder ver las diferentes entradas que forman nuestro directorio LDAP ejecutamos el comando slapcat.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo slapcat
 </code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/11.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span> dn: dc=pandora,dc=ldap
+<span class="linenos" data-linenos=" 2 "></span> objectClass: top
+<span class="linenos" data-linenos=" 3 "></span> objectClass: dcObject
+<span class="linenos" data-linenos=" 4 "></span> objectClass: organization
+<span class="linenos" data-linenos=" 5 "></span> o: pandora
+<span class="linenos" data-linenos=" 6 "></span> dc: pandora
+<span class="linenos" data-linenos=" 7 "></span> structuralObjectClass: organization
+<span class="linenos" data-linenos=" 8 "></span> entryUUID: 7b982cc0-d599-103a-93b2-3d7047cfd04f
+<span class="linenos" data-linenos=" 9 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="10 "></span> createTimestamp: 20201218162610Z
+<span class="linenos" data-linenos="11 "></span> entryCSN: 20201218162610.450021Z#000000#000#000000
+<span class="linenos" data-linenos="12 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="13 "></span> modifyTimestamp: 20201218162610Z
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span> dn: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="16 "></span> objectClass: simpleSecurityObject
+<span class="linenos" data-linenos="17 "></span> objectClass: organizationalRole
+<span class="linenos" data-linenos="18 "></span> cn: admin
+<span class="linenos" data-linenos="19 "></span> description: LDAP administrator
+<span class="linenos" data-linenos="20 "></span> userPassword:: e1NTSEF9MmRTdDVqK0ZtVFJpdFAwQ0g4QmkyNUkwK242dFcxakc=
+<span class="linenos" data-linenos="21 "></span> structuralObjectClass: organizationalRole
+<span class="linenos" data-linenos="22 "></span> entryUUID: 7b9b37a8-d599-103a-93b3-3d7047cfd04f
+<span class="linenos" data-linenos="23 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="24 "></span> createTimestamp: 20201218162610Z
+<span class="linenos" data-linenos="25 "></span> entryCSN: 20201218162610.470043Z#000000#000#000000
+<span class="linenos" data-linenos="26 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="27 "></span> modifyTimestamp: 20201218162610Z
+<span class="linenos" data-linenos="28 "></span>
+<span class="linenos" data-linenos="29 "></span> dn: ou=usuarios,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="30 "></span> objectClass: organizationalUnit
+<span class="linenos" data-linenos="31 "></span> objectClass: top
+<span class="linenos" data-linenos="32 "></span> ou: usuarios
+<span class="linenos" data-linenos="33 "></span> structuralObjectClass: organizationalUnit
+<span class="linenos" data-linenos="34 "></span> entryUUID: 4159df9c-d74a-103a-86e5-c92b1d7a3d24
+<span class="linenos" data-linenos="35 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="36 "></span> createTimestamp: 20201220200404Z
+<span class="linenos" data-linenos="37 "></span> entryCSN: 20201220200404.817837Z#000000#000#000000
+<span class="linenos" data-linenos="38 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="39 "></span> modifyTimestamp: 20201220200404Z
+<span class="linenos" data-linenos="40 "></span>
+<span class="linenos" data-linenos="41 "></span> dn: ou=grupos,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="42 "></span> objectClass: organizationalUnit
+<span class="linenos" data-linenos="43 "></span> objectClass: top
+<span class="linenos" data-linenos="44 "></span> ou: grupos
+<span class="linenos" data-linenos="45 "></span> structuralObjectClass: organizationalUnit
+<span class="linenos" data-linenos="46 "></span> entryUUID: 416283fe-d74a-103a-86e6-c92b1d7a3d24
+<span class="linenos" data-linenos="47 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="48 "></span> createTimestamp: 20201220200404Z
+<span class="linenos" data-linenos="49 "></span> entryCSN: 20201220200404.874510Z#000000#000#000000
+<span class="linenos" data-linenos="50 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="51 "></span> modifyTimestamp: 20201220200404Z
+<span class="linenos" data-linenos="52 "></span>
+<span class="linenos" data-linenos="53 "></span> dn: cn=devops,ou=grupos,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="54 "></span> objectClass: posixGroup
+<span class="linenos" data-linenos="55 "></span> cn: devops
+<span class="linenos" data-linenos="56 "></span> gidNumber: 10000
+<span class="linenos" data-linenos="57 "></span> memberUid: devops
+<span class="linenos" data-linenos="58 "></span> structuralObjectClass: posixGroup
+<span class="linenos" data-linenos="59 "></span> entryUUID: fdac9144-d7f4-103a-86e7-c92b1d7a3d24
+<span class="linenos" data-linenos="60 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="61 "></span> createTimestamp: 20201221162615Z
+<span class="linenos" data-linenos="62 "></span> entryCSN: 20201221162615.215505Z#000000#000#000000
+<span class="linenos" data-linenos="63 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="64 "></span> modifyTimestamp: 20201221162615Z
+<span class="linenos" data-linenos="65 "></span>
+<span class="linenos" data-linenos="66 "></span> dn: uid=mordecai,ou=usuarios,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="67 "></span> objectClass: inetOrgPerson
+<span class="linenos" data-linenos="68 "></span> objectClass: posixAccount
+<span class="linenos" data-linenos="69 "></span> objectClass: shadowAccount
+<span class="linenos" data-linenos="70 "></span> cn: Mordecai
+<span class="linenos" data-linenos="71 "></span> sn: Geek
+<span class="linenos" data-linenos="72 "></span> userPassword:: e1NTSEF9Z0d1eUZkMGlyVld5WkNkSUNRN1AySytUUENPQ0I5ZUI=
+<span class="linenos" data-linenos="73 "></span> loginShell: /bin/bash
+<span class="linenos" data-linenos="74 "></span> uidNumber: 10000
+<span class="linenos" data-linenos="75 "></span> gidNumber: 10000
+<span class="linenos" data-linenos="76 "></span> homeDirectory: /home/mordecai
+<span class="linenos" data-linenos="77 "></span> structuralObjectClass: inetOrgPerson
+<span class="linenos" data-linenos="78 "></span> uid: mordecai
+<span class="linenos" data-linenos="79 "></span> entryUUID: fdb16106-d7f4-103a-86e8-c92b1d7a3d24
+<span class="linenos" data-linenos="80 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="81 "></span> createTimestamp: 20201221162615Z
+<span class="linenos" data-linenos="82 "></span> entryCSN: 20201221162615.247033Z#000000#000#000000
+<span class="linenos" data-linenos="83 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
+<span class="linenos" data-linenos="84 "></span> modifyTimestamp: 20201221162615Z
+</code></pre></div>
                 
               
               
