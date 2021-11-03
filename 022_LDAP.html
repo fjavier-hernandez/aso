@@ -851,6 +851,40 @@ Si el atributo describe, por ejemplo, una dirección de correo electrónico, pue
 </div>
 <h2 id="actividades-iniciales">Actividades Iniciales<a class="headerlink" href="#actividades-iniciales" title="Permanent link">&para;</a></h2>
 <p><a href="Practica01_LDAP.html">Configuración básica e instalación de OpenLDAP</a></p>
+<ul>
+<li>base.ldif</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ou=usuarios,dc=pandora,dc=ldap</span>
+<span class="linenos" data-linenos="2 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">organizationalUnit</span>
+<span class="linenos" data-linenos="3 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">top</span>
+<span class="linenos" data-linenos="4 "></span><span class="nt">ou</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">usuarios</span>
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ou=grupos,dc=pandora,dc=ldap</span>
+<span class="linenos" data-linenos="7 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">organizationalUnit</span>
+<span class="linenos" data-linenos="8 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">top</span>
+<span class="linenos" data-linenos="9 "></span><span class="nt">ou</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">grupos</span>
+</code></pre></div>
+<ul>
+<li>content.ldif </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=devops,ou=grupos,dc=pandora,dc=ldap</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">posixGroup</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nt">cn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">devops</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="nt">gidNumber</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10000</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nt">memberUid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">devops</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">uid=mordecai,ou=usuarios,dc=pandora,dc=ldap</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">inetOrgPerson</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">posixAccount</span>
+<span class="linenos" data-linenos="10 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">shadowAccount</span>
+<span class="linenos" data-linenos="11 "></span><span class="nt">cn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Mordecai</span>
+<span class="linenos" data-linenos="12 "></span><span class="nt">sn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Geek</span>
+<span class="linenos" data-linenos="13 "></span><span class="nt">userPassword</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nv">SSHA</span><span class="p p-Indicator">}</span><span class="l l-Scalar l-Scalar-Plain">latDDmodpsLUWDqwd/adk/j2tTDgz3NX</span>
+<span class="linenos" data-linenos="14 "></span><span class="nt">loginshell</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
+<span class="linenos" data-linenos="15 "></span><span class="nt">uidNumber</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10000</span>
+<span class="linenos" data-linenos="16 "></span><span class="nt">gidNumber</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10000</span>
+<span class="linenos" data-linenos="17 "></span><span class="nt">homeDirectory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/mordecai</span>
+</code></pre></div>
 <h2 id="actividades-desarrollo-ud2_01">Actividades Desarrollo UD2_01<a class="headerlink" href="#actividades-desarrollo-ud2_01" title="Permanent link">&para;</a></h2>
 <p><a name="Actividades Desarrollo UD2_01"></a>
 <a href="Practica02_LDAP.html">Creación de usuarios y grupos OpenLDAP</a></p>
