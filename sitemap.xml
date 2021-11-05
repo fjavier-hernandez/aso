@@ -2,47 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/index.html</loc>
-         <lastmod>2021-11-03</lastmod>
+         <lastmod>2021-11-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/011_ShellScripting.html</loc>
-         <lastmod>2021-11-03</lastmod>
+         <lastmod>2021-11-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/012_PowerShell.html</loc>
-         <lastmod>2021-11-03</lastmod>
+         <lastmod>2021-11-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/013_Docker.html</loc>
-         <lastmod>2021-11-03</lastmod>
+         <lastmod>2021-11-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/021_Introduccion_SD.html</loc>
-         <lastmod>2021-11-03</lastmod>
+         <lastmod>2021-11-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/022_LDAP.html</loc>
-         <lastmod>2021-11-03</lastmod>
+         <lastmod>2021-11-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://javierhernadez81.github.io/aso2122/023_LDAPutils.html</loc>
+         <lastmod>2021-11-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/Practica01_LDAP.html</loc>
-         <lastmod>2021-11-03</lastmod>
+         <lastmod>2021-11-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/Practica02_LDAP.html</loc>
-         <lastmod>2021-11-03</lastmod>
+         <lastmod>2021-11-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://javierhernadez81.github.io/aso2122/Practica03_LDAP.html</loc>
-         <lastmod>2021-11-03</lastmod>
+         <lastmod>2021-11-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
