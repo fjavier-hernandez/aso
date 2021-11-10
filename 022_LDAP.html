@@ -458,6 +458,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuracion-de-openldap" class="md-nav__link">
+    Configuración de OpenLDAP
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración de OpenLDAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slapdconf" class="md-nav__link">
+    slapd.conf
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#actividades-iniciales" class="md-nav__link">
     Actividades Iniciales
   </a>
@@ -496,6 +516,18 @@
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="023_ActiveDirectory.html" class="md-nav__link">
+        2.3- Active Directory
+      </a>
     </li>
   
 
@@ -992,6 +1024,89 @@ Si el atributo describe, por ejemplo, una dirección de correo electrónico, pue
 <p><code>ldapcompare</code> : compara un campo en la entrada con algún valor</p>
 </li>
 </ul>
+<h2 id="configuracion-de-openldap">Configuración de OpenLDAP<a class="headerlink" href="#configuracion-de-openldap" title="Permanent link">&para;</a></h2>
+<h3 id="slapdconf"><code>slapd.conf</code><a class="headerlink" href="#slapdconf" title="Permanent link">&para;</a></h3>
+<p>Es el archivo principal de OpenLDAP y es aquí donde se configuran todos sus parámetros.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><code>slapd.conf</code>se encuentra dentro del directorio <code>/etc/ldap/slapd.d</code></li>
+</ul>
+</div>
+<h4 id="diseno-de-configuracion">Diseño de configuración<a class="headerlink" href="#diseno-de-configuracion" title="Permanent link">&para;</a></h4>
+<p>La configuración de slapd se almacena <strong>como un directorio LDAP especial con un esquema y DIT predefinidos</strong>. </p>
+<ul>
+<li>Hay clases de objetos específicas que se utilizan para llevar opciones de configuración global, definiciones de esquema, definiciones de base de datos y back-end, y otros elementos variados.</li>
+</ul>
+<figure>
+  <img src="imagenes/02/ConfigTreeLDAP.png" width="600"/>
+  <figcaption>Árbol de configuración de muestra.</figcaption>
+</figure>
+
+<ul>
+<li>En el servidor se podría observar:</li>
+</ul>
+<figure>
+  <img src="imagenes/02/TreeLDAPconf.png" width="400"/>
+  <figcaption>Árbol (DIT)de configuración En Ubuntu Server.</figcaption>
+</figure>
+
+<p>El árbol de configuración de slapd-config tiene una estructura muy específica. La raíz del árbol se denomina cn = config y contiene ajustes de configuración global.</p>
+<h4 id="directivas-de-configuracion">Directivas de configuración<a class="headerlink" href="#directivas-de-configuracion" title="Permanent link">&para;</a></h4>
+<p>De las directivas más comunes mostradas en el arblo se destaca centro de <code>cn = config</code> la directiva <code>olcLogLevel</code></p>
+<ul>
+<li>Esta directiva especifica el nivel en el que las declaraciones de depuración y las estadísticas de operación deben registrarse en el syslog (actualmente registrado en la función <strong>syslogd (8) LOG_LOCAL4 )</strong>. </li>
+<li>Debe haber configurado OpenLDAP --enable-debug (el predeterminado) para que esto funcione (excepto para los dos niveles de estadísticas, que siempre están habilitados).</li>
+</ul>
+<h5 id="configuracion-logging">Configuración logging<a class="headerlink" href="#configuracion-logging" title="Permanent link">&para;</a></h5>
+<p>El registro de actividad para slapd es muy útil cuando se implementa una solución basada en OpenLDAP, pero debe habilitarse manualmente después de la instalación del software. De lo contrario, solo aparecerán mensajes rudimentarios en los registros. El registro, como cualquier otra configuración similar, se habilita a través de la base de datos <strong>slapd-config</strong> .</p>
+<ul>
+<li>OpenLDAP viene con múltiples niveles de registro y cada uno contiene el más bajo (aditivo). </li>
+<li>Un buen nivel para probar son las <em>estadísticas</em> . La página de manual de <a href="https://manpages.ubuntu.com/manpages/focal/en/man5/slapd-config.5.html?_ga=2.248400327.1524111619.1636497214-637147953.1635270894">slapd-config</a> tiene más que decir sobre los diferentes subsistemas.</li>
+</ul>
+<ol>
+<li>Cree el archivo <code>logging.ldif</code> con el siguiente contenido:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=config</span>
+<span class="linenos" data-linenos="2 "></span><span class="nt">changetype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">modify</span>
+<span class="linenos" data-linenos="3 "></span><span class="nt">replace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">olcLogLevel</span>
+<span class="linenos" data-linenos="4 "></span><span class="nt">olcLogLevel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">stats</span>
+</code></pre></div>
+<ol start="2">
+<li>Implementar el cambio:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f logging.ldif</span>
+</code></pre></div>
+<p>Esto producirá una cantidad significativa de registro y querrá volver a un nivel menos detallado una vez que su sistema esté en producción. Mientras está en este modo detallado, el motor syslog de su host (rsyslog) puede tener dificultades para mantenerse al día y puede dejar caer mensajes:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>rsyslogd-2177: imuxsock lost 228 messages from pid 2547 due to rate-limiting</strong></p>
+</div>
+<p>Puede considerarse un cambio en la configuración de <code>rsyslog</code>. En <code>/etc/rsyslog.conf</code>, ponga:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Disable rate limiting</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># (default is 200 messages in 5 seconds; below we make the 5 become 0)</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">$SystemLogRateLimitInterval 0</span>
+</code></pre></div>
+<ol start="3">
+<li>Y luego reinicie el demonio rsyslog:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart syslog.service</span>
+</code></pre></div>
+<ol start="4">
+<li>Los Registros de OpenLDAP a través de syslogd <strong>LOCAL4</strong> (Nivel warning de Syslog). Para transmitir el registro LDAP a un archivo separado de syslog, agregue una línea como esta a <strong>syslog.conf</strong> ( <code>/etc/rsyslog.conf</code>):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># a. agregar a syslog.conf</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">local4. * /var/log/ldap.log</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain"># b. crear un archivo de registro vacío</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain">toque /var/log/ldap.log</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="l l-Scalar l-Scalar-Plain"># c. reiniciar syslogd</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="l l-Scalar l-Scalar-Plain">killall -HUP syslogd</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">O</span>
+<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl restart syslog.service</span>
+</code></pre></div>
+<p><a href="http://www.zytrax.com/books/ldap/ch6/#logfile">Más información sobre looging OpenLdap</a></p>
 <h2 id="actividades-iniciales">Actividades Iniciales<a class="headerlink" href="#actividades-iniciales" title="Permanent link">&para;</a></h2>
 <p><a href="Practica01_LDAP.html">Configuración básica e instalación de OpenLDAP</a></p>
 <ul>
@@ -1080,6 +1195,21 @@ Si el atributo describe, por ejemplo, una dirección de correo electrónico, pue
           </div>
         </a>
       
+      
+        
+        <a href="023_ActiveDirectory.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 2.3- Active Directory" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              2.3- Active Directory
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

@@ -335,6 +335,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="023_ActiveDirectory.html" class="md-nav__link">
+        2.3- Active Directory
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -391,10 +403,10 @@
 <p>Tras la autenticación exitosa, se accede en el panel de phpLDAPadmin.</p>
 <p><img alt="" src="imagenes/02/panelLDAP.png" /></p>
 <p>Ahora puede administrar su servidor LDAP con una interfaz web.</p>
-<h3 id="crear-usuario-ldap-en-phpldapadmin">Crear usuario LDAP en phpLDAPadmin<a class="headerlink" href="#crear-usuario-ldap-en-phpldapadmin" title="Permanent link">&para;</a></h3>
+<h3 id="crear-usuario-y-grupo-ldap-en-phpldapadmin">Crear usuario y grupo LDAP en phpLDAPadmin<a class="headerlink" href="#crear-usuario-y-grupo-ldap-en-phpldapadmin" title="Permanent link">&para;</a></h3>
 <p>Como ejemplo, aprenderemos cómo crear un usuario LDAP y su grupo usando phpLDAPadmin.</p>
-<h4 id="crear-usuario-posixgroup">Crear usuario posixGroup<a class="headerlink" href="#crear-usuario-posixgroup" title="Permanent link">&para;</a></h4>
-<p>Haga clic en <code>ou=group</code>. Luego haga clic en <code 1="1" opción="opción">Create new entry here</code> o haga clic en <code 2="2" opción="opción">Create a child entry</code>.</p>
+<h4 id="crear-grupo-posixgroup">Crear grupo posixGroup<a class="headerlink" href="#crear-grupo-posixgroup" title="Permanent link">&para;</a></h4>
+<p>Para crear un grupo dentro de otro Haga clic en <code>ou=grupos</code>. Luego haga clic en <code 1="1" opción="opción">Create new entry here</code> o haga clic en <code 2="2" opción="opción">Create a child entry</code>.</p>
 <p><img alt="" src="imagenes/02/CrearUserLDAPGUI.png" /></p>
 <p>A continuación, haga clic en la <code>Generic: Posix Group</code>plantilla para crear un grupo de usuarios LDAP.</p>
 <p><img alt="" src="imagenes/02/GrupoPhPLdap.png" /></p>
@@ -402,7 +414,7 @@
 <p>Si desea que otros usuarios formen parte del grupo, seleccione sus nombres de usuario. Haga clic <code>Create Object</code>una vez hecho y confirme los cambios.</p>
 <p><img alt="" src="imagenes/02/CrearObjetoPhPLDAP.png" /></p>
 <h4 id="crear-usuario-posixaccount">Crear usuario posixAccount<a class="headerlink" href="#crear-usuario-posixaccount" title="Permanent link">&para;</a></h4>
-<p>Una vez que haya creado un grupo de usuarios, proceda a crear la cuenta de usuario. Haga clic en <code>ou=people</code>y de manera similar, tiene dos opciones, hacer clic <code>Create new entry here</code>o hacer clic <code>Create a child entry</code>.</p>
+<p>Una vez que haya creado un grupo de usuarios, proceda a crear la cuenta de usuario. Haga clic en <code>ou=grupos</code>y de manera similar, tiene dos opciones, hacer clic <code>Create new entry here</code>o hacer clic <code>Create a child entry</code>.</p>
 <p>Seleccione la <code>Generic: User Account</code>plantilla para crear el objeto de usuario.</p>
 <p>Generar hash de contraseña de usuario;</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">slappasswd</span>
