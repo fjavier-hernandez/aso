@@ -77,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#nic-redundante" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -366,33 +371,95 @@
                 <p><strong>Visor de Eventos.</strong></p>
 <p>Esta herramienta nos mostrará la información del estado de las aplicaciones y servicios de nuestro servidor.</p>
 <p>Debemos habituarnos a ver el visor de eventos de forma regular para confirmar que nuestros servicios no están fallando o a punto de fallar.  El visor de eventos  también resulta útil para sacar la información en caso de que un servicio esté fallando.</p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.001.png" /></p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.002.png" /></p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/001.png" width="1200"/>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/002.png" width="1100"/>
+  <figcaption>Visor de Eventos Windows Server.</figcaption>
+</figure>
+
 <p>Podemos <strong>filtrar los eventos</strong> por tiempo (últimas 24h, 1h, 30 min, …), por aplicación que ha generado el evento, usuarios, etc…</p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.003.png" /></p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/003.png" width="1100"/>
+  <figcaption>Filtrar Eventos por tiempos.</figcaption>
+</figure>
+
 <p>Una cosa importante es la política de eventos con las aplicaciones, especialmente aquellas que ofrecen un servicio y son más propicias a ser atacadas o más críticas. Se asigna una cantidad de memoria que pueden usar los registros (logs), pasado esta capacidad se debe decidir <strong>si sobrescribir o no sobrescribir</strong> los logs. Lo habitual sería no sobrescribir, pero debemos estar atentos a la capacidad total que van acumulando para ir eliminándolos manualmente o mediante un script cada cierto tiempo.</p>
 <p>Con el icono <strong>vaciar registro</strong> podemos borrar los eventos de la aplicación seleccionada.</p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.004.png" /></p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/004.png" width="1100"/>
+  <figcaption>Borrar Eventos de la aplicación.</figcaption>
+</figure>
+
 <p>En caso de tener un <strong>error</strong> del sistema podemos visualizarlos en la pestaña de “Sistema”, cada error registrado del sistema tiene un <strong>identificador (ID)</strong> que será el que usemos en caso de querer buscar información del error en Internet.</p>
 <p>Es recomendable, mirar todos los días el registro de eventos del sistema.</p>
 <p>Importante diferenciar entre un “Error” y un “Warning / Aviso”, el primero es que ya ha habido un problema grave que debe ser resuelto, el segundo es una alerta de algo que debería revisarse, pero que no ha ocasionado un problema crítico.</p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.005.png" /></p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/005.png" width="1100"/>
+  <figcaption>Comprobar errores del sistema.</figcaption>
+</figure>
+
 <p>Al igual que con las aplicaciones podemos decidir qué hacer con los registros de eventos referidos al sistema:</p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.006.png" /><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.007.png" /></p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/005.png" width="1100"/>
+  <figcaption>Registros de Eventos del sistema.</figcaption>
+</figure>
+
 <p><strong>Monitor de recursos.</strong></p>
 <p>El monitor de recursos nos da información sobre la memoria libre, el rendimiento de la cpu, lecturas en disco, etc. Esto nos puede dar información si fuera necesario ampliar o mejorar algún componente hardware de nuestro servidor.</p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.008.png" /></p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.009.png" /></p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/006.png" width="1100"/>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/007.png" width="1100"/>
+</figure>
+
 <p>Si queremos analizar o monitorizar valores más específicos debemos ir al monitor de rendimiento y añadir a la gráfica los datos que deseamos.</p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.010.png" /></p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/008.png" width="1000"/>
+  <figcaption>Estadísticas de datos seleccionados.</figcaption>
+</figure>
+
 <p>Podemos generar un resumen/<strong>informe</strong> de todo el sistema, referente al rendimiento de éste:</p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.011.png" /></p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.012.png" /></p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.013.png" /></p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.014.png" /></p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/009.png" width="600"/>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/010.png" width="1000"/>
+  <figcaption>Generación informe I.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/011.png" width="1000"/>
+  <figcaption>Generación informe II.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/012.png" width="1000"/>
+  <figcaption>Generación informe III.</figcaption>
+</figure>
+
 <p><strong>Podemos exportar a algún fichero el resumen de todo el informe del rendimiento del sistema.</strong></p>
-<p><img alt="" src="Aspose.Words.80b2a239-d7ee-4d78-8445-6e3a6ffb878e.015.png" /></p>
-<p><strong>Ejercicios:</strong></p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/confBas3/013.png" width="400"/>
+  <figcaption>Generación informe IV.</figcaption>
+</figure>
+
+<h2 id="nic-redundante">NIC redundante<a class="headerlink" href="#nic-redundante" title="Permanent link">&para;</a></h2>
+<p>Una NIC (Network Interface Controller) no es más que un adaptador de red o tarjeta de red. Con una NIC redundante queremos decir que uno o más adaptadores de red trabajan como uno, pudiendo mejorar el ancho de banda total que puede cursar y dotando al sistema de una mayor disponibilidad, pues si uno de los adaptadores de red fallara, tendríamos otros y no se cortaría la conexión.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Es muy habitual en todos los servidores tener más de un adaptador de red.</p>
+</div>
+<ul>
+<li><strong>Visualiza el siguiente vídeo y contesta a las preguntas:</strong></li>
+</ul>
+<p><a href="https://youtu.be/nA1jYIvBFBU">Configuración NIC Redundante</a></p>
+<h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <p>Documenta adecuadamente (capturas de pantalla y explicaciones) todos los ejercicios.</p>
 <ol>
 <li>¿Cómo harías para filtrar en el visor de eventos todos los eventos críticos de seguridad?</li>
@@ -402,6 +469,9 @@
 <li>Indica cual es la ruta y el nombre del log seleccionado.</li>
 <li>¿Qué sucede si vas a dicha carpeta y abres con doble click el log seleccionado?</li>
 <li>Genera un informe de tu sistema.</li>
+<li>Crea un Segundo adaptador de red en tu máquina virtual de Windows Server 2019.</li>
+<li>Crea un equipo de NIC y muestra el proceso mediante un vídeo o mediante capturas de pantalla.</li>
+<li>Configura una IP fija en tu NIC virtual.</li>
 </ol>
                 
               
