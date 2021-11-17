@@ -1,0 +1,655 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica05_AD.html">
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>Práctica05_AD - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica05_ad" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Práctica05_AD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- Tools: Scripting y Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- Tools: Scripting y Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- Tools: Scripting y Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="011_ShellScripting.html" class="md-nav__link">
+        1.1- ShellScripting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="012_PowerShell.html" class="md-nav__link">
+        1.2- PowerShell
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="013_Docker.html" class="md-nav__link">
+        1.3- Docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- Administración de servicios de directorio
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- Administración de servicios de directorio" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- Administración de servicios de directorio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="021_Introduccion_SD.html" class="md-nav__link">
+        2.1- Introducción de servicios de directorio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="022_LDAP.html" class="md-nav__link">
+        2.2- LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="023_ActiveDirectory.html" class="md-nav__link">
+        2.3- Active Directory
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica05_ad">Práctica05_AD<a class="headerlink" href="#practica05_ad" title="Permanent link">&para;</a></h1>
+<h1 id="instalacion-de-active-directoryinstalacion-de-active-directory-ii">Instalación de Active DirectoryInstalación de Active Directory II<a class="headerlink" href="#instalacion-de-active-directoryinstalacion-de-active-directory-ii" title="Permanent link">&para;</a></h1>
+<p>Objetivos de esta práctica:</p>
+<ul>
+<li>Eliminar Clientes de un dominio.</li>
+<li>Degradar Controlador de un dominio.</li>
+<li>Configurar un servicio de DHCP</li>
+<li>Acceso Remoto y NAT</li>
+</ul>
+<h1 id="eliminar-clientes-de-un-dominioeliminar-clientes-de-un-dominio">Eliminar clientes de un dominioEliminar clientes de un dominio<a class="headerlink" href="#eliminar-clientes-de-un-dominioeliminar-clientes-de-un-dominio" title="Permanent link">&para;</a></h1>
+<p><strong>Eliminar clientes de un dominio</strong></p>
+<p>Habrá veces que una determinada máquina queramos sacarla de un dominio por algún motivo, para quitar un cliente Windows
+10 de un domino debemos realizar los siguientes pasos:</p>
+<p>Accedemos a Sistema, a través del botón de inicio de Windows y con el ratón botón de la derecha --&gt; Sistema.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Eliminar cliente windows 10 de dominio
+</code></pre></div>
+<p>Dentro de Sistema --&gt; Acerca de seleccionamos Administrar o desconectar del trabajo o de la escuela:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Eliminar cliente windows 10 de dominio
+</code></pre></div>
+Seleccionamos el dominio al que está conectado, en nuestro caso a CEFIRE2017.LOCAL y hacemos clic en Desconectar</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Eliminar cliente windows 10 de dominio
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Eliminar cliente windows 10 de domino
+</code></pre></div>
+y desconectamos del dominio local</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Eliminar cliente windows 10 de dominio
+</code></pre></div>
+<h1 id="degradar-un-controlador-de-dominiodegradar-un-controlador-de-dominio">Degradar un controlador de dominioDegradar un controlador de dominio<a class="headerlink" href="#degradar-un-controlador-de-dominiodegradar-un-controlador-de-dominio" title="Permanent link">&para;</a></h1>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Eliminar cliente windows 10 de dominio
+</code></pre></div>
+<strong>Degradar un controlador de dominio</strong></p>
+<p>En este apartado lo que vamos a ver es cómo podemos degradar un servidor que esté actuando como controlador de dominio,
+es decir, que tenga instalado un Active Directory. Para ello iremos al Panel de Administrador del Servidor y seleccionaremos
+Agregar roles y características:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Degradar un controlador de dominio
+</code></pre></div>
+Nos aparece el asistente para quitar roles y características, seleccionamos siguiente:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Degradar un controlador de dominio
+</code></pre></div>
+Iniciado el asistente seleccionamos el servidor en donde vamos a quitar algún rol. En nuestro caso, eliminaremos el rol
+Servicios de dominio de Active Directory:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Degradar un controlador de dominio
+</code></pre></div>
+Eliminamos las características de los servicios de Active Directory:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Degradar un controlador de dominio
+</code></pre></div>
+Para poder eliminar los servicios de Active Directory, es necesario disminuir el nivel del controlador de dominio:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Degradar un controlador de dominio
+</code></pre></div>
+Forzamos la eliminación del controlador de dominio:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Degradar un controlador de domino
+</code></pre></div>
+Introducimos la contraseña del administrador del dominio, en nuestro caso "cefire2017.":</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Degradar un controlador de dominio
+</code></pre></div>
+Y por último Disminuimos el nivel:</p>
+<h1 id="servicio-de-dhcpservicio-de-dhcp">Servicio de DHCPServicio de DHCP<a class="headerlink" href="#servicio-de-dhcpservicio-de-dhcp" title="Permanent link">&para;</a></h1>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Degradar un controlador de dominio
+</code></pre></div>
+<strong>Servicio de DHCP</strong></p>
+<p>Indiscutiblemente uno de los principales roles que nos ofrece Windows Server y que son vitales en el óptimo funcionamiento
+de nuestra infraestructura de red es el rol de DHCP. DHCP (Dynamic Host Configuration Protocol – Protocolo de Configuración
+Dinámica de Equipos) nos permite definir rangos de direcciones IP para los equipos cliente del dominio y de este modo
+administrar de forma centralizada todas las direcciones IP del dominio.</p>
+<p>Cuando en nuestra organización tenemos disponible un servidor DHCP tenemos la plena confianza que todos los equipos y
+dispositivos de nuestra red tendrán de forma automática su dirección IP y no es necesario ir a cada máquina a definir la
+dirección de forma manual.</p>
+<p>Con el rol DHCP proveemos los siguientes parámetros:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Máscara de subred
+<span class="linenos" data-linenos="2 "></span>Dirección IP
+<span class="linenos" data-linenos="3 "></span>Puerta de enlace
+<span class="linenos" data-linenos="4 "></span>Servidores DNS, entre otros.
+</code></pre></div>
+Para iniciar el proceso de instalación seleccionaremos la opción Agregar roles y características desde el Administrador del
+servidor. La primera ventana la podemos omitir ya que es de bienvenida. Pulsamos Siguiente y en la ventana desplegada
+seleccionamos la opción Instalación basada en características y roles, pulsamos Siguiente y seleccionamos el servidor donde
+instalaremos el rol DHCP.</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Instalación servicio de DHCP
+</code></pre></div>
+Una vez seleccionado el equipo buscaremos el rol Servidor de DHCP, al activar la casilla veremos la siguiente ventana donde
+se indica si deseamos agregar las características de DHCP. Seleccionamos la opción Agregar característica y veremos el rol
+seleccionado. Llegaremos al resumen y haremos clic en Instalar:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Instalación servicio de DHCP
+</code></pre></div>
+<p>Una vez instalado, hay que realizar la configuración del rol. Para ello hay que hacer clic en Completar configuración DHCP:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+<strong>Configuración servicio de DHCP</strong></p>
+<p>Como vemos debemos completar la configuración del DHCP para que todo el rol quede correctamente preparado para la
+organización, para ello pulsamos en la opción “Completar configuración de DHCP”. Al pulsar esta opción veremos el siguiente
+asistente.</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+Pulsamos Siguiente y debemos configurar las credenciales del usuario que han de ser usadas para la configuración del
+servidor DHCP:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+<p>Una vez definidas pulsamos Confirmar y veremos el resumen del proceso. Pulsamos Cerrar para salir del asistente. Con esto
+hemos instalado el rol de DHCP en Windows Server 2016:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+Ahora debemos configurar el DHCP por lo que con este paso realizado vamos a ir a la siguiente ruta para establecer la
+configuración deseada para el DHCP. Para ello vamos al Panel del Administrador --&gt; Herramientas y DHCP:</p>
+<p>Como podemos observar contamos con dos opciones de configuración. Allí podemos configurar todos los parámetros del
+direccionamiento IPv4, hasta ahora el más usado y el de IPv6.</p>
+<h2 id="creacion-de-un-nuevo-ambito">Creación de un nuevo ámbito<a class="headerlink" href="#creacion-de-un-nuevo-ambito" title="Permanent link">&para;</a></h2>
+<p>Un ámbito es un rango de direcciones que serán asignadas de forma automática a los equipos de nuestro dominio. Por tanto
+seleccionaremos IPv4 y con el botón de la derecha del ratón accederemos a la opción Ámbito Nuevo...</p>
+<p>Iniciará el asistente para creación de un ámbito nuevo:</p>
+<p><em>Configuración servicio de DHCP</em></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+<p>Pulsamos Siguiente y a continuación debemos establecer un nombre a este nuevo ámbito. En nuestro caso, ámbito
+CEFIRE2019.LOCAL:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+En la siguiente ventana debemos establecer el rango de direcciones IP a asignar de forma automática, debemos indicar una
+dirección IP inicial y una dirección IP final. Es muy importante que tengamos claridad sobre la cantidad de usuarios estarán
+activos para no asignar direcciones de más ni quedarnos cortos con las mismas. La longitud la dejamos por defecto en 24 y la
+máscara de subred dejamos la que está, clase C. En nuestro caso, introduciremos un rango desde la 192.168.100.20 -
+192.168.100.250.</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+Al pulsar Siguiente podemos establecer una o más direcciones IP que no serán distribuidas a los usuarios de manera normal,
+esto es efectivo en los siguientes casos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Tareas de administración.
+<span class="linenos" data-linenos="2 "></span>Asignar IPs fijas a dispositivos como impresoras.
+<span class="linenos" data-linenos="3 "></span>Establecer direcciones IP a un grupo determinado de usuarios sin que ésta sea renovada.
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+Una vez establecido o no estas exclusiones pulsamos Siguiente y veremos que podemos configurar cuánto tiempo durará la
+concesión de la dirección IP, esto hace que la dirección IP en el equipo cliente sea renovada de manera automática, podemos
+definir este valor en días, horas o minutos. Lo más recomendable es que para los equipos de nuestra organización se
+establezca esta concesión en días ya que al renovarse la dirección IP el usuario puede verse afectado en su navegación y uso
+de la red.</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+Pulsamos Siguiente y debemos definir si establecemos esta configuración de manera inmediata o más adelante. En nuestro
+caso marcaremos la opción de configurar las opciones ahora:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+<p>Al pulsar que las configure de manera inmediata el asistente nos solicitará que ingresemos la dirección IP del enrutador o
+puerta de enlace. En nuestro caso añadiremos la ip 192.168.100.1 y le daremos a Agregar:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+Pulsamos nuevamente Siguiente y podemos ver el nombre del dominio o especificar cuáles equipos serán usados para la
+resolución de los nombres DNS. En nuestro caso, la IP de la red interna, 192.168.100.1 y como alternativo podemos poder
+cualquier DNS, por ejemplo el de google 8.8.8.8:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+Al pulsar Siguiente veremos la configuración de los servidores WINS los cuales permiten que los nombres de equipo NetBIOS
+sean convertidos en direcciones IP. Nuestro caso ninguno.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+<p>Finalmente activamos nuestro ámbito.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración servicio de DHCP
+</code></pre></div>
+<h2 id="configuracion-de-ip-por-dhcp-en-maquina-cliente">Configuración de IP por DHCP en máquina cliente<a class="headerlink" href="#configuracion-de-ip-por-dhcp-en-maquina-cliente" title="Permanent link">&para;</a></h2>
+<p>Para comprobar que nuestro DHCP funciona, basta con cambiar la configuración en la máquina Windows 10 cliente y
+comprobar que nos asigna la primera dirección disponible de nuestro ámbito, típicamente la 192.168.100.20, en nuestro caso:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración IP dinámica en cliente
+</code></pre></div>
+Y comprobamos la IP:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración dinámica IP
+</code></pre></div>
+<h2 id="concesion-de-direcciones-en-dhcp">Concesión de direcciones en DHCP<a class="headerlink" href="#concesion-de-direcciones-en-dhcp" title="Permanent link">&para;</a></h2>
+<h1 id="acceso-remoto-naacceso-remoto-natt">Acceso Remoto. NAAcceso Remoto. NAT.T.<a class="headerlink" href="#acceso-remoto-naacceso-remoto-natt" title="Permanent link">&para;</a></h1>
+<p>Desde el servidor, en la opción de DHCP, también podemos comprobar las concesiones de direcciones IPs que se han
+realizado:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Concesión de dirección IP
+</code></pre></div>
+<strong>Servicios de enrutamiento</strong></p>
+<p>En este punto vamos a realizar la configuración de NAT en nuestro servidor. NAT (Network Address Translation) nos permite
+que nuestra interfaz externa, pueda traducir las direcciones de la red interna. De esta forma, en las máquinas clientes de la red
+interna de nuestro dominio, puede tener acceso a internet. Este servicio en combinación con el anterior se suele utilizar con
+mucha frecuencia. Para ello lo primero de debemos hacer es realizar la instalación del rol Acceso Remoto, para ello
+accedemos desde nuestro Panel del Administrador del Servidor en agregar roles y características y seleccionar Acceso
+Remoto:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración de NAT
+</code></pre></div>
+Marcamos y agregamos las características, NAT va acompañado también del servicio de Enrutamiento y Direct Access. En
+nuestro caso, de momento solo realizaremos la configuración de NAT:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración de NAT
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración NAT
+</code></pre></div>
+Una vez instalado vamos a realizar la configuración del NAT. Para ello, dentro del Panel del Administrador del Servidor,
+accedemos a Herramientas y después en Enrutamiento y Acceso Remoto:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración de NAT
+</code></pre></div>
+Dentro de enrutamiento y acceso remoto, seleccionamos nuestro servidor y con el botón de la derecha del ratón, marcamos la
+opción Configurar y habilitar el Enrutamiento y acceso remoto:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración de NAT
+</code></pre></div>
+Nos iniciará un asistente y marcaremos la opción Traducción de direcciones de red (NAT):</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración de NAT
+</code></pre></div>
+Marcaremos nuestra interfaz externa (WAN) como interfaz de conexión a internet:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración de NAT
+</code></pre></div>
+<strong>Acceso a internet cliente Windows 10</strong></p>
+<p>Ahora desde nuestra máquina cliente Windows 10, ya tenemos nuestro acceso a internet:</p>
+<h1 id="actividadesactividades">ActividadesActividades<a class="headerlink" href="#actividadesactividades" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Configuración de NAT
+</code></pre></div>
+<h2 id="actividad-2">Actividad 2<a class="headerlink" href="#actividad-2" title="Permanent link">&para;</a></h2>
+<p>En esta actividad vamos a realizar la configuración de un dominio y la validación de una máquina Windows 10 en el
+mismo.</p>
+<h2 id="creacion-de-un-dominio">Creación de un dominio<a class="headerlink" href="#creacion-de-un-dominio" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>En este apartado habrá que instalar y configurar un dominio. El dominio que hay que instalar y configurar será
+<span class="linenos" data-linenos="2 "></span>CEFIRE2019.LOCAL. Para ello habrá que entregar un único archivo PDF con la captura de pantalla de nuestro
+<span class="linenos" data-linenos="3 "></span>Panel de Administrador del Servidor, donde aparezca claramente el nombre de máquina y también el nombre de
+<span class="linenos" data-linenos="4 "></span>dominio.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Por ejemplo:
+</code></pre></div></p>
+<p><em>Actividad 2.1</em></p>
+<h2 id="validar-una-maquina-windows-10-en-el-dominio">Validar una máquina Windows 10 en el dominio<a class="headerlink" href="#validar-una-maquina-windows-10-en-el-dominio" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Una vez instalado y configurado el domino, habrá que validar nuestra máquina Windows 10 cliente en el dominio.
+<span class="linenos" data-linenos="2 "></span>Una vez unida al dominio, habrá que añadir al documento a entregar, una captura de pantalla donde se aprecie
+<span class="linenos" data-linenos="3 "></span>en el servidor que el equipo está dado correctamente de alta (Inicio → Herramientas Administrativas → Usuarios
+<span class="linenos" data-linenos="4 "></span>y Equipos de Active Directory → CEFIRE2019.LOCAL → Computer/Equipos). Añade también alguna captura de
+<span class="linenos" data-linenos="5 "></span>pantalla de las propiedades del equipo donde se identifique el sistema operativo de los equipos que has unido al
+<span class="linenos" data-linenos="6 "></span>dominio.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Por ejemplo:
+</code></pre></div>
+<em>Actividad 2.2</em></p>
+<p>Obra publicada con Licencia Creative Commons Reconocimiento Compartir igual 4.0</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
