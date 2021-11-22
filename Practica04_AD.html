@@ -535,10 +535,12 @@ Directory. Para entrar dentro del shell de PowerShell, teclearemos el comando <s
 <span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">$redInterna=&quot;Ethernet 2&quot;</span>
 <span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">Rename-Computer -NewName $nombreServer</span>
 <span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">Get-NetAdapter –name $redInterna | Remove-NetIPAddress -Confirm:$false</span>
-<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">Get-NetAdapter –name $redInterna | New-NetIPAddress –addressfamily IPv4 –ipaddress</span>
-<span class="linenos" data-linenos="7 "></span><span class="l l-Scalar l-Scalar-Plain">$dirIP –prefixlength 24 –type unicast</span>
-<span class="linenos" data-linenos="8 "></span><span class="l l-Scalar l-Scalar-Plain">Restart-Computer -force</span>
+<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">Get-NetAdapter –name $redInterna | New-NetIPAddress –addressfamily IPv4 –ipaddress $dirIP –prefixlength 24 –type unicast</span>
 </code></pre></div></p>
+<div class="admonition warming">
+<p class="admonition-title">Warming</p>
+<p>Después de la captura se debe reiniciar para aplicar los cambios.</p>
+</div>
 <p><strong>Donde se Puede observar:</strong></p>
 <ul>
 <li>El nombre de máquina en la variable <code>$nombreServer</code></li>
@@ -562,9 +564,7 @@ mediante scripts. </p>
 <span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">$adminPass = &quot;aso2122.&quot;</span>
 <span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">Install-WindowsFeature AD-Domain-Services,DNS</span>
 <span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">Import-module addsdeployment</span>
-<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">Install-ADDSForest -DomainName $dominioFQDN -DomainNetBiosName $dominioNETBIOS -</span>
-<span class="linenos" data-linenos="7 "></span><span class="l l-Scalar l-Scalar-Plain">SafeModeAdministratorPassword (ConvertTo-SecureString -string $adminPass -AsPlainText -</span>
-<span class="linenos" data-linenos="8 "></span><span class="l l-Scalar l-Scalar-Plain">Force) -DomainMode WinThreshold -ForestMode WinThreshold -InstallDNS -Confirm:$false</span>
+<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">Install-ADDSForest -DomainName $dominioFQDN -DomainNetBiosName $dominioNETBIOS -SafeModeAdministratorPassword (ConvertTo-SecureString -string $adminPass -AsPlainText -Force) -DomainMode WinThreshold -ForestMode WinThreshold -InstallDNS -Confirm:$false</span>
 </code></pre></div></p>
 <p><strong>Donde se Puede observar:</strong></p>
 <ul>
