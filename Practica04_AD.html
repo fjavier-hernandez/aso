@@ -545,15 +545,15 @@ Directory. Para entrar dentro del shell de PowerShell, teclearemos el comando <s
 <ul>
 <li>El nombre de máquina en la variable <code>$nombreServer</code></li>
 <li>El adaptador de la red interna en $redInterna (Ejemplo en el script) y también la dirección IP de la red interna en <code>$dirIP</code>. </li>
-<li>El comando<code>_Rename-Computer -NewName $nombreServer_</code> cambia el nombre del servidor. </li>
+<li>El comando<code>_Rename-Computer -NewName $nombreServer</code> cambia el nombre del servidor. </li>
 <li>Los comandos: <ul>
-<li><code>_Get-NetAdapter –__name $redInterna | Remove-NetIPAddress -Confirm:$false_</code> </li>
+<li><code>_Get-NetAdapter –__name $redInterna | Remove-NetIPAddress -Confirm:$false</code> </li>
 <li><code>_Get-NetAdapter –name $redInterna | New-NetIPAddress –addressfamily IPv4 –ipaddress</code></li>
-<li><code>$dirIP –prefixlength 24 –type unicast_</code> 
+<li><code>$dirIP –prefixlength 24 –type unicast</code> 
   Nos permiten añadir la dirección IP de nuestra red interna.</li>
 </ul>
 </li>
-<li>Finalmente con <code>_Restart-Computer -force_</code> reiniciamos la máquina y tendremos configurado el nombre y el interfaz de la red interna.</li>
+<li>Finalmente con <code>_Restart-Computer -force</code> reiniciamos la máquina y tendremos configurado el nombre y el interfaz de la red interna.</li>
 </ul>
 <h3 id="instalar-controlador-de-dominio-con-powershell">Instalar Controlador de dominio con powershell<a class="headerlink" href="#instalar-controlador-de-dominio-con-powershell" title="Permanent link">&para;</a></h3>
 <p>Ahora vamos a promover nuestro servidor a controlador de dominio. Esto también lo vamos a realizar a través de powershell
