@@ -16,7 +16,7 @@
     
     
       
-        <title>Practica07 AD - Administración de Sistemas Operativos</title>
+        <title>Caso Práctico: Creación de una estructura en AD - Administración de Sistemas Operativos</title>
       
     
     
@@ -77,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#caso-practico-creacion-de-una-estructura-en-ad" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -102,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Practica07 AD
+              Caso Práctico: Creación de una estructura en AD
             
           </span>
         </div>
@@ -361,9 +366,173 @@
               
                 
                 
-                  <h1>Practica07 AD</h1>
-                
-                
+                <h1 id="caso-practico-creacion-de-una-estructura-en-ad">Caso Práctico: Creación de una estructura en AD<a class="headerlink" href="#caso-practico-creacion-de-una-estructura-en-ad" title="Permanent link">&para;</a></h1>
+<p>La administración del dominio es una tarea sencilla mediante la interfaz gráfica, pero puede ser muy tediosa si hay que repetir
+en innumerables ocasiones secuencias de acciones.</p>
+<ul>
+<li>
+<p>Pensemos por ejemplo en el caso típico en el que hay que dar de alta a una cantidad muy grande de usuarios, creando la estructura completa de la organización. Este tipo de procesos puede facilitarse enormemente mediante la utilización de <strong>scripts</strong>.</p>
+</li>
+<li>
+<p>Concretamente, <strong>en este ejemplo se plantea la creación de las cuentas de usuario de una organización, así como sus grupos y
+unidades organizativas</strong>.</p>
+</li>
+</ul>
+<p>Vamos a suponer que tenemos que crear la siguiente estructura de AD:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR07/001.png" width="400"/>
+  <figcaption>Estructura AD.</figcaption>
+</figure>
+
+<p>Es decir que tendremos 3 secciones y cada sección tiene un conjunto de departamentos.</p>
+<p>De manera que tengamos <strong>Administración</strong>, <strong>Almacén y Dirección</strong>. Y cada sección tenga los departamentos que se indican.</p>
+<p>Para ello vamos a disponer de los ficheros: secciones.csv, departamentos.csv y personal.csv. <strong>Subidos en aules</strong>.</p>
+<h2 id="creacion-de-ou-y-grupos">Creación de OU y Grupos<a class="headerlink" href="#creacion-de-ou-y-grupos" title="Permanent link">&para;</a></h2>
+<p>Lo primero que vamos a crear es la Unidad Organizativa raíz. Para ello se utiliza: <code>New-ADOrganizationalUnit</code> y <code>New-ADGroup</code></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Creando Estructura de OU y Grupos...&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">New-ADOrganizationalUnit -Name &quot;Pistonazo&quot; -Path &quot;DC=CEFIRE2019, DC=LOCAL&quot; -Description &quot;Unidad organizativa Pistonazo&quot; -ProtectedFromAccidentalDeletion $false</span> 
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">New-ADGroup -Name &quot;Pistonazo&quot; -GroupScope Global -Path &quot;OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;</span>
+</code></pre></div>
+<p>Después crearemos cada una de las unidades organizativas y grupos a partir de los ficheros secciones.csv. Para ello se hará uso del comando <code>foreach</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">$secciones = Import-CSV -Path &quot;./secciones.csv&quot;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">$group = Get-ADGroup &quot;CN=Pistonazo,OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">foreach ($ou in $secciones) {</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="l l-Scalar l-Scalar-Plain">New-ADOrganizationalUnit -Name ($ou.seccion) -Path &quot;OU=Pistonazo, DC=CEFIRE2019, DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="l l-Scalar l-Scalar-Plain">$path=&quot;OU=&quot;+($ou.seccion)+&quot;,OU=Pistonazo, DC=CEFIRE2019, DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="l l-Scalar l-Scalar-Plain">New-ADGroup -Name $ou.seccion -GroupScope Global -Path $path</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="l l-Scalar l-Scalar-Plain">$member = &quot;CN=&quot;+($ou.seccion)+&quot;,&quot;+$path</span> 
+<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">Add-ADGroupMember $group -Members $member</span>       
+<span class="linenos" data-linenos=" 9 "></span>    <span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Unidad $($ou.seccion) creada!&quot;</span>
+<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+<p>Con esto ya tendremos la estructura de <strong>Unidades Organizativas</strong> y <strong>grupos</strong> creados.</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR07/002.png" width="800"/>
+  <figcaption>OU y grupos creados.</figcaption>
+</figure>
+
+<h2 id="creacion-de-usuarios">Creación de Usuarios<a class="headerlink" href="#creacion-de-usuarios" title="Permanent link">&para;</a></h2>
+<p>Ahora queda crear los usuarios de nuestra organización. Para ello leeremos del archivo <strong>personal.csv</strong>. Este archivo tiene 3
+columnas, una para el login, otra para el departamento y otra para la sección. Crearemos una contraseña para todos y
+haremos que el usuario cuando inicie la sesión se la tenga que cambiar.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">$usuarios = Import-CSV -Path &quot;./personal.csv&quot;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Creando usuarios....&quot;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">foreach ($user in $usuarios) {</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="l l-Scalar l-Scalar-Plain">$login = $user.login</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="l l-Scalar l-Scalar-Plain">$path=&quot;OU=&quot;+$user.departamento+&quot;,OU=&quot;+$user.seccion+&quot;,OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="l l-Scalar l-Scalar-Plain">New-ADUser -Name $login  -Path $path -SamAccountName $login -UserPrincipalName ($login+&quot;@CEFIRE2019.LOCAL&quot;) -AccountPassword (ConvertTo-SecureString &quot;cefire2019.&quot; -AsPlainText -Force) -GivenName $login -ChangePasswordAtLogon $true-Enabled $true</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="l l-Scalar l-Scalar-Plain">$group = Get-ADGroup (&quot;CN=&quot;+$user.departamento+&quot;,OU=&quot;+$user.departamento+&quot;,OU=&quot;+$user.seccion+&quot;,OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;)</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">$member = &quot;CN=&quot;+$login+&quot;,&quot;+$path</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="l l-Scalar l-Scalar-Plain">Add-ADGroupMember $group -Members $member</span>       
+<span class="linenos" data-linenos="10 "></span>    <span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Usuario $($user.login) creado!&quot;</span>
+<span class="linenos" data-linenos="11 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+<p>Así ya tenemos la estructura de AD creada con los usuarios:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR07/003.png" width="800"/>
+  <figcaption>Usuarios creados.</figcaption>
+</figure>
+
+<h2 id="script-de-creacion-de-estructura">Script de creación de estructura<a class="headerlink" href="#script-de-creacion-de-estructura" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Creando Estructura de OU y Grupos...&quot;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">New-ADOrganizationalUnit -Name &quot;Pistonazo&quot; -Path &quot;DC=CEFIRE2019, DC=LOCAL&quot; -Description &quot;Unidad organizativa Pistonazo&quot; -ProtectedFromAccidentalDeletion $false</span> 
+<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">New-ADGroup -Name &quot;Pistonazo&quot; -GroupScope Global -Path &quot;OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain">$secciones = Import-CSV -Path &quot;./secciones.csv&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain">$group = Get-ADGroup &quot;CN=Pistonazo,OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="l l-Scalar l-Scalar-Plain">foreach ($ou in $secciones) {</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="l l-Scalar l-Scalar-Plain">New-ADOrganizationalUnit -Name ($ou.seccion) -Path &quot;OU=Pistonazo, DC=CEFIRE2019, DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">$path=&quot;OU=&quot;+($ou.seccion)+&quot;,OU=Pistonazo, DC=CEFIRE2019, DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="l l-Scalar l-Scalar-Plain">New-ADGroup -Name $ou.seccion -GroupScope Global -Path $path</span>
+<span class="linenos" data-linenos="10 "></span>    <span class="l l-Scalar l-Scalar-Plain">$member = &quot;CN=&quot;+($ou.seccion)+&quot;,&quot;+$path</span> 
+<span class="linenos" data-linenos="11 "></span>    <span class="l l-Scalar l-Scalar-Plain">Add-ADGroupMember $group -Members $member</span>       
+<span class="linenos" data-linenos="12 "></span>    <span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Unidad $($ou.seccion) creada!&quot;</span>
+<span class="linenos" data-linenos="13 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="l l-Scalar l-Scalar-Plain">$departamentos = Import-CSV -Path &quot;./departamentos.csv&quot;</span>
+<span class="linenos" data-linenos="16 "></span><span class="l l-Scalar l-Scalar-Plain">foreach ($ou in $departamentos) {</span>
+<span class="linenos" data-linenos="17 "></span>    <span class="l l-Scalar l-Scalar-Plain">$path=&quot;OU=&quot;+($ou.seccion)+&quot;, OU=Pistonazo, DC=CEFIRE2019, DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos="18 "></span>    <span class="l l-Scalar l-Scalar-Plain">New-ADOrganizationalUnit -Name ($ou.departamento) -Path $path</span>
+<span class="linenos" data-linenos="19 "></span>    <span class="l l-Scalar l-Scalar-Plain">$path=&quot;OU=&quot;+($ou.departamento)+&quot;,OU=&quot;+$ou.seccion+&quot;,OU=Pistonazo, DC=CEFIRE2019, DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos="20 "></span>    <span class="l l-Scalar l-Scalar-Plain">New-ADGroup -Name $ou.departamento -GroupScope Global -Path $path</span>
+<span class="linenos" data-linenos="21 "></span>    <span class="l l-Scalar l-Scalar-Plain">$group = Get-ADGroup (&quot;CN=&quot;+$ou.seccion+&quot;,OU=&quot;+$ou.seccion+&quot;,OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;)</span>
+<span class="linenos" data-linenos="22 "></span>    <span class="l l-Scalar l-Scalar-Plain">$member = &quot;CN=&quot;+($ou.departamento)+&quot;,&quot;+$path</span>
+<span class="linenos" data-linenos="23 "></span>    <span class="l l-Scalar l-Scalar-Plain">Add-ADGroupMember $group -Members $member</span>       
+<span class="linenos" data-linenos="24 "></span>    <span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Unidad $($ou.departamento) - $($ou.seccion) creada!&quot;</span>
+<span class="linenos" data-linenos="25 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="linenos" data-linenos="26 "></span>
+<span class="linenos" data-linenos="27 "></span><span class="l l-Scalar l-Scalar-Plain">$usuarios = Import-CSV -Path &quot;./personal.csv&quot;</span>
+<span class="linenos" data-linenos="28 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Creando usuarios....&quot;</span>
+<span class="linenos" data-linenos="29 "></span><span class="l l-Scalar l-Scalar-Plain">foreach ($user in $usuarios) {</span>
+<span class="linenos" data-linenos="30 "></span>    <span class="l l-Scalar l-Scalar-Plain">$login = $user.login</span>
+<span class="linenos" data-linenos="31 "></span>    <span class="l l-Scalar l-Scalar-Plain">$path=&quot;OU=&quot;+$user.departamento+&quot;,OU=&quot;+$user.seccion+&quot;,OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos="32 "></span>    <span class="l l-Scalar l-Scalar-Plain">New-ADUser -Name $login  -Path $path -SamAccountName $login -UserPrincipalName ($login+&quot;@CEFIRE2019.LOCAL&quot;) -AccountPassword (ConvertTo-SecureString &quot;cefire2019.&quot; -AsPlainText -Force) -GivenName $login -ChangePasswordAtLogon $true�-Enabled $true</span>
+<span class="linenos" data-linenos="33 "></span>    <span class="l l-Scalar l-Scalar-Plain">$group = Get-ADGroup (&quot;CN=&quot;+$user.departamento+&quot;,OU=&quot;+$user.departamento+&quot;,OU=&quot;+$user.seccion+&quot;,OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;)</span>
+<span class="linenos" data-linenos="34 "></span>    <span class="l l-Scalar l-Scalar-Plain">$member = &quot;CN=&quot;+$login+&quot;,&quot;+$path</span>
+<span class="linenos" data-linenos="35 "></span>    <span class="l l-Scalar l-Scalar-Plain">Add-ADGroupMember $group -Members $member</span>       
+<span class="linenos" data-linenos="36 "></span>    <span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Usuario $($user.login) creado!&quot;</span>
+<span class="linenos" data-linenos="37 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+Se prueba a iniciar sesión con un usuario, por ejemplo <strong>usudir1@isca2019.local</strong> (su contraseña será <strong>cefire2019</strong>.):</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR07/004.png" width="800"/>
+  <figcaption>Inicio sesión Post-Script.</figcaption>
+</figure>
+
+<h2 id="consultas-sobre-objetos-del-dominio">Consultas sobre objetos del dominio<a class="headerlink" href="#consultas-sobre-objetos-del-dominio" title="Permanent link">&para;</a></h2>
+<h3 id="get-adobject">Get-AdObject<a class="headerlink" href="#get-adobject" title="Permanent link">&para;</a></h3>
+<p>El cmdlet <strong>Get-AdObject</strong> de PowerShell obtiene un objeto de Active Directory o realiza una búsqueda para obtener varios objetos según los criterios de búsqueda. Puede obtener todos los objetos en Active Directory mediante el parámetro <strong>-Filter</strong>.</p>
+<ul>
+<li>La sintaxis es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-ADObject</span>
+<span class="linenos" data-linenos=" 2 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-AuthType &lt;ADAuthType&gt;]</span>
+<span class="linenos" data-linenos=" 3 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-Credential &lt;PSCredential&gt;]</span>
+<span class="linenos" data-linenos=" 4 "></span>   <span class="l l-Scalar l-Scalar-Plain">-Filter &lt;String&gt;</span>
+<span class="linenos" data-linenos=" 5 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-IncludeDeletedObjects]</span>
+<span class="linenos" data-linenos=" 6 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-Properties &lt;String[]&gt;]</span>
+<span class="linenos" data-linenos=" 7 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-ResultPageSize &lt;Int32&gt;]</span>
+<span class="linenos" data-linenos=" 8 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-ResultSetSize &lt;Int32&gt;]</span>
+<span class="linenos" data-linenos=" 9 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-SearchBase &lt;String&gt;]</span>
+<span class="linenos" data-linenos="10 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-SearchScope &lt;ADSearchScope&gt;]</span>
+<span class="linenos" data-linenos="11 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-Server &lt;String&gt;]</span>
+<span class="linenos" data-linenos="12 "></span>   <span class="l l-Scalar l-Scalar-Plain">[&lt;CommonParameters&gt;]</span>
+<span class="linenos" data-linenos="13 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-ADObject</span>
+<span class="linenos" data-linenos=" 2 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-AuthType &lt;ADAuthType&gt;]</span>
+<span class="linenos" data-linenos=" 3 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-Credential &lt;PSCredential&gt;]</span>
+<span class="linenos" data-linenos=" 4 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-Identity] &lt;ADObject&gt;</span>
+<span class="linenos" data-linenos=" 5 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-IncludeDeletedObjects]</span>
+<span class="linenos" data-linenos=" 6 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-Partition &lt;String&gt;]</span>
+<span class="linenos" data-linenos=" 7 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-Properties &lt;String[]&gt;]</span>
+<span class="linenos" data-linenos=" 8 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-Server &lt;String&gt;]</span>
+<span class="linenos" data-linenos=" 9 "></span>   <span class="l l-Scalar l-Scalar-Plain">[&lt;CommonParameters&gt;]</span>
+<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-ADObject</span>
+<span class="linenos" data-linenos=" 2 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-AuthType &lt;ADAuthType&gt;]</span>
+<span class="linenos" data-linenos=" 3 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-Credential &lt;PSCredential&gt;]</span>
+<span class="linenos" data-linenos=" 4 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-IncludeDeletedObjects]</span>
+<span class="linenos" data-linenos=" 5 "></span>   <span class="l l-Scalar l-Scalar-Plain">-LDAPFilter &lt;String&gt;</span>
+<span class="linenos" data-linenos=" 6 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-Properties &lt;String[]&gt;]</span>
+<span class="linenos" data-linenos=" 7 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-ResultPageSize &lt;Int32&gt;]</span>
+<span class="linenos" data-linenos=" 8 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-ResultSetSize &lt;Int32&gt;]</span>
+<span class="linenos" data-linenos=" 9 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-SearchBase &lt;String&gt;]</span>
+<span class="linenos" data-linenos="10 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-SearchScope &lt;ADSearchScope&gt;]</span>
+<span class="linenos" data-linenos="11 "></span>   <span class="l l-Scalar l-Scalar-Plain">[-Server &lt;String&gt;]</span>
+<span class="linenos" data-linenos="12 "></span>   <span class="l l-Scalar l-Scalar-Plain">[&lt;CommonParameters&gt;]</span>
+<span class="linenos" data-linenos="13 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+<p>Se pueden observar ejemplos en el enlace de la fuente oficial <a href="https://docs.microsoft.com/en-us/powershell/module/activedirectory/get-adobject?view=windowsserver2019-ps">Get-ADObject</a></p>
+<h2 id="actividad-1">Actividad 1<a class="headerlink" href="#actividad-1" title="Permanent link">&para;</a></h2>
+<p>Crea una estructura de AD mediante comandos <strong>PowerShell</strong> de la Empresa ASO2122. <strong>Se deben crear dos archivos csv</strong> con cuatro departamentos a definir (por ejemplo Finanzas, RRHH, Compras, TIC), y con 5 empleados; los csv deben contener:</p>
+<ol>
+<li>departamentos.csv: Contiene los departamentos de la empresa. El archivo departamentos.csv contiene 2 columnas, el
+departamento y una descripción.</li>
+<li>empleados.csv: Contiene los empleados de la empresa. El archivo departamento contiene 3 columnas, una para el
+departamento, otra para el nombre y otra el apellido.</li>
+</ol>
+<p>De manera que el usuario tendrá el login compuesto por el nombre y el apellido, de manera que si existiera una empleada llamada <strong>Carla Mateu</strong>, tendrá un login <strong>carla.mateu:</strong></p>
                 
               
               
