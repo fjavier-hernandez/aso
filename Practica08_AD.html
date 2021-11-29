@@ -16,7 +16,7 @@
     
     
       
-        <title>Permisos, directivas de grupo y perfilesPermisos, directivas de grupo y perfiles - Administración de Sistemas Operativos</title>
+        <title>Permisos, directivas de grupo y perfiles - Administración de Sistemas Operativos</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#permisos-directivas-de-grupo-y-perfilespermisos-directivas-de-grupo-y-perfiles" class="md-skip">
+        <a href="#permisos-directivas-de-grupo-y-perfiles" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Permisos, directivas de grupo y perfilesPermisos, directivas de grupo y perfiles
+              Permisos, directivas de grupo y perfiles
             
           </span>
         </div>
@@ -366,890 +366,660 @@
               
                 
                 
-                <h1 id="permisos-directivas-de-grupo-y-perfilespermisos-directivas-de-grupo-y-perfiles">Permisos, directivas de grupo y perfilesPermisos, directivas de grupo y perfiles<a class="headerlink" href="#permisos-directivas-de-grupo-y-perfilespermisos-directivas-de-grupo-y-perfiles" title="Permanent link">&para;</a></h1>
-<h1 id="permisos-directivas-de-grupo-y-perfilespermisos-directivas-de-grupo-y-perfiles_1">Permisos, directivas de grupo y perfilesPermisos, directivas de grupo y perfiles<a class="headerlink" href="#permisos-directivas-de-grupo-y-perfilespermisos-directivas-de-grupo-y-perfiles_1" title="Permanent link">&para;</a></h1>
-<h1 id="indice">Índice<a class="headerlink" href="#indice" title="Permanent link">&para;</a></h1>
-<h1 id="permisos-recursos-compartidospermisos-recursos-compartidos">Permisos Recursos CompartidosPermisos Recursos Compartidos<a class="headerlink" href="#permisos-recursos-compartidospermisos-recursos-compartidos" title="Permanent link">&para;</a></h1>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Curso a distancia 19FP32CF01 1
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Administración centralizada de redes con Windows Server 2019
-<span class="linenos" data-linenos="2 "></span>Alberto Aparicio Vila
-</code></pre></div></p>
-<h2 id="indice_1">índice<a class="headerlink" href="#indice_1" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Creación de recursos compartidos.
-<span class="linenos" data-linenos="2 "></span>Configuración y administración de permisos de carpetas compartidas.
-<span class="linenos" data-linenos="3 "></span>Configuración y administración de permisos NTFS
-<span class="linenos" data-linenos="4 "></span>Gestión del dominio mediante directivas de grupo.
-<span class="linenos" data-linenos="5 "></span>Establecimiento de carpetas particulares de los usuarios del dominio.
-<span class="linenos" data-linenos="6 "></span>Ejecución de comandos de inicio de sesión.
-<span class="linenos" data-linenos="7 "></span>Configuración del entorno de trabajo del usuario mediante perfiles.
-<span class="linenos" data-linenos="8 "></span>Actividades
-</code></pre></div>
-Los sistemas operativos de la familia Windows poseen dos niveles de permisos para los recursos compartidos:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos para carpetas compartidas : se aplican cada vez que un usuario quiere acceder a un archivo o carpeta de
-<span class="linenos" data-linenos="2 "></span>la red.
-<span class="linenos" data-linenos="3 "></span>Permisos para archivos y carpetas (NTFS) : se aplican sobre dispositivos con formato NTFS para definir en mayor
-<span class="linenos" data-linenos="4 "></span>detalle las acciones permitidas.
-</code></pre></div>
-De lo anterior se extrae que cuando se accede en modo local a los archivos o carpetas sólo intervienen los permisos
+                <h1 id="permisos-directivas-de-grupo-y-perfiles">Permisos, directivas de grupo y perfiles<a class="headerlink" href="#permisos-directivas-de-grupo-y-perfiles" title="Permanent link">&para;</a></h1>
+<p>Objetivos de esta práctica:</p>
+<ul>
+<li>Creación de recursos compartidos.</li>
+<li>Configuración y administración de permisos de carpetas compartidas.</li>
+<li>Configuración y administración de permisos NTFS</li>
+<li>Gestión del dominio mediante directivas de grupo.</li>
+<li>Establecimiento de carpetas particulares de los usuarios del dominio.</li>
+<li>Ejecución de comandos de inicio de sesión.</li>
+<li>Configuración del entorno de trabajo del usuario mediante perfiles.</li>
+</ul>
+<h2 id="permisos">Permisos<a class="headerlink" href="#permisos" title="Permanent link">&para;</a></h2>
+<p>Los sistemas operativos de la familia Windows poseen dos niveles de permisos para los recursos compartidos:</p>
+<ul>
+<li><strong>Permisos para carpetas compartidas</strong>: se aplican cada vez que un usuario quiere acceder a un archivo o carpeta de la red.</li>
+<li><strong>Permisos para archivos y carpetas (NTFS)</strong>: se aplican sobre dispositivos con formato NTFS para definir en mayor detalle las acciones permitidas.</li>
+</ul>
+<p>De lo anterior se extrae que cuando se accede en modo local a los archivos o carpetas sólo intervienen los permisos
 asociados al sistema de ficheros, en este caso NTFS, sin embargo si se accede a través de la red se aplican los dos niveles
-de permisos: en primer lugar se aplican los permisos de carpetas compartidas y posteriormente los permisos NTFS.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos NTFS y compartidos
-</code></pre></div>
-<strong>Permisos de recursos compartidos</strong></p>
+de permisos: <strong>en primer lugar se aplican los permisos de carpetas compartidas y posteriormente los permisos NTFS</strong>.</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/001.png" width="750"/>
+  <figcaption>Permisos NTFS y compartidos.</figcaption>
+</figure>
+
+<h3 id="permisos-de-recursos-compartidos">Permisos de recursos compartidos<a class="headerlink" href="#permisos-de-recursos-compartidos" title="Permanent link">&para;</a></h3>
 <p>Para acceder a la gestión de recursos compartidos, lo podemos hacer a través de la opción servicios de archivo y
 almacenamiento, desde el Panel del Administrador del Servidor.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Recursos compartidos
-</code></pre></div>
-Después accedemos a la opción recursos compartidos:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Recursos compartidos
-</code></pre></div>
-En la parte central de la consola de administración del almacenamiento aparecen los recursos compartidos en el servidor. Para
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/002.png" width="750"/>
+  <figcaption>Recursos compartidos I.</figcaption>
+</figure>
+
+<p>Después accedemos a la opción recursos compartidos:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/003.png" width="750"/>
+  <figcaption>Recursos compartidos II.</figcaption>
+</figure>
+
+<p>En la parte central de la consola de administración del almacenamiento aparecen los recursos compartidos en el servidor. Para
 visualizar los permisos de cada recurso compartido, basta con hacer clic con el botón secundario del ratón sobre el recurso
 cuyos permisos se quieren consultar y se selecciona ‘Propiedades’:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Propiedades Recursos Compartidos
-</code></pre></div>
-Veremos como aparece un cuadro de dialogo donde podemos ver en la parte de la izquierda la opción permisos. Y bajo
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/004.png" width="750"/>
+  <figcaption>Propiedades Recursos Compartidos.</figcaption>
+</figure>
+
+<p>Veremos como aparece un cuadro de dialogo donde podemos ver en la parte de la izquierda la opción permisos. Y bajo
 Personalizar Permisos:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos recursos compartidos
-</code></pre></div>
-Nos aparece después el cuadro de permisos completo del recurso seleccionado:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Recursos compartidos
-</code></pre></div>
-Si accedemos a la pestaña compartir, podremos ver los permisos del recurso compartido. En este caso, el recurso compartido
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/005.png" width="750"/>
+  <figcaption>Permisos recursos compartidos.</figcaption>
+</figure>
+
+<p>Nos aparece después el cuadro de permisos completo del recurso seleccionado:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/006.png" width="750"/>
+  <figcaption>Recursos compartidos V.</figcaption>
+</figure>
+
+<p>Si accedemos a la pestaña compartir, podremos ver los permisos del recurso compartido. En este caso, el recurso compartido
 netlogon tiene los permisos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos recursos compartidos
-</code></pre></div>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/007.png" width="750"/>
+  <figcaption>Recursos compartidos VI.</figcaption>
+</figure>
+
 <p>Estos pueden ser de tres tipos:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Control total : no solo permite cambiar y leer, sino modificar los permisos sobre el recurso compartido.
-<span class="linenos" data-linenos="2 "></span>Cambiar : se permite crear carpetas y archivos además de modificar y borrar los archivos y directorios existentes.
-<span class="linenos" data-linenos="3 "></span>Lectura : únicamente permite la lectura de archivos y la ejecución de archivos ejecutables que se hallen dentro del
-<span class="linenos" data-linenos="4 "></span>recurso compartido.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos de NETLOGON
-</code></pre></div>
-Como se puede comprobar en la siguiente figura, existen dos tipos de directivas : ‘Permitir’ y ‘Denegar’. Es importante
-destacar que la opción ‘Denegar’ tiene prioridad sobre otros permisos asignados sobre el recurso compartido.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Tipos de directivas
-</code></pre></div>
-<strong>Establecer permisos en recursos compartidos</strong></p>
+<p><strong>Control total</strong> : no solo permite cambiar y leer, sino modificar los permisos sobre el recurso compartido.
+<strong>Cambiar</strong> : se permite crear carpetas y archivos además de modificar y borrar los archivos y directorios existentes.
+<strong>Lectura</strong> : únicamente permite la lectura de archivos y la ejecución de archivos ejecutables que se hallen dentro del recurso compartido.</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/008.png" width="750"/>
+  <figcaption>Permisos de NETLOGON.</figcaption>
+</figure>
+
+<p>Como se puede comprobar en la siguiente figura, existen dos tipos de directivas : ‘<strong>Permitir</strong>’ y ‘<strong>Denegar</strong>’. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Es importante destacar que la opción ‘<strong>Denegar</strong>’ tiene prioridad sobre otros permisos asignados sobre el recurso compartido.</p>
+</div>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/009.png" width="750"/>
+  <figcaption>Tipos de directivas.</figcaption>
+</figure>
+
+<h3 id="establecer-permisos-en-recursos-compartidos">Establecer permisos en recursos compartidos<a class="headerlink" href="#establecer-permisos-en-recursos-compartidos" title="Permanent link">&para;</a></h3>
 <p>Establecer permisos de recursos compartidos se puede hacer de varias maneras. Probablemente la más sencilla sea
-seleccionar el recurso sobre el cual se desean configurar los permisos, y haciendo clic con el botón secundario ‘Compartir
-con...’ y usuarios específicos.. Por ejemplo, vamos a crear una carpeta en C: llamada Empresa_users y la vamos a
+seleccionar el recurso sobre el cual se desean configurar los permisos, y haciendo clic con el botón secundario ‘<strong>Compartir
+con...</strong>’ y usuarios específicos.. Por ejemplo, vamos a crear una carpeta en C: llamada Empresa_users y la vamos a
 compartir:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Compartir recursos
-</code></pre></div>
-Y agregamos el grupo Empresa con lectura y escritura:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Agregar permisos
-</code></pre></div>
-<p><em>Agregar Permisos recurso compartido</em></p>
-<p><em>Agregar Permisos recurso compartido</em></p>
-<p>Y por último Compartir.
-En lugar de hacer uso de este asistente, vamos a compartir mediante el uso compartido avanzado, que nos da más opciones
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/010.png" width="750"/>
+  <figcaption>Compartir recursos.</figcaption>
+</figure>
+
+<p>Y agregamos el grupo Empresa con lectura y escritura:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/011.png" width="750"/>
+  <figcaption>Agregar permisos.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/012.png" width="750"/>
+  <figcaption>Agregar Permisos recurso compartido I.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/013.png" width="750"/>
+  <figcaption>Agregar Permisos recurso compartido II.</figcaption>
+</figure>
+
+<p>Y por último Compartir.</p>
+<p>En lugar de hacer uso de este asistente, vamos a compartir mediante el uso compartido avanzado, que nos da más opciones
 para asignar los permisos. Para ello, seleccionaremos la carpeta y con el botón de la derecha del ratón propiedades y pestaña
 compartir:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Uso compartido avanzado
-</code></pre></div>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Uso compartido avanzado
-</code></pre></div>
-En la medida de lo posible, habrá que asignar permisos a grupos y eliminar grupos que no tengan ninguna relación con la
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/013.png" width="750"/>
+  <figcaption>Uso compartido avanzado I.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/014.png" width="550"/>
+  <figcaption>Uso compartido avanzado II.</figcaption>
+</figure>
+
+<p>En la medida de lo posible, habrá que asignar permisos a grupos y eliminar grupos que no tengan ninguna relación con la
 carpeta que queremos compartir. <strong>Evitar el uso de grupo Todos</strong> para eso habrá que crear los grupos correspondientes.</p>
-<p><strong>Compartir recursos mediante comandos</strong></p>
-<h2 id="net-share">Net Share<a class="headerlink" href="#net-share" title="Permanent link">&para;</a></h2>
-<p>Sintaxis del comando:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>NET SHARE
-<span class="linenos" data-linenos=" 2 "></span>sharename
-<span class="linenos" data-linenos=" 3 "></span>sharename=drive:path [/GRANT:user,[READ | CHANGE | FULL]]
-<span class="linenos" data-linenos=" 4 "></span>[/USERS:number | /UNLIMITED]
-<span class="linenos" data-linenos=" 5 "></span>[/REMARK:&quot;text&quot;]
-<span class="linenos" data-linenos=" 6 "></span>[/CACHE:Manual | Documents| Programs | None ]
-<span class="linenos" data-linenos=" 7 "></span>sharename [/USERS:number | /UNLIMITED]
-<span class="linenos" data-linenos=" 8 "></span>[/REMARK:&quot;text&quot;]
-<span class="linenos" data-linenos=" 9 "></span>[/CACHE:Manual | Documents | Programs | None]
-<span class="linenos" data-linenos="10 "></span>{sharename | devicename | drive:path} /DELETE
-<span class="linenos" data-linenos="11 "></span>sharename \\computername /DELETE
-</code></pre></div>
-Para poder compartir una carpeta mediante comandos, la carpeta debe estar creada. Supongamos que lo que queremos es
-compartir la carpeta c:\Pistonazo_Users para el grupo Administradores y para el grupo Pistonazo:</p>
-<h1 id="permisos-ntfspermisos-ntfs">Permisos NTFSPermisos NTFS<a class="headerlink" href="#permisos-ntfspermisos-ntfs" title="Permanent link">&para;</a></h1>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Compartir recurso net share
-</code></pre></div>
-El término Pistonazo_Users que aparece a la izquierda del comando net share , indica el nombre de la carpeta que será visible
-para el usuario que se conecte a ella. A continuación se ha de escribir la ruta donde se halla la carpeta compartida. La
-siguiente parte del comando es /grant: donde han de indicarse los usuarios que tendrán acceso al recurso, y finalmente tras
-una coma se escribe el tipo de permiso que tendrá, read, change o full.</p>
-<p>Más información de este comando, a través del siguiente enlace.</p>
-<p>Los tipos de permisos son:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Read : Únicamente permite visualizar el contenido de la carpeta
-<span class="linenos" data-linenos="2 "></span>Change : Permite modificar el contenido de la carpeta (escribir, borrar, crear archivo, etc...)
-<span class="linenos" data-linenos="3 "></span>Full : Permite hacer todo lo anterior, y además cambiar los permisos de la carpeta.
-</code></pre></div>
-<h2 id="compartir-carpetas-new-smbshare">Compartir carpetas New-SmbShare<a class="headerlink" href="#compartir-carpetas-new-smbshare" title="Permanent link">&para;</a></h2>
-<p>También podemos compartir carpetas a través de PowerShell, para ello utilizaremos el comando New-SmbShare cuya sintaxis
-es la siguiente:</p>
-<p>New-SmbShare [-Name] <String> [-Path] <String> [[-ScopeName] <String> ] [-AsJob] [-CachingMode
-<CachingMode> ] [-CATimeout <UInt32> ] [-ChangeAccess <String[]> ] [-CimSession <CimSession[]>
-] [-ConcurrentUserLimit <UInt32> ] [-ContinuouslyAvailable <Boolean> ] [-Description <String>
-] [-EncryptData <Boolean> ] [-FolderEnumerationMode <FolderEnumerationMode> ] [-FullAccess
-<String[]> ] [-NoAccess <String[]> ] [-ReadAccess <String[]> ] [-Temporary] [-ThrottleLimit
-<Int32> ] [-Confirm] [-WhatIf] [ <CommonParameters>]</p>
-<p>En nuestro caso para compartir la carpeta Pistonazo_users:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>New-SmbShare
-</code></pre></div>
-Podéis acceder a la descarga del script desde el siguiente enlace. (compCarpetaPS.ps1)</p>
-<p><strong>Permisos NTFS</strong></p>
-<p>Como se ha comentado anteriormente, los permisos NTFS complementan y amplían los permisos de recursos compartidos,
+<h2 id="permisos-ntfs">Permisos NTFS<a class="headerlink" href="#permisos-ntfs" title="Permanent link">&para;</a></h2>
+<p>Como se ha comentado anteriormente, <strong>los permisos NTFS</strong> complementan y amplían los permisos de recursos compartidos,
 siendo efectivo el más restrictivo.</p>
-<p>Todos los archivos y carpetas de un volumen NTFS tienen asociada una ACL o lista de control de acceso que fija el nivel de
+<p>Todos los archivos y carpetas de un volumen NTFS tienen asociada una <strong>ACL o lista de control</strong> de acceso que fija el nivel de
 acceso de un usuario o grupo que pretenda acceder al recurso. Además, los permisos NTFS pueden ser aplicados a nivel de
 archivo, a diferencia de los permisos de recursos compartidos, los cuales únicamente pueden aplicarse a nivel de carpeta.</p>
 <p>Por otra parte, surge un nuevo concepto al aplicar los permisos NTFS que los hace más complejos aunque también más
-potentes: la herencia, la cual determinará los permisos que se reciben sobre un determinado recurso provenientes de un nivel
+potentes: <strong>la herencia</strong>, la cual determinará los permisos que se reciben sobre un determinado recurso provenientes de un nivel
 superior, aunque esto lo veremos detalladamente más adelante.</p>
-<h2 id="tipos-de-permisos-ntfs">Tipos de permisos NTFS<a class="headerlink" href="#tipos-de-permisos-ntfs" title="Permanent link">&para;</a></h2>
+<h3 id="tipos-de-permisos-ntfs">Tipos de permisos NTFS<a class="headerlink" href="#tipos-de-permisos-ntfs" title="Permanent link">&para;</a></h3>
 <p>Tal y como se muestra en la figura (para abrir ese cuadro de diálogo hacer clic con el botón secundario sobre el recurso
 compartido y hacer clic en la pestaña 'Seguridad'), los permisos (predeterminados) que pueden aplicarse sobre archivos y
 carpetas son:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Control total.
-<span class="linenos" data-linenos="2 "></span>Cambiar.
-<span class="linenos" data-linenos="3 "></span>Leer y ejecutar.
-<span class="linenos" data-linenos="4 "></span>Mostrar el contenido de la carpeta.
-<span class="linenos" data-linenos="5 "></span>Leer.
-<span class="linenos" data-linenos="6 "></span>Escribir.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos estándar
-</code></pre></div>
-No obstante, estos permisos en realidad representan varios aspectos mucho más concretos. Para tratar de clarificar esta
+<ul>
+<li>Control total.</li>
+<li>Cambiar.</li>
+<li>Leer y ejecutar.</li>
+<li>Mostrar el contenido de la carpeta.</li>
+<li>Leer.</li>
+<li>Escribir.</li>
+</ul>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/015.png" width="550"/>
+  <figcaption>Permisos estándar.</figcaption>
+</figure>
+
+<p>No obstante, estos permisos en realidad representan varios aspectos mucho más concretos. Para tratar de clarificar esta
 cuestión, la tabla 1 resume qué tareas pueden realizarse con cada tipo de permiso.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos para carpetas y archivos
-</code></pre></div>
-Para poder acceder a estos permisos especiales, lo haremos a través de las propiedades, pestaña de Seguridad y opciones
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/016.png" width="750"/>
+  <figcaption>Permisos para carpetas y archivos.</figcaption>
+</figure>
+
+<p>Para poder acceder a estos permisos especiales, lo haremos a través de las propiedades, pestaña de Seguridad y opciones
 avanzadas:</p>
-<p><em>Acceso a permisos especiales</em></p>
-<p><em>Acceso a permisos especiales</em></p>
-<p><em>Acceso a permisos especiales</em></p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Acceso a permisos especiales
-</code></pre></div>
-Es importante entender que los permisos predeterminados estándar, en realidad corresponden a unas combinaciones de
-permisos específicos, siendo estos últimos con los que trabajaremos más adelante cuando gestionemos las listas de control de
-acceso por línea de comandos.</p>
-<h2 id="asignacion-de-permisos-ntfs">Asignación de permisos NTFS<a class="headerlink" href="#asignacion-de-permisos-ntfs" title="Permanent link">&para;</a></h2>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/017.png" width="550"/>
+  <figcaption>Acceso a permisos especiales I.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/018.png" width="750"/>
+  <figcaption>Acceso a permisos especiales II.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/019.png" width="750"/>
+  <figcaption>Acceso a permisos especiales III.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/020.png" width="750"/>
+  <figcaption>Acceso a permisos especiales.</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Es <strong>importante</strong> entender que los permisos predeterminados estándar, en realidad corresponden a unas combinaciones de permisos específicos, siendo estos últimos con los que trabajaremos más adelante cuando gestionemos las listas de control de acceso por línea de comandos.</p>
+</div>
+<h3 id="asignacion-de-permisos-ntfs">Asignación de permisos NTFS<a class="headerlink" href="#asignacion-de-permisos-ntfs" title="Permanent link">&para;</a></h3>
 <p>Al definir un permiso NTFS este puede ser un permiso o una denegación:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos NTFS
-</code></pre></div>
-<h2 id="permisos-ntfs">Permisos NTFS<a class="headerlink" href="#permisos-ntfs" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Los permisos NTFS son acumulativos: se evalúan los permisos otorgados al usuario y a los grupos a los que
-<span class="linenos" data-linenos="2 "></span>pertenece el usuario. En el caso de que haya una incompatibilidad entre los permisos asignados a un usuario y los
-<span class="linenos" data-linenos="3 "></span>asignados a un grupo del cual sea miembro, prevalecerá la opción más restrictiva: Denegar (si está definido
-<span class="linenos" data-linenos="4 "></span>explícitamente).
-</code></pre></div>
-Para asignar permisos NTFS a un recurso compartido bastará con hacer clic con el botón secundario sobre el recurso y
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/021.png" width="550"/>
+  <figcaption>Permisos NTFS I.</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><strong>Los permisos NTFS son acumulativos</strong>: se evalúan los permisos otorgados al usuario y a los grupos a los que pertenece el usuario. En el caso de que haya una incompatibilidad entre los permisos asignados a un usuario y los asignados a un grupo del cual sea miembro, prevalecerá la opción más restrictiva: <strong>Denegar (si está definido explícitamente)</strong>.</li>
+</ul>
+</div>
+<p>Para asignar permisos NTFS a un recurso compartido bastará con hacer clic con el botón secundario sobre el recurso y
 acceder a la pestaña 'Seguridad'. A continuación pulsaremos el botón 'Opciones Avanzadas', como se muestra a continuación:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos NTFS
-</code></pre></div>
-<em>Permisos NTFS</em></p>
-<p><em>Permisos NTFS</em></p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos NTFS
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos NTFS
-</code></pre></div>
-<h2 id="asignacion-de-permisos">Asignación de permisos<a class="headerlink" href="#asignacion-de-permisos" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Cuidado con el grupo Usuarios (del dominio) porque aparece por defecto en los permisos NTFS (con permisos de
-<span class="linenos" data-linenos="2 "></span>lectura), y puede provocar que se produzcan accesos diferentes a nuestra planificación. Como norma general, si
-<span class="linenos" data-linenos="3 "></span>queremos limitar el acceso a un recurso compartido, eliminaremos el grupo Usuarios de los permisos NTFS y
-<span class="linenos" data-linenos="4 "></span>explicitaremos únicamente aquellos grupos o usuarios que efectivamente queramos que tengan acceso al recurso
-</code></pre></div>
-<h2 id="permisos-implicitos-y-permisos-explicitos">Permisos Implícitos y permisos Explícitos<a class="headerlink" href="#permisos-implicitos-y-permisos-explicitos" title="Permanent link">&para;</a></h2>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/022.png" width="550"/>
+  <figcaption>Permisos NTFS II.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/023.png" width="750"/>
+  <figcaption>Permisos NTFS III.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/024.png" width="750"/>
+  <figcaption>Permisos NTFS IV.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/025.png" width="750"/>
+  <figcaption>Permisos NTFS V.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/026.png" width="750"/>
+  <figcaption>Permisos NTFS VI.</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Cuidado con el grupo Usuarios (del dominio) porque aparece por defecto en los permisos NTFS (con permisos de lectura), y puede provocar que se produzcan accesos diferentes a nuestra planificación. Como norma general, si queremos limitar el acceso a un recurso compartido, eliminaremos el grupo Usuarios de los permisos NTFS y explicitaremos únicamente aquellos grupos o usuarios que efectivamente queramos que tengan acceso al recurso.</p>
+</div>
+<h3 id="permisos-implicitos-y-permisos-explicitos">Permisos Implícitos y permisos Explícitos<a class="headerlink" href="#permisos-implicitos-y-permisos-explicitos" title="Permanent link">&para;</a></h3>
 <p>Los permisos otorgados de manera implícita o explícita son una cuestión sencilla, en la que si no nos fijamos con atención,
 podemos hacer que los accesos a los recursos no funcionen como teníamos previsto. Para evitar problemas tendremos en
 cuenta que:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>1. Un permiso definido de manera explícita siempre prevalecerá sobre un permiso definido de manera implícita.
-<span class="linenos" data-linenos="2 "></span>2. Denegar un permiso siempre prevalece sobre otorgar ese permiso, siempre y cuando ambos estén definidos de la
-<span class="linenos" data-linenos="3 "></span>misma manera (implícita o explícitamente).
-</code></pre></div>
-¿Cómo se define un permiso de manera explícita? Si nos fijamos en la siguiente figura, el grupo Compras no tiene
+<ol>
+<li>Un permiso definido de manera explícita siempre prevalecerá sobre un permiso definido de manera implícita.</li>
+<li>Denegar un permiso siempre prevalece sobre otorgar ese permiso, siempre y cuando ambos estén definidos de la
+misma manera (implícita o explícitamente).</li>
+</ol>
+<p>¿Cómo se define un permiso de manera explícita? Si nos fijamos en la siguiente figura, el grupo Compras no tiene
 (aparentemente) definidos permisos de escritura. Sin embargo esa aparente indefinición, en realidad indica que el permiso de
 escritura está denegado implícitamente. Si un usuario del grupo Ventas intenta escribir en la carpeta, se producirá un mensaje
 de error como muestra la siguiente figura:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos explícitos
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Error al crear archivo en recurso compartido
-</code></pre></div>
-Sin embargo, si le otorgamos el permiso explícito de escritura, veremos que efectivamente puede escribir en el recurso, ya
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/027.png" width="750"/>
+  <figcaption>Permisos explícitos.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/028.png" width="550"/>
+  <figcaption>Error al crear archivo en recurso compartido.</figcaption>
+</figure>
+
+<p>Sin embargo, si le otorgamos el permiso explícito de escritura, veremos que efectivamente puede escribir en el recurso, ya
 que la definición explícita del permiso para escribir prevalece sobre la denegación implícita del permiso escribir:</p>
-<p><em>Permisos de escritura</em></p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos de escritura
-</code></pre></div>
-Si explicitamos la denegación del permiso de escritura para los miembros del grupo Compras, podremos comprobar que
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/029.png" width="750"/>
+  <figcaption>Permisos de escritura.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/030.png" width="750"/>
+  <figcaption>Permisos de escritura.</figcaption>
+</figure>
+
+<p>Si explicitamos la denegación del permiso de escritura para los miembros del grupo Compras, podremos comprobar que
 efectivamente el usuario usucomp1 no puede escribir en la carpeta:</p>
-<p><em>Denegación explicita</em></p>
-<h1 id="herencia-de-permisosherencia-de-permisos">Herencia de permisosHerencia de permisos<a class="headerlink" href="#herencia-de-permisosherencia-de-permisos" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Denegación explícita
-</code></pre></div>
-<h4 id="_1">.<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
-<h2 id="herencia-de-permisos">Herencia de permisos<a class="headerlink" href="#herencia-de-permisos" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Al crear un archivo o carpeta en un volumen NTFS ese objeto hereda automáticamente los permisos de su carpeta
-<span class="linenos" data-linenos="2 "></span>contenedora, y a la inversa: cuando asignamos permisos a una carpeta contenedora, los permisos se propagan
-<span class="linenos" data-linenos="3 "></span>automáticamente hacia los archivos y subcarpetas contenidas en el recurso.
-</code></pre></div>
-Sin embargo, pueden darse ocasiones en las que queramos eliminar esa herencia de permisos. Esto puede ejecutarse de tres
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/031.png" width="750"/>
+  <figcaption>Denegación explicita.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/032.png" width="750"/>
+  <figcaption>Denegación explicita.</figcaption>
+</figure>
+
+<h3 id="herencia-de-permisos">Herencia de permisos<a class="headerlink" href="#herencia-de-permisos" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Al crear un archivo o carpeta en un volumen NTFS ese objeto hereda automáticamente los permisos de su carpeta contenedora, y a la inversa: cuando asignamos permisos a una carpeta contenedora, los permisos se propagan automáticamente hacia los archivos y subcarpetas contenidas en el recurso.</p>
+</div>
+<p>Sin embargo, pueden darse ocasiones en las que queramos eliminar esa herencia de permisos. Esto puede ejecutarse de tres
 maneras diferentes:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Eliminar la herencia a nivel de la carpeta de nivel superior, los objetos contenidos en ella dejan de heredar los
-<span class="linenos" data-linenos="2 "></span>permisos.
-<span class="linenos" data-linenos="3 "></span>Eliminar la herencia a nivel de subcarpeta o archivo contenido dentro del recurso principal.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permitir o denegar explícitamente un permiso de manera diferente a como está definido en el recurso contenedor.
-</code></pre></div>
-<h2 id="que-utilidad-practica-piensas-que-puede-tener-la-herencia-de-permisos">¿Qué utilidad práctica piensas que puede tener la herencia de permisos?<a class="headerlink" href="#que-utilidad-practica-piensas-que-puede-tener-la-herencia-de-permisos" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Fundamentalmente son dos las utilidades principales. La primera radica en que el administrador no tiene que asignar
-<span class="linenos" data-linenos="2 "></span>manualmente los permisos a los archivos y subcarpetas que haya contenidas dentro del recurso principal, y que
-<span class="linenos" data-linenos="3 "></span>fácilmente pueden ser miles. Relacionado con este aspecto, también encontramos una segunda utilidad práctica que
-<span class="linenos" data-linenos="4 "></span>es el aumento de la seguridad al descartar posibles errores de asignación de permisos realizados manualmente.
-</code></pre></div>
-<h2 id="eliminacion-de-herencia-del-recurso-de-nivel-superior">Eliminación de herencia del recurso de nivel superior<a class="headerlink" href="#eliminacion-de-herencia-del-recurso-de-nivel-superior" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Eliminar la herencia a nivel de la carpeta de nivel superior, los objetos contenidos en ella dejan de heredar los permisos.</li>
+<li>Eliminar la herencia a nivel de subcarpeta o archivo contenido dentro del recurso principal.</li>
+<li>Permitir o denegar explícitamente un permiso de manera diferente a como está definido en el recurso contenedor.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>¿Qué utilidad práctica piensas que puede tener la herencia de permisos?</strong>
+Fundamentalmente son dos las utilidades principales. La primera radica en que el administrador no tiene que asignar manualmente los permisos a los archivos y subcarpetas que haya contenidas dentro del recurso principal, y que fácilmente pueden ser miles. Relacionado con este aspecto, también encontramos una segunda utilidad práctica que es el aumento de la seguridad al descartar posibles errores de asignación de permisos realizados manualmente.</p>
+</div>
+<h3 id="eliminacion-de-herencia-del-recurso-de-nivel-superior">Eliminación de herencia del recurso de nivel superior<a class="headerlink" href="#eliminacion-de-herencia-del-recurso-de-nivel-superior" title="Permanent link">&para;</a></h3>
 <p>Para eliminar la herencia de los permisos establecidos en la carpeta de nivel superior, se debe acceder a la ficha 'Seguridad'
 del cuadro de diálogo 'Permisos' y a continuación se hace clic en 'Opciones Avanzadas' :</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Deshabilitar herencia
-</code></pre></div>
-En este caso vemos que la carpeta c:\pistonazo_users hereda los permisos de la unidad c:. Para eliminar la herencia,
-debemos hacer clic en Deshabilitar herencia y nos aparecerá un diálogo para dejar los permisos explícitos o bien para eliminar
-todos los permisos:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Deshabilitar herencia
-</code></pre></div>
-Tenemos dos opciones:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Convertir los permisos heredados en permisos explícitos: mantiene los permisos de todos los archivos y subcarpetas,
-<span class="linenos" data-linenos="2 "></span>pero no están vinculados a los del nivel superior.
-<span class="linenos" data-linenos="3 "></span>Quitar todos los permisos: elimina todos los permisos heredados
-</code></pre></div>
-Como norma general marcaremos la primera opción, convertir los permisos en permisos explícitos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Deshabilitar herencia: Permisos explícitos
-</code></pre></div>
-<h2 id="cambio-de-los-permisos-de-un-objeto-hijo">Cambio de los permisos de un objeto hijo<a class="headerlink" href="#cambio-de-los-permisos-de-un-objeto-hijo" title="Permanent link">&para;</a></h2>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/033.png" width="750"/>
+  <figcaption>Denegación explicita I.</figcaption>
+</figure>
+
+<p>En este caso vemos que la carpeta <strong>c:\pistonazo_users</strong> hereda los permisos de la unidad *<em>c:*</em>. </p>
+<p>Para eliminar la herencia, debemos hacer clic en Deshabilitar herencia y nos aparecerá un diálogo para dejar los permisos explícitos o bien para eliminar todos los permisos:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/034.png" width="550"/>
+  <figcaption>Denegación explicita II.</figcaption>
+</figure>
+
+<p>Tenemos dos opciones:</p>
+<ul>
+<li><strong>Convertir los permisos heredados en permisos explícitos</strong>: mantiene los permisos de todos los archivos y subcarpetas, pero no están vinculados a los del nivel superior.</li>
+<li><strong>Quitar todos los permisos</strong>: elimina todos los permisos heredados.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Como norma general marcaremos la primera opción, convertir los permisos en permisos explícitos:</p>
+</div>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/035.png" width="750"/>
+  <figcaption>Denegación explicita III.</figcaption>
+</figure>
+
+<h3 id="cambio-de-los-permisos-de-un-objeto-hijo">Cambio de los permisos de un objeto hijo<a class="headerlink" href="#cambio-de-los-permisos-de-un-objeto-hijo" title="Permanent link">&para;</a></h3>
 <p>Si observamos los permisos de un objeto que está heredando permisos, veremos que las casillas de verificación están
-(completa o parcialmente) inaccesibles. En este caso la carpeta Compras que hereda los permisos de la carpeta</p>
-<p>Administración, hereda también los permisos del grupo administración:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Herencia de permisos
-</code></pre></div>
-En primer lugar podemos interrumpir la herencia, denegando explícitamente los permisos. Si el permiso heredado es de
+(completa o parcialmente) inaccesibles. En este caso la carpeta Compras que hereda los permisos de la carpeta <strong>Administración</strong>, hereda también los permisos del grupo administración:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/036.png" width="750"/>
+  <figcaption>Herencia de permisos.</figcaption>
+</figure>
+
+<p>En primer lugar podemos interrumpir la herencia, denegando explícitamente los permisos. Si el permiso heredado es de
 concesión, la denegación está habilitada.</p>
-<h1 id="permisos-ntfs-por-linea-de-comandospermisos-ntfs-por-linea-de-comandos">Permisos NTFS por línea de comandosPermisos NTFS por línea de comandos<a class="headerlink" href="#permisos-ntfs-por-linea-de-comandospermisos-ntfs-por-linea-de-comandos" title="Permanent link">&para;</a></h1>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Interrupción de herencia
-</code></pre></div>
-Para este caso, podemos denegar el permiso heredado de escritura.</p>
-<p><strong>Comando ICACLS</strong></p>
-<p>icacls permite de una manera relativamente intuitiva gestionar y modificar las ACLs de los recursos compartidos. A
-continuación veremos algunos ejemplos:</p>
-<p>Creemos en el controlador de dominio, por ejemplo, una carpeta en C: , llamada pruebas y luego consultaremos los permisos
-con el comando icacls pruebas:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Comando icacls
-</code></pre></div>
-Vemos que los permisos corresponden a:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Permisos por defecto
-</code></pre></div>
-Si queremos eliminar la herencia con el comando icacls, utilizaremos la opción /inheritance:r. Para ello:</p>
-<p><em>Eliminar herencia</em></p>
-<p>Mediante /inheritance:r eliminamos la herencia y borramos los permisos asignados. Si queremos que el grupo Pistonazo
-pueda tener acceso a la carpeta Pruebas, haremos lo siguiente:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Asignar permisos con icacls
-</code></pre></div>
-Podéis descargar el script a partir del siguiente enlace. ( <em>AsignaPermisos.bat</em> )</p>
-<p>Más información acerca de ICACLS desde aquí.</p>
-<h2 id="caso-practico-creacion-de-carpetas-de-usuarios">Caso Práctico: Creación de carpetas de usuarios.<a class="headerlink" href="#caso-practico-creacion-de-carpetas-de-usuarios" title="Permanent link">&para;</a></h2>
-<p>Es muy común crear de manera automática las carpetas de los usuarios para establecer en ellos su carpeta particular.
-Siguiendo con nuestro ejemplo de Pistonazo. Donde en el tema anterior creamos la estructura de Active Directory en cuanto a
-las unidades organizativas, grupos y usuarios. Ahora lo que haremos será crear las carpetas de los usuarios.</p>
-<p>Para crear las carpetas de los usuarios, crearemos una carpeta en C: llamada Pistonazo_Users y dentro de esta carpeta
-crearemos las carpetas de los usuarios, donde luego modificaremos su perfil que veremos más adelante. El script que vamos
-a utilizar es el siguiente:</p>
-<p>mkdir c:\Pistonazo_users
-icacls c:\Pistonazo_users /inheritance:r
-icacls c:\Pistonazo_users /grant Administradores:(OI)(CI)F
-icacls c:\Pistonazo_users /grant Pistonazo:RX
-REM Creacion de carpetas de usuarios
-FOR /F "tokens=1-3 delims=, skip=1" %%a in (personal.csv) do mkdir c:\Pistonazo_users\%%a
-FOR /F "tokens=1-3 delims=, skip=1" %%a in (personal.csv) do icacls
-c:\Pistonazo_users\%%a /grant %%a:(OI)(CI)F
-net share Pistonazo_users=c:\Pistonazo_users /grant:Administradores,FULL
-/grant:Pistonazo,CHANGE
-También podemos asignar los permisos a las carpetas de los departamentos mediante el comando icacls:
-icacls c:\Pistonazo /inheritance:r
-icacls c:\Pistonazo /GRANT Administradores:(OI)(CI)F
-FOR /F "tokens=1-2 delims=, skip=1" %%a in (secciones.csv) do mkdir c:\pistonazo\%%a
-FOR /F "tokens=1-2 delims=, skip=1" %%a in (secciones.csv) do icacls c:\pistonazo\%%a
-/GRANT %%a:RX
-FOR /F "tokens=1-2 delims=, skip=1" %%a in (departamentos.csv) do mkdir
-c:\pistonazo\%%a\%%b
-FOR /F "tokens=1-2 delims=, skip=1" %%a in (departamentos.csv) do icacls
-c:\pistonazo\%%a\%%b /GRANT %%b:(OI)(CI)F
-net share Pistonazo=c:\Pistonazo /grant:Administradores,FULL /grant:Pistonazo,CHANGE
-Para descargar el script en este enlace. ( <em>AsignaPermisosCarpetasPistonazo.bat</em> )
-Por tanto un usuario de Compras dentro de su departamento podrá crear cualquier archivo o carpeta:</p>
-<h1 id="directivas-de-grupo-gpodirectivas-de-grupo-gpo">Directivas de Grupo (GPO)Directivas de Grupo (GPO)<a class="headerlink" href="#directivas-de-grupo-gpodirectivas-de-grupo-gpo" title="Permanent link">&para;</a></h1>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Crear carpeta en Compras
-</code></pre></div>
-Las directivas de grupo (Group Policy) son una serie de configuraciones creadas por el administrador que se aplican a objetos
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/037.png" width="750"/>
+  <figcaption>Interrupción de herencia.</figcaption>
+</figure>
+
+<h2 id="directivas-de-grupo-gpo">Directivas de Grupo (GPO)<a class="headerlink" href="#directivas-de-grupo-gpo" title="Permanent link">&para;</a></h2>
+<p><strong>Las directivas de grupo </strong>(<strong>Group Policy</strong>) son una serie de configuraciones creadas por el administrador que se aplican a objetos
 del dominio. Por medio de estas directivas, el administrador controla los entornos de trabajo de los usuarios del dominio, los
 equipos y el comportamiento de distintos objetos. Son en definitiva un conjunto de reglas que facilitan las labores de
 administración de los usuarios y equipos.</p>
 <p>Algunos de los aspectos más útiles que se pueden definir por parte del administrador mediante las directivas son:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Los comandos de inicio de sesión.
-<span class="linenos" data-linenos="2 "></span>Características de las directivas de seguridad de las cuentas de usuario.
-<span class="linenos" data-linenos="3 "></span>Configuración de la apariencia de la sesión de usuario.
-<span class="linenos" data-linenos="4 "></span>Redirección del acceso a ciertas carpetas o archivos centralizados Distribución de software a los equipos clientes.
-<span class="linenos" data-linenos="5 "></span>Permisos otorgados a las cuentas de usuarios y grupos, etc.
-</code></pre></div>
-<h2 id="acumulacion-de-directivas-de-grupo">Acumulación de directivas de grupo<a class="headerlink" href="#acumulacion-de-directivas-de-grupo" title="Permanent link">&para;</a></h2>
-<p>Acumulación de las directicas de grupo
-Al existir diferentes niveles de directivas de grupo, estas pueden entrar en conflicto, haciendo que aparezcan efectos no
+<ul>
+<li>Los comandos de inicio de sesión.</li>
+<li>Características de las directivas de seguridad de las cuentas de usuario.</li>
+<li>Configuración de la apariencia de la sesión de usuario.</li>
+<li>Redirección del acceso a ciertas carpetas o archivos centralizados Distribución de software a los equipos clientes.</li>
+<li>Permisos otorgados a las cuentas de usuarios y grupos, etc.</li>
+</ul>
+<h3 id="acumulacion-de-directivas-de-grupo">Acumulación de directivas de grupo<a class="headerlink" href="#acumulacion-de-directivas-de-grupo" title="Permanent link">&para;</a></h3>
+<p>Al existir diferentes niveles de directivas de grupo, estas pueden entrar en conflicto, haciendo que aparezcan efectos no
 deseados en la gestión del dominio. Al establecer directivas de grupo hay que tener en cuenta el orden de aplicación de las
 mismas:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Directiva de grupo local.
-<span class="linenos" data-linenos="2 "></span>Directiva de grupo de sitio.
-<span class="linenos" data-linenos="3 "></span>Directiva de grupo de dominio.
-<span class="linenos" data-linenos="4 "></span>Directiva de grupo de unidad organizativa.
-</code></pre></div>
-De manera predeterminada cuando existe una contradicción entre las directivas, la que prevalece será la que está en un nivel
+<ul>
+<li>Directiva de grupo local.</li>
+<li>Directiva de grupo de sitio.</li>
+<li>Directiva de grupo de dominio.</li>
+<li>Directiva de grupo de unidad organizativa.</li>
+</ul>
+<p>De manera predeterminada cuando existe una contradicción entre las directivas, la que prevalece será la que está en un nivel
 inferior de la lista anterior. Obviamente, en caso de no existir contradicciones, se aplican todas las directivas.</p>
-<h2 id="directivas-de-usuario-o-equipo">Directivas de usuario o equipo<a class="headerlink" href="#directivas-de-usuario-o-equipo" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Si queremos saber las directivas que están aplicandose a un usuario o equipo
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>rsop.msc
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>, ejecutaremos rsop.msc:
-</code></pre></div></p>
-<h2 id="edicion-de-las-directivas-de-grupo-predeterminadas">Edición de las directivas de grupo predeterminadas<a class="headerlink" href="#edicion-de-las-directivas-de-grupo-predeterminadas" title="Permanent link">&para;</a></h2>
+<h3 id="directivas-de-usuario-o-equipo">Directivas de usuario o equipo<a class="headerlink" href="#directivas-de-usuario-o-equipo" title="Permanent link">&para;</a></h3>
+<p>Si queremos saber las directivas que están aplicandose a un usuario o equipo, ejecutaremos <strong>rsop.msc</strong>:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/038.png" width="850"/>
+  <figcaption>rsop.msc.</figcaption>
+</figure>
+
+<h3 id="edicion-de-las-directivas-de-grupo-predeterminadas">Edición de las directivas de grupo predeterminadas<a class="headerlink" href="#edicion-de-las-directivas-de-grupo-predeterminadas" title="Permanent link">&para;</a></h3>
 <p>Para acceder a las directivas de grupo predeterminadas, accedemos desde el Panel del Servidor --&gt; Herramientas --&gt;
 Administración de directivas de grupo:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Administración directivas de grupo
-</code></pre></div>
-Cuando se pone en marcha un dominio se crean dos directivas de grupo llamadas:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Default Domain Controllers.
-<span class="linenos" data-linenos="2 "></span>Default Domain Policy.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>GPOs predefinidos
-</code></pre></div>
-Estas dos directivas establecen la configuración básica de los objetos del dominio, y están vinculadas respectivamente a:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>La unidad organizativa Domain Controllers.
-<span class="linenos" data-linenos="2 "></span>El dominio.
-</code></pre></div>
-Estos dos GPO se componen de un conjunto muy amplio de directivas, como se puede ver al abrir el editor de directivas:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>GPOs predeterminadas Default Domain Policy
-</code></pre></div>
-Supongamos que queremos cambiar la configuración de la directiva que aplica sobre el permiso para apagar el equipo. En ese
-caso la buscaríamos entre todo el conjunto de directivas dentro del GPO Default Domain Policy y haríamos doble clic sobre
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/039.png" width="850"/>
+  <figcaption>Administración directivas de grupo.</figcaption>
+</figure>
+
+<p>Cuando se pone en marcha un dominio se crean dos directivas de grupo llamadas:</p>
+<ul>
+<li>Default Domain Controllers.</li>
+<li>Default Domain Policy.</li>
+</ul>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/040.png" width="850"/>
+  <figcaption>GPOs predefinidos.</figcaption>
+</figure>
+
+<p>Estas dos directivas establecen la configuración básica de los objetos del dominio, y están vinculadas respectivamente a:</p>
+<ul>
+<li>La unidad organizativa Domain Controllers.</li>
+<li>El dominio.</li>
+</ul>
+<p>Estos dos GPO se componen de un conjunto muy amplio de directivas, como se puede ver al abrir el editor de directivas:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/041.png" width="850"/>
+  <figcaption>GPOs predeterminadas Default Domain Policy.</figcaption>
+</figure>
+
+<p>Supongamos que queremos cambiar la configuración de la directiva que aplica sobre el permiso para apagar el equipo. En ese
+caso la buscaríamos entre todo el conjunto de directivas dentro del <strong>GPO Default Domain Policy</strong> y haríamos doble clic sobre
 ella :</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>GPO Apagar el sistema
-</code></pre></div>
-Vemos que la directiva Apagar el Sistema no está habilitada. Si la habilitamos y únicamente otorgamos permiso a los
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/042.png" width="850"/>
+  <figcaption>GPO Apagar el sistema.</figcaption>
+</figure>
+
+<p>Vemos que la directiva Apagar el Sistema no está habilitada. Si la habilitamos y únicamente otorgamos permiso a los
 administradores del dominio, podremos comprobar que efectivamente un usuario del dominio que inicia sesión en un equipo
 cliente no puede apagarlo, solamente podría un usuario con privilegios de administración.</p>
 <p>Para evitar generar un tráfico de gestión excesivo en la red, las directivas de grupo no se actualizan inmediatamente tras su
 modificación, sino que está establecido un intervalo de 5 minutos entre actualizaciones automáticas. No obstante, este
 intervalo se puede modificar en las propias directivas de grupo. De todas maneras, no es necesario modificar este intervalo
 para comprobar la correcta aplicación de las directivas de grupo, basta con escribir en la consola cmd el comando <strong>gpupdate</strong> :</p>
-<p><em>gpupdate</em></p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/043.png" width="750"/>
+  <figcaption>gpupdate.</figcaption>
+</figure>
+
 <p>Y ahora iniciamos una sesión con un usuario en la máquina cliente y comprobamos que efectivamente no se puede apagar la
 máquina:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Denegar apagado del sistema
-</code></pre></div>
-Tas tareas más comunes que se realizan con las GPOs son aquellas relativas a las directivas de contraseñas, de inicios de
-sesión y bloqueos entre otros. Para ejemplificar todo lo anterior vamos a modificar la Default Domain Policy para implementar
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/044.png" width="850"/>
+  <figcaption>Denegar apagado del sistema.</figcaption>
+</figure>
+
+<p>Tas tareas más comunes que se realizan con las GPOs son aquellas relativas a las directivas de contraseñas, de inicios de
+sesión y bloqueos entre otros. Para ejemplificar todo lo anterior vamos a modificar la <strong>Default Domain Policy</strong> para implementar
 las siguientes configuraciones en el dominio:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>1. Si el usuario se equivoca tres veces al introducir su contraseña, su cuenta queda bloqueada (solo la podrá desbloquear
-<span class="linenos" data-linenos=" 2 "></span>el administrador). Esto protege el sistema de posibles ataques.
-<span class="linenos" data-linenos=" 3 "></span>2. La contraseña deberá tener un mínimo de 5 caracteres, pero no es necesario obligatoriamente que sean mayúsculas,
-<span class="linenos" data-linenos=" 4 "></span>minúsculas, caracteres alfanuméricos, obligatoriamente, etc.
-<span class="linenos" data-linenos=" 5 "></span>3. La contraseña que se haya utilizado ya, no podrá volverse a utilizar hasta pasados al menos 10 cambios de contraseña
-<span class="linenos" data-linenos=" 6 "></span>(de esta manera forzamos al usuario a que que no &#39;recicle&#39; contraseñas antiguas, incrementando la seguridad del
-<span class="linenos" data-linenos=" 7 "></span>sistema).
-<span class="linenos" data-linenos=" 8 "></span>4. El usuario debe cambiar la contraseña cada seis meses, al establecer una &#39;vida útil&#39; de las contraseñas tenemos un
-<span class="linenos" data-linenos=" 9 "></span>sistema más seguro, ya que en caso de que alguien haya averiguado la contraseña del usuario, y no se haya
-<span class="linenos" data-linenos="10 "></span>detectado, como tarde a los seis meses, perderá el acceso a la cuenta.
-</code></pre></div>
+<ol>
+<li>Si el usuario se equivoca tres veces al introducir su contraseña, su cuenta queda bloqueada (solo la podrá desbloquear
+el administrador). Esto protege el sistema de posibles ataques.</li>
+<li>La contraseña deberá tener un mínimo de 5 caracteres, pero no es necesario obligatoriamente que sean mayúsculas,
+minúsculas, caracteres alfanuméricos, obligatoriamente, etc.</li>
+<li>La contraseña que se haya utilizado ya, no podrá volverse a utilizar hasta pasados al menos 10 cambios de contraseña
+(de esta manera forzamos al usuario a que que no 'recicle' contraseñas antiguas, incrementando la seguridad del
+sistema).</li>
+<li>El usuario debe cambiar la contraseña cada seis meses, al establecer una 'vida útil' de las contraseñas tenemos un
+sistema más seguro, ya que en caso de que alguien haya averiguado la contraseña del usuario, y no se haya
+detectado, como tarde a los seis meses, perderá el acceso a la cuenta.</li>
+</ol>
 <p>En las siguientes subsecciones se examina la manera de proceder para llevar a cabo estas configuraciones del sistema.</p>
 <h3 id="bloqueo-de-cuenta-al-introducir-una-contrasena-3-veces-una-contrasena-erronea">Bloqueo de cuenta al introducir una contraseña 3 veces una contraseña errónea<a class="headerlink" href="#bloqueo-de-cuenta-al-introducir-una-contrasena-3-veces-una-contrasena-erronea" title="Permanent link">&para;</a></h3>
-<p>En primer lugar editaremos el GPO 'Default Domain Policy' para configurar la directiva de bloqueo de cuenta. Esta se halla en
-'Configuración del equipo'→'Directivas'→'Configuración de Windows'→'Directiva de bloqueo de cuenta'→'Umbral de bloqueo
-de cuenta':</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Acceso a GPOs Default Domain Policy
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Acceso directiva bloqueo de cuenta
-</code></pre></div>
-Modificamos la directiva Umbral de bloqueo de cuenta a '3 intentos' de inicio de sesión erróneos:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Umbral de bloqueo de cuenta
-</code></pre></div>
-Además configuraremos la duración del bloqueo, donde un valor de 0 indica que la cuenta deberá ser desbloqueada
+<p>En primer lugar editaremos el GPO '<strong>Default Domain Policy</strong>' para configurar la directiva de bloqueo de cuenta. Esta se halla en:</p>
+<p>'<strong>Configuración del equipo</strong>'→'<strong>Directivas</strong>'→'<strong>Configuración de Windows</strong>'→'<strong>Directiva de bloqueo de cuenta</strong>'→'<strong>Umbral de bloqueo
+de cuenta</strong>'</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/045.png" width="850"/>
+  <figcaption>Acceso a GPOs Default Domain Policy.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/046.png" width="850"/>
+  <figcaption>Acceso directiva bloqueo de cuenta.</figcaption>
+</figure>
+
+<p>Modificamos la directiva Umbral de bloqueo de cuenta a '3 intentos' de inicio de sesión erróneos:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/047.png" width="850"/>
+  <figcaption>Umbral de bloqueo de cuenta.</figcaption>
+</figure>
+
+<p>Además configuraremos la duración del bloqueo, donde un valor de 0 indica que la cuenta deberá ser desbloqueada
 manualmente por el administrador:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Duración de bloqueo de cuenta
-</code></pre></div>
-Finalmente también configuraremos el tiempo que debe transcurrir entre intentos para que el contador de fallos de inicio de
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/048.png" width="850"/>
+  <figcaption>Duración de bloqueo de cuenta.</figcaption>
+</figure>
+
+<p>Finalmente también configuraremos el tiempo que debe transcurrir entre intentos para que el contador de fallos de inicio de
 sesión vuelva a cero antes de que se bloquee la cuenta. Pondremos el máximo valor permitido:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Restablecer el bloqueo
-</code></pre></div>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/049.png" width="850"/>
+  <figcaption>Restablecer el bloqueo.</figcaption>
+</figure>
+
 <h3 id="longitud-de-la-contrasena">Longitud de la contraseña<a class="headerlink" href="#longitud-de-la-contrasena" title="Permanent link">&para;</a></h3>
-<p>Como en el caso anterior editaremos el GPO 'Default Domain Policy' para configurar la longitud y complejidad de las
+<p>Como en el caso anterior editaremos el GPO '<strong>Default Domain Policy</strong>' para configurar la longitud y complejidad de las
 contraseñas:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Directivas de contraseñas
-</code></pre></div>
-Modificamos el valor de la longitud a 5 caracteres:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Longitud de la contraseña
-</code></pre></div>
-A continuación deshabilitamos los requisitos de complejidad de las contraseñas. En la siguiente figura aparecen las
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/050.png" width="850"/>
+  <figcaption>Directivas de contraseñas.</figcaption>
+</figure>
+
+<p>Modificamos el valor de la longitud a 5 caracteres:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/051.png" width="850"/>
+  <figcaption>Longitud de la contraseña.</figcaption>
+</figure>
+
+<p>A continuación deshabilitamos los requisitos de complejidad de las contraseñas. En la siguiente figura aparecen las
 características de complejidad que aplica esta directiva cuando está habilitada:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Deshabilitar complejidad de contraseñas
-</code></pre></div>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/052.png" width="850"/>
+  <figcaption>Deshabilitar complejidad de contraseñas.</figcaption>
+</figure>
+
 <h3 id="historial-de-contrasenas">Historial de contraseñas<a class="headerlink" href="#historial-de-contrasenas" title="Permanent link">&para;</a></h3>
 <p>Editamos de nuevo el GPO 'Default Domain Policy' y accedemos a las directivas de contraseñas:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Historial de contraseñas
-</code></pre></div>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/053.png" width="850"/>
+  <figcaption>Historial de contraseñas.</figcaption>
+</figure>
+
 <h3 id="vigencia-maxima-de-la-contrasena">Vigencia máxima de la contraseña<a class="headerlink" href="#vigencia-maxima-de-la-contrasena" title="Permanent link">&para;</a></h3>
 <p>Como en casos anteriores accedemos a las directivas de contraseña:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Vigencia máxima de la contraseña
-</code></pre></div>
-Cambiamos la duración máxima de las contraseñas a 180 días -6 meses-</p>
-<p>El resultado de cada una de las directivas de la sección Directivas de contraseñas sería:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Directivas de contraseñas
-</code></pre></div>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/054.png" width="850"/>
+  <figcaption>Vigencia máxima de la contraseña.</figcaption>
+</figure>
+
+<p>Cambiamos la duración máxima de las contraseñas a <strong>180 días -6 meses</strong> </p>
+<ul>
+<li>El resultado de cada una de las directivas de la sección Directivas de contraseñas sería:</li>
+</ul>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/055.png" width="850"/>
+  <figcaption>Directivas de contraseñas.</figcaption>
+</figure>
+
 <h2 id="creacion-de-directivas-de-grupo">Creación de directivas de grupo<a class="headerlink" href="#creacion-de-directivas-de-grupo" title="Permanent link">&para;</a></h2>
-<p>Vamos a modificar ciertas directivas de la organización Pistonazo, para ello accederemos ('Panel del
-administrador'→'Herramientas administrativas'→'Administración de directivas de grupo').</p>
+<p>Vamos a modificar ciertas directivas de la organización Pistonazo, para ello accederemos:
+'<strong>Panel del administrador</strong>'→'<strong>Herramientas administrativas</strong>'→'<strong>Administración de directivas de grupo</strong>'</p>
 <p>Supongamos que queremos crear una Directiva de Grupo sobre la unidad organizativa 'Pistonazo' que creamos en el tema
 anterior. Hacemos clic con el botón secundario y escogemos la opción 'Crear un GPO en este dominio y vincularlo aquí'</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Directivas de grupo
-</code></pre></div>
-Aparecerá el cuadro de diálogo e introduciremos el nombre que le queremos dar, por ejemplo 'Entorno de trabajo', ya que
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/056.png" width="950"/>
+  <figcaption>Directivas de grupo.</figcaption>
+</figure>
+
+<p>Aparecerá el cuadro de diálogo e introduciremos el nombre que le queremos dar, por ejemplo 'Entorno de trabajo', ya que
 posteriormente utilizaremos esta directiva para configurar un entorno de trabajo homogéneo en todos los usuarios que
 pertenecen a la Unidad Organizativa 'Pistonazo'.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Nueva GPO
-</code></pre></div>
-La nueva directiva aparecerá en el panel de detalles:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Nueva GPO
-</code></pre></div>
-Seleccionamos el GPO y hacemos clic con el botón derecho, escogiendo la opción 'Editar'. Con la nueva directiva vamos a
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/057.png" width="550"/>
+  <figcaption>Nueva GPO I.</figcaption>
+</figure>
+
+<p>La nueva directiva aparecerá en el panel de detalles:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/058.png" width="950"/>
+  <figcaption>Nueva GPO II.</figcaption>
+</figure>
+
+<p>Seleccionamos el GPO y hacemos clic con el botón derecho, escogiendo la opción 'Editar'. Con la nueva directiva vamos a
 establecer las siguientes configuraciones:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>1. Todos los miembros de la unidad organizativa &#39;Pistonazo&#39; tendrán un fondo de escritorio &#39;corporativo&#39; que se instalará
-<span class="linenos" data-linenos="2 "></span>de manera automática y que no podrá ser modificado.
-<span class="linenos" data-linenos="3 "></span>2. Los miembros de la unidad organizativa &#39;Trabajadores&#39; no pueden abrir la consola de comandos.
-</code></pre></div>
-En las siguientes subsecciones se examina la manera de proceder para llevar a cabo estas configuraciones del sistema.</p>
+<ol>
+<li>Todos los miembros de la unidad organizativa 'Pistonazo' tendrán un fondo de escritorio 'corporativo' que se instalará
+de manera automática y que no podrá ser modificado.</li>
+<li>Los miembros de la unidad organizativa 'Trabajadores' no pueden abrir la consola de comandos.</li>
+</ol>
+<p>En las siguientes subsecciones se examina la manera de proceder para llevar a cabo estas configuraciones del sistema.</p>
 <h3 id="fondo-de-escritorio-obligatorio">Fondo de escritorio obligatorio<a class="headerlink" href="#fondo-de-escritorio-obligatorio" title="Permanent link">&para;</a></h3>
 <p>Para modificar de una manera centralizada el fondo de escritorio de los usuarios de la unidad organizativa 'Pistonazo'
-debemos editar la directiva 'Entorno de Trabajo' y acceder a 'Configuración del usuario'→'Plantillas administrativas'→'Active
-Desktop'→'Active Desktop'</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>GPO Pistonazo
-</code></pre></div>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Personalizar Active Desktop
-</code></pre></div>
-Habilitamos el Active Desktop:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Active Desktop
-</code></pre></div>
-Vamos a impedir también que los usuarios puedan modificar el fondo de escritorio:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>No permitir cambios
-</code></pre></div>
-Indicamos la ruta en la que se halla la imagen que queremos poner como fondo de escritorio. En este caso se llama
+debemos editar la directiva '<strong>Entorno de Trabajo</strong>' y acceder a '<strong>Configuración del usuario</strong>'→'<strong>Plantillas administrativas</strong>'→'<strong>Active
+Desktop</strong>'→'<strong>Active Desktop</strong>'</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/059.png" width="950"/>
+  <figcaption>GPO Pistonazo.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/060.png" width="950"/>
+  <figcaption>Personalizar Active Desktop.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/061.png" width="750"/>
+  <figcaption>Habilitamos el Active Desktop.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/062.png" width="750"/>
+  <figcaption>Active Desktop.</figcaption>
+</figure>
+
+<p>Vamos a impedir también que los usuarios puedan modificar el fondo de escritorio:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/063.png" width="750"/>
+  <figcaption>No permitir cambios.</figcaption>
+</figure>
+
+<p>Indicamos la ruta en la que se halla la imagen que queremos poner como fondo de escritorio. En este caso se llama
 fondopisto.jpg y hay que añadirla a una carpeta compartida que se encuentre en el servidor. En nuestro caso, la añadiremos a
 la carpeta Pistonazo:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Tapiz de escritorio
-</code></pre></div>
-La imagen debe hallarse en una carpeta compartida en red (preferiblemente en el servidor por cuestiones de disponibilidad)
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/064.png" width="750"/>
+  <figcaption>Tapiz de escritorio.</figcaption>
+</figure>
+
+<p>La imagen debe hallarse en una carpeta compartida en red (preferiblemente en el servidor por cuestiones de disponibilidad)
 donde todos los usuarios del dominio tengan permiso de lectura. Además, se recomienda que la ruta se introduzca en formato
 UNC del tipo:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>\\server 1\gestion\fondocorp.jpg no en formato \\192.168.0.100\gestion\fondocorp.jpg
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">\\server 1\gestion\fondocorp.jpg no en formato \\192.168.0.100\gestion\fondocorp.jpg</span>
 </code></pre></div>
 <h3 id="bloqueo-de-la-linea-de-comandos">Bloqueo de la línea de comandos<a class="headerlink" href="#bloqueo-de-la-linea-de-comandos" title="Permanent link">&para;</a></h3>
-<p>Para bloquear la línea de comandos editaremos el GPO correspondiente accediendo a 'Configuración del usuario'→'Plantillas
-administrativas'→'Sistema'</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Bloqueo consola
-</code></pre></div>
-Y habilitamos el bloqueo:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Habilitar el bloqueo
-</code></pre></div>
-<h2 id="comprobacion-de-las-directivas-establecidas">Comprobación de las directivas establecidas<a class="headerlink" href="#comprobacion-de-las-directivas-establecidas" title="Permanent link">&para;</a></h2>
+<p>Para bloquear la línea de comandos editaremos el GPO correspondiente accediendo a '<strong>Configuración del usuario</strong>'→'<strong>Plantillas
+administrativas</strong>'→'<strong>Sistema</strong>'</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/065.png" width="750"/>
+  <figcaption>Bloqueo consola.</figcaption>
+</figure>
+
+<p>Y habilitamos el bloqueo:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/065.png" width="750"/>
+  <figcaption>Habilitar el bloqueo.</figcaption>
+</figure>
+
+<h3 id="comprobacion-de-las-directivas-establecidas">Comprobación de las directivas establecidas<a class="headerlink" href="#comprobacion-de-las-directivas-establecidas" title="Permanent link">&para;</a></h3>
 <p>Ahora comprobaremos que las directivas se han aplicado correctamente. Para ello utilizaremos un usuario cualquiera dentro
 de la unidad organizativa 'Pistonazo' que es sobre la que se aplican el GPO creado 'Entorno de Trabajo', y obviamente el GPO
 Default Domain Policy, que hemos editado.</p>
-<h3 id="bloqueo-de-cuenta">Bloqueo de cuenta<a class="headerlink" href="#bloqueo-de-cuenta" title="Permanent link">&para;</a></h3>
+<h4 id="bloqueo-de-cuenta">Bloqueo de cuenta<a class="headerlink" href="#bloqueo-de-cuenta" title="Permanent link">&para;</a></h4>
 <p>La primera directiva que hemos aplicado consistía en bloquear la cuenta indefinidamente al introducir en tres ocasiones la
 contraseña incorrectamente. Nos equivocamos voluntariamente al iniciar sesión en un equipo cliente y la cuenta se acaba
 bloqueando. Por ejemplo, vamos a iniciar sesión con usuario usucomp1 e introduciremos 3 veces de manera incorrecta la
 contraseña:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Cuenta usucomp1 bloqueada
-</code></pre></div>
-Comprobamos en el controlador de dominio que efectivamente está bloqueada y la desbloqueamos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Cuenta bloqueada.
-</code></pre></div>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/066.png" width="750"/>
+  <figcaption>Cuenta usucomp1 bloqueada.</figcaption>
+</figure>
+
+<p>Comprobamos en el controlador de dominio que efectivamente está bloqueada y la desbloqueamos:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/067.png" width="750"/>
+  <figcaption>Cuenta bloqueada.</figcaption>
+</figure>
+
 <h3 id="longitud-de-la-contrasena_1">Longitud de la contraseña<a class="headerlink" href="#longitud-de-la-contrasena_1" title="Permanent link">&para;</a></h3>
 <p>Para comprobar la longitud de la contraseña, vamos a cambiar la contraseña del usuario usucomp1 y vamos a poner una
 contraseña que tenga 5 caracteres, por ejemplo 12345.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Restablecer contraseña
-</code></pre></div>
-Así también hemos visto que podemos introducir una contraseña sin requisitos de complejidad.</p>
-<h3 id="fondo-de-escritorio-obligatorio_1">Fondo de escritorio obligatorio<a class="headerlink" href="#fondo-de-escritorio-obligatorio_1" title="Permanent link">&para;</a></h3>
-<p>Al iniciar sesión se carga el fondo de escritorio definido con la directiva de grupo, y además el usuario no puede modificarlo.
-Por ejemplo, iniciamos sesión con el usuario usucomp2:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Fondo de escritorio
-</code></pre></div>
-<h1 id="carpetas-personalescarpetas-personales">Carpetas PersonalesCarpetas Personales<a class="headerlink" href="#carpetas-personalescarpetas-personales" title="Permanent link">&para;</a></h1>
-<h2 id="bloqueo-de-la-linea-de-comandos_1">Bloqueo de la línea de comandos<a class="headerlink" href="#bloqueo-de-la-linea-de-comandos_1" title="Permanent link">&para;</a></h2>
-<p>Una vez iniciada la sesión, si se intenta ejecutar cmd aparece el siguiente mensaje:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Acceso a cmd
-</code></pre></div>
-Una de las opciones más utilizadas que puede configurarse en la ficha 'Perfiles' de las propiedades de la cuenta de usuario es
-el establecimiento de una unidad en red personal para cada usuario a la que únicamente él tiene acceso:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Carpeta particular
-</code></pre></div>
-<p>Para configurarla, basta crear una carpeta a la que se tenga acceso desde la red. Esta carpeta la tenemos creada en el disco
-c:\Pistonazo_users y dentro de esta carpeta están las carpetas de cada uno de los usuarios. Bastará asignar la ruta de esa
-carpeta a cada uno de los usuarios. Por ejemplo, vamos a asignar la unidad Z: a la carpeta personal de cada uno de los
-usuarios de nuestra organización Pistonazo:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Carpetas particulares
-</code></pre></div>
-Asignaremos estas carpetas a cada uno de los usuarios. Para ello desde la pestaña perfil:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Carpetas particulares
-</code></pre></div>
-<p>La carpeta del usuario debe ser una carpeta compartida y con permisos de escritura. En nuestro caso utilizaremos las carpetas
-que creamos en la sección de Permisos NTFS por línea de comandos. Creamos una carpeta en C:\Pistonazo_Users, esta
-carpeta tiene permisos de acceso el grupo Pistonazo y los Administradores. Por tanto, el recurso
-\192.168.100.1\Pistonazo_users\%username% será la carpeta de cada uno de los usuarios.</p>
-<p>La variable %username% sustituye el valor por el identificador de usuario.</p>
-<h3 id="carpetas-personales-ocultas">Carpetas personales ocultas<a class="headerlink" href="#carpetas-personales-ocultas" title="Permanent link">&para;</a></h3>
-<p>Si quisiéramos que las carpetas personales estuvieran ocultas, bastaría con añadir un $ al final del nombre del recurso
-compartido. En nuestro caso, podíamos haber compartido el recurso Pistonazo_Users con un $ al final y así ocultar las
-carpetas de usuarios.</p>
-<p>Podéis probar el siguiente script que elimina toda la estructura pistonazo y la regenera con carpetas ocultas asignando las
-carpetas personales a los usuarios:</p>
-<h2 id="pistonazo-completo">Pistonazo Completo<a class="headerlink" href="#pistonazo-completo" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>REM ELIMINANDO OU PISTONAZO
-<span class="linenos" data-linenos="2 "></span>dsrm -subtree -noprompt -c &quot;ou=Pistonazo, dc=cefire2017, dc=local&quot;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Rem Creación de Unidades Organizativas
-<span class="linenos" data-linenos="2 "></span>dsadd ou &quot;ou=Pistonazo, dc=cefire2017, dc=local&quot;
-<span class="linenos" data-linenos="3 "></span>FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (secciones.csv) do dsadd ou &quot;ou=%%a, ou=Pistonazo,
-<span class="linenos" data-linenos="4 "></span>dc=cefire2017, dc=local&quot; -desc &quot;%%b&quot;
-<span class="linenos" data-linenos="5 "></span>FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (departamentos.csv) do dsadd ou &quot;ou=%%b, ou=%%a,
-<span class="linenos" data-linenos="6 "></span>ou=Pistonazo, dc=cefire2017, dc=local&quot; -desc &quot;%%b&quot;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Rem Creacion de grupos
-<span class="linenos" data-linenos=" 2 "></span>dsadd group &quot;cn=Pistonazo, ou=Pistonazo, dc=cefire2017, dc=local&quot;
-<span class="linenos" data-linenos=" 3 "></span>FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (secciones.csv) do dsadd group &quot;cn=%%a, ou=%%a,
-<span class="linenos" data-linenos=" 4 "></span>ou=Pistonazo, dc=cefire2017, dc=local&quot; -memberof &quot;cn=Pistonazo, ou=Pistonazo, dc=cefire2017,
-<span class="linenos" data-linenos=" 5 "></span>dc=local&quot;
-<span class="linenos" data-linenos=" 6 "></span>FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (departamentos.csv) do dsadd group &quot;cn=%%b, ou=%%b,
-<span class="linenos" data-linenos=" 7 "></span>ou=%%a, ou=Pistonazo, dc=cefire2017, dc=local&quot; -memberof &quot;cn=%%a, ou=%%a, ou=Pistonazo,
-<span class="linenos" data-linenos=" 8 "></span>dc=cefire2017, dc=local&quot;
-<span class="linenos" data-linenos=" 9 "></span>REM Creacion de usuarios
-<span class="linenos" data-linenos="10 "></span>FOR /F &quot;tokens=1-3 delims=, skip=1&quot; %%a in (personal.csv) do dsadd user &quot;cn=%%a, ou=%%b, ou=%%c,
-<span class="linenos" data-linenos="11 "></span>ou=Pistonazo, dc=cefire2017, dc=local&quot; -memberof &quot;cn=%%b, ou=%%b, ou=%%c, ou=Pistonazo,
-<span class="linenos" data-linenos="12 "></span>dc=cefire2017, dc=local&quot; -samid &quot;%%a&quot; -upn &quot;%%a@CEFIRE2017.LOCAL&quot; -pwd &quot;cefire2017.&quot; -fn &quot;%%a&quot; -
-<span class="linenos" data-linenos="13 "></span>mustchpwd &quot;yes&quot;
-<span class="linenos" data-linenos="14 "></span>REM Borrando carpetas
-<span class="linenos" data-linenos="15 "></span>rmdir c:\pistonazo
-<span class="linenos" data-linenos="16 "></span>REM Creando carpetas
-<span class="linenos" data-linenos="17 "></span>mkdir c:\pistonazo
-<span class="linenos" data-linenos="18 "></span>FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (secciones.csv) do mkdir c:\pistonazo\%%a
-<span class="linenos" data-linenos="19 "></span>FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (departamentos.csv) do mkdir c:\pistonazo\%%a\%%b
-<span class="linenos" data-linenos="20 "></span>icacls c:\Pistonazo /inheritance:r
-<span class="linenos" data-linenos="21 "></span>icacls c:\Pistonazo /GRANT Administradores:(OI)(CI)F
-<span class="linenos" data-linenos="22 "></span>icacls c:\Pistonazo /GRANT Pistonazo:RX
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (secciones.csv) do mkdir c:\pistonazo\%%a
-<span class="linenos" data-linenos="2 "></span>FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (secciones.csv) do icacls c:\pistonazo\%%a /GRANT %%a:RX
-<span class="linenos" data-linenos="3 "></span>FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (departamentos.csv) do mkdir c:\pistonazo\%%a\%%b
-<span class="linenos" data-linenos="4 "></span>FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (departamentos.csv) do icacls c:\pistonazo\%%a\%%b
-<span class="linenos" data-linenos="5 "></span>/GRANT %%b:(OI)(CI)F
-</code></pre></div></p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>net share Pistonazo /delete
-<span class="linenos" data-linenos=" 2 "></span>net share Pistonazo=c:\Pistonazo /grant:Administradores,FULL /grant:Pistonazo,CHANGE
-<span class="linenos" data-linenos=" 3 "></span>mkdir c:\Pistonazo_users
-<span class="linenos" data-linenos=" 4 "></span>icacls c:\Pistonazo_users /inheritance:r
-<span class="linenos" data-linenos=" 5 "></span>icacls c:\Pistonazo_users /grant Administradores:(OI)(CI)F
-<span class="linenos" data-linenos=" 6 "></span>icacls c:\Pistonazo_users /grant Pistonazo:RX
-<span class="linenos" data-linenos=" 7 "></span>REM Creacion de carpetas de usuarios
-<span class="linenos" data-linenos=" 8 "></span>FOR /F &quot;tokens=1-3 delims=, skip=1&quot; %%a in (personal.csv) do mkdir c:\Pistonazo_users\%%a
-<span class="linenos" data-linenos=" 9 "></span>FOR /F &quot;tokens=1-3 delims=, skip=1&quot; %%a in (personal.csv) do icacls c:\Pistonazo_users\%%a /grant
-<span class="linenos" data-linenos="10 "></span>%%a:(OI)(CI)F
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>net share Pistonazo_users /delete
-<span class="linenos" data-linenos="2 "></span>net share Pistonazo_users$ /delete
-<span class="linenos" data-linenos="3 "></span>net share Pistonazo_users$=c:\Pistonazo_users /grant:Administradores,FULL /grant:Pistonazo,CHANGE
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>FOR /F &quot;tokens=1-3 delims=, skip=1&quot; %%a in (personal.csv) do dsmod user &quot;cn=%%a, ou=%%b, ou=%%c,
-<span class="linenos" data-linenos="2 "></span>ou=Pistonazo, dc=cefire2017, dc=local&quot; -hmdrv Z: -hmdir &quot;\\192.168.100.1\Pistonazo_users$\%%a&quot;
-</code></pre></div>
-En el script de arriba, el comando que nuevo que hemos añadido para añadir cada una de las carpetas personales de los
-usuarios es:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>dsmod user &quot;cn=%%a, ou=%%b, ou=%%c, ou=Pistonazo, dc=cefire2017, dc=local&quot; -hmdrv Z: -hmdir
-<span class="linenos" data-linenos="2 "></span>\\192.168.100.1\Pistonazo_users$\%%a&quot;
-</code></pre></div>
-El comando dsmod como vimos anteriormente, lo que hace es modificar un objeto de AD, en este caso lo que está haciendo
-es modificar todos los usuarios y añadir las carpetas personales de cada usuario. Así si ahora comprobamos en el servidor, la
-pestaña perfil del usuario, veremos su carpeta personal asignada:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Carpeta personal asignada a Z:
-</code></pre></div>
-Al añadir las carpetas personales de los usuarios, cuando iniciamos sesión, veremos que tenemos una nueva conexión de red
-asociado a la unidad Z: que conectará con el recurso compartido que serán las carpetas personales de los usuarios. Si
-iniciamos sesión con usucomp1:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Carpeta personal montada como recurso de red en Z:
-</code></pre></div>
-Si accedemos a los recursos del servidor, veremos como no aparecen las carpetas personales de los usuarios, ya que se
-encuentran ocultas:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Carpetas de usuarios ocultas en DC
-</code></pre></div>
-<h2 id="version-completa-en-powershell-pistonazocompletopsps1">Version completa en POWERSHELL (pistonazoCompletoPS.ps1)<a class="headerlink" href="#version-completa-en-powershell-pistonazocompletopsps1" title="Permanent link">&para;</a></h2>
-<p>Write-Output "Creando Estructura de OU y Grupos..."
-New-ADOrganizationalUnit -Name "Pistonazo" -Path "DC=CEFIRE2019, DC=LOCAL" -Description
-"Unidad organizativa Pistonazo" -ProtectedFromAccidentalDeletion $false
-New-ADGroup -Name "Pistonazo" -GroupScope Global -Path
-"OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL"
-$secciones = Import-CSV -Path "./secciones.csv"
-$group = Get-ADGroup "CN=Pistonazo,OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL"
-foreach ($ou in $secciones) {
-New-ADOrganizationalUnit -Name ($ou.seccion) -Path "OU=Pistonazo, DC=CEFIRE2019,
-DC=LOCAL"
-$path="OU="+($ou.seccion)+",OU=Pistonazo, DC=CEFIRE2019, DC=LOCAL"
-New-ADGroup -Name $ou.seccion -GroupScope Global -Path $path
-$member = "CN="+($ou.seccion)+","+$path
-Add-ADGroupMember $group -Members $member
-Write-Output "Unidad $($ou.seccion) creada!"
-}
-$departamentos = Import-CSV -Path "./departamentos.csv"
-foreach ($ou in $departamentos) {
-$path="OU="+($ou.seccion)+", OU=Pistonazo, DC=CEFIRE2019, DC=LOCAL"
-New-ADOrganizationalUnit -Name ($ou.departamento) -Path $path
-$path="OU="+($ou.departamento)+",OU="+$ou.seccion+",OU=Pistonazo, DC=CEFIRE2019,
-DC=LOCAL"
-New-ADGroup -Name $ou.departamento -GroupScope Global -Path $path
-$group = Get-ADGroup
-("CN="+$ou.seccion+",OU="+$ou.seccion+",OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL")
-$member = "CN="+($ou.departamento)+","+$path
-Add-ADGroupMember $group -Members $member
-Write-Output "Unidad $($ou.departamento) - $($ou.seccion) creada!"
-}
-$usuarios = Import-CSV -Path "./personal.csv"
-Write-Output "Creando usuarios...."
-foreach ($user in $usuarios) {
-$login = $user.login</p>
-<p>$path="OU="+$user.departamento+",OU="+$user.seccion+",OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL
-New-ADUser -Name $login -Path $path -SamAccountName $login -UserPrincipalName
-($login+"@CEFIRE2019.LOCAL") -AccountPassword (ConvertTo-SecureString "cefire2019." -
-AsPlainText -Force) -GivenName $login -ChangePasswordAtLogon $true -Enabled $true
-$group = Get-ADGroup
-("CN="+$user.departamento+",OU="+$user.departamento+",OU="+$user.seccion+",OU=Pistonazo,D
-$member = "CN="+$login+","+$path
-Add-ADGroupMember $group -Members $member
-Write-Output "Usuario $($user.login) creado!"</p>
-<p>}
-Write-Host "Creamos la estructura de Pistonazo..."
-Remove-Item C:\Pistonazo -Force
-New-Item C:\Pistonazo -Type Directory
-$acl = Get-Acl C:\Pistonazo
-$acl.SetAccessRuleProtection($true, $false)
-$rule = New-Object</p>
-<p>System.Security.AccessControl.FileSystemAccessRule("Administradores","FullControl",
-"ContainerInherit, ObjectInherit", "None", "Allow")
-$acl.AddAccessRule($rule)
-$rule = New-Object
-System.Security.AccessControl.FileSystemAccessRule("Pistonazo","ReadAndExecute", "None",
-"None", "Allow")
-$acl.AddAccessRule($rule)
-Set-Acl -path C:\Pistonazo -AclObject $acl
-Write-Host "Asignamos Permisos"
-$deps = Import-CSV -Path "./departamentos.csv"
-foreach ($ou in $deps) {
-New-Item C:\Pistonazo\$($ou.seccion)\$($ou.departamento) -Type Directory -Force
-$acl = Get-Acl C:\Pistonazo\$($ou.seccion)
-$rule = New-Object
-System.Security.AccessControl.FileSystemAccessRule($($ou.seccion),"ReadAndExecute",
-"None", "None", "Allow")
-$acl.AddAccessRule($rule)
-Set-Acl -path C:\Pistonazo\$($ou.seccion) -AclObject $acl
-$acl = Get-Acl C:\Pistonazo\$($ou.seccion)\$($ou.departamento)
-$rule = New-Object
-System.Security.AccessControl.FileSystemAccessRule($($ou.departamento),"FullControl",
-"ContainerInherit, ObjectInherit", "None", "Allow")
-$acl.AddAccessRule($rule)
-Set-Acl -path C:\Pistonazo\$($ou.seccion)\$($ou.departamento) -AclObject $acl
-}</p>
-<p>Write-Host "Creamos la estructura de Carpetas de Usuarios"
-Remove-Item C:\Pistonazo_users -Force
-New-Item C:\Pistonazo_users -Type Directory
-$acl = Get-Acl C:\Pistonazo_users
-$acl.SetAccessRuleProtection($true, $false)
-$rule = New-Object
-System.Security.AccessControl.FileSystemAccessRule("Administradores","FullControl",
-"ContainerInherit, ObjectInherit", "None", "Allow")
-$acl.AddAccessRule($rule)
-$rule = New-Object
-System.Security.AccessControl.FileSystemAccessRule("Pistonazo","ReadAndExecute", "None",
-"None", "Allow")
-$acl.AddAccessRule($rule)
-Set-Acl -path C:\Pistonazo_users -AclObject $acl
-$usuarios = Import-CSV -Path "./personal.csv"
-Write-Output "Creando carpetas de usuarios...."
-foreach ($user in $usuarios) {
-$login = $user.login
-New-Item C:\Pistonazo_users\$($user.login) -Type Directory
-$acl = Get-Acl C:\Pistonazo_users\$($user.login)
-$rule = New-Object
-System.Security.AccessControl.FileSystemAccessRule($($user.login),"FullControl",
-"ContainerInherit, ObjectInherit", "None", "Allow")
-$acl.AddAccessRule($rule)
-Set-Acl -path C:\Pistonazo_users\$($user.login) -AclObject $acl</p>
-<p>}
-New-SmbShare -Name Pistonazo_Users$ -Path c:\Pistonazo_Users -ChangeAccess Pistonazo -
-FullAccess Administradores</p>
-<h1 id="comandos-de-inicio-de-sesioncomandos-de-inicio-de-sesion">Comandos de inicio de sesiónComandos de inicio de sesión<a class="headerlink" href="#comandos-de-inicio-de-sesioncomandos-de-inicio-de-sesion" title="Permanent link">&para;</a></h1>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>New-SmbShare -Name Pistonazo -Path c:\Pistonazo -ChangeAccess Pistonazo -FullAccess
-<span class="linenos" data-linenos="2 "></span>Administradores
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$usuarios = Import-CSV -Path &quot;./personal.csv&quot;
-<span class="linenos" data-linenos="2 "></span>Write-Output &quot;Modificando atributos de usuarios....&quot;
-<span class="linenos" data-linenos="3 "></span>foreach ($user in $usuarios) {
-<span class="linenos" data-linenos="4 "></span>$userObj =
-<span class="linenos" data-linenos="5 "></span>&quot;CN=&quot;+$user.login+&quot;,OU=&quot;+$user.departamento+&quot;,OU=&quot;+$user.seccion+&quot;,OU=Pistonazo,DC=CEFIRE
-<span class="linenos" data-linenos="6 "></span>$usuario = Get-ADUser -Identity $userObj
-<span class="linenos" data-linenos="7 "></span>Set-ADUser -Identity $usuario -ScriptPath &quot;Pistonazo2.bat&quot; -HomeDrive &quot;Z:&quot; -
-<span class="linenos" data-linenos="8 "></span>HomeDirectory &quot;\\192.168.100.1\Pistonazo_users$\$($user.login)&quot;
-<span class="linenos" data-linenos="9 "></span>Write-Output &quot;Usuario $usuario encontrado!&quot;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>}
-</code></pre></div>
-Otra opción que podemos configurar dentro de la ficha perfil consiste en indicar un script que se ejecutará en cada inicio de
-sesión de manera automática y transparente al usuario. Para ello desde la pestaña perfil del usuario accedemos a Script de
-inicio de sesión:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Script de inicio de sesión
-</code></pre></div>
-Estos scripts deben hallarse en la carpeta compartida NETLOGON, cuya dirección local en el controlador de dominio es:
-C:\Windows\SYSVOL\sysvolCEFIRE2017.LOCAL\scripts. En este caso concreto, la dirección local y la dirección en red serían
-respectivamente:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Ruta Netlogon
-</code></pre></div>
-Crearemos en esta carpeta un fichero llamado pistonazo.bat. Que será donde añadamos los comandos que queremos que se
-ejecuten cuando un usuario inicie la sesión:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Fichero pistonazo.bat
-</code></pre></div>
-Hay que tened en cuenta que por defecto están las extensiones de archivo ocultas. Para evitar confusiones con los archivos,
-vamos a marcar que nos muestre las extensiones de los archivos. Para ello seleccionamos Vista y marcamos extensiones de
-archivo:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Marcar extensiones de archivos en Netlogon
-</code></pre></div>
-<h3 id="ejemplos-de-scripts-de-inicio-de-sesion-asignacion-de-unidad-de-red">Ejemplos de scripts de inicio de sesión: Asignación de unidad de red<a class="headerlink" href="#ejemplos-de-scripts-de-inicio-de-sesion-asignacion-de-unidad-de-red" title="Permanent link">&para;</a></h3>
-<p>Vamos a hacer que se monte de manera automática la unidad P: que será la unidad donde se encuentren las carpetas de los
-departamentos de los usuarios de la organización Pistonazo. Para ello, añadiremos a nuestro script, el comando <strong><em>Net Use P:
-\192.168.100.1\Pistonazo</em></strong></p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Pistonazo.bat
-</code></pre></div>
-Ahora lo que haremos será modificar el campo Script de inicio de sesión a los usuarios de la organización Pistonazo. Podemos
-añadir a nuestro script el siguiente comando:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>FOR /F &quot;tokens=1-3 delims=, skip=1&quot; %%a in (personal.csv) do dsmod user &quot;cn=%%a, ou=%%b,
-<span class="linenos" data-linenos="2 "></span>ou=%%c, ou=Pistonazo, dc=cefire2017, dc=local&quot; -loscr &quot;pistonazo.bat&quot;
-</code></pre></div>
-También podemos ejecutar el siguiente comando desde la línea de comandos:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>dsmod user &quot;OU=Pistonazo, DC=CEFIRE2017, DC=LOCAL&quot; | dsmod user -loscr &quot;Pistonazo.bat&quot;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>dsmod user para modificar el script de inicio
-</code></pre></div>
-Esto habrá modificado el campo Script de inicio de sesión de nuestros usuarios de la organización de Pistonazo:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Script de inicio de sesión
-</code></pre></div>
-Y ahora si iniciamos sesión con alguno de los usuarios de Pistonazo, veremos que nos habrá añadido una nueva unidad de
-red, la unidad P: que conectará a la estructura de Pistonazo que se encuentra en el servidor:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Unidad de red Pistonazo
-</code></pre></div>
-<h3 id="ejemplos-de-scripts-de-inicio-de-sesion-asignacion-de-unidad-de-red_1">Ejemplos de scripts de inicio de sesión: Asignación de unidad de red<a class="headerlink" href="#ejemplos-de-scripts-de-inicio-de-sesion-asignacion-de-unidad-de-red_1" title="Permanent link">&para;</a></h3>
-<p>Supongamos que queremos enviar un mensaje a los usuarios cuando se conecten al sistema. Suele ser habitual enviar
-mensajes del tipo 'Guarda los datos en red' o 'No instales software sin permiso del administrador', o simplemente avisar de
-paradas planeadas en el sistema. Para enviar este tipo de mensajes automáticamente cuando el usuario inicia sesión
-podemos utilizar el comando msg dentro del fichero de comandos de inicio de sesión que hemos creado en el punto anterior:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>if NOT EXIST P: net use P: \\192.168.100.1\Pistonazo
-<span class="linenos" data-linenos="2 "></span>msg %username% Recuerda guardar los datos en las unidades Z: o P:
-</code></pre></div>
-<h1 id="perfilesperfiles">PerfilesPerfiles<a class="headerlink" href="#perfilesperfiles" title="Permanent link">&para;</a></h1>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Mensajes de aviso a usuarios
-</code></pre></div>
-Podemos definir un perfil como aquellos aspectos de configuración del equipo y del entorno de trabajo propios del usuario y
-que además son exportables a otras máquinas de manera transparente al mismo. En otras palabras, mediante los perfiles
-conseguimos que el usuario independientemente del equipo en el que inicie la sesión disponga de un entorno de trabajo
-similar. Todo esto se entenderá mejor con los ejemplos preparados en las secciones siguientes.</p>
-<p>Existen tres tipos de perfiles:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>1. Perfiles locales : se almacenan en el equipo, y configuran el entorno de trabajo de cada usuario. No los abordaremos
-<span class="linenos" data-linenos=" 2 "></span>en este curso ya que lo que nos interesa es la gestión centralizada de recursos.
-<span class="linenos" data-linenos=" 3 "></span>2. Perfiles móviles : el usuario configura el entorno de trabajo a su gusto en un equipo, y al iniciar sesión en cualquier
-<span class="linenos" data-linenos=" 4 "></span>otra estación de trabajo, la configuración se importa y aplica a ese nuevo equipo. Abordaremos este tipo de perfiles
-<span class="linenos" data-linenos=" 5 "></span>más adelante.
-<span class="linenos" data-linenos=" 6 "></span>3. Perfiles obligatorios : un usuario con permisos de administración define la configuración del entorno de trabajo, y se
-<span class="linenos" data-linenos=" 7 "></span>aplica a los usuarios del dominio. Estos pueden modificarla durante la sesión, pero al iniciar otra sesión, se vuelve a
-<span class="linenos" data-linenos=" 8 "></span>cargar la configuración del perfil obligatorio. En lugar de trabajar con perfiles obligatorios, en el apartado anterior
-<span class="linenos" data-linenos=" 9 "></span>hemos visto cómo configurar entornos de trabajo definidos para los miembros de una unidad organizativa de una
-<span class="linenos" data-linenos="10 "></span>manera más cómoda y potente.
-</code></pre></div>
-<h2 id="perfiles-moviles">Perfiles móviles<a class="headerlink" href="#perfiles-moviles" title="Permanent link">&para;</a></h2>
-<p>Como se ha comentado en el apartado anterior, los perfiles consisten en una serie de ficheros de configuración del entorno de
-trabajo, que se aplican a todos los equipos de la red desde donde pueda iniciar sesión el usuario. Estos ficheros de</p>
-<p>configuración deben almacenarse en una ubicación accesible por los equipos clientes, como por ejemplo el controlador de
-dominio.</p>
-<p>Concretamente, almacenaremos los perfiles en una carpeta de perfil. Esta carpeta de perfil la crearemos dentro de las
-carpetas particulares de los usuarios. Por ejemplo, vamos a hacer que los usuarios del departamento Gestión tengan un perfil
-móvil:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Perfil móvil para usuarios de departamento Gestión
-</code></pre></div>
-Esto hará que estos usuarios cuando inicien sesión en alguna de las máquinas cliente de nuestro dominio, recupere todo su
-perfil de la carpeta personal del usuario. Para ello, vamos a modificar el siguiente campo de la pestaña perfil:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Perfil móvil usuario usudir1
-</code></pre></div>
-Y estableceremos la ruta de acceso al perfil. En nuestro caso, vamos a establecer la ruta de acceso al perfil móvil, dentro de la
-carpeta personal del usuario. Por tanto, seleccionaremos los dos usuarios y con el botón de la derecha del ratón:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Perfil móvil usuarios gestion
-</code></pre></div>
-Y para la ruta del perfil móvil estableceremos la siguiente dirección:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>\\192.168.100.1\Pistonazo_users$\%username%\perfil
-</code></pre></div>
-De esta forma cuando algún usuario de Gestión inicie sesión, se creará en la carpeta personal su perfil. Así
-independientemente del equipo donde se conecte, siempre tendrá la información:</p>
-<h1 id="actividadesactividades">ActividadesActividades<a class="headerlink" href="#actividadesactividades" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Creación de carpeta de perfil móvil
-</code></pre></div>
-<h2 id="carga-en-red-perfil-movil">Carga en red Perfil Móvil<a class="headerlink" href="#carga-en-red-perfil-movil" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Hay que tener en cuenta de que cuando un usuario con perfil móvil inicia la sesión, la información del servidor se copia
-<span class="linenos" data-linenos="2 "></span>al cliente. Cuando cierra la sesión se realiza la operación inversa. Un alto número de usuario con perfil móvil puede
-<span class="linenos" data-linenos="3 "></span>sobrecargar la red demasiado. Por tanto, hay que saber exactamente en qué usuarios debemos aplicar esta
-<span class="linenos" data-linenos="4 "></span>característica.
-</code></pre></div>
-<h2 id="actividad-1">Actividad 1<a class="headerlink" href="#actividad-1" title="Permanent link">&para;</a></h2>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR08/068.png" width="750"/>
+  <figcaption>Restablecer contraseña.</figcaption>
+</figure>
+
+<p>Así también hemos visto que podemos introducir una contraseña sin requisitos de complejidad.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ya se podría comprobar estas restricciones.</p>
+</div>
+<h2 id="actividad">Actividad<a class="headerlink" href="#actividad" title="Permanent link">&para;</a></h2>
 <p>Habrá que modificar las siguientes directivas para conseguir:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>1. Los usuarios deben cambiar la contraseña cada 90 días y guardar el historial de 5 contraseñas. Para facilitar la gestión
-<span class="linenos" data-linenos="2 "></span>no será necesaria tener una restricción en cuánto a la complejidad de la contraseña y el número mínimo de caracteres
-<span class="linenos" data-linenos="3 "></span>será de 4.
-<span class="linenos" data-linenos="4 "></span>2. Para evitar posibles robos de contraseña y ataques mal intencionados, cuando un usuario intenta 4 veces introducir de
-<span class="linenos" data-linenos="5 "></span>manera incorrecta su contraseña, la cuenta se bloqueará hasta que el administrador la desbloquee. Se reestablecerá el
-<span class="linenos" data-linenos="6 "></span>contador de inicios de sesión erróneos a los 10minutos.
-</code></pre></div>
+<ol>
+<li>Los usuarios deben cambiar la contraseña cada 90 días y guardar el historial de 5 contraseñas. Para facilitar la gestión
+no será necesaria tener una restricción en cuánto a la complejidad de la contraseña y el número mínimo de caracteres
+será de 4.</li>
+<li>Para evitar posibles robos de contraseña y ataques mal intencionados, cuando un usuario intenta 4 veces introducir de
+manera incorrecta su contraseña, la cuenta se bloqueará hasta que el administrador la desbloquee. Se reestablecerá el
+contador de inicios de sesión erróneos a los 10minutos.</li>
+</ol>
 <p>Haced una captura de pantalla de las directivas de contraseña y de inicios de sesión.</p>
-<h2 id="actividad-2">Actividad 2<a class="headerlink" href="#actividad-2" title="Permanent link">&para;</a></h2>
-<p>En esta actividad, vamos a seguir con la organización de vuestra empresa. La que realizasteis en el tema anterior:</p>
-<p><em>Estructura Empresa</em></p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>1. Crear la estructura de carpetas en disco y definir los siguientes permisos: A la carpeta principal Empresa, sólo podrán
-<span class="linenos" data-linenos="2 "></span>acceder los miembros del grupo Empresa. En esta carpeta solo tendrán acceso de lectura. Cada departamento podrá
-<span class="linenos" data-linenos="3 "></span>entrar en su carpeta con permisos de control total y no podrá acceder al resto de departamentos de la empresa.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Estructura de carpetas Empresa
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>2. Crear también la estructura para almacenar las carpetas particulares de los usuarios. Esta se creará en
-<span class="linenos" data-linenos="2 "></span>C:\Empresa_users
-</code></pre></div></p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Carpeta de usuarios
-</code></pre></div>
-3. Cuando un usuario inicie sesión, conectará de manera automática la carpeta personal en la unidad X: y la carpeta de
-empresas en la unidad Y:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Obra publicada con Licencia Creative Commons Reconocimiento Compartir igual 4.0
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Inicio sesión usuario Empresa
-</code></pre></div>
-Para esta actividad os recomiendo que hagáis uso del script pistonazo completo ( <em>pistonazoCompleto.bat |
-pistonazoCompletoPS.ps1</em> ) y lo adaptéis para esta actividad.</p>
-<p><strong><em>En esta actividad se entregará un script .bat con las órdenes para crear las carpetas de los departamentos, las
-carpetas de los usuarios y los permisos correspondientes (comando icacls). Realizad también una captura de
-pantalla con las unidades de red montadas de un usuario.</em></strong></p>
                 
               
               
