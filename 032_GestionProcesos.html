@@ -443,9 +443,29 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-de-procesos-con-powershell" class="md-nav__link">
+    Gestión de procesos con Powershell.
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestión de procesos con Powershell.">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
-  <a href="#actividades-de-desarrollo-ud3_01" class="md-nav__link">
-    Actividades de desarrollo UD3_01
+  <a href="#actividades-de-desarrollo-ud3_01-shellscripting" class="md-nav__link">
+    Actividades de desarrollo UD3_01 ShellScripting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividades-ud03_02-powershell" class="md-nav__link">
+    Actividades UD03_02 PowerShell
   </a>
   
 </li>
@@ -568,7 +588,188 @@
 <span class="linenos" data-linenos="3 "></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">kill -15 (SigTerm). Termina el proceso.</span> 
 </code></pre></div>
 <p>Por otra parte, el comando <strong>killall <em>nombre_programa</em></strong> finaliza todos los procesos que estén ejecutando el programa.</p>
-<h3 id="actividades-de-desarrollo-ud3_01">Actividades de desarrollo UD3_01<a class="headerlink" href="#actividades-de-desarrollo-ud3_01" title="Permanent link">&para;</a></h3>
+<h2 id="gestion-de-procesos-con-powershell">Gestión de procesos con Powershell.<a class="headerlink" href="#gestion-de-procesos-con-powershell" title="Permanent link">&para;</a></h2>
+<h4 id="obtener-procesos-get-process">Obtener procesos (Get-Process)<a class="headerlink" href="#obtener-procesos-get-process" title="Permanent link">&para;</a></h4>
+<p>Para obtener los procesos que se están ejecutando en el equipo local, ejecute <code>Get-Process</code> sin parámetros.</p>
+<p>Puede obtener determinados procesos especificando sus nombres de proceso o identificadores de proceso. El siguiente comando obtiene el proceso inactivo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -id 0</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------    -----      ----- -----   ------     -- -----------</span>
+<span class="linenos" data-linenos="3 "></span>      <span class="l l-Scalar l-Scalar-Plain">0       0        0         16     0               0 Idle</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Aunque es normal que los cmdlets no devuelvan datos en algunas situaciones, cuando se especifica un proceso por su id. de proceso <code>Get-Process</code>, genera un error si no encuentra ninguna coincidencia, porque la intención habitual consiste en recuperar un proceso en ejecución conocido. Si no hay ningún proceso con ese identificador, es probable que el identificador sea incorrecto o que el proceso de interés haya terminado:</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Id 99</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">Get-Process </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">No process with process ID 99 was found.</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">At line:1 char:12</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">+ Get-Process  &lt;&lt;&lt;&lt; -Id 99</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Puede usar el parámetro <code>Name</code> del cmdlet <code>Get-Process</code> para especificar un subconjunto de procesos basado en el nombre del proceso. El parámetro <code>Name</code> puede tomar varios nombres de una lista de nombres separados por comas y admite el uso de caracteres comodín, para que pueda escribir patrones de nombre.</p>
+</div>
+<ul>
+<li>Por ejemplo, el siguiente comando obtiene el proceso cuyos nombres comienzan por "ex".</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name ex*</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------    -----      ----- -----   ------     -- -----------</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">234       7     5572      12484   134     2.98   1684 EXCEL</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">555      15    34500      12384   134   105.25    728 explorer</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dado que la clase System.Diagnostics.Process de .NET es la base de los procesos de Windows PowerShell, sigue algunas de las convenciones usadas por System.Diagnostics.Process. Una de estas convenciones es que el nombre de proceso de un archivo ejecutable nunca incluya ".exe" al final del nombre del ejecutable.</p>
+</div>
+<ul>
+<li><code>Get-Process</code> también acepta varios valores para el parámetro Name.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name exp*,power*</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------    -----      ----- -----   ------     -- -----------</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">540      15    35172      48148   141    88.44    408 explorer</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">605       9    30668      29800   155     7.11   3052 powershell</span>
+</code></pre></div>
+<ul>
+<li>Puede usar el parámetro ComputerName de <code>Get-Process</code> para obtener procesos en equipos remotos. Por ejemplo, el comando siguiente obtiene los procesos de PowerShell en el equipo local (representado por "localhost") y en dos equipos remotos.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name PowerShell -ComputerName localhost, Server01, Server02</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------    -----      ----- -----   ------     -- -----------</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">258       8    29772      38636   130            3700 powershell</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">398      24    75988      76800   572            5816 powershell</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">605       9    30668      29800   155     7.11   3052 powershell</span>
+</code></pre></div>
+<p>Los nombres de equipo no son evidentes en esta presentación, pero se almacenan en la propiedad MachineName de los objetos de proceso que devuelve <code>Get-Process</code>. El siguiente comando usa el cmdlet <code>Format-Table</code> para mostrar el identificador de proceso y las propiedades ProcessName y MachineName(ComputerName) de los objetos de proceso.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name PowerShell -ComputerName localhost, Server01, Server01 |</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="l l-Scalar l-Scalar-Plain">Format-Table -Property ID, ProcessName, MachineName</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>  <span class="l l-Scalar l-Scalar-Plain">Id ProcessName MachineName</span>
+<span class="linenos" data-linenos="2 "></span>  <span class="l l-Scalar l-Scalar-Plain">-- ----------- -----------</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">3700 powershell  Server01</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">3052 powershell  Server02</span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">5816 powershell  localhost</span>
+</code></pre></div>
+<p>Este comando más complejo agrega la propiedad MachineName a la presentación estándar de <code>Get-Process</code>.</p>
+<p>PowerShellCopiar</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process powershell -ComputerName localhost, Server01, Server02 |</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="l l-Scalar l-Scalar-Plain">Format-Table -Property Handles,</span>
+<span class="linenos" data-linenos="3 "></span>        <span class="l l-Scalar l-Scalar-Plain">@{Label=&quot;NPM(K)&quot;;Expression={[int]($_.NPM/1024)}},</span>
+<span class="linenos" data-linenos="4 "></span>        <span class="l l-Scalar l-Scalar-Plain">@{Label=&quot;PM(K)&quot;;Expression={[int]($_.PM/1024)}},</span>
+<span class="linenos" data-linenos="5 "></span>        <span class="l l-Scalar l-Scalar-Plain">@{Label=&quot;WS(K)&quot;;Expression={[int]($_.WS/1024)}},</span>
+<span class="linenos" data-linenos="6 "></span>        <span class="l l-Scalar l-Scalar-Plain">@{Label=&quot;VM(M)&quot;;Expression={[int]($_.VM/1MB)}},</span>
+<span class="linenos" data-linenos="7 "></span>        <span class="l l-Scalar l-Scalar-Plain">@{Label=&quot;CPU(s)&quot;;Expression={if ($_.CPU -ne $()){$_.CPU.ToString(&quot;N&quot;)}}},</span>
+<span class="linenos" data-linenos="8 "></span>        <span class="l l-Scalar l-Scalar-Plain">Id, ProcessName, MachineName -auto</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)  PM(K) WS(K) VM(M) CPU(s)  Id ProcessName  MachineName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------  ----- ----- ----- ------  -- -----------  -----------</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">258       8  29772 38636   130         3700 powershell Server01</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">398      24  75988 76800   572         5816 powershell localhost</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">605       9  30668 29800   155 7.11    3052 powershell Server02</span>
+</code></pre></div>
+<h4 id="detener-procesos-stop-process">Detener procesos (Stop-Process)<a class="headerlink" href="#detener-procesos-stop-process" title="Permanent link">&para;</a></h4>
+<ul>
+<li>El cmdlet <code>Stop-Process</code> toma un nombre o un identificador para especificar un proceso que quiere detener. Su capacidad para detener procesos dependerá de sus permisos. Algunos procesos no se pueden detener. Por ejemplo, si intenta detener el proceso inactivo, obtendrá un error:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Stop-Process -Name Idle</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">Stop-Process </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Process &#39;Idle (0)&#39; cannot be stopped due to the following error</span><span class="p p-Indicator">:</span>
+<span class="linenos" data-linenos="2 "></span> <span class="l l-Scalar l-Scalar-Plain">Access is denied</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">At line:1 char:13</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">+ Stop-Process  &lt;&lt;&lt;&lt; -Name Idle</span>
+</code></pre></div>
+<p>También puede forzar la solicitud con el parámetro <code>Confirm</code>. Este parámetro es especialmente útil si se usa un carácter comodín al especificar el nombre del proceso, ya que accidentalmente podría coincidir con algunos procesos que no quiere detener:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Stop-Process -Name t*,e* -Confirm</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">Confirm</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">Are you sure you want to perform this action?</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">Performing operation &quot;Stop-Process&quot; on Target &quot;explorer (408)&quot;.</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain">[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain">(default is &quot;Y&quot;):n</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="l l-Scalar l-Scalar-Plain">Confirm</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="l l-Scalar l-Scalar-Plain">Are you sure you want to perform this action?</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="l l-Scalar l-Scalar-Plain">Performing operation &quot;Stop-Process&quot; on Target &quot;taskmgr (4072)&quot;.</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help</span>
+<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">(default is &quot;Y&quot;):n</span>
+</code></pre></div>
+<p>La manipulación de procesos complejos es posible si se usan algunos cmdlets de filtrado de objetos. Dado que un objeto Process tiene una propiedad Responding que es <code>true</code> cuando ya no responde, puede detener todas las aplicaciones que no respondan con el comando siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process | Where-Object -FilterScript {$_.Responding -eq $false} | Stop-Process</span>
+</code></pre></div>
+<ul>
+<li>Puede usar el mismo enfoque en otras situaciones. Por ejemplo, supongamos que una aplicación de área de notificaciones secundaria se ejecuta automáticamente cuando los usuarios inician otra aplicación. Es posible que esto no funcione correctamente en las sesiones de Terminal Services (Terminales de Servicios de Escritorio Remoto), pero lo quiera seguir manteniendo en las sesiones que se ejecutan en la consola del equipo físico. Las sesiones conectadas en el escritorio del equipo físico siempre tienen un identificador de la sesión 0, por lo que puede detener todas las instancias del proceso que están en otras sesiones mediante <code>Where-Object</code> y el proceso, <strong>SessionId</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name BadApp | Where-Object -FilterScript {$_.SessionId -neq 0} | Stop-Process</span>
+</code></pre></div>
+<p>El cmdlet <code>Stop-Process</code> no tiene un parámetro ComputerName. Por lo tanto, para ejecutar un comando para detener un proceso en un equipo remoto, debe usar el cmdlet <code>Invoke-Command</code>. Por ejemplo, para detener el proceso de PowerShell en el equipo remoto Server01, escriba:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Invoke-Command -ComputerName Server01 {Stop-Process Powershell}</span>
+</code></pre></div>
+<h4 id="detener-todas-las-demas-sesiones-de-windows-powershell">Detener todas las demás sesiones de Windows PowerShell<a class="headerlink" href="#detener-todas-las-demas-sesiones-de-windows-powershell" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>En ocasiones puede ser útil poder detener todas las sesiones de Windows PowerShell que se están ejecutando, excepto la sesión actual. Si una sesión usa demasiados recursos o es inaccesible (quizás se esté ejecutando de forma remota o en otra sesión de escritorio), es posible que no pueda detenerla directamente. Si intenta detener todas las sesiones que se están ejecutando, la sesión actual podría finalizar en su lugar.</p>
+</li>
+<li>
+<p>Cada sesión de Windows PowerShell tiene un PID de variable de entorno que contiene el identificador del proceso de Windows PowerShell. Puede comprobar el $PID con el identificador de cada sesión y finalizar solo las sesiones de Windows PowerShell que tengan un identificador diferente. El siguiente comando de canalización realiza esta acción y devuelve la lista de las sesiones finalizadas (debido al uso del parámetro <code>PassThru</code>):</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name powershell | Where-Object -FilterScript {$_.Id -ne $PID} |</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="l l-Scalar l-Scalar-Plain">Stop-Process -PassThru</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------    -----      ----- -----   ------     -- -----------</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">334       9    23348      29136   143     1.03    388 powershell</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">304       9    23152      29040   143     1.03    632 powershell</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">302       9    20916      26804   143     1.03   1116 powershell</span>
+<span class="linenos" data-linenos="6 "></span>    <span class="l l-Scalar l-Scalar-Plain">335       9    25656      31412   143     1.09   3452 powershell</span>
+<span class="linenos" data-linenos="7 "></span>    <span class="l l-Scalar l-Scalar-Plain">303       9    23156      29044   143     1.05   3608 powershell</span>
+<span class="linenos" data-linenos="8 "></span>    <span class="l l-Scalar l-Scalar-Plain">287       9    21044      26928   143     1.02   3672 powershell</span>
+</code></pre></div>
+<h4 id="iniciar-depurar-y-esperar-procesos">Iniciar, depurar y esperar procesos<a class="headerlink" href="#iniciar-depurar-y-esperar-procesos" title="Permanent link">&para;</a></h4>
+<p>Windows PowerShell también incluye cmdlets para iniciar (o reiniciar) y depurar un proceso, así como para esperar a que un proceso se complete antes de ejecutar un comando. Se pueden realizar con los siguientes cmdlets.</p>
+<ul>
+<li>Start-Process</li>
+<li>Wait-Process</li>
+<li>Debug-Process</li>
+<li>Invoke-Command</li>
+</ul>
+<h3 id="actividades-de-desarrollo-ud3_01-shellscripting">Actividades de desarrollo UD3_01 ShellScripting<a class="headerlink" href="#actividades-de-desarrollo-ud3_01-shellscripting" title="Permanent link">&para;</a></h3>
 <ol start="305">
 <li>
 <p>Realiza un script de Shell que encuentre todos los procesos activos e imprima por pantalla al usuario la política de programación.</p>
@@ -580,6 +781,23 @@
 <p>Modifica el script anterior para que de la opción al usuario de matar un proceso, a elegir por el usuario.</p>
 </li>
 </ol>
+<h3 id="actividades-ud03_02-powershell">Actividades UD03_02 PowerShell<a class="headerlink" href="#actividades-ud03_02-powershell" title="Permanent link">&para;</a></h3>
+<ol start="307">
+<li>Realiza un script en PoserShell que realice los siguientes puntos:</li>
+</ol>
+<ul>
+<li>Cuenta el número de procesos en ejecución en el sistema, y los muestre por pantalla.</li>
+<li>Ver que programas se ejcutan en el inicio de sesión y los muestre por pantalla..</li>
+<li>Guardar los un listado de los procesos en un csv e Imprima por pantlla el archivo.</li>
+</ul>
+<ol start="308">
+<li>Realiza un script en PoserShell que realice los siguientes puntos:</li>
+</ol>
+<ul>
+<li>Lista los procesos que tengan un alto consumo de CPU.</li>
+<li>Detenga el proceso con mayor consumo.</li>
+<li>Mostrar los procesos cuya zona de memoria para trabajar sea mayor que 100 MB y a continuación los detenga.</li>
+</ul>
                 
               
               
