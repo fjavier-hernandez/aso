@@ -1,0 +1,851 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/033_ArranqueServicios.html">
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>3.3- Secuencia de arranque del sistema. Demonios y servicios. - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#secuencia-de-arranque-del-sistema-demonios-y-servicios" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.3- Secuencia de arranque del sistema. Demonios y servicios.
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- Tools: Scripting y Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- Tools: Scripting y Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- Tools: Scripting y Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="011_ShellScripting.html" class="md-nav__link">
+        1.1- ShellScripting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="012_PowerShell.html" class="md-nav__link">
+        1.2- PowerShell
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="013_Docker.html" class="md-nav__link">
+        1.3- Docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- Administración de servicios de directorio
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- Administración de servicios de directorio" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- Administración de servicios de directorio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="021_Introduccion_SD.html" class="md-nav__link">
+        2.1- Introducción de servicios de directorio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="022_LDAP.html" class="md-nav__link">
+        2.2- LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="023_ActiveDirectory.html" class="md-nav__link">
+        2.3- Active Directory
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        3.- Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          3.- Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="031_Planificador.html" class="md-nav__link">
+        3.1- Planificación y sincronización de procesos.
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="032_GestionProcesos.html" class="md-nav__link">
+        3.2- Gestión de los procesos del sistema.
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.3- Secuencia de arranque del sistema. Demonios y servicios.
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="033_ArranqueServicios.html" class="md-nav__link md-nav__link--active">
+        3.3- Secuencia de arranque del sistema. Demonios y servicios.
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arranque-en-linux" class="md-nav__link">
+    Arranque en Linux
+  </a>
+  
+    <nav class="md-nav" aria-label="Arranque en Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1a-etapa-la-bios" class="md-nav__link">
+    1ª etapa: La BIOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2a-etapa-fase-del-cargador-de-arranque-grub-o-lilo" class="md-nav__link">
+    2ª Etapa: Fase del cargador de arranque GRUB o LILO
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3a-etapa-fase-del-kernel" class="md-nav__link">
+    3ª etapa: Fase del kernel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arranque-de-windows-y-windows-server" class="md-nav__link">
+    Arranque de Windows y Windows Server
+  </a>
+  
+    <nav class="md-nav" aria-label="Arranque de Windows y Windows Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-server" class="md-nav__link">
+    Windows Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modificacion-arranque" class="md-nav__link">
+    Modificación Arranque.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividades-ud03_03-powershell" class="md-nav__link">
+    Actividades UD03_03 PowerShell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="secuencia-de-arranque-del-sistema-demonios-y-servicios">Secuencia de arranque del sistema. Demonios y servicios.<a class="headerlink" href="#secuencia-de-arranque-del-sistema-demonios-y-servicios" title="Permanent link">&para;</a></h1>
+<p>En informática, el <strong>arranque o secuencia de arranque</strong> (en inglés: <strong>bootstrapping, boot o booting</strong>) es el proceso que inicia el gestor de arranque que es un programa ejecutado por el BIOS cuando se enciende una computadora. Se encarga de la <strong>inicialización del sistema operativo y de los dispositivos</strong>.</p>
+<p>A nivel conceptual los pasos de arranque de un sistema informático se muestran en la siguiente figura:</p>
+<figure>
+  <img src="./imagenes/03/033/001.png" width="650"/>
+  <figcaption>Pasos Arranque</figcaption>
+</figure>
+
+<h2 id="arranque-en-linux">Arranque en Linux<a class="headerlink" href="#arranque-en-linux" title="Permanent link">&para;</a></h2>
+<p>En Linux, el flujo de control durante el arranque es desde el BIOS, al gestor de arranque y al núcleo (kernel). El núcleo inicia el planificador (para permitir la multitarea) y ejecuta el primer espacio de usuario (es decir, fuera del espacio del núcleo) y el programa de inicialización (que establece el entorno de usuario y permite la interacción del usuario y el inicio de sesión), momento en el que el núcleo se inactiva hasta que sea llamado externamente.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La etapa del cargador de arranque no es totalmente necesaria. Determinadas BIOS pueden cargar y pasar el control a Linux sin hacer uso del cargador.</p>
+</div>
+<p>Todo el proceso de arranque, se desarrolla en 4 etapas:</p>
+<ol>
+<li>Al principio, toma el control la BIOS.</li>
+<li>En una segunda etapa, tomará el control el cargador de arranque.</li>
+<li>En una tercera etapa, el control pasa al propio kernel Linux.</li>
+<li>Y en la cuarta y última etapa tendremos en memoria los programas de usuario conviviendo junto con el propio sistema operativo, quienes tomarán el control del sistema.</li>
+</ol>
+<figure>
+  <img src="./imagenes/03/033/002.png" width="650"/>
+  <figcaption>Pasos Arranque Linux</figcaption>
+</figure>
+
+<h3 id="1a-etapa-la-bios">1ª etapa: La BIOS<a class="headerlink" href="#1a-etapa-la-bios" title="Permanent link">&para;</a></h3>
+<p>Al encender el equipo, toma el control la BIOS que realiza una serie de operaciones básicas de hardware. Una vez que el hardware es reconocido y queda listo para usar, la BIOS carga en memoria el código executable del cargador de arranque y le pasa el control.</p>
+<h3 id="2a-etapa-fase-del-cargador-de-arranque-grub-o-lilo">2ª Etapa: Fase del cargador de arranque GRUB o LILO<a class="headerlink" href="#2a-etapa-fase-del-cargador-de-arranque-grub-o-lilo" title="Permanent link">&para;</a></h3>
+<p>Un cargador de arranque (<strong>boot loader</strong> en inglés) es un programa diseñado exclusivamente para cargar un sistema operativo en memoria. La etapa del cargador de arranque es diferente de una plataforma a otra.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Como en la mayoría de arquitecturas este programa se encuentra en el <strong>MBR</strong>, el cual es de 512 bytes, este espacio no es suficiente para cargar en su totalidad un sistema operativo. <strong>Por eso, el cargador de arranque consta de varias etapas. Las primeras operaciones las realiza el BIOS</strong>. </p>
+</div>
+<figure>
+  <img src="./imagenes/03/033/003.png" width="650"/>
+  <figcaption>Esquema MBR</figcaption>
+</figure>
+
+<ol>
+<li>
+<p>En esta etapa se realizan operaciones básicas de hardware. En esta primera etapa se localiza el sector de arranque (o MBR) y se carga el cargador de este sector (normalmente una parte de <strong>LILO o GRUB</strong>). En esta primera etapa el cargador de arranque carga un mensaje que pregunta que sistema operativo (o tipo de sesión) el usuario desea inicializar. El gestor incluye datos como la partición de arranque y la localización del kernel para cada uno, así como las opciones personalizadas en su caso. </p>
+</li>
+<li>
+<p>A continuación el sistema operativo seleccionado es cargado en la memoria RAM, un sistema de archivos mínimo inicial se establece en la memoria RAM desde un archivo de imagen (<strong>initrd</strong>), y junto con los parámetros adecuados, el control se pasa al sistema operativo activado recientemente.</p>
+</li>
+</ol>
+<h4 id="grub">GRUB<a class="headerlink" href="#grub" title="Permanent link">&para;</a></h4>
+<p>GRUB contiene una serie de funciones que lo convierten en el método favorito respecto al resto de gestores de arranque disponibles para la arquitectura x86; entre las que destacan</p>
+<ul>
+<li><strong>GRUB proporciona un verdadero entorno basado en comandos</strong>, pre-sistema operativo, para las máquinas x86.</li>
+<li>El GRUB puede leer particiones ext2/3/4. Esta funcionalidad le permite al GRUB acceder a su archivo de configuración, <code>/boot/grub/grub.conf</code></li>
+<li>Posibilidad de utilizar una etapa 1.5 si fuera necesario; A veces esto sucede cuando la partición /boot/ se encuentra por encima de los 1024 cilindros de disco duro o cuando utiliza el modo LBA.</li>
+</ul>
+<p>GRUB se carga y se ejecuta en 4 etapas:</p>
+<ol>
+<li>La primera etapa del cargador la lee el BIOS desde el MBR.</li>
+<li>La primera etapa carga el resto del gestor de arranque (segunda etapa). Si la segunda etapa está en una unidad grande, en ocasiones se carga una fase intermedia 1.5, que contiene código adicional para permitir que los cilindros por encima de 1024, o unidades tipo LBA, puedan leerse. El gestor de arranque 1.5 es almacenado (si es necesario) en el MBR o en la partición de arranque.</li>
+<li>La segunda etapa del gestor de arranque ejecuta y muestra el menú de inicio de GRUB que permite al usuario elegir un sistema operativo y examinar y modificar los parámetros de inicio.</li>
+<li>Después de elegir un sistema operativo, se carga y se le pasa el control.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>GRUB</strong> soporta métodos de arranque directo, arranque chain-loading, LBA, ext2, ext3, ext4 y hasta "un pre-sistema operativo en máquinas x86 totalmente basado en comandos". Contiene tres interfaces: un menú de selección, un editor de configuración, y una consola de línea de comandos.</p>
+</div>
+<figure>
+  <img src="./imagenes/03/033/004.png" width="650"/>
+  <figcaption>Ejemplo de GRUB</figcaption>
+</figure>
+
+<h4 id="lilo">LILO<a class="headerlink" href="#lilo" title="Permanent link">&para;</a></h4>
+<p>LILO es más antiguo. Es casi idéntico a GRUB en su proceso, excepto que <strong>no contiene una interfaz de línea de comandos</strong>. Por lo tanto todos los cambios en su configuración deben ser escritos en el MBR y luego reiniciar el sistema. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Un error en la configuración puede dejar el disco inservible para el proceso de arranque hasta tal grado, que sea necesario usar otro dispositivo (disquete, etc) que contenga un programa capaz de arreglar el error. Además, no entiende el sistema de archivos. En su lugar, la ubicación de los archivos de imagen se almacenan directamente en el MBR y el BIOS se utiliza para acceder a ellos directamente.</p>
+</div>
+<h4 id="difenrencias-entre-lilo-y-grub">Difenrencias entre LILO y GRUB<a class="headerlink" href="#difenrencias-entre-lilo-y-grub" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>LILO</strong> no entiende los sistemas de archivos, por lo que utiliza desplazamientos de disco sin procesar y el BIOS para cargar los datos. Se carga el código del menú y, a continuación, en función de la respuesta, carga, o el sector MBR del disco de 512 bytes como en Microsoft Windows, o la imagen del núcleo Linux.</li>
+<li><strong>GRUB</strong> por el contrario comprende los sistemas de archivos comunes ext2 , ext3 y ext4. Debido a que GRUB almacena sus datos en un archivo de configuración en vez de en el MBR y a que contiene un interfaz de línea de comandos, a menudo es más fácil rectificar o modificar GRUB si está mal configurado o corrupto.</li>
+</ul>
+<h4 id="loadlin">Loadlin<a class="headerlink" href="#loadlin" title="Permanent link">&para;</a></h4>
+<p>Otra forma de cargar Linux es desde DOS o Windows 9x, donde el núcleo Linux reemplaza completamente la copia de funcionamiento de estos sistemas operativos. Esto puede ser útil en el caso de hardware que necesita ser conectado a través del software y la configuración de estos programas solo está disponible para DOS y no para Linux, debido a cuestiones de secretos industriales y código propietario. Sin embargo, esta tediosa forma de arranque ya no es necesaria en la actualidad ya que Linux tiene drivers para multitud de dispositivos hardware. Aun así, esto era muy útil en el pasado.</p>
+<p>Otro caso es cuando Linux se encuentra en un dispositivo que el BIOS no lo tiene disponible para el arranque. Entonces, DOS o Windows pueden cargar el driver apropiado para el dispositivo superando dicha limitación del BIOS, y cargar Linux desde allí.</p>
+<h3 id="3a-etapa-fase-del-kernel">3ª etapa: Fase del kernel<a class="headerlink" href="#3a-etapa-fase-del-kernel" title="Permanent link">&para;</a></h3>
+<p>El kernel de Linux <strong>se encarga de todos los procesos del sistema operativo</strong>, como la gestión de memoria, planificador de tareas, I/O, comunicación entre procesos, y el control general del sistema. </p>
+<ul>
+<li>Este se carga en dos etapas: </li>
+</ul>
+<ol>
+<li><strong>Etapa de carga</strong>: En la primera etapa el kernel (como un archivo imagen comprimido) se carga y se descomprime en memoria, y algunas funciones fundamentales como la gestión de memoria de base se establecen. El control entonces se cambia a la etapa final para iniciar el kernel principal. Una vez que el núcleo está en pleno funcionamiento - y como parte de su puesta en marcha, </li>
+<li><strong>Etapa de ejecución</strong>: Después de ser cargado es ejecutado - <strong>el kernel busca un proceso de inicio para ejecutar</strong>, que (separadamente) fija un espacio de usuario y los procesos necesarios para un entorno de usuario y ultimar la entrada . Al núcleo en sí entonces se le permite pasar a inactivo, sujeto a las llamadas de otros procesos.</li>
+</ol>
+<p>El kernel generalmente se almacena en un archivo comprimido. Este archivo comprimido se carga y se descomprime en memoria. Por otra parte, también se cargan los drivers necesarios mediante el initrd. El initrd crea un sistema de archivos temporal usado en la fase de ejecución del kernel.</p>
+<p>Una vez que el kernel se ha cargado en memoria y está listo, se lleva a cabo su ejecución. Lo último que se lanza es el proceso init.</p>
+<figure>
+  <img src="./imagenes/03/033/005.png" width="650"/>
+  <figcaption>Fases Arranque Linux</figcaption>
+</figure>
+
+<h4 id="4a-etapa-el-proceso-de-inicio">4ª etapa: El proceso de inicio<a class="headerlink" href="#4a-etapa-el-proceso-de-inicio" title="Permanent link">&para;</a></h4>
+<ul>
+<li>El trabajo de <strong>Init es conseguir que todo funcione como debe ser</strong>" una vez que el kernel está totalmente en funcionamiento. En esencia, establece y opera todo el espacio de usuario. </li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul>
+<li>Esto incluye la comprobación y montaje de sistemas de archivos, la puesta en marcha de los servicios de usuario necesarios y, en última instancia, cambiar al entorno de usuario cuando el inicio del sistema se ha completado. Es similar a los procesos Init de Unix y BSD, de la que deriva, pero en algunos casos se ha apartado o se hicieron a la medida. </li>
+</ul>
+</div>
+<ul>
+<li>En un sistema Linux estándar, Init se ejecuta con un parámetro, conocido como nivel de ejecución, que tiene un valor entre 1 y 6, y que determina qué subsistemas pueden ser operacionales. Cada <strong>nivel</strong> de ejecución tiene sus propios <strong>scripts</strong> que codifican los diferentes procesos involucrados en la creación o salida del nivel de ejecución determinado, y son estas secuencias de comandos los necesarios en el proceso de arranque. </li>
+</ul>
+<p>En Debian el nivel de inicio predeterminado es el nivel 2 (id=2). Debian utiliza los siguientes niveles de ejecución:</p>
+<ul>
+<li>0 (apagar el sistema)</li>
+<li>1 (modo monousuario)</li>
+<li>2 al 5 (modos multiusuario)</li>
+<li>6 (reiniciar el sistema)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>El archivo de configuración de más alto nivel para Init es <code>/etc/inittab</code>.Durante el arranque del sistema, se verifica si existe un nivel de ejecución predeterminado en el archivo <code>/etc/inittab</code>, si no, se debe introducir por medio de la consola del sistema. Después se procede a ejecutar todos los scripts relativos al nivel de ejecución especificado.</p>
+</div>
+<p>Después de que se han dado lugar todos los procesos especificados, Init se aletarga, y espera a que uno de estos tres eventos sucedan:
+- que procesos comenzados finalicen o mueran;
+- un fallo de la señal de potencia (energía);
+- o una petición a través de <code>/sbin/telinit</code> para cambiar el nivel de ejecución.</p>
+<h2 id="arranque-de-windows-y-windows-server">Arranque de Windows y Windows Server<a class="headerlink" href="#arranque-de-windows-y-windows-server" title="Permanent link">&para;</a></h2>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>La secuencia de arranque de <strong>Windows</strong> utiliza el sistema de almacenamiento y configuración de arranque denominado <strong>BCD</strong> store (Boot Configuration Data). Este registro se encuentra situado en el directorio <code>\boot\BCD</code> de la partición donde se instala el sistema de forma oculta y en binario. Consiste en un repositorio de datos y parámetros necesarios para gestionar el arranque del sistema. </p>
+</li>
+<li>
+<p>El fichero <code>Bootmgr.exe</code> es el encargado del administrador y cargador de arranque (boot loader). </p>
+</li>
+<li>
+<p>La secuencia de arranque sigue los siguientes pasos:</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>La BIOS carga el <strong>MBR</strong> (master boot record, registro de arranque principal es el primer sector de un dispositivo de almacenamiento de datos), en memoria el cual analiza la tabla de particiones y carga en memoria el <strong>sector de arranque</strong> de la partición marcada como activa en la que se encuentra el <strong>S.O Windows</strong>.</p>
+</li>
+<li>
+<p>El <strong>sector de arranque</strong> localiza el <code>bootmgr</code> y se ejecuta, busca el directorio <code>\boot</code> que contiene los programas que inician el sistema.</p>
+</li>
+</ol>
+<p>3.Dentro del directorio se ejecuta el <strong>BCD</strong> apareciendo un menú en que se selecciona el sistema que se desea arrancar comenzando la carga del núcleo de sistema.</p>
+<h3 id="windows-server">Windows Server<a class="headerlink" href="#windows-server" title="Permanent link">&para;</a></h3>
+<ul>
+<li>En la secuencia o proceso de arranque de <strong>Windows Server</strong> admite los modelos de firmware tanto de <strong>BIOS</strong> como de <strong>Unified Extended Firmware Interface (UEFI)</strong>. Usa un nuevo almacén de datos para los datos de configuración de arranque (almacén que sustituye a <code>Boot.ini</code> de versiones anteriores, y pone a disposición nuevas aplicaciones de arranque, que sustituyen a su vez al anterior cargador de Windows (<code>Ntldr.exe</code>). Incluye también un administrador de arranque de Windows y un cargador de arranque de Windows nuevos.</li>
+</ul>
+<p>A partir del Windows Server 2008, encontramos 3 aplicaciones de arranque:</p>
+<ul>
+<li>
+<p><strong>Bootmgr.exe o Bootmgr.efi</strong> (Arranque). Esta aplicación es independiente del sistema operativo y hace uso del firmware para cargar el cargador de arranque de Windows, ya sea desde una partición de disco concreta o a través de una conexión de red (si se trata de un arranque con acceso a red).</p>
+</li>
+<li>
+<p><strong>Winload.exe o Winload.efi</strong> (Arranque). Esta aplicación forma parte del sistema operativo y carga una versión específica de Windows. Usa el firmware para cargar el kernel del sistema operativo, así como para iniciar los controladores de dispositivo críticos desde un disco duro local.</p>
+</li>
+<li>
+<p><strong>Winresume.exe o Winresume.efi</strong> (Reanudación). El Cargador de reanudación de Windows encuentra una imagen de hibernación y, a continuación, usa el firmware para leer el archivo de hibernación en la memoria RAM y reanudar el sistema operativo en estado de hibernación.</p>
+</li>
+</ul>
+<figure>
+  <img src="./imagenes/03/033/006.png" width="250"/>
+  <figcaption>Características Bootmgr</figcaption>
+</figure>
+
+<ul>
+<li>Podemos realizar el siguiente resumen del proceso de arranque:</li>
+</ul>
+<ol>
+<li>Se inicia la BIOS</li>
+<li>Se carga el MBR del disco</li>
+<li>Carga el sector de arranque</li>
+<li>Carga el Windows Boot Manager</li>
+<li>Lee desde el BCD, (Boot Configuration Data)</li>
+<li>Busca archivos de hibernación</li>
+<li>Inicia el programa Winload.exe, (carga el kernel del Sistema operativo)</li>
+<li>Inicia el programa ntoskrnl.exe, (imagen del kernel de Windows)</li>
+<li>Inicia el programa smss.exe, (administrador de secciones)</li>
+<li>Inicia el programa winlogon (valida la identificación del usuario en el sistema)</li>
+<li>Finaliza iniciando los servicios y la interface de login.</li>
+</ol>
+<h3 id="modificacion-arranque">Modificación Arranque.<a class="headerlink" href="#modificacion-arranque" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Se puede editar el arranque en Windows Server ejecutando el comando msconfig en la pestaña Arranque, modifica las opciones de arranque. El administrador y cargador del sistema de arranque se edita con el comando <strong>bcdedit</strong>.</p>
+</div>
+<ul>
+<li>
+<p>Ejemplo de modificación de <strong>bcdedit</strong> -&gt; <a href="https://ikastaroak.birt.eus/edu/argitalpen/backupa/20200331/1920k/es/ASIR/ISO/ISO02/es_ASIR_ISO02_Contenidos/3.1.EditorBCDedit.pdf">Enlace:Ejemplos de parametros usados en el editor BCDEdit.exe</a></p>
+</li>
+<li>
+<p>Los datos de configuración de arranque (<strong>BCD</strong>) sustituyen a la anterior (boot.ini). En el almacén <strong>BCD</strong> el gestor de arranque se presenta como objeto de programa (<strong>GUID</strong>) en lugar de elementos de texto. </p>
+</li>
+<li>Con la herramienta Bcdedit.exe podemos utilizar los comandos básicos para controlar todos los aspectos del proceso de arranque, aunque cada objeto se presenta con un <strong>GUID</strong>, algunos objetos tienen nombres de alias para uso común, como bootmgr (referido al gestor de arranque) y DEFAULT (gestor de arranque por defecto).</li>
+<li>Podemos modificar la configuración de inicio con <strong>WMI</strong> (Windows Management Instrumentatión). Podemos utilizar <code>MSconfig.exe</code> para proporcionar una interfaz gráfica para visualizar y modificar un subconjunto de los ajustes de configuración de inicio.</li>
+<li>Támbien mediante Powershell -&gt; <a href="https://www.codeproject.com/Articles/833655/Modify-Windows-BCD-using-Powershell">Enlace:Modify Windows BCD using Powershell</a></li>
+</ul>
+<h3 id="actividades-ud03_03-powershell">Actividades UD03_03 PowerShell<a class="headerlink" href="#actividades-ud03_03-powershell" title="Permanent link">&para;</a></h3>
+<ol start="310">
+<li>
+<p>Modifica el fichero /etc/inittab para que...</p>
+<ol>
+<li>De forma predeterminada se establezca el nivel de ejecución 5.</li>
+<li>Al pulsar la combinación de teclas ctrl+alt+supr el sistema realice las siguientes operaciones:</li>
+</ol>
+<ul>
+<li>se apague si el nivel de ejecución es el 2.<ul>
+<li>se reinicie si el nivel de ejecución es el 3.</li>
+<li>escriba “Je-je-je, no sirve de nada esa combinación de teclas” si el nivel de ejecución es el 4.</li>
+<li>no haga nada si el nivel de ejecución es el 5.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Pista:</p>
+<figure>
+  <img src="./imagenes/03/033/007.png" width="650"/>
+  <figcaption>Fases Arranque Linux</figcaption>
+</figure>
+
+<ol start="311">
+<li>Realiza un breve informe con los pasos más importantes de el Ejemplo de modificación de <strong>bcdedit</strong> -&gt; <a href="https://ikastaroak.birt.eus/edu/argitalpen/backupa/20200331/1920k/es/ASIR/ISO/ISO02/es_ASIR_ISO02_Contenidos/3.1.EditorBCDedit.pdf">Enlace:Ejemplos de parametros usados en el editor BCDEdit.exe</a></li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="032_GestionProcesos.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 3.2- Gestión de los procesos del sistema." rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              3.2- Gestión de los procesos del sistema.
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
