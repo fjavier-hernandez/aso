@@ -503,9 +503,29 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daemon" class="md-nav__link">
+    Daemon
+  </a>
+  
+    <nav class="md-nav" aria-label="Daemon">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
-  <a href="#actividades-ud03_03-powershell" class="md-nav__link">
-    Actividades UD03_03 PowerShell
+  <a href="#systemd" class="md-nav__link">
+    Systemd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividades-ud03_03" class="md-nav__link">
+    Actividades UD03_03
   </a>
   
 </li>
@@ -543,7 +563,7 @@
                 
                 
                 <h1 id="secuencia-de-arranque-del-sistema-demonios-y-servicios">Secuencia de arranque del sistema. Demonios y servicios.<a class="headerlink" href="#secuencia-de-arranque-del-sistema-demonios-y-servicios" title="Permanent link">&para;</a></h1>
-<p>En informática, el <strong>arranque o secuencia de arranque</strong> (en inglés: <strong>bootstrapping, boot o booting</strong>) es el proceso que inicia el gestor de arranque que es un programa ejecutado por el BIOS cuando se enciende una computadora. Se encarga de la <strong>inicialización del sistema operativo y de los dispositivos</strong>.</p>
+<p>En informática, el <strong>arranque o secuencia de arranque</strong> (en inglés: <strong>bootstrapping, boot o booting</strong>) es el proceso que inicia el gestor de arranque; programa ejecutado por el BIOS cuando se enciende una computadora. Se encarga de la <strong>inicialización del sistema operativo y de los dispositivos</strong>.</p>
 <p>A nivel conceptual los pasos de arranque de un sistema informático se muestran en la siguiente figura:</p>
 <figure>
   <img src="./imagenes/03/033/001.png" width="650"/>
@@ -551,12 +571,7 @@
 </figure>
 
 <h2 id="arranque-en-linux">Arranque en Linux<a class="headerlink" href="#arranque-en-linux" title="Permanent link">&para;</a></h2>
-<p>En Linux, el flujo de control durante el arranque es desde el BIOS, al gestor de arranque y al núcleo (kernel). El núcleo inicia el planificador (para permitir la multitarea) y ejecuta el primer espacio de usuario (es decir, fuera del espacio del núcleo) y el programa de inicialización (que establece el entorno de usuario y permite la interacción del usuario y el inicio de sesión), momento en el que el núcleo se inactiva hasta que sea llamado externamente.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>La etapa del cargador de arranque no es totalmente necesaria. Determinadas BIOS pueden cargar y pasar el control a Linux sin hacer uso del cargador.</p>
-</div>
-<p>Todo el proceso de arranque, se desarrolla en 4 etapas:</p>
+<p>En Linux, el flujo de control durante el arranque se desarrolla en 4 etapas:</p>
 <ol>
 <li>Al principio, toma el control la BIOS.</li>
 <li>En una segunda etapa, tomará el control el cargador de arranque.</li>
@@ -569,112 +584,106 @@
 </figure>
 
 <h3 id="1a-etapa-la-bios">1ª etapa: La BIOS<a class="headerlink" href="#1a-etapa-la-bios" title="Permanent link">&para;</a></h3>
-<p>Al encender el equipo, toma el control la BIOS que realiza una serie de operaciones básicas de hardware. Una vez que el hardware es reconocido y queda listo para usar, la BIOS carga en memoria el código executable del cargador de arranque y le pasa el control.</p>
+<p>Al encender el equipo, toma el control la BIOS que realiza una serie de operaciones básicas de hardware, programa <strong>POST</strong>. Una vez que el hardware es reconocido y queda listo para usar, la BIOS carga en memoria el código executable del cargador de arranque y le pasa el control.</p>
 <h3 id="2a-etapa-fase-del-cargador-de-arranque-grub-o-lilo">2ª Etapa: Fase del cargador de arranque GRUB o LILO<a class="headerlink" href="#2a-etapa-fase-del-cargador-de-arranque-grub-o-lilo" title="Permanent link">&para;</a></h3>
-<p>Un cargador de arranque (<strong>boot loader</strong> en inglés) es un programa diseñado exclusivamente para cargar un sistema operativo en memoria. La etapa del cargador de arranque es diferente de una plataforma a otra.</p>
+<p>Un cargador de arranque (<strong>bootloader</strong> en inglés) es un programa diseñado exclusivamente para cargar un sistema operativo en memoria. La etapa del cargador de arranque es diferente de una plataforma a otra.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Como en la mayoría de arquitecturas este programa se encuentra en el <strong>MBR</strong>, el cual es de 512 bytes, este espacio no es suficiente para cargar en su totalidad un sistema operativo. <strong>Por eso, el cargador de arranque consta de varias etapas. Las primeras operaciones las realiza el BIOS</strong>. </p>
+<p>Como en la mayoría de arquitecturas este programa se encuentra en el <strong>MBR</strong> o <strong>GPT</strong>, el cual es de 512 bytes, este espacio no es suficiente para cargar en su totalidad un sistema operativo. <strong>Por eso, el cargador de arranque consta de varias etapas. Las primeras operaciones las realiza la BIOS</strong>. </p>
 </div>
 <figure>
   <img src="./imagenes/03/033/003.png" width="650"/>
   <figcaption>Esquema MBR</figcaption>
 </figure>
 
+<figure>
+  <img src="./imagenes/03/033/003_B.png" width="650"/>
+  <figcaption>Esquema GPT</figcaption>
+</figure>
+
+<p>De forma general esta etapa tiene dos fases:</p>
 <ol>
 <li>
-<p>En esta etapa se realizan operaciones básicas de hardware. En esta primera etapa se localiza el sector de arranque (o MBR) y se carga el cargador de este sector (normalmente una parte de <strong>LILO o GRUB</strong>). En esta primera etapa el cargador de arranque carga un mensaje que pregunta que sistema operativo (o tipo de sesión) el usuario desea inicializar. El gestor incluye datos como la partición de arranque y la localización del kernel para cada uno, así como las opciones personalizadas en su caso. </p>
+<p>Se localiza <strong>el sector de arranque (GPT o MBR)</strong> y </p>
 </li>
 <li>
-<p>A continuación el sistema operativo seleccionado es cargado en la memoria RAM, un sistema de archivos mínimo inicial se establece en la memoria RAM desde un archivo de imagen (<strong>initrd</strong>), y junto con los parámetros adecuados, el control se pasa al sistema operativo activado recientemente.</p>
+<p>Se carga el cargador de este sector (normalmente una parte de <strong>LILO o GRUB</strong>).el cargador de arranque carga un mensaje que pregunta que sistema operativo (o tipo de sesión) el usuario desea inicializar. </p>
 </li>
-</ol>
-<h4 id="grub">GRUB<a class="headerlink" href="#grub" title="Permanent link">&para;</a></h4>
-<p>GRUB contiene una serie de funciones que lo convierten en el método favorito respecto al resto de gestores de arranque disponibles para la arquitectura x86; entre las que destacan</p>
-<ul>
-<li><strong>GRUB proporciona un verdadero entorno basado en comandos</strong>, pre-sistema operativo, para las máquinas x86.</li>
-<li>El GRUB puede leer particiones ext2/3/4. Esta funcionalidad le permite al GRUB acceder a su archivo de configuración, <code>/boot/grub/grub.conf</code></li>
-<li>Posibilidad de utilizar una etapa 1.5 si fuera necesario; A veces esto sucede cuando la partición /boot/ se encuentra por encima de los 1024 cilindros de disco duro o cuando utiliza el modo LBA.</li>
-</ul>
-<p>GRUB se carga y se ejecuta en 4 etapas:</p>
-<ol>
-<li>La primera etapa del cargador la lee el BIOS desde el MBR.</li>
-<li>La primera etapa carga el resto del gestor de arranque (segunda etapa). Si la segunda etapa está en una unidad grande, en ocasiones se carga una fase intermedia 1.5, que contiene código adicional para permitir que los cilindros por encima de 1024, o unidades tipo LBA, puedan leerse. El gestor de arranque 1.5 es almacenado (si es necesario) en el MBR o en la partición de arranque.</li>
-<li>La segunda etapa del gestor de arranque ejecuta y muestra el menú de inicio de GRUB que permite al usuario elegir un sistema operativo y examinar y modificar los parámetros de inicio.</li>
-<li>Después de elegir un sistema operativo, se carga y se le pasa el control.</li>
 </ol>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>GRUB</strong> soporta métodos de arranque directo, arranque chain-loading, LBA, ext2, ext3, ext4 y hasta "un pre-sistema operativo en máquinas x86 totalmente basado en comandos". Contiene tres interfaces: un menú de selección, un editor de configuración, y una consola de línea de comandos.</p>
+<p class="admonition-title">Nota</p>
+<p>El gestor incluye datos como la partición de arranque y la localización del kernel para cada uno, así como las opciones personalizadas en su caso.</p>
 </div>
+<h4 id="grub">GRUB<a class="headerlink" href="#grub" title="Permanent link">&para;</a></h4>
+<p>GRUB contiene una serie de <strong>funciones</strong> que lo convierten en el método favorito respecto al resto de gestores de arranque disponibles para la arquitectura x86; entre las que destacan</p>
+<ul>
+<li><strong>GRUB proporciona un verdadero entorno basado en comandos</strong>, pre-sistema operativo.</li>
+<li>El GRUB puede leer particiones <strong>ext2/3/4</strong>. Esta funcionalidad le permite al GRUB acceder a su archivo de configuración, <code>/boot/grub/grub.conf</code></li>
+<li>Posibilidad de utilizar una etapa <strong>1.5</strong> si fuera necesario; A veces esto sucede cuando la partición /boot/ se encuentra por encima de los 1024 cilindros de disco duro o cuando utiliza el modo LBA.</li>
+<li>Muestra el menú de inicio que permite al usuario elegir un <strong>sistema operativo</strong>, también examinar y modificar los parámetros de inicio.</li>
+<li>Contiene tres interfaces: un menú de selección, un editor de configuración, y una consola de línea de comandos.</li>
+</ul>
+<p><strong>Un ejemplo de configuración en ubuntu se podría hacer desde:</strong></p>
+<ul>
+<li><code>/boot/grub/grub.cfg</code>← Configuración general</li>
+<li><code>/etc/default/grub</code>← Configuración menú</li>
+<li><code>sudo update-grub</code>← Actualizar cambios</li>
+</ul>
 <figure>
-  <img src="./imagenes/03/033/004.png" width="650"/>
+  <img src="./imagenes/03/033/004_A.png" width="650"/>
+  <figcaption>Ejemplo de GRUB</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/03/033/004_B.png" width="650"/>
   <figcaption>Ejemplo de GRUB</figcaption>
 </figure>
 
 <h4 id="lilo">LILO<a class="headerlink" href="#lilo" title="Permanent link">&para;</a></h4>
-<p>LILO es más antiguo. Es casi idéntico a GRUB en su proceso, excepto que <strong>no contiene una interfaz de línea de comandos</strong>. Por lo tanto todos los cambios en su configuración deben ser escritos en el MBR y luego reiniciar el sistema. </p>
+<p><strong>LILO</strong> es más antiguo a GRUB, es casi idéntico a GRUB en su proceso excepto que <strong>no contiene una interfaz de línea de comandos</strong>. Por lo tanto todos los cambios en su configuración deben ser escritos en el <strong>MBR</strong> y luego reiniciar el sistema. </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Un error en la configuración puede dejar el disco inservible para el proceso de arranque hasta tal grado, que sea necesario usar otro dispositivo (disquete, etc) que contenga un programa capaz de arreglar el error. Además, no entiende el sistema de archivos. En su lugar, la ubicación de los archivos de imagen se almacenan directamente en el MBR y el BIOS se utiliza para acceder a ellos directamente.</p>
+<p><strong>Un error en la configuración puede dejar el disco inservible</strong> para el proceso de arranque hasta tal grado, que sea necesario usar otro dispositivo (disquete, etc) que contenga un programa capaz de arreglar el error.</p>
 </div>
-<h4 id="difenrencias-entre-lilo-y-grub">Difenrencias entre LILO y GRUB<a class="headerlink" href="#difenrencias-entre-lilo-y-grub" title="Permanent link">&para;</a></h4>
+<h4 id="diferencias-entre-lilo-y-grub">Diferencias entre LILO y GRUB<a class="headerlink" href="#diferencias-entre-lilo-y-grub" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>LILO</strong> no entiende los sistemas de archivos, por lo que utiliza desplazamientos de disco sin procesar y el BIOS para cargar los datos. Se carga el código del menú y, a continuación, en función de la respuesta, carga, o el sector MBR del disco de 512 bytes como en Microsoft Windows, o la imagen del núcleo Linux.</li>
 <li><strong>GRUB</strong> por el contrario comprende los sistemas de archivos comunes ext2 , ext3 y ext4. Debido a que GRUB almacena sus datos en un archivo de configuración en vez de en el MBR y a que contiene un interfaz de línea de comandos, a menudo es más fácil rectificar o modificar GRUB si está mal configurado o corrupto.</li>
 </ul>
-<h4 id="loadlin">Loadlin<a class="headerlink" href="#loadlin" title="Permanent link">&para;</a></h4>
-<p>Otra forma de cargar Linux es desde DOS o Windows 9x, donde el núcleo Linux reemplaza completamente la copia de funcionamiento de estos sistemas operativos. Esto puede ser útil en el caso de hardware que necesita ser conectado a través del software y la configuración de estos programas solo está disponible para DOS y no para Linux, debido a cuestiones de secretos industriales y código propietario. Sin embargo, esta tediosa forma de arranque ya no es necesaria en la actualidad ya que Linux tiene drivers para multitud de dispositivos hardware. Aun así, esto era muy útil en el pasado.</p>
-<p>Otro caso es cuando Linux se encuentra en un dispositivo que el BIOS no lo tiene disponible para el arranque. Entonces, DOS o Windows pueden cargar el driver apropiado para el dispositivo superando dicha limitación del BIOS, y cargar Linux desde allí.</p>
 <h3 id="3a-etapa-fase-del-kernel">3ª etapa: Fase del kernel<a class="headerlink" href="#3a-etapa-fase-del-kernel" title="Permanent link">&para;</a></h3>
-<p>El kernel de Linux <strong>se encarga de todos los procesos del sistema operativo</strong>, como la gestión de memoria, planificador de tareas, I/O, comunicación entre procesos, y el control general del sistema. </p>
+<p>El kernel de Linux <strong>se encarga de todos los procesos del sistema operativo</strong>, como la gestión de memoria, planificador de tareas, I/O, comunicación entre procesos, y el control general del sistema.</p>
 <ul>
-<li>Este se carga en dos etapas: </li>
+<li>Este se carga en dos fases:</li>
 </ul>
 <ol>
-<li><strong>Etapa de carga</strong>: En la primera etapa el kernel (como un archivo imagen comprimido) se carga y se descomprime en memoria, y algunas funciones fundamentales como la gestión de memoria de base se establecen. El control entonces se cambia a la etapa final para iniciar el kernel principal. Una vez que el núcleo está en pleno funcionamiento - y como parte de su puesta en marcha, </li>
-<li><strong>Etapa de ejecución</strong>: Después de ser cargado es ejecutado - <strong>el kernel busca un proceso de inicio para ejecutar</strong>, que (separadamente) fija un espacio de usuario y los procesos necesarios para un entorno de usuario y ultimar la entrada . Al núcleo en sí entonces se le permite pasar a inactivo, sujeto a las llamadas de otros procesos.</li>
+<li><strong>Fase de carga</strong>: En la primera etapa el kernel se carga y se descomprime en memoria, como un archivo imagen comprimido. El objetivo es cargar algunas funciones fundamentales como la gestión de memoria.</li>
+<li><strong>Fase de ejecución</strong>: <strong>el kernel busca un proceso de inicio para ejecutar</strong>, que (separadamente) fija un espacio de usuario y los procesos necesarios para un entorno del mismo. A continuación al nucleo se le permite pasar a inactivo, sujeto a las llamadas de otros procesos.</li>
 </ol>
-<p>El kernel generalmente se almacena en un archivo comprimido. Este archivo comprimido se carga y se descomprime en memoria. Por otra parte, también se cargan los drivers necesarios mediante el initrd. El initrd crea un sistema de archivos temporal usado en la fase de ejecución del kernel.</p>
-<p>Una vez que el kernel se ha cargado en memoria y está listo, se lleva a cabo su ejecución. Lo último que se lanza es el proceso init.</p>
-<figure>
-  <img src="./imagenes/03/033/005.png" width="650"/>
-  <figcaption>Fases Arranque Linux</figcaption>
-</figure>
-
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<ul>
+<li>El kernel generalmente se almacena en un archivo comprimido. Este archivo comprimido se carga y se descomprime en memoria. Por otra parte, también se cargan los drivers necesarios mediante el <code>initrd.</code> </li>
+<li>El <code>initrd</code> crea un sistema de archivos temporal usado en la fase de ejecución del kernel.</li>
+</ul>
+</div>
 <h4 id="4a-etapa-el-proceso-de-inicio">4ª etapa: El proceso de inicio<a class="headerlink" href="#4a-etapa-el-proceso-de-inicio" title="Permanent link">&para;</a></h4>
 <ul>
-<li>El trabajo de <strong>Init es conseguir que todo funcione como debe ser</strong>" una vez que el kernel está totalmente en funcionamiento. En esencia, establece y opera todo el espacio de usuario. </li>
-</ul>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<ul>
-<li>Esto incluye la comprobación y montaje de sistemas de archivos, la puesta en marcha de los servicios de usuario necesarios y, en última instancia, cambiar al entorno de usuario cuando el inicio del sistema se ha completado. Es similar a los procesos Init de Unix y BSD, de la que deriva, pero en algunos casos se ha apartado o se hicieron a la medida. </li>
-</ul>
-</div>
-<ul>
-<li>En un sistema Linux estándar, Init se ejecuta con un parámetro, conocido como nivel de ejecución, que tiene un valor entre 1 y 6, y que determina qué subsistemas pueden ser operacionales. Cada <strong>nivel</strong> de ejecución tiene sus propios <strong>scripts</strong> que codifican los diferentes procesos involucrados en la creación o salida del nivel de ejecución determinado, y son estas secuencias de comandos los necesarios en el proceso de arranque. </li>
-</ul>
-<p>En Debian el nivel de inicio predeterminado es el nivel 2 (id=2). Debian utiliza los siguientes niveles de ejecución:</p>
-<ul>
-<li>0 (apagar el sistema)</li>
-<li>1 (modo monousuario)</li>
-<li>2 al 5 (modos multiusuario)</li>
-<li>6 (reiniciar el sistema)</li>
+<li>El trabajo de <strong>Init es conseguir que todo funcione como debe ser</strong>" una vez que el kernel está totalmente en funcionamiento. En esencia, establece y opera todo el espacio de usuario.</li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>El archivo de configuración de más alto nivel para Init es <code>/etc/inittab</code>.Durante el arranque del sistema, se verifica si existe un nivel de ejecución predeterminado en el archivo <code>/etc/inittab</code>, si no, se debe introducir por medio de la consola del sistema. Después se procede a ejecutar todos los scripts relativos al nivel de ejecución especificado.</p>
+<p class="admonition-title">Importante</p>
+<ul>
+<li>Esto incluye la comprobación y montaje de sistemas de archivos, la puesta en marcha de los servicios de usuario necesarios y, en última instancia, cambiar al entorno de usuario cuando el inicio del sistema se ha completado.</li>
+</ul>
 </div>
-<p>Después de que se han dado lugar todos los procesos especificados, Init se aletarga, y espera a que uno de estos tres eventos sucedan:
-- que procesos comenzados finalicen o mueran;
-- un fallo de la señal de potencia (energía);
-- o una petición a través de <code>/sbin/telinit</code> para cambiar el nivel de ejecución.</p>
+<ul>
+<li>En un sistema Linux estándar, Init se ejecuta con un parámetro, conocido como nivel de ejecución, que tiene un valor entre 1 y 6, y que determina qué subsistemas pueden ser operacionales. Cada <strong>nivel</strong> de ejecución tiene sus propios <strong>scripts</strong> que codifican los diferentes procesos involucrados en la creación o salida del nivel de ejecución determinado, y son estas secuencias de comandos los necesarios en el proceso de arranque.</li>
+</ul>
 <h2 id="arranque-de-windows-y-windows-server">Arranque de Windows y Windows Server<a class="headerlink" href="#arranque-de-windows-y-windows-server" title="Permanent link">&para;</a></h2>
 <h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p>La secuencia de arranque de <strong>Windows</strong> utiliza el sistema de almacenamiento y configuración de arranque denominado <strong>BCD</strong> store (Boot Configuration Data). Este registro se encuentra situado en el directorio <code>\boot\BCD</code> de la partición donde se instala el sistema de forma oculta y en binario. Consiste en un repositorio de datos y parámetros necesarios para gestionar el arranque del sistema. </p>
+<p>La secuencia de arranque de <strong>Windows</strong> utiliza el sistema de almacenamiento y configuración de arranque denominado <strong>BCD</strong> store (<strong>Boot Configuration Data</strong>). Este registro se encuentra situado en el directorio <code>\boot\BCD</code> de la partición donde se instala el sistema de forma oculta y en binario. Consiste en un repositorio de datos y parámetros necesarios para gestionar el arranque del sistema.</p>
 </li>
 <li>
 <p>El fichero <code>Bootmgr.exe</code> es el encargado del administrador y cargador de arranque (boot loader). </p>
@@ -684,17 +693,15 @@
 </li>
 </ul>
 <ol>
-<li>
-<p>La BIOS carga el <strong>MBR</strong> (master boot record, registro de arranque principal es el primer sector de un dispositivo de almacenamiento de datos), en memoria el cual analiza la tabla de particiones y carga en memoria el <strong>sector de arranque</strong> de la partición marcada como activa en la que se encuentra el <strong>S.O Windows</strong>.</p>
-</li>
-<li>
-<p>El <strong>sector de arranque</strong> localiza el <code>bootmgr</code> y se ejecuta, busca el directorio <code>\boot</code> que contiene los programas que inician el sistema.</p>
-</li>
+<li>La BIOS carga el <strong>MBR</strong> (master boot record, registro de arranque principal es el primer sector de un dispositivo de almacenamiento de datos), en memoria el cual analiza la tabla de particiones y carga en memoria el <strong>sector de arranque</strong> de la partición marcada como activa en la que se encuentra el <strong>S.O Windows</strong>.</li>
+<li>El <strong>sector de arranque</strong> localiza el <code>bootmgr</code> y se ejecuta, busca el directorio <code>\boot</code> que contiene los programas que inician el sistema.</li>
+<li>Dentro del directorio se ejecuta el <strong>BCD</strong> apareciendo un menú en que se selecciona el sistema que se desea arrancar comenzando la carga del núcleo de sistema.</li>
 </ol>
-<p>3.Dentro del directorio se ejecuta el <strong>BCD</strong> apareciendo un menú en que se selecciona el sistema que se desea arrancar comenzando la carga del núcleo de sistema.</p>
 <h3 id="windows-server">Windows Server<a class="headerlink" href="#windows-server" title="Permanent link">&para;</a></h3>
+<p>En Windows Server se encuentan unas características avanzadas entre las que destacan:</p>
 <ul>
-<li>En la secuencia o proceso de arranque de <strong>Windows Server</strong> admite los modelos de firmware tanto de <strong>BIOS</strong> como de <strong>Unified Extended Firmware Interface (UEFI)</strong>. Usa un nuevo almacén de datos para los datos de configuración de arranque (almacén que sustituye a <code>Boot.ini</code> de versiones anteriores, y pone a disposición nuevas aplicaciones de arranque, que sustituyen a su vez al anterior cargador de Windows (<code>Ntldr.exe</code>). Incluye también un administrador de arranque de Windows y un cargador de arranque de Windows nuevos.</li>
+<li>Usa un n<strong>uevo almacén de datos</strong> para los datos de configuración de arranque, <code>Boot.ini</code> sustituye al anterior cargador de Windows (<code>Ntldr.exe</code>). </li>
+<li>Incluye también un administrador de arranque de Windows y un cargador de arranque de Windows nuevos.</li>
 </ul>
 <p>A partir del Windows Server 2008, encontramos 3 aplicaciones de arranque:</p>
 <ul>
@@ -709,7 +716,7 @@
 </li>
 </ul>
 <figure>
-  <img src="./imagenes/03/033/006.png" width="250"/>
+  <img src="./imagenes/03/033/006_B.png" width="650"/>
   <figcaption>Características Bootmgr</figcaption>
 </figure>
 
@@ -730,48 +737,94 @@
 <li>Finaliza iniciando los servicios y la interface de login.</li>
 </ol>
 <h3 id="modificacion-arranque">Modificación Arranque.<a class="headerlink" href="#modificacion-arranque" title="Permanent link">&para;</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Se puede editar el arranque en Windows Server ejecutando el comando msconfig en la pestaña Arranque, modifica las opciones de arranque. El administrador y cargador del sistema de arranque se edita con el comando <strong>bcdedit</strong>.</p>
-</div>
+<p>Se puede <strong>editar el arranque en Windows Server</strong> ejecutando el comando <code>msconfig</code> y en la pestaña Arranque modificar las opciones del mismo. </p>
 <ul>
-<li>
-<p>Ejemplo de modificación de <strong>bcdedit</strong> -&gt; <a href="https://ikastaroak.birt.eus/edu/argitalpen/backupa/20200331/1920k/es/ASIR/ISO/ISO02/es_ASIR_ISO02_Contenidos/3.1.EditorBCDedit.pdf">Enlace:Ejemplos de parametros usados en el editor BCDEdit.exe</a></p>
-</li>
-<li>
-<p>Los datos de configuración de arranque (<strong>BCD</strong>) sustituyen a la anterior (boot.ini). En el almacén <strong>BCD</strong> el gestor de arranque se presenta como objeto de programa (<strong>GUID</strong>) en lugar de elementos de texto. </p>
-</li>
-<li>Con la herramienta Bcdedit.exe podemos utilizar los comandos básicos para controlar todos los aspectos del proceso de arranque, aunque cada objeto se presenta con un <strong>GUID</strong>, algunos objetos tienen nombres de alias para uso común, como bootmgr (referido al gestor de arranque) y DEFAULT (gestor de arranque por defecto).</li>
-<li>Podemos modificar la configuración de inicio con <strong>WMI</strong> (Windows Management Instrumentatión). Podemos utilizar <code>MSconfig.exe</code> para proporcionar una interfaz gráfica para visualizar y modificar un subconjunto de los ajustes de configuración de inicio.</li>
+<li>El administrador y cargador del sistema de arranque se edita con el comando <strong>bcdedit</strong>.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<ul>
+<li>Ejemplo de modificación de <strong>bcdedit</strong> -&gt; <a href="https://ikastaroak.birt.eus/edu/argitalpen/backupa/20200331/1920k/es/ASIR/ISO/ISO02/es_ASIR_ISO02_Contenidos/3.1.EditorBCDedit.pdf">Enlace:Ejemplos de parametros usados en el editor BCDEdit.exe</a></li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo Powershell</p>
+<ul>
 <li>Támbien mediante Powershell -&gt; <a href="https://www.codeproject.com/Articles/833655/Modify-Windows-BCD-using-Powershell">Enlace:Modify Windows BCD using Powershell</a></li>
 </ul>
-<h3 id="actividades-ud03_03-powershell">Actividades UD03_03 PowerShell<a class="headerlink" href="#actividades-ud03_03-powershell" title="Permanent link">&para;</a></h3>
-<ol start="310">
-<li>
-<p>Modifica el fichero /etc/inittab para que...</p>
-<ol>
-<li>De forma predeterminada se establezca el nivel de ejecución 5.</li>
-<li>Al pulsar la combinación de teclas ctrl+alt+supr el sistema realice las siguientes operaciones:</li>
-</ol>
+</div>
+<h2 id="daemon">Daemon<a class="headerlink" href="#daemon" title="Permanent link">&para;</a></h2>
+<p><strong>Daemon</strong>, <strong>servicio</strong> o <strong>programa residente</strong> es es un tipo especial de programa que se ejecuta en segundo plano, en vez de ser controlado directamente por el usuario; <strong>estos programas se encuentran cargados en memoria de forma permanente durante la ejecución del sistema operativo</strong> y son los encargados de ofrecer un servicio al resto de programas o incluso otros demonios. Suelen iniciarse con el sistema operativo y se apagan con él.</p>
+<p>Los daemon suelen tener las siguientes características:</p>
 <ul>
-<li>se apague si el nivel de ejecución es el 2.<ul>
-<li>se reinicie si el nivel de ejecución es el 3.</li>
-<li>escriba “Je-je-je, no sirve de nada esa combinación de teclas” si el nivel de ejecución es el 4.</li>
-<li>no haga nada si el nivel de ejecución es el 5.</li>
+<li><strong>No disponen de una "interfaz"</strong> directa con el usuario, ya sea gráfica o textual.</li>
+<li><strong>No hacen uso de las entradas y salidas estándar para comunicar errores o registrar su funcionamient</strong>o, sino que usan archivos del sistema en zonas especiales (<code>/var/log/</code> en los UNIX más modernos) o utilizan otros daemon especializados en dicho registro como el <code>syslogd</code>.</li>
 </ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>Pista:</p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Por ejemplo, una máquina que alberga un servidor web utilizará un daemon <strong>httpd (HTTP Daemon)</strong> para ofrecer el servicio y que los visitantes a dicha web puedan acceder.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Historia</p>
+<p>Según una investigación realizada por <strong>Richard Steinberg</strong>, la palabra daemon fue utilizada en <strong>1963</strong> por primera vez, en el área de la informática, para denominar a un <strong>proceso que realizaba backups en unas cintas</strong>. Este proceso se utilizó en el proyecto <strong>MAC</strong> del <strong>MIT</strong>y en una computadora <strong>IBM 7094</strong>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los programas daemon reciben este nombre en los sistemas UNIX. En otros sistemas existen procesos similares como los <code>TSRs</code> de <code>MS-DOS</code> o los <code>servicios de Windows</code>.</p>
+</div>
 <figure>
-  <img src="./imagenes/03/033/007.png" width="650"/>
-  <figcaption>Fases Arranque Linux</figcaption>
+  <img src="./imagenes/03/033/008.png" width="750"/>
+  <figcaption>Ejemplo Daemons</figcaption>
 </figure>
 
-<ol start="311">
-<li>Realiza un breve informe con los pasos más importantes de el Ejemplo de modificación de <strong>bcdedit</strong> -&gt; <a href="https://ikastaroak.birt.eus/edu/argitalpen/backupa/20200331/1920k/es/ASIR/ISO/ISO02/es_ASIR_ISO02_Contenidos/3.1.EditorBCDedit.pdf">Enlace:Ejemplos de parametros usados en el editor BCDEdit.exe</a></li>
+<h3 id="systemd">Systemd<a class="headerlink" href="#systemd" title="Permanent link">&para;</a></h3>
+<p><strong>Systemd</strong> es un conjunto de demonios o daemons de administración de sistema, bibliotecas y herramientas diseñados como una plataforma de administración y configuración central para interactuar con el núcleo del Sistema operativo GNU/Linux.</p>
+<p>Características:</p>
+<ul>
+<li>Descrito por sus autores como un "<strong>bloque de construcción básico</strong>" para un sistema operativo.</li>
+<li>Se puede utilizar como un <strong>sistema de inicio de Linux</strong> (añadiendo el proceso <code>init</code> a su conjunto de procesos).</li>
+<li>El nombre <code>systemd</code> se adhiere a la convención Unix de distinguir los demonios fácilmente por tener la letra d como la última letra del nombre de archivo.</li>
+<li>Uno de los principales objetivos de <code>systemd</code> es unificar configuraciones básicas de <strong>Linux</strong> y los comportamientos de servicios en todas las distribuciones.</li>
+</ul>
+<figure>
+  <img src="./imagenes/03/033/009.png" width="750"/>
+  <figcaption>Inicio de systemd en Fedora 17</figcaption>
+</figure>
+
+<div class="admonition info">
+<p class="admonition-title">Historia</p>
+<ul>
+<li><strong>Systemd</strong> se desarrolló para reemplazar el sistema de inicio (<code>init</code>) heredado de los sistemas operativos estilo UNIX <code>System V</code> y <code>Berkeley Software Distribution (BSD)</code>.</li>
+<li>La idea de diseño está pensada en proveer un <strong>framework</strong> que exprese las dependencias del servicio con la API de Linux, permite hacer más trabajo paralelamente al inicio del sistema y reducir la sobrecarga del shell.</li>
+<li>Hacia <strong>2015</strong>, la mayoría de las principales distribuciones de Linux han adoptado systemd como su sistema de inicio predeterminado.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En el proceso de arranque en <strong>Linux</strong>, <strong>es el primer proceso que se ejecuta en el espacio de usuario</strong>, por lo tanto, también es el proceso padre de todos los procesos hijos en el espacio de usuario.</p>
+</div>
+<figure>
+  <img src="./imagenes/03/033/010.png" width="750"/>
+  <figcaption>Arquitectura de Systemd</figcaption>
+</figure>
+
+<p>el comando <code>systemctl</code>, que es la herramienta de administración central para controlar el sistema init. Explicaremos cómo administrar servicios, comprobar estados, cambiar estados del sistema y trabajar con los archivos de configuración.</p>
+<p>En el siguiente enlace se puede observar un resumen de los comandos principales para <a href="Administraci%C3%B3n%20de%20servicios.html">Administración de Servicios</a></p>
+<h3 id="actividades-ud03_03">Actividades UD03_03<a class="headerlink" href="#actividades-ud03_03" title="Permanent link">&para;</a></h3>
+<ol start="310">
+<li>
+<p>En esta práctica se van a instalar <strong>dos sistemas operativos</strong> en una misma máquina virtual (y disco duro). Debemos crear un sistema de arranque que nos permita elegir el sistema operativo con el que deseamos arrancar nuestro equipo. Para ello, sigue los pasos que se describen a continuación.</p>
+</li>
+<li>
+<p>Crea una máquina virtual denominada “<strong>Dual</strong>”.</p>
+</li>
+<li>Particiona el disco para contener un sistema operativo cliente de Microsoft, uno basado en GNU/Linux y dos particiones de datos, con los nombres <code>DOCUMENTOS</code> y <code>EXPEDIENTES</code> que podrán ser accedidas sea cual sea el sistema operativo que se arranque. Crea un esquema con las particiones, su tamaño y el sistema de archivos que se usará en cada caso. El particionado se realizará con el sistema MBR.</li>
+<li>Instala los sistemas operativos en el siguiente orden: Microsoft Windows 10 y Ubuntu Desktop.</li>
+<li>Al finalizar la instalación, debe quedar un menú de inicio con varios sistemas operativos. menú <strong>GRUB</strong>.</li>
+<li>Una vez instalados los sistemas operativos en el mismo disco duro, modifica el GRUB de para que el sistema operativo a iniciar por defecto sea el de Microsoft y que espere 15 segundos antes de iniciarlo. Realiza esta tarea en CLI.</li>
+<li>Modifica el GRUB de para que se inicie el sistema operativo de Ubuntu por defecto pero que el tiempo empleado sea de 5 segundos antes de iniciarlo.</li>
 </ol>
+<p>Redacta un documento en el que indiques los pasos que sigues para realizar esta configuración.</p>
                 
               
               
