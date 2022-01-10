@@ -378,7 +378,7 @@
   
     <li class="md-nav__item">
       <a href="031_Planificador.html" class="md-nav__link">
-        3.1- Planificación y sincronización de procesos.
+        3.1- Planificación y sincronización de procesos
       </a>
     </li>
   
@@ -390,7 +390,7 @@
   
     <li class="md-nav__item">
       <a href="032_GestionProcesos.html" class="md-nav__link">
-        3.2- Gestión de los procesos del sistema.
+        3.2- Gestión de los procesos del sistema
       </a>
     </li>
   
@@ -402,7 +402,49 @@
   
     <li class="md-nav__item">
       <a href="033_ArranqueServicios.html" class="md-nav__link">
-        3.3- Secuencia de arranque del sistema. Demonios y servicios.
+        3.3- Secuencia de arranque del sistema. Demonios y servicios
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        4.- Información del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4.- Información del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Información del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="041_EstructuraDirectorios.html" class="md-nav__link">
+        4.1- Estructura de directorios
       </a>
     </li>
   
@@ -429,7 +471,54 @@
                 
                   <h1>033C Sobras</h1>
                 
-                
+                <p>En Debian el nivel de inicio predeterminado es el nivel 2 (id=2). Debian utiliza los siguientes niveles de ejecución:</p>
+<ul>
+<li>0 (apagar el sistema)</li>
+<li>1 (modo monousuario)</li>
+<li>2 al 5 (modos multiusuario)</li>
+<li>6 (reiniciar el sistema)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>El archivo de configuración de más alto nivel para Init es <code>/etc/inittab</code>.Durante el arranque del sistema, se verifica si existe un nivel de ejecución predeterminado en el archivo <code>/etc/inittab</code>, si no, se debe introducir por medio de la consola del sistema. Después se procede a ejecutar todos los scripts relativos al nivel de ejecución especificado.</p>
+</div>
+<p>Después de que se han dado lugar todos los procesos especificados, Init se aletarga, y espera a que uno de estos tres eventos sucedan:
+- que procesos comenzados finalicen o mueran;
+- un fallo de la señal de potencia (energía);
+- o una petición a través de <code>/sbin/telinit</code> para cambiar el nivel de ejecución.</p>
+<p>ARRANQUE WINDOWS</p>
+<ul>
+<li>Los datos de configuración de arranque (<strong>BCD</strong>) sustituyen a la anterior (boot.ini). En el almacén <strong>BCD</strong> el gestor de arranque se presenta como objeto de programa (<strong>GUID</strong>) en lugar de elementos de texto. </li>
+<li>Con la herramienta Bcdedit.exe podemos utilizar los comandos básicos para controlar todos los aspectos del proceso de arranque, aunque cada objeto se presenta con un <strong>GUID</strong>, algunos objetos tienen nombres de alias para uso común, como bootmgr (referido al gestor de arranque) y DEFAULT (gestor de arranque por defecto).</li>
+<li>Podemos modificar la configuración de inicio con <strong>WMI</strong> (Windows Management Instrumentatión). Podemos utilizar <code>MSconfig.exe</code> para proporcionar una interfaz gráfica para visualizar y modificar un subconjunto de los ajustes de configuración de inicio.</li>
+</ul>
+<p>Actividades:</p>
+<ol start="310">
+<li>
+<p>Modifica el fichero /etc/inittab para que...</p>
+<ol>
+<li>De forma predeterminada se establezca el nivel de ejecución 5.</li>
+<li>Al pulsar la combinación de teclas ctrl+alt+supr el sistema realice las siguientes operaciones:</li>
+</ol>
+<ul>
+<li>se apague si el nivel de ejecución es el 2.<ul>
+<li>se reinicie si el nivel de ejecución es el 3.</li>
+<li>escriba “Je-je-je, no sirve de nada esa combinación de teclas” si el nivel de ejecución es el 4.</li>
+<li>no haga nada si el nivel de ejecución es el 5.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Pista:</p>
+<figure>
+  <img src="./imagenes/03/033/007.png" width="650"/>
+  <figcaption>Fases Arranque Linux</figcaption>
+</figure>
+
+<ol start="311">
+<li>Realiza un breve informe con los pasos más importantes de el Ejemplo de modificación de <strong>bcdedit</strong> -&gt; <a href="https://ikastaroak.birt.eus/edu/argitalpen/backupa/20200331/1920k/es/ASIR/ISO/ISO02/es_ASIR_ISO02_Contenidos/3.1.EditorBCDedit.pdf">Enlace:Ejemplos de parametros usados en el editor BCDEdit.exe</a></li>
+</ol>
                 
               
               

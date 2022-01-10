@@ -1,0 +1,1272 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/041_EstructuraDirectorios.html">
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>4.1- Estructura de directorios - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#estructura-de-directorios" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.1- Estructura de directorios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- Tools: Scripting y Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- Tools: Scripting y Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- Tools: Scripting y Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="011_ShellScripting.html" class="md-nav__link">
+        1.1- ShellScripting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="012_PowerShell.html" class="md-nav__link">
+        1.2- PowerShell
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="013_Docker.html" class="md-nav__link">
+        1.3- Docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- Administración de servicios de directorio
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- Administración de servicios de directorio" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- Administración de servicios de directorio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="021_Introduccion_SD.html" class="md-nav__link">
+        2.1- Introducción de servicios de directorio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="022_LDAP.html" class="md-nav__link">
+        2.2- LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="023_ActiveDirectory.html" class="md-nav__link">
+        2.3- Active Directory
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        3.- Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          3.- Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="031_Planificador.html" class="md-nav__link">
+        3.1- Planificación y sincronización de procesos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="032_GestionProcesos.html" class="md-nav__link">
+        3.2- Gestión de los procesos del sistema
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="033_ArranqueServicios.html" class="md-nav__link">
+        3.3- Secuencia de arranque del sistema. Demonios y servicios
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        4.- Información del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4.- Información del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Información del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4.1- Estructura de directorios
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="041_EstructuraDirectorios.html" class="md-nav__link md-nav__link--active">
+        4.1- Estructura de directorios
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminologia" class="md-nav__link">
+    Terminología
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-linux" class="md-nav__link">
+    Estructura Linux
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breve-historia" class="md-nav__link">
+    Breve Historia
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#organizacion-del-sistema-de-ficheros" class="md-nav__link">
+    Organización del Sistema de Ficheros
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archivos-y-directorios-en-gnulinux" class="md-nav__link">
+    Archivos y directorios en GNU/Linux
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-windows" class="md-nav__link">
+    Estructura Windows
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura Windows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carpetas-de-usuario" class="md-nav__link">
+    Carpetas de usuario
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#busqueda-de-informacion-del-sistema-ordenes-herramientas-graficas" class="md-nav__link">
+    Búsqueda de información del sistema. Órdenes. Herramientas gráficas.
+  </a>
+  
+    <nav class="md-nav" aria-label="Búsqueda de información del sistema. Órdenes. Herramientas gráficas.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-y-comandos-informacion-linux" class="md-nav__link">
+    Herramientas y comandos Información Linux
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-y-comandos-informacion-windows" class="md-nav__link">
+    Herramientas y comandos Información Windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades-iniciales-ud4_00" class="md-nav__link">
+    Actividades Iniciales UD4_00
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="estructura-de-directorios">Estructura de directorios<a class="headerlink" href="#estructura-de-directorios" title="Permanent link">&para;</a></h1>
+<details class="abstract"><summary>Duración y criterios de evaluación</summary><p><strong>Duración estimada: 6 sesiones (2h por sesión)</strong></p>
+<hr />
+<p>Resultado de aprendizaje y Criterios de evaluación:</p>
+<ol>
+<li>Gestiona la automatización de tareas del sistema, aplicando criterios de eficiencia y utilizando comandos y herramientas gráficas.<ol>
+<li>Se han descrito las ventajas de la automatización de las tareas repetitivas en el sistema.</li>
+<li>Se han utilizado los comandos del sistema para la planificación de tareas.</li>
+<li>Se han establecido restricciones de seguridad.</li>
+<li>Se han realizado planificaciones de tareas repetitivas o puntuales relacionadas con la administración del sistema.</li>
+<li>Se ha automatizado la administración de cuentas.</li>
+<li>Se han instalado y configurado herramientas gráficas para la planificación de tareas.</li>
+<li>Se han utilizado herramientas gráficas para la planificación de tareas.</li>
+<li>Se han documentado los procesos programados como tareas automáticas.</li>
+</ol>
+</li>
+</ol>
+</details>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Todos los sistemas operativos se caracterizan por tener una <strong>estructura jerárquica de almacenamiento de la información</strong>.</li>
+<li>Esta información se ubica en las unidades de almacenamiento de <strong>forma arborescente</strong>. Esta estructura comienza en la propia unidad de almacenamiento en la que se van a almacenar los datos.</li>
+<li>El sistema operativo es capaz de gestionar varias unidades de almacenamiento.</li>
+<li>Para realizar la comunicación entre las unidades físicas y el usuario se utiliza una relación que permite al usuario reconocer las unidades físicas gracias a las unidades lógicas.</li>
+<li>Las unidades lógicas son la representación que el sistema operativo hace de cada unidad física.</li>
+</ul>
+<h2 id="terminologia">Terminología<a class="headerlink" href="#terminologia" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Fichero o Archivo</strong> -&gt; Mecanismo de abstracción que sirve como unidad lógica de información</li>
+<li><strong>Sistema de archivos</strong> -&gt; Permite organización lógica y física de los archivos</li>
+<li><strong>Particionado de dispositivos</strong> -&gt; Permite ubicar el sistema de archivos en un dispositivo</li>
+</ul>
+<h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Gestión de ficheros</strong> -&gt; Crear, copiar, eliminar… en definitiva manejar datos</li>
+<li><strong>Optimizar el rendimiento</strong> -&gt; Orden lógico de los archivos para aumentar la velocidad de acceso</li>
+<li><strong>Seguridad en los datos</strong> -&gt; Soluciones ante pérdidas, Ficheros seguros a errores físicos</li>
+<li><strong>Acceso controlado a la información</strong> -&gt; Ficheros seguros a errores lógicos y humanos</li>
+</ul>
+<h2 id="estructura-linux">Estructura Linux<a class="headerlink" href="#estructura-linux" title="Permanent link">&para;</a></h2>
+<h3 id="breve-historia">Breve Historia<a class="headerlink" href="#breve-historia" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>La estructura de los directorios en GNU/Linux, así como su contenido y funciones, viene definida en el denominado <strong>Filesystem Hierarchy Standard o FHS</strong> por sus siglas en inglés, que en otras palabras viene a ser <strong>el estándar de jerarquía para los sistemas de archivos en sistemas GNU/Linux y otros derivados de UNIX</strong>.</p>
+</li>
+<li>
+<p>El <strong>FHS nació en 1994</strong> y es actualmente mantenida por la Linux Foundation. Aun siendo un estándar, hay casos de distribuciones GNU/Linux que se saltan estas “normas”, aunque en la mayoría de los casos son aceptadas.</p>
+</li>
+</ul>
+<h3 id="organizacion-del-sistema-de-ficheros">Organización del Sistema de Ficheros<a class="headerlink" href="#organizacion-del-sistema-de-ficheros" title="Permanent link">&para;</a></h3>
+<figure>
+  <img src="./imagenes/04/041/001.png" width="750"/>
+  <figcaption>Listado de las directorios más importantes y sus funciones</figcaption>
+</figure>
+
+<h4 id="desglose-de-directorios-linux">Desglose de directorios Linux<a class="headerlink" href="#desglose-de-directorios-linux" title="Permanent link">&para;</a></h4>
+<div class="admonition tip">
+<p class="admonition-title"><code>/</code> o "root"</p>
+<p>Toda la estructura de directorios en los sistemas basados en <code>UNIX</code> parte de un directorio <strong>raíz</strong> también llamado directorio <strong>root</strong> y que se simboliza por una <strong>barra inclinada</strong> o <code>/</code>. </p>
+<p>Desde este directorio es donde nacen todo el resto de directorios, independientemente de dónde estén almacenados físicamente; si en discos o unidades separadas.</p>
+<p>Cualquier dirección de archivo o carpeta en <strong>GNU/Linux</strong> empieza por el directorio raíz o <code>/</code>, seguido de todos los directorios y subdirectorios que que lo contienen, separados cada uno de ellos por <code>/</code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/bin</p>
+<p>El directorio <strong>/bin</strong> es donde se almacenan todos los archivos <em>binarios</em> necesarios para garantizar las funciones básicas <em>a nivel de usuario</em>.</p>
+<p>Sólo almacena los ejecutables de usuario, ya que los binarios necesarios para <em>tareas administrativas</em> gestionadas por el usuario root o superusuario del sistema se encuentran en el directorio <code>/sbin</code>.</p>
+<p>Incluye también los binarios que permiten la ejecución de varias utilidades estándar del terminal de GNU/Linux, concretamente <em>cat</em>, <em>cd</em>, <em>cp</em>, <em>echo</em>, <em>grep</em>, <em>gzip</em>, <em>kill</em>, <em>ls</em>, <em>mv</em>, <em>rm</em>, <em>ping</em>, <em>su</em>, <em>ps</em>, <em>tar</em> y <em>vi</em>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/boot</p>
+<p>Es un directorio que contiene los <strong>archivos que son necesarios en el proceso de arranque del sistema</strong>, y que deberán ser utilizados antes que que el kernel empiece a dar las órdenes de ejecución de los diferentes módulos del sistema. Es también donde se encuentra el gestor de arranque <strong>GRUB</strong>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/dev</p>
+<p>Este directorio incluye todos los dispositivos de almacenamiento, en forma de archivos, conectados al sistema, es decir, cualquier disco duro conectado, partición, memoria USB, o CDROM conectado al sistema y que el sistema pueda entender como un volumen lógico de almacenamiento.</p>
+<p>Para ver esto en la práctica, si abres una ventana de terminal y ejecutas el comando sudo <code>fdisk -l</code>, verás la estructura de particiones de tu sistema.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/home</p>
+<p>Es el directorio de los usuarios estándar, y por lo tanto, el destinado a almacenar todos los archivos del usuario, como documentos, fotos, vídeos, música, plantillas, etcétera. También incluye archivos temporales de aplicaciones que sirven para guardar las configuraciones de programas.</p>
+<p>Dentro <code>/home</code> están los <strong>directorios personales de todos los usuarios</strong>, nombrados según el nombre de usuario utilizado.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/lib</p>
+<p>Incluye las bibliotecas esenciales que son necesarios para que <strong>se puedan ejecutar correctamente todos los binarios</strong> que se encuentran en los directorios <code>/bin</code> y <code>/sbin</code>, así como los módulos del propio kernel.</p>
+<p>En los sistemas operativos de 64 bits, además de <code>/lib</code> existe otro directorio denominado <code>/lib64</code>, referida a las bibliotecas para aplicaciones de 64 bits.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/media</p>
+<p>Representa el punto de <strong>montaje de todos los volúmenes lógicos que se montan temporalmente</strong>, ya sean unidades externas USB u otras particiones de disco.</p>
+<p>En la mayoría de distribuciones GNU/Linux, desde hace ya algún tiempo, cada vez que se monta una unidad externa se hace dentro del directorio /media y a su vez dentro de un directorio especifico dependiendo del usuario del sistema que monta el volumen.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/mnt</p>
+<p>Es un <strong>directorio vacío que cumple funciones similares a /media, pero que actualmente no se suele utilizar</strong>, ya que la mayoría de distribuciones hacen uso de este último para los puntos de montaje temporales.</p>
+<p>Aún así existen otras distribuciones más clásicas en las que se produce una distinción entre ambas carpetas: <code>/mnt</code> para montajes permanentes, es decir, discos duros conectados internamente, y <code>/media</code> para dispotivos con un montaje provisional (unidades extraíbles).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/opt</p>
+<p>En cierto modo vendría a ser como una extensión del directorio <code>/usr</code>, pero en este caso van todos aquellos archivos que son parte de programas instalados al margen de la distribución y que, por lo tanto, no siguen los estándares de almacenar los diferentes archivos dentro de los diferentes subdirectorios de <code>/usr</code> (que sería lo recomendable).</p>
+<p><strong>Haciendo una analogía con Windows, vendría a ser algo como el directorio de “Archivos de programa”</strong>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/proc</p>
+<p>Este directorio contiene <strong>información de los procesos y aplicaciones que se están ejecutando en un momento determinado en el sistema</strong>, pero realmente no guarda nada como tal, ya que lo que almacena son archivos virtuales, por lo que el contenido de este directorio es nulo. </p>
+<p>Básicamente son listas de eventos del sistema operativo que se generan en el momento de acceder a ellos, y que no existen dentro del directorio como tales.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/root</p>
+<p><strong>Es el directorio <code>/home</code> del usuario root o superusuario del sistema</strong>. </p>
+<p>A diferencia de los otros usuarios, que se encuentran todos dentro de <code>/home</code> en sus respectivas subcarpetas, el directorio del usuario root está en su propia carpeta colgando directamente de la raíz del sistema.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/sbin</p>
+<p>Si hemos dicho que en <code>/bin</code> se almacenaban los binarios relativos a las funciones normales de usuario, <code>/sbin</code> hace lo mismo pero para los <strong>binarios relativos tareas propias del sistema operativo</strong>, y que solamente pueden ser gestionadas por el usuario root, tales como el arranque, tareas de restauración, reparación, etcétera.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/srv</p>
+<p>Sirve para <strong>almacenar archivos y directorios relativos a servidores</strong> que puedas tener instalados dentro de tu sistema, ya sea un servidor web www, un servidor FTP, correo electrónico, etcétera.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/sys</p>
+<p>Al igual que <code>/proc</code>, contiene <strong>archivos virtuales que proveen información del kernel</strong> relativa a eventos del sistema operativo. </p>
+<p>Es en cierto modo una evolución de <code>/proc</code>, y a diferencia de este último, los archivos se distribuyen de forma jerárquica.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/tmp</p>
+<p>Como ya da a entender su nombre, sirve para <strong>almacenar archivos temporales</strong> de todo tipo, ya sea de elementos del sistema, o también de diferentes aplicaciones a nivel de usuario.</p>
+<p>Es un directorio dispuesto para almacenar contenido de corta duración, de hecho en la gran mayoría de los casos se suele vaciar de forma automática en cada reinicio del sistema. Aun así, no debes borrar su contenido de forma manual, puesto que puede contener archivos necesarios para ciertos programas o procesos que estén ejecutándose.</p>
+<p>Las aplicaciones programadas para almacenar archivos en este directorio deben asumir que sólo serán recuperables en la sesión actual. En este sentido, hay otro subdirectorio, <code>/var/tmp</code>, dispuesto igualmente para el almacenamiento de archivos temporales, pero cuyo contenido no se borra de forma automática tras el reinicio del sistema.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/usr</p>
+<p>El directorio /usr viene de “User System Resources” y actualmente sirve para <strong>almacenar todos los archivos de las aplicaciones de usuario</strong>, incluyendo todo el software instalado a través de los gestores de paquetes de cada distribución.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">/var</p>
+<p>En cierto modo se podría decir que actúa a modo de <strong>registro del sistema</strong>.</p>
+<p>Contiene varios archivos con información del sistema, como: archivos de logs, correos electrónicos de los usuarios del sistema, bases de datos, información almacenada en la caché, información relativa a los paquetes de aplicaciones almacenados en /opt, entre otros. </p>
+</div>
+<h3 id="archivos-y-directorios-en-gnulinux">Archivos y directorios en GNU/Linux<a class="headerlink" href="#archivos-y-directorios-en-gnulinux" title="Permanent link">&para;</a></h3>
+<p>En los sistemas operativos basados en UNIX, todo es un archivo. Estos archivos poseen dos partes diferenciadas: nombre y extensión. De las dos partes, tan sólo el nombre es obligatorio, por lo tanto, <strong>las extensiones son opcionales</strong>.</p>
+<p>Por otra parte, <strong>GNU/Linux es sensible a mayúsculas y minúsculas</strong>, lo que quiere decir que CEO.txt no es lo mismo que ceo.txt. Esto también es aplicable a carpetas. </p>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Para prevenir errores es aconsejable usar <strong>minúsculas</strong> para nombrar ficheros y directorios. </p>
+<p>También hay que tener en cuenta el uso problemático de algunos caracteres especiales que también deberemos evitar su uso, como por ejemplo las letras especiales (eñe y c trencada), ni las tildes, ni los caracteres especiales cómo <code>!</code>, <code>@</code>, <code>#</code>, <code>$</code>, <code>%</code>, <code>^</code>, <code>&amp;</code>, <code>*</code>, <code>:</code> y `.</p>
+</div>
+<h4 id="tipos">Tipos<a class="headerlink" href="#tipos" title="Permanent link">&para;</a></h4>
+<p>Se disponen de varios tipos de ficheros en GNU/Linux:</p>
+<ul>
+<li><strong>Archivos normales</strong></li>
+</ul>
+<p>Los archivos regulares o normales pueden contener datos de usuario, configuraciones del sistema, pueden ser scripts, binarios, ejecutables o no, en cualquier caso, el sistema operativo simplemente maneja estos archivos.</p>
+<ul>
+<li><strong>Directorios</strong></li>
+</ul>
+<p>Los directorios o carpetas muestran la localización de otros archivos. Son en realidad, pequeños índices que indican al sistema donde ha de ir a buscar para encontrar un fichero en concreto.</p>
+<ul>
+<li><strong>Enlaces duros o físicos</strong></li>
+</ul>
+<p>Antes de explicar qué es un enlace físico es conveniente que conozcas lo que es un <strong>nodoi</strong>. Todo fichero en <code>GNU/Linux</code> posee un <strong>bloque inicial que contiene la información del fichero y enlaces a otros bloques que contienen al propio fichero</strong>. Cuando hacemos cualquier acción sobre un fichero, siempre se empieza consultando este nodo inicial. Haciendo un paralelismo, funciona como el <strong>índice de un libro</strong>.</p>
+<figure>
+  <img src="./imagenes/04/041/002.png" width="650"/>
+  <figcaption>Ejemplo Nodo-I</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Si necesita referirse a un archivo usando dos nombres distintos, puedes crear un <strong>enlace duro</strong>. </p>
+<p>El enlace duro tendrá el mismo <strong>i-nodo</strong> que el archivo original y guarda el mismo aspecto y comportamiento. </p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Hay que tener en cuenta que no pueden existir enlaces duros entre dos archivos de particiones separadas, ya que cada una de ellas tiene su propia tabla de <strong>nodos-i</strong>.</p>
+</div>
+<ul>
+<li><strong>Enlaces simbólicos</strong></li>
+</ul>
+<p>Para salvar la imposibilidad anterior, entre otras cosas, disponemos de otro tipo de archivos conocido como <strong>enlaces simbólicos</strong>. </p>
+<p>A diferencia de los enlaces duros, que apuntan a un archivo por su i-nodo, un enlace simbólico apunta a otro archivo por su nombre. Esto nos
+permite enlazar (apuntar) a otros archivos localizados en otras particiones, e incluso en otras unidades de red. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>En otro sistemas operativos se funcionan de forma similar a los accesos directos.</p>
+</div>
+<h2 id="estructura-windows">Estructura Windows<a class="headerlink" href="#estructura-windows" title="Permanent link">&para;</a></h2>
+<p>A groso modo en las distintas versiones de Windows se puede encontrar, aunque pueden existir excepciones en las mismas:</p>
+<ul>
+<li>
+<p><strong>Carpeta de Windows</strong> ---&gt; <code>C:\Windows</code></p>
+</li>
+<li>
+<p><strong>Carpeta del sistema</strong> ---&gt; <code>C:\Windows\System32</code></p>
+</li>
+<li>
+<p><strong>Archivos de programa</strong> ---&gt; <code>C:\Program Files</code></p>
+</li>
+<li>
+<p><strong>Archivos de programa, datos comunes</strong> ---&gt; <code>C:\Program Files\Common Files</code></p>
+</li>
+<li>
+<p><strong>Datos de programas compartidos</strong> ---&gt; <code>C:\ProgramData</code></p>
+</li>
+<li>
+<p><strong>Fuentes</strong> ---&gt; <code>C:\Windows\Fonts</code></p>
+</li>
+<li>
+<p><strong>Herramientas administrativas compartidas</strong> ---&gt; <code>C:\ProgramData\Microsoft\Windows\StartMenu\Programs\Administrative Tools</code></p>
+</li>
+<li>
+<p><strong>Programas en el menú de Inicio</strong> ---&gt; <code>C:\ProgramData\Microsoft\Windows\Start Menu</code></p>
+</li>
+<li>
+<p><strong>Programas que arrancan con el inicio de Windows</strong> ---&gt; <code>C:\ProgramData\Microsoft\Windows\StartMenu\Programs\Startup</code></p>
+</li>
+<li>
+<p><strong>Carpetas compartidas (Publicas)</strong> ---&gt; <code>C:\Users\Public</code></p>
+</li>
+<li>
+<p><strong>Cache de búsquedas hechas en Windows</strong> ---&gt; <code>C:\ProgramData\Microsoft\Search\Data\Applications\Windows</code></p>
+</li>
+</ul>
+<h3 id="carpetas-de-usuario">Carpetas de usuario<a class="headerlink" href="#carpetas-de-usuario" title="Permanent link">&para;</a></h3>
+<p>Las carpetas de los usuarios se encuentran en "<code>Users</code>" o "<code>Usuarios</code>" en el disco Raíz donde está instalado el sistema operativo contiene algunas como:</p>
+<ul>
+<li>
+<p>Escritorio</p>
+</li>
+<li>
+<p>Mi música</p>
+</li>
+<li>
+<p>Mis documentos</p>
+</li>
+<li>
+<p>Mis imágenes</p>
+</li>
+<li>
+<p>Contactos</p>
+</li>
+<li>
+<p>Favoritos</p>
+</li>
+<li>
+<p>Archivos temporales</p>
+</li>
+<li>
+<p>Archivos temporales de internet</p>
+</li>
+<li>
+<p>Cookies</p>
+</li>
+<li>
+<p>Datos de programa</p>
+</li>
+</ul>
+<h4 id="accesos-a-carpetas-importantes">Accesos a carpetas importantes<a class="headerlink" href="#accesos-a-carpetas-importantes" title="Permanent link">&para;</a></h4>
+<p>Hay algunas variables del sistema que se refieren a directorios, que es importante conocer, entre ellas:</p>
+<ul>
+<li>
+<p><code>%windir%</code> directorio de Windows.</p>
+</li>
+<li>
+<p><code>%os%</code> muestra el sistema operativo</p>
+</li>
+<li>
+<p><code>%homepath%</code> equivale a la carpeta del usuario en Usuarios o User</p>
+</li>
+<li>
+<p><code>%programfiles%</code> muestra archivos de programa</p>
+</li>
+<li>
+<p><code>%path%</code> muestra el path del sistema</p>
+</li>
+<li>
+<p><code>%Comspec%</code> Reinicia la consola o la abre</p>
+</li>
+<li>
+<p><code>%systemroot%</code> Igual que %windir%</p>
+</li>
+<li>
+<p><code>%allusersprofile%</code> Equivale a Allusers en Usuarios o Users</p>
+</li>
+<li>
+<p><code>%Temp%</code> o <code>%Tmp%</code> Equivale a la carpetade archivos temporales de Internet.</p>
+</li>
+</ul>
+<figure>
+  <img src="./imagenes/04/041/003.png" width="1150"/>
+  <figcaption>Muestra de algunas de las variables del Sistema de Windows</figcaption>
+</figure>
+
+<h2 id="busqueda-de-informacion-del-sistema-ordenes-herramientas-graficas">Búsqueda de información del sistema. Órdenes. Herramientas gráficas.<a class="headerlink" href="#busqueda-de-informacion-del-sistema-ordenes-herramientas-graficas" title="Permanent link">&para;</a></h2>
+<h3 id="herramientas-y-comandos-informacion-linux">Herramientas y comandos Información Linux<a class="headerlink" href="#herramientas-y-comandos-informacion-linux" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Principales comandos</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir</code></td>
+<td>crea directorios</td>
+<td><code>zip</code></td>
+<td>comprime ficheros en formato ZIP</td>
+</tr>
+<tr>
+<td><code>rmdir</code></td>
+<td>elimina directorios</td>
+<td><code>unzip</code></td>
+<td>descomprimir ficheros ZIP</td>
+</tr>
+<tr>
+<td><code>touch</code></td>
+<td>crea un archivo nuevo</td>
+<td><code>bz2</code></td>
+<td>comprime ficheros en formato BZ2</td>
+</tr>
+<tr>
+<td><code>rm</code></td>
+<td>elimina ficheros</td>
+<td><code>cat</code></td>
+<td>muestra el contenido de un fichero</td>
+</tr>
+<tr>
+<td><code>cp</code></td>
+<td>copia archivos y directorios</td>
+<td><code>diff</code></td>
+<td>muestra diferencias entre ficheros</td>
+</tr>
+<tr>
+<td><code>ln</code></td>
+<td>crea enlaces físicos y simbólicos</td>
+<td><code>find</code></td>
+<td>se utiliza para encontrar archivos en un determinado directorio</td>
+</tr>
+<tr>
+<td><code>tar</code></td>
+<td>empaqueta ficheros</td>
+<td><code>grep</code></td>
+<td>para encontrar texto dentro del archivo que le indiquemos</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Herramientas</strong></li>
+</ul>
+<h4 id="sysstat">SysStat<a class="headerlink" href="#sysstat" title="Permanent link">&para;</a></h4>
+<p><strong>SysStat</strong> es una colección de herramientas con la que podremos <strong>monitorizar nuestro sistem</strong>a, que además es de código abierto y gratuita. Con estas herramientas podremos depurar problemas de rendimiento en sistemas Gnu/Linux, también nos permitirá ver los datos de rendimiento del sistema en tiempo real, o analizar los datos de los archivos que estas herramientas pueden generar.</p>
+<h5 id="utilidades-sysstat">Utilidades SysStat<a class="headerlink" href="#utilidades-sysstat" title="Permanent link">&para;</a></h5>
+<ul>
+<li>
+<p><strong>iostat</strong>: Estadísticas de Cpu, entradas y salidas de dispositivos, particiones y sistema sde ficheros de red.</p>
+</li>
+<li>
+<p><strong>mpsta</strong>t informa sobre estadísticas relacionadas con el o los procesadores.</p>
+</li>
+<li>
+<p><strong>pidstat</strong> Información estadística sobre procesos linux: Entradas/salidas, Cpu, memoria,etc.</p>
+</li>
+<li>
+<p><strong>sar</strong> recoge , informa y salva información sobre actividad del Sistema como CPU, memoria, discos , interrupciones, interfaces de red, terminals, tablas del kernel, etc.</p>
+</li>
+<li>
+<p><strong>sadc</strong> Es el recolector de datos de la actividad del Sistema.</p>
+</li>
+<li>
+<p><strong>sa1</strong>: Recoge información y la guarda en el fichero diario de datos de actividad del sistema. Es el front-end que utiliza sadc para que se ejecute desde cron.</p>
+</li>
+<li>
+<p><strong>sa2</strong> escribe un informe --resumen de la actividad diaria. Es un front-end de sar que está diseñado para ser ejecutado desde cron.</p>
+</li>
+<li>
+<p><strong>sadf</strong> muestra los datos que recolecta sar en multiples formatos(CSV, XML, etc.) Esto es util para cargar los datos de rendimiento en una base de datos o importarla desde una hoja de cálculo para crear gráficos.</p>
+</li>
+</ul>
+<h5 id="instalar-y-configurar-sysstat-en-ubuntu-2004-ubuntu-1804">Instalar y configurar SysStat en Ubuntu 20.04 | Ubuntu 18.04<a class="headerlink" href="#instalar-y-configurar-sysstat-en-ubuntu-2004-ubuntu-1804" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Paso 1:</strong></li>
+</ul>
+<p>Ejecute el siguiente comando si desea utilizar el administrador de paquetes:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt install sysstat -y</span>
+</code></pre></div>
+<ul>
+<li><strong>Paso 2:</strong></li>
+</ul>
+<p>Dado que el monitoreo SysStat está deshabilitado de manera predeterminada, debe editar el archivo de configuración en un editor de texto para habilitar el monitoreo SysStat. Entonces, habilitemos el monitoreo de SysStat y editemos el siguiente archivo y guárdelo.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo vim /etc/default/sysstat</span>
+</code></pre></div>
+<p>Luego, debe establecer ENABLED en verdadero como se muestra en el apartado anterior:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ENABLED=&quot;true&quot;</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/04/041/005.png" width="1050"/>
+  <figcaption>Habilitar sysstat</figcaption>
+</figure>
+
+<p>Ahora se puede guardar y cerrar el archivo.</p>
+<p>Para que los cambios sujan efectos se deben activar el servicio mediante los siguientes comandos.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl enable sysstat</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl start sysstat</span>
+</code></pre></div>
+<p>A partir de este momento, se pondrá en marcha la recopilación de datos según se indica en <code>/etc/cron.d/sysstat</code>.</p>
+<h5 id="ejemplos">Ejemplos<a class="headerlink" href="#ejemplos" title="Permanent link">&para;</a></h5>
+<p>Uso actual de la <strong>CPU</strong> Utilice -u con el comando asterisco para ver la CPU estática en tiempo real.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -u</span>
+</code></pre></div>
+<p>Se pueden ver los usos de la CPU en tiempo real si especifica el intervalo en tiempo real y el número de veces que se mostrarán los datos. Veamos un ejemplo: para ver los usos de la CPU en tiempo real 5 veces con la diferencia de 1 segundo.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -u 1 5</span>
+</code></pre></div>
+<p>Dado que la mayoría de las CPU son de varios núcleos, se pueden ver los datos de utilización de la CPU con más profundidad. Utilice el comando <em>-P ALL</em> para ver los detalles de utilización de cada núcleo individualmente.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -P ALL 1 3</span>
+</code></pre></div>
+<p>Ver el uso del dispositivo _ Utilice el comando <strong>iostat</strong> para encontrar la estadística del disco.</p>
+<p>iostat muestra la transferencia de datos actual por segundo, el número total de bloques leídos y escritos en el disco y un bloque promedio por segundo.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">iostat -d 1 5</span>
+</code></pre></div>
+<p>se pueden observar más detalles con los siguientes modificadores:</p>
+<p><strong>tps</strong> _ Transferencia por segundo</p>
+<p><strong>Blk_read / s</strong> _ Cantidad total de datos leídos en bloques por segundo.</p>
+<p><strong>Blk_wrtn / s</strong> _ Cantidad total de datos escritos en bloques por segundo.</p>
+<p>Blk_read _ Lectura total del bloque.</p>
+<p><strong>Blk_wrtn _</strong> Bloque total escrito.</p>
+<ul>
+<li>Utilice el siguiente comando para ver estadísticas de E/S más extendidas del disco.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">iostat -x 1 5</span>
+</code></pre></div>
+<p>El uso del comando <code>pidstat</code> con el modificador <em>-d le</em> brinda detalles de los procesos que se están ejecutando actualmente en los sistemas.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">pidstat -d</span>
+</code></pre></div>
+<p>Si se prueba <code>pidstat</code> con <em>-r</em> sirve para mostrar la utilización de recursos por procesos cada 1 segundo durante las 5 veces.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">pidstat -r 1 5</span>
+</code></pre></div>
+<p>Para Datos de utilización de la memoria se puede utilizar el comando <code>sar</code> con <em>-r</em> para ver los detalles de la utilización de la memoria actual para las 5 veces cada 1 segundo.</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -r 1 5</span>
+</code></pre></div>
+Para ver cómo ver los datos históricos con SysStat, se pueden visualizar con el comando <code>sar</code>, el cual mantiene 7 días de datos de forma predeterminada, pero es posible cambiar el número de días en el archivo <code>/etc/sysstat/sysstat</code></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">HISTORY=28</span>
+</code></pre></div>
+<p>Se pueden encontrar todos los archivos de registro en el directorio <code>/var/log/sysstat</code>. Los nombres de archivo serán sa1, sa2, etc. (1 y 2 son los datos del mes actual)</p>
+<p>Para ver el informe de utilización de memoria de los datos del 20 del mes actual, se utilizaría el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -r -f /var/log/sysstat/sa20</span>
+</code></pre></div>
+<p>El tiempo de rango se puede especificar con el comando anterior. Solo puede ver la estadística entre un tiempo determinado. Para ver estadística entre las 10:00 p.m. y las 11:00 p.m., se utilizaría el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -r -f /var/log/sysstat/sa20 -s 22:00:00 -e 23:00:00</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota:</p>
+<p>El archivo de los datos requeridos se proporciona con la opción <em>-f</em> para ver los datos históricos de sar.</p>
+</div>
+<p>Entonces, se puede usar el comando a continuación para ver los datos de utilización de la CPU de cualquier fecha con el comando <code>sar</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -u -f /var/log/sysstat/sa28</span>
+</code></pre></div>
+<p>Incluso podemos utilizar la herramienta gráfica <code>isag</code> , que previamente debemos instalar.Podemos utilizar cualquiera de los ficheros de los dias en los que hay recogidos datos.</p>
+<figure>
+  <img src="./imagenes/04/041/006.png" width="1050"/>
+  <figcaption>Ejemplo gráfica de isag</figcaption>
+</figure>
+
+<h3 id="herramientas-y-comandos-informacion-windows">Herramientas y comandos Información Windows<a class="headerlink" href="#herramientas-y-comandos-informacion-windows" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Comandos</strong></li>
+</ul>
+<h4 id="msinfo32">msinfo32<a class="headerlink" href="#msinfo32" title="Permanent link">&para;</a></h4>
+<p>El comando <code>msinfo32</code> se utiliza para ver información acerca de un equipo que esté administrando. Con este comando puede:</p>
+<ul>
+<li>Utilizar Información del sistema desde un archivo por lotes.</li>
+<li>Abrir Información del sistema y que muestre sólo las categorías especificadas.</li>
+<li>Guardar un archivo de información del sistema sin abrir la herramienta Información del sistema.</li>
+<li>Iniciar Información del sistema de un equipo remoto. (Debe tener los permisos adecuados.)</li>
+<li>Crear un acceso directo que abra Información del sistema en una configuración utilizada habitualmente.</li>
+<li>Esta utilidad se puede utilizar de forma gráfica o bien en modo texto. También se puede emplear como comando y generar un informe que puede ser de tipo texto (report) o bien un fichero que luego se puede abrir desde la aplicación msinfo32 (nfo).</li>
+<li>También pueden generarse informes que sólo incluyan las características que queramos.</li>
+</ul>
+<figure>
+  <img src="./imagenes/04/041/004.png" width="1150"/>
+  <figcaption>Prueba de `msinfo32` </figcaption>
+</figure>
+
+<p>Se puede encontrar más información de esta comando en la documentación oficial en este enlace:</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc782171(v=ws.10)?redirectedfrom=MSDN">documentación oficial msinfo32</a></li>
+</ul>
+<h5 id="sintaxis">Sintaxis<a class="headerlink" href="#sintaxis" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">msinfo32 [/pch] [/nfo ] [/report ] [/computer ] [/showcategories] [/category ] [/categories {+(+)|+all(-)}]</span>
+</code></pre></div>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731397(v=ws.10)?redirectedfrom=MSDN">Enlace Sintaxis msinfo32</a></p>
+</li>
+<li>
+<p><strong>Herramientas</strong></p>
+</li>
+</ul>
+<h4 id="sysinternals">Sysinternals<a class="headerlink" href="#sysinternals" title="Permanent link">&para;</a></h4>
+<p>El sitio web de <strong>Sysinternals</strong> lo crearon en <strong>1996 Mark Russinovich y Bryce Cogswell</strong> para alojar sus utilidades de sistema avanzadas, junto con información técnica.</p>
+<p>En <strong>julio de 2006, Microsoft adquirió Sysinternals</strong>. Tanto profesionales como desarrolladores de TI encontrarán utilidades en Sysinternals para facilitar la administración y el diagnóstico de sistemas y aplicaciones de Windows, así como la solución de problemas que pudieran surgir al respecto.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Es necesario instalar previamente. Se puede descargar esta suite de forma gratuita desde el enlace: <a href="https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite">ENLACE</a></p>
+</div>
+<p><strong>Incorpora herramientas como:</strong></p>
+<ul>
+<li>
+<p><strong>Utilidades de disco y archivos:</strong> Utilidades para ver y supervisar el acceso a los discos y archivos, así como el uso que se hace de ellos. <a href="https://docs.microsoft.com/es-es/sysinternals/downloads/file-and-disk-utilities?redirectedfrom=MSDN">ENLACE</a></p>
+</li>
+<li>
+<p><strong>Red:</strong> Herramientas de red, desde monitores de conexión a analizadores de seguridad de recursos.</p>
+</li>
+<li>
+<p><strong>Procesos y subprocesos:</strong> Utilidades para consultar de forma subyacente los procesos en ejecución y los recursos que consumen. <a href="https://docs.microsoft.com/es-es/sysinternals/downloads/process-utilities?redirectedfrom=MSDN">ENLACE</a></p>
+</li>
+<li>
+<p><strong>Utilidades de seguridad:</strong> Utilidades de administración y configuración del sistema de seguridad, con programas de rootkit y de captura de spyware. <a href="https://docs.microsoft.com/es-es/sysinternals/downloads/security-utilities?redirectedfrom=MSDN">ENLACE</a></p>
+</li>
+<li>
+<p>Información del sistema: Utilidades para consultar el uso y la configuración de los recursos del sistema. <a href="https://docs.microsoft.com/es-es/sysinternals/downloads/system-information?redirectedfrom=MSDN">ENLACE</a></p>
+</li>
+<li>
+<p><strong>Varios:</strong> Una colección de utilidades variadas que incluye un protector de pantalla, ayuda de presentación y una herramienta de depuración.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Estas utilidades simplemente se extraen del paquete y se ejecutan, no es necesario instalarlas.</p>
+</div>
+<figure>
+  <img src="./imagenes/04/041/007.png" width="1150"/>
+  <figcaption>Autorun SysInternals</figcaption>
+</figure>
+
+<h2 id="actividades-iniciales-ud4_00">Actividades Iniciales UD4_00<a class="headerlink" href="#actividades-iniciales-ud4_00" title="Permanent link">&para;</a></h2>
+<ol start="401">
+<li>Comando <code>find</code> en GNU/Linux. Escribe cada uno de los comandos en GNU/Linux necesarios para realizar las instrucciones que se describen a continuación:</li>
+</ol>
+<ul>
+<li>Encuentra en el directorio actual, todos los archivos que empiecen con la letra H.</li>
+<li>Busca en el directorio actual, todos los archivos que contengan la letra F en su nombre.</li>
+<li>Encuentra en el directorio actual, todos los archivos que empiecen por la letra h que contengan una a y que terminen con la letra s.</li>
+<li>Halla todos los archivos del sistema que contengan la extensión conf en su nombre y que hayan sido modificados en las últimas 24 horas.</li>
+<li>Obtén todos los archivos del directorio home del usuario actual y que sean de su propiedad, que contengan una x en su nombre o terminen con la letra o.</li>
+<li>Localiza todos los archivos del sistema que contengan la extensión conf en su nombre y que pertenezcan al usuario root.</li>
+<li>Encuentra todos los archivos del sistema a los que tenga permisos de escritura y que no hayan sido modificados en las últimas 24 horas.</li>
+<li>Busca todos los archivos en la carpeta home del usuario actual que sean más recientes que el archivo config.txt.</li>
+<li>Lista todos los directorios de la carpeta actual que contengan en su nombre la palabra user.</li>
+<li>Encuentra todos los ficheros del sistema con extensión tmp que no sean del usuario root.</li>
+<li>Obtén todos los archivos del sistema que tengan extensión avi o mpg, que ocupen más de 650 megas, que tenga permisos de lectura y que contengan la palabra guerra en su nombre.</li>
+<li>Halla todos los archivos temporales. La información de cada fichero será mostrada en formato largo (-utiliza la opción -exec).</li>
+<li>Encuentra y elimina todos los archivos con la extensión tmp del sistema (utiliza la opción –exec).</li>
+<li>Encuentra en el directorio actual y en todos los subdirectorios, todos los ficheros que contengan la palabra main en su nombre. Muestra el resultado en formato largo (utiliza la opción –exec).</li>
+<li>Localiza y copia al directorio Textos situado en el escritorio del usuario actual (asumimos que el directorio existe) todos los ficheros que tengan extensión txt, docx o odt (utiliza la opción –exec).</li>
+<li>Encuentra y copia al directorio Textos situado en el escritorio del usuario actual (asumimos que el directorio existe) archivos que no sean del usuario filipino y que no hayan sido modificados en los últimos cinco días (utiliza la opción –exec).</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Crea archivos que contengan los patrones que se piden en los apartados si es necesario, o situate en el directorio adecuado para encontrar archivos siguiendo dichos patrones.</p>
+</div>
+<ol start="402">
+<li>Utiliza las siguientes herramientas de Sysinternals:</li>
+</ol>
+<ul>
+<li>Probar quién tiene acceso a tu carpeta de trabajo. (utilizar <strong>Access enum</strong>).</li>
+<li>Utiliza <strong>VMMap</strong> e indica qué está mostrando.</li>
+<li>Utiliza un programa de <strong>Sysinternals</strong> que te diga quien se ha “logeado” en en tu equipo. Haz que un compañero acceda a una carpeta compartida de tu equipo y vuelve a mostrarlo ¿aparece que su usuario está accediendo?</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="033_ArranqueServicios.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 3.3- Secuencia de arranque del sistema. Demonios y servicios" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              3.3- Secuencia de arranque del sistema. Demonios y servicios
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
