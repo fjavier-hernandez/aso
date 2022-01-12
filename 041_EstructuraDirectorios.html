@@ -591,6 +591,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#actividades-de-desarrollo-ud4_01" class="md-nav__link">
+    Actividades de desarrollo UD4_01
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -806,106 +813,46 @@ permite enlazar (apuntar) a otros archivos localizados en otras particiones, e i
 </div>
 <h2 id="estructura-windows">Estructura Windows<a class="headerlink" href="#estructura-windows" title="Permanent link">&para;</a></h2>
 <p>A groso modo en las distintas versiones de Windows se puede encontrar, aunque pueden existir excepciones en las mismas:</p>
-<ul>
-<li>
-<p><strong>Carpeta de Windows</strong> ---&gt; <code>C:\Windows</code></p>
-</li>
-<li>
-<p><strong>Carpeta del sistema</strong> ---&gt; <code>C:\Windows\System32</code></p>
-</li>
-<li>
-<p><strong>Archivos de programa</strong> ---&gt; <code>C:\Program Files</code></p>
-</li>
-<li>
-<p><strong>Archivos de programa, datos comunes</strong> ---&gt; <code>C:\Program Files\Common Files</code></p>
-</li>
-<li>
-<p><strong>Datos de programas compartidos</strong> ---&gt; <code>C:\ProgramData</code></p>
-</li>
-<li>
-<p><strong>Fuentes</strong> ---&gt; <code>C:\Windows\Fonts</code></p>
-</li>
-<li>
-<p><strong>Herramientas administrativas compartidas</strong> ---&gt; <code>C:\ProgramData\Microsoft\Windows\StartMenu\Programs\Administrative Tools</code></p>
-</li>
-<li>
-<p><strong>Programas en el menú de Inicio</strong> ---&gt; <code>C:\ProgramData\Microsoft\Windows\Start Menu</code></p>
-</li>
-<li>
-<p><strong>Programas que arrancan con el inicio de Windows</strong> ---&gt; <code>C:\ProgramData\Microsoft\Windows\StartMenu\Programs\Startup</code></p>
-</li>
-<li>
-<p><strong>Carpetas compartidas (Publicas)</strong> ---&gt; <code>C:\Users\Public</code></p>
-</li>
-<li>
-<p><strong>Cache de búsquedas hechas en Windows</strong> ---&gt; <code>C:\ProgramData\Microsoft\Search\Data\Applications\Windows</code></p>
-</li>
-</ul>
+<ol>
+<li><strong>Carpeta de Windows</strong> ---&gt; <code>C:\Windows</code></li>
+<li><strong>Carpeta del sistema</strong> ---&gt; <code>C:\Windows\System32</code></li>
+<li><strong>Archivos de programa</strong> ---&gt; <code>C:\Program Files</code></li>
+<li><strong>Archivos de programa, datos comunes</strong> ---&gt; <code>C:\Program Files\Common Files</code></li>
+<li><strong>Datos de programas compartidos</strong> ---&gt; <code>C:\ProgramData</code></li>
+<li><strong>Fuentes</strong> ---&gt; <code>C:\Windows\Fonts</code></li>
+<li><strong>Herramientas administrativas compartidas</strong> ---&gt; <code>C:\ProgramData\Microsoft\Windows\StartMenu\Programs\Administrative Tools</code></li>
+<li><strong>Programas en el menú de Inicio</strong> ---&gt; <code>C:\ProgramData\Microsoft\Windows\Start Menu</code></li>
+<li><strong>Programas que arrancan con el inicio de Windows</strong> ---&gt; <code>C:\ProgramData\Microsoft\Windows\StartMenu\Programs\Startup</code></li>
+<li><strong>Carpetas compartidas (Publicas)</strong> ---&gt; <code>C:\Users\Public</code></li>
+<li><strong>Cache de búsquedas hechas en Windows</strong> ---&gt; <code>C:\ProgramData\Microsoft\Search\Data\Applications\Windows</code></li>
+</ol>
 <h3 id="carpetas-de-usuario">Carpetas de usuario<a class="headerlink" href="#carpetas-de-usuario" title="Permanent link">&para;</a></h3>
 <p>Las carpetas de los usuarios se encuentran en "<code>Users</code>" o "<code>Usuarios</code>" en el disco Raíz donde está instalado el sistema operativo contiene algunas como:</p>
-<ul>
-<li>
-<p>Escritorio</p>
-</li>
-<li>
-<p>Mi música</p>
-</li>
-<li>
-<p>Mis documentos</p>
-</li>
-<li>
-<p>Mis imágenes</p>
-</li>
-<li>
-<p>Contactos</p>
-</li>
-<li>
-<p>Favoritos</p>
-</li>
-<li>
-<p>Archivos temporales</p>
-</li>
-<li>
-<p>Archivos temporales de internet</p>
-</li>
-<li>
-<p>Cookies</p>
-</li>
-<li>
-<p>Datos de programa</p>
-</li>
-</ul>
+<ol>
+<li>Escritorio</li>
+<li>Mi música</li>
+<li>Mis documentos</li>
+<li>Mis imágenes</li>
+<li>Contactos</li>
+<li>Favoritos</li>
+<li>Archivos temporales</li>
+<li>Archivos temporales de internet</li>
+<li>Cookies</li>
+<li>Datos de programa</li>
+</ol>
 <h4 id="accesos-a-carpetas-importantes">Accesos a carpetas importantes<a class="headerlink" href="#accesos-a-carpetas-importantes" title="Permanent link">&para;</a></h4>
 <p>Hay algunas variables del sistema que se refieren a directorios, que es importante conocer, entre ellas:</p>
-<ul>
-<li>
-<p><code>%windir%</code> directorio de Windows.</p>
-</li>
-<li>
-<p><code>%os%</code> muestra el sistema operativo</p>
-</li>
-<li>
-<p><code>%homepath%</code> equivale a la carpeta del usuario en Usuarios o User</p>
-</li>
-<li>
-<p><code>%programfiles%</code> muestra archivos de programa</p>
-</li>
-<li>
-<p><code>%path%</code> muestra el path del sistema</p>
-</li>
-<li>
-<p><code>%Comspec%</code> Reinicia la consola o la abre</p>
-</li>
-<li>
-<p><code>%systemroot%</code> Igual que %windir%</p>
-</li>
-<li>
-<p><code>%allusersprofile%</code> Equivale a Allusers en Usuarios o Users</p>
-</li>
-<li>
-<p><code>%Temp%</code> o <code>%Tmp%</code> Equivale a la carpetade archivos temporales de Internet.</p>
-</li>
-</ul>
+<ol>
+<li><code>%windir%</code> directorio de Windows.</li>
+<li><code>%os%</code> muestra el sistema operativo</li>
+<li><code>%homepath%</code> equivale a la carpeta del usuario en Usuarios o User</li>
+<li><code>%programfiles%</code> muestra archivos de programa</li>
+<li><code>%path%</code> muestra el path del sistema</li>
+<li><code>%Comspec%</code> Reinicia la consola o la abre</li>
+<li><code>%systemroot%</code> Igual que %windir%</li>
+<li><code>%allusersprofile%</code> Equivale a Allusers en Usuarios o Users</li>
+<li><code>%Temp%</code> o <code>%Tmp%</code> Equivale a la carpetade archivos temporales de Internet.</li>
+</ol>
 <figure>
   <img src="./imagenes/04/041/003.png" width="1150"/>
   <figcaption>Muestra de algunas de las variables del Sistema de Windows</figcaption>
@@ -913,6 +860,7 @@ permite enlazar (apuntar) a otros archivos localizados en otras particiones, e i
 
 <h2 id="busqueda-de-informacion-del-sistema-ordenes-herramientas-graficas">Búsqueda de información del sistema. Órdenes. Herramientas gráficas.<a class="headerlink" href="#busqueda-de-informacion-del-sistema-ordenes-herramientas-graficas" title="Permanent link">&para;</a></h2>
 <h3 id="herramientas-y-comandos-informacion-linux">Herramientas y comandos Información Linux<a class="headerlink" href="#herramientas-y-comandos-informacion-linux" title="Permanent link">&para;</a></h3>
+<h4 id="comandos">Comandos<a class="headerlink" href="#comandos" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Principales comandos</strong></li>
 </ul>
@@ -971,47 +919,81 @@ permite enlazar (apuntar) a otros archivos localizados en otras particiones, e i
 </tbody>
 </table>
 <ul>
-<li><strong>Herramientas</strong></li>
+<li><strong>El directorio</strong> <code>/proc</code></li>
 </ul>
-<h4 id="sysstat">SysStat<a class="headerlink" href="#sysstat" title="Permanent link">&para;</a></h4>
+<p>Este directorio es lo conocido como <strong>Pseudofilesystem</strong>. Guarda información sobre el sistema y los procesos. Características:</p>
+<ol>
+<li>Se inicializa durante el arranque.</li>
+<li>Está implementado en memoria y no se guarda en disco.</li>
+<li>La estructura del directorio <code>/proc</code> depende de la versión del kernel.</li>
+<li>Los comandos vistos (ps, top, etc.) obtienen la información sobre los procesos de este directorio.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>En el kernel 2.6 de Linux aparece un nuevo pseudofilesystem (/sys) que reemplaza al /proc en lo que se refiere a visualización y ajuste de dispositivos</strong></p>
+</div>
+<ul>
+<li><strong>El Comando</strong> <code>uname</code></li>
+</ul>
+<p>Este comando permite averiguar información del Sistema como el nombre de la máquina, versión del sistema operativo,etc, sin necesidad de acceder al directorio /proc</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">uname [-snrvma] [--sysname] [--nodename] [--release] [--machine][--all] [--help] [--version]</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/04/041/008.png" width="950"/>
+  <figcaption>Modificadores Comando uname</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/04/041/009.png" width="950"/>
+  <figcaption>Ejemplos de ejecución del comando uname</figcaption>
+</figure>
+
+<ul>
+<li><strong>El Comando</strong> <code>dmesg</code></li>
+</ul>
+<p><strong>dmesg (diagnostic message, mensajes de diagnóstico)</strong> es una instrucción presente en los sistemas operativos Unix que lista el buffer de mensajes del núcleo. Este búfer contiene una gran variedad de mensajes importantes generados durante el arranque del sistema, como la detección del hardware, asignación de controladores (drivers) y durante la depuración de aplicaciones. Características:</p>
+<ol>
+<li>En realidad es una visualización del fichero <code>/var/log/dmesg</code>.</li>
+<li>Dmesg puede ser muy útil para solucionar problemas o simplemente tratando de obtener información sobre el hardware en un sistema.</li>
+<li>La salida del fichero es demasiado grande, por eso suele utilizarse con tuberías para filtrar la información que necesitamos, algunos ejemplos serían:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">dmesg | less</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">dmesg&gt; boot_messages</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">dmesg | grep -i usb</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">dmesg | grep -i TTY</span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">dmesg | grep -i dma</span>
+</code></pre></div>
+<p>La salida de <strong>dmesg</strong> se mantiene en el archivo de registro <code>/var/log/dmesg</code>, y puede por lo tanto también ser vista fácilmente por leer ese archivo con un editor de texto , como por ejemplo <code>vi</code> o <code>gedit</code>, o con un comando como <code>cat</code>, por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">cat /var/log/dmesg | tail -f</span>
+</code></pre></div>
+<h4 id="herramientas">Herramientas<a class="headerlink" href="#herramientas" title="Permanent link">&para;</a></h4>
+<h5 id="sysstat">SysStat<a class="headerlink" href="#sysstat" title="Permanent link">&para;</a></h5>
 <p><strong>SysStat</strong> es una colección de herramientas con la que podremos <strong>monitorizar nuestro sistem</strong>a, que además es de código abierto y gratuita. Con estas herramientas podremos depurar problemas de rendimiento en sistemas Gnu/Linux, también nos permitirá ver los datos de rendimiento del sistema en tiempo real, o analizar los datos de los archivos que estas herramientas pueden generar.</p>
-<h5 id="utilidades-sysstat">Utilidades SysStat<a class="headerlink" href="#utilidades-sysstat" title="Permanent link">&para;</a></h5>
 <ul>
-<li>
-<p><strong>iostat</strong>: Estadísticas de Cpu, entradas y salidas de dispositivos, particiones y sistema sde ficheros de red.</p>
-</li>
-<li>
-<p><strong>mpsta</strong>t informa sobre estadísticas relacionadas con el o los procesadores.</p>
-</li>
-<li>
-<p><strong>pidstat</strong> Información estadística sobre procesos linux: Entradas/salidas, Cpu, memoria,etc.</p>
-</li>
-<li>
-<p><strong>sar</strong> recoge , informa y salva información sobre actividad del Sistema como CPU, memoria, discos , interrupciones, interfaces de red, terminals, tablas del kernel, etc.</p>
-</li>
-<li>
-<p><strong>sadc</strong> Es el recolector de datos de la actividad del Sistema.</p>
-</li>
-<li>
-<p><strong>sa1</strong>: Recoge información y la guarda en el fichero diario de datos de actividad del sistema. Es el front-end que utiliza sadc para que se ejecute desde cron.</p>
-</li>
-<li>
-<p><strong>sa2</strong> escribe un informe --resumen de la actividad diaria. Es un front-end de sar que está diseñado para ser ejecutado desde cron.</p>
-</li>
-<li>
-<p><strong>sadf</strong> muestra los datos que recolecta sar en multiples formatos(CSV, XML, etc.) Esto es util para cargar los datos de rendimiento en una base de datos o importarla desde una hoja de cálculo para crear gráficos.</p>
-</li>
+<li><strong>Utilidades SysStat</strong></li>
 </ul>
-<h5 id="instalar-y-configurar-sysstat-en-ubuntu-2004-ubuntu-1804">Instalar y configurar SysStat en Ubuntu 20.04 | Ubuntu 18.04<a class="headerlink" href="#instalar-y-configurar-sysstat-en-ubuntu-2004-ubuntu-1804" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>iostat</strong>: Estadísticas de Cpu, entradas y salidas de dispositivos, particiones y sistema sde ficheros de red.</li>
+<li><strong>mpsta</strong>t informa sobre estadísticas relacionadas con el o los procesadores.</li>
+<li><strong>pidstat</strong> Información estadística sobre procesos linux: Entradas/salidas, Cpu, memoria,etc.</li>
+<li><strong>sar</strong> recoge , informa y salva información sobre actividad del Sistema como CPU, memoria, discos , interrupciones, interfaces de red, terminals, tablas del kernel, etc.</li>
+<li><strong>sadc</strong> Es el recolector de datos de la actividad del Sistema.</li>
+<li><strong>sa1</strong>: Recoge información y la guarda en el fichero diario de datos de actividad del sistema. Es el front-end que utiliza sadc para que se ejecute desde cron.</li>
+<li><strong>sa2</strong> escribe un informe --resumen de la actividad diaria. Es un front-end de sar que está diseñado para ser ejecutado desde cron.</li>
+<li><strong>sadf</strong> muestra los datos que recolecta sar en multiples formatos(CSV, XML, etc.) Esto es util para cargar los datos de rendimiento en una base de datos o importarla desde una hoja de cálculo para crear gráficos.</li>
+</ol>
 <ul>
+<li><strong>Instalar y configurar SysStat en Ubuntu 20.04 | Ubuntu 18.04</strong></li>
+</ul>
+<ol>
 <li><strong>Paso 1:</strong></li>
-</ul>
+</ol>
 <p>Ejecute el siguiente comando si desea utilizar el administrador de paquetes:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt install sysstat -y</span>
 </code></pre></div>
-<ul>
+<ol start="2">
 <li><strong>Paso 2:</strong></li>
-</ul>
+</ol>
 <p>Dado que el monitoreo SysStat está deshabilitado de manera predeterminada, debe editar el archivo de configuración en un editor de texto para habilitar el monitoreo SysStat. Entonces, habilitemos el monitoreo de SysStat y editemos el siguiente archivo y guárdelo.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo vim /etc/default/sysstat</span>
 </code></pre></div>
@@ -1029,69 +1011,292 @@ permite enlazar (apuntar) a otros archivos localizados en otras particiones, e i
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl start sysstat</span>
 </code></pre></div>
-<p>A partir de este momento, se pondrá en marcha la recopilación de datos según se indica en <code>/etc/cron.d/sysstat</code>.</p>
-<h5 id="ejemplos">Ejemplos<a class="headerlink" href="#ejemplos" title="Permanent link">&para;</a></h5>
-<p>Uso actual de la <strong>CPU</strong> Utilice -u con el comando asterisco para ver la CPU estática en tiempo real.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A partir de este momento, se pondrá en marcha la recopilación de datos según se indica en <code>/etc/cron.d/sysstat</code>. Y se pueden encontrar todos los archivos de registro en el directorio <code>/var/log/sysstat</code>. Los nombres de archivo serán sa1, sa2, etc. (1 y 2 son los datos del mes actual). </p>
+</div>
+<h6 id="ejemplos-de-busqueda-y-visualizacion-de-informacion">Ejemplos de busqueda y visualización de información<a class="headerlink" href="#ejemplos-de-busqueda-y-visualizacion-de-informacion" title="Permanent link">&para;</a></h6>
+<ol>
+<li><code>sar</code>. Para visualizar el uso actual de la <strong>CPU</strong>. Utilice -u con el comando asterisco para ver la CPU estática en tiempo real.</li>
+</ol>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -u</span>
 </code></pre></div>
-<p>Se pueden ver los usos de la CPU en tiempo real si especifica el intervalo en tiempo real y el número de veces que se mostrarán los datos. Veamos un ejemplo: para ver los usos de la CPU en tiempo real 5 veces con la diferencia de 1 segundo.</p>
+<ul>
+<li>Se pueden ver los usos de la CPU en tiempo real si especifica el intervalo en tiempo real y el número de veces que se mostrarán los datos. Veamos un ejemplo: para ver los usos de la CPU en tiempo real 5 veces con la diferencia de 1 segundo.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -u 1 5</span>
 </code></pre></div>
-<p>Dado que la mayoría de las CPU son de varios núcleos, se pueden ver los datos de utilización de la CPU con más profundidad. Utilice el comando <em>-P ALL</em> para ver los detalles de utilización de cada núcleo individualmente.</p>
+<ul>
+<li>Dado que la mayoría de las CPU son de varios núcleos, se pueden ver los datos de utilización de la CPU con más profundidad. Utilice el modificador <em>-P ALL</em> para ver los detalles de utilización de cada núcleo individualmente.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -P ALL 1 3</span>
 </code></pre></div>
-<p>Ver el uso del dispositivo _ Utilice el comando <strong>iostat</strong> para encontrar la estadística del disco.</p>
-<p>iostat muestra la transferencia de datos actual por segundo, el número total de bloques leídos y escritos en el disco y un bloque promedio por segundo.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">iostat -d 1 5</span>
-</code></pre></div>
-<p>se pueden observar más detalles con los siguientes modificadores:</p>
-<p><strong>tps</strong> _ Transferencia por segundo</p>
-<p><strong>Blk_read / s</strong> _ Cantidad total de datos leídos en bloques por segundo.</p>
-<p><strong>Blk_wrtn / s</strong> _ Cantidad total de datos escritos en bloques por segundo.</p>
-<p>Blk_read _ Lectura total del bloque.</p>
-<p><strong>Blk_wrtn _</strong> Bloque total escrito.</p>
 <ul>
-<li>Utilice el siguiente comando para ver estadísticas de E/S más extendidas del disco.</li>
+<li>Para ver cómo ver los datos históricos con SysStat, se pueden visualizar con el comando <code>sar</code>, el cual mantiene 7 días de datos de forma predeterminada, pero es posible cambiar el número de días en el archivo <code>/etc/sysstat/sysstat</code></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">iostat -x 1 5</span>
-</code></pre></div>
-<p>El uso del comando <code>pidstat</code> con el modificador <em>-d le</em> brinda detalles de los procesos que se están ejecutando actualmente en los sistemas.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">pidstat -d</span>
-</code></pre></div>
-<p>Si se prueba <code>pidstat</code> con <em>-r</em> sirve para mostrar la utilización de recursos por procesos cada 1 segundo durante las 5 veces.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">pidstat -r 1 5</span>
-</code></pre></div>
-<p>Para Datos de utilización de la memoria se puede utilizar el comando <code>sar</code> con <em>-r</em> para ver los detalles de la utilización de la memoria actual para las 5 veces cada 1 segundo.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -r 1 5</span>
-</code></pre></div>
-Para ver cómo ver los datos históricos con SysStat, se pueden visualizar con el comando <code>sar</code>, el cual mantiene 7 días de datos de forma predeterminada, pero es posible cambiar el número de días en el archivo <code>/etc/sysstat/sysstat</code></p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">HISTORY=28</span>
 </code></pre></div>
-<p>Se pueden encontrar todos los archivos de registro en el directorio <code>/var/log/sysstat</code>. Los nombres de archivo serán sa1, sa2, etc. (1 y 2 son los datos del mes actual)</p>
-<p>Para ver el informe de utilización de memoria de los datos del 20 del mes actual, se utilizaría el siguiente comando:</p>
+<ul>
+<li>Para ver el informe de utilización de memoria de los datos del 20 del mes actual, se utilizaría el siguiente comando:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -r -f /var/log/sysstat/sa20</span>
 </code></pre></div>
-<p>El tiempo de rango se puede especificar con el comando anterior. Solo puede ver la estadística entre un tiempo determinado. Para ver estadística entre las 10:00 p.m. y las 11:00 p.m., se utilizaría el siguiente comando:</p>
+<ul>
+<li>El tiempo de rango se puede especificar con el comando anterior. Solo puede ver la estadística entre un tiempo determinado. Para ver estadística entre las 10:00 p.m. y las 11:00 p.m., se utilizaría el siguiente comando:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -r -f /var/log/sysstat/sa20 -s 22:00:00 -e 23:00:00</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Nota:</p>
 <p>El archivo de los datos requeridos se proporciona con la opción <em>-f</em> para ver los datos históricos de sar.</p>
 </div>
-<p>Entonces, se puede usar el comando a continuación para ver los datos de utilización de la CPU de cualquier fecha con el comando <code>sar</code>:</p>
+<ul>
+<li>Entonces, se puede usar el comando a continuación para ver los datos de utilización de la CPU de cualquier fecha con el comando <code>sar</code>:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -u -f /var/log/sysstat/sa28</span>
 </code></pre></div>
-<p>Incluso podemos utilizar la herramienta gráfica <code>isag</code> , que previamente debemos instalar.Podemos utilizar cualquiera de los ficheros de los dias en los que hay recogidos datos.</p>
+<ol start="2">
+<li><code>iostat</code> -&gt; Ver el uso del dispositivo _ Utilice el comando <strong>iostat</strong> para encontrar la estadística del disco. iostat muestra la transferencia de datos actual por segundo, el número total de bloques leídos y escritos en el disco y un bloque promedio por segundo.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">iostat -d 1 5</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Se pueden observar más detalles con los siguientes modificadores:</p>
+<ol>
+<li><strong>tps</strong> -&gt; Transferencia por segundo</li>
+<li><strong>Blk_read / s</strong> -&gt; Cantidad total de datos leídos en bloques por segundo.</li>
+<li><strong>Blk_wrtn / s</strong> -&gt; Cantidad total de datos escritos en bloques por segundo.</li>
+<li><strong>Blk_read</strong> -&gt; Lectura total del bloque.</li>
+<li><strong>Blk_wrtn _</strong> -&gt; Bloque total escrito.</li>
+</ol>
+</li>
+<li>
+<p>Utilice el siguiente comando para ver estadísticas de <strong>E/S</strong> más extendidas del disco.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">iostat -x 1 5</span>
+</code></pre></div>
+<ol start="3">
+<li><code>pidstat</code>. El uso del comando <code>pidstat</code> con el modificador <em>-d le</em> brinda detalles de los procesos que se están ejecutando actualmente en los sistemas.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">pidstat -d</span>
+</code></pre></div>
+<ul>
+<li>Si se prueba <code>pidstat</code> con <em>-r</em> sirve para mostrar la utilización de recursos por procesos cada 1 segundo durante las 5 veces.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">pidstat -r 1 5</span>
+</code></pre></div>
+<ul>
+<li>Para Datos de utilización de la memoria se puede utilizar el comando <code>sar</code> con <em>-r</em> para ver los detalles de la utilización de la memoria actual para las 5 veces cada 1 segundo.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sar -r 1 5</span>
+</code></pre></div>
+<ol start="4">
+<li><code>isag</code>. Herramienta gráfica que previamente debemos instalar.Podemos utilizar cualquiera de los ficheros de los dias en los que hay recogidos datos.</li>
+</ol>
 <figure>
   <img src="./imagenes/04/041/006.png" width="1050"/>
   <figcaption>Ejemplo gráfica de isag</figcaption>
 </figure>
 
-<h3 id="herramientas-y-comandos-informacion-windows">Herramientas y comandos Información Windows<a class="headerlink" href="#herramientas-y-comandos-informacion-windows" title="Permanent link">&para;</a></h3>
+<h5 id="syslog">Syslog<a class="headerlink" href="#syslog" title="Permanent link">&para;</a></h5>
+<p><strong>Syslog</strong> es un <strong>sistema de logs</strong> que se encarga principalmente de la administración de logs, los cuales son generados por eventos del sistema, sus
+programas o por el Kernel. Características:</p>
+<ol>
+<li>El envió de mensajes <strong>Syslog</strong> fue usado inicialmente en sistemas basados en UNIX para registrar eventos de aplicaciones, sistema operativo o red.</li>
+<li>Es común ahora encontrar equipos de redes que pueden generar y enviar mensajes Syslog a equipos configurados con un demonio que los reciba y existen incluso implementaciones para sistemas Windows.</li>
+<li>En la mayoría de distribuciones linux, se puede encontrar el demonio <strong>syslogd</strong> que se encarga de leer y enviar mensajes a la consola del sistema, ficheros de log y a otras máquinas y/o otros usuarios. Para esto se guían por un fichero de configuración que indican que mensajes y a dónde enviarlos. Este es <code>syslog.conf</code>.</li>
+</ol>
+<h6 id="syslogconf">Syslog.conf<a class="headerlink" href="#syslogconf" title="Permanent link">&para;</a></h6>
+<p>Este archivo de configuración de logs contiene líneas con dos campos, separados por tabuladores o espacios:</p>
+<ol>
+<li><strong>Selector:</strong> Especifica que mensajes tratar teniendo en cuenta el tipo de mensaje y la prioridad.</li>
+<li><strong>Acción:</strong> Qué se va a hacer con ese mensaje.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Una regla puede ser dividida en varias líneas si todas las líneas excepto la última terminan con un carácter de backslash <code>\</code>.</p>
+</div>
 <ul>
-<li><strong>Comandos</strong></li>
+<li><strong>Selectores:</strong> Los selectores se escriben como un <strong>nombre de función, un punto y un nivel</strong>, sin ningún espacio entre ellos. Estos no son sensibles a las mayúsculas/minúsculas.</li>
 </ul>
-<h4 id="msinfo32">msinfo32<a class="headerlink" href="#msinfo32" title="Permanent link">&para;</a></h4>
+<ol>
+<li>La función puede ser una de estas: <strong>auth, authpriv, cron, daemon, kern, lpr, mail, mark, news, syslog, user, uucp y local0 hasta local7</strong>.</li>
+<li>El nivel indica la gravedad del mensaje a tratar y puede ser: <strong>emerg, alert, crit, err,warning, notice and debug</strong></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando syslogd recibe un mensaje que encaja con la función y es del nivel de gravedad indicado, realiza la función que se indica en el campo de acción.</p>
+</div>
+<ul>
+<li><strong>Acciones</strong>:</li>
+</ul>
+<ol>
+<li>Un <strong>nombre de fichero</strong> con dirección absoluta. En cuyo caso los mensajes irán a este fichero.</li>
+<li>Una <strong>tubería con nombre</strong> .Su nombre comenzará por el carácter “<code>|</code>”.Este es un tipo de fichero especial, que puede ser tratado por determinados programas, por ejemplo, para depuración.</li>
+<li>Un <strong>nombre de equipo</strong>. Para esto ponemos el nombre del equipo comenzando por “@”.En este caso, el mensaje se enviará al syslog del equipo que se nombró.</li>
+<li>Una <strong>lista de usuarios</strong> separados por comas. Se envía el mensaje a estos usuarios.</li>
+<li>Un <strong>asterisco</strong>. En este caso , se envía el mensaje a todos los usuarios que tengan una sesión abierta en el sistema.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<ul>
+<li>Se pueden poner varias acciones separadas por “<code>;</code>”.</li>
+<li>También pueden ponerse varias funciones para un mismo nivel, separándolos con “<code>,</code>”. </li>
+<li>Se puede utilizar un “<code>*</code>” para indicar todas las funciones o todos los niveles. </li>
+<li>Si queremos que sólo sean los de ese nivel en concreto, debemos utilizar un “<code>=</code>”.</li>
+<li>También podemos negar niveles utilizando el símbolo “<code>!</code>” delante del número de nivel.</li>
+<li>Si queremos que ciertos mensajes no se envíen, puede utilizarse el nivel “<code>none</code>”.</li>
+<li>Si se indica la función especial “<code>mark</code>”, se recibe un mensaje de prioridad “<code>info</code>” cada 20 minutos.</li>
+<li>Las líneas que comienzan por “<code>#</code>” se ignoran, son comentarios. También las líneas en blanco.</li>
+</ul>
+</div>
+<ul>
+<li>Ejemplo <strong>Syslog.conf</strong> Ubuntu:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">A configuration file might appear as follows</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span>     <span class="c1"># Log all kernel messages, authentication messages of</span>
+<span class="linenos" data-linenos=" 4 "></span>     <span class="c1"># level notice or higher and anything of level err or</span>
+<span class="linenos" data-linenos=" 5 "></span>     <span class="c1"># higher to the console.</span>
+<span class="linenos" data-linenos=" 6 "></span>     <span class="c1"># Don&#39;t log private authentication messages!</span>
+<span class="linenos" data-linenos=" 7 "></span>     <span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.err;kern.*;auth.notice;authpriv.none  /dev/console</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span>     <span class="l l-Scalar l-Scalar-Plain"># Log anything (except mail) of level info or higher.</span>
+<span class="linenos" data-linenos="10 "></span>     <span class="l l-Scalar l-Scalar-Plain"># Don&#39;t log private authentication messages!</span>
+<span class="linenos" data-linenos="11 "></span>     <span class="l l-Scalar l-Scalar-Plain">*.info;mail.none;authpriv.none          /var/log/messages</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span>     <span class="l l-Scalar l-Scalar-Plain"># The authpriv file has restricted access.</span>
+<span class="linenos" data-linenos="14 "></span>     <span class="l l-Scalar l-Scalar-Plain">authpriv.*                                              /var/log/secure</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span>     <span class="l l-Scalar l-Scalar-Plain"># Log all the mail messages in one place.</span>
+<span class="linenos" data-linenos="17 "></span>     <span class="l l-Scalar l-Scalar-Plain">mail.*                                                  /var/log/maillog</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span>     <span class="l l-Scalar l-Scalar-Plain"># Everybody gets emergency messages, plus log them on another</span>
+<span class="linenos" data-linenos="20 "></span>     <span class="l l-Scalar l-Scalar-Plain"># machine.</span>
+<span class="linenos" data-linenos="21 "></span>     <span class="l l-Scalar l-Scalar-Plain">*.emerg                                                 *</span>
+<span class="linenos" data-linenos="22 "></span>     <span class="l l-Scalar l-Scalar-Plain">*.emerg                                                 @arpa.berkeley.edu</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span>     <span class="l l-Scalar l-Scalar-Plain"># Root and Eric get alert and higher messages.</span>
+<span class="linenos" data-linenos="25 "></span>     <span class="l l-Scalar l-Scalar-Plain">*.alert                                                 root,eric</span>
+<span class="linenos" data-linenos="26 "></span>
+<span class="linenos" data-linenos="27 "></span>     <span class="l l-Scalar l-Scalar-Plain"># Save mail and news errors of level err and higher in a</span>
+<span class="linenos" data-linenos="28 "></span>     <span class="l l-Scalar l-Scalar-Plain"># special file.</span>
+<span class="linenos" data-linenos="29 "></span>     <span class="l l-Scalar l-Scalar-Plain">uucp,news.crit                                          /var/log/spoolerr</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Documentación syslog.conf</p>
+<p><a href="http://manpages.ubuntu.com/manpages/bionic/man5/syslog.conf.5.html">syslog manpages ubuntu</a></p>
+</div>
+<h6 id="otros-ficheros-de-log">Otros ficheros de log<a class="headerlink" href="#otros-ficheros-de-log" title="Permanent link">&para;</a></h6>
+<p>Algunos de los ficheros estándares en Linux son:</p>
+<ol>
+<li><code>/var/log/syslog</code> y <code>/var/log/messages</code> -&gt; Guardan casi toda la información de log sólo niveles info y superiores.</li>
+<li><code>/var/log/auth.log</code> -&gt; Información de autenticación</li>
+</ol>
+<ul>
+<li>Existen aplicaciones que no utilizan syslog y guardan sus logs en ficheros específicos como <code>/var/log/XFree86.0.log</code> para el sistema de <strong>Xwindows</strong>, de este tipo también se destacan los siguientes:</li>
+</ul>
+<ol>
+<li>
+<p><code>/var/log/wtmp</code> -&gt; Guarda información sobre hora, fecha y terminal de login de los usuarios que se han conectado o están conectados al sistema. Características:</p>
+<ol>
+<li>Es un fichero binario</li>
+<li>Se lee mediante el comando</li>
+</ol>
+</li>
+<li>
+<p><code>/var/log/btmp</code> -&gt; Similar a guarda información sobre los logins fallados. Características:</p>
+<ol>
+<li>Se lee mediante el comando <code>lastb</code>.</li>
+</ol>
+</li>
+<li>
+<p><code>/var/run/utmp</code> -&gt; Guarda información sobre hora, fecha y terminal de login de los usuarios conectados actualmente al sistema</p>
+<ol>
+<li>Es un fichero binario</li>
+<li>Lo leen los comandos <code>users</code> y <code>finger</code>.</li>
+</ol>
+</li>
+<li>
+<p><code>/var/log/lastlog</code> -&gt; Guarda la hora y fecha del login más reciente para cada usuario del sistema</p>
+<ol>
+<li>Es un fichero binario</li>
+<li>Se lee con el comando</li>
+</ol>
+</li>
+<li>
+<p><code>/var/log/faillog</code> -&gt; Guarda información sobre los fallos de acceso</p>
+<ol>
+<li>Se lee con el comando</li>
+<li>Este comando también permite especificar límites de fallos antes de inhabilitar la cuenta</li>
+</ol>
+</li>
+<li>
+<p><code>/var/log/dmesg</code> -&gt; Información escrita por el kernel en el arranque del sistema</p>
+<ol>
+<li>El kernel escribe sus mensajes en un buffer circular.</li>
+<li>El contenido de este buffer puede verse con el comando <code>dmesg</code> como se ha visto anteriormente.</li>
+</ol>
+</li>
+</ol>
+<h6 id="rotacion-de-ficheros-de-log">Rotación de ficheros de log<a class="headerlink" href="#rotacion-de-ficheros-de-log" title="Permanent link">&para;</a></h6>
+<p>Los ficheros de <strong>log</strong> deben sanearse, porque crecen desmedidamente. Interesa guardarlos en ficheros comprimidos cada cierto tiempo y crear uno nuevo. </p>
+<p>Cuando un paquete individual (como httpd, bacula, vsftpd, yum, etc.) se instala, éste añade en el directorio <code>/etc/logrotate.d/</code> su fichero de configuración logrotate encargado de la gestión de los logs. </p>
+<p><strong>Para aquellos logs que no tengan este directorio</strong>, se puede usar la utilidad logrotate incluyendola en el cron.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>cron</strong> es un administrador regular de procesos en segundo plano (demonio) que ejecuta procesos o guiones a intervalos regulares (por ejemplo, cada minuto, día, semana o mes). Los procesos que deben ejecutarse y la hora a la que deben hacerlo se especifican en el archivo crontab. 
+El nombre cron proviene del griego <em>chronos</em> (χρόνος) que significa "tiempo".</p>
+</div>
+<ul>
+<li>La utilidad logrotate tiene un fichero de configuración, por ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># see “man logrotate” for details</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># rotate log files weekly</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">weekly</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain"># keep 4 weeks worth of backlogs</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="l l-Scalar l-Scalar-Plain">rotate 4</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="l l-Scalar l-Scalar-Plain"># send errors to root</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">errors root</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="l l-Scalar l-Scalar-Plain"># create new (empty) log files after rotating old ones</span>
+<span class="linenos" data-linenos="12 "></span><span class="l l-Scalar l-Scalar-Plain">create</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="l l-Scalar l-Scalar-Plain"># uncomment this if you want your log files compressed</span>
+<span class="linenos" data-linenos="15 "></span><span class="l l-Scalar l-Scalar-Plain">#compress</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="l l-Scalar l-Scalar-Plain"># RPM packages drop log rotation information into this directory</span>
+<span class="linenos" data-linenos="18 "></span><span class="l l-Scalar l-Scalar-Plain">include /etc/logrotate.d</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="l l-Scalar l-Scalar-Plain"># no packages own wtmp or btmp -- we’ll rotate them here</span>
+<span class="linenos" data-linenos="21 "></span><span class="l l-Scalar l-Scalar-Plain">/var/log/wtmp {</span>
+<span class="linenos" data-linenos="22 "></span><span class="l l-Scalar l-Scalar-Plain">monthly</span>
+<span class="linenos" data-linenos="23 "></span><span class="l l-Scalar l-Scalar-Plain">create 0664 root utmp</span>
+<span class="linenos" data-linenos="24 "></span><span class="l l-Scalar l-Scalar-Plain">rotate 1</span>
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span><span class="l l-Scalar l-Scalar-Plain">/var/log/btmp {</span>
+<span class="linenos" data-linenos="29 "></span>   <span class="l l-Scalar l-Scalar-Plain">missingok</span>
+<span class="linenos" data-linenos="30 "></span>   <span class="l l-Scalar l-Scalar-Plain">monthly</span>
+<span class="linenos" data-linenos="31 "></span>   <span class="l l-Scalar l-Scalar-Plain">create 0664 root utmp</span>
+<span class="linenos" data-linenos="32 "></span>   <span class="l l-Scalar l-Scalar-Plain">rotate 1</span>
+<span class="linenos" data-linenos="33 "></span>
+<span class="linenos" data-linenos="34 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="linenos" data-linenos="35 "></span>
+<span class="linenos" data-linenos="36 "></span><span class="l l-Scalar l-Scalar-Plain"># system-specific logs may be configured here</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Este fichero rige los rotados de logs, en este caso se haran cada semana ( weekly ), guardaran los logs antiguos 4 semanas y creará unos nuevos cada vez que lo rote. Además existe la posibilidad de especificar el comportamiento específico de algunos ficheros determinados en este caso btmp y wtmp.</p>
+</div>
+<h3 id="herramientas-y-comandos-informacion-windows">Herramientas y comandos Información Windows<a class="headerlink" href="#herramientas-y-comandos-informacion-windows" title="Permanent link">&para;</a></h3>
+<h4 id="comandos_1">Comandos<a class="headerlink" href="#comandos_1" title="Permanent link">&para;</a></h4>
+<h5 id="msinfo32">msinfo32<a class="headerlink" href="#msinfo32" title="Permanent link">&para;</a></h5>
 <p>El comando <code>msinfo32</code> se utiliza para ver información acerca de un equipo que esté administrando. Con este comando puede:</p>
 <ul>
 <li>Utilizar Información del sistema desde un archivo por lotes.</li>
@@ -1107,22 +1312,84 @@ Para ver cómo ver los datos históricos con SysStat, se pueden visualizar con e
   <figcaption>Prueba de `msinfo32` </figcaption>
 </figure>
 
-<p>Se puede encontrar más información de esta comando en la documentación oficial en este enlace:</p>
+<div class="admonition tip">
+<p class="admonition-title">Documentación Oficial</p>
+<p>Se puede encontrar más información de esta comando en la documentación oficial en este enlace: <a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc782171(v=ws.10)?redirectedfrom=MSDN">documentación oficial msinfo32</a></p>
+</div>
 <ul>
-<li><a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc782171(v=ws.10)?redirectedfrom=MSDN">documentación oficial msinfo32</a></li>
+<li><strong>Sintaxis</strong></li>
 </ul>
-<h5 id="sintaxis">Sintaxis<a class="headerlink" href="#sintaxis" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">msinfo32 [/pch] [/nfo ] [/report ] [/computer ] [/showcategories] [/category ] [/categories {+(+)|+all(-)}]</span>
 </code></pre></div>
-<ul>
-<li>
+<div class="admonition tip">
+<p class="admonition-title">Documentación Sintaxis</p>
 <p><a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731397(v=ws.10)?redirectedfrom=MSDN">Enlace Sintaxis msinfo32</a></p>
-</li>
-<li>
-<p><strong>Herramientas</strong></p>
-</li>
+</div>
+<h5 id="comandos-powershell">Comandos PowerShell<a class="headerlink" href="#comandos-powershell" title="Permanent link">&para;</a></h5>
+<h6 id="cimcmdlets">CimCmdlets<a class="headerlink" href="#cimcmdlets" title="Permanent link">&para;</a></h6>
+<p>Los cmdlets del módulo CimCmdlets son los más importantes para tareas de administración generales del sistema. Todas las opciones de configuración críticas del subsistema se exponen a través de WMI. Donde el cmdlet más utilizado es: <code>Get-CimInstance</code></p>
+<ul>
+<li>Ejemplos</li>
 </ul>
-<h4 id="sysinternals">Sysinternals<a class="headerlink" href="#sysinternals" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Enumerar la configuración del escritorio</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-CimInstance -ClassName Win32_Desktop</span>
+</code></pre></div>
+2. Enumerar información del BIOS</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-CimInstance -ClassName Win32_BIOS</span>
+</code></pre></div>
+<ol start="3">
+<li>Enumerar información del procesador</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-CimInstance -ClassName Win32_Processor | Select-Object -ExcludeProperty &quot;CIM*&quot;</span>
+</code></pre></div>
+<ol start="4">
+<li>Enumerar el modelo y el fabricante del equipo</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-CimInstance -ClassName Win32_ComputerSystem</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Documentación Ejemplos</p>
+<p><a href="https://docs.microsoft.com/es-es/powershell/scripting/samples/collecting-information-about-computers?view=powershell-7.2">Enlace Ejemplos Get-CimInstance</a></p>
+</div>
+<h6 id="recopilacion-de-informacion">Recopilación de información.<a class="headerlink" href="#recopilacion-de-informacion" title="Permanent link">&para;</a></h6>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Get-ComputerInfo</code></td>
+<td>obtener información diversa sobre los objetos de la cuenta de la máquina</td>
+</tr>
+<tr>
+<td><code>Get-EventLog</code></td>
+<td>Obtiene los eventos del visor de eventos de Windows</td>
+</tr>
+<tr>
+<td><code>Get-AppXPackage</code></td>
+<td>Resuelve inconvenientes con las aplicaciones integradas</td>
+</tr>
+<tr>
+<td><code>Get-Process</code></td>
+<td>Información sobre los procesos en el sistema</td>
+</tr>
+<tr>
+<td><code>Get-LocalUser</code></td>
+<td>Obtiene información de las cuentas de usuarios locales</td>
+</tr>
+<tr>
+<td><code>Get-MpComputerStatus</code></td>
+<td>permite mostrar el estado actual de Windows Defender</td>
+</tr>
+</tbody>
+</table>
+<h4 id="herramientas_1">Herramientas<a class="headerlink" href="#herramientas_1" title="Permanent link">&para;</a></h4>
+<h5 id="sysinternals">Sysinternals<a class="headerlink" href="#sysinternals" title="Permanent link">&para;</a></h5>
 <p>El sitio web de <strong>Sysinternals</strong> lo crearon en <strong>1996 Mark Russinovich y Bryce Cogswell</strong> para alojar sus utilidades de sistema avanzadas, junto con información técnica.</p>
 <p>En <strong>julio de 2006, Microsoft adquirió Sysinternals</strong>. Tanto profesionales como desarrolladores de TI encontrarán utilidades en Sysinternals para facilitar la administración y el diagnóstico de sistemas y aplicaciones de Windows, así como la solución de problemas que pudieran surgir al respecto.</p>
 <div class="admonition note">
@@ -1159,6 +1426,20 @@ Para ver cómo ver los datos históricos con SysStat, se pueden visualizar con e
   <figcaption>Autorun SysInternals</figcaption>
 </figure>
 
+<h5 id="monitor-de-recursos-de-windows-10">Monitor de recursos de Windows 10<a class="headerlink" href="#monitor-de-recursos-de-windows-10" title="Permanent link">&para;</a></h5>
+<p>El monitor de recursos de Windows 10 es una de las muchas herramientas integradas del sistema operativo de Microsoft que son bastante desconocidas por los usuarios pero que, bajo determinadas circunstancias, pueden sernos de mucha utilidad.</p>
+<p>El primer paso es, obviamente, acceder a esta herramienta. Para ello, simplemente pulsa sobre el botón de Inicio y escribe «Monitor de recursos» (no confundir con monitor de rendimiento).</p>
+<figure>
+  <img src="./imagenes/04/041/010.png" width="850"/>
+  <figcaption>Acceso Monitor de Recursos</figcaption>
+</figure>
+
+<p>Al abrir la herramienta aparece, inicialmente, una ventana que nos muestra información general sobre la CPU, el disco, la red y la memoria RAM. A la derecha tenemos unas gráficas que nos muestran estadísticas de utilización de estos cuatro parámetros en el último minuto.</p>
+<figure>
+  <img src="./imagenes/04/041/011.png" width="850"/>
+  <figcaption>Pestañas Monitor de Recursos</figcaption>
+</figure>
+
 <h2 id="actividades-iniciales-ud4_00">Actividades Iniciales UD4_00<a class="headerlink" href="#actividades-iniciales-ud4_00" title="Permanent link">&para;</a></h2>
 <ol start="401">
 <li>Comando <code>find</code> en GNU/Linux. Escribe cada uno de los comandos en GNU/Linux necesarios para realizar las instrucciones que se describen a continuación:</li>
@@ -1193,6 +1474,19 @@ Para ver cómo ver los datos históricos con SysStat, se pueden visualizar con e
 <li>Utiliza <strong>VMMap</strong> e indica qué está mostrando.</li>
 <li>Utiliza un programa de <strong>Sysinternals</strong> que te diga quien se ha “logeado” en en tu equipo. Haz que un compañero acceda a una carpeta compartida de tu equipo y vuelve a mostrarlo ¿aparece que su usuario está accediendo?</li>
 </ul>
+<h2 id="actividades-de-desarrollo-ud4_01">Actividades de desarrollo UD4_01<a class="headerlink" href="#actividades-de-desarrollo-ud4_01" title="Permanent link">&para;</a></h2>
+<ol start="403">
+<li>
+<p>A medida que pasa el tiempo, los archivos de log (registro de errores y eventos) aumentan su tamaño considerablemente, con lo cual es recomendable implementar su rotación. Los servidores Web son de los más utilizados en Internet. Instala <code>logrotate</code> y configuraa la rotación de logs de un servidor web (Apache o Nginx).</p>
+</li>
+<li>
+<p>(POWERSHELL)Realiza un inventario de tu quipo mediante llamadas CIM (<code>Get-CimInstance</code>) y convierte la información a formato JSON.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p><strong>JavaScript Object Notation (JSON)</strong> es un formato basado en texto estándar para representar datos estructurados en la sintaxis de objetos de JavaScript.</p>
+</div>
                 
               
               
