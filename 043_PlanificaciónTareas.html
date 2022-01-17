@@ -758,10 +758,10 @@
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">SHELL=/bin/bash</span> 
 <span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">PATH=/sbin:/bin:/usr/sbin:/usr/bin</span> 
 <span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain"># run-parts</span>  
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">01 \* \* \* \* root run-parts /etc/cron.hourly</span> 
-<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">02 4 \* \* \* root run-parts /etc/cron.daily</span> 
-<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">22 4 \* \* 0 root run-parts /etc/cron.weekly</span> 
-<span class="linenos" data-linenos="7 "></span><span class="l l-Scalar l-Scalar-Plain">42 4 1 \* \* root run-parts /etc/cron.monthly</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">01 * * * * root run-parts /etc/cron.hourly</span> 
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">02 4 * * * root run-parts /etc/cron.daily</span> 
+<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">22 4 * * 0 root run-parts /etc/cron.weekly</span> 
+<span class="linenos" data-linenos="7 "></span><span class="l l-Scalar l-Scalar-Plain">42 4 1 * * root run-parts /etc/cron.monthly</span>
 </code></pre></div>
 <p>En donde:</p>
 <ul>
