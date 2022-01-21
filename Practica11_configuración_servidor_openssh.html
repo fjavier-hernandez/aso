@@ -1,0 +1,870 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica11_configuracio%CC%81n_servidor_openssh.html">
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>Práctica 11 - Configuración de un servicio de acceso remoto mediante OpenSSH - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-11-configuracion-de-un-servicio-de-acceso-remoto-mediante-openssh" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Práctica 11 - Configuración de un servicio de acceso remoto mediante OpenSSH
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- Tools: Scripting y Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- Tools: Scripting y Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- Tools: Scripting y Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="011_ShellScripting.html" class="md-nav__link">
+        1.1- ShellScripting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="012_PowerShell.html" class="md-nav__link">
+        1.2- PowerShell
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="013_Docker.html" class="md-nav__link">
+        1.3- Docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- Administración de servicios de directorio
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- Administración de servicios de directorio" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- Administración de servicios de directorio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="021_Introduccion_SD.html" class="md-nav__link">
+        2.1- Introducción de servicios de directorio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="022_LDAP.html" class="md-nav__link">
+        2.2- LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="023_ActiveDirectory.html" class="md-nav__link">
+        2.3- Active Directory
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        3.- Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          3.- Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="031_Planificador.html" class="md-nav__link">
+        3.1- Planificación y sincronización de procesos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="032_GestionProcesos.html" class="md-nav__link">
+        3.2- Gestión de los procesos del sistema
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="033_ArranqueServicios.html" class="md-nav__link">
+        3.3- Secuencia de arranque del sistema. Demonios y servicios
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        4.- Información del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4.- Información del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Información del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="041_EstructuraDirectorios.html" class="md-nav__link">
+        4.1- Estructura de directorios
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="042_ArchivosVirtualSWinstaladoRendimiento.html" class="md-nav__link">
+        4.2- VFS, Sw Instalado y Gestión Rendimiento
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="043_Planificacio%CC%81nTareas.html" class="md-nav__link">
+        4.3- Planificación de Tareas
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        5.- Servicios de acceso y administración remota
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="5.- Servicios de acceso y administración remota" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          5.- Servicios de acceso y administración remota
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="051_AccesoRemotoLinux.html" class="md-nav__link">
+        5.1- Acceso Remoto en Linux
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica-11-configuracion-de-un-servicio-de-acceso-remoto-mediante-openssh">Práctica 11 - Configuración de un servicio de acceso remoto mediante OpenSSH<a class="headerlink" href="#practica-11-configuracion-de-un-servicio-de-acceso-remoto-mediante-openssh" title="Permanent link">&para;</a></h1>
+<h2 id="instalacion-del-servicio">Instalación del servicio<a class="headerlink" href="#instalacion-del-servicio" title="Permanent link">&para;</a></h2>
+<p>Llevaremos a cabo la instalación del servicio mediante el gestor de paquetes del sistema operativo.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$ apt install openssh-server</span>
+</code></pre></div>
+<p>Una vez instalado, sin necesidad de configurar nada, ya es posible acceder vía <strong>ssh</strong> utilizando un cliente <strong>GNU/ linux</strong>. El comando más común para llevar a cabo esta acción es:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$ ssh usuario @ip_de_la_maquina</span>
+</code></pre></div>
+<p>A continuación nos pedirá la contraseña del usuario entraremos en el sistema.</p>
+<p>Para  gestionar el  demonio del <strong>sshd</strong>  utilizaremos <code>systemctl</code>  o su correspondiente <code>service</code></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$ systemctl [start|stop|restart] ssh</span> 
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">$ service ssh [start|stop|restart]</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Deberás tener en cuenta que será necesario <strong>abrir el puerto</strong> 22 en el firewall** (si existe) para que nos permita acceder a la máquina destino</p>
+</div>
+<h2 id="autenticacion-del-servidor">Autenticación del servidor<a class="headerlink" href="#autenticacion-del-servidor" title="Permanent link">&para;</a></h2>
+<p>La primera vez que nos conectemos a un servidor tardará un poco más ya que nos pedirá confirmación <strong>(yes / no)</strong> para aceptar la conexión remota. De esta forma, en nuestra máquina cliente <strong>quedará registrada</strong> la clave pública del servidor y su <strong>dirección de red (IP)</strong>  con el fin de que en las próximas conexiones podamos asegurar la identidad del servidor al que nos estamos conectando y evitar posibles ataques “<strong>man in the middle”</strong></p>
+<figure>
+  <img src="./imagenes/05/practica11/001.png" width="950"/>
+  <figcaption>Ejemplo Autentificación</figcaption>
+</figure>
+
+<p>Una vez conectados, <strong>podremos trabajar</strong> en la <strong>máquina remota</strong> como si estuviéramos en la nuestra. Observa el <em>prompt</em> del sistema y verás cómo ha cambiado: ahora es el de la <strong>máquina remota</strong>. Todos los <strong>comandos</strong>, <strong>programas</strong> y <strong><em>scripts</em></strong> que lancemos después se ejecutarán en la máquina a la que nos hayamos conectado, utilizando los recursos del host remoto (CPU, memoria, disco, etc.).</p>
+<h3 id="actividad-1">Actividad 1<a class="headerlink" href="#actividad-1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Instala el servicio <strong>openssh</strong> en una máquina virtual con Ubuntu Server 20.04 y haz una conexión mediante la <strong>autenticación usuario/password</strong>. Qué puerto has tenido que abrir en el firewall?</li>
+<li>¿Para que sirve el "<strong>key fingerprint</strong>" Que aparece en la captura?</li>
+<li>¿Qué se guarda en el archivo /home/xxxx/.ssh/known_hosts del cliente?</li>
+<li>¿Donde podemos encontrar el <strong>archivo principal</strong> de configuración del demonio <strong>sshd</strong> (sshd_config)? Puedes consultar la documentación oficial <a href="https://man.openbsd.org/sshd.8">aquí</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Debes adjuntar capturas de pantalla que permitan comprobar la realización de la tarea, el funcionamiento del servicio y que permitan verificar las respuestas a todas las preguntas planteadas.</strong></p>
+</div>
+<h2 id="configuracion-del-servicio">Configuración del servicio<a class="headerlink" href="#configuracion-del-servicio" title="Permanent link">&para;</a></h2>
+<p>En este punto es importante señalar que, dada la naturaleza del servicio y, aunque parezca  que  se  trata  de  una  sola  entidad,  tendremos  que  configurar  de  forma independiente el cliente y el servidor. En <strong>esta primera actividad</strong> nos basaremos en la <strong>configuración del servidor</strong>, obviando la del cliente.</p>
+<h3 id="estructura-de-carpetas-y-ficheros">Estructura de carpetas y ficheros<a class="headerlink" href="#estructura-de-carpetas-y-ficheros" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Archivos de configuración del demonio ssh</strong> Los archivos más importantes para la <strong>configuración y funcionamiento del servidor openssh</strong> se encuentran  en la carpeta <code>/etc/ssh</code> y son:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>archivo</strong></th>
+<th><strong>configuración</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>sshd_config</strong></td>
+<td>El archivo de configuración para el demonio sshd</td>
+</tr>
+<tr>
+<td><strong>ssh_host_XXX_key</strong></td>
+<td>Claves <strong>privadas</strong>  de la máquina utilizadas por  el demonio sshd según la versión del protocolo utilizada</td>
+</tr>
+<tr>
+<td><strong>ssh_host_XXX_key.pub</strong></td>
+<td>Claves <strong>públicas</strong>  de la máquina utilizadas por  el demonio sshd según la versión del protocolo utilizada</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Archivos de configuración del usuario de conexión</strong></li>
+</ul>
+<p>Cuando nos conectemos al servidor SSH, lo haremos con un <strong>usuario específico presente en el sistema operativo</strong> de la máquina remota (<strong>según el ejemplo del punto 2 el usuario</strong>). </p>
+<p>La configuración y privilegios de conexión específicos para cada uno de estos usuarios <strong>se especificará a partir de los siguientes de ficheros</strong> que encontramos en el directorio <code>home</code> del usuario, más concretamente en la ruta  <code>~/.ssh/</code> </p>
+<p>Los principales ficheros se describen a continuación.</p>
+<table>
+<thead>
+<tr>
+<th><strong>archivo</strong></th>
+<th><strong>configuración</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>authorized_keys</strong></td>
+<td>Este archivo que contiene una lista de <strong>claves públicas "autorizadas"</strong>. Cuando un cliente se conecta al servidor el servidor validará su identidad mediante las claves públicas presentes en el siguiente archivo.</td>
+</tr>
+<tr>
+<td><strong>ssh_config</strong></td>
+<td>Permite sobre-escribir la configuración general del servidor ssh para cada uno de los usuarios del sistema.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="configuracion-del-demonio-sshd">Configuración del demonio sshd<a class="headerlink" href="#configuracion-del-demonio-sshd" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En primer lugar y antes de hacer ningún cambio en el fichero de configuración, vamos a <strong>crear</strong>  una <strong>copia de seguridad</strong> del archivo principal <code>sshd\_config</code>  con extensión <code>.back</code></p>
+</div>
+<p>Como podemos observar si visualizamos el archivo, cada una de las líneas siguen el patrón: <strong>directiva_valor</strong> donde:
+- <code>directiva</code> es el <strong>nombre de la propiedad</strong> que se quiere configurar, 
+- y <code>valor</code> será el <strong>valor que se le asigna</strong> a esta directiva. </p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Es importante remarcar que no hay un signo <code>=</code> entre la directiva y el valor, tan solo tenemos que dejar un espacio en blanco. En caso contrario, no se asignará el valor de forma correcta, y la directiva tendrá un valor <strong>nulo</strong>.</p>
+</div>
+<p>Entre las opciones, podremos comprobar que algunas de ellas son booleanas, en ese caso el campo valor puede contener <strong>yes</strong> o <strong>no</strong>, otras serán <strong>numéricas</strong> y otras serán de tipo <strong>cadena de caracteres</strong>.</p>
+<h4 id="directivas-de-configuracion-mas-importantes-del-servidor">Directivas de configuración más importantes del servidor<a class="headerlink" href="#directivas-de-configuracion-mas-importantes-del-servidor" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Directiva</strong></th>
+<th><strong>configuración</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>puerto</strong> Port 22</td>
+<td>Indica el puerto de escucha del servidor</td>
+</tr>
+<tr>
+<td><strong>PermitRootLogin [yes / no]</strong> PermitRootLogin yes</td>
+<td>indica si el usuario root puede conectarse el servidor per medio de ssh. Debería establecerse a "no", como medida de seguridad</td>
+</tr>
+<tr>
+<td><strong>PubkeyAuthentification</strong> <strong>[Yes / no]</strong> PubkeyAuthentification yes</td>
+<td>Indica si está permitida la autenticación por medio de clave pública</td>
+</tr>
+<tr>
+<td><strong>PasswordAuthentification</strong> PasswordAuthentification yes</td>
+<td>Indica si esta habilitada la autenticación normal (por contraseña, en caso de fallo de las demás)</td>
+</tr>
+<tr>
+<td><strong>MaxAuthTries number</strong> MaxAuthTries 6</td>
+<td>Máximo número de intentos de que dispone el usuario para hacer login</td>
+</tr>
+<tr>
+<td><strong>AllowUsers [user1] [user2]</strong> AllowUsers user1 user2</td>
+<td>Lista de usuarios que tienen permiso para acceder al servidor</td>
+</tr>
+<tr>
+<td><strong>allowAgentForwarding [Yes / no]</strong> AllowAgentForwarding yes</td>
+<td>Permite el reenvío de credenciales del usuario para la autenticación por clave pública a través de la conexión ssh establecida</td>
+</tr>
+<tr>
+<td>Directivas aplicables archivo etc/ssh/sshd_config</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="actividad-2">Actividad 2<a class="headerlink" href="#actividad-2" title="Permanent link">&para;</a></h3>
+<p>Consulta <a href="https://man.openbsd.org/sshd_config">documentación</a> oficial y responde a las siguientes preguntas:</p>
+<ul>
+<li>¿Con qué directiva puede especificarse una lista de usuarios que podrán conectarse por <strong>ssh</strong>?</li>
+<li>¿Con qué directiva puedes establecer el número máximo de usuarios conectados al servidor?</li>
+</ul>
+<h3 id="securizacion-del-servicio-y-automatizacion-de-tareas"><strong>Securización del servicio y automatización de tareas</strong><a class="headerlink" href="#securizacion-del-servicio-y-automatizacion-de-tareas" title="Permanent link">&para;</a></h3>
+<p>En los siguientes puntos se describen una serie de acciones que nos permitirán asegurar las conexiones y, por tanto, la administración de nuestros servidores remotos.</p>
+<h4 id="autentificacion-por-clave-publica">Autentificación por clave pública<a class="headerlink" href="#autentificacion-por-clave-publica" title="Permanent link">&para;</a></h4>
+<p>La <strong>autenticación de clave pública</strong>  mejora considerablemente la seguridad hasta tal punto que, <strong>contraseñas</strong> extremadamente <strong>largas,</strong> <strong>no podrían llegar a ofrecer</strong>. Además, libera los usuarios de recordarlas, o peor aún, dejarlas anotadas en claro en cualquier lugar.</p>
+<p>Por otro un otros lado (<em>no menos importante</em>), permite la automatización de tareas, pues no requiere un proceso interactivo de autenticación del usuario como es el de hacer que el usuario teclee su contraseña.</p>
+<h4 id="generacion-del-par-de-claves-publica-privada">Generación del par de claves pública / privada<a class="headerlink" href="#generacion-del-par-de-claves-publica-privada" title="Permanent link">&para;</a></h4>
+<p>El primer paso para su configuración, será que el <strong>cliente</strong> <strong>ssh</strong> (equipo desde el que que queremos establecer la conexión) disponga de un <strong>par de claves pública / privada</strong> de tipo <strong>DSA</strong> o <strong>RSA</strong>. Para ello haremos uso de la herramienta ssh-keygen<strong>,</strong> incluida en el paquete <strong><em>openssh</em></strong> instalado. Ejecutaremos la siguiente orden.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$ ssh-keygen</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Debes tener en cuenta que <strong>si las claves públicas</strong> ya <strong>habían sido generadas</strong> <strong>se sobrescribirán</strong> y dejarás de poder autenticarte con la anterior clave</p>
+</div>
+<figure>
+  <img src="./imagenes/05/practica11/002.png" width="950"/>
+  <figcaption>Ejemplo Autentificación</figcaption>
+</figure>
+
+<p>Como podemos ver, no especifican ninguna opción, de forma predeterminada nos genera una clave de tipo RSA de <strong>2048</strong> <strong>bit</strong>, y nos pregunta el lugar donde guardar el par de claves generadas (Por defecto, se guardaran en el <strong>directorio</strong> <strong>home del usuario</strong> dentro de la carpeta <strong>.ssh</strong>).</p>
+<ul>
+<li>El campo <strong>passphrase mejora</strong> el nivel de seguridad. Sin embargo, debemos tener en cuenta que al añadirlo se nos pedirá en el momento de la autenticación <strong>dificultando</strong> la <strong>automatización</strong> de las <strong>tareas</strong>.</li>
+</ul>
+<h3 id="actividad-3">Actividad 3<a class="headerlink" href="#actividad-3" title="Permanent link">&para;</a></h3>
+<p>Consulta la siguiente <a href="https://man.openbsd.org/ssh-keygen">documentación</a> oficial.</p>
+<ul>
+<li>¿Qué comando utilizaremos si queremos que la clave se cree con el algoritmo DSA?|</li>
+</ul>
+<h4 id="copia-de-la-clave-publica-del-usuario-en-el-servidor">Copia de la clave pública del usuario en el servidor<a class="headerlink" href="#copia-de-la-clave-publica-del-usuario-en-el-servidor" title="Permanent link">&para;</a></h4>
+<ul>
+<li>La manera más rápida de <strong>copiar la clave pública</strong> al <strong>servidor Ubuntu Server remoto</strong> es mediante el uso de una utilidad llamada <code>ssh-copy-id</code>. De estar disponible, se trata de un método altamente recomendado. </li>
+<li>En caso de que <strong>ssh-copy-id</strong> no se encuentre disponible en tu máquina cliente, puedes hacer la copia manual de la clave.</li>
+<li>Para usar este método, simplemente se debe especificar la <strong>IP servidor remoto</strong> al que te quieres conectar, la  <strong>cuenta</strong> <strong>de usuario</strong>  que utilizarás y <strong>su contraseña</strong> <em>(<strong>Deberemos tener acceso SSH por usuario/contraseña</strong></em><strong>)</strong>. </li>
+<li>De esta forma se copiará la clave <strong>SSH pública,</strong> en el archivo ~/.ssh/authorized_keys del usuario con el que nos vamos a conectar a la máquina.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$ ssh-copy-id username@remote _host</span>
+</code></pre></div>
+<p>Si no se dispone de la herramienta o no tenemos <strong>acceso SSH</strong> tendremos que hacerlo de forma manual. En primer lugar, copiaremos  el contenido del archivo <code>id\_rsa.pub</code> que corresponde la clave pública generada en el punto anterior</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$ cat ~/.ssh/id\_rsa.pub</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/05/practica11/003.png" width="950"/>
+  <figcaption>Clave</figcaption>
+</figure>
+
+<p>A continuación entraremos en el ordenador remoto utilizando el método que tengamos disponible y <strong>copiaremos la clave pública</strong>  en una nueva línea, dentro  de archivo <code>~/.ssh/authorized\_keys</code>. (Si no existe el directorio y / o el archivo lo crearemos).</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$ mkdir -p ~/.ssh</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">$ touch ~/.ssh/authorized\_keys</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Es importante tener en cuenta que el directorio y los archivos deben pertenecer al usuario y no a <strong>root</strong>, y que deberían tener <strong>permisos 700</strong>.</p>
+</div>
+<h4 id="configuracion-del-demonio-sshd_1">Configuración del demonio sshd<a class="headerlink" href="#configuracion-del-demonio-sshd_1" title="Permanent link">&para;</a></h4>
+<p>Por último, tendremos que <strong>habilitar este tipo de autenticación</strong> en el servidor, añadiendo la siguiente directiva en el archivo <code>etc|/ssh/sshd\_config</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Habilitar / Deshabilitar el acceso por usuario / contraseña       PubkeyAuthentication yes</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En caso de que <strong>no puedas autenticarte</strong> en el servidor, quizás <strong>el agente ssh</strong> no haya tomado las nuevas claves generadas. En el cliente, podemos comprobarlo mediante los siguientes comandos:</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#Comprueba las claves públicas de las que tiene constancia el cliente ssh</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">ssh-add -l</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">#Carga la clave privada y la pública</span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">ssh-add -K ~ /.ssh/id_rsa</span>
+</code></pre></div>
+<h3 id="restriccion-de-accesos">Restricción de accesos<a class="headerlink" href="#restriccion-de-accesos" title="Permanent link">&para;</a></h3>
+<p>El siguiente paso será desactivar el acceso inseguro por contraseña, para hacerlo, busca la directiva llamada <strong>PasswordAuthentication</strong> del archivo de configuración del demonio del servidor y establece el valor a <strong>no</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Habilitar / Deshabilitar el acceso por usuario / contraseña</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">PasswordAuthentication no</span>
+</code></pre></div>
+<p>Por otra parte, y dado que todos los sistemas UNIX y LIKE-UNIX crean por defecto un <strong>usuario root</strong>, muchos de los ataques que reciba el servidor tratarán de hacer uso de este usuario, por lo que es una buena práctica denegarle el acceso por defecto.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Habilitar / Deshabilitar el usuario root</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">PPermitRootLogin no</span>
+</code></pre></div>
+<p>Por otro lado y para evitar que todos los usuarios de la máquina tengan acceso por SSH es posible restringir el acceso para solo unos pocos. Lo podemos hacer mediante la directiva AllowUsers</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Habilitar / Deshabilitar el usuario root</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">AllowUsers severo appuser</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+</div>
+<p>No olvides que para que los <strong>cambios surtan efecto</strong> debes <strong>reiniciar</strong> el <strong>servicio SSH</strong></p>
+<h2 id="copiar-archivoscarpetas-desdehacia-el-host-remoto">Copiar archivos/carpetas desde/hacia el host remoto<a class="headerlink" href="#copiar-archivoscarpetas-desdehacia-el-host-remoto" title="Permanent link">&para;</a></h2>
+<p>En una consola o terminal utilizaremos el pedido comando (secure copy) de la siguiente forma: </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Copiar un elemento de la máquina remota llamado *origen* en la máquina local. </span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">$ scp usuario@maquina:/origen destino</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain"># Copiar un elemento local llamado origen a la máquina remota.</span> 
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">$ scp origen usuario@maquina:/destino</span>
+</code></pre></div>
+<h3 id="ejemplos">Ejemplos<a class="headerlink" href="#ejemplos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$ scp archivo  severo  @192.168.1.36 :/home/severo/web</span>
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">$ scp  severo[  @192.168.1.36](mailto:batoi@192.168.1.36) :/home/severo/web/archivo.html .</span>
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">$ scp  severo[  @192.168.1.36](mailto:batoi@192.168.1.36) :/home/severo/web/archivo /var/www/batoi/ html</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="l l-Scalar l-Scalar-Plain">$ scp  severo[  @192.168.1.36](mailto:batoi@192.168.1.36) :/home/severo/web/\* /var/www/batoy/html</span>
+</code></pre></div>
+<p>Podremos utilizar la opción -r  por copiar archivos de forma <strong>Recursiva</strong> (Carpeta y subcarpetas). </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$ scp -r *carpeta*local severo@192.168.1.36:/var/www/severo/html</span> 
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">$ scp -r severo@192.168.1.36:/home/severo /carpeta/local</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/05/practica11/004.png" width="950"/>
+  <figcaption>Ejemplo</figcaption>
+</figure>
+
+<h3 id="actividad-4-arquitectura-a-configurar">Actividad 4 – Arquitectura a configurar<a class="headerlink" href="#actividad-4-arquitectura-a-configurar" title="Permanent link">&para;</a></h3>
+<p>Lleva a cabo la configuración arriba indicada para securizar el acceso al <strong>servidor ubuntu</strong> que utilizaste para llevar a cabo las prácticas anteriores. <strong>El método de autenticación que vamos a utilizar es el de</strong>  <strong>clave pública/privada.</strong>  Para ello deberás llevar a cabo las siguientes acciones:</p>
+<ul>
+<li>Crea una clave <strong>pública/privada</strong>  en el cliente y establécela como clave autorizada para el <strong>usuario del servidor</strong> con el que quieras llevar a cabo las conexiones. Una vez realizado activa la autenticación por clave públic/privada.</li>
+<li>Establece las <strong>directivas correspondientes</strong> en la <strong>configuración del servidor ssh</strong> para asegurar la siguiente configuración:</li>
+<li>El único usuario que podrá autenticarse en el servidor ssh es el usuario que hemos habilitado en el paso anterior.</li>
+<li>Por último, clona el <a href="https://gitlab.com/alecogi-edu/ddaw-ud3-a3-online-shop/-/project_members">siguiente repositorio</a> en la máquina cliente y copia los archivos al <strong>document root</strong> haciendo uso de la <strong>orden scp</strong> explicada en el <strong>punto 4</strong>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Debes adjuntar capturas de pantalla que permitan comprobar las diferentes configuraciones realizadas, el correcto funcionamiento del servicio ssh, de las web desplegada y de que se han llevado a cabo las acciones indicadas.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
