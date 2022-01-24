@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica01_AD.html">
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/052_EscritorioRemoto.html">
       
       <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>Práctica01_AD - Administración de Sistemas Operativos</title>
+        <title>5.2- Escritorio Remoto - Administración de Sistemas Operativos</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica01_ad" class="md-skip">
+        <a href="#escritorio-remoto" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica01_AD
+              5.2- Escritorio Remoto
             
           </span>
         </div>
@@ -491,12 +491,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
       <label class="md-nav__link" for="__nav_6">
         5.- Servicios de acceso y administración remota
@@ -524,11 +526,78 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="052_EscritorioRemoto.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          5.2- Escritorio Remoto
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="052_EscritorioRemoto.html" class="md-nav__link md-nav__link--active">
         5.2- Escritorio Remoto
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#escritorio-remoto-en-ubuntu-2004-con-xrdp" class="md-nav__link">
+    Escritorio remoto en Ubuntu 20.04 con xRDP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escritorio-remoto-en-windows-10" class="md-nav__link">
+    Escritorio remoto en Windows 10
+  </a>
+  
+    <nav class="md-nav" aria-label="Escritorio remoto en Windows 10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anadir-los-usuarios-autorizados" class="md-nav__link">
+    Añadir los usuarios autorizados
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades-de-desarrollo-ud5_02" class="md-nav__link">
+    Actividades de desarrollo UD5_02
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -552,88 +621,170 @@
               
                 
                 
-                <h1 id="practica01_ad">Práctica01_AD<a class="headerlink" href="#practica01_ad" title="Permanent link">&para;</a></h1>
-<h2 id="windows-server">Windows Server.<a class="headerlink" href="#windows-server" title="Permanent link">&para;</a></h2>
-<p>Instala la máquina de Windows Server bajada de la plataforma Azure, comprobando antes los requisitos del sistema:</p>
-<h3 id="requisitos-del-sistema">Requisitos del Sistema<a class="headerlink" href="#requisitos-del-sistema" title="Permanent link">&para;</a></h3>
-<p>Podemos ver los requisitos del sistema en: </p>
-<p><a href="https://docs.microsoft.com/es-es/windows-server/get-started-19/sys-reqs-19">https://docs.microsoft.com/es-es/windows-server/get-started-19/sys-reqs-19</a></p>
-<p>Básicamente los requerimientos <strong>mínimos</strong> son:</p>
+                <h1 id="escritorio-remoto">Escritorio remoto<a class="headerlink" href="#escritorio-remoto" title="Permanent link">&para;</a></h1>
+<p>Se habla de escritorio remoto cuando un usuario se conecta a un equipo desde otro utilizando la red y además se conecta al entorno gráfico de este. Se suele utilizar para realizar administración remota del equipo. </p>
+<p>La mayoría de los sistemas operativos tienen incorporada alguna utilidad para la conexión en entorno gráfico de forma remota. En algunos casos,el usuario desde el equipo local controla el equipo remoto y el usuario de este puede ver lo que se está haciendo en él.</p>
+<p>Para esto se utilizan diferentes protocolos. Para cualquiera de ellos tendremos dos partes:</p>
 <ul>
-<li>Procesador 64 bits a 1,4GHz.</li>
-<li>RAM 2GB con entorno de escritorio.</li>
-<li>32GB de Disco Duro.</li>
+<li>La parte del servidor que se instalará en el equipo a controlar remotamente.</li>
+<li>La parte cliente, que se instala en el equipo local desde el que se quiere acceder al equipo remoto.</li>
 </ul>
-<h3 id="licencias-cal-client-access-licence">Licencias CAL (Client Access Licence)<a class="headerlink" href="#licencias-cal-client-access-licence" title="Permanent link">&para;</a></h3>
-<p>Existen 3 tipos de licencias CAL:</p>
+<p>Los protocolos que pueden usarse son:</p>
 <ul>
-<li>
-<p><strong>CAL de Usuario</strong>: Por cada usuario que esté dado de alta en el dominio necesitaremos una licencia.</p>
-</li>
-<li>
-<p><strong>CAL de dispositivo</strong>: Por cada dispositivo que registremos en el dominio (impresoras, ordenadores, tablets..) necesitaremos una licencia.</p>
-</li>
-<li>
-<p><strong>CAL RDS (Remote Desktop Services)</strong>:  Son licencias para el acceso mediante escritorio remoto mayormente. El que tengas una licencia que te permita acceder a un servicio remoto de un dispositivo, no te quita de que ese dispositivo también cuente con una licencia CAL.</p>
-</li>
+<li><strong>RDP</strong>: protocolo de acceso a escritorio remoto (Remote Desktop Protocol). Se utiliza principalmente en Windows, aunque puede instalarse en Linux si la máquina que tiene este sistema operativo debe ser accedido por medio de escritorio remoto desde un equipo Windows.</li>
+<li><strong>VNC</strong>: (Virtual Network Computer): Se utiliza en distintas plataformas para proveer de un escritorio remoto a cualquier equipo.</li>
 </ul>
-<p>Las RDS CAL se activan a través del Administrador de licenciamiento (online), en cambio sobre las CAL de usuarios y dispositivos no hay un control, pero sí estás obligado a llevar un registro en caso de una auditoría de software.</p>
-<p>Las licencias de dispositivo salen rentable si un mismo ordenador lo van a usar múltiples usuarios, mientras que si cada usuario va a usar un ordenador será más rentable una licencia de usuario.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>En mi empresa tengo 40 empleados, pero hacen turnos de día (8horas), tarde (8 horas) y noches (8 horas). Por tanto, los trabajadores no coinciden a la vez en la oficina, se decide usar licencias por dispositivo y que los trabajadores compartan ordenadores (dispositivos).</p>
+<h2 id="escritorio-remoto-en-ubuntu-2004-con-xrdp">Escritorio remoto en Ubuntu 20.04 con xRDP<a class="headerlink" href="#escritorio-remoto-en-ubuntu-2004-con-xrdp" title="Permanent link">&para;</a></h2>
+<p><strong>xRDP</strong> es una implementación gratuita y de código abierto del servidor Microsoft RDP que permite que los sistemas operativos distintos de Microsoft Windows proporcionen una experiencia de escritorio remoto totalmente funcional y compatible con RDP.</p>
+<ul>
+<li>Para instalar xRDP utilizaremos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt install xrdp -y</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Se añade el argumento <code>-y</code> para contestar automáticamente de manera afirmativa a cualquier pregunta que se nos haga durante la instalación.</p>
 </div>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>En mi empresa cada trabajador dispone de un portátil y un ordenador fijo de oficina. Por tanto, como cada usuario tiene 1 o más dispositivos, es más rentable tener licencias por usuario.</p>
-</div>
-<h3 id="versiones-de-windows-server">Versiones de Windows Server<a class="headerlink" href="#versiones-de-windows-server" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="imagenes/02/PracticasAD/VersionesWinServer.png" width="1200px" /></p>
-<p>Existen 3 versiones, de más sencillo y barato a más caro, estos son: Essentials, Standard y Datacenter.</p>
 <ul>
-<li>
-<p><strong>Essentials</strong>: Sólo permite 25 usuarios o 50 dispositivos y no son ampliables. Importante que no es necesario licencias CAL. Por otro lado sólo permite instalar de nuevo el Windows Server en una máquina virtual, por ejemplo para backup.</p>
-</li>
-<li>
-<p><strong>Standard</strong>: Es prácticamente idéntico a la versión Datacenter pero con alguna característica más y solo permite 2 máquinas virtuales con dicho Windows Server. Importante que todos los usuarios van por licencias CAL.</p>
-</li>
-<li>
-<p><strong>Datacenter</strong>: No tiene limitaciones e incluye todas las características, entre ellas:</p>
-</li>
-<li>
-<p>Software Defined Network: Permite la administración y configuración de equipos de red. Permite también una fácil creación de una red virtual para gestionar un sistema de máquinas virtuales.</p>
-</li>
-<li>Direct Storage: Permite una fácil gestión de la redundancia y alta disponibilidad (HA) del almacenamiento.</li>
-<li>
-<p>Host Guardian (HGS): Permite el uso de un TPM virtual para motivos de seguridad como podría ser la encriptación de los datos de mi servidor.</p>
-</li>
-<li>
-<p><strong>LTSB (Long –Term Servicing Branch):</strong> Simplemente son versiones con una garantía de actualizaciones de 10 años, es decir, se comprometen a ir sacando actualizaciones de seguridad y mantener el sistema operativo de esta versión por lo menos 10 años desde su compra.</p>
-</li>
+<li>Automáticamente se habra iniciado el servicio, para comprobarlo se puede ejecutar el siguiente comando:</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl status xrdp</span>
+</code></pre></div>
 <figure>
-  <img src="./imagenes/02/PracticasAD/VerWServer2.png" width="500"/>
-  <figcaption>Características de las Versiones de Windows Server</figcaption>
+  <img src="./imagenes/05/052/001.png" width="950"/>
+  <figcaption>xRDP en ejecución</figcaption>
 </figure>
 
-<h3 id="azure">Azure<a class="headerlink" href="#azure" title="Permanent link">&para;</a></h3>
-<p>Azure es la plataforma <strong>cloud</strong> de Microsoft. Esta plataforma cloud nos ofrece poder crear y gestionar servidores virtuales en dicha plataforma. Podemos gestionar la red virtual entre nuestros servidores virtuales, crear plataformas de desarrollo o integrar aplicaciones, gestionar el almacenamiento y las copias de seguridad,  monitorización de los servicios, etc. Todo esto de una forma sencilla con una interfaz de usuario.</p>
-<p>Las principales ventajas son:</p>
 <ul>
-<li>No necesitas comprar y mantener ningún “hardware”, todo está en la nube, virtualizado en los equipos de Microsoft (Azure).</li>
-<li>Necesitas menos personal para el mantenimiento, ya que la parte hardware y de instalación física no existen.</li>
-<li>Es más fácil redundar los datos y tener tu sistema disponible para los clientes. Es decir, imagina que no usas Azure y tienes tu servidor en la empresa y hay un corte de suministro eléctrico, los clientes se quedarán sin servicio, por tanto no tienes una alta disponibilidad.</li>
+<li>Cuando se instala xrdp, se crea también en el sistema una nueva cuenta de usuario llamada, precisamente, <code>xrdp</code>. Ademas, se crea un certificado SSL, en el archivo <code>ssl-cert-snakeoil.key</code>, dentro de la carpeta <code>/etc/ssl/private/</code>.</li>
 </ul>
-<p>La principal desventaja es que tus datos están en una empresa externa, la cual en principio no puede comercializar con dichos datos, ni siquiera acceder a ellos, no obstante es algo a tener en cuenta.</p>
-<h3 id="hyper-v">Hyper-V<a class="headerlink" href="#hyper-v" title="Permanent link">&para;</a></h3>
+<p>A continuación, se debe añadir el usuario <code>xrdp</code> al grupo <code>ssl-cert</code> para lograr que el usuario pueda leer el certificado. Lo haremos con la siguiente orden:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span> <span class="l l-Scalar l-Scalar-Plain">sudo adduser xrdp ssl-cert</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/05/052/002.png" width="950"/>
+  <figcaption>usuario xrdp al grupo ssl-cert</figcaption>
+</figure>
+
 <ul>
-<li><strong>Hyper-V</strong> es un hipervisor de máquinas virtuales, es decir, permite la creación y gestión de máquinas virtuales. Es un hipervisor de <strong>tipo 1</strong> (bare metal), es decir, viene integrado en el propio sistema operativo y por tanto no requiere de instalaciones adicionales. </li>
-<li>Vmware o VirtualBox serían un ejemplo de hipervisor de <strong>tipo 2</strong>, los cuales deben ser instalados encima del sistema operativo (Windows/MAC/Linux) de la máquina anfitriona.</li>
+<li>Un problema frecuente ocurre al usar el escritorio remoto desde otro equipo que no sea Ubuntu es encontrar la pantalla en negro.</li>
+</ul>
+<p>Para resolverlo, basta con editar el archivo <code>/etc/xrdp/startwm.sh</code> y eliminar el valor de las variables <code>DBUS_SESSION_BUS_ADDRESS</code> y <code>XDG_RUNTIME_DIR</code>, como se muestra a continuación:</p>
+<figure>
+  <img src="./imagenes/05/052/003.png" width="950"/>
+  <figcaption>edición /etc/xrdp/startwm.sh I</figcaption>
+</figure>
+
+<ul>
+<li>Hacia el final del archivo se editan las variables comentadas:</li>
 </ul>
 <figure>
-  <img src="imagenes/01/HipervisorTipo.png"/>
-  <figcaption>Tipos de Hipervisor.</figcaption>
+  <img src="./imagenes/05/052/004.png" width="950"/>
+  <figcaption>edición /etc/xrdp/startwm.sh II</figcaption>
 </figure>
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">unset DBUS_SESSION_BUS_ADDRESS</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">unset XDG_RUNTIME_DIR</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/05/052/005.png" width="950"/>
+  <figcaption>edición /etc/xrdp/startwm.sh III</figcaption>
+</figure>
+
+<h2 id="escritorio-remoto-en-windows-10">Escritorio remoto en Windows 10<a class="headerlink" href="#escritorio-remoto-en-windows-10" title="Permanent link">&para;</a></h2>
+<p>Para configurar el Escritorio Remoto se deben realizar los siguientes pasos:</p>
+<ol>
+<li><code>Inicio</code> &#8594; <code>Sistema</code></li>
+</ol>
+<figure>
+  <img src="./imagenes/05/052/006.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 10 I</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Se debe tener en cuenta que el escritorio remoto no está disponible en la versión Home de Windows 10, por lo que se necesita, como mínimo, una versión Pro.</p>
+</div>
+<ol start="2">
+<li>Al hacerlo, se obtiene la ventana Configuración, donde podremos realizar diferentes ajustes sobre el comportamiento del equipo, donde se debe elegir la opción <em>Escritorio remoto</em> en el panel izquierdo de la ventana.</li>
+</ol>
+<figure>
+  <img src="./imagenes/05/052/007.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 10 II</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>al clickarlo aparece en el panel derecho de la ventana la información de que, con esta función, podremos acceder al escritorio de este equipo desde otro dispositivo, independientemente del sistema operativo que utilice.</p>
+</div>
+<ol start="4">
+<li>Como se trata de una situación potencialmente peligrosa, el sistema avisa de lo que estamos permitiendo, se debe confirmar la configuración.</li>
+</ol>
+<figure>
+  <img src="./imagenes/05/052/008.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 10 III</figcaption>
+</figure>
+
+<h3 id="anadir-los-usuarios-autorizados">Añadir los usuarios autorizados<a class="headerlink" href="#anadir-los-usuarios-autorizados" title="Permanent link">&para;</a></h3>
+<p>Una vez completado el paso anterior, más abajo existe la posibilidad de elegir, entre los usuarios definidos en el sistema, aquellos que podrán hacer uso del escritorio remoto.</p>
+<ul>
+<li>Bastará con hacer clic en el enlace y Seleccionar los usuarios que pueden tener acceso remoto a este equipo.</li>
+</ul>
+<figure>
+  <img src="./imagenes/05/052/009.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 10 IV</figcaption>
+</figure>
+
+<ul>
+<li>Esto abrirá una nueva ventana con los usuarios que están habilitados en ese momento (como se acaba de activar, aún no hay ninguno). Aquí se puede añadir o quitar usuarios de la lista.</li>
+</ul>
+<figure>
+  <img src="./imagenes/05/052/010.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 10 V</figcaption>
+</figure>
+
+<ul>
+<li>De esta forma se obtiene una nueva ventana que nos permitirá elegir el usuario o usuarios que necesitemos.</li>
+</ul>
+<figure>
+  <img src="./imagenes/05/052/011.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 10 VI</figcaption>
+</figure>
+
+<ul>
+<li>Como el sistema tiene varios objetos que contienen el texto que se ha escrito, aparece una nueva ventana para elegir el que nos interese. Si solo hubiese existido un objeto, se saltaría este paso.</li>
+</ul>
+<figure>
+  <img src="./imagenes/05/052/012.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 10 VII</figcaption>
+</figure>
+
+<ul>
+<li>Así se vuelve a la ventana anterior, pero ahora vemos que se ha reconocido correctamente el usuario (se muestra el nombre NetBIOS completo de la cuenta, incluyendo el nombre del equipo).</li>
+</ul>
+<figure>
+  <img src="./imagenes/05/052/013.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 10 VIII</figcaption>
+</figure>
+
+<ul>
+<li>Esto cerrará la ventana Seleccionar usuarios, devolviéndo al paso anterior, pero ahora se observa que la cuenta de usuario ya aparece en la lista.</li>
+</ul>
+<p>Como es lógico, se puede repetir el proceso tantas veces como necesitemos.</p>
+<figure>
+  <img src="./imagenes/05/052/014.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 10 IX</figcaption>
+</figure>
+
+<h2 id="actividades-de-desarrollo-ud5_02">Actividades de desarrollo UD5_02<a class="headerlink" href="#actividades-de-desarrollo-ud5_02" title="Permanent link">&para;</a></h2>
+<ol start="502">
+<li>
+<p>Instala y configura xRDP en ubuntu 20.04, comprueba que puedes acceder por escritorio remoto al Ubuntu desde Windows 10, haz una guía de configuración para poder de los pasos para poder acceder y captura que demuestre que se ha accedido.</p>
+</li>
+<li>
+<p>Instala y configura RDP en Windows 10, comprueba que puedes acceder por escritorio remoto del mismo desde Ubuntu, haz una guía de configuración para poder de los pasos para poder acceder y captura que demuestre que se ha accedido.</p>
+</li>
+</ol>
                 
               
               
@@ -649,6 +800,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="051_AccesoRemotoLinux.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 5.1- Acceso Remoto en modo texto" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              5.1- Acceso Remoto en modo texto
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
