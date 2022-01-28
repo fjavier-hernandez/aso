@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/phpLDAPadmin.html">
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/053_HerramientasGraficAdminRemota.html">
       
       <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>phpLDAPadmin - Administración de Sistemas Operativos</title>
+        <title>5.3- Herramientas gráficas externas. - Administración de Sistemas Operativos</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#como-instalar-phpldapadmin" class="md-skip">
+        <a href="#herramientas-graficas-externas-para-la-administracion-remota" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              phpLDAPadmin
+              5.3- Herramientas gráficas externas.
             
           </span>
         </div>
@@ -491,12 +491,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
       <label class="md-nav__link" for="__nav_6">
         5.- Servicios de acceso y administración remota
@@ -536,11 +538,72 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="053_HerramientasGraficAdminRemota.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          5.3- Herramientas gráficas externas.
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="053_HerramientasGraficAdminRemota.html" class="md-nav__link md-nav__link--active">
         5.3- Herramientas gráficas externas.
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#realvnc" class="md-nav__link">
+    RealVNC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teamviewer" class="md-nav__link">
+    TeamViewer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anydesk" class="md-nav__link">
+    AnyDesk
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-guacamole" class="md-nav__link">
+    Apache Guacamole
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -564,77 +627,108 @@
               
                 
                 
-                  <h1>phpLDAPadmin</h1>
-                
-                <h2 id="como-instalar-phpldapadmin">Cómo instalar phpLDAPadmin<a class="headerlink" href="#como-instalar-phpldapadmin" title="Permanent link">&para;</a></h2>
-<p>En primer lugar se necesita instalar Apache:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt-get install apache2</span>
-</code></pre></div>
-<p>Ahora podemos instalar la herramienta de administración basada en web con el comando: </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt-get install phpldapadmin -y</span>
-</code></pre></div>
-<p>Abra el archivo de configuración phpLDAPadmin con el comando: </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo nano /etc/phpldapadmin/config.php</span>
-</code></pre></div>
-<p>Edite las siguientes líneas (asegúrese de cambiar el dominio para que coincida con el suyo y la dirección IP para que coincida con su servidor de alojamiento): </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;server&#39;,&#39;name&#39;,&#39;My LDAP Server&#39;);</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;server&#39;,&#39;host&#39;,&#39;192.168.5.X&#39;);</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;;setValue(&#39;server&#39;,&#39;base&#39;,array(&#39;dc=pandora,dc=ldap&#39;));</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;login&#39;,&#39;auth_type&#39;,&#39;session&#39;);</span>
-<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;login&#39;,&#39;bind_id&#39;,&#39;cn=admin,dc=pandora,dc=ldap&#39;);</span>
-<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;auto_number&#39;,&#39;min&#39;,array(&#39;uidNumber&#39;=&gt;10000,&#39;gidNumber&#39;=&gt;10000));</span>
-</code></pre></div>
-<p>Deshabilite el sitio predeterminado de Apache con el comando: </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo a2dissite 000-default.conf</span>
-</code></pre></div>
-<p>Reinicie Apache con el comando: </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart apache2</span>
-</code></pre></div>
-<h2 id="como-acceder-a-phpldapadmin">Cómo acceder a phpLDAPadmin<a class="headerlink" href="#como-acceder-a-phpldapadmin" title="Permanent link">&para;</a></h2>
-<p>Con todo resuelto, abra un navegador web y apúntelo a <em>http: // SERVIDOR / phpldapadmin</em> (donde SERVER es la dirección IP de su servidor de alojamiento). Su nombre de usuario predeterminado (en el formulario <em>cn = admin, dc = pandora, dc = ldap</em>) se completará automáticamente. </p>
-<p>Escriba la contraseña de administrador que creó y haga clic en Autenticar. Debería encontrarse en la página principal de phpLDAPadmin, listo para trabajar:</p>
-<p><img alt="" src="imagenes/02/pandora_phpLDAP.png" /></p>
-<p>Para la advertencia, simplemente puede reemplazar las llaves ( ) con corchetes ( ) en la línea afectada, 1614.\
-<em><code>Deprecated: Array and string offset access syntax with curly braces is deprecated in /usr/share/phpldapadmin/lib/functions.php on line 1614</code></em><code>{}``[]</code></p>
-<p>Haga clic en iniciar sesión para iniciar sesión en su interfaz de usuario web phpLDAPadmin. Como ya definimos el DN de enlace de administrador, simplemente ingrese la contraseña e inicie sesión;</p>
-<p><img alt="" src="imagenes/02/InSesLDAP.png" /></p>
-<p>Tras la autenticación exitosa, se accede en el panel de phpLDAPadmin.</p>
-<p><img alt="" src="imagenes/02/panelLDAP.png" /></p>
-<p>Ahora puede administrar su servidor LDAP con una interfaz web.</p>
-<h3 id="crear-usuario-y-grupo-ldap-en-phpldapadmin">Crear usuario y grupo LDAP en phpLDAPadmin<a class="headerlink" href="#crear-usuario-y-grupo-ldap-en-phpldapadmin" title="Permanent link">&para;</a></h3>
-<p>Como ejemplo, aprenderemos cómo crear un usuario LDAP y su grupo usando phpLDAPadmin.</p>
-<h4 id="crear-grupo-posixgroup">Crear grupo posixGroup<a class="headerlink" href="#crear-grupo-posixgroup" title="Permanent link">&para;</a></h4>
-<p>Para crear un grupo dentro de otro Haga clic en <code>ou=grupos</code>. Luego haga clic en <code 1="1" opción="opción">Create new entry here</code> o haga clic en <code 2="2" opción="opción">Create a child entry</code>.</p>
-<p><img alt="" src="imagenes/02/CrearUserLDAPGUI.png" /></p>
-<p>A continuación, haga clic en la <code>Generic: Posix Group</code>plantilla para crear un grupo de usuarios LDAP.</p>
-<p><img alt="" src="imagenes/02/GrupoPhPLdap.png" /></p>
-<p>Ingrese el nombre del grupo, que en este caso lo configuramos para que sea el mismo que el uid del usuario que vamos a crear.</p>
-<p>Si desea que otros usuarios formen parte del grupo, seleccione sus nombres de usuario. Haga clic <code>Create Object</code>una vez hecho y confirme los cambios.</p>
-<p><img alt="" src="imagenes/02/CrearObjetoPhPLDAP.png" /></p>
-<h4 id="crear-usuario-posixaccount">Crear usuario posixAccount<a class="headerlink" href="#crear-usuario-posixaccount" title="Permanent link">&para;</a></h4>
-<p>Una vez que haya creado un grupo de usuarios, proceda a crear la cuenta de usuario. Haga clic en <code>ou=grupos</code>y de manera similar, tiene dos opciones, hacer clic <code>Create new entry here</code>o hacer clic <code>Create a child entry</code>.</p>
-<p>Seleccione la <code>Generic: User Account</code>plantilla para crear el objeto de usuario.</p>
-<p>Generar hash de contraseña de usuario;</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">slappasswd</span>
-<span class="linenos" data-linenos="2 "></span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">Nueva contraseña</span><span class="p p-Indicator">:</span> <span class="nt">contraseña Vuelva a ingresar la nueva contraseña</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">contraseña</span>
-<span class="linenos" data-linenos="4 "></span><span class="p p-Indicator">{</span><span class="nv">SSHA</span><span class="p p-Indicator">}</span> <span class="l l-Scalar l-Scalar-Plain">vrJOf + / AFD9pdGKo / azGavDfbZ8OGJX1</span>
-</code></pre></div>
-<p>Si necesita verificar si la contraseña coincide con el hash pegado, haga clic en <strong>verificar contraseña</strong>.</p>
-<p>Cuando establezca la contraseña, seleccione <strong>ssha</strong> y pegue el hash anterior como contraseña.</p>
-<p>Complete los detalles del usuario de manera apropiada como se muestra en la captura de pantalla a continuación;</p>
-<p><img alt="" src="imagenes/02/UserDataPhPLDAP.png" /></p>
-<p>Una vez hecho esto, haga clic <code>Create Object</code> y confirme los cambios.</p>
-<p><img alt="" src="imagenes/02/FinUserPhpLDAP.png" /></p>
-<p>Tenga en cuenta que para poder tener bash entre las opciones de shell, edite la plantilla de creación posixAccount y agregue la opción bash ejecutando el comando;</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sed -i &#39;/&lt;value id=&quot;\/bin\/tsh&quot;&gt;\/bin\/tsh&lt;\/value&gt;/a \\t&lt;value id=&quot;/bin/bash&quot;&gt;\/bin\/bash&lt;\/value&gt;&#39; /etc/phpldapadmin/templates/creation/posixAccount.xml</span>
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+                <h1 id="herramientas-graficas-externas-para-la-administracion-remota">Herramientas gráficas externas para la administración remota.<a class="headerlink" href="#herramientas-graficas-externas-para-la-administracion-remota" title="Permanent link">&para;</a></h1>
+<h2 id="realvnc">RealVNC<a class="headerlink" href="#realvnc" title="Permanent link">&para;</a></h2>
+<figure style="float: right;">
+    <img src="./imagenes/05/053/002.png" width="300"/>
+</figure>
+
+<p>Uno de los productos que está diseñado para todas las plataformas más importantes es Real VNC.</p>
 <ul>
-<li>Si tiene la información del usuario en un archivo LDIF, puede importar este archivo haciendo clic en importar en la barra de menú superior del panel izquierdo.</li>
-<li>Para confirmar la creación del usuario en el backend del servidor OpenLDAP puede utilizar el comnado <code>ldapsearch</code></li>
+<li><strong>VNC</strong>: Virtual Network Computing (Computación Virtual en Red). </li>
+<li><strong>VNC es un programa de software libre</strong> basado en una estructura cliente-servidor que permite observar las acciones del ordenador servidor remotamente a través de un ordenador cliente.</li>
+<li>Como su nombre indica, se basa en este protocolo.</li>
+<li>Podemos encontrar más aplicaciones que utilicen <strong>VNC</strong> para control remoto, pero esta es una de las más utilizada. </li>
+<li>Hay desde una versión gratuita hasta una de empresa. Esta última incorpora más seguridad, y más utilidades, como por ejemplo, la transferencia de archivos.</li>
 </ul>
+<figure>
+  <img src="./imagenes/05/053/001.png" width="650"/>
+  <figcaption>RealVNC viewer</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>DESCARGA</strong></p>
+<p><a href="https://www.realvnc.com/es/connect/download/vnc/">Descarga RealVNC</a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><strong>RealVNC en Linux</strong></p>
+<p><a href="https://help.realvnc.com/hc/en-us/articles/360003474572-How-do-I-get-started-with-VNC-Connect-on-Linux-#setting-up-your-account-0-0">Guía RealVNC en Linux</a></p>
+</div>
+<h2 id="teamviewer">TeamViewer<a class="headerlink" href="#teamviewer" title="Permanent link">&para;</a></h2>
+<p><strong>TeamViewer</strong> es un software para el acceso remoto, así como para el control y el soporte en remoto de ordenadores y otros dispositivos finales.</p>
+<ul>
+<li>La plataforma fue lanzada al público en <strong>2005</strong></li>
+<li>Su catálogo de servicios se ha ido ampliando de forma continúa.</li>
+<li>La última innovación ha sido la integración de <strong>TeamViewer</strong> Meeting.</li>
+<li><strong>TeamViewer</strong> no exige registrarse y es gratuito si se utiliza con fines no comerciales, lo cual ha ayudado a una mayor difusión del software.</li>
+<li><strong>TeamViewer</strong> es el producto principal de la empresa homónima con sede en <strong>Göppingen, Alemania</strong>.</li>
+</ul>
+<figure>
+  <img src="./imagenes/05/053/003.png" width="850"/>
+  <figcaption>TeamViewer APP</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>DESCARGA</strong></p>
+<p><a href="https://www.teamviewer.com/es/descarga/linux/">Descarga <strong>TeamViewer</strong></a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><strong>TeamViewer en Linux</strong></p>
+<p><a href="https://community.teamviewer.com/English/kb/articles/45-install-teamviewer-on-ubuntu">Guía instalación TeamViewer en Linux</a></p>
+</div>
+<h2 id="anydesk">AnyDesk<a class="headerlink" href="#anydesk" title="Permanent link">&para;</a></h2>
+<figure style="float: right;">
+    <img src="./imagenes/05/053/005.png" width="300"/>
+</figure>
+
+<p><strong>AnyDesk</strong> es un programa de software de escritorio remoto desarrollado por <strong>AnyDesk Software GmbH en Stuttgart</strong>, Alemania.</p>
+<ul>
+<li>Provee acceso remoto bidireccional entre computadoras personales y está disponible para todos los sistemas operativos comunes.</li>
+<li>El software ha estado en desarrollo activo desde 2012.</li>
+<li>Esta herramienta permite el acceso remoto bidireccional de los usuarios a través de  sus computadores.</li>
+<li><strong>AnyDesk</strong> es un software multiplataforma, es decir, puede manejarse desde diferentes sistemas: Windows, Linux, OS X, Android entre otros.</li>
+</ul>
+<figure>
+  <img src="./imagenes/05/053/004.png" width="850"/>
+  <figcaption>Ejemplo Anydesk APP</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>DESCARGA</strong></p>
+<p><a href="https://anydesk.com/es/downloads/linux">Descarga <strong>AnyDesk</strong></a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><strong>TeamViewer en Linux</strong></p>
+<p><a href="https://ubunlog.com/anydesk-escritorio-remoto-ubuntu-20-04/?utm_source=feedburner&amp;utm_medium=%24%7Bfeed%2C+email%7D&amp;utm_campaign=Feed%3A+%24%7BUbunlog%7D+%28%24%7BUbunlog%7D%29">Guía instalación AnyDesk en Linux</a></p>
+</div>
+<h2 id="apache-guacamole">Apache Guacamole<a class="headerlink" href="#apache-guacamole" title="Permanent link">&para;</a></h2>
+<figure style="float: right;">
+    <img src="./imagenes/05/053/007.png" width="250"/>
+</figure>
+
+<p><strong>Apache Guacamole</strong> es una puerta de enlace de escritorio remoto multiplataforma de código abierto y gratuita mantenida por <strong>Apache Software Foundation</strong>. </p>
+<ul>
+<li>Permite a un usuario tomar el control de una computadora remota o máquina virtual a través de un navegador web.</li>
+<li>Apache Guacamole es una puerta de enlace de escritorio remoto <strong>sin cliente</strong> . Lo llamamos sin cliente porque no se requieren complementos ni aplicación cliente.</li>
+<li>Admite protocolos estándar como VNC, RDP y SSH.</li>
+<li>Gracias a HTML5, una vez que Guacamole está instalado en un servidor, todo lo que necesita para acceder a sus escritorios es un navegador web.</li>
+</ul>
+<figure>
+  <img src="./imagenes/05/053/006.png" width="850"/>
+  <figcaption>Arquitectura Apache Guacamole</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>MUY INTERESANTE PARA PROYECTO FINAL</strong></p>
+<p>Se puede plantear el despliegue de esta tecnologia usando docker, ldap, proxy inverso, ...</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><strong>DESCARGA</strong></p>
+<p><a href="https://guacamole.apache.org/releases/">Descarga <strong>Apache Guacamole</strong></a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><strong>Guia Apache Guacamole</strong></p>
+<p><a href="https://guacamole.apache.org/doc/gug/">Manuales y guia de despliegues con <strong>Apache Guacamole</strong></a></p>
 </div>
                 
               
@@ -651,6 +745,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="052_EscritorioRemoto.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 5.2- Escritorio Remoto" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              5.2- Escritorio Remoto
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
