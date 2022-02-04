@@ -1004,7 +1004,7 @@
 <p>La principal diferencia con lo visto hasta ahora consiste en que la impresora que 'conectaremos' al servidor será una impresora pdf, por lo que con el instalable se creará el puerto de impresora y se instalarán los drivers necesarios de una manera prácticamente trasparente para nosotros.</p>
 <ol>
 <li>En primer lugar instalaremos la impresora pdf, puede ser <a href="https://www.pdfforge.org/pdfcreator">PDF Creator</a></li>
-<li>La descargaremos de aquí (es una versión antigua, pero funciona en modo servidor, las nuevas versiones no) y la instalaremos con las opciones por defecto pero en modo servidor.</li>
+<li>La descargaremos de aquí e la instalaremos con las opciones por defecto pero en modo servidor, Investiga por Internet como instalarla. <strong>Nota</strong>: Si no funciona buscar versiones anteriores.</li>
 <li>Compartiremos la impresora en red (desde el Administrador de Impresión) para que los usuarios de dominio tengan permiso de impresión.</li>
 <li>Crearemos una <code>GPO</code> en el dominio pero que solo aplicaremos a un grupo que ya tengas configurado de las prácticas de AD (no a la <code>UO</code>), llamemos <code>GRUPOA</code>.</li>
 <li>Configura la impresora pdf para que se despliegue automáticamente en todos los usuarios de <code>GRUPOA</code> (utiliza la <code>GPO</code> que hemos creado en el punto anterior).</li>
