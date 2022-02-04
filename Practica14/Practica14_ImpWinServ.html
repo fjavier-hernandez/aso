@@ -1,0 +1,918 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica14/Practica14_ImpWinServ.html">
+      
+      <link rel="icon" href="../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>Practica14 ImpWinServ - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Practica14 ImpWinServ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="teal"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- Tools: Scripting y Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- Tools: Scripting y Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- Tools: Scripting y Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../011_ShellScripting.html" class="md-nav__link">
+        1.1- ShellScripting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../012_PowerShell.html" class="md-nav__link">
+        1.2- PowerShell
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../013_Docker.html" class="md-nav__link">
+        1.3- Docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- Administración de servicios de directorio
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- Administración de servicios de directorio" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- Administración de servicios de directorio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../021_Introduccion_SD.html" class="md-nav__link">
+        2.1- Introducción de servicios de directorio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../022_LDAP.html" class="md-nav__link">
+        2.2- LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../023_ActiveDirectory.html" class="md-nav__link">
+        2.3- Active Directory
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        3.- Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          3.- Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../031_Planificador.html" class="md-nav__link">
+        3.1- Planificación y sincronización de procesos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../032_GestionProcesos.html" class="md-nav__link">
+        3.2- Gestión de los procesos del sistema
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../033_ArranqueServicios.html" class="md-nav__link">
+        3.3- Secuencia de arranque del sistema. Demonios y servicios
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        4.- Información del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4.- Información del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Información del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../041_EstructuraDirectorios.html" class="md-nav__link">
+        4.1- Estructura de directorios
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../042_ArchivosVirtualSWinstaladoRendimiento.html" class="md-nav__link">
+        4.2- VFS, Sw Instalado y Gestión Rendimiento
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../043_Planificacio%CC%81nTareas.html" class="md-nav__link">
+        4.3- Planificación de Tareas
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        5.- Servicios de acceso y administración remota
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="5.- Servicios de acceso y administración remota" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          5.- Servicios de acceso y administración remota
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../051_AccesoRemotoLinux.html" class="md-nav__link">
+        5.1- Acceso Remoto en modo texto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../052_EscritorioRemoto.html" class="md-nav__link">
+        5.2- Escritorio Remoto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../053_HerramientasGraficAdminRemota.html" class="md-nav__link">
+        5.3- Herramientas gráficas externas.
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        6.- Administración de Servidores de Impresión
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="6.- Administración de Servidores de Impresión" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          6.- Administración de Servidores de Impresión
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../061_ServidoresImpresion.html" class="md-nav__link">
+        6.1- Servidores de Impresión
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../062_ServidoresImpresionLinux.html" class="md-nav__link">
+        6.2- Servidor de impresión en GNU/Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../063_ServidorImpresionWindowsServer.html" class="md-nav__link">
+        6.3- Servidor de impresión en Windows Server
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Practica14 ImpWinServ</h1>
+                
+                <p><strong>Administración de los Servicios de Impresión<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.001.png" /><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.002.png" /></strong></p>
+<p><strong>Administración de los Servicios de Impresión<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.003.png" /></strong></p>
+<p><strong>Curso a distancia 19FP32CF011</strong></p>
+<p><strong>Administración centralizada de redes con Windows Server 2019 Alberto Aparicio Vila</strong></p>
+<p><strong>Índice<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.004.png" /></strong></p>
+<p>índice<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.005.png" /></p>
+<p><a href="#_page0_x47.76_y446.94">Servicios de Impresión</a></p>
+<p><a href="#_page17_x47.76_y574.50">Administración de la Impresión.</a></p>
+<p><a href="#_page23_x47.76_y173.07">Planificar y configurar los trabajos de impresión de los usuarios. </a><a href="#_page28_x47.76_y419.18">Actividades</a></p>
+<p><strong>Servicios de Impresión<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.006.png" /></strong></p>
+<p>Uno de los dispositivos hardware que aparecen en casi todas las redes empresariales, junto con los PCs y los elementos de interconexión,  son  las  impresoras.  En  los  siguientes  apartados  revisaremos  cómo  implantar,  configurar  y  mantener  los servicios de impresión de una manera centralizada.</p>
+<p>Sin embargo antes de empezar, repasemos los términos que utilizaremos a lo largo de este capítulo y cuyo significado no es evidente:</p>
+<ul>
+<li>Impresora lógica: es la interfaz de usuario que se coloca entre el sistema operativo y el dispositivo de impresión.</li>
+<li>Dispositivo de impresión: es el dispositivo físico que lleva a cabo la impresión de los documentos.<ul>
+<li>Controlador de impresión: es un conjunto de archivos que permiten al sistema convertir los trabajos de impresión al lenguaje específico del dispositivo de impresión.</li>
+<li>Cola de impresión: es un conjunto de dispositivos físicos de impresión gestionados por una misma impresora lógica.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Impresión en Red</strong></p>
+<p>El objetivo final del servicio de impresión es proporcionar la capacidad de impresión a los usuarios de la red. Existen diferentes maneras de compartir en red un dispositivo físico de impresión. La más común en entornos corporativos es la instalación de una impresora física que soporta el direccionamiento IP y puede ser conectada directamente a la LAN a través de un switch o un hub:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.007.jpeg" /></p>
+<p><em>Esquema de red habitual</em></p>
+<p>Esta topología es la idónea en entornos en los que se generan volúmenes de impresión que justifican la adquisición de una impresora de estas características, pero no lo suficientemente grandes para suponer un problema de congestión en el equipo que tienen instalado el servidor de impresión (Controlador de Dominio en este caso.).</p>
+<p>En entornos donde se genera un número muy elevado de trabajos de impresión (por ejemplo una imprenta, una copistería, etc.) puede valer la pena conectar la impresora localmente a un equipo dedicado en exclusiva a estas labores y que ejercerá de servidor de impresión. Desde este servidor se compartirá la impresora en red, asignando los permisos planificados en la estructura corporativa.</p>
+<p>Este tipo de conexión y compartición, también puede ser útil cuando se cuenta con impresoras que no disponen de la capacidad de conectarse directamente a la red y deben conectarse a un equipo para poder recibir los trabajos de impresión.</p>
+<p>En este tema nos centraremos en el primer caso, ya que:</p>
+<ol>
+<li>Es el más habitual en empresas no dedicadas en exclusiva al negocio de la impresión.</li>
+<li>Existen en el mercado servidores de impresión propios de las compañías que desarrollan los dispositivos de impresión orientados al sector específico de imprenta y reprografía.</li>
+</ol>
+<p><strong>Instalación de los Servicios de Impresión</strong></p>
+<p>Como hemos visto en el punto anterior, la manera más habitual de conexión de impresoras en organizaciones de tamaño medio y grande consiste en conectar la impresora directamente a la red a través de un switch. Vamos a implantar esta estructura en nuestro dominio. Para ello lo primero que tenemos que hacer es instalar la función de 'Servicios de Impresión' :</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.008.jpeg" /></p>
+<p><em>Agregar el rol de Servicios de Impresión</em></p>
+<p>En la siguiente figura podemos seleccionar qué servicios de impresión queremos instalar. Instalaremos únicamente el 'Servidor de Impresión', la segunda opción permite poner en marcha un servidor web para gestionar los trabajos de impresión. La tercera ('Servidor LPD') la instalaríamos en caso de tener una red heterogénea Windows-GNU/Linux, y la tercera permite la gestión de digitalización de documentos.</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.009.jpeg" /></p>
+<p><em>Servicios a instalar</em></p>
+<p>Confirmamos e instalamos el Servicio de Impresión:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.010.jpeg" /></p>
+<p><em>Instalar Servicio de Impresión</em></p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.011.jpeg" /></p>
+<p><em>Instalación de Servicios de Impresión</em></p>
+<p>Una vez instalado el Servidor de Impresión, ya podemos acceder al administrador de la impresión a través del Panel del Administrador --&gt; Herramientas --&gt; Administración de Impresión:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.012.jpeg" /></p>
+<p><em>Administración de Impresión</em></p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.013.jpeg" /></p>
+<p><em>Administración de Impresión</em></p>
+<p><strong>Agregando un Dispositivo de Impresión</strong></p>
+<p>Una vez que tenemos instalados los servicios de impresión en el controlador de dominio, agregaremos un dispositivo de impresión en red. Para ello, abrimos el Administrador de Impresión y añadimos una nueva impresora:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.014.jpeg" /></p>
+<p><em>Agregar una impresora</em></p>
+<p>Se abrirá el Asistente para la instalación de impresoras en red, y ahí podremos especificar el método de instalación. La primera de las opciones (Buscar impresoras en la red) nos mostrará un listado de los dispositivos físicos de impresión accesibles desde nuestro equipo. Como no hemos conectado ninguno, esta opción no nos sirve. La segunda de las opciones (Agregar una impresora TCP/IP o de servicios web en base a la dirección IP o nombre de host) nos permite configurar una impresora lógica que apuntará a la dirección IP que definiremos en el dispositivo físico de impresión. La tercera opción (Agregar una nueva impresora por medio de un puerto existe) nos permitiría configurar una impresora lógica que apuntaría a un puerto ya existente del controlador de dominio (LPT, USB, etc.) donde podríamos conectar el dispositivo físico de impresión. Finalmente la última opción (Crear un nuevo puerto y agregar una nueva impresora) nos permite definir un nuevo puerto local como interfaz entre una impresora lógica a configurar y el dispositivo físico.</p>
+<p>Como queremos administrar un dispositivo físico de impresión que se conectará directamente a la red, seleccionaremos la segunda opción: 'Agregar una impresora TCP/IP o de servicios web en base a la dirección IP o nombre de host'.</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.015.jpeg" /></p>
+<p><em>Buscando impresoras de red</em></p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.016.jpeg" /></p>
+<p><em>Buscando impresoras de red</em></p>
+<p>Una vez encontrada la impresora, procedemos a realizar la instalación de la misma. Habrá que seleccionar los drivers, bien por defecto o bien si hemos de descargarlos de internet y realizar la instalación de los mismos. Al final la impresora queda instalada:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.017.jpeg" /></p>
+<p><em>Instalación de Impresora</em></p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.018.jpeg" /></p>
+<p><em>Instalación de Impresora</em></p>
+<p>Podemos comprobar, realizando una impresión de prueba que nuestra impresora funciona:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.019.jpeg" /></p>
+<p><em>Prueba de Impresión</em></p>
+<p><strong>Despliegue de los Dispositivos de Impresión</strong></p>
+<p>De la misma manera que en el tema 5 vimos cómo asociar carpetas compartidas específicas a los usuarios de una manera transparente a estos, ahora veremos cómo asociar los dispositivos de impresión a usuarios o grupos, sin que estos tengan que llevar a cabo ningún tipo de configuración, lo cual es un proceso molesto y peligroso.</p>
+<p>Para poder realizar esta tarea, debemos asegurarnos de que la impresora está compartida en red, y que los usuarios que planifiquemos tienen acceso a la misma. Para ello, en el administrador de impresión, haremos clic con el botón secundario en el dispositivo de impresión que queremos configurar, y accederemos a las Propiedades. En la pestaña 'Compartir' corroboraremos que la compartición está habilitada, tal y como configuramos en la instalación de la impresora, y en la pestaña 'Seguridad' comprobaremos que los grupos o usuarios que definamos tienen permiso para imprimir:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.020.jpeg" /></p>
+<p><em>Permisos a dispositivos de impresión</em></p>
+<p>En principio no es aconsejable otorgar a los usuarios convencionales del dominio los permisos de administrar impresoras o administrar documentos. La administración de impresoras proporciona al usuario un control total sobre la impresora y sus controladores. La administración de documentos permite al usuario realizar tareas de control sobre los documentos y puede detener, reiniciar o cancelar las tareas de impresión:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.021.jpeg" /></p>
+<p><em>Permisos de seguridad en Impresoras</em></p>
+<p>Lo más habitual es que los dispositivos de impresión estén distribuidos en la empresa en diversos departamentos o plantas del edificio, y normalmente los usuarios suelen tener acceso únicamente a las impresoras asignadas a su grupo, por lo que eliminaremos el grupo Todos de los permisos, y añadiremos al grupo Pistonazo, ya que a priori, podrán imprimir documentos:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.022.jpeg" /></p>
+<p><em>Asignar permisos de impresión</em></p>
+<p>Como el despliegue de los dispositivos de impresión lo haremos mediante directivas de grupo, antes de empezar crearemos un GPO sobre todo el dominio que llamaremos (en este caso) ImpresoraPistonazo. En el filtrado de seguridad del GPO incluiremos únicamente al grupo Pistonazo.</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.023.jpeg" /></p>
+<p><em>Crear GPO para Impresora</em></p>
+<p>y añadimos al grupo Pistonazo:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.024.jpeg" /></p>
+<p><em>Agregamos a la GPO el grupo Pistonazo</em></p>
+<p>A continuación, abriremos el Administrador de Impresión y seleccionamos la impresora que queremos desplegar. Hacemos clic con el botón derecho y seleccionamos la opción 'Implementar con directiva de grupo' :</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.025.jpeg" /></p>
+<p><em>Implementar con directiva de grupo</em></p>
+<p>Se  abrirá  el  cuadro  de  dialogo   y  haremos  clic  en  'Examinar...'  para  seleccionar  a  qué  directiva  queremos  añadir  la configuración de la impresión:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.026.jpeg" /></p>
+<p><em>Implementar con directiva de grupo</em></p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.027.jpeg" /></p>
+<p><em>Seleccionar la GPO</em></p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.028.jpeg" /></p>
+<p><em>Añadir GPO aplicada por usuario</em></p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.029.jpeg" /></p>
+<p><em>Aplicar la GPO</em></p>
+<p>Si ahora iniciamos sesión con un usuario de Pistonazo, veremos que la Impresora se ha conectado y podemos imprimir en ella:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.030.jpeg" /></p>
+<p><em>Impresora conectada por GPO</em></p>
+<p>Si iniciáramos sesión con otro usuario que no fuera de Pistonazo, no conectaría la impresora:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.031.jpeg" /></p>
+<p><em>Usuario sin permisos de conexión</em></p>
+<p><strong>Administración de la Impresión<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.032.png" /></strong></p>
+<p>Podemos administrar ciertos aspectos de los trabajos de impresión, desde el Administrador de Impresoras, accediendo a las Propiedades de la impresora que queremos configurar.</p>
+<p><strong>Controladores Adicionales</strong></p>
+<p>Para empezar, nos aseguraremos de que estén instalados los drivers de la impresora para las distintas arquitecturas de equipos presentes en la red. Para ello en la pestaña 'Compartir' haremos clic en el botón 'Controladores adicionales' .</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.033.jpeg" /></p>
+<p><em>Controladores adicionales</em></p>
+<p>Nos aparecerá un cuadro  donde podremos seleccionar la arquitectura de los controladores de la impresora:</p>
+<ul>
+<li>x64: arquitectura de 64 bits.</li>
+<li>x86: arquitectura de 32 bits</li>
+</ul>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.034.jpeg" /></p>
+<p><em>Controladores x86 y x64</em></p>
+<p>Instalaremos  aquellas  versiones  que  necesitemos  en  función  de  los  equipos  de  nuestra  red  y  los  equipos  clientes  se descargarán los drivers adecuados accediendo al recurso compartido print$ que se halla alojado en el servidor en la ruta C:\system32\spool\drivers , de una manera transparente al usuario.</p>
+<p><strong>Preferencias de Impresión</strong></p>
+<p>Podemos configurar las 'Preferencias de impresión' en la pestaña 'General':</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.035.jpeg" /></p>
+<p><em>Preferencias de Impresión</em></p>
+<p>Ahí podemos definir aspectos como el formato de ahorro en papel imprimiendo en modo folleto, aunque posteriormente el usuario pueda modificar esta configuración antes de enviar el trabajo de impresión:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.036.jpeg" /></p>
+<p><em>Preferencias de Impresión</em></p>
+<p><strong>Opciones avanzadas de Impresión</strong></p>
+<p>La pestaña 'Opciones Avanzadas' nos permite configurar aspectos relacionados con la gestión de los trabajos de impresión:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.037.jpeg" /></p>
+<p><em>Opciones avanzadas de impresión</em></p>
+<p>Aunque  las  opciones  son  bastante  autoexplicativas,  repasaremos  las  más  interesantes  desde  el  punto  de  vista  de  la administración de una red:</p>
+<ul>
+<li>Disponible desde...: Permite establecer unos periodos de utilización del dispositivo de impresión.</li>
+<li>Prioridad: Asigna un nivel de prioridad en los trabajos de impresión, siendo el 1 el valor que indica menor prioridad. Esta opción es especialmente útil cuando tenemos varias impresoras lógicas apuntando al mismo dispositivo físico y queremos que la prioridad de cada impresora lógica sea diferente.<ul>
+<li>Controlador: nos permite modificar el controlador de la impresora.</li>
+<li>Imprimir usando la cola para que el programa termine más rápido: Al realizar la impresión de un documento largo, en primer lugar el equipo lo convierte al lenguaje de la impresora, y a continuación envía página por página de acuerdo a la velocidad del dispositivo de impresión. La colocación en cola de impresión de un documento permite enviar el documento  en  segundo  plano  para  que  el  resto  de  aplicaciones  puedan  seguir  trabajando  con  normalidad.  Sin embargo, la opción 'Imprimir directamente en la impresora' requiere que el sistema espere hasta que la impresión haya terminado para seguir trabajando con la aplicación que envió el trabajo de impresión. Existen dos opciones en 'Imprimir usando la cola para que el programa termine más rápido':
+1. Iniciar la impresión al entrar la última página en la cola: permite no empezar a imprimir hasta el momento en que todo el documento esté en la cola, lo que podría ser útil cuando los trabajos de impresión requieren la interacción del usuario.
+1. Empezar  a  imprimir  de  inmediato:  Los  clientes  tratan  parcialmente  el  documento  antes  de  enviarlo  a  la impresora lógica. En el momento en el que hay espacio en la cola remota del servidor, el documento es enviado y tratado completamente. Se coloca entonces en espera antes de ser dirigido hacia un dispositivo de impresión</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.038.png" /> Imprimir primero los documentos de la cola de impresión: En este caso la prioridad ya no se basa únicamente en el grado de prioridad proporcionado explícitamente; el documento que haya entrado en la cola de impresión tendrá una prioridad superior frente al que acceda posteriormente (incluso si el nuevo documento dispone de un nivel de prioridad más alto).</p>
+<ul>
+<li>Conservar los documentos después de su impresión: Esta opción permite mantener en el administrador de impresión los trabajos impresos. Si no se selecciona esta opción, el documento una vez impreso se elimina de la cola de impresión.</li>
+<li>Habilitar características de impresión avanzadas: Permite modificar aspectos como el número de páginas a imprimir por hoja, el orden de las mismas, etc.</li>
+</ul>
+<p><strong>Configuración de la Impresión<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.039.png" /></strong></p>
+<p>Supongamos  que  disponemos  de  una  única  impresora  física  en  nuestra  empresa,  y  queremos  configurarla  de  manera diferente para cada departamento. Por ejemplo, podríamos querer asignar prioridades diferentes: el grupo Almacén podría tener una prioridad en la impresión inferior a la del grupo Dirección. Además también podríamos hacer una planificación en la que el grupo Almacén solo pudiera imprimir de 8.00 a 16.00, mientras que el grupo Dirección podría imprimir durante todo el día. Veamos como implantar esta política de administración paso a paso.</p>
+<p>En primer lugar tenemos que crear dos impresoras lógicas que apunten al mismo dispositivo de impresión físico, una para la sección de Dirección y otra para la sección de Administración:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.040.png" /></p>
+<p><em>Permisos diferentes de Impresión</em></p>
+<p>Es importante que ambas impresoras estén compartidas, y que los miembros de los respectivos grupos tengan permisos para imprimir:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.041.jpeg" /></p>
+<p><em>Configuración de dos impresoras lógicas</em></p>
+<p>Configuraremos las impresoras (lógicas) de Almacén y Dirección  como hemos planificado al principio de este apartado:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.042.jpeg" /></p>
+<p><em>Configuración de opciones avanzadas</em></p>
+<p>A continuación creamos un GPO para cada grupo que nos permitirá desplegar la correspondiente impresora a los miembros de cada grupo:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.043.jpeg" /></p>
+<p><em>Definición de las GPOs</em></p>
+<p>En el siguiente paso implementamos la conexión de cada impresora mediante su correspondiente GPO:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.044.jpeg" /></p>
+<p><em>Implementación de la GPO Almacén</em></p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.045.jpeg" /></p>
+<p><em>Implementación de GPO a Almacén</em></p>
+<p>Y hacemos el mismo proceso para Dirección:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.046.jpeg" /></p>
+<p><em>Implementación de la GPO a Dirección</em></p>
+<p>Para finalizar ejecutamos gpupdate /force en el controlador de dominio y ya tendremos implementadas las impresoras con sus respectivas restricciones para los grupos de Almacén y Dirección.</p>
+<p>Destacar de nuevo que hemos creado dos impresoras lógicas que apuntan al mismo dispositivo físico con el fin de realizar una gestión de la impresión física diferenciada en función del usuario o grupo que envíe los trabajos a la impresora.</p>
+<p><strong>Comprobación de la configuración</strong></p>
+<p>Para comprobar la configuración anterior, vamos a iniciar sesión en un equipo cliente con el usuario usucont1 perteneciente al grupo Almacén, y vamos a enviar un trabajo de impresión fuera del horario en el que tiene permitido imprimir:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.047.jpeg" /></p>
+<p><em>Impresora de usuario de Almacén</em></p>
+<p>Vemos en la figura anterior que aparece automáticamente la nueva impresora EpsonWF3620-Almacen.</p>
+<p>Si nos vamos al controlador de dominio y abrimos el asistente de impresión vemos que efectivamente el trabajo está en la cola, pero no se está imprimiendo por restricciones horarias:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.048.jpeg" /></p>
+<p><em>Impresora con restricción horaria</em> Ahora iniciaremos una sesión con el usuario usudir1 que es del grupo de Dirección:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.049.jpeg" /></p>
+<p><em>Impresora sin restricción para grupo Dirección</em></p>
+<p><strong>Actividades<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.050.png" /></strong></p>
+<p><strong>Actividad 1</strong></p>
+<p>En esta actividad instalaremos una impresora en el controlador de dominio y la compartiremos y administraremos en red, como hemos visto en los diferentes apartados de este tema.</p>
+<p>La principal diferencia con lo visto hasta ahora consiste en que la impresora que 'conectaremos' al servidor será una impresora pdf, por lo que con el instalable se creará el puerto de impresora y se instalarán los drivers necesarios de una manera prácticamente trasparente para nosotros.</p>
+<ol>
+<li>En primer lugar instalaremos la impresora pdf.</li>
+<li>La descargaremos de aquí (es una versión antigua, pero funciona en modo servidor, las nuevas versiones no) y la instalaremos con las opciones por defecto pero en modo servidor.</li>
+<li>Compartiremos la impresora en red (desde el Administrador de Impresión) para que los usuarios de dominio tengan permiso de impresión.</li>
+<li>Crearemos una GPO en el dominio pero que solo aplicaremos al grupo (no a la UO) Ventas de nuestra organización de Empresa</li>
+<li>Configura la impresora pdf para que se despliegue automáticamente en todos los usuarios del grupo Ventas (utiliza la GPO que hemos creado en el punto anterior).</li>
+<li>Crea un documento de texto en un equipo cliente al que has accedido con un miembro del grupo Ventas.</li>
+<li>Desde el bloc de notas (notepad) imprime (en la impresora pdf que está albergada en el servidor y que debe aparecer automáticamente a los miembros de Ventas) el fichero que acabas de generar.</li>
+<li>Inicia sesión con un usuario que no pertenezca a Ventas y comprueba que no aparece la impresora pdf en las opciones de impresión.</li>
+</ol>
+<p>Adjunta las capturas de pantalla describiendo el proceso, en especial las correspondientes a los puntos 4, 5, 7 y 8.</p>
+<p><strong>Instalación de la Impresora PDFCreator</strong></p>
+<p>Para realizar la instalación de la impresora PDFCreator, vamos a utilizar el instalador que se encuentra en el siguiente <a href="https://drive.google.com/open?id=0B7zZjYkWaq2POE5hSmZDZ2RablU">enlace</a>. A continuación haré una breve guía de cómo realizar la instalación, ya que es una versión un poco más antigua que la hay ahora disponible, pero esta ofrece la posibilidad de hacer una instalación en modo servidor. También mostraré el objetivo final de la actividad sobre un usuario de ventas de la organización Pistonazo.</p>
+<p>Iniciaremos el asistente de instalación sin descargar la nueva versión:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.051.png" /></p>
+<p><em>Instalación de PDFCreator</em></p>
+<p>Activaremos la instalación modo experto:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.052.png" /></p>
+<p><em>Activar modo experto</em></p>
+<p>Seleccionaremos la instalación modo servidor:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.053.png" /></p>
+<p><em>Instalación modo servidor</em></p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.054.png" /></p>
+<p><em>Impresora PDFCreator</em></p>
+<p>La siguiente pantalla nos permite seleccionar los controladores para máquinas con arquitecturas en 32 bits, en nuestro caso no tenemos ninguna, pero si se diera el caso, podríamos imprimir también con los controladores de 32 bits.</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.055.png" /></p>
+<p><em>Selección de controladores 32 bits</em></p>
+<p>A continuación podemos seleccionar un Visor PDF que va con el programa de instalación, PDFArchitect... Si quisierais ver los PDFs generados podéis marcar la opción.</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.056.png" /></p>
+<p><em>Componente adicionales</em></p>
+<p>y procedemos a la instalación:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.057.png" /></p>
+<p><em>Instalación de PDFCreator</em></p>
+<p>Como todos los programas free, siempre añaden algún programa adicional... seleccionaremos Saltar... para que no instale nada más:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.058.png" /></p>
+<p><em>No instalar programas adicionales</em></p>
+<p>Una vez instalado, nos aparecerá un icono en el escritorio. Ahora lo que vamos a hacer es configurar las opciones de autoguardado de los documentos PDF, para que de manera automática guarde los documentos en los directorios de las carpetas particulares de los usuarios:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.059.jpeg" /></p>
+<p><em>Configurar opciones</em></p>
+<p>Y seleccionar autoguardado:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.060.jpeg" /></p>
+<p><em>Configurar autoguardado</em></p>
+<p>Activaremos la casilla de autoguardado y configuraremos el directorio donde queremos que se guarden los documentos, para el caso de la empresa Pistonazo, este directorio será "\192.168.100.1\Pistonazo_users$\<Author>\PDF".  De esta forma cuando se imprima un documento en PDF desde una máquina cliente, se generará de manera automática ese documento en su carpeta personal, dentro de un directorio PDF. </p>
+<p>Tras configurar las opciones de las GPOs y las propiedades de la impresora creada, si iniciamos sesión con un usuario nos aparecerá la impresora PDFCreator:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.061.png" /></p>
+<p><em>Impresión en PDFCreator</em></p>
+<p>Por último veremos cómo se ha generado el nuevo documento en el directorio PDF de la carpeta personal:</p>
+<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.062.jpeg" /></p>
+<p><em>Impresión de documentos PDF</em></p>
+<p>El objetivo es que se configure la impresora para nuestra organización y para el grupo de Ventas. Iniciéis sesión y comprobéis los resultados.</p>
+<p>Obra publicada con <a href="http://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Reconocimiento Compartir igual 4.0</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
