@@ -612,6 +612,60 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        7.- Integración de sistemas operativos en red libres y propietarios
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="7.- Integración de sistemas operativos en red libres y propietarios" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          7.- Integración de sistemas operativos en red libres y propietarios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../071_ServiciosRedRecursosCompartidos.html" class="md-nav__link">
+        7.1- Servicios de red para compartir recursos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../072_Samba.html" class="md-nav__link">
+        7.2- Samba
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -627,130 +681,7 @@
                 
                   <h1>Practica14 ImpWinServ</h1>
                 
-                <p><strong>Administración de los Servicios de Impresión<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.001.png" /><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.002.png" /></strong></p>
-<p><strong>Administración de los Servicios de Impresión<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.003.png" /></strong></p>
-<p><strong>Curso a distancia 19FP32CF011</strong></p>
-<p><strong>Administración centralizada de redes con Windows Server 2019 Alberto Aparicio Vila</strong></p>
-<p><strong>Índice<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.004.png" /></strong></p>
-<p>índice<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.005.png" /></p>
-<p><a href="#_page0_x47.76_y446.94">Servicios de Impresión</a></p>
-<p><a href="#_page17_x47.76_y574.50">Administración de la Impresión.</a></p>
-<p><a href="#_page23_x47.76_y173.07">Planificar y configurar los trabajos de impresión de los usuarios. </a><a href="#_page28_x47.76_y419.18">Actividades</a></p>
-<p><strong>Servicios de Impresión<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.006.png" /></strong></p>
-<p>Uno de los dispositivos hardware que aparecen en casi todas las redes empresariales, junto con los PCs y los elementos de interconexión,  son  las  impresoras.  En  los  siguientes  apartados  revisaremos  cómo  implantar,  configurar  y  mantener  los servicios de impresión de una manera centralizada.</p>
-<p>Sin embargo antes de empezar, repasemos los términos que utilizaremos a lo largo de este capítulo y cuyo significado no es evidente:</p>
-<ul>
-<li>Impresora lógica: es la interfaz de usuario que se coloca entre el sistema operativo y el dispositivo de impresión.</li>
-<li>Dispositivo de impresión: es el dispositivo físico que lleva a cabo la impresión de los documentos.<ul>
-<li>Controlador de impresión: es un conjunto de archivos que permiten al sistema convertir los trabajos de impresión al lenguaje específico del dispositivo de impresión.</li>
-<li>Cola de impresión: es un conjunto de dispositivos físicos de impresión gestionados por una misma impresora lógica.</li>
-</ul>
-</li>
-</ul>
-<p><strong>Impresión en Red</strong></p>
-<p>El objetivo final del servicio de impresión es proporcionar la capacidad de impresión a los usuarios de la red. Existen diferentes maneras de compartir en red un dispositivo físico de impresión. La más común en entornos corporativos es la instalación de una impresora física que soporta el direccionamiento IP y puede ser conectada directamente a la LAN a través de un switch o un hub:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.007.jpeg" /></p>
-<p><em>Esquema de red habitual</em></p>
-<p>Esta topología es la idónea en entornos en los que se generan volúmenes de impresión que justifican la adquisición de una impresora de estas características, pero no lo suficientemente grandes para suponer un problema de congestión en el equipo que tienen instalado el servidor de impresión (Controlador de Dominio en este caso.).</p>
-<p>En entornos donde se genera un número muy elevado de trabajos de impresión (por ejemplo una imprenta, una copistería, etc.) puede valer la pena conectar la impresora localmente a un equipo dedicado en exclusiva a estas labores y que ejercerá de servidor de impresión. Desde este servidor se compartirá la impresora en red, asignando los permisos planificados en la estructura corporativa.</p>
-<p>Este tipo de conexión y compartición, también puede ser útil cuando se cuenta con impresoras que no disponen de la capacidad de conectarse directamente a la red y deben conectarse a un equipo para poder recibir los trabajos de impresión.</p>
-<p>En este tema nos centraremos en el primer caso, ya que:</p>
-<ol>
-<li>Es el más habitual en empresas no dedicadas en exclusiva al negocio de la impresión.</li>
-<li>Existen en el mercado servidores de impresión propios de las compañías que desarrollan los dispositivos de impresión orientados al sector específico de imprenta y reprografía.</li>
-</ol>
-<p><strong>Instalación de los Servicios de Impresión</strong></p>
-<p>Como hemos visto en el punto anterior, la manera más habitual de conexión de impresoras en organizaciones de tamaño medio y grande consiste en conectar la impresora directamente a la red a través de un switch. Vamos a implantar esta estructura en nuestro dominio. Para ello lo primero que tenemos que hacer es instalar la función de 'Servicios de Impresión' :</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.008.jpeg" /></p>
-<p><em>Agregar el rol de Servicios de Impresión</em></p>
-<p>En la siguiente figura podemos seleccionar qué servicios de impresión queremos instalar. Instalaremos únicamente el 'Servidor de Impresión', la segunda opción permite poner en marcha un servidor web para gestionar los trabajos de impresión. La tercera ('Servidor LPD') la instalaríamos en caso de tener una red heterogénea Windows-GNU/Linux, y la tercera permite la gestión de digitalización de documentos.</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.009.jpeg" /></p>
-<p><em>Servicios a instalar</em></p>
-<p>Confirmamos e instalamos el Servicio de Impresión:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.010.jpeg" /></p>
-<p><em>Instalar Servicio de Impresión</em></p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.011.jpeg" /></p>
-<p><em>Instalación de Servicios de Impresión</em></p>
-<p>Una vez instalado el Servidor de Impresión, ya podemos acceder al administrador de la impresión a través del Panel del Administrador --&gt; Herramientas --&gt; Administración de Impresión:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.012.jpeg" /></p>
-<p><em>Administración de Impresión</em></p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.013.jpeg" /></p>
-<p><em>Administración de Impresión</em></p>
-<p><strong>Agregando un Dispositivo de Impresión</strong></p>
-<p>Una vez que tenemos instalados los servicios de impresión en el controlador de dominio, agregaremos un dispositivo de impresión en red. Para ello, abrimos el Administrador de Impresión y añadimos una nueva impresora:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.014.jpeg" /></p>
-<p><em>Agregar una impresora</em></p>
-<p>Se abrirá el Asistente para la instalación de impresoras en red, y ahí podremos especificar el método de instalación. La primera de las opciones (Buscar impresoras en la red) nos mostrará un listado de los dispositivos físicos de impresión accesibles desde nuestro equipo. Como no hemos conectado ninguno, esta opción no nos sirve. La segunda de las opciones (Agregar una impresora TCP/IP o de servicios web en base a la dirección IP o nombre de host) nos permite configurar una impresora lógica que apuntará a la dirección IP que definiremos en el dispositivo físico de impresión. La tercera opción (Agregar una nueva impresora por medio de un puerto existe) nos permitiría configurar una impresora lógica que apuntaría a un puerto ya existente del controlador de dominio (LPT, USB, etc.) donde podríamos conectar el dispositivo físico de impresión. Finalmente la última opción (Crear un nuevo puerto y agregar una nueva impresora) nos permite definir un nuevo puerto local como interfaz entre una impresora lógica a configurar y el dispositivo físico.</p>
-<p>Como queremos administrar un dispositivo físico de impresión que se conectará directamente a la red, seleccionaremos la segunda opción: 'Agregar una impresora TCP/IP o de servicios web en base a la dirección IP o nombre de host'.</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.015.jpeg" /></p>
-<p><em>Buscando impresoras de red</em></p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.016.jpeg" /></p>
-<p><em>Buscando impresoras de red</em></p>
-<p>Una vez encontrada la impresora, procedemos a realizar la instalación de la misma. Habrá que seleccionar los drivers, bien por defecto o bien si hemos de descargarlos de internet y realizar la instalación de los mismos. Al final la impresora queda instalada:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.017.jpeg" /></p>
-<p><em>Instalación de Impresora</em></p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.018.jpeg" /></p>
-<p><em>Instalación de Impresora</em></p>
-<p>Podemos comprobar, realizando una impresión de prueba que nuestra impresora funciona:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.019.jpeg" /></p>
-<p><em>Prueba de Impresión</em></p>
-<p><strong>Despliegue de los Dispositivos de Impresión</strong></p>
-<p>De la misma manera que en el tema 5 vimos cómo asociar carpetas compartidas específicas a los usuarios de una manera transparente a estos, ahora veremos cómo asociar los dispositivos de impresión a usuarios o grupos, sin que estos tengan que llevar a cabo ningún tipo de configuración, lo cual es un proceso molesto y peligroso.</p>
-<p>Para poder realizar esta tarea, debemos asegurarnos de que la impresora está compartida en red, y que los usuarios que planifiquemos tienen acceso a la misma. Para ello, en el administrador de impresión, haremos clic con el botón secundario en el dispositivo de impresión que queremos configurar, y accederemos a las Propiedades. En la pestaña 'Compartir' corroboraremos que la compartición está habilitada, tal y como configuramos en la instalación de la impresora, y en la pestaña 'Seguridad' comprobaremos que los grupos o usuarios que definamos tienen permiso para imprimir:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.020.jpeg" /></p>
-<p><em>Permisos a dispositivos de impresión</em></p>
-<p>En principio no es aconsejable otorgar a los usuarios convencionales del dominio los permisos de administrar impresoras o administrar documentos. La administración de impresoras proporciona al usuario un control total sobre la impresora y sus controladores. La administración de documentos permite al usuario realizar tareas de control sobre los documentos y puede detener, reiniciar o cancelar las tareas de impresión:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.021.jpeg" /></p>
-<p><em>Permisos de seguridad en Impresoras</em></p>
-<p>Lo más habitual es que los dispositivos de impresión estén distribuidos en la empresa en diversos departamentos o plantas del edificio, y normalmente los usuarios suelen tener acceso únicamente a las impresoras asignadas a su grupo, por lo que eliminaremos el grupo Todos de los permisos, y añadiremos al grupo Pistonazo, ya que a priori, podrán imprimir documentos:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.022.jpeg" /></p>
-<p><em>Asignar permisos de impresión</em></p>
-<p>Como el despliegue de los dispositivos de impresión lo haremos mediante directivas de grupo, antes de empezar crearemos un GPO sobre todo el dominio que llamaremos (en este caso) ImpresoraPistonazo. En el filtrado de seguridad del GPO incluiremos únicamente al grupo Pistonazo.</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.023.jpeg" /></p>
-<p><em>Crear GPO para Impresora</em></p>
-<p>y añadimos al grupo Pistonazo:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.024.jpeg" /></p>
-<p><em>Agregamos a la GPO el grupo Pistonazo</em></p>
-<p>A continuación, abriremos el Administrador de Impresión y seleccionamos la impresora que queremos desplegar. Hacemos clic con el botón derecho y seleccionamos la opción 'Implementar con directiva de grupo' :</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.025.jpeg" /></p>
-<p><em>Implementar con directiva de grupo</em></p>
-<p>Se  abrirá  el  cuadro  de  dialogo   y  haremos  clic  en  'Examinar...'  para  seleccionar  a  qué  directiva  queremos  añadir  la configuración de la impresión:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.026.jpeg" /></p>
-<p><em>Implementar con directiva de grupo</em></p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.027.jpeg" /></p>
-<p><em>Seleccionar la GPO</em></p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.028.jpeg" /></p>
-<p><em>Añadir GPO aplicada por usuario</em></p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.029.jpeg" /></p>
-<p><em>Aplicar la GPO</em></p>
-<p>Si ahora iniciamos sesión con un usuario de Pistonazo, veremos que la Impresora se ha conectado y podemos imprimir en ella:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.030.jpeg" /></p>
-<p><em>Impresora conectada por GPO</em></p>
-<p>Si iniciáramos sesión con otro usuario que no fuera de Pistonazo, no conectaría la impresora:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.031.jpeg" /></p>
-<p><em>Usuario sin permisos de conexión</em></p>
-<p><strong>Administración de la Impresión<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.032.png" /></strong></p>
-<p>Podemos administrar ciertos aspectos de los trabajos de impresión, desde el Administrador de Impresoras, accediendo a las Propiedades de la impresora que queremos configurar.</p>
-<p><strong>Controladores Adicionales</strong></p>
-<p>Para empezar, nos aseguraremos de que estén instalados los drivers de la impresora para las distintas arquitecturas de equipos presentes en la red. Para ello en la pestaña 'Compartir' haremos clic en el botón 'Controladores adicionales' .</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.033.jpeg" /></p>
-<p><em>Controladores adicionales</em></p>
-<p>Nos aparecerá un cuadro  donde podremos seleccionar la arquitectura de los controladores de la impresora:</p>
-<ul>
-<li>x64: arquitectura de 64 bits.</li>
-<li>x86: arquitectura de 32 bits</li>
-</ul>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.034.jpeg" /></p>
-<p><em>Controladores x86 y x64</em></p>
-<p>Instalaremos  aquellas  versiones  que  necesitemos  en  función  de  los  equipos  de  nuestra  red  y  los  equipos  clientes  se descargarán los drivers adecuados accediendo al recurso compartido print$ que se halla alojado en el servidor en la ruta C:\system32\spool\drivers , de una manera transparente al usuario.</p>
-<p><strong>Preferencias de Impresión</strong></p>
-<p>Podemos configurar las 'Preferencias de impresión' en la pestaña 'General':</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.035.jpeg" /></p>
-<p><em>Preferencias de Impresión</em></p>
-<p>Ahí podemos definir aspectos como el formato de ahorro en papel imprimiendo en modo folleto, aunque posteriormente el usuario pueda modificar esta configuración antes de enviar el trabajo de impresión:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.036.jpeg" /></p>
-<p><em>Preferencias de Impresión</em></p>
-<p><strong>Opciones avanzadas de Impresión</strong></p>
+                <p><strong>Opciones avanzadas de Impresión</strong></p>
 <p>La pestaña 'Opciones Avanzadas' nos permite configurar aspectos relacionados con la gestión de los trabajos de impresión:</p>
 <p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.037.jpeg" /></p>
 <p><em>Opciones avanzadas de impresión</em></p>
@@ -770,40 +701,6 @@
 <li>Conservar los documentos después de su impresión: Esta opción permite mantener en el administrador de impresión los trabajos impresos. Si no se selecciona esta opción, el documento una vez impreso se elimina de la cola de impresión.</li>
 <li>Habilitar características de impresión avanzadas: Permite modificar aspectos como el número de páginas a imprimir por hoja, el orden de las mismas, etc.</li>
 </ul>
-<p><strong>Configuración de la Impresión<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.039.png" /></strong></p>
-<p>Supongamos  que  disponemos  de  una  única  impresora  física  en  nuestra  empresa,  y  queremos  configurarla  de  manera diferente para cada departamento. Por ejemplo, podríamos querer asignar prioridades diferentes: el grupo Almacén podría tener una prioridad en la impresión inferior a la del grupo Dirección. Además también podríamos hacer una planificación en la que el grupo Almacén solo pudiera imprimir de 8.00 a 16.00, mientras que el grupo Dirección podría imprimir durante todo el día. Veamos como implantar esta política de administración paso a paso.</p>
-<p>En primer lugar tenemos que crear dos impresoras lógicas que apunten al mismo dispositivo de impresión físico, una para la sección de Dirección y otra para la sección de Administración:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.040.png" /></p>
-<p><em>Permisos diferentes de Impresión</em></p>
-<p>Es importante que ambas impresoras estén compartidas, y que los miembros de los respectivos grupos tengan permisos para imprimir:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.041.jpeg" /></p>
-<p><em>Configuración de dos impresoras lógicas</em></p>
-<p>Configuraremos las impresoras (lógicas) de Almacén y Dirección  como hemos planificado al principio de este apartado:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.042.jpeg" /></p>
-<p><em>Configuración de opciones avanzadas</em></p>
-<p>A continuación creamos un GPO para cada grupo que nos permitirá desplegar la correspondiente impresora a los miembros de cada grupo:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.043.jpeg" /></p>
-<p><em>Definición de las GPOs</em></p>
-<p>En el siguiente paso implementamos la conexión de cada impresora mediante su correspondiente GPO:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.044.jpeg" /></p>
-<p><em>Implementación de la GPO Almacén</em></p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.045.jpeg" /></p>
-<p><em>Implementación de GPO a Almacén</em></p>
-<p>Y hacemos el mismo proceso para Dirección:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.046.jpeg" /></p>
-<p><em>Implementación de la GPO a Dirección</em></p>
-<p>Para finalizar ejecutamos gpupdate /force en el controlador de dominio y ya tendremos implementadas las impresoras con sus respectivas restricciones para los grupos de Almacén y Dirección.</p>
-<p>Destacar de nuevo que hemos creado dos impresoras lógicas que apuntan al mismo dispositivo físico con el fin de realizar una gestión de la impresión física diferenciada en función del usuario o grupo que envíe los trabajos a la impresora.</p>
-<p><strong>Comprobación de la configuración</strong></p>
-<p>Para comprobar la configuración anterior, vamos a iniciar sesión en un equipo cliente con el usuario usucont1 perteneciente al grupo Almacén, y vamos a enviar un trabajo de impresión fuera del horario en el que tiene permitido imprimir:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.047.jpeg" /></p>
-<p><em>Impresora de usuario de Almacén</em></p>
-<p>Vemos en la figura anterior que aparece automáticamente la nueva impresora EpsonWF3620-Almacen.</p>
-<p>Si nos vamos al controlador de dominio y abrimos el asistente de impresión vemos que efectivamente el trabajo está en la cola, pero no se está imprimiendo por restricciones horarias:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.048.jpeg" /></p>
-<p><em>Impresora con restricción horaria</em> Ahora iniciaremos una sesión con el usuario usudir1 que es del grupo de Dirección:</p>
-<p><img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.049.jpeg" /></p>
-<p><em>Impresora sin restricción para grupo Dirección</em></p>
 <p><strong>Actividades<img alt="" src="Aspose.Words.8349db10-c71d-42f3-a9d6-8408f87428af.050.png" /></strong></p>
 <p><strong>Actividad 1</strong></p>
 <p>En esta actividad instalaremos una impresora en el controlador de dominio y la compartiremos y administraremos en red, como hemos visto en los diferentes apartados de este tema.</p>

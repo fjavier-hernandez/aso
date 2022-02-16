@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica03_LDAP.html">
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/071_ServiciosRedRecursosCompartidos.html">
       
       <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>Practica03 LDAP - Administración de Sistemas Operativos</title>
+        <title>7.1- Servicios de red para compartir recursos - Administración de Sistemas Operativos</title>
       
     
     
@@ -77,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#integracion-de-sistemas-operativos-en-red-libres-y-propietarios" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -102,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Practica03 LDAP
+              7.1- Servicios de red para compartir recursos
             
           </span>
         </div>
@@ -618,12 +623,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
       <label class="md-nav__link" for="__nav_8">
         7.- Integración de sistemas operativos en red libres y propietarios
@@ -639,11 +646,98 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="071_ServiciosRedRecursosCompartidos.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          7.1- Servicios de red para compartir recursos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="071_ServiciosRedRecursosCompartidos.html" class="md-nav__link md-nav__link--active">
         7.1- Servicios de red para compartir recursos
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-descripcion-de-escenarios-heterogeneos" class="md-nav__link">
+    Introducción. Descripción de escenarios heterogéneos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocolos-para-redes-heterogeneas" class="md-nav__link">
+    Protocolos para redes heterogéneas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sistemas-de-archivos-compartidos-en-red" class="md-nav__link">
+    Sistemas de archivos compartidos en red
+  </a>
+  
+    <nav class="md-nav" aria-label="Sistemas de archivos compartidos en red">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabla-resumen-protocolos-y-servicios-de-los-sistemas-de-archivos-compartidos" class="md-nav__link">
+    Tabla Resumen Protocolos y Servicios de los Sistemas de Archivos Compartidos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otros-servicios" class="md-nav__link">
+    Otros servicios
+  </a>
+  
+    <nav class="md-nav" aria-label="Otros servicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kerberos" class="md-nav__link">
+    Kerberos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -679,75 +773,118 @@
               
                 
                 
-                  <h1>Practica03 LDAP</h1>
-                
-                <p>Ahora vamos a configurar un equipo cliente con el fin de poder iniciar sesión en él a partir de un usuario creado en el directorio LDAP.</p>
-<p>Comenzamos instalando la paquetería necesaria:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt install libnss-ldap libpam-ldap ldap-utils
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/19.png" /></p>
-<p>Automáticamente se nos abrirá el asistente de configuración donde indicaremos los datos de nuestro servidor donde se encuentra instalado el directorio LDAP.</p>
-<p>En primer lugar, nos solicita la dirección URI del servidor. Sustituiremos la cadena por la que se muestra en la imagen.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/20.png" /></p>
-<p>A continuación escribiremos el nombre distinguido único (DN) de nuestro directorio LDAP.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/21.png" /></p>
-<p>En el siguiente paso nos dan a elegir la versión del protocolo LDAP que vamos utilizar. Elegimos la versión más actual, en este caso la 3.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/22.png" /></p>
-<p>Ahora indicaremos si las aplicaciones que utilicen PAM deberán comportarse del mismo modo que cuando cambiamos contraseñas locales. Esto hará que las contraseñas se almacenen en un fichero independiente que sólo podrá ser leído por root. Elegimos que SI.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/23.png" /></p>
-<p>Luego nos pregunta si queremos que sea necesario identificarse para realizar consultas en la base de datos del directorio LDAP. Elegimos que NO.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/24.png" /></p>
-<p>En el siguiente paso indicaremos el nombre de la cuenta LDAP con privilegios para realizar cambios en las contraseñas. Dicha cuenta será la del administrador de nuestro directorio LDAP, indicaremos su DN completo.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/25.png" /></p>
-<p>Y por último, nos solicita la contraseña de la cuenta que hemos indicado justo antes (la que indicamos para el administrador en el asistente de configuración de OpenLDAP). Habrá que escribirla por duplicado.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/26.png" /></p>
-<p>Una vez finalizado el asistente de configuración, vamos a realizar modificaciones en el fichero /etc/nsswitch.conf. Indicaremos al sistema que realice búsquedas sobre usuarios en el directorio LDAP además de en el propio sistema.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/nsswitch.conf
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/27.png" /></p>
-<p>Ahora tenemos que realizar modificaciones en el fichero /etc/pam.d/common-password. En él eliminaremos la cadena use_authtok de la línea 26. Quitando dicha cadena, el sistema nos permitirá usar varios métodos de autenticación.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/pam.d/common-password
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/28.png" /></p>
-<p>Por último, modificaremos el fichero /etc/pam.d/common-session. Añadiremos una línea al final del fichero para indicar que cuando un usuario de LDAP inicie sesión en el sistema, se cree su directorio Home en el equipo.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/pam.d/common-session
-<span class="linenos" data-linenos="2 "></span>
-<span class="linenos" data-linenos="3 "></span>session optional      pam_mkhomedir.so skel=/etc/skel umask=077
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/29.png" /></p>
-<p>Una vez realizados todos los cambios en los ficheros anteriores, podemos comprobar la interacción entre equipo cliente y servidor de directorio LDAP. Para ello podemos lanzar una búsqueda a través de la terminal y veremos si nos responde.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ldapsearch -x -H ldap://192.168.1.90 -b &quot;dc=pandora,dc=ldap&quot;
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/30.png" /></p>
-<p>Como podemos ver, el servidor LDAP nos responde mostrándonos el resultado a la búsqueda que hemos realizado, que en este caso se trata de todas las entradas que se encuentran definidas en él. </p>
-<blockquote>
-<p>En el punto donde nos encontramos, ya tenemos nuestro directorio LDAP configurado, poblado y funcionando en nuestro servidor. Y nuestro equipo cliente configurado para poder conectar con el servicio de directorio y poder iniciar sesión en el sistema con usuarios registrados en LDAP (Ojo! De momento, solo a través de consola.)</p>
-</blockquote>
-<p>Vamos a hacer una prueba de inicio de sesión por consola y veremos como también se crea el directorio Home del usuario registrado en LDAP.</p>
-<p>Antes que nada, visualizamos el contenido del directorio /home y vemos que ahora mismo solo existe el de usuario.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ll /home
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/31.png" /></p>
-<p>Ahora abrimos un nuevo entorno de terminal tecleando Ctrl + Alt + F5, e iniciaremos sesión con el usuario mordecai que hemos registrado anteriormente en LDAP. Como podremos ver, al iniciar sesión se creara en el equipo cliente el directorio /home/mordecai.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/32.png" /></p>
-<p>Podemos lanzar algunos comandos más para verificar la identidad del usuario y ver que pertenece al grupo devops tal y como creamos las entradas en nuestro directorio LDAP. Además también verificaremos que el directorio /home/mordecai pertenece y se ha creado con los permisos necesarios para dicho usuario.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>id
-<span class="linenos" data-linenos="2 "></span>pwd
-<span class="linenos" data-linenos="3 "></span>ll /home
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/33.png" /></p>
-<p>Como hemos mencionado antes, hasta ahora solo era posible iniciar sesión en el equipo cliente por terminal. Ahora vamos a realizar lo necesario para que sea posible, también, iniciar sesión con usuarios de LDAP en modo gráfico. Para ello comenzamos instalando el paquete nslcd.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt install nslcd
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/34.png" /></p>
-<p>Al instalar el paquete, se abrirá un asistente de configuración automáticamente donde tendremos que indicar nuevamente la URI de nuestro servidor LDAP y su DN (Distinguished Name). Probablemente los datos vengan ya indicados por lo que solo pulsaremos Aceptar en ambas ventanas sin necesidad de modificar nada.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/35.png" /></p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/36.png" /></p>
-<p>Al terminal de instalar el paquete, debemos reiniciar nuestro sistema para un correcto funcionamiento. Reiniciamos el equipo cliente.</p>
-<p>Y tras reiniciar ya podremos iniciar sesión con nuestro usuario Mordecai, directamente desde la pantalla de Login del sistema.</p>
-<p><img alt="" src="https://blog.juananpc.es/wp-content/uploads/2021/07/40.png" /></p>
-<p>Tras iniciar sesión, se creará un perfil para el usuario y ya podrá usar el sistema de forma completamente gráfica además de por terminal. Podemos verificar la identidad del usuario desde consola y veremos que sigue siendo tal cual lo configuramos en nuestro directorio LDAP.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/39-1024x768.png" /></p>
+                <h1 id="integracion-de-sistemas-operativos-en-red-libres-y-propietarios">Integración de sistemas operativos en red libres y propietarios<a class="headerlink" href="#integracion-de-sistemas-operativos-en-red-libres-y-propietarios" title="Permanent link">&para;</a></h1>
+<details class="abstract"><summary>Duración y criterios de evaluación</summary><p><strong>Duración estimada: 5 sesiones (12h por sesión)</strong></p>
+<hr />
+<p>Resultado de aprendizaje y Criterios de evaluación:</p>
+<ol>
+<li>Integra sistemas operativos libres y propietarios, justificando y garantizando su interoperabilidad.<ol>
+<li>Se ha identificado la necesidad de compartir recursos en red entre diferentes sistemas operativos.</li>
+<li>Se han establecido niveles de seguridad para controlar el acceso del cliente a los recursos compartidos en red.</li>
+<li>Se ha comprobado la conectividad de la red en un escenario heterogéneo.</li>
+<li>Se ha descrito la funcionalidad de los servicios que permiten compartir recursos en red.</li>
+<li>Se han instalado y configurado servicios para compartir recursos en red.</li>
+<li>Se ha comprobado el funcionamiento de los servicios instalados.</li>
+<li>Se ha trabajado en grupo para acceder a sistemas de archivos e impresoras en red desde equipos con diferentes sistemas operativos.</li>
+<li>Se ha documentado la configuración de los servicios instalados.</li>
+</ol>
+</li>
+</ol>
+</details>
+<h2 id="introduccion-descripcion-de-escenarios-heterogeneos">Introducción. Descripción de escenarios heterogéneos<a class="headerlink" href="#introduccion-descripcion-de-escenarios-heterogeneos" title="Permanent link">&para;</a></h2>
+<p>Un <strong>escenario heterogéneo</strong> es aquél donde conviven, en una red (<strong>LAN</strong>, <strong>WAN</strong>) diversos equipos con distintas arquitecturas y sistemas operativos distintos, bien sea por su versión, bien sea porque son de distinta factoría.</p>
+<p>En dichos escenarios, el intercambio de datos es posible <strong>sólo si los dos extremos de la comunicación entienden el protocolo utilizado</strong>. En este sentido, a lo largo de los años se han desarrollado enormes cantidades de <strong>protocolos</strong>, más o menos especializados, destinados a este intercambio de datos, los más conocidos son: <strong>SMB/CIFS</strong> y <strong>NFS (Network File System)</strong> y los <strong>servicios</strong> que los implementan son <strong>Samba</strong> y <strong>NFS</strong> respectivamente, en este tema se estudiará su instalación y configuración.</p>
+<h2 id="protocolos-para-redes-heterogeneas">Protocolos para redes heterogéneas<a class="headerlink" href="#protocolos-para-redes-heterogeneas" title="Permanent link">&para;</a></h2>
+<p>El primer sistema de ficheros en red ideado en los años ochenta por la empresa ‘<strong>Novell Data Systems</strong>’ (después llamada ‘<strong>Novell Inc</strong>.’).</p>
+<p><strong>Novell</strong>, creó su producto llamado <strong>Netware</strong>, basado en una arquitectura <em>cliente/servidor</em> y con su propio protocolo de red, <strong>IPX</strong>. Fue, durante mucho tiempo, líder indiscutible en el apartado de servidores de red. Pero aunque se mantiene vivo, no es fácil de conseguir y su utilización ha ido en detrimento de otros como plataformas Windows y GNU/Linux; como se ha comentado en la introducción, los más utilizados en la comunicación entre equipos dentro de una red son: <strong>SMB/CIFS</strong> y <strong>NFS</strong>, a continuación se describen brevemente.</p>
+<ul>
+<li><strong>SMB/CIFS</strong>: se basa en la arquitextura cliente/servidor, y permite compartir recursos entre equipos con sistemas operativos diferentes; <em>Windows</em>, <em>GNU/Linux</em> y <em>MacOSXh</em>.</li>
+<li><strong>NFS (Network File System)</strong>: es un protocolo de nivel de aplicación, según el Modelo <em>OSI</em>. Es utilizado para sistemas de archivos distribuido en un entorno de red heterogéneo de computadoras de área local. Originalmente fue desarrollado en <strong>1984</strong> por <strong>Sun Microsystems</strong></li>
+</ul>
+<p>Además se destaca el protocolo ‘<strong>Apple File Service</strong>’ (<strong>AFS</strong>), que ofrece servicios de archivos compartidos para sistemas operativos ‘<strong>macOS</strong>’, que funcionan en equipos ‘<strong>Macintosh</strong>’ (o simplemente ‘Mac’) de la empresa ‘<strong>Apple Inc</strong>.’.</p>
+<h2 id="sistemas-de-archivos-compartidos-en-red">Sistemas de archivos compartidos en red<a class="headerlink" href="#sistemas-de-archivos-compartidos-en-red" title="Permanent link">&para;</a></h2>
+<p>Cuando se habka de compartir archivos y carpetas, nos referimos principalmente al <strong>sistema de archivos en red</strong> que se utiliza, los sistemas de archivos se definen como un conjunto de normas y procedimientos para almacenar información en los dispositivos de almacenamiento. En el caso de <strong>los sistemas de archivos en red</strong> las normas y procedimientos además de afectar al almacenamiento también afectan a la transmisión por red, y se realizan a través de protocolos y servicios.</p>
+<p>Entre los servicios que implementan los protocolos descritos en el apartado anterior destacan:</p>
+<ul>
+<li><strong>NFS (Network File System)</strong>, servicio de <strong>GNU/Linux</strong> que comparte el mismo nombre del protocolo, el cual permite compartir recursos de almacenamiento masivo con otros equipos. <strong>Con equipos que tengan instalado el sistema operativo MacOSX no debemos tener ningún problema</strong>, ya que esta basado en Unix como GNU/Linux.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA</strong></p>
+<p>En cuanto a máquinas que tengan el <strong>sistema operativo Windows</strong> en cualquiera de sus versiones es un poco más complicado. Requiere un software específico para poder implementarlo.</p>
+</div>
+<ul>
+<li>En este sentido, para añadir los SOs de Microsoft se dispone de <strong>Samba</strong>, el cual es uno de los grandes logros del movimiento de código abierto. Prueba de ello es el reconocimiento y la aceptación que ha tenido últimamente en el mundo de las TIC, donde <strong>se ha convertido en una especie de servicio estándar en redes donde conviven sistemas operativos GNU / Linux y Windows</strong>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title"><strong>Un poco de historia</strong></p>
+<ul>
+<li>Gran parte de su popularidad se debe precisamente a su capacidad para integrarse en redes Windows.</li>
+<li><strong>Samba</strong> toma el nombre del protocolo <strong>server message block (SMB)</strong>, inicialmente desarrollado por <strong>Microsoft</strong>, <strong>IBM, Intel y otros</strong> para permitir que los sistemas operativos <em>DOS</em>, <em>Xenix</em>, <em>OS/2</em> y <em>Windows</em>; al final de los años 80 se llego a realizar, pudiendo compartir unidades, archivos e impresoras.</li>
+<li>El protocolo <strong>SMB</strong> cambió de nombre en 1998 y pasó a llamarse <strong>Common Internet File System (CIFS)</strong>. A día de hoy, este protocolo es el que todavía se utiliza en los sistemas Windows para compartir archivos.</li>
+</ul>
+</div>
+<figure>
+  <img src="./imagenes/07/071/001.png" width="550"/>
+  <figcaption>Esquema de Red utilizando Samba</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>Samba Definición</strong></p>
+<p><strong>Samba es una implementación libre del protocolo de archivos compartidos de Microsoft Windows para sistemas de tipo UNIX</strong>. De esta forma, es posible que computadoras con GNU/Linux, Mac OS X o Unix en general se vean como servidores o actúen como clientes en redes de Windows.</p>
+</div>
+<h3 id="tabla-resumen-protocolos-y-servicios-de-los-sistemas-de-archivos-compartidos">Tabla Resumen Protocolos y Servicios de los Sistemas de Archivos Compartidos<a class="headerlink" href="#tabla-resumen-protocolos-y-servicios-de-los-sistemas-de-archivos-compartidos" title="Permanent link">&para;</a></h3>
+<p>A continuación la <strong>tabla resumen</strong> de protocolos y servicios en los Sistemas de Archivos Compartidos en Red:</p>
+<table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>‘Network File System’ (NFS)</strong></td>
+<td>Sistema de archivos de red distribuido, desarrollado originalmente por la empresa '<em>Sun Microsystems</em>', incluido por defecto en los sistemas '<em>UNIX</em>' y en la mayoría de las distribuciones '<em>Linux</em>' .</td>
+</tr>
+<tr>
+<td><strong>‘Server Message Block’ (SMB)</strong></td>
+<td>Protocolo de red, desarrollado originalmente por la empresa '<em>International Business Machines Corporation</em>' (IBM), que permite compartir archivos, impresoras y otros dispositivos, entre equipos clientes '<em>Microsoft Windows</em>'.</td>
+</tr>
+<tr>
+<td><strong>‘Common Internet File System’ (CIFS)</strong></td>
+<td>Versión modificada ampliamente del protocolo SMB, realizada por '<em>Mircrosoft Corporation</em>'. </td>
+</tr>
+<tr>
+<td><strong>‘Samba’</strong></td>
+<td>Implementación libre del protocolo SMB con las extensiones de '<em>Microsoft</em>', que funciona sobre las distribuciones gratuitas GNU ('<em>GNU's Not UNIX!</em>') de sistemas '<em>Linux</em>' y en algunos sistemas '<em>UNIX</em>' </td>
+</tr>
+<tr>
+<td><strong>‘Apple Filing Protocol’ (AFS)</strong></td>
+<td>Protocolo que forma parte de la tecnología '<em>Apple File Service</em>' (AFS), que ofrece servicios de archivos compartidos para sistemas operativos '<em>macOS</em>', que funcionan en equipos '<em>Macintosh</em>' (o simplemente '<em>Mac</em>') de la empresa '<em>Apple Inc.</em>'.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="otros-servicios">Otros servicios<a class="headerlink" href="#otros-servicios" title="Permanent link">&para;</a></h2>
+<p>Independientemente del sistema operativo usado necesitaremos de otros servicios para complementar la configuración de recursos compartidos en redes Heterogéneas:</p>
+<ul>
+<li><strong>LDAP</strong>: Será la base de datos que alberga la información de los usuarios.</li>
+<li><strong>Kerberos</strong>: Se encarga de la seguridad a nivel de autentificación segura de los usuarios.</li>
+<li><strong>DNS</strong>: Habitualmente el acceso al dominio se hace a través de un nombre de dominio. El servicio DNS permite la resolución de ese nombre de dominio al direccionamiento IP.</li>
+<li><strong>NTP</strong>: Es el servicio que se encarga de la sincronización del reloj de cada máquina.</li>
+</ul>
+<h3 id="kerberos">Kerberos<a class="headerlink" href="#kerberos" title="Permanent link">&para;</a></h3>
+<p><strong>Kerberos es un protocolo de autenticación</strong> de redes de ordenador creado por el MIT que permite a dos ordenadores en una red insegura demostrar su identidad mutuamente de manera segura.</p>
+<figure>
+  <img src="./imagenes/07/071/002.png" width="350"/>
+  <figcaption>Logo Kerberos</figcaption>
+</figure>
+
+<p><strong>Características Principales</strong>:</p>
+<ul>
+<li>Es un protocolo de seguridad que permite al cliente autentificarse de forma segura. </li>
+<li>Cifra los datos de autentificación, por lo que alguien que esté robando (sniffing) los datos de la red no será capaz de averiguar la contraseña, de hecho la contraseña no viaja por la red.</li>
+<li>Además permite al cliente asegurarse de la autenticidad del servidor, es decir, que impide que nadie se haga pasar por el servidor para robarte las claves.</li>
+</ul>
                 
               
               
@@ -763,6 +900,41 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="063_ServidorImpresionWindowsServer.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 6.3- Servidor de impresión en Windows Server" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              6.3- Servidor de impresión en Windows Server
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="072_Samba.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 7.2- Samba" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              7.2- Samba
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

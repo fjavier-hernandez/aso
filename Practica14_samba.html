@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica03_LDAP.html">
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica14_samba.html">
       
       <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>Practica03 LDAP - Administración de Sistemas Operativos</title>
+        <title>Instalación y preparación Servidor Samba - Administración de Sistemas Operativos</title>
       
     
     
@@ -77,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#instalacion-y-preparacion-servidor-samba" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -102,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Practica03 LDAP
+              Instalación y preparación Servidor Samba
             
           </span>
         </div>
@@ -679,75 +684,86 @@
               
                 
                 
-                  <h1>Practica03 LDAP</h1>
-                
-                <p>Ahora vamos a configurar un equipo cliente con el fin de poder iniciar sesión en él a partir de un usuario creado en el directorio LDAP.</p>
-<p>Comenzamos instalando la paquetería necesaria:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt install libnss-ldap libpam-ldap ldap-utils
+                <h1 id="instalacion-y-preparacion-servidor-samba">Instalación y preparación Servidor Samba<a class="headerlink" href="#instalacion-y-preparacion-servidor-samba" title="Permanent link">&para;</a></h1>
+<h2 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt install samba</span>
 </code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/19.png" /></p>
-<p>Automáticamente se nos abrirá el asistente de configuración donde indicaremos los datos de nuestro servidor donde se encuentra instalado el directorio LDAP.</p>
-<p>En primer lugar, nos solicita la dirección URI del servidor. Sustituiremos la cadena por la que se muestra en la imagen.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/20.png" /></p>
-<p>A continuación escribiremos el nombre distinguido único (DN) de nuestro directorio LDAP.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/21.png" /></p>
-<p>En el siguiente paso nos dan a elegir la versión del protocolo LDAP que vamos utilizar. Elegimos la versión más actual, en este caso la 3.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/22.png" /></p>
-<p>Ahora indicaremos si las aplicaciones que utilicen PAM deberán comportarse del mismo modo que cuando cambiamos contraseñas locales. Esto hará que las contraseñas se almacenen en un fichero independiente que sólo podrá ser leído por root. Elegimos que SI.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/23.png" /></p>
-<p>Luego nos pregunta si queremos que sea necesario identificarse para realizar consultas en la base de datos del directorio LDAP. Elegimos que NO.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/24.png" /></p>
-<p>En el siguiente paso indicaremos el nombre de la cuenta LDAP con privilegios para realizar cambios en las contraseñas. Dicha cuenta será la del administrador de nuestro directorio LDAP, indicaremos su DN completo.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/25.png" /></p>
-<p>Y por último, nos solicita la contraseña de la cuenta que hemos indicado justo antes (la que indicamos para el administrador en el asistente de configuración de OpenLDAP). Habrá que escribirla por duplicado.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/26.png" /></p>
-<p>Una vez finalizado el asistente de configuración, vamos a realizar modificaciones en el fichero /etc/nsswitch.conf. Indicaremos al sistema que realice búsquedas sobre usuarios en el directorio LDAP además de en el propio sistema.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/nsswitch.conf
+<h2 id="configuracion">Configuración<a class="headerlink" href="#configuracion" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Editamos el fichero de configuración: <code>/etc/samba/smb.conf</code></p>
+</li>
+<li>
+<p>Al final del archivo de configuración añadiremos una nueva entrada con el <strong>directorio a compartir</strong>:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p p-Indicator">[</span><span class="nv">ejercicio1</span><span class="p p-Indicator">]</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="l l-Scalar l-Scalar-Plain">comment = Prueba Ejercicio 1</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">path = /srv/samba/ejercicio1</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">browsable = yes</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">guest ok = yes</span>
+<span class="linenos" data-linenos="6 "></span>    <span class="l l-Scalar l-Scalar-Plain">read only = yes</span>
+<span class="linenos" data-linenos="7 "></span>    <span class="l l-Scalar l-Scalar-Plain">create mask = 0777</span>
 </code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/27.png" /></p>
-<p>Ahora tenemos que realizar modificaciones en el fichero /etc/pam.d/common-password. En él eliminaremos la cadena use_authtok de la línea 26. Quitando dicha cadena, el sistema nos permitirá usar varios métodos de autenticación.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/pam.d/common-password
+<ol start="3">
+<li>Creamos el directorio que íbamos a compartir y cambiamos los permisos para que no de conflicto.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo mkdir –p /srv/samba/ejercicio1</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">sudo chmod 755 /srv/samba/ejercicio1</span>
 </code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/28.png" /></p>
-<p>Por último, modificaremos el fichero /etc/pam.d/common-session. Añadiremos una línea al final del fichero para indicar que cuando un usuario de LDAP inicie sesión en el sistema, se cree su directorio Home en el equipo.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/pam.d/common-session
-<span class="linenos" data-linenos="2 "></span>
-<span class="linenos" data-linenos="3 "></span>session optional      pam_mkhomedir.so skel=/etc/skel umask=077
+<ol start="4">
+<li>Siempre que modifiquemos el fichero de configuración debemos reiniciar el servicio:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart smbd</span>
 </code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/29.png" /></p>
-<p>Una vez realizados todos los cambios en los ficheros anteriores, podemos comprobar la interacción entre equipo cliente y servidor de directorio LDAP. Para ello podemos lanzar una búsqueda a través de la terminal y veremos si nos responde.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ldapsearch -x -H ldap://192.168.1.90 -b &quot;dc=pandora,dc=ldap&quot;
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/30.png" /></p>
-<p>Como podemos ver, el servidor LDAP nos responde mostrándonos el resultado a la búsqueda que hemos realizado, que en este caso se trata de todas las entradas que se encuentran definidas en él. </p>
-<blockquote>
-<p>En el punto donde nos encontramos, ya tenemos nuestro directorio LDAP configurado, poblado y funcionando en nuestro servidor. Y nuestro equipo cliente configurado para poder conectar con el servicio de directorio y poder iniciar sesión en el sistema con usuarios registrados en LDAP (Ojo! De momento, solo a través de consola.)</p>
-</blockquote>
-<p>Vamos a hacer una prueba de inicio de sesión por consola y veremos como también se crea el directorio Home del usuario registrado en LDAP.</p>
-<p>Antes que nada, visualizamos el contenido del directorio /home y vemos que ahora mismo solo existe el de usuario.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ll /home
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/31.png" /></p>
-<p>Ahora abrimos un nuevo entorno de terminal tecleando Ctrl + Alt + F5, e iniciaremos sesión con el usuario mordecai que hemos registrado anteriormente en LDAP. Como podremos ver, al iniciar sesión se creara en el equipo cliente el directorio /home/mordecai.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/32.png" /></p>
-<p>Podemos lanzar algunos comandos más para verificar la identidad del usuario y ver que pertenece al grupo devops tal y como creamos las entradas en nuestro directorio LDAP. Además también verificaremos que el directorio /home/mordecai pertenece y se ha creado con los permisos necesarios para dicho usuario.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>id
-<span class="linenos" data-linenos="2 "></span>pwd
-<span class="linenos" data-linenos="3 "></span>ll /home
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/33.png" /></p>
-<p>Como hemos mencionado antes, hasta ahora solo era posible iniciar sesión en el equipo cliente por terminal. Ahora vamos a realizar lo necesario para que sea posible, también, iniciar sesión con usuarios de LDAP en modo gráfico. Para ello comenzamos instalando el paquete nslcd.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt install nslcd
-</code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/34.png" /></p>
-<p>Al instalar el paquete, se abrirá un asistente de configuración automáticamente donde tendremos que indicar nuevamente la URI de nuestro servidor LDAP y su DN (Distinguished Name). Probablemente los datos vengan ya indicados por lo que solo pulsaremos Aceptar en ambas ventanas sin necesidad de modificar nada.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/35.png" /></p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/36.png" /></p>
-<p>Al terminal de instalar el paquete, debemos reiniciar nuestro sistema para un correcto funcionamiento. Reiniciamos el equipo cliente.</p>
-<p>Y tras reiniciar ya podremos iniciar sesión con nuestro usuario Mordecai, directamente desde la pantalla de Login del sistema.</p>
-<p><img alt="" src="https://blog.juananpc.es/wp-content/uploads/2021/07/40.png" /></p>
-<p>Tras iniciar sesión, se creará un perfil para el usuario y ya podrá usar el sistema de forma completamente gráfica además de por terminal. Podemos verificar la identidad del usuario desde consola y veremos que sigue siendo tal cual lo configuramos en nuestro directorio LDAP.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/39-1024x768.png" /></p>
+<h2 id="parametros-basicos">Parámetros Básicos:<a class="headerlink" href="#parametros-basicos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>[X]:</strong> Nombre del recurso a compartir, normalmente un directorio.</li>
+<li><strong>Comment:</strong> Comentario que describe el directorio que se está compartiendo.</li>
+<li><strong>Path:</strong> Es la carpeta que se quiere compartir. Puede ser cualquier carpeta del servidor, no obstante, por estándar las carpetas compartidas de un servidor suelen encontrarse dentro del directorio /srv.</li>
+<li><strong>Browsable:</strong> Permite navegar por el directorio usando el navegador de directorios.</li>
+<li><strong>Guest ok:</strong> No es necesario introducir contraseña (modo invitado).</li>
+<li><strong>Read only:</strong> Indica si los permisos de un cliente son de lectura (yes) o de escritura/lectura (no).</li>
+<li><strong>Create Mask:</strong> Indica los permisos de los <strong>ficheros creados por los clientes</strong>. Por defecto 0744 (todos los permisos para usuario propietario y solo permiso de lectura para grupo y otros usuarios).</li>
+<li><strong>Directory Mask</strong>: Indica los permisos de los <strong>directorios</strong> creados. Por defecto 0755 (todos los permisos para usuario propietario y solo permiso de lectura/ejecución para grupo y otros usuarios).</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title"><strong>A tener en cuenta</strong></p>
+<ul>
+<li>El primer bit del “<strong>umask</strong>” se usa para opciones especiales (stickybit, SGID o SUID), como no vamos a usarlo, debe estar siempre a 0.</li>
+<li>En el fichero de configuración de samba tanto los <code>#</code> como el <code>;</code> indicando comentarios.</li>
+<li>Es importante comprender que tenemos dos niveles de seguridad. El establecido por el fichero de configuración samba y los propios permisos del directorio compartido.</li>
+</ul>
+</div>
+<h2 id="acceso-desde-windows">Acceso desde Windows:<a class="headerlink" href="#acceso-desde-windows" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Abrimos un explorador de directorios.</li>
+<li>Seleccionamos Red (Network)</li>
+<li>Puede que tengamos que habilitar el descubrimiento de redes:</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/004.png" width="650"/>
+</figure>
+
+<p>Como alternativa, en caso de no descubrir el equipo podemos abrir un explorador de directorio y colocar en la barra de direcciones <code>\\IP_Servidor</code></p>
+<figure>
+  <img src="./imagenes/07/072/005.png" width="650"/>
+</figure>
+
+<p><strong>Actividades:</strong></p>
+<p>Razona todas las respuestas, en caso de que la respuesta sea debido a unos permisos indica que permisos tiene y donde han sido determinados.</p>
+<ol>
+<li>Sigue todos los pasos del manual (apartado anterior) para conseguir compartir ficheros. Adjunta una captura de la sección del fichero de configuración de samba donde se muestre la configuración del recurso compartido.</li>
+<li><strong>Desde el servidor</strong>, crea un fichero hola.txt en la carpeta /srv/samba/ejercicio1.</li>
+<li><strong>Desde el cliente windows</strong> accede al servidor mediante un explorador de directorios e intenta abrir el documento ¿Existe algún problema para ello? Razona tu respuesta.</li>
+<li>Seguidamente modifica el fichero e intenta guardarlo. ¿Qué ocurre? ¿Por qué?</li>
+<li>Ahora, desde el cliente Windows, intenta crear un fichero. ¿Te deja? ¿Puedes leer y escribir en él? ¿Por qué?</li>
+<li><strong>Desde el servidor,</strong> modifica los permisos de /srv/samba/ejercicio1/hola.txt para que tenga los siguientes permisos rwxr—rwx, ahora desde el cliente Windows prueba a modificar el contenido de dicho fichero. ¿Qué ocurre y por qué? Si no te deja escribir y guardar los cambios, indica que deberías cambiar para que puedas hacerlo.</li>
+<li>Crea una carpeta en el servidor /srv/samba/ejercicio2. Comparte dicha carpeta, añadiendo una nueva entrada en el fichero de configuración de samba. La carpeta debe ser navegable, se debe poder acceder sin credenciales, debe tener permisos  de lectura/escritura y además los ficheros creados por los clientes podrán ser modificados, leídos y ejecutados por cualquiera. Por otro lado, los directorios creados por los clientes solo podrán ser modificados por el usuario propietario, mientras que el resto de usuarios/grupos no tendrán ningún permiso. Muestra la configuración realizada.</li>
+<li>Desde un cliente Windows intenta acceder a la carpeta ejercicio2 y crear un documento llamado “miTesoro.txt”. Acto seguido, vuelve al servidor e intenta modificar el fichero (<strong>SIN SER SUDO</strong>) ¿Existe algún problema? ¿Por qué?</li>
+<li>Ahora desde el cliente (Windows) crea un directorio llamado “Mairon”. Vuelve al servidor e intenta crear un fichero “Sauron.txt” dentro de Mairon (<strong>SIN SER SUDO</strong>). ¿Qué ocurre? ¿Qué permisos tiene la carpeta “Mairon”?.</li>
+<li>Busca en Internet que significa la etiqueta [global] al comienzo del fichero de configuración de samba /etc/samba/smb.conf</li>
+</ol>
                 
               
               
