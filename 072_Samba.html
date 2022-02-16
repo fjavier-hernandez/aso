@@ -1045,10 +1045,10 @@
 <span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">[global]</span>
 <span class="linenos" data-linenos=" 3 "></span>    <span class="l l-Scalar l-Scalar-Plain">dns forwarder = 8.8.8.8</span>
 <span class="linenos" data-linenos=" 4 "></span>    <span class="l l-Scalar l-Scalar-Plain">netbios name = SERVIDORUBUNTU</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="l l-Scalar l-Scalar-Plain">realm = MIEMPRESAFEA.LOCAL</span>
-<span class="linenos" data-linenos=" 6 "></span>    <span class="l l-Scalar l-Scalar-Plain">server role = active directory domain controller workgroup = MIEMPRESAFEA idmap\_ldb:use rfc2307 = yes</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="l l-Scalar l-Scalar-Plain">realm = MIEMPRESA.LOCAL</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="l l-Scalar l-Scalar-Plain">server role = active directory domain controller workgroup = MIEMPRESA idmap\_ldb:use rfc2307 = yes</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="l l-Scalar l-Scalar-Plain">[netlogon]</span>
-<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">path = /var/lib/samba/sysvol/miempresafea.local/scripts read only = No</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">path = /var/lib/samba/sysvol/miempresa.local/scripts read only = No</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">[sysvol]</span>
 <span class="linenos" data-linenos="10 "></span>    <span class="l l-Scalar l-Scalar-Plain">path = /var/lib/samba/sysvol</span>
 <span class="linenos" data-linenos="11 "></span>    <span class="l l-Scalar l-Scalar-Plain">read only = No</span>
@@ -1169,7 +1169,7 @@
 <p>A  partir  de  este  momento  la  carpeta  datos  contiene  la  información  de  la  carpeta <strong>/datos/usuarios/usuario1</strong> del servidor.</p>
 </div>
 <p>Como ya se ha estudiado, es posible que el sistema monte de forma automática una carpeta compartida por <strong>nfs</strong> al iniciar sesión a través del archivo <strong>/etc/fstab</strong></p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ip-del-servidor:/home/MIEMPRESAFEA.LOCAL/usuario1/datos nfs</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ip-del-servidor:/home/MIEMPRESA.LOCAL/usuario1/datos nfs</span>
 </code></pre></div>
 <p>Del mismo modo que se ha creado un recurso de red para contener el perfil del usuario, es <strong>posible repetir estos pasos para crear una carpeta personal a cada usuario</strong>.</p>
 <p>Para esta tarea se utilizará el servicio <em>Samba</em>, aunque es posible realizarla también con el protocolo <strong>nfs</strong>. Para ello habrá que crear un recurso para cada usuario del siguiente modo:</p>
