@@ -972,7 +972,7 @@
 <ul>
 <li>Por último, para acceder al recurso se realizará a través de cualquier navegador de archivos usando el protocolo <strong>smb</strong> especificando el usuario, la dirección del recurso y su nombre del siguiente modo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">smb://usuarioFeo@servidorubuntu/compartidoFea</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">smb://usuario1@servidorubuntu/compartido1</span>
 </code></pre></div>
 <h2 id="integracion-de-permisos-gnulinux-microsoft-windows">Integración de permisos <strong>GNU/Linux</strong> – <strong>Microsoft Windows</strong><a class="headerlink" href="#integracion-de-permisos-gnulinux-microsoft-windows" title="Permanent link">&para;</a></h2>
 <p>Para poder utilizar los permisos <strong>NTFS</strong> en <em>GNU/Linux</em> es necesario realizar una serie de configuraciones descritas en el siguiente apartado. <strong>Esto permitirá integrar de forma transparente ambos sistemas</strong>.</p>
@@ -1169,7 +1169,7 @@
 <p>A  partir  de  este  momento  la  carpeta  datos  contiene  la  información  de  la  carpeta <strong>/datos/usuarios/usuario1</strong> del servidor.</p>
 </div>
 <p>Como ya se ha estudiado, es posible que el sistema monte de forma automática una carpeta compartida por <strong>nfs</strong> al iniciar sesión a través del archivo <strong>/etc/fstab</strong></p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ip-del-servidor:/home/MIEMPRESAFEA.LOCAL/usuarioFeo/datos nfs</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ip-del-servidor:/home/MIEMPRESAFEA.LOCAL/usuario1/datos nfs</span>
 </code></pre></div>
 <p>Del mismo modo que se ha creado un recurso de red para contener el perfil del usuario, es <strong>posible repetir estos pasos para crear una carpeta personal a cada usuario</strong>.</p>
 <p>Para esta tarea se utilizará el servicio <em>Samba</em>, aunque es posible realizarla también con el protocolo <strong>nfs</strong>. Para ello habrá que crear un recurso para cada usuario del siguiente modo:</p>
