@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica14_samba.html">
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica15_SambaSecUsers.html">
       
       <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>Instalación y preparación Servidor Samba - Administración de Sistemas Operativos</title>
+        <title>Configuración de Secciones y Usuarios en SAMBA - Administración de Sistemas Operativos</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#instalacion-y-preparacion-servidor-samba" class="md-skip">
+        <a href="#configuracion-de-secciones-y-usuarios-en-samba" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Instalación y preparación Servidor Samba
+              Configuración de Secciones y Usuarios en SAMBA
             
           </span>
         </div>
@@ -684,85 +684,124 @@
               
                 
                 
-                <h1 id="instalacion-y-preparacion-servidor-samba">Instalación y preparación Servidor Samba<a class="headerlink" href="#instalacion-y-preparacion-servidor-samba" title="Permanent link">&para;</a></h1>
-<h2 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt install samba</span>
-</code></pre></div>
-<h2 id="configuracion">Configuración<a class="headerlink" href="#configuracion" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p>Editamos el fichero de configuración: <code>/etc/samba/smb.conf</code></p>
-</li>
-<li>
-<p>Al final del archivo de configuración añadiremos una nueva entrada con el <strong>directorio a compartir</strong>:</p>
-</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p p-Indicator">[</span><span class="nv">ejercicio1</span><span class="p p-Indicator">]</span>
-<span class="linenos" data-linenos="2 "></span>    <span class="l l-Scalar l-Scalar-Plain">comment = Prueba Ejercicio 1</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">path = /srv/samba/ejercicio1</span>
-<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">browsable = yes</span>
-<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">guest ok = yes</span>
-<span class="linenos" data-linenos="6 "></span>    <span class="l l-Scalar l-Scalar-Plain">read only = yes</span>
-<span class="linenos" data-linenos="7 "></span>    <span class="l l-Scalar l-Scalar-Plain">create mask = 0777</span>
-</code></pre></div>
-<ol start="3">
-<li>Creamos el directorio que íbamos a compartir y cambiamos los permisos para que no de conflicto.</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo mkdir –p /srv/samba/ejercicio1</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">sudo chmod 755 /srv/samba/ejercicio1</span>
-</code></pre></div>
-<ol start="4">
-<li>Siempre que modifiquemos el fichero de configuración debemos reiniciar el servicio:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart smbd</span>
-</code></pre></div>
-<h2 id="parametros-basicos">Parámetros Básicos:<a class="headerlink" href="#parametros-basicos" title="Permanent link">&para;</a></h2>
+                <h1 id="configuracion-de-secciones-y-usuarios-en-samba">Configuración de Secciones y Usuarios en SAMBA<a class="headerlink" href="#configuracion-de-secciones-y-usuarios-en-samba" title="Permanent link">&para;</a></h1>
+<h2 id="secciones">Secciones<a class="headerlink" href="#secciones" title="Permanent link">&para;</a></h2>
+<p>Dentro del fichero de configuración encontramos diversas secciones, entre las que destacaremos tres:</p>
 <ul>
-<li><strong>[X]:</strong> Nombre del recurso a compartir, normalmente un directorio.</li>
-<li><strong>Comment:</strong> Comentario que describe el directorio que se está compartiendo.</li>
-<li><strong>Path:</strong> Es la carpeta que se quiere compartir. Puede ser cualquier carpeta del servidor, no obstante, por estándar las carpetas compartidas de un servidor suelen encontrarse dentro del directorio /srv.</li>
-<li><strong>Browsable:</strong> Permite navegar por el directorio usando el navegador de directorios.</li>
-<li><strong>Guest ok:</strong> No es necesario introducir contraseña (modo invitado).</li>
-<li><strong>Read only:</strong> Indica si los permisos de un cliente son de lectura (yes) o de escritura/lectura (no).</li>
-<li><strong>Create Mask:</strong> Indica los permisos de los <strong>ficheros creados por los clientes</strong>. Por defecto 0744 (todos los permisos para usuario propietario y solo permiso de lectura para grupo y otros usuarios).</li>
-<li><strong>Directory Mask</strong>: Indica los permisos de los <strong>directorios</strong> creados. Por defecto 0755 (todos los permisos para usuario propietario y solo permiso de lectura/ejecución para grupo y otros usuarios).</li>
+<li>[global]: Las opciones especificadas aquí afectan a cualquier recurso compartido. A tener en cuenta, si una misma opción se declara en la sección global y en otra sección, por ejemplo <code>ejercicio1</code>, tendrá mayor peso la de la sección más específica, es decir <code>ejercicio1</code>.</li>
+<li>[homes]: Se permite indicar las opciones para el <code>/home</code> de los usuarios existentes en el servidor. De tal forma que podríamos acceder a nuestro <code>/home</code> desde cualquier máquina del grupo de trabajo de la siguiente forma: <code>\\IP_SERVIDOR\usuario</code> &#8594; (file://IP_SERVIDOR/usuario)</li>
+<li>[printers]: Información del trato para la compartición de impresoras en red.</li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title"><strong>A tener en cuenta</strong></p>
+<h3 id="parametros">Parámetros:<a class="headerlink" href="#parametros" title="Permanent link">&para;</a></h3>
+<p><code>hosts allow/deny</code>: Permite restringir el acceso por IP:</p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo1</p>
+<p><strong>Permitir Redes</strong><br />
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">hosts allow = 192.168.2.0/24 192.168.3.0/24</span>
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo2</p>
+<p><strong>Permitir IP específica</strong><br />
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">hosts allow = 192.168.2.5 192.168.3.100 192.168.3.200</span>
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo1</p>
+<p><strong>Permitir acceso a todos los hosts que comiencen por 192.168.</strong><br />
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">hosts allow = 192.168.</span>
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo1</p>
+<p><strong>Deniega acceso a todos los hosts que comiencen por 10.</strong><br />
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">hosts deny = 10.</span>
+</code></pre></div></p>
+</div>
 <ul>
-<li>El primer bit del “<strong>umask</strong>” se usa para opciones especiales (stickybit, SGID o SUID), como no vamos a usarlo, debe estar siempre a 0.</li>
-<li>En el fichero de configuración de samba tanto los <code>#</code> como el <code>;</code> indicando comentarios.</li>
-<li>Es importante comprender que tenemos dos niveles de seguridad. El establecido por el fichero de configuración samba y los propios permisos del directorio compartido.</li>
+<li>Su funcionamiento es de arriba abajo, como las listas de acceso. Es decir, si tenemos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">hosts allow = 127.0.0.1 192.168.2.0/24 192.168.3.0/24</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">hosts deny = 127.0.0.1 192.168.2.0/24 192.168.3.0/24</span>
+</code></pre></div>
+<p><strong>El que cuenta es el primero que coincida, por tanto sí permitiría el acceso.</strong></p>
+<h2 id="actividades-secciones-samba">Actividades Secciones SAMBA<a class="headerlink" href="#actividades-secciones-samba" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<ul>
+<li>Recuerda reiniciar el servicio de samba tras modificar el fichero smb.conf.</li>
+<li>Estate atento para eliminar las líneas comentadas, las cuales comienzan por <code>“#”</code> y <code>“;”</code></li>
 </ul>
 </div>
-<h2 id="acceso-desde-windows">Acceso desde Windows:<a class="headerlink" href="#acceso-desde-windows" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Abrimos un explorador de directorios.</li>
-<li>Seleccionamos Red (Network)</li>
-<li>Puede que tengamos que habilitar el descubrimiento de redes:</li>
+<ol start="711">
+<li>Haz que todos los /homes de los usuarios sean navegables, que cualquiera pueda acceder sin credenciales y que solo tengan permisos de lectura. Recuerda que también deberás tener en cuenta los permisos dentro del servidor Linux. Haz captura de la configuración realizada en smb.conf y del explorador de Windows accediendo a tu /home de Ubuntu.</li>
+<li>Cambia en el servidor, en la sección [homes], la opción read only a no. Haz una captura de los permisos de tu carpeta /home. Prueba a crear un fichero desde Windows. ¿Qué sucede y por qué?</li>
+<li>Indica la configuración del servicio más adecuada si quisiera permitir únicamente los equipos de la red 10.0.0.0/8  ¿Sigues teniendo acceso desde el cliente? ¿Por qué?</li>
+<li>Ahora cambia la restricción para permitir acceso únicamente a los hosts de la red en la que te encuentres.</li>
 </ol>
+<h2 id="usuarios">Usuarios<a class="headerlink" href="#usuarios" title="Permanent link">&para;</a></h2>
+<h3 id="el-usuario-invitado">El usuario Invitado<a class="headerlink" href="#el-usuario-invitado" title="Permanent link">&para;</a></h3>
+<p>Cuando accedemos como “<strong>invitado</strong>” (guest ok) por defecto accedemos como el usuario <code>nobody:nogroup</code>. Esto se puede modificar usando el siguiente parámetro:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">force user = javi</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">force group = alumnos</span>
+</code></pre></div>
+<p>De esta forma cuando accedamos al sistema como invitado accederemos como el usuario javi que tiene el grupo principal alumnos.</p>
+<h3 id="restriccion-por-usuarios">Restricción por usuarios<a class="headerlink" href="#restriccion-por-usuarios" title="Permanent link">&para;</a></h3>
+<p>En caso de que no permitamos el acceso de invitados (guest ok = no) el servidor nos solicitará nuestras credenciales:</p>
 <figure>
-  <img src="./imagenes/07/072/004.png" width="650"/>
+  <img src="./imagenes/07/072/006.png" width="650"/>
 </figure>
 
-<p>Como alternativa, en caso de no descubrir el equipo podemos abrir un explorador de directorio y colocar en la barra de direcciones <code>\\IP_Servidor</code></p>
-<figure>
-  <img src="./imagenes/07/072/005.png" width="650"/>
-</figure>
-
-<p><strong>Actividades:</strong></p>
-<p>Razona todas las respuestas, en caso de que la respuesta sea debido a unos permisos indica que permisos tiene y donde han sido determinados.</p>
-<ol start="701">
-<li>Sigue todos los pasos del manual (apartado anterior) para conseguir compartir ficheros. Adjunta una captura de la sección del fichero de configuración de samba donde se muestre la configuración del recurso compartido.</li>
-<li><strong>Desde el servidor</strong>, crea un fichero hola.txt en la carpeta /srv/samba/ejercicio1.</li>
-<li><strong>Desde el cliente windows</strong> accede al servidor mediante un explorador de directorios e intenta abrir el documento ¿Existe algún problema para ello? Razona tu respuesta.</li>
-<li>Seguidamente modifica el fichero e intenta guardarlo. ¿Qué ocurre? ¿Por qué?</li>
-<li>Ahora, desde el cliente Windows, intenta crear un fichero. ¿Te deja? ¿Puedes leer y escribir en él? ¿Por qué?</li>
-<li><strong>Desde el servidor,</strong> modifica los permisos de /srv/samba/ejercicio1/hola.txt para que tenga los siguientes permisos rwxr—rwx, ahora desde el cliente Windows prueba a modificar el contenido de dicho fichero. ¿Qué ocurre y por qué? Si no te deja escribir y guardar los cambios, indica que deberías cambiar para que puedas hacerlo.</li>
-<li>Crea una carpeta en el servidor /srv/samba/ejercicio2. Comparte dicha carpeta, añadiendo una nueva entrada en el fichero de configuración de samba. La carpeta debe ser navegable, se debe poder acceder sin credenciales, debe tener permisos  de lectura/escritura y además los ficheros creados por los clientes podrán ser modificados, leídos y ejecutados por cualquiera. Por otro lado, los directorios creados por los clientes solo podrán ser modificados por el usuario propietario, mientras que el resto de usuarios/grupos no tendrán ningún permiso. Muestra la configuración realizada.</li>
-<li>Desde un cliente Windows intenta acceder a la carpeta ejercicio2 y crear un documento llamado “miTesoro.txt”. Acto seguido, vuelve al servidor e intenta modificar el fichero (<strong>SIN SER SUDO</strong>) ¿Existe algún problema? ¿Por qué?</li>
-<li>Ahora desde el cliente (Windows) crea un directorio llamado “Mairon”. Vuelve al servidor e intenta crear un fichero “Sauron.txt” dentro de Mairon (<strong>SIN SER SUDO</strong>). ¿Qué ocurre? ¿Qué permisos tiene la carpeta “Mairon”?.</li>
-<li>Busca en Internet que significa la etiqueta [global] al comienzo del fichero de configuración de samba /etc/samba/smb.conf</li>
+<p>Se puede restringir los usuarios que pueden tener acceso a un recurso:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">valid users = javi pepe jorge</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">invalid users = root @profesores @root</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>El <code>“@”</code> indica que se hace referencia a un grupo. Por tanto ningún usuario perteneciente al grupo root o de profesores puede acceder.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">admin users = salva</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Los usuarios dentro de esta lista actuarán como <code>root</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Si un usuario está en el listado de “valid users” y en el de “invalid users” se le deniega el acceso.</p>
+</div>
+<h3 id="autentificacion-en-samba-a-traves-de-usuarios">Autentificación en Samba a través de usuarios<a class="headerlink" href="#autentificacion-en-samba-a-traves-de-usuarios" title="Permanent link">&para;</a></h3>
+<p>Para autentificarse en samba a través de usuarios se deben cumplir 2 requisitos:</p>
+<ol>
+<li>El usuario debe existir en el sistema <code>/etc/passwd</code></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo useradd -s /bin/true “usuario”</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>De esta forma no se crea el /home del usuario y no se permite el acceso al sistema si no es a través de samba. Es decir, el usuario no se podría conectar a través de ssh o localmente.</p>
+</div>
+<ol start="2">
+<li>El usuario debe existir en el servicio de samba (<code>pbedit -L</code>).</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo smbpasswd –a “usuario”</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>La contraseña es recomendable que sea diferente a la usada en el sistema.</p>
+</div>
+<ul>
+<li><strong>Listar usuarios dados de alta en SAMBA:</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">pdbedit -L</span>
+</code></pre></div>
+<h2 id="actividades-usuarios-samba">Actividades Usuarios SAMBA<a class="headerlink" href="#actividades-usuarios-samba" title="Permanent link">&para;</a></h2>
+<ol start="715">
+<li>Prueba a crear un usuario con smbpasswd sin que éste exista en el sistema Linux. ¿Qué sucede? Adjunta una captura.</li>
+<li>Crea el usuario “leonardo” en el sistema linux, recuerda que dicho usuario solo debe ser capaz de acceder al sistema a través de samba. Posteriormente crealo para samba. Visualiza los usuarios de samba y fíjate en el UID asignado al usuario recién creado ¿tiene el mismo UID que en el sistema Linux (/etc/passwd)? Adjunta capturas de todo el proceso.</li>
+<li>Cierra la sesión actual en el servidor (exit) e intenta iniciar sesión con el usuario “leonardo” ¿Qué sucede y por qué?</li>
+<li>Edita en el servidor la sección [homes] con “force user = root”. Reinicia el servicio. Intenta crear, desde el cliente de Windows, un documento en el escritorio del /home compartido. ¿Te permite crearlo? ¿Por qué? ¿Qué permisos y usuario propietario tiene el fichero creado? Adjunta capturas a las explicaciones.</li>
+<li>Cambia la configuración en el servidor de la carpeta “/home/usuario/ejercicio2” para que no permita el acceso de invitados y solo permita al usuario “leonardo”. Muestra la configuración. Intenta acceder desde el cliente Windows con las credenciales de tu usuario (en vez de javi usa tu usuario) ¿Qué sucede? Adjunta capturas de pantalla.</li>
 </ol>
                 
               
