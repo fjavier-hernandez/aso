@@ -116,7 +116,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://javierhernadez81.github.io/aso2122/073_NFS_NextCloud.html</loc>
+         <loc>https://javierhernadez81.github.io/aso2122/073_NFS.html</loc>
+         <lastmod>2022-02-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://javierhernadez81.github.io/aso2122/074_NextCloud.html</loc>
          <lastmod>2022-02-21</lastmod>
          <changefreq>daily</changefreq>
     </url>

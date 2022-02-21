@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/073_NFS_NextCloud.html">
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/073_NFS.html">
       
       <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>7.3- NFS y NextCloud - Administración de Sistemas Operativos</title>
+        <title>7.3- NFS - Administración de Sistemas Operativos</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7.3- NFS y NextCloud
+              7.3- NFS
             
           </span>
         </div>
@@ -678,20 +678,24 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          7.3- NFS y NextCloud
+          7.3- NFS
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="073_NFS_NextCloud.html" class="md-nav__link md-nav__link--active">
-        7.3- NFS y NextCloud
+      <a href="073_NFS.html" class="md-nav__link md-nav__link--active">
+        7.3- NFS
       </a>
       
         
 <nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -701,15 +705,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#nfs-network-file-system" class="md-nav__link">
-    NFS (Network File System).
+  <a href="#caracteristicas-generales" class="md-nav__link">
+    Características Generales
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#ventajas" class="md-nav__link">
-    VENTAJAS:
+    Ventajas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permisos-en-nfs" class="md-nav__link">
+    Permisos en NFS.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#montaje-automatico-de-un-cliente-nfs" class="md-nav__link">
+    Montaje Automático de un cliente NFS.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-nfs" class="md-nav__link">
+    Instalación NFS.
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación NFS.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-general-nfs" class="md-nav__link">
+    Configuración General NFS.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fichero-de-configuracion-nfs-etcexports" class="md-nav__link">
+    Fichero de Configuración NFS (/etc/exports).
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades-de-desarrollo-ud7_03" class="md-nav__link">
+    Actividades de desarrollo UD7_03
   </a>
   
 </li>
@@ -718,6 +770,18 @@
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="074_NextCloud.html" class="md-nav__link">
+        7.4- NextCloud
+      </a>
     </li>
   
 
@@ -741,10 +805,12 @@
               
                 
                 
-                  <h1>7.3- NFS y NextCloud</h1>
-                
-                <h3 id="nfs-network-file-system">NFS (Network File System).<a class="headerlink" href="#nfs-network-file-system" title="Permanent link">&para;</a></h3>
-<p><strong>CARACTERÍSTICAS GENERALES:</strong></p>
+                <figure style="float: right;">
+    <img src="imagenes/07/073/001.png" width="200"/>
+</figure>
+
+<h1 id="nfs-network-file-system">NFS (Network File System)<a class="headerlink" href="#nfs-network-file-system" title="Permanent link">&para;</a></h1>
+<h2 id="caracteristicas-generales">Características Generales<a class="headerlink" href="#caracteristicas-generales" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Creado por <strong>Sun Microsystems en 1984</strong>; y Su implementación se publicó en una RFC (Request For Comment) para que cualquiera pudiese implementarlo. Una RFC es una publicación de la IETF.</li>
 <li>Se utiliza en la redes de área local para crear un sistema de archivo distribuido. Su objetivo es que varios usuarios puedan acceder a los archivos compartidos como si fueran locales.</li>
@@ -759,20 +825,179 @@
 <p class="admonition-title"><strong>IMPORTANTE</strong></p>
 <p>Para el uso de <strong>NFS en Windows</strong> es necesario usar <strong>Windows 8</strong> Enterprise o superior o recurrir a software de terceros.</p>
 </div>
-<h2 id="ventajas">VENTAJAS:<a class="headerlink" href="#ventajas" title="Permanent link">&para;</a></h2>
+<figure>
+  <img src="./imagenes/07/073/002.png" width="650"/>
+  <figcaption>Esquema de red NFS.</figcaption>
+</figure>
+
+<h2 id="ventajas">Ventajas<a class="headerlink" href="#ventajas" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Al centralizar los recursos evitamos tener varias copias en diferentes nodos de la red.
-    Ahorrando espacio y evitando duplicidad de información.</li>
-<li>Asegura integridad de datos, al obligar a que todas las escrituras sean finalizadas antes
-    de que otro usuario haga otras modificaciones.</li>
-<li>Permite almacenar toda la información de los perfiles de usuario, incluyendo su
-    directorio /home. Por tanto un usuario podrá acceder a su partición de datos desde
-    cualquier nodo de la red.</li>
-<li>Permite compartir dispositivos de almacenamiento externos como memorias flash o
-    discos externos. Esto permite ahorrar costes en la compra de equipamiento al ahorrar
-    su aprovechamiento.</li>
-<li>Características de seguridad para el control de acceso: ACLS o KERBEROS.</li>
+<li>Al centralizar los recursos evitamos tener varias copias en diferentes nodos de la red. &#8594; Ahorrando espacio y evitando duplicidad de información.</li>
+<li>Asegura integridad de datos, al obligar a que todas las escrituras sean finalizadas antes de que otro usuario haga otras modificaciones.</li>
+<li>Permite almacenar toda la información de los perfiles de usuario, incluyendo su directorio <code>/home</code>. Por tanto un usuario podrá acceder a su partición de datos desde cualquier nodo de la red.</li>
+<li>Permite compartir dispositivos de almacenamiento externos como memorias flash o discos externos. Esto permite ahorrar costes en la compra de equipamiento al ahorrar su aprovechamiento.</li>
+<li>Características de seguridad para el control de acceso: <code>ACLS</code> o <code>KERBEROS</code>.</li>
 </ol>
+<h2 id="permisos-en-nfs">Permisos en NFS.<a class="headerlink" href="#permisos-en-nfs" title="Permanent link">&para;</a></h2>
+<p><strong>NFS</strong> tiene una carencia en el control de permisos, por ello se combina con <strong>LDAP</strong> que se encargará de la gestión de los permisos. La carencia es debida a que en UNIX cada usuario tiene un identificador llamado <strong>UID</strong> y cada grupo de usuarios tiene otro identificador <strong>GID</strong>.</p>
+<ul>
+<li>NFS traspasa los ficheros a los clientes con los permisos relacionados con el UID y el GID existentes en el servidor. Es decir, que si en el servidor existe un usuario “javi” con UID 1003 y en el cliente hay un usuario “maría” con UID 1003 ambos tendrán los mismos permisos.
+Ejemplo (somebooks.es):</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/073/003.png" width="850"/>
+  <figcaption>Ejemplo de problema de permisos en NFS.</figcaption>
+</figure>
+
+<p>A continuación se explican los problemas del ejemplo anterior:</p>
+<ul>
+<li><strong>root</strong>: Como coinciden tanto el UID como el GID el usuario root del cliente podrá actuar como usuario root del servidor NFS, al no ser que tengamos la opción de root_squash activada.</li>
+<li><strong>usuario</strong>: Al igual que pasa con root al tener mismo UID y GID tanto en el servidor como en el cliente.</li>
+<li><strong>jlopez</strong>: no tiene el mismo UID o GID en el servidor que en el cliente. No obstante en el cliente tiene un GID 1030 por lo que tendrá los permisos del grupo “<strong>Dirección</strong>”, cuando realmente dicho usuario no pertenece a ese grupo.</li>
+<li><strong>fgil</strong>: El usuario fgil, el cual solo se encuentra en el cliente, tendrá los permisos del usuario aperez del servidor, ya que comparten UID. Además pertenecerá al grupo de “<strong>Dirección</strong>” debido a su GID.</li>
+</ul>
+<h2 id="montaje-automatico-de-un-cliente-nfs">Montaje Automático de un cliente NFS.<a class="headerlink" href="#montaje-automatico-de-un-cliente-nfs" title="Permanent link">&para;</a></h2>
+<p>En los sistemas UNIX los volúmenes (discos duros, servidores, usb, etc) pueden montarse automáticamente al arrancar. Esto se consigue editando el fichero <code>/etc/fstab</code> (file systems table).</p>
+<ul>
+<li>
+<p>Fichero <code>/etc/fstab</code>:</p>
+</li>
+<li>
+<p>Cada línea pertenece al montaje de un volumen y se compone de:</p>
+</li>
+</ul>
+<ol>
+<li><strong>Dispositivo que se va a montar</strong>: <code>“IP del servidor”:”ruta de la carpeta compartida”</code></li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title"><strong>Ejemplo:</strong></p>
+<p><code>192.168.0.100:/home/usuarioServidor/Escritorio/compartido</code></p>
+</div>
+<ol start="2">
+<li><strong>Punto de montaje</strong>: Donde queremos que se monte en nuestro equipo.</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title"><strong>Ejemplo:</strong></p>
+<p><code>/mnt/nfs/compartir</code></p>
+</div>
+<ol start="3">
+<li>
+<p><strong>Sistema de archivos</strong>: Indica el sistema de archivo utilizado en el volumen. En este caso será “nfs”.</p>
+</li>
+<li>
+<p><strong>Opciones de montaje</strong>, usaremos las siguientes: <code>auto,noatime,nolock,bg,nfsvers=3,intr,tcp,actimeo=</code></p>
+</li>
+<li>
+<p><strong>Frecuencia de Respaldo</strong>: Tiempo con el que se realiza copia de seguridad, si su valor es 0 no se realiza copia.</p>
+</li>
+<li>
+<p><strong>Orden de revisión</strong>: Uso para la herramienta fsck para revisar errores en el volumen. Si su valor es 0 no se realiza revisión.</p>
+</li>
+</ol>
+<ul>
+<li><strong>Ejemplos:</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">192.168.1.10:/home /mnt/nfs/home nfs auto,noatime,nolock,bg,nfsvers=3,intr,tcp,actimeo=1800 0 0</span>
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">192.168.1.10:/home/usuarioServidor/Escritorio/compartir /mnt/nfs/compartir nfs</span>
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">auto,noatime,nolock,bg,nfsvers=3,intr,tcp,actimeo=1800 0 0</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/07/073/004.png" width="850"/>
+  <figcaption>Ejemplo de problema de fstab.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>Nota:</strong></p>
+<p>Finalmente es necesario reiniciar la máquina.</p>
+</div>
+<h2 id="instalacion-nfs">Instalación NFS.<a class="headerlink" href="#instalacion-nfs" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Servidor:</li>
+</ul>
+<ol>
+<li>Actualiza repositorios.</li>
+<li>Instala el paquete nfs-kernel-server.</li>
+</ol>
+<ul>
+<li>Cliente:</li>
+</ul>
+<ol>
+<li>Actualiza repositorios.</li>
+<li>Instala el paquete nfs-common.</li>
+<li>Montar en una carpeta la carpeta compartida del servidor.</li>
+</ol>
+<h3 id="configuracion-general-nfs">Configuración General NFS.<a class="headerlink" href="#configuracion-general-nfs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Servidor:</li>
+</ul>
+<ol>
+<li>Crea la carpeta compartida.</li>
+<li>Comprobar permisos en el servidor dependiendo de lo restrictivo que deba ser.</li>
+<li>Modifica la configuración de los recursos compartidos en <code>/etc/exports</code>.</li>
+<li>Actualiza los cambios:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo exportfs –a</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart nfs-kernel-server</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Cliente:</p>
+</li>
+<li>
+<p>Montar en una carpeta la carpeta compartida del servidor.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo mount IPSerivdor:/RutaCarpetaCompartida /RutaDondeSeMontaEnCliente</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title"><strong>Ejemplos:</strong></p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">mount 192.168.18.4:/home/alumno/compartida /home/salva/compartida</span>
+</code></pre></div>
+<h3 id="fichero-de-configuracion-nfs-etcexports">Fichero de Configuración NFS (/etc/exports).<a class="headerlink" href="#fichero-de-configuracion-nfs-etcexports" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Cada recurso compartido que se añada debe ir en una nueva línea.</li>
+<li>Los nombres de clientes/usuarios no pueden tener espacios.</li>
+<li>Entre el nombre de usuario y las opciones no hay espacio en blanco.</li>
+<li>Las líneas tienen el siguiente formato:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span> <span class="l l-Scalar l-Scalar-Plain">“ruta_micarpeta” cliente1(opciones) cliente2(opciones)...clienteN(opciones)</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title"><strong>Ejemplos:</strong></p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">/home *(rw,sync,no_subtree_check)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">/home/javi/Escritorio/SOR/COMPARTIR/ *(rw,sync,no_subtree_check)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">/home 192.168.0.19(rw,sync,no_subtree_check)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">/home 192.168.0.0/24(rw,sync,no_subtree_check)</span>
+</code></pre></div>
+<h4 id="opciones">Opciones:<a class="headerlink" href="#opciones" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>ro(read-only)</strong>: La carpeta compartida será de sólo lectura. Es la opción predeterminada.</li>
+<li><strong>rw (read-write)</strong>: El usuario podrá realizar cambios en el contenido de la carpeta compartida.</li>
+<li><strong>root_squash</strong>: Evita que los usuarios con privilegios administrativos los mantengan, sobre la carpeta compartida, cuando se conectan remotamente. En su lugar, se les trata como un usuario <code>“nfsnobody”</code> que es un usuario con permisos mínimos. Es la opción predeterminada.</li>
+<li><strong>no_root_squash</strong>: Deshabilita la característica anterior.</li>
+<li><strong>sync</strong>: Evita responder peticiones antes de escribir los cambios pendientes en disco. De tal forma que cada cambio que recibe la escribe en disco y luego confirma que ha sido escrita correctamente. Es la opción predeterminada.</li>
+<li><strong>async</strong>: Deshabilita la característica anterior. Mejora el rendimiento a cambio de que exista el riesgo de corrupción en los archivos o, incluso, en todo el sistema de archivos, si se produjese una interrupción del fluido eléctrico o un bloqueo del sistema. Recibe la orden de escritura y confirma al cliente que ha sido realizada con éxito (mentira, ya que no ha sido realizada), acto seguido puede recibir X órdenes de otros clientes y a todos les hará lo mismo, finalmente realiza escribe todos los cambios a la vez. Por tanto es más rápido que el método síncrono ya que no debe realizar tantos accesos a memoria.</li>
+<li><strong>subtree_check</strong>: Cuando el directorio compartido es un subdirectorio de un sistema de archivos mayor, <strong>NFS</strong> comprueba los directorios por encima de éste para verificar sus permisos y características. Es la opción predeterminada.</li>
+<li><strong>no_subtree_check</strong>: Deshabilita la característica anterior, lo que hace que el envío de la lista de archivos sea más rápido, pero puede reducir la seguridad.</li>
+</ul>
+<h2 id="actividades-de-desarrollo-ud7_03">Actividades de desarrollo UD7_03<a class="headerlink" href="#actividades-de-desarrollo-ud7_03" title="Permanent link">&para;</a></h2>
+<ol start="704">
+<li>Crea una guía de instalación y configuración de NFS, creando recursos compartidos y comprobando funcinan en Windows 10 y Ubuntu. Te puedes basar en los siguientes enlaces:</li>
+</ol>
+<ul>
+<li><a href="http://somebooks.es/nfs-parte-1-instalacion-en-un-servidor-ubuntu-20-04-lts/">NFS parte 1</a></li>
+<li><a href="http://somebooks.es/nfs-parte-2-instalacion-en-un-cliente-ubuntu-20-04-lts/">NFS parte 2</a></li>
+<li><a href="http://somebooks.es/nfs-parte-3-instalacion-en-un-cliente-windows-10/">NFS parte 3</a></li>
+<li><a href="http://somebooks.es/nfs-parte-4-compartir-almacenamiento-en-un-servidor-ubuntu-20-04-lts/">NFS parte 4</a></li>
+<li><a href="http://somebooks.es/nfs-parte-5-acceder-a-la-carpeta-compartida-desde-un-cliente-ubuntu-20-04-lts/">NFS parte 5</a></li>
+</ul>
                 
               
               
@@ -806,6 +1031,21 @@
           </div>
         </a>
       
+      
+        
+        <a href="074_NextCloud.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 7.4- NextCloud" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              7.4- NextCloud
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

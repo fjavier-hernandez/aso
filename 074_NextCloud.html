@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/023_LDAPutils.html">
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/074_NextCloud.html">
       
       <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>023 LDAPutils - Administración de Sistemas Operativos</title>
+        <title>7.4- NextCloud - Administración de Sistemas Operativos</title>
       
     
     
@@ -77,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#nextcloud" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -102,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              023 LDAPutils
+              7.4- NextCloud
             
           </span>
         </div>
@@ -618,12 +623,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
       <label class="md-nav__link" for="__nav_8">
         7.- Integración de sistemas operativos en red libres y propietarios
@@ -675,11 +682,85 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="074_NextCloud.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          7.4- NextCloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="074_NextCloud.html" class="md-nav__link md-nav__link--active">
         7.4- NextCloud
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nextcloud-con-docker" class="md-nav__link">
+    NextCloud con Docker.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades-de-desarrollo-ud7_03" class="md-nav__link">
+    Actividades de desarrollo UD7_03
+  </a>
+  
+    <nav class="md-nav" aria-label="Actividades de desarrollo UD7_03">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#investiga" class="md-nav__link">
+    Investiga:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nextcloud-usuarios" class="md-nav__link">
+    NextCloud – Usuarios.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nextcloud-administracion" class="md-nav__link">
+    NextCloud – Administración.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -703,157 +784,97 @@
               
                 
                 
-                  <h1>023 LDAPutils</h1>
-                
-                <p>La herramienta <code>ldapsearch</code>, provista por el paquete, resulta muy conveniente al momento de hacer consultas sobre los datos dentro de un directorio LDAP desde línea de comandos. Este artículo presenta una serie de consultas de ejemplo que pueden resultar muy útiles para obtener información valiosa de un árbol LDAP.</p>
-<h4 id="obtener-todos-los-objetos-de-un-directorio">Obtener todos los objetos de un directorio<a class="headerlink" href="#obtener-todos-los-objetos-de-un-directorio" title="Permanent link">&para;</a></h4>
-<p>Para obtener todos los objetos en un directorio (dn) a partir de cierta base (<code>dc=linuxito,dc=com</code>) y sin límite de para la respuesta, utilizar una consulta como la siguiente:</p>
-<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)
-</pre>
+                <figure style="float: right;">
+    <img src="imagenes/07/074/001.png" width="200"/>
+</figure>
 
+<h1 id="nextcloud">NextCloud<a class="headerlink" href="#nextcloud" title="Permanent link">&para;</a></h1>
+<p><strong>Nextcloud</strong> es una serie de programas cliente-servidor que permiten la creación de servicios de alojamiento de archivos. Su funcionalidad es similar al software Dropbox, aunque Nextcloud en su totalidad de código abierto. Nextcloud permite a los usuarios crear servidores privados.</p>
+<h2 id="nextcloud-con-docker">NextCloud con Docker.<a class="headerlink" href="#nextcloud-con-docker" title="Permanent link">&para;</a></h2>
+<p>Estamos trabajando en una empresa maravillosa y tienen la necesidad de compartir recursos (carpetas, documentos, imágenes...), tanto entre las personas dentro de la empresa como con clientes fuera de ésta.</p>
+<p>Para haceros valer dentro de la empresa indicáis que podéis montar un servidor “NextCloud” en unos pocos minutos para solventar dicho problema. La empresa cuenta con un equipo Linux que hace de servidor, decidís hacer uso de docker para levantar el servicio NextCloud de una forma muy rápida y sencilla.</p>
+<p><strong>No obstante debéis cumplir con los siguientes requerimientos:</strong></p>
 <ul>
-<li><code>-z 0</code>: evita cortar la respuesta una vez alcanzado cierto límite (cantidad de entradas).</li>
-<li><code>-H ldap://localhost:389</code>: indica que consulte al servidor LDAP en el puerto 389 del host local.</li>
-<li><code>-W</code>: indica que solicite la contraseña para el método de autenticación simple de manera interactiva.</li>
-<li><code>-D "cn=root,dc=linuxito,dc=com"</code>: especifica el usuario con el cual se autentica en el servidor LDAP.</li>
-<li><code>-b "dc=linuxito,dc=com"</code>: especifica la base desde donde comenzar la búsqueda (en este caso se trata de la raíz del directorio).</li>
-<li><code>"(objectclass=*)"</code>: especifica el filtro para la búsqueda (en este ejemplo todos los objetos, este a su vez es el filtro por defecto).</li>
+<li>El servicio docker se debe levantar en la red 192.168.20.0/24.</li>
+<li>Debe tener la traducción estática del puerto 80 de la máquina anfitriona al puerto 80 del contenedor.</li>
+<li>Debe tener un volumen asociado llamado “volNextCloud”.</li>
 </ul>
-<p>El punto importante es no olvidar especificar la base (<code>-b</code>). De lo contrario probablemente no haya resultados en la búsqueda:</p>
-<pre># search result
-search: 2
-result: 32 No such object
-</pre>
-
-<p>Ejemplo (utilizando <code>grep</code> para filtrar sólo los dn):</p>
-<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)" | grep "dn:"
-Enter LDAP Password: 
-dn: dc=linuxito,dc=com
-dn: cn=Manager,dc=linuxito,dc=com
-dn: ou=users,dc=linuxito,dc=com
-dn: uid=emiliano,ou=users,dc=linuxito,dc=com
-dn: uid=test,ou=users,dc=linuxito,dc=com
-dn: ou=fusiondirectory,dc=linuxito,dc=com
-dn: cn=config,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=aclroles,dc=linuxito,dc=com
-dn: cn=admin,ou=aclroles,dc=linuxito,dc=com
-dn: ou=people,dc=linuxito,dc=com
-dn: uid=fd-admin,ou=people,dc=linuxito,dc=com
-dn: cn=manager,ou=aclroles,dc=linuxito,dc=com
-dn: cn=editowninfos,ou=aclroles,dc=linuxito,dc=com
-dn: cn=editownpwd,ou=aclroles,dc=linuxito,dc=com
-dn: ou=recovery,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=reminder,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=locks,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=snapshots,dc=linuxito,dc=com
-</pre>
-
-<p>Recordar que hay exactamente un <a href="https://www.ldap.com/ldap-dns-and-rdns">dn</a> (<em>distinguished name</em>) por cada entrada en el árbol.</p>
-<p>Por supuesto al salida es muy extensa y presenta todos los atributos para cada entrada en el árbol. Se recomienda utilizar <code>grep</code> para filtrar y lograr una salida más legible (recuperar sólo aquella información que nos interesa).</p>
-<h4 id="obtener-todas-las-unidades-organizacionales">Obtener todas las unidades organizacionales<a class="headerlink" href="#obtener-todas-las-unidades-organizacionales" title="Permanent link">&para;</a></h4>
-<p>Las <a href="https://technet.microsoft.com/en-us/library/cc978003.aspx">ou</a> (<em>Organizational Unit</em>) definen la jerarquía dentro de un dominio. Generalmente se utilizan para definir los departamentos o áreas dentro de una organización (empresa, red, sociedad, etc.).</p>
-<p>Para obtener una lista de todas las ou presentes en un directorio, se puede utilizar el filtro <code>"(ou=*)"</code>:</p>
-<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(ou=*)"
-</pre>
-
-<p>Ejemplo:</p>
-<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(ou=*)" | grep "dn:"
-Enter LDAP Password: 
-dn: dc=linuxito,dc=com
-dn: ou=users,dc=linuxito,dc=com
-dn: ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=aclroles,dc=linuxito,dc=com
-dn: ou=people,dc=linuxito,dc=com
-dn: ou=recovery,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=reminder,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=locks,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=snapshots,dc=linuxito,dc=com
-</pre>
-
-<h4 id="listar-todos-los-usuarios">Listar todos los usuarios<a class="headerlink" href="#listar-todos-los-usuarios" title="Permanent link">&para;</a></h4>
-<p>Esta consulta depende de la jerarquía y la clase utilizada para almacenar usuarios dentro de un árbol LDAP. Sin embargo, generalmente se utiliza la clase <a href="https://tools.ietf.org/html/rfc2798">inetOrgPerson</a> para almacenar usuarios dentro de un directorio LDAP, la cual posee el atributo <code>uid</code>.</p>
-<p>De esta forma, para listar todos los usuarios presentes en un directorio, simplemente recurrir al filtro <code>"(uid=*)"</code>:</p>
-<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(uid=*)"
-</pre>
-
-<p>Por ejemplo:</p>
-<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(uid=*)" | grep -B 1 "dn:"
-Enter LDAP Password: 
-# emiliano, users, linuxito.com
-dn: uid=emiliano,ou=users,dc=linuxito,dc=com
---
-# test, users, linuxito.com
-dn: uid=test,ou=users,dc=linuxito,dc=com
---
-# fd-admin, people, linuxito.com
-dn: uid=fd-admin,ou=people,dc=linuxito,dc=com
-</pre>
-
-<h4 id="determinar-todas-las-clases-en-uso">Determinar todas las clases en uso<a class="headerlink" href="#determinar-todas-las-clases-en-uso" title="Permanent link">&para;</a></h4>
-<p>Las clases de un directorio LDAP determinan el formato con el que se representan los datos de los objetos almacenados en el árbol. Cada objeto (entrada en un directorio LDAP) pertenece a al menos una clase. Sin embargo es común que cada objeto pertenezca a varias clases. Básicamente las clases definen qué atributos y de qué formato puede poseer un objeto.</p>
-<p>Para listar todas las clases actualmente en uso por todos los objetos, es necesario volcar todo el contenido del árbol y filtrar con <code>grep</code>:</p>
-<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)" | grep objectClass | sort | uniq
-</pre>
-
-<p>Por ejemplo:</p>
-<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)" | grep objectClass | sort | uniq
-Enter LDAP Password: 
-objectClass: account
-objectClass: dcObject
-objectClass: fdAliasPluginConf
-objectClass: fdApplicationsPluginConf
-objectClass: fdAuditPluginConf
-objectClass: fdAutofsPluginConf
-objectClass: fdCommunityPluginConf
-objectClass: fdDashboardPluginConf
-objectClass: fdDhcpPluginConf
-objectClass: fdDnsPluginConf
-objectClass: fdDsaPluginConf
-objectClass: fdEjbcaPluginConf
-objectClass: fdFaiPluginConf
-objectClass: fdInventoryPluginConf
-objectClass: fdMailPluginConf
-objectClass: fdNagiosPluginConf
-objectClass: fdNetgroupPluginConf
-objectClass: fdNewsletterPluginConf
-objectClass: fdOpsiPluginConf
-objectClass: fdPasswordRecoveryConf
-objectClass: fdPersonalPluginConf
-objectClass: fdPpolicyPluginConf
-objectClass: fdRepositoryPluginConf
-objectClass: fdSambaPluginConf
-objectClass: fdSogoPluginConf
-objectClass: fdSudoPluginConf
-objectClass: fdSupannPluginConf
-objectClass: fdSympaPluginConf
-objectClass: fdSystemsPluginConf
-objectClass: fdUserReminderPluginConf
-objectClass: fdWebservicePluginConf
-objectClass: fusionDirectoryConf
-objectClass: fusionDirectoryPluginsConf
-objectClass: gosaAcl
-objectClass: gosaDepartment
-objectClass: gosaRole
-objectClass: inetOrgPerson
-objectClass: organization
-objectClass: organizationalPerson
-objectClass: organizationalRole
-objectClass: organizationalUnit
-objectClass: person
-objectClass: posixAccount
-objectClass: shadowAccount
-objectClass: top
-</pre>
-
-<p>Esta consulta permitirá identificar qué <em>schemas</em> dentro de una servidor LDAP están siendo utilizados y cuáles no.</p>
-<h4 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h4>
+<p>Sube un fichero de prueba, comprueba si está en la carpeta volumen creada. En caso de no estar:</p>
 <ul>
-<li><a href="https://technet.microsoft.com/en-us/library/cc977992.aspx">Object Naming - Microsoft TechNet</a></li>
-<li><a href="https://technet.microsoft.com/en-us/library/cc978003.aspx">Organizational Units - Microsoft TechNet</a></li>
-<li><a href="https://www.ldap.com/ldap-dns-and-rdns">LDAP DNs and RDNs</a></li>
-<li><a href="http://www.ldapexplorer.com/en/manual/107060000-ldap-object-classes.htm">LDAP Object Classes</a></li>
-<li><a href="https://tools.ietf.org/html/rfc2798">RFC 2798 - Definition of the inetOrgPerson LDAP Object Class</a></li>
+<li>Prueba a subir un fichero a la plataforma NextCloud. Acto seguido dentro del contenedor busca en que directorio se ha guardado dicho fichero.</li>
+<li>Lee la documentación sobre la imagen NextCloud que hay en Dockerhub <a href="https://hub.docker.com/_/nextcloud">Nextcloud_Docker</a>.</li>
 </ul>
+<h2 id="actividades-de-desarrollo-ud7_03">Actividades de desarrollo UD7_03<a class="headerlink" href="#actividades-de-desarrollo-ud7_03" title="Permanent link">&para;</a></h2>
+<ol start="705">
+<li>Realiza las siguientes actividades:</li>
+</ol>
+<h3 id="investiga">Investiga:<a class="headerlink" href="#investiga" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Crea el contenedor Nextcloud ¿Al crear el contenedor se ha generado automáticamente algún volumen? ¿Cuál?</li>
+<li>Dentro del sistema anfitrión (lliurex/Windows) ¿Dónde está guardado el fichero subido previamente?</li>
+<li>¿Este contenedor es persistente? ¿Qué significa que el contenedor es persistente? ¿Cómo lo has comprobado?</li>
+</ul>
+<h3 id="nextcloud-usuarios">NextCloud – Usuarios.<a class="headerlink" href="#nextcloud-usuarios" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>¿Cómo podemos ver el histórico de acciones de nuestro usuario?</p>
+</li>
+<li>
+<p>¿Cómo podemos añadir contactos para poder compartir ficheros con ellos?</p>
+</li>
+<li>
+<p>¿Cómo compartes un fichero con un compañero? Indica los permisos de escritura/lectura que se le pueden poner al fichero compartido.</p>
+</li>
+<li>
+<p>¿Cómo puedes dejar de compartir un fichero sin eliminarlo?</p>
+</li>
+<li>
+<p>¿Cómo puedes eliminar un fichero que has subido? Si ese fichero estaba compartido con alguien ¿qué sucede desde el punto de vista de éste último?</p>
+</li>
+<li>
+<p>¿Cómo se establece una fecha de caducidad de un fichero compartido, par que tras esa fecha, deje de ser accesible automáticamente.</p>
+</li>
+<li>
+<p>¿Cómo podemos crear un enlace para compartir un recurso con personas que no tengan usuario y sean completamente ajenas a nuestro sistema?</p>
+</li>
+<li>
+<p>¿Cómo podemos marcar con una etiqueta varios ficheros y luego usar el buscador de etiquetas para que nos muestre todos los recursos con dicha etiqueta?</p>
+</li>
+<li>
+<p>¿Cómo se puede realizar una búsqueda por nombre de fichero?</p>
+</li>
+<li>
+<p>Muestra como desactivar las notificaciones por correo.</p>
+</li>
+<li>
+<p>Una vez desactivadas dichas notificaciones inserta tu correo personal en el perfil para en caso de olvidar la contraseña el equipo pueda enviarte un correo con una nueva.</p>
+</li>
+</ol>
+<h3 id="nextcloud-administracion">NextCloud – Administración.<a class="headerlink" href="#nextcloud-administracion" title="Permanent link">&para;</a></h3>
+<p>Describe gráfica y detalladamente como realizar las siguientes acciones:</p>
+<ol>
+<li>
+<p>Crea un usuario administrador, que tenga espacio limitado para 300MB.</p>
+</li>
+<li>
+<p>Crea un grupo “Informática” y crea un usuario nuevo con espacio ilimitado que pertenezca a ese grupo. ¿Dicho usuario es el administrador del grupo?</p>
+</li>
+<li>
+<p>Busca como obligar que las contraseñas de los usuarios deban incluir mayúsculas y minúsculas.</p>
+</li>
+<li>
+<p>¿Cómo activarías el cifrado de la información que se intercambian cliente-servidor? ¿Qué impacto tiene sobre el servicio?</p>
+</li>
+<li>
+<p>¿Cómo puedes restringir a un usuario para que solo pueda compartir con usuarios de su grupo?</p>
+</li>
+<li>
+<p>Cambia el tema y el fondo de pantalla de tu servidor NextCloud.</p>
+</li>
+<li>
+<p>Describe que elementos podemos monitorizar desde la pantalla de Monitorización e indica para que nos puede servir esta información.</p>
+</li>
+</ol>
                 
               
               
@@ -869,6 +890,26 @@ objectClass: top
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="073_NFS.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 7.3- NFS" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              7.3- NFS
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
