@@ -1,287 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://javierhernadez81.github.io/aso2122/index.html</loc>
+         <loc>https://fjavier-hernandez.github.io/aso/01_ShellScripting/index.html</loc>
          <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://javierhernadez81.github.io/aso2122/013_Docker.html</loc>
+         <loc>https://fjavier-hernandez.github.io/aso/01_ShellScripting/011_ShellScript_Intro.html</loc>
          <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://javierhernadez81.github.io/aso2122/021_Introduccion_SD.html</loc>
+         <loc>https://fjavier-hernandez.github.io/aso/01_ShellScripting/011_ShellScripting_Total.html</loc>
          <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://javierhernadez81.github.io/aso2122/022_LDAP.html</loc>
+         <loc>https://fjavier-hernandez.github.io/aso/01_ShellScripting/012_ShelScript_Sintaxis.html</loc>
          <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://javierhernadez81.github.io/aso2122/023_ActiveDirectory.html</loc>
+         <loc>https://fjavier-hernandez.github.io/aso/01_ShellScripting/013_ShellScript_ControlFlujo.html</loc>
          <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://javierhernadez81.github.io/aso2122/023_LDAPutils.html</loc>
+         <loc>https://fjavier-hernandez.github.io/aso/01_ShellScripting/014_ShellScript_VectoresFunciones.html</loc>
          <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://javierhernadez81.github.io/aso2122/031_Planificador.html</loc>
+         <loc>https://fjavier-hernandez.github.io/aso/01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html</loc>
          <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://javierhernadez81.github.io/aso2122/032_GestionProcesos.html</loc>
+         <loc>https://fjavier-hernandez.github.io/aso/01_ShellScripting/016_ShellScript_PruebaEspecifica.html</loc>
          <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://javierhernadez81.github.io/aso2122/033C_Sobras.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/033_ArranqueServicios.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/041_EstructuraDirectorios.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/042_ArchivosVirtualSWinstaladoRendimiento.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/043_Planificacio%CC%81nTareas.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/051_AccesoRemotoLinux.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/052_EscritorioRemoto.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/053_HerramientasGraficAdminRemota.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/061_ServidoresImpresion.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/062_ServidoresImpresionLinux.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/063_ServidorImpresionWindowsServer.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/071_ServiciosRedRecursosCompartidos.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/072_Samba.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/073_NFS.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/074_NextCloud.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Administraci%C3%B3n%20de%20servicios.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/MarkdownSimbolos.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica01_AD.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica01_LDAP.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica02_AD.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica02_LDAP.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica03_AD.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica03_LDAP.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica04_AD.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica05_AD.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica06_AD.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica07_AD.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica08_AD.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica09_AD.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica10_PWSH_Cron.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica11_configuracio%CC%81n_servidor_openssh.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica13_CUPS.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica14_samba.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica15_SambaSecUsers.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica16_SambaDC.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/ProgramacionAula.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/phpLDAPadmin.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/planning.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/01_ShellScripting/index.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/01_ShellScripting/011_ShellScript_Intro.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/01_ShellScripting/011_ShellScripting_Total.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/01_ShellScripting/012_ShelScript_Sintaxis.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/01_ShellScripting/013_ShellScript_ControlFlujo.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/01_ShellScripting/014_ShellScript_VectoresFunciones.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/01_ShellScripting/016_ShellScript_PruebaEspecifica.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/02_PowerShell/012_PowerShell.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practica14/Practica14_ImpWinServ.html</loc>
-         <lastmod>2022-08-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://javierhernadez81.github.io/aso2122/Practicas/Practica12_RemoteAppTS.html</loc>
+         <loc>https://fjavier-hernandez.github.io/aso/02_PowerShell/012_PowerShell.html</loc>
          <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
