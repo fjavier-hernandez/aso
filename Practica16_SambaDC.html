@@ -1,0 +1,1460 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practica16_SambaDC.html">
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>SAMBA-DC (Domain Controller). - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#samba-dc-domain-controller" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SAMBA-DC (Domain Controller).
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- UD1: ShellScripting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- UD1: ShellScripting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- UD1: ShellScripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/index.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
+        1.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
+        1.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
+        1.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+        1.4- Vectores y funciones
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
+        1.5- Refuerzo y ampliación
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
+        1.6- Prueba Específica
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- UD2: PowerShell
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- UD2: PowerShell" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- UD2: PowerShell
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_PowerShell/index.md" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_PowerShell/012_PowerShell.html" class="md-nav__link">
+        2.1- PowerShell
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        2.- Administración de servicios de directorio
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- Administración de servicios de directorio" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          2.- Administración de servicios de directorio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="021_Introduccion_SD.html" class="md-nav__link">
+        2.1- Introducción de servicios de directorio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="022_LDAP.html" class="md-nav__link">
+        2.2- LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="023_ActiveDirectory.html" class="md-nav__link">
+        2.3- Active Directory
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        3.- Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          3.- Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="031_Planificador.html" class="md-nav__link">
+        3.1- Planificación y sincronización de procesos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="032_GestionProcesos.html" class="md-nav__link">
+        3.2- Gestión de los procesos del sistema
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="033_ArranqueServicios.html" class="md-nav__link">
+        3.3- Secuencia de arranque del sistema. Demonios y servicios
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        4.- Información del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4.- Información del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Información del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="041_EstructuraDirectorios.html" class="md-nav__link">
+        4.1- Estructura de directorios
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="042_ArchivosVirtualSWinstaladoRendimiento.html" class="md-nav__link">
+        4.2- VFS, Sw Instalado y Gestión Rendimiento
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="043_Planificacio%CC%81nTareas.html" class="md-nav__link">
+        4.3- Planificación de Tareas
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        5.- Servicios de acceso y administración remota
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="5.- Servicios de acceso y administración remota" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          5.- Servicios de acceso y administración remota
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="051_AccesoRemotoLinux.html" class="md-nav__link">
+        5.1- Acceso Remoto en modo texto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="052_EscritorioRemoto.html" class="md-nav__link">
+        5.2- Escritorio Remoto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="053_HerramientasGraficAdminRemota.html" class="md-nav__link">
+        5.3- Herramientas gráficas externas.
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        6.- Administración de Servidores de Impresión
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="6.- Administración de Servidores de Impresión" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          6.- Administración de Servidores de Impresión
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="061_ServidoresImpresion.html" class="md-nav__link">
+        6.1- Servidores de Impresión
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="062_ServidoresImpresionLinux.html" class="md-nav__link">
+        6.2- Servidor de impresión en GNU/Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="063_ServidorImpresionWindowsServer.html" class="md-nav__link">
+        6.3- Servidor de impresión en Windows Server
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        7.- Integración de sistemas operativos en red libres y propietarios
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="7.- Integración de sistemas operativos en red libres y propietarios" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          7.- Integración de sistemas operativos en red libres y propietarios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="071_ServiciosRedRecursosCompartidos.html" class="md-nav__link">
+        7.1- Servicios de red para compartir recursos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="072_Samba.html" class="md-nav__link">
+        7.2- Samba
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="073_NFS.html" class="md-nav__link">
+        7.3- NFS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="074_NextCloud.html" class="md-nav__link">
+        7.4- NextCloud
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="samba-dc-domain-controller">SAMBA-DC (Domain Controller).<a class="headerlink" href="#samba-dc-domain-controller" title="Permanent link">&para;</a></h1>
+<p>En esta práctica se realizarán los siguientes puntos:</p>
+<ul>
+<li>La configuración del Controlador de Dominio en Samba.</li>
+<li>Se agregarán clientes de windows.</li>
+<li>Configuración de recursos compartidos.</li>
+<li>Activación de RSAT.</li>
+<li>Configuración de perfiles móviles.</li>
+</ul>
+<h2 id="recordatorio-controlador-de-dominio-dc">Recordatorio Controlador de Dominio (DC).<a class="headerlink" href="#recordatorio-controlador-de-dominio-dc" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Es un <strong>servidor</strong> que se ocupa de permitir el acceso a ciertos usuarios a ciertos recursos del dominio.</li>
+<li>Un <strong>dominio</strong> es un grupo de recursos (equipos, ficheros, usuarios, impresoras, etc.) dentro de una red. El acceso a dicho dominio o las políticas de seguridad de todos esos recursos es administrada por el controlador de dominio.</li>
+<li>Habitualmente se implementan en Windows Server, aunque también se pueden implementar en Linux bajo samba.</li>
+<li>En una implementación adecuada, se despliega más de un controlador de dominio a la vez que actúan como uno (cluster) de esta forma se dota al servicio de redundancia y alta disponibilidad, es decir, que si se produce una avería en un control de dominio el servicio sigue activo pues hay otro/s controladores activos.</li>
+<li>Los dominios usan rutas de nombres similares a los DNS, tienen una ruta absoluta FQDN (Full
+Qualified Domain Name) y una ruta relativa PQDN (Partially Qualified Domain Name).</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Independientemente del sistema operativo usado necesitaremos de otros servicios para complementar, a continuación se enumeran:</p>
+</div>
+<ul>
+<li><strong>LDAP</strong>: Será la base de datos que alberga la información de los usuarios.</li>
+<li><strong>Kerberos</strong>: Se encarga de la seguridad a nivel de autentificación segura de los usuarios.</li>
+<li><strong>DNS</strong>: Habitualmente el acceso al dominio se hace a través de un nombre de dominio. El
+servicio DNS permite la resolución de ese nombre de dominio al direccionamiento IP.</li>
+<li><strong>NTP</strong>: Es el servicio que se encarga de la sincronización del reloj de cada máquina.</li>
+</ul>
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Realiza un <strong>snapshot</strong> de tu máquina virtual.</li>
+<li>Configura la máquina virtual en formato “<strong>Nat Network</strong>”.</li>
+<li>Establecemos una configuración de red para tu servidor.<ol>
+<li>Un dominio de búsqueda (<strong>Search Domain</strong>) nos va a permitir que si el servidor recibe una búsqueda de petición de un recurso, por ejemplo “maquina03”, automáticamente el servidor va intentar buscar por el nombre de dominio completo: “maquina03.sor.com”. Es decir, intenta resolver una ruta relativa de dominio (PQDN) a una ruta absoluta de dominio (FQDN).</li>
+<li>Acordaros de aplicar los cambios con <strong>netplan apply</strong>.</li>
+</ol>
+</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/007.png" width="550"/>
+</figure>
+
+<ol start="4">
+<li>Instalar los paquetes “<strong>dnsutils</strong>”.<ol>
+<li>El paquete dnsutils simplemente son una serie de herramientas que nos ayudarán a comprobar que la resolución del nombre de nuestro dominio es correcta.</li>
+</ol>
+</li>
+<li>Es conveniente saber cuál es el nombre de nuestra máquina:</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/008.png" width="550"/>
+</figure>
+
+<ol start="6">
+<li>En el fichero <code>“/etc/hosts”</code> es como un servicio DNS local, es decir, tiene una serie de pares <code>nombres/IP</code> que resuelve localmente. Por ejemplo si le hago ping a <code>“profesor”</code> mi máquina sabe resolverlo a la IP <code>127.0.1.1</code> que es la IP de loopback.<ol>
+<li>Realiza una copia de seguridad del fichero <code>/etc/hosts</code>.</li>
+<li>Modifica el fichero original (<code>/etc/hosts</code>) para que resuelva el nombre de tu máquina y tu FQDN en este caso <code>profesor.sor.local</code> a la IP del servidor <code>10.0.100.100</code> en este caso.</li>
+<li>Comprueba con un ping a los nombres que funciona y te contesta con la IP.</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><strong>Ejemplos:</strong></li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/009.png" width="850"/>
+  <figcaption>Ping a profesor.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/07/072/010.png" width="850"/>
+  <figcaption>Comprobación `/etc/hosts`.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/07/072/011.png" width="850"/>
+  <figcaption>Comprobación de ping al localhost debería contestar 127.0.0.1.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/07/072/012.png" width="850"/>
+  <figcaption>Comprobaciónes de ping.</figcaption>
+</figure>
+
+<ol start="7">
+<li>
+<p>A continuación instalamos los paquetes “<strong>attr</strong>” y “<strong>acl</strong>” que nos darán más opciones de seguridad y mayor compatibilidad al interconectar con equipos clientes Windows a nuestro dominio.</p>
+</li>
+<li>
+<p>Vamos a aplicar estos paquetes al <strong>sistema cuando se arranque</strong>. Para ello, hacemos una copia de seguridad del fichero <code>/etc/fstab</code> y posteriormente lo editamos. <strong>Importante</strong> que el separador en este fichero es el tabulador.</p>
+<ol>
+<li>Simplemente hay que añadir en el raíz (“/”) las opciones <strong>user_xattr,acl,barrier=1,defaults</strong> donde antes sólo ponía defaults.</li>
+<li>Importante no equivocarse y hacerlo en el “/”, no en el <code>/boot</code> ni en la memoria <strong>swap</strong>.</li>
+<li>Reiniciar el server (reboot).</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><strong>Ejemplos:</strong></li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/013.png" width="750"/>
+  <figcaption>attr y acl acl al sector de arranque en /etc/fstab.</figcaption>
+</figure>
+
+<ol start="9">
+<li>
+<p>Ahora vamos a instalar el paquete <strong>NTP</strong>, ya que es necesario tener sincronizada la hora para servicios del estilo <strong>firewall</strong>, <strong>LDAP</strong>, para los registros de los logs, para el servicio activo de Windows, etc.</p>
+<ol>
+<li>Se puede comprobar que el servicio está activo con <code>“systemctl status ntp”</code></li>
+</ol>
+</li>
+<li>
+<p><strong>Detenemos y deshabilitamos</strong> cualquier servicio que tuviéramos de samba (que no fuera de
+    controlador de dominio) previa a la instalación.</p>
+</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/014.png" width="750"/>
+</figure>
+
+<ol start="11">
+<li>
+<p>Eliminamos cualquier configuración previa de samba o de kerberos.</p>
+</li>
+<li>
+<p>Vamos a instalar los siguientes paquetes:</p>
+<ol>
+<li><strong>Samba</strong> &#8594; En el paquete ya viene integrado un módulo de LDAP para almacenar los usuarios.</li>
+<li><strong>krb5-config</strong> &#8594; Es la configuración de Kerberos que usaremos en samba. Habrá que instalarlo más adelante.</li>
+<li><strong>winbind</strong> &#8594; Paquete necesario para que un cliente de Windows se pueda autentificar en nuestro sistema DC en Linux.</li>
+<li><strong>smbclient</strong> &#8594; Instalaremos el cliente samba, simplemente para tener ciertos comandos de consulta, realmente no es necesario para montar el servidor.</li>
+</ol>
+</li>
+<li>
+<p>Durante la instalación del <strong>Kerberos</strong> nos pedirá 3 cosas principalmente:
+    a. El reino (realm): Pondremos el mismo que nuestro dominio.
+    b. La IP del servidor Kerberos
+    c. La IP para la administración del Kerberos.</p>
+</li>
+</ol>
+<p>En este caso nuestro servidor de kerberos va a estar en el propio controlador de dominio que estamos
+configurando, pero en otra situación se podría tratar de una máquina independiente.</p>
+<figure>
+  <img src="./imagenes/07/072/015.png" width="750"/>
+</figure>
+
+<ol start="14">
+<li>Comprobamos que el servicio <strong>samba-ad-dc</strong> funciona y está activo:</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/016.png" width="750"/>
+</figure>
+
+<ol start="15">
+<li>hora vamos a pasar a configurar el controlador de dominio de samba. Vamos a hacer uso de samba-tool para completar la configuración:<ol>
+<li><code>samba-tool domain provision --use-rfc2307 --interactive</code></li>
+</ol>
+</li>
+</ol>
+<p>Dentro de la configuración cogerá el reino/dominio de nuestro servidor, por lo que no tenemos que rellenar nada, <strong>excepto la parte de DNS forwarder que usaremos la DNS de google (8.8.8.8)</strong>. Esto lo hacemos porque nosotros seremos el servidor DNS, pero si no sabemos resolver una página pasaremos la solicitud de resolución al servidor DNS forwarder (8.8.8.8).</p>
+<p>Como <strong>contraseña</strong> de administrador necesita tener una <strong>mayúscula/minúscula/número/longitud de 8</strong>. El usuario por defecto es “administrator”</p>
+<p>Si todo ha salido bien, nos habrá creado el fichero smb.conf acorde a nuestra configuración:</p>
+<figure>
+  <img src="./imagenes/07/072/017.png" width="750"/>
+</figure>
+
+<ul>
+<li><strong>[global]</strong>: Donde se puede observar todos los datos de configuración del dominio, además de los
+roles para los que se ha creado (DC-AD).</li>
+<li><strong>[netlogon]</strong>: Ya ha creado de forma automática la carpeta para los scripts de inicio de sesión de
+los clientes.</li>
+<li><strong>[sysvol]</strong>: El sysvol es reponsable de replicar las GPOs (Políticas de Grupos) aplicadas en el editor
+de directivas de grupo, todos los cambios y GPOs nuevos son replicados por alli.</li>
+</ul>
+<ol start="16">
+<li>Ahora pasamos a instalar Kerberos, antes solo habíamos asociado la configuración a samba (reino, dns, password, etc). Para ello instalamos el paquete “<strong>krb5-user</strong>”.</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/018.png" width="750"/>
+</figure>
+
+<ol start="17">
+<li>A continuación copiamos la configuración de kerberos para samba por la configuración por defecto de kerberos:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">cp /var/lib/samba/private/krb5.conf /etc/krb5.conf</span>
+</code></pre></div>
+<ol start="18">
+<li>Detemos system-resolved para que no nos manipule automáticamente el fichero <code>/etc/resolv.conf</code></li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/019.png" width="750"/>
+</figure>
+
+<ol start="19">
+<li>Finalmente comprobamos que la configuración de Kerberos está bien:</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/020.png" width="750"/>
+</figure>
+
+<ol start="20">
+<li>Como ya tenemos configurado el DNS forwarder, volvemos a nuestra configuración de red y cambiamos el servidor DNS como a nosotros mismos, para resolver las peticiones de nuestro dominio. Acordaros del netplan apply.</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/021.png" width="750"/>
+</figure>
+
+<p>Finalmente podemos ver el resumen de nuestro dominio:</p>
+<figure>
+  <img src="./imagenes/07/072/022.png" width="750"/>
+</figure>
+
+<p>Comprobamos que funciona la resolución al dominio:</p>
+<figure>
+  <img src="./imagenes/07/072/023.png" width="750"/>
+</figure>
+
+<h2 id="agregar-un-cliente-windows-al-dominio-de-samba">Agregar un cliente Windows al dominio de Samba.<a class="headerlink" href="#agregar-un-cliente-windows-al-dominio-de-samba" title="Permanent link">&para;</a></h2>
+<h3 id="crear-usuario-en-el-controlador-de-dominio">Crear Usuario en el Controlador de Dominio<a class="headerlink" href="#crear-usuario-en-el-controlador-de-dominio" title="Permanent link">&para;</a></h3>
+<p>Lo primero será tener un usuario válido para acceder al dominio, para ello vamos a nuestro servidor que hace de controlador de dominio y creamos dicho usuario:</p>
+<div class="admonition tip">
+<p class="admonition-title"><strong>Redorcatorio</strong></p>
+<p>Recuerda a la hora de insertar la contraseña que debe cumplir con un mínimo de 8 caracteres, una mayúscula, una minúscula y un número.</p>
+</div>
+<figure>
+  <img src="./imagenes/07/072/024.png" width="850"/>
+</figure>
+
+<ul>
+<li>Para el usuario “niko” se ha creado la contraseña “Niko1234#”</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/025.png" width="750"/>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>A diferencia de lo que pasaba en samba, cuando NO era un controlador de dominio, el usuario no es necesario que exista en el sistema y además los UID no son iguales a los del sistema operativo.</p>
+</div>
+<figure>
+  <img src="./imagenes/07/072/026.png" width="550"/>
+</figure>
+
+<h3 id="anadir-el-cliente-windows-al-dominio-samba">Añadir el Cliente Windows al Dominio Samba.<a class="headerlink" href="#anadir-el-cliente-windows-al-dominio-samba" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Añade al cliente en la misma red interna que el controlador de dominio de SAMBA, en nuestro caso una <code>“NAT Network”</code>. Ésta red se le asignará una IP automática y una puerta de enlace, pero debemos forzarle que el servidor DNS sea nuestro controlador de dominio.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>En una situación real, el propio controlador de dominio actuaría de servidor DHCP, o en el caso de tener un servicio DHCP ya asignaría el DNS automáticamente del controlador de dominio, por lo que no habría que hacer este paso.</p>
+</div>
+<figure>
+  <img src="./imagenes/07/072/027.png" width="550"/>
+  <figcaption>Configuración de Propiedades de Red en Windows.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/07/072/028.png" width="550"/>
+  <figcaption>Comprobación conexión con Server.</figcaption>
+</figure>
+
+<ol start="2">
+<li>Vamos a introducir el cliente dentro de nuestro dominio:</li>
+</ol>
+<ul>
+<li>Botón derecho – Propiedades sobre el icono de <code>“Equipo”</code>.</li>
+<li>Pinchar en <code>“Cambiar Configuración”</code>.</li>
+<li>Posteriormente le damos a <code>“cambiar..”</code> y seleccionamos nuestro dominio.</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/029.png" width="850"/>
+  <figcaption>Propiedades Equipo.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/07/072/030.png" width="850"/>
+  <figcaption>Cambio para sellecionar dominio.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+</div>
+<p>Es muy importante que accedamos con un usuario con permisos de administrador en el servidor linux, si os acordáis Kerberos es el servicio que se encarga de la seguridad de nuestro controlador de dominio, y por defecto éste crea el usuario <code>“administrator”</code>.</p>
+<figure>
+  <img src="./imagenes/07/072/031.png" width="550"/>
+  <figcaption>Cambio de usuario a Administrador.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/07/072/032.png" width="850"/>
+  <figcaption>Confirmación cambio Dominio.</figcaption>
+</figure>
+
+<ul>
+<li>Finalmente reiniciamos el equipo cliente e intentamos acceder con un usuario del controlador de dominio, como por ejemplo “niko”, fijaros que es un usuario que no existe en el Windows a nivel local, existe en el servidor, por lo que “niko” se podría registrar en cualquier equipo asociado al dominio.</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/033.png" width="550"/>
+  <figcaption>Comprobación de Logueo.</figcaption>
+</figure>
+
+<h2 id="compartir-recursos-en-un-dominio-entre-windows-y-servidor-ubuntu">Compartir recursos en un dominio entre Windows y Servidor Ubuntu.<a class="headerlink" href="#compartir-recursos-en-un-dominio-entre-windows-y-servidor-ubuntu" title="Permanent link">&para;</a></h2>
+<p>A la hora de compartir recursos es prácticamente igual a cuando se realizaba en Samba sin directorio activo.</p>
+<ol>
+<li>Crear la carpeta a compartir y darle permisos requeridos.</li>
+<li>Acceder al fichero de configuración de samba.</li>
+<li>Generar un recurso a compartir.</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/034.png" width="350"/>
+  <figcaption>Ejemplo recurso compartido.</figcaption>
+</figure>
+
+<ol start="4">
+<li>Reiniciar el servicio.</li>
+<li>Ahora el servicio de <strong>samba</strong> esta configurado como directorio activo podemos hacer:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">smbcontrol all reload-config</span>
+</code></pre></div>
+<ul>
+<li>Para que cualquier usuario del dominio pueda administrar un recurso podemos agregarle al recurso el grupo <code>“Domain Users”</code>, se puede comprobar que existe con el siguiente comando dentro de la base de datos de Samba.</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/035.png" width="750"/>
+</figure>
+
+<h3 id="winbind">winbind<a class="headerlink" href="#winbind" title="Permanent link">&para;</a></h3>
+<p>El problema que tendremos, la primera vez, es que ese grupo no tiene un <strong>GID (identificador de grupo)</strong> asociado del sistema operativo Ubuntu Server. Para ello vamos a usar <code>“winbind”</code> para que pueda traducir a partir de un grupo de samba a un grupo del sistema y hacer una equivalencia.</p>
+<ul>
+<li>Se instalan los paquetes:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">apt-get install libnss-winbind</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">apt-get install libpam-winbind</span>
+</code></pre></div>
+<ul>
+<li>Se modifica el fichero <code>“/etc/nsswitch.conf”</code> que revisa donde tiene que buscar el registro de <code>usuarios/grupos</code> del sistema. “Files” será su primera opción, que será <code>/etc/passwd</code> y <code>/etc/groups</code>, si no los encuentra ahí pasa a usar el servicio winbind para hacer la equivalencia con samba AD.</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/036.png" width="750"/>
+</figure>
+
+<ul>
+<li>Finalmente se puede comprobar que funciona y que cuando le preguntamos al sistema por el grupo del controlador de dominio <code>“Domain Users”</code> el sistema nos indica que es capaz de relacionarlo con un identificador de grupo, en este caso el <code>100</code>.</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/037.png" width="750"/>
+</figure>
+
+<ul>
+<li>En el ejemplo se ve que el usuario del dominio niko pertenece al grupo 100 que es el de domain users.</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/038.png" width="750"/>
+</figure>
+
+<ul>
+<li>Finalmente se añaden todas las carpetas a compartir y sus rutas padres al grupo del dominio:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">chgrp -R &quot;Domain Users&quot; /recursosSOR</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">chmod 2750recursosSOR</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Si se había iniciado sesión con tu usuario de Windows 10 antes de cambiar la configuración de <code>/etc/nsswitch</code>, cierra sesión y vuelve a acceder.</p>
+</div>
+<ul>
+<li>En el <code>cliente Windows 10</code> que ya está unido al dominio deberemos:</li>
+</ul>
+<ol>
+<li>Comprobar que navega por Internet.</li>
+<li>Acceder a una <code>carpeta/directorio</code> y buscar el nombre de tu equipo que está compartiendo el recurso, en este caso es el propio servidor.</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/039.png" width="850"/>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>No debería pedir credenciales, porque ya habíamos iniciado sesión como “niko” en este ordenador que pertenece al dominio y a Domain Users.</p>
+</div>
+<ul>
+<li>Además, desde las propiedades de seguridad del cliente Windows podemos cambiar las <strong>políticas de acceso de esa carpeta compartida</strong> (siempre que tengamos permisos en el servidor para ello).</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/040.png" width="850"/>
+</figure>
+
+<h2 id="activar-rsat">Activar RSAT<a class="headerlink" href="#activar-rsat" title="Permanent link">&para;</a></h2>
+<p>Se debe aplicar a <code>Aplicaciones y Características</code> – <code>Características Opcionales</code> y se agrega una nueva característica:</p>
+<figure>
+  <img src="./imagenes/07/072/041.png" width="850"/>
+  <figcaption>Características Opcionales.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/07/072/042.png" width="550"/>
+  <figcaption>Agregar una Característica.</figcaption>
+</figure>
+
+<ul>
+<li>Para agregar filtramos por <strong>RSAT</strong> y activamos:</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/043.png" width="850"/>
+  <figcaption>Agregar RSAT.</figcaption>
+</figure>
+
+<h2 id="perfiles-moviles">Perfiles Móviles.<a class="headerlink" href="#perfiles-moviles" title="Permanent link">&para;</a></h2>
+<p>Un perfil móvil, es aquel donde un usuario se registre en la máquina que se registre, si ésta pertenece al dominio, tendrá sus ficheros personales con los que trabaja día a día.</p>
+<h3 id="configuracion-de-politicas-de-cliente">Configuración de Políticas de Cliente<a class="headerlink" href="#configuracion-de-politicas-de-cliente" title="Permanent link">&para;</a></h3>
+<p>Como administradores, si queremos implementar perfiles móviles, tenemos dos opciones.</p>
+<ol>
+<li>Indicar que el perfil de cada usuario debe apuntar al servidor, en nuestro caso el <strong>samba ubuntu server</strong>.</li>
+<li>Crear una política de grupo para que cada usuario que acceda a dicha máquina directamente se le genere el perfil adecuado.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Obviamente, la solución b) es mucho más escalable y por tanto más adecuada.</p>
+</div>
+<h4 id="opcion-1">OPCIÓN 1<a class="headerlink" href="#opcion-1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Entra al cliente Windows como Administrador (<strong>Administrator</strong>).</li>
+<li>Por curiosidad, ahora puedes ir a <code>“Usuarios y Equipos de Active Directory”</code> y ver/gestionar los grupos del directorio activo desde el propio Windows.</li>
+<li>En las propiedades del usuario y luego en su perfil:</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/044.png" width="850"/>
+  <figcaption>Usuarios y Equipos.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/07/072/045.png" width="550"/>
+  <figcaption>Propiedades niko.</figcaption>
+</figure>
+
+<h4 id="opcion-2">OPCIÓN 2<a class="headerlink" href="#opcion-2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Entra al cliente Windows como Administrador (<strong>Administrator</strong>).</li>
+<li>Accede a la administración de directivas de grupo (GPO).</li>
+<li>Crea una <strong>GPO</strong> asociado al dominio.</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/046.png" width="850"/>
+  <figcaption>Creamos GPO.</figcaption>
+</figure>
+
+<ol start="4">
+<li>Editamos la nueva política creada.</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/047.png" width="550"/>
+  <figcaption>Editar nueva política.</figcaption>
+</figure>
+
+<ol start="5">
+<li>Ahora Navegamos por <code>Configuración del Equipo</code> &#8594; <code>Directivas</code> &#8594;<code>Plantillas Administrativas</code> &#8594; <code>Sistema</code> &#8594; <code>Perfiles de Usuario.</code></li>
+</ol>
+<ul>
+<li>Dentro de Perfiles de Usuario seleccionamos la plantilla sobre perfiles móviles para todos los usuarios conectados al equipo.</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/048.png" width="850"/>
+  <figcaption>Establecer Perfil móvil.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/07/072/049.png" width="850"/>
+  <figcaption>Ruta para Perfil móvil.</figcaption>
+</figure>
+
+<ul>
+<li>Una vez modificado la política, ésta se actualiza en el servidor (Ubuntu Server) n la ruta <code>Sysvol</code>. Es decir si vamos al fichero de configuración de Samba, vemos que hay un recurso compartido llamado <code>sysvol</code>.</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/050.png" width="450"/>
+  <figcaption>Ruta sysvol.</figcaption>
+</figure>
+
+<ul>
+<li>Si investigamos dentro de esa carpeta vemos que hay una sección de Políticas que justo se ha creado al mismo momento que hemos aplicado las políticas:</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/051.png" width="950"/>
+  <figcaption>Confirmación Ruta.</figcaption>
+</figure>
+
+<h3 id="confirmacion-de-recursos">Confirmación de Recursos<a class="headerlink" href="#confirmacion-de-recursos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Se debe crear la carpeta donde se almacenarán los recursos de los usuarios y Configurar acceso a cualquier usuario perteneciente al grupo de administradores del dominio:</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/052.png" width="850"/>
+</figure>
+
+<ul>
+<li>Posteriormente lo agregamos como un recurso a compartir:</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/053.png" width="350"/>
+</figure>
+
+<ul>
+<li>Reiniciamos el servicio:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">smbcontrol all reload-config</span>
+</code></pre></div>
+<ul>
+<li>Desde Windows (que es más visible) gestionamos los permisos de los perfiles de los usuarios, para ello accedemos a <code>\\profesor</code> y a las propiedades de “profiles”:</li>
+</ul>
+<p>Si queremos agregar algún grupo/usuario que no esté, como podría ser Domain Users:</p>
+<figure>
+  <img src="./imagenes/07/072/054.png" width="850"/>
+</figure>
+
+<ul>
+<li>Una vez tengamos agregados todos los grupos que queremos , vamos a filtrar e indicar los permisos de cada uno.</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/055.png" width="550"/>
+</figure>
+
+<ul>
+<li>Opciones de Compartición:</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/056.png" width="850"/>
+</figure>
+
+<ul>
+<li>Opciones de Seguridad:</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/072/057.png" width="850"/>
+</figure>
+
+<figure>
+  <img src="./imagenes/07/072/058.png" width="850"/>
+</figure>
+
+<h3 id="acceso-desde-el-usuario">Acceso desde el usuario<a class="headerlink" href="#acceso-desde-el-usuario" title="Permanent link">&para;</a></h3>
+<p>Ahora cada vez que nos registremos en cualquier ordenador del dominio, aunque sea la primera vez, ya tendremos configurada una carpeta compartida en nuestro perfil para nosotros solos (y los administradores).</p>
+<figure>
+  <img src="./imagenes/07/072/059.png" width="850"/>
+</figure>
+
+<h3 id="redireccion">Redirección<a class="headerlink" href="#redireccion" title="Permanent link">&para;</a></h3>
+<p>Entre sistemas Linux sí se podía direccionar directamente el <code>/home</code> de un usuario a una carpeta del servidor <code>[homes]</code>. En el caso de Windows debemos realizar una redirección.</p>
+<ol>
+<li>Accedemos como “<strong>administrator</strong>”.</li>
+<li>Accede a la administración de directivas de grupo (<strong>GPO</strong>).</li>
+<li>Crea una <strong>GPO</strong> asociado al dominio.</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/060.png" width="850"/>
+</figure>
+
+<ol start="4">
+<li>Editamos la nueva política creada.</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/061.png" width="550"/>
+</figure>
+
+<ol start="5">
+<li>Accedemos a las propiedades de la carpeta que queremos redireccionar:</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/072/062.png" width="850"/>
+</figure>
+
+<figure>
+  <img src="./imagenes/07/072/063.png" width="850"/>
+</figure>
+
+<ol start="6">
+<li>Cerramos sesión y Registramos con otro usuario no administrador.</li>
+</ol>
+<p>Una vez registrados creamos unos ficheros en el escritorio o carpetas, como si estuvieramos trabajando y cerramos la sesión.</p>
+<p>Al cerrar la sesión se migran los ficheros al servidor y si nos conectáramos a cualquier otra máquina tendríamos nuestro Escritorio y ficheros con nosotros.</p>
+<figure>
+  <img src="./imagenes/07/072/064.png" width="850"/>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>A tener en cuenta</strong></p>
+<p>Obviamente en la empresa, en caso de tener un AD con Samba como DC, no hará falta configurar cada cliente Windows (crear las políticas, etc), si no que usaremos una imagen, creada por ejemplo con clonezilla, y distribuiremos esa imagen con las políticas ya configuradas a todas las máquinas.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>

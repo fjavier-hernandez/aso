@@ -1,0 +1,1173 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Practicas/Practica12_RemoteAppTS.html">
+      
+      <link rel="icon" href="../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>Práctica 12 RemoteApp y Escritorio Remoto - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-12-remoteapp-y-escritorio-remoto" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Práctica 12 RemoteApp y Escritorio Remoto
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- UD1: ShellScripting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- UD1: ShellScripting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- UD1: ShellScripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/index.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
+        1.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
+        1.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
+        1.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+        1.4- Vectores y funciones
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
+        1.5- Refuerzo y ampliación
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
+        1.6- Prueba Específica
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- UD2: PowerShell
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- UD2: PowerShell" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- UD2: PowerShell
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/index.md" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/012_PowerShell.html" class="md-nav__link">
+        2.1- PowerShell
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        2.- Administración de servicios de directorio
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- Administración de servicios de directorio" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          2.- Administración de servicios de directorio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../021_Introduccion_SD.html" class="md-nav__link">
+        2.1- Introducción de servicios de directorio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../022_LDAP.html" class="md-nav__link">
+        2.2- LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../023_ActiveDirectory.html" class="md-nav__link">
+        2.3- Active Directory
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        3.- Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          3.- Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../031_Planificador.html" class="md-nav__link">
+        3.1- Planificación y sincronización de procesos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../032_GestionProcesos.html" class="md-nav__link">
+        3.2- Gestión de los procesos del sistema
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../033_ArranqueServicios.html" class="md-nav__link">
+        3.3- Secuencia de arranque del sistema. Demonios y servicios
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        4.- Información del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4.- Información del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Información del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../041_EstructuraDirectorios.html" class="md-nav__link">
+        4.1- Estructura de directorios
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../042_ArchivosVirtualSWinstaladoRendimiento.html" class="md-nav__link">
+        4.2- VFS, Sw Instalado y Gestión Rendimiento
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../043_Planificacio%CC%81nTareas.html" class="md-nav__link">
+        4.3- Planificación de Tareas
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        5.- Servicios de acceso y administración remota
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="5.- Servicios de acceso y administración remota" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          5.- Servicios de acceso y administración remota
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../051_AccesoRemotoLinux.html" class="md-nav__link">
+        5.1- Acceso Remoto en modo texto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../052_EscritorioRemoto.html" class="md-nav__link">
+        5.2- Escritorio Remoto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../053_HerramientasGraficAdminRemota.html" class="md-nav__link">
+        5.3- Herramientas gráficas externas.
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        6.- Administración de Servidores de Impresión
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="6.- Administración de Servidores de Impresión" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          6.- Administración de Servidores de Impresión
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../061_ServidoresImpresion.html" class="md-nav__link">
+        6.1- Servidores de Impresión
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../062_ServidoresImpresionLinux.html" class="md-nav__link">
+        6.2- Servidor de impresión en GNU/Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../063_ServidorImpresionWindowsServer.html" class="md-nav__link">
+        6.3- Servidor de impresión en Windows Server
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        7.- Integración de sistemas operativos en red libres y propietarios
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="7.- Integración de sistemas operativos en red libres y propietarios" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          7.- Integración de sistemas operativos en red libres y propietarios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../071_ServiciosRedRecursosCompartidos.html" class="md-nav__link">
+        7.1- Servicios de red para compartir recursos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../072_Samba.html" class="md-nav__link">
+        7.2- Samba
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../073_NFS.html" class="md-nav__link">
+        7.3- NFS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../074_NextCloud.html" class="md-nav__link">
+        7.4- NextCloud
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica-12-remoteapp-y-escritorio-remoto">Práctica 12 RemoteApp y Escritorio Remoto<a class="headerlink" href="#practica-12-remoteapp-y-escritorio-remoto" title="Permanent link">&para;</a></h1>
+<p>Para esta práctica vamos a instalar un servidor miembro dentro del dominio realizado en el tema2 para Active Directory y este servidor será el equipo donde instalaremos los servicios de <strong>RemoteApp</strong> y de Terminal Server. </p>
+<p>Para poner en marcha el servicio <strong>RemoteAPP</strong>, es necesario configurar el servidor Terminal Services lo que está completamente desaconsejado en un controlador de dominio. El motivo de esta separación física entre el controlador de dominio y el servidor de aplicaciones reside en que:</p>
+<ol>
+<li>Los usuarios del dominio deben poder iniciar sesión en el servidor de aplicaciones para poder ponerlas en marcha, lo cual está completamente desaconsejado en el controlador de domino, ya que en este último se gestionan aspectos de seguridad y autenticación, demasiado sensibles como para permitir a cualquier usuario del dominio iniciar sesión en él.</li>
+<li>El  consumo  de  recursos  que  provoca  la  ejecución  remota  de  las  aplicaciones  puede  entorpecer  el  correcto funcionamiento del controlador de dominio: recordad que este puede tener numerosos servicios ejecutándose (AD, DNS, DHCP, servidor de impresión, VPN, etc.)</li>
+</ol>
+<p>De esta manera, el esquema de red propuesto, sería como el de la siguiente figura, donde un equipo servidor realiza las tareas de controlador de dominio, y otro equipo servidor realiza las tareas de servidor de aplicaciones:</p>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.007.jpeg" width="950"/>
+  <figcaption>Estructura de red propuesta</figcaption>
+</figure>
+
+<h2 id="instalacion-y-validacion-en-el-dominio-del-servidor-de-aplicaciones">Instalación y validación en el dominio del Servidor de Aplicaciones<a class="headerlink" href="#instalacion-y-validacion-en-el-dominio-del-servidor-de-aplicaciones" title="Permanent link">&para;</a></h2>
+<p>Crearemos otra máquina virtual con otro sistema Windows 2019 Server y validaremos esta máquina en el dominio CEFIRE2019.LOCAL (o el dominio utilizado en la práctica <code>Instalación Active Directory I</code> en el tema 2.3):</p>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.009.jpeg" width="950"/>
+  <figcaption>Instalación y validación de un servidor miembro</figcaption>
+</figure>
+
+<p>Si ahora accedemos al controlador de dominio, vemos que en Usuarios y Equipos de Active Directory, en la sección de Computers habrá añadido el nuevo servidor miembro: </p>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.010.jpeg" width="950"/>
+  <figcaption>AppServer validado en dominio</figcaption>
+</figure>
+
+<h2 id="instalacion-de-remoteapp-y-servicios-de-escritorio-remoto">Instalación de RemoteApp y Servicios de Escritorio Remoto<a class="headerlink" href="#instalacion-de-remoteapp-y-servicios-de-escritorio-remoto" title="Permanent link">&para;</a></h2>
+<h3 id="instalacion-de-remoteapp">Instalación de RemoteApp<a class="headerlink" href="#instalacion-de-remoteapp" title="Permanent link">&para;</a></h3>
+<p>Para instalar <strong>RemoteApp</strong>, vamos a iniciar sesión como Administrador del dominio en el servidor miembro que hemos instalado, en nuestro <code>APPSERVER</code>. Desde el Panel del Administrador haremos clic en Agregar Roles y Características:</p>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.012.jpeg" width="950"/>
+  <figcaption>Agregar roles y características en APPSERVER</figcaption>
+</figure>
+
+<ul>
+<li>Después seleccionaremos el tipo de instalación de Servicios de <strong>Escritorio Remoto</strong>:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.013.jpeg" width="950"/>
+  <figcaption>Instalación de Servicios de Escritorio Remoto</figcaption>
+</figure>
+
+<ul>
+<li>Después seleccionaremos la implementación de <strong>Servicios de Escritorio Remoto</strong>, en nuestro caso, seleccionaremos la opción de <code>Inicio Rápido</code> que para la publicación de aplicaciones RemoteApp es suficiente.</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.014.jpeg" width="950"/>
+  <figcaption>Selección del tipo de implementación</figcaption>
+</figure>
+
+<ul>
+<li>Seleccionada la opción de <code>Inicio Rápido</code>, seleccionaremos la implementación de escritorio basado en sesión, para que los clientes puedan acceder a los programas que luego publicaremos en RemoteApp:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.015.jpeg" width="950"/>
+  <figcaption>Implementación basada en sesión</figcaption>
+</figure>
+
+<ul>
+<li>Seleccionaremos nuestro servidor para que inicie el agente de <strong>RemoteApp</strong>: </li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.016.jpeg" width="950"/>
+  <figcaption>Seleccionamos APPSERVER</figcaption>
+</figure>
+
+<ul>
+<li>Y por último hacemos clic en Implementar:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.017.jpeg" width="950"/>
+  <figcaption>Realizar la instalación</figcaption>
+</figure>
+
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.018.jpeg" width="950"/>
+  <figcaption>Proceso de instalación</figcaption>
+</figure>
+
+<ul>
+<li>El proceso reiniciará y finalmente tendremos los <code>Servicios de Escritorio Remoto</code> instalado en el panel del administrador: </li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.019.jpeg" width="950"/>
+  <figcaption>Proceso de instalación II</figcaption>
+</figure>
+
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.021.jpeg" width="950"/>
+  <figcaption>Servicios de Escritorio Remoto</figcaption>
+</figure>
+
+<h2 id="publicar-programas-en-remoteapp">Publicar programas en RemoteApp<a class="headerlink" href="#publicar-programas-en-remoteapp" title="Permanent link">&para;</a></h2>
+<p>Ahora que ya hemos finalizado la instalación del <code>RemoteApp y Escritorio Remoto</code>, ya podemos configurar y poner en marcha el servidor de aplicaciones. Para ello, accederemos al Panel del Administrador:</p>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.023.jpeg" width="950"/>
+  <figcaption>Acceso a RemoteApp</figcaption>
+</figure>
+
+<ul>
+<li>En la siguiente figura vemos la pantalla principal donde podemos publicar los programas que estarán disponibles en nuestro servidor de aplicaciones.</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.024.jpeg" width="950"/>
+  <figcaption>Servicios de escritorio remoto</figcaption>
+</figure>
+
+<ul>
+<li>Desde la página principal podemos acceder a la colección que hemos creado tras la instalación. Esta es la implementación más básica que se puede realizar sobre un servidor de aplicaciones. </li>
+<li>Se podría tener más servidores y configurarlos para que repartiera cargas en función de las aplicaciones y de los usuarios conectados, pero esto ya entraría a formar parte de aspectos más avanzados. Accedemos pues la pantalla principal:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.025.jpeg" width="950"/>
+  <figcaption>Pantalla principal servicios de Escritorio Remoto</figcaption>
+</figure>
+
+<ul>
+<li>Como vemos los programas que se publican por defecto son la Calculadora, Paint y WordPad. Veremos más adelante cómo podemos agregar y organizar los programas que queremos publicar.</li>
+</ul>
+<h2 id="conexion-al-acceso-web-del-escritorio-remoto">Conexión al acceso Web del Escritorio Remoto<a class="headerlink" href="#conexion-al-acceso-web-del-escritorio-remoto" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Desde la sesión del administrador podemos iniciar sesión a través de un navegador a la dirección <a href="https://appserver/rdweb">https://appserver/rdweb</a>. Nos mostrará unos avisos de que hay un problema con el certificado ya que no lo puede comprobar. Pasaremos por alto esta advertencia y accederemos a la pantalla de login del RDWeb. Iniciaremos sesión con el Administrador.</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.026.jpeg" width="950"/>
+  <figcaption>Acceso web a RemoteApp</figcaption>
+</figure>
+
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.027.jpeg" width="950"/>
+  <figcaption>Pantalla de login de RDWeb</figcaption>
+</figure>
+
+<ul>
+<li>Al iniciar sesión podemos ver las aplicaciones publicadas por defecto:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.028.jpeg" width="950"/>
+  <figcaption>Aplicaciones publicadas</figcaption>
+</figure>
+
+<ul>
+<li>Podemos iniciar cualquier aplicación publicada, por ejemplo, seleccionamos WordPad y esta aplicación se ejecutará en el servidor APPSERVER:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.029.jpeg" width="950"/>
+  <figcaption>Iniciar una aplicación publicada</figcaption>
+</figure>
+
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.030.jpeg" width="950"/>
+  <figcaption>Iniciar WordPad</figcaption>
+</figure>
+
+<ul>
+<li>Desde la sesión de Administrador también podemos iniciar escritorio remoto:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.031.jpeg" width="950"/>
+  <figcaption>Acceso remoto web</figcaption>
+</figure>
+
+<h2 id="publicar-programas">Publicar programas<a class="headerlink" href="#publicar-programas" title="Permanent link">&para;</a></h2>
+<p>Podemos también añadir más programas para publicar en nuestro servidor de aplicaciones. Por ejemplo, vamos a descargar en nuestro servidor el LibreOffice y vamos a agregar la suite LibreOffice a RemoteApp. Para ello descargaremos primero la suite LibreOffice:</p>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.032.jpeg" width="950"/>
+  <figcaption>Descarga LibreOffice</figcaption>
+</figure>
+
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.033.jpeg" width="950"/>
+  <figcaption>Instalación de LibreOffice</figcaption>
+</figure>
+
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.034.jpeg" width="950"/>
+  <figcaption>Instalación de LibreOffice II</figcaption>
+</figure>
+
+<ul>
+<li>Ahora vamos a publicar la suite del LibreOffice para que esté disponible en nuestro servidor de aplicaciones. Para ello accederemos a Pogramas <code>RemoteApp -&gt; Tareas y Publicar Progrmas RemoteApp</code>:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.035.jpeg" width="950"/>
+  <figcaption>Publicar programas</figcaption>
+</figure>
+
+<ul>
+<li>Nos aparecerá la lista de programas disponibles para poder publicar. Seleccionaremos la suite LibreOffice:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.036.jpeg" width="950"/>
+  <figcaption>Selección de programas para publicar</figcaption>
+</figure>
+
+<ul>
+<li>Una vez seleccionados, pasamos a la siguiente pantalla del asistente y los publicamos:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.037.jpeg" width="950"/>
+  <figcaption>Publicar programas</figcaption>
+</figure>
+
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.038.jpeg" width="950"/>
+  <figcaption>Programas publicados</figcaption>
+</figure>
+
+<h2 id="iniciar-sesion-en-remoteapp">Iniciar sesión en RemoteApp<a class="headerlink" href="#iniciar-sesion-en-remoteapp" title="Permanent link">&para;</a></h2>
+<p>Una vez publicados los programas, podemos iniciar sesión en una máquina cliente y comprobar realmente qué programas están disponibles. En nuestro caso vamos a iniciar una sesión con el usuario usucomp1 y comprobaremos qué programas están publicados:</p>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.040.jpeg" width="950"/>
+  <figcaption>Inicio sesión RDWeb máquina cliente</figcaption>
+</figure>
+
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.041.jpeg" width="950"/>
+  <figcaption>Programas publicados RemoteApp</figcaption>
+</figure>
+
+<ul>
+<li>Ahora, podemos iniciar el Writer:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.042.jpeg" width="950"/>
+  <figcaption>Inicio aplicación Writer por RDWeb</figcaption>
+</figure>
+
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.043.jpeg" width="950"/>
+  <figcaption>Writer ejecutado por RDWeb</figcaption>
+</figure>
+
+<ul>
+<li>Realmente lo que está haciendo es ejecutar en un Remote Desktop la aplicación Writer de manera predeterminada. De hecho, si intentáis guardar el documento, veréis que realmente la aplicación se está ejecutando en el servidor APPSERVER. Si por ejemplo, guardamos el documento, veremos que la máquina realmente es el servidor APPSERVER. En este caso, podremos guardar los documentos en sus carpetas personales:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.044.jpeg" width="950"/>
+  <figcaption>Guardar un documento writer en RDWeb</figcaption>
+</figure>
+
+<ul>
+<li>Como vemos tenemos mapeadas las unidades de la máquina cliente en Remote Desktop.</li>
+</ul>
+<h2 id="organizacion-de-aplicaciones-en-remoteapp">Organización de aplicaciones en RemoteApp<a class="headerlink" href="#organizacion-de-aplicaciones-en-remoteapp" title="Permanent link">&para;</a></h2>
+<p>Hay veces que es interesante agrupar las aplicaciones en función de las características de las mismas o simplemente por el conjunto de usuarios que van a acceder. Para poder organizar las aplicaciones, seleccionaremos qué aplicaciones queremos que  se  agrupen  en  una  carpeta  y  añadiremos  el  nombre  de  la  carpeta  donde  se  encontrarán  las  aplicaciones. Seleccionaremos una aplicación y con el botón de la derecha del ratón haremos clic en editar propiedades:</p>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.046.jpeg" width="950"/>
+  <figcaption>Organización de las aplicaciones en RDWeb</figcaption>
+</figure>
+
+<ul>
+<li>Seleccionaremos la carpeta del programa de RemoteApp y escribiremos la carpeta donde queramos agruparla y así para todas las aplicaciones con una funcionalidad parecida, en nuestro caso, vamos a agrupar todas las aplicaciones de la suite de LibreOffice en una carpeta llamada Ofimática:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.047.jpeg" width="950"/>
+  <figcaption>Organización de las aplicaciones en RDWeb</figcaption>
+</figure>
+
+<ul>
+<li>Y ahora ya podemos iniciar sesión y comprobar que tenemos las aplicaciones agrupadas en una carpeta llamada Ofimática:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.048.jpeg" width="950"/>
+  <figcaption>Agrupación de aplicaciones en RemoteApp</figcaption>
+</figure>
+
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.049.jpeg" width="950"/>
+  <figcaption>Agrupación de aplicaciones en RemoteApp II</figcaption>
+</figure>
+
+<h2 id="asignacion-de-usuarios-a-programas">Asignación de usuarios a programas<a class="headerlink" href="#asignacion-de-usuarios-a-programas" title="Permanent link">&para;</a></h2>
+<p>Los programas en RemoteApp se pueden limitar para que solo usuarios o grupos puedan ver el icono para poder iniciar la aplicación. Para ello podemos configurar para cada programa publicado qué grupos o usuarios pueden acceder. Por ejemplo, vamos a definir para los programas Calculadora, Paint y WordPad que solo puedan acceder los del grupo Compras. Para ello seleccionaremos el programa publicado y entramos a las propiedades:</p>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.051.jpeg" width="950"/>
+  <figcaption>Asignación de grupos a programas en RemoteApp</figcaption>
+</figure>
+
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.052.jpeg" width="950"/>
+  <figcaption>Asignación de grupos a programas en RemoteApp II</figcaption>
+</figure>
+
+<ul>
+<li>Si ahora iniciamos sesión con un usuario que no sea del grupo de ventas, podremos ver como no aparecen los iconos de las aplicaciones. Por ejemplo, iniciamos sesión con un usuario del grupo Ventas:</li>
+</ul>
+<figure>
+  <img src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.053.jpeg" width="950"/>
+  <figcaption>Inicio de sesión usuario grupo Ventas</figcaption>
+</figure>
+
+<p><strong>Actividades<img alt="" src="Aspose.Words.6e017f1c-8e70-4082-bfc0-15bfc33a0110.054.png" /></strong></p>
+<p><strong>Actividad 1</strong></p>
+<p>En esta práctica vamos a configurar un servidor de aplicaciones que se hallará en el dominio, y al que accederán los clientes para ejecutar software como por ejemplo GIMP.</p>
+<ol>
+<li>Añade un equipo servidor a tu red e instala y configura el servidor de terminales para utilizar RemoteApp.</li>
+<li>Instala la aplicación <a href="http://www.gimp.org.es/descargar-gimp.html">GIMP</a>. </li>
+<li>Configura el acceso web para que los usuarios de nuestra Empresa puedan ejecutar dicha aplicación.</li>
+<li>Inicia sesión en un par de clientes con dos usuarios del dominio diferentes y ejecuta simultáneamente la aplicación que acabas de instalar.</li>
+</ol>
+<p>Entrega un documento pdf detallando el trabajo realizado únicamente en los pasos 3 y 4.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
