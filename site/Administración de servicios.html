@@ -1,0 +1,1144 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/Administraci%C3%B3n%20de%20servicios.html">
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>Administración de servicios - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#iniciar-y-detener-servicios" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Administración de servicios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- UD1: ShellScripting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- UD1: ShellScripting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- UD1: ShellScripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/index.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
+        1.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
+        1.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
+        1.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+        1.4- Vectores y funciones
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
+        1.5- Refuerzo y ampliación
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
+        1.6- Prueba Específica
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- UD2: PowerShell
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- UD2: PowerShell" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- UD2: PowerShell
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_PowerShell/index.md" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_PowerShell/012_PowerShell.html" class="md-nav__link">
+        2.1- PowerShell
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        2.- Administración de servicios de directorio
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- Administración de servicios de directorio" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          2.- Administración de servicios de directorio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="021_Introduccion_SD.html" class="md-nav__link">
+        2.1- Introducción de servicios de directorio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="022_LDAP.html" class="md-nav__link">
+        2.2- LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="023_ActiveDirectory.html" class="md-nav__link">
+        2.3- Active Directory
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        3.- Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          3.- Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="031_Planificador.html" class="md-nav__link">
+        3.1- Planificación y sincronización de procesos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="032_GestionProcesos.html" class="md-nav__link">
+        3.2- Gestión de los procesos del sistema
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="033_ArranqueServicios.html" class="md-nav__link">
+        3.3- Secuencia de arranque del sistema. Demonios y servicios
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        4.- Información del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4.- Información del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Información del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="041_EstructuraDirectorios.html" class="md-nav__link">
+        4.1- Estructura de directorios
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="042_ArchivosVirtualSWinstaladoRendimiento.html" class="md-nav__link">
+        4.2- VFS, Sw Instalado y Gestión Rendimiento
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="043_Planificacio%CC%81nTareas.html" class="md-nav__link">
+        4.3- Planificación de Tareas
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        5.- Servicios de acceso y administración remota
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="5.- Servicios de acceso y administración remota" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          5.- Servicios de acceso y administración remota
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="051_AccesoRemotoLinux.html" class="md-nav__link">
+        5.1- Acceso Remoto en modo texto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="052_EscritorioRemoto.html" class="md-nav__link">
+        5.2- Escritorio Remoto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="053_HerramientasGraficAdminRemota.html" class="md-nav__link">
+        5.3- Herramientas gráficas externas.
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        6.- Administración de Servidores de Impresión
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="6.- Administración de Servidores de Impresión" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          6.- Administración de Servidores de Impresión
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="061_ServidoresImpresion.html" class="md-nav__link">
+        6.1- Servidores de Impresión
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="062_ServidoresImpresionLinux.html" class="md-nav__link">
+        6.2- Servidor de impresión en GNU/Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="063_ServidorImpresionWindowsServer.html" class="md-nav__link">
+        6.3- Servidor de impresión en Windows Server
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        7.- Integración de sistemas operativos en red libres y propietarios
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="7.- Integración de sistemas operativos en red libres y propietarios" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          7.- Integración de sistemas operativos en red libres y propietarios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="071_ServiciosRedRecursosCompartidos.html" class="md-nav__link">
+        7.1- Servicios de red para compartir recursos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="072_Samba.html" class="md-nav__link">
+        7.2- Samba
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="073_NFS.html" class="md-nav__link">
+        7.3- NFS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="074_NextCloud.html" class="md-nav__link">
+        7.4- NextCloud
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Administración de servicios</h1>
+                
+                <h3 id="iniciar-y-detener-servicios">Iniciar y detener servicios<a class="headerlink" href="#iniciar-y-detener-servicios" title="Permanent link">&para;</a></h3>
+<p>Para iniciar un servicio <code>systemd</code>, ejecutar instrucciones en el archivo de la unidad del servicio, utilice el comando <code>start</code>. Si está ejecutando como usuario non-root, tendrá que usar <code>sudo</code>, ya que esto afectará al estado del sistema operativo.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl start application.service</span>
+</code></pre></div>
+<p>Como hemos mencionado antes, <code>systemd</code> sabe buscar los archivos <code>*.service</code> para los comandos de administración de servicio, de forma que el comando podría escribirse fácilmente así:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl start application</span>
+</code></pre></div>
+<p>Aunque puede usar el formato anterior para la administración general, para mayor claridad, usaremos el sufijo <code>.service</code> para el resto de los comandos, con el objetivo de ser explícitos sobre el destino en el que estamos operando.</p>
+<p>Para detener un servicio que se esté ejecutando actualmente, puede usar el comando <code>stop</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl stop application.service</span>
+</code></pre></div>
+<h3 id="reiniciar-y-volver-a-cargar">Reiniciar y volver a cargar<a class="headerlink" href="#reiniciar-y-volver-a-cargar" title="Permanent link">&para;</a></h3>
+<p>Para reiniciar un servicio en ejecución, puede usar el comando <code>restart</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart application.service</span>
+</code></pre></div>
+<p>Si la aplicación en cuestión puede volver a cargar sus archivos de configuración (sin reiniciar), puede emitir el comando <code>reload</code> para iniciar ese proceso:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl reload application.service</span>
+</code></pre></div>
+<p>Si no está seguro de si el servicio tiene la funcionalidad de volver a cargar su configuración, puede emitir el comando <code>reload-or-restart</code>. Esto volverá a cargar la configuración en vigor, si está disponible. De lo contrario, reiniciará el servicio de forma que se recoja la nueva configuración:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl reload-or-restart application.service</span>
+</code></pre></div>
+<h3 id="como-habilitar-y-deshabilitar-servicios">Cómo habilitar y deshabilitar servicios<a class="headerlink" href="#como-habilitar-y-deshabilitar-servicios" title="Permanent link">&para;</a></h3>
+<p>Los comandos anteriores son útiles para iniciar o detener servicios durante la sesión actual. Para indicar a <code>systemd</code> que inicie servicios automáticamente en el arranque, debe habilitarlos.</p>
+<p>Para iniciar un servicio en el arranque, utilice el comando <code>enable</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl enable application.service</span>
+</code></pre></div>
+<p>Esto creará un enlace simbólico desde la copia del sistema del archivo de servicio (normalmente en <code>/lib/systemd/system</code> o <code>/etc/systemd/system</code>) en la ubicación del disco donde <code>systemd</code>busca los archivos de inicio automático (normalmente <code>/etc/systemd/system/some_target.target.wants</code>. Repasaremos qué es un destino más adelante en esta guía).</p>
+<p>Para impedir que el servicio se inicie automáticamente, puede escribir:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl disable application.service</span>
+</code></pre></div>
+<p>Esto eliminará el enlace simbólico que indicaba que el servicio debía iniciarse automáticamente.</p>
+<p>Tenga en cuenta que habilitar el servicio no lo inicia en la sesión actual. Si desea iniciar el servicio y habilitarlo en el arranque, tendrá que emitir los comandos <code>start</code> y <code>enable</code>.</p>
+<h3 id="como-comprobar-el-estado-de-los-servicios">Cómo comprobar el estado de los servicios<a class="headerlink" href="#como-comprobar-el-estado-de-los-servicios" title="Permanent link">&para;</a></h3>
+<p>Para comprobar el estado de un servicio en su sistema, puede usar el comando <code>status</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl status application.service</span>
+</code></pre></div>
+<p>Esto le proporcionará el estado del servicio, la jerarquía de cgroup y las primeras líneas de registro.</p>
+<p>Por ejemplo, cuando se comprueba el estado de un servidor Nginx, puede ver un resultado como este:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Output● nginx.service - A high performance web server and a reverse proxy server</span>
+<span class="linenos" data-linenos="2 "></span>   <span class="l l-Scalar l-Scalar-Plain">Loaded</span><span class="p p-Indicator">:</span> <span class="nt">loaded (/usr/lib/systemd/system/nginx.service; enabled; vendor preset</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">disabled)</span>
+<span class="linenos" data-linenos="3 "></span>   <span class="l l-Scalar l-Scalar-Plain">Active</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">active (running) since Tue 2015-01-27 19:41:23 EST; 22h ago</span>
+<span class="linenos" data-linenos="4 "></span> <span class="l l-Scalar l-Scalar-Plain">Main PID</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">495 (nginx)</span>
+<span class="linenos" data-linenos="5 "></span>   <span class="l l-Scalar l-Scalar-Plain">CGroup</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/system.slice/nginx.service</span>
+<span class="linenos" data-linenos="6 "></span>           <span class="l l-Scalar l-Scalar-Plain">├─495 nginx</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">master process /usr/bin/nginx -g pid /run/nginx.pid; error_log stderr;</span>
+<span class="linenos" data-linenos="7 "></span>           <span class="l l-Scalar l-Scalar-Plain">└─496 nginx</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">worker process</span>
+<span class="linenos" data-linenos="8 "></span><span class="l l-Scalar l-Scalar-Plain">Jan 27 19:41:23 desktop systemd[1]</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Starting A high performance web server and a reverse proxy server...</span>
+<span class="linenos" data-linenos="9 "></span><span class="l l-Scalar l-Scalar-Plain">Jan 27 19:41:23 desktop systemd[1]</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Started A high performance web server and a reverse proxy server.</span>
+</code></pre></div>
+<p>Esto le proporciona una buena visión general del estado actual de la aplicación, y le notifica de cualquier problema y cualquier acción que pueda ser necesaria.</p>
+<p>También hay métodos para comprobar los estados específicos. Por ejemplo, para comprobar si una unidad está activa actualmente (ejecutándose) puede usar el comando <code>is-active</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl is-active application.service</span>
+</code></pre></div>
+<p>Esto devolverá el estado actual de la unidad, que es normalmente <code>activo</code> o <code>inactivo</code>. El código de salida será "0" si está activo, lo que hace que el resultado sea más sencillo de analizar en las secuencias de comando shell.</p>
+<p>Para ver si la unidad está habilitada, puede usar el comando <code>is-enabled</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl is-enabled application.service</span>
+</code></pre></div>
+<p>Esto indicará si el servicio está <code>habilitado</code> o <code>deshabilitado</code> y establecerá el código de salida a "0" o "1", dependiendo de la respuesta a la pregunta del comando.</p>
+<p>Una tercera comprobación es si la unidad está en estado fallido. Esto indica que hubo un problema al iniciar la unidad en cuestión:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl is-failed application.service</span>
+</code></pre></div>
+<p>Esto devolverá <code>active</code> si se está ejecutando adecuadamente o <code>failed</code> si se ha producido un error. Si la unidad se detuvo intencionadamente, puede devolver <code>unknown</code> o <code>inactive</code>. Un estado de salida de "0" indica que se produjo un error y un estado de salida de "1" indica cualquier otro estado.</p>
+<h2 id="descripcion-general-del-estado-del-sistema">Descripción general del estado del sistema<a class="headerlink" href="#descripcion-general-del-estado-del-sistema" title="Permanent link">&para;</a></h2>
+<p>Los comandos hasta ahora han sido útiles para administrar servicios individuales, pero no son muy útiles para explorar el estado actual del sistema. Hay varios comandos <code>systemctl</code> que proporcionan esta información.</p>
+<h3 id="como-enumerar-las-unidades-actuales">Cómo enumerar las unidades actuales<a class="headerlink" href="#como-enumerar-las-unidades-actuales" title="Permanent link">&para;</a></h3>
+<p>Para ver una lista de todas las unidades activas que <code>systemd</code> conoce, podemos usar el comando <code>list-units</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl list-units</span>
+</code></pre></div>
+<p>Esto le mostrará una lista de todas las unidades que <code>systemd</code> tiene activas actualmente en el sistema. El resultado tendrá un aspecto similar a este:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>OutputUNIT                                      LOAD   ACTIVE SUB     DESCRIPTION
+<span class="linenos" data-linenos="2 "></span>atd.service                               loaded active running ATD daemon
+<span class="linenos" data-linenos="3 "></span>avahi-daemon.service                      loaded active running Avahi mDNS/DNS-SD Stack
+<span class="linenos" data-linenos="4 "></span>dbus.service                              loaded active running D-Bus System Message Bus
+<span class="linenos" data-linenos="5 "></span>dcron.service                             loaded active running Periodic Command Scheduler
+<span class="linenos" data-linenos="6 "></span>dkms.service                              loaded active exited  Dynamic Kernel Modules System
+<span class="linenos" data-linenos="7 "></span>getty@tty1.service                        loaded active running Getty on tty1
+<span class="linenos" data-linenos="8 "></span>. . .
+</code></pre></div>
+<p>El resultado tiene las siguientes columnas:</p>
+<ul>
+<li>UNIT: El nombre de la unidad de <code>systemd</code></li>
+<li>LOAD: Si la configuración de la unidad ha sido analizada por <code>systemd</code>. La configuración de las unidades cargadas se mantiene en la memoria.</li>
+<li>ACTIVE: Un estado resumido que indica si la unidad está activa. Esta es normalmente una forma bastante básica de saber si la unidad se ha iniciado correctamente o no.</li>
+<li>SUB: Este es un estado de nivel inferior que indica información más detallada sobre la unidad. Esto a menudo varía por tipo de unidad, estado y el método real en el que se ejecuta la unidad.</li>
+<li>DESCRIPTION: Una descripción textual breve de qué es y hace la unidad.</li>
+</ul>
+<p>Ya que el comando <code>list-units</code> muestra solo las unidades activas por defecto, todas las entradas por encima se mostrarán <code>loaded</code> en la columna LOAD y <code>active</code> en la columna ACTIVE. Esta pantalla es, en realidad, el comportamiento predeterminado de <code>systemctl</code> cuando se invoca sin comandos adicionales, de modo que verá lo mismo si invoca <code>systemctl</code> sin argumentos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl</span>
+</code></pre></div>
+<p>Podemos indicar a <code>systemctl</code> que produzca información diferente añadiendo marcadores adicionales. Por ejemplo, para ver todas las unidades que <code>systemd</code> ha cargado (o intentado cargar), independientemente de si están activas actualmente, puede usar el marcador <code>--all</code>, de esta forma:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl list-units --all</span>
+</code></pre></div>
+<p>Esto mostrará cualquier unidad que <code>systemd</code> haya cargado o intentado cargar, independientemente de su estado actual en el sistema. Ciertas unidades se vuelven inactivas tras ejecutarse, y algunas de las unidades que <code>systemd</code> intentó cargar pueden no haberse encontrado en el disco.</p>
+<p>Puede usar otros marcadores para filtrar estos resultados. Por ejemplo, puede usar el indicador <code>--state=</code> para indicar los estados LOAD, ACTIVE o SUB que deseamos ver. Tendremos que mantener el marcador <code>--all</code> para que <code>systemctl</code> permita que se muestren las unidades no activas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl list-units --all --state=inactive</span>
+</code></pre></div>
+<p>Otro filtro común es el filtro <code>--type=</code>. Podemos indicar a <code>systemctl</code> que solo muestre unidades del tipo en el que estemos interesados. Por ejemplo, para ver únicamente las unidades de servicio activas, podemos usar:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl list-units --type=service</span>
+</code></pre></div>
+<h3 id="listar-todos-los-archivos-de-la-unidad">Listar todos los archivos de la unidad<a class="headerlink" href="#listar-todos-los-archivos-de-la-unidad" title="Permanent link">&para;</a></h3>
+<p>El comando <code>list-units</code> solo muestra las unidades que <code>systemd</code> ha intentado analizar y cargar en la memoria. Ya que <code>systemd</code> solo leerá unidades que cree que necesita, esto no incluirá necesariamente todas las unidades disponibles en el sistema. Para ver <em>todos</em> los archivos de unidad disponibles en las rutas <code>systemd</code>, incluidos aquellos que <code>systemd</code> no haya intentado cargar, puede usar el comando <code>list-unit-files</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl list-unit-files</span>
+</code></pre></div>
+<p>Las unidades son representaciones de los recursos que <code>systemd</code> conoce. Ya que <code>systemd</code> no ha leído necesariamente todas las definiciones de la unidades en esta vista, solo presente información sobre los propios archivos. El resultado tiene dos columnas, el archivo de la unidad y el estado.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>OutputUNIT FILE                                  STATE
+<span class="linenos" data-linenos=" 2 "></span>proc-sys-fs-binfmt_misc.automount          static
+<span class="linenos" data-linenos=" 3 "></span>dev-hugepages.mount                        static
+<span class="linenos" data-linenos=" 4 "></span>dev-mqueue.mount                           static
+<span class="linenos" data-linenos=" 5 "></span>proc-fs-nfsd.mount                         static
+<span class="linenos" data-linenos=" 6 "></span>proc-sys-fs-binfmt_misc.mount              static
+<span class="linenos" data-linenos=" 7 "></span>sys-fs-fuse-connections.mount              static
+<span class="linenos" data-linenos=" 8 "></span>sys-kernel-config.mount                    static
+<span class="linenos" data-linenos=" 9 "></span>sys-kernel-debug.mount                     static
+<span class="linenos" data-linenos="10 "></span>tmp.mount                                  static
+<span class="linenos" data-linenos="11 "></span>var-lib-nfs-rpc_pipefs.mount               static
+<span class="linenos" data-linenos="12 "></span>org.cups.cupsd.path                        enabled
+<span class="linenos" data-linenos="13 "></span>. . .
+</code></pre></div>
+<p>El estado normalmente estará <code>habilitado</code>, <code>deshabilitado</code>, <code>estático</code> o <code>enmascarado</code>. En este contexto, "estático" significa que el archivo de unidad no contiene una sección <code>install</code>, que se utiliza para habilitar una unidad. Como tal, estas unidades no pueden habilitarse. Normalmente, esto significa que la unidad realiza una única acción o se utiliza solo como dependencia de otra unidad y no debería ejecutarse por sí misma.</p>
+<p>En breve explicaremos lo que significa <code>enmascarado</code>.</p>
+<h2 id="gestion-de-la-unidad">Gestión de la unidad<a class="headerlink" href="#gestion-de-la-unidad" title="Permanent link">&para;</a></h2>
+<p>Hasta ahora, hemos estado trabajando con servicios y mostrando información sobre la unidad y los archivos de la unidad que <code>systemd</code> conoce. Sin embargo, encontraremos más información específica sobre las unidades usando algunos comandos adicionales.</p>
+<h3 id="mostrar-un-archivo-de-unidad">Mostrar un archivo de unidad<a class="headerlink" href="#mostrar-un-archivo-de-unidad" title="Permanent link">&para;</a></h3>
+<p>Para mostrar el archivo de unidad que <code>systemd</code> ha cargado en su sistema, puede usar el comando <code>cat</code> (esto se añadió en la versión 209 de <code>systemd</code>). Por ejemplo, para ver el archivo de unidad del daemon de programación <code>atd</code>, podríamos escribir:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl cat atd.service</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Output[Unit]
+<span class="linenos" data-linenos="2 "></span>Description=ATD daemon
+<span class="linenos" data-linenos="3 "></span>[Service]
+<span class="linenos" data-linenos="4 "></span>Type=forking
+<span class="linenos" data-linenos="5 "></span>ExecStart=/usr/bin/atd
+<span class="linenos" data-linenos="6 "></span>[Install]
+<span class="linenos" data-linenos="7 "></span>WantedBy=multi-user.target
+</code></pre></div>
+<p>El resultado es el archivo de unidad tal como lo conoce el proceso <code>systemd</code> que se está ejecutando actualmente. Esto puede ser importante si ha modificado archivos de unidad recientemente o si está omitiendo ciertas opciones en un fragmento del archivo de unidad (hablaremos de esto más tarde).</p>
+<h3 id="mostrar-dependencias">Mostrar dependencias<a class="headerlink" href="#mostrar-dependencias" title="Permanent link">&para;</a></h3>
+<p>Para ver el árbol de dependencias de una unidad, puede usar el comando <code>list-dependencies</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl list-dependencies sshd.service</span>
+</code></pre></div>
+<p>Esto mostrará una jerarquía asignando las dependencias que deben tratarse para iniciar la unidad en cuestión. Las dependencias, en este contexto, incluyen las unidades que son necesarias o deseadas por unidades de nivel superior.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Outputsshd.service
+<span class="linenos" data-linenos=" 2 "></span>├─system.slice
+<span class="linenos" data-linenos=" 3 "></span>└─basic.target
+<span class="linenos" data-linenos=" 4 "></span>  ├─microcode.service
+<span class="linenos" data-linenos=" 5 "></span>  ├─rhel-autorelabel-mark.service
+<span class="linenos" data-linenos=" 6 "></span>  ├─rhel-autorelabel.service
+<span class="linenos" data-linenos=" 7 "></span>  ├─rhel-configure.service
+<span class="linenos" data-linenos=" 8 "></span>  ├─rhel-dmesg.service
+<span class="linenos" data-linenos=" 9 "></span>  ├─rhel-loadmodules.service
+<span class="linenos" data-linenos="10 "></span>  ├─paths.target
+<span class="linenos" data-linenos="11 "></span>  ├─slices.target
+<span class="linenos" data-linenos="12 "></span>. . .
+</code></pre></div>
+<p>Las dependencias recursivas solo se muestran para las unidades <code>.target</code>, que indican los estados del sistema. Para listar de forma recursiva todas las dependencias, incluya el indicador <code>--all</code>.</p>
+<p>Para mostrar las dependencias inversas (unidades que dependen de la unidad especificada) puede añadir el indicador <code>--reverse</code> al comando. Otros indicadores que son útiles son los indicadores <code>--before</code> y <code>--after</code>, que pueden usarse para mostrar las unidades que dependen de la unidad especificada que comienza antes y después de ellas mismas respectivamente.</p>
+<h3 id="comprobar-las-propiedades-de-la-unidad">Comprobar las propiedades de la unidad<a class="headerlink" href="#comprobar-las-propiedades-de-la-unidad" title="Permanent link">&para;</a></h3>
+<p>Para ver las propiedades de nivel bajo de una unidad, puede usar el comando <code>show</code>. Esto mostrará una lista de propiedades que se establecen para la unidad especificada usando un formato <code>key=value</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl show sshd.service</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>OutputId=sshd.service
+<span class="linenos" data-linenos=" 2 "></span>Names=sshd.service
+<span class="linenos" data-linenos=" 3 "></span>Requires=basic.target
+<span class="linenos" data-linenos=" 4 "></span>Wants=system.slice
+<span class="linenos" data-linenos=" 5 "></span>WantedBy=multi-user.target
+<span class="linenos" data-linenos=" 6 "></span>Conflicts=shutdown.target
+<span class="linenos" data-linenos=" 7 "></span>Before=shutdown.target multi-user.target
+<span class="linenos" data-linenos=" 8 "></span>After=syslog.target network.target auditd.service systemd-journald.socket basic.target system.slice
+<span class="linenos" data-linenos=" 9 "></span>Description=OpenSSH server daemon
+<span class="linenos" data-linenos="10 "></span>. . .
+</code></pre></div>
+<p>Si desea mostrar una única propiedad, pude pasar el indicador <code>-p</code> con el nombre de la propiedad. Por ejemplo, para ver los conflictos que la unidad <code>sshd.service</code> tiene, puede escribir:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl show sshd.service -p Conflicts</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">OutputConflicts=shutdown.target</span>
+</code></pre></div>
+<h3 id="enmascarar-y-desenmascarar-unidades">Enmascarar y desenmascarar unidades<a class="headerlink" href="#enmascarar-y-desenmascarar-unidades" title="Permanent link">&para;</a></h3>
+<p>Vimos en la sección de administración del servicio cómo detener o deshabilitar un servicio, pero <code>systemd</code> también tiene la capacidad de marcar una unidad como <em>completamente</em> no iniciable, automática o manualmente, vinculándola a <code>/dev/null</code>. Esto se denomina enmascarar la unidad, y es posible con el comando <code>mask</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl mask nginx.service</span>
+</code></pre></div>
+<p>Esto impedirá que el servicio Nginx se inicie, automática o manualmente, siempre que esté enmascarado.</p>
+<p>Si comprueba los <code>list-unit-files</code>, verá que el servicio ahora se lista como enmascarado:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl list-unit-files</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Output. . .
+<span class="linenos" data-linenos=" 2 "></span>kmod-static-nodes.service              static
+<span class="linenos" data-linenos=" 3 "></span>ldconfig.service                       static
+<span class="linenos" data-linenos=" 4 "></span>mandb.service                          static
+<span class="linenos" data-linenos=" 5 "></span>messagebus.service                     static
+<span class="linenos" data-linenos=" 6 "></span>nginx.service                          masked
+<span class="linenos" data-linenos=" 7 "></span>quotaon.service                        static
+<span class="linenos" data-linenos=" 8 "></span>rc-local.service                       static
+<span class="linenos" data-linenos=" 9 "></span>rdisc.service                          disabled
+<span class="linenos" data-linenos="10 "></span>rescue.service                         static
+<span class="linenos" data-linenos="11 "></span>. . .
+</code></pre></div>
+<p>Si intenta iniciar el servicio, verá un mensaje como este:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl start nginx.service</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>OutputFailed to start nginx.service: Unit nginx.service is masked.
+</code></pre></div>
+<p>Para desenmascarar una unidad, y hacer que esté disponible de nuevo para su uso, utilice el comando <code>unmask</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl unmask nginx.service</span>
+</code></pre></div>
+<p>Esto devolverá la unidad a su estado anterior, permitiendo que se inicie o habilite.</p>
+<h2 id="editar-archivos-de-la-unidad">Editar archivos de la unidad<a class="headerlink" href="#editar-archivos-de-la-unidad" title="Permanent link">&para;</a></h2>
+<p>Aunque el formato específico de los archivos de unidad está fuera del alcance de este tutorial, si necesita realizar ajustes, <code>systemctl</code> proporciona mecanismos integrados para editar y modificar archivos de unidad. Esta funcionalidad fue añadida en la versión 218 de <code>systemd</code>.</p>
+<p>El comando <code>edit</code>, por defecto, abrirá un fragmento de código del archivo de la unidad para la unidad en cuestión:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo systemctl edit nginx.service
+</code></pre></div>
+<p>Este será un archivo en blanco que puede usarse para omitir o añadir directivas a la definición de la unidad. Se creará un directorio en el directorio <code>/etc/systemd/system</code> que contiene el nombre de la unidad con <code>.d</code> anexada. Por ejemplo, para el <code>nginx.service</code>, se creará un directorio llamado <code>nginx.service.d</code>.</p>
+<p>En este directorio, se creará un fragmento de cód<code>igo llamado o</code>verride.conf. Cuando se carga la unidad, <code>systemd</code>, en la memoria, fusionará el fragmento de código de anulación con el archivo de unidad completo. Las directivas del snippet prevalecerán sobre las encontradas en el archivo original de la unidad.</p>
+<p>Si desea editar el archivo completo de la unidad en vez de crear un fragmento de código, puede pasar el indicador <code>--full</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo systemctl edit --full nginx.service
+</code></pre></div>
+<p>Esto cargará el archivo de unidad actual en el editor, donde se podrá modificar. Cuando sale el editor, el archivo cambiado se escribirá a <code>/etc/systemd/system</code>, que tendrá prioridad sobre la definición de la unidad del sistema (normalmente se encuentra en algún lugar de <code>/lib/systemd/system</code>).</p>
+<p>Para eliminar cualquier adición que haya realizado, elimine el directorio de configuración <code>.d</code> de la unidad o el archivo de servicio modificado de <code>/etc/systemd/system</code>. Por ejemplo, para eliminar un fragmento de código, podríamos escribir lo siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo rm -r /etc/systemd/system/nginx.service.d</span>
+</code></pre></div>
+<p>Para eliminar un archivo de unidad completo modificado, escribiríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo rm /etc/systemd/system/nginx.service</span>
+</code></pre></div>
+<p>Tras eliminar el archivo o directorio, debería volver a cargar el proceso <code>systemd</code> de forma que deje de intentar hacer referencia a estos archivos y vuelve a usar las copias del sistema. Puede hacerlo escribiendo lo siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl daemon-reload</span>
+</code></pre></div>
+<h2 id="ajustar-el-estado-del-sistema-runlevel-con-los-destinos">Ajustar el estado del sistema (Runlevel) con los destinos<a class="headerlink" href="#ajustar-el-estado-del-sistema-runlevel-con-los-destinos" title="Permanent link">&para;</a></h2>
+<p>Los destinos son archivos de unidad especiales que describen el estado de un sistema o un punto de sincronización. Igual que otras unidades, los archivos que definen los destinos pueden identificarse por su sufijo, que en este caso es <code>.target</code>. Los destinos no hacen mucho por sí mismos, pero se utilizan para agrupar otras unidades.</p>
+<p>Esto puede usarse para llevar al sistema a ciertos estados, de forma muy similar que otros sistemas init utilizan runlevels. Se utilizan como referencia para cuando ciertas funciones estén disponibles, lo que le permite especificar el estado deseado en vez de las unidades individuales necesarias para producir ese estado.</p>
+<p>Por ejemplo, hay un <code>swap.target</code> que se usa para indicar que swap está listo para usarse. Las unidades que son parte de este proceso pueden sincronizarse con este destino indicando en su configuración que son <code>WantedBy=</code> o <code>RequiredBy=</code> el <code>swap.target</code>. Las unidades que requieren que swap esté disponible pueden especificar esta condición usando las especificaciones <code>Wants=</code>, <code>Requires=</code> y <code>After=</code> para indicar la naturaleza de su relación.</p>
+<h3 id="obtener-y-establecer-el-destino-predeterminado">Obtener y establecer el destino predeterminado<a class="headerlink" href="#obtener-y-establecer-el-destino-predeterminado" title="Permanent link">&para;</a></h3>
+<p>El proceso <code>systemd</code> tiene un destino predeterminado que utiliza cuando se inicia el sistema. Satisfacer la cascada de dependencias de ese destino individual llevará al sistema al estado deseado. Para encontrar el destino predeterminado de su sistema, escriba:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl get-default</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Outputmulti-user.target
+</code></pre></div>
+<p>Si desea establecer un destino predeterminado diferente, puede usar <code>set-default</code>. Por ejemplo, si tiene un escritorio gráfico instalado y desea que el sistema se inicie a esto por defecto, puede cambiar el destino predeterminado:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl set-default graphical.target</span>
+</code></pre></div>
+<h3 id="como-enumerar-los-destinos-disponibles">Cómo enumerar los destinos disponibles<a class="headerlink" href="#como-enumerar-los-destinos-disponibles" title="Permanent link">&para;</a></h3>
+<p>Puede obtener una lista de los destinos disponibles en su sistema escribiendo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl list-unit-files --type=target</span>
+</code></pre></div>
+<p>A diferencia de runlevels, puede haber múltiples destinos activos a la vez. Un destino activo indica que <code>systemd</code> ha intentado iniciar todas las unidades relacionadas con el destino y no ha intentado desglosarlas de nuevo. Para ver todos los destinos activos, escriba:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl list-units --type=target</span>
+</code></pre></div>
+<h3 id="aislar-destinos">Aislar destinos<a class="headerlink" href="#aislar-destinos" title="Permanent link">&para;</a></h3>
+<p>Es posible iniciar todas las unidades asociadas con un destino y detener todas las que no son parte del árbol de dependencias. El comando que necesitamos para hacer esto se denomina, apropiadamente, <code>isolate</code>. Esto es similar a cambiar el runlevel en otros sistemas init.</p>
+<p>Por ejemplo, si está operando en un entorno gráfico con <code>graphical.target</code> activo, puede apagar el sistema gráfico y poner el sistema en un estado de línea de comando multi usuario asilando el <code>multi-user.target</code>. Ya que <code>graphical.target</code> depende de <code>multi-user.target</code> pero no al revés, todas las unidades gráficas se detendrán.</p>
+<p>Quizá desee echar un vistazo a las dependencias del destino que está aislando antes de realizar este procedimiento para asegurarse de que no está deteniendo servicios cruciales:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl list-dependencies multi-user.target</span>
+</code></pre></div>
+<p>Cuando esté satisfecho con las unidades que se mantendrán activas, puede aislar el destino escribiendo lo siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl isolate multi-user.target</span>
+</code></pre></div>
+<h3 id="como-usar-atajos-para-eventos-importantes">Cómo usar atajos para eventos importantes<a class="headerlink" href="#como-usar-atajos-para-eventos-importantes" title="Permanent link">&para;</a></h3>
+<p>Existen destinos definidos para eventos importantes como apagar o reiniciar. Sin embargo, <code>systemctl</code> también tiene algunos atajos que añaden ciertas funciones adicionales.</p>
+<p>Por ejemplo, para poner el sistema en el modo rescate (usuario único), puede usar simplemente el comando <code>rescue</code> en vez de <code>isolate rescue.target</code>,</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl rescue</span>
+</code></pre></div>
+<p>Esto proporcionará la funcionalidad adicional de alertar a todos los usuarios con sesión iniciada sobre el evento.</p>
+<p>Para detener el sistema, puede usar el comando <code>halt</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl halt</span>
+</code></pre></div>
+<p>Para iniciar un apagado completo, puede usar el comando <code>poweroff</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl poweroff</span>
+</code></pre></div>
+<p>Puede iniciar un reinicio con el comando <code>reboot</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl reboot</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Todos estos comandos alertan a los usuarios con sesión iniciada de que se va a producir el evento, algo que ejecutar o aislar el destino únicamente no hará. Observe que la mayoría de los equipos vincularán los comandos más cortos y convencionales para estas operaciones de forma que funcionen adecuadamente con <code>systemd</code>.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
