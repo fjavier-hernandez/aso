@@ -169,7 +169,7 @@ A continuación se muestran los comandos más utilizados:
 |`docker inspect` |(docker container inspect) información detallada de los contenedores|`docker stats` |(docker container stats) muestra el estado|
 |`docker stop`| (docker container stop) detiene la ejecución del contenedor|`docker system prune`|limpiar todo el sistena de contenedores imágenes y volumenes|
 
-* **[Chuleta de Comandos](https://dockerlabs.collabnix.com/docker/cheatsheet/)**
+* **[Chuleta de Comandos](https://github.com/sergarb1/CursoIntroduccionADocker/raw/main/FuentesCurso/Docker%20CheatSheet%20COMPLETA.pdf)**
 
 <figure>
     <img src="imagenes/01/ChuletaComandos.png"/>
@@ -250,6 +250,21 @@ Docker simplifica enormemente la creación de contenedores, y eso lleva a tratar
 !!! Tip
     Aconsejable utilizar la técnica de ***volumenes***, ya que, La ventaja frente a los directorios enlazados es que pueden ser gestionados por Docker. Otro detalle importante es que el acceso al contenido de los volúmenes sólo se puede hacer a través de algún contenedor que utilice el volumen.
 
+### Ventajas Volúmenes
+
+Los volúmenes tienen varias ventajas sobre los directorios enlazados:
+
+* Los volúmenes son más fáciles de respaldar o migrar que enlazar montajes.
+* Puede administrar volúmenes mediante los comandos de la CLI de Docker o la API de Docker.
+* Los volúmenes funcionan tanto en contenedores de Linux como de Windows.
+* Los volúmenes se pueden compartir de forma más segura entre varios contenedores.
+* Los controladores de volumen le permiten almacenar volúmenes en hosts remotos o proveedores en la nube, para cifrar el contenido de los volúmenes o para agregar otras funciones.
+* Los nuevos volúmenes pueden tener su contenido precargado por un contenedor.
+* Los volúmenes en Docker Desktop tienen un rendimiento mucho mayor que los directorios enlazados de hosts de Mac y Windows.
+
+!!! Note 
+    Además, los volúmenes suelen ser una mejor opción que los datos persistentes en la capa de escritura de un contenedor, porque un volumen no aumenta el tamaño de los contenedores que lo usan y el contenido del volumen existe fuera del ciclo de vida de un contenedor determinado.
+
 <figure>
     <img src="imagenes/01/VolumeDocker.png"/>
     <figcaption>Gráfico técnicas de persistencia de datos.</figcaption>
@@ -258,22 +273,48 @@ Docker simplifica enormemente la creación de contenedores, y eso lleva a tratar
 !!! Note
     Los volúmenes son independientes de los contenedores, por lo que también podemos conservar los datos aunque se destruya el contenedor, reutilizarlos con otro contenedor, etc.
 
-### Opciones y ejemplo
+### Opciones
 
 * Opciones:
 
+``` yaml
 `Docker volume (create|Is|inspect|rm)`
+```
+
+* para crear el volumen a la vez que creamos y ejecutamos un contenedor se utilzan las opciones `v` o `--mount`
+
+En general, `--mount` más explícito y detallado. La mayor diferencia es que la sintaxis de `-v` combina todas las opciones juntas en un campo, mientras que la sintaxis `--mount`  las separa. A continuación se muestra una comparación de la sintaxis de cada "flag".
+
+* `-v` o `--volume` : consta de tres campos, separados por dos puntos ( :). Los campos deben estar en el orden correcto y el significado de cada campo no es inmediatamente obvio.
+    * En el caso de volúmenes con nombre, el primer campo es el nombre del volumen y es único en una máquina host determinada. Para volúmenes anónimos, se omite el primer campo.
+    * El segundo campo es la ruta donde se monta el archivo o directorio en el contenedor.
+    * El tercer campo es opcional y es una lista de opciones separadas por comas, como `ro` (readonly). 
+
+* `--mount`: Consta de varios pares clave-valor, separados por comas (cada uno formado por una <key>=<value> dupla). La sintaxis de `--mount` es más detallada que `-v` o `--volume`; además el orden de las claves no es significativo, por lo tanto el valor de las "flags" son más fáciles de entender. 
+* Valores de las duplas:
+    * **type**: puede ser `bind`, `volume` o `tmpfs`.
+    * **source**: Para volúmenes con nombre, este es el nombre del volumen. Para volúmenes anónimos, este campo se omite. Puede especificarse como source o src.
+    * **destination**: toma como valor de la ruta en el archivo o directorio está montado en el contenedor. Puede ser especificado como destination, `dst` o `target`.
+    * **readonly**: si está presente, hace que el montaje de enlace se monte en el contenedor como de solo lectura. Puede especificarse como `readonly` o `ro`.
+    * **volume-opt** se puede especificar más de una vez, toma un par clave-valor que consta del nombre de la opción y su valor. Ejemplo: `volume-opt=type=nfs`
+
+!!! Note
+    Todas las opciones de volúmenes están disponibles para los indicadores `--mount` y `-v`, por que a la hora de elegir uno u otro depende del técnico para su facilidad de configuración donde por su sintaxis a priori sería mejor `--mount`.
+
+### Ejemplo
+
+A continuación se muestra un ejemplo de creación del servidor web NGINX.
 
 !!! Example Volumen
     ```yaml
-    sudo docker run -d -P --name=apache-volume-1 \
-    --mount type=volume,source=vol-apache,target=/app \
-    bitnami/apache
+    docker run -d \
+    --name nginx1 -p 8080:80 \
+    --mount type=volume,source=myvol1,target=/usr/share/nginx/html \
+    nginx:latest
     ```
 
 !!! Note
-    * La opción `--mount` permite crear el volumen. La opción tiene tres argumentos separados por comas pero sin espacios: `type=volume,source=NOMBRE-DEL-VOLUMEN,target=DESTINO-EN-CONTENEDOR`. El directorio de destino debe existir previamente.
-    * la opción `-P` hace que Docker asigne de forma aleatoria un puerto de la máquina virtual al puerto asignado a Apache en el contenedor. La imagen bitnami/apache asigna a Apache el puerto 8080 del contenedor para conexiones http y el puerto 8443 para conexiones https.
+    * Si en lugar de la opción `-p 8080:80` se utiliza la opción `-P` hace que Docker asigne de forma aleatoria un puerto de la máquina virtual al puerto asignado a Nginx en el contenedor.
 
 * Si se creara una página de incio del apache diferente a la de defecto podríamos copiarla en el volumen y esta cambiaría:
 
@@ -300,15 +341,32 @@ nano index.html
 
 * Para cambiar la página de inicio del apache se debe copiar dentro del volumen creado.
 ```yaml
-sudo docker cp index.html apache-volume-1:app/
+docker cp index.html nginx1:/usr/share/nginx/html
 ```
 
-* Si accedemos al servidor apache aparecerá la nueva página. Además podemos crear un nuevo contenedor con este volumen:
+* Si accedemos al servidor apache aparecerá la nueva página. 
+
+!!! warning
+    Si aparece el error forbiden 403, es debido a permisos del index.html, debemos entrar en container y cambiar los permisos.
+
 ``` yaml
-sudo docker run -d -P --name=apache-volume-2 \
---mount type=volume,source=vol-apache,target=/app \
-bitnami/apache
+docker exec -it nginx1 /bin/bash
 ```
+
+``` yaml
+cd /usr/share/nginx/html
+chown -R root:root index.html
+```
+
+* Además podemos crear un nuevo contenedor con este volumen:
+``` yaml
+docker run -d \
+    --name nginx2 -p 8080:80 \
+    --mount type=volume,source=myvol1,target=/usr/share/nginx/html \
+    nginx:latest
+```
+
+* Se comprueba que el nuevo contenedor muestra la nueva página index.html
 
 !!! Warning 
     Si se intenta borrar el volumen del ejemplo anterior mientras los contenedores están en marcha, Docker muestra un **mensaje de error que indica los contenedores afectados**.
@@ -356,7 +414,7 @@ docker network create mired
 docker run -d --name servidor_mysql --network mired \
 -e MYSQL_DATABASE=bd_wp -e MYSQL_USER=user_wp -e MYSQL_PASSWORD=asdasd \
 -e MYSQL_ROOT_PASSWORD=asdasd mariadb
-docker run -d --name servidor --network mired josedom24/aplicacionweb:v1
+docker run -d --name servidor --network mired javierhernandez/aplicacionweb:v1
 ```
 
 !!! Note
@@ -398,10 +456,22 @@ touch dockerfile
 nano dockerfile
 ```
 
-* Se edita el dockerfile.
+* Ejemplo edición Dockerfile.
+
 ``` yaml
-docker build -t javier/my-apache2 .
-docker run -dit --name my-running-app -p 8080:80 my-apache2
+# syntax=docker/dockerfile:1
+FROM nginx:alpine
+RUN apk update
+COPY index.html/ /usr/share/nginx/html/
+```
+
+!!! Nota
+    Se puede probar a introducir el volumen en el docker file: `VOLUME /myvol1`
+
+* Se crea la imagen y el contenedor.
+``` yaml
+ docker build -t franciscojav1981/my-nginx .
+docker run -dit --name my-nginx -p 8081:80 franciscojav1981/my-nginx
 ```
 
 !!! Warning
@@ -411,7 +481,7 @@ docker run -dit --name my-running-app -p 8080:80 my-apache2
 2. **Segundo paso**: subir imagen al Docker Hub.
 
 * Se debe generar una cuenta de Docker Hub con la cuenta corporativa de Office 365: [Sign Up](https://hub.docker.com/signup)
-* Con el comando `docker login`, se realiza el acceso a la plataforma desde el terminal:
+* Con el comando `docker login`, se realiza el acceso a la plataforma desde el terminal, introduciendo usuario y contraseña.
 ``` yaml
 docker login
 ```
@@ -419,7 +489,7 @@ docker login
 * Con el comando `docker push`, se realiza el "Upload" de la imagen.
 
 ``` yaml
-docker push javier/my-apache2
+docker push franciscojav1981/my-nginx
 ```
 
 * Por último Se debe comprobar accediendo a la platadorma de Docker Hub.
@@ -449,7 +519,7 @@ docker push javier/my-apache2
 ```yaml
 mkdir my_wordpress
 touch docker-compose.yml
-nano dockerfile
+nano docker-compose.yml
 ```
 3. **Tercer paso**: se edita el `yaml`.
 
@@ -494,3 +564,4 @@ docker-compose up -d
 ```
 
 * Por último Se comprueba que se ha creado el contenedor.
+* Cuidado.

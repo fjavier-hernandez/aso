@@ -1,0 +1,1355 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://javierhernadez81.github.io/aso2122/043_Planificacio%CC%81nTareas.html">
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>4.3- Planificación de Tareas - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#planificacion-de-tareas" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.3- Planificación de Tareas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- UD1: ShellScripting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- UD1: ShellScripting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- UD1: ShellScripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/index.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
+        1.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
+        1.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
+        1.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+        1.4- Vectores y funciones
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
+        1.5- Refuerzo y ampliación
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_ShellScripting/016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
+        1.6- Prueba Específica
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- UD2: PowerShell
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- UD2: PowerShell" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- UD2: PowerShell
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_PowerShell/index.md" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_PowerShell/012_PowerShell.html" class="md-nav__link">
+        2.1- PowerShell
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        2.- Administración de servicios de directorio
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- Administración de servicios de directorio" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          2.- Administración de servicios de directorio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="021_Introduccion_SD.html" class="md-nav__link">
+        2.1- Introducción de servicios de directorio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="022_LDAP.html" class="md-nav__link">
+        2.2- LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="023_ActiveDirectory.html" class="md-nav__link">
+        2.3- Active Directory
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        3.- Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          3.- Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="031_Planificador.html" class="md-nav__link">
+        3.1- Planificación y sincronización de procesos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="032_GestionProcesos.html" class="md-nav__link">
+        3.2- Gestión de los procesos del sistema
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="033_ArranqueServicios.html" class="md-nav__link">
+        3.3- Secuencia de arranque del sistema. Demonios y servicios
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      <label class="md-nav__link" for="__nav_6">
+        4.- Información del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4.- Información del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Información del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="041_EstructuraDirectorios.html" class="md-nav__link">
+        4.1- Estructura de directorios
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="042_ArchivosVirtualSWinstaladoRendimiento.html" class="md-nav__link">
+        4.2- VFS, Sw Instalado y Gestión Rendimiento
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4.3- Planificación de Tareas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="043_Planificacio%CC%81nTareas.html" class="md-nav__link md-nav__link--active">
+        4.3- Planificación de Tareas
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    Windows
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programador-de-tareas" class="md-nav__link">
+    Programador de tareas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnulinux" class="md-nav__link">
+    GNU/Linux
+  </a>
+  
+    <nav class="md-nav" aria-label="GNU/Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cron" class="md-nav__link">
+    cron
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crontab-cron-con-multiples-usuarios" class="md-nav__link">
+    crontab (cron con múltiples usuarios)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades-de-desarrollo-ud4_02" class="md-nav__link">
+    Actividades de desarrollo UD4_02
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        5.- Servicios de acceso y administración remota
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="5.- Servicios de acceso y administración remota" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          5.- Servicios de acceso y administración remota
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="051_AccesoRemotoLinux.html" class="md-nav__link">
+        5.1- Acceso Remoto en modo texto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="052_EscritorioRemoto.html" class="md-nav__link">
+        5.2- Escritorio Remoto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="053_HerramientasGraficAdminRemota.html" class="md-nav__link">
+        5.3- Herramientas gráficas externas.
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        6.- Administración de Servidores de Impresión
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="6.- Administración de Servidores de Impresión" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          6.- Administración de Servidores de Impresión
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="061_ServidoresImpresion.html" class="md-nav__link">
+        6.1- Servidores de Impresión
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="062_ServidoresImpresionLinux.html" class="md-nav__link">
+        6.2- Servidor de impresión en GNU/Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="063_ServidorImpresionWindowsServer.html" class="md-nav__link">
+        6.3- Servidor de impresión en Windows Server
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        7.- Integración de sistemas operativos en red libres y propietarios
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="7.- Integración de sistemas operativos en red libres y propietarios" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          7.- Integración de sistemas operativos en red libres y propietarios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="071_ServiciosRedRecursosCompartidos.html" class="md-nav__link">
+        7.1- Servicios de red para compartir recursos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="072_Samba.html" class="md-nav__link">
+        7.2- Samba
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="073_NFS.html" class="md-nav__link">
+        7.3- NFS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="074_NextCloud.html" class="md-nav__link">
+        7.4- NextCloud
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="planificacion-de-tareas">Planificación de tareas<a class="headerlink" href="#planificacion-de-tareas" title="Permanent link">&para;</a></h1>
+<p>En un sistema operativo existen ciertas tareas que se realizan de forma periódica y que será conveniente que se resuelvan de forma automática para liberar al <strong>administrador de sistemas</strong> de esas tareas.</p>
+<p>Para realizar dichas tareas se dispone de herramientas capaces de programarlas y dejar al sistema operativo la ejecución de ellas. A continuación se destacan las principales en sistemas de propetario y libre.</p>
+<h2 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h2>
+<p>En Microsoft Windows Server 2019 se dispone de la herramienta <code>Programador de tareas</code>,  cuyo  nombre  es  autodescriptivo.</p>
+<h3 id="programador-de-tareas">Programador de tareas<a class="headerlink" href="#programador-de-tareas" title="Permanent link">&para;</a></h3>
+<p>Se  accede  a  ella  a  través  del Administrador del servidor.</p>
+<p><code>Administrador de servidor</code> &#8594; <code>Herramientas</code> &#8594; <code>Programador de tareas</code> </p>
+<figure>
+  <img src="./imagenes/04/043/001.png" width="950"/>
+  <figcaption>Acceso Administrador del Servidor</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/04/043/002.png" width="950"/>
+  <figcaption>Acceso Programador de Tareas</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>Nota</strong></p>
+<p>Se puede evitar el paso por el Administrador del Servidor usando la orden <code>taskschd.msc</code>; Utilizando la combinación de teclas <code>Windows + R</code> y, en la ventana que aparece, escribir la orden.</p>
+</div>
+<figure>
+  <img src="./imagenes/04/043/003.png" width="950"/>
+  <figcaption>Acceso `taskschd.msc`</figcaption>
+</figure>
+
+<p>Desde el menú acciones es posible crear una tarea a través de un asistente con la opción <code>Crear tarea básica…</code></p>
+<figure>
+  <img src="./imagenes/04/043/004.png" width="950"/>
+  <figcaption>Crear tarea en el Programador de Tareas I</figcaption>
+</figure>
+
+<ul>
+<li>De este modo, conseguimos que se abra el <strong>Asistente para crear tareas básicas</strong>, que nos irá mostrando una <strong>serie de pasos </strong>en los que iremos indicando cada uno de los aspectos de la tarea programada.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title"><strong>Por ejemplo</strong></p>
+<p>A continuación se muestran los pasos para <strong>defragmentar de forma automática todos los volúmenes</strong> del sistema una vez a la semana. Además, para evitar que el proceso penalice el rendimiento del servidor, se ejecuta a partir de la media noche de los domingos (dando por supuesto que el sistema estará suficientemente descargado de tráfico en esos momentos).</p>
+</div>
+<ol>
+<li>En el primer paso, escribiremos un nombre y una breve descripción para la tarea.</li>
+</ol>
+<figure>
+  <img src="./imagenes/04/043/005.png" width="950"/>
+  <figcaption>Crear tarea en el Programador de Tareas II</figcaption>
+</figure>
+
+<ol start="2">
+<li>En el siguiente paso, se debe indicar el desencadenador. El <strong>desencadenador</strong> es el criterio que debe cumplirse para iniciar la ejecución de la tarea que estamos programando. Se pueden diferenciar dos tipos de desencadenadores:</li>
+</ol>
+<ul>
+<li>
+<p><strong>En función del tiempo</strong>: El inicio de una tarea (o de varias) se programa a una hora en particular, todos los días o en días concretos de la semana o del mes.</p>
+</li>
+<li>
+<p><strong>En función de un evento</strong>: Pueden iniciar la tarea a partir de la ejecución de un evento, como por ejemplo: siempre que se inicie el sistema, cuando un usuario inicie su sesión, cuando el sistema entre en estado de inactividad o al registrar cualquier otro evento específico.</p>
+</li>
+</ul>
+<p>En este caso es en <em>función del tiempo</em>:</p>
+<figure>
+  <img src="./imagenes/04/043/006.png" width="950"/>
+  <figcaption>Crear tarea en el Programador de Tareas III</figcaption>
+</figure>
+
+<ol start="3">
+<li>Lo siguiente será establecer el intervalo, Eligiendo la fecha a partir de la que se iniciará la ejecución automática de la tarea.</li>
+</ol>
+<ul>
+<li>
+<p>La tarea se ejecutará la próxima vez que el día de la semana coincida con el que se haya indicado debajo. En el ejemplo, aunque la tarea se programe para el día 4, no se ejecutará hasta el día 9, que es domingo.</p>
+</li>
+<li>
+<p>Además, se debe elegir el intervalo &#8594; Si es <code>1</code>, la ejecución será semanal; si es <code>2</code>, se producirá en semanas alternas, etc.</p>
+</li>
+<li>
+<p>Por último, fijaremos la hora a la que debe iniciarse la ejecución de la tarea. El valor para la hora puede ser local (la hora oficial del país en el que se encuentre el servidor) o universal &#8594; <strong>UTC (Universal Time Coordinated)</strong>.</p>
+</li>
+</ul>
+<figure>
+  <img src="./imagenes/04/043/006B.png" width="950"/>
+  <figcaption>Crear tarea en el Programador de Tareas IV</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>Nota</strong></p>
+<p>Si se elije un desencadenador diferente, las opciones que debemos establecer también cambiarán. Sin embargo, son tan fáciles de interpretar como las que hemos visto en este ejemplo.</p>
+</div>
+<ol start="4">
+<li>A continuación, se debe indicar el programa que queremos ejecutar. Para conseguirlo, lo más sencillo es utilizar el botón <code>Examinar</code> y buscarlo en el disco duro del servidor. También podríamos escribirlo directamente en el cuadro de texto, pero tendríamos que recordar su ubicación y nombre exactos.</li>
+</ol>
+<figure>
+  <img src="./imagenes/04/043/007.png" width="950"/>
+  <figcaption>Crear tarea en el Programador de Tareas V</figcaption>
+</figure>
+
+<ul>
+<li>Nos aparecerá la ventana típica para abrir archivos. En ella, se puede localizar el programa que queremos ejecutar de forma programada. </li>
+<li>En este caso, lo encontramos en <code>C:\Windows\System32</code> y el ejecutable se llama <code>Defrag.exe</code>. </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title"><strong>Nota</strong></p>
+<p>Siguiendo este mecanismo se hubiera podido elegir cualquier archivo ejecutable, o cualquier proceso por lotes, que tuviésemos almacenado en cualquier disco duro del servidor.</p>
+</div>
+<figure>
+  <img src="./imagenes/04/043/008.png" width="950"/>
+  <figcaption>Crear tarea en el Programador de Tareas VI</figcaption>
+</figure>
+
+<ol start="5">
+<li>De vuelta en la ventana <code>Asistente para crear tareas básicas</code>, se puede observar que ya se ha completado el cuadro de texto con la acción. En este caso, también se ha incluido el argumento <code>-c</code> para indicar que se quiere defragmentar todos los volúmenes locales del servidor.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title"><strong>Nota</strong></p>
+<p>En el caso que la acción ingresada necesite interactuar con los datos de alguna carpeta (por ejemplo, copiar archivos de una ubicación a otra, en el cuadro <code>Iniciar en (opcional)</code>: se indicaría la carpeta predeterminada sobre la que actuará dicha acción.</p>
+</div>
+<figure>
+  <img src="./imagenes/04/043/009.png" width="950"/>
+  <figcaption>Crear tarea en el Programador de Tareas VII</figcaption>
+</figure>
+
+<ol start="6">
+<li>En este paso se llega <strong>al final del Asistente para crear tareas básicas</strong>, por lo que el sistema nos ofrece un resumen de los valores que hemos introducido en los puntos anteriores. Si observamos algún error, podremos subsanarlo haciendo clic sobre el botón Atrás, hasta llegar al aspecto que necesitemos cambiar.</li>
+</ol>
+<figure>
+  <img src="./imagenes/04/043/010.png" width="950"/>
+  <figcaption>Crear tarea en el Programador de Tareas VIII</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>Nota</strong></p>
+<ul>
+<li>Si dejamos sin marcar la casilla <code>Abrir el diálogo Propiedades</code> para esta tarea al hacer clic en Finalizar, se cerrará el asistente y volveremos a la ventana principal del <code>Programador de tareas</code>.</li>
+<li>Si, por el contrario, se marca la casilla, al finalizar el asistente, se abre de forma automática la ventana <code>Propiedades de la tarea programada</code>. </li>
+<li>También se puede volver a esta ventana en cualquier momento, y <strong>Reabrir la ventana Propiedades de una tarea programada</strong>.</li>
+<li>En la ventana Propiedades se dispone de diferentes opciones, que permiten configurar cada aspecto de la tarea programada.</li>
+</ul>
+</div>
+<figure>
+  <img src="./imagenes/04/043/011.png" width="950"/>
+  <figcaption>Crear tarea en el Programador de Tareas IX</figcaption>
+</figure>
+
+<h2 id="gnulinux">GNU/Linux<a class="headerlink" href="#gnulinux" title="Permanent link">&para;</a></h2>
+<p>En sistemas operativos <strong>GNU/Linux</strong> la programación de tareas se realiza a través del demonio <code>cron</code> que permite ejecutar tareas de forma automática.</p>
+<h3 id="cron">cron<a class="headerlink" href="#cron" title="Permanent link">&para;</a></h3>
+<p>Cada minuto <code>cron</code>  comprueba el listado de tareas y si debe o no ejecutar un programa de su listado.</p>
+<ul>
+<li>A diferencia de Microsoft Windows Server 2019, <code>cron</code> solo lanza tareas según una programación.</li>
+<li>Éstas deben ser descritas con comandos o contenidas en shellscripts.</li>
+</ul>
+<p>Existen al menos dos formas distintas de usar <code>cron</code>. </p>
+<ol>
+<li>La primera es a través de los directorios,</li>
+</ol>
+<ul>
+<li><code>/etc/cron.hourly</code></li>
+<li><code>/etc/cron.daily</code></li>
+<li><code>/etc/cron.weekly</code></li>
+<li><code>/etc/cron.monthly</code></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title"><strong>A tener en cuenta</strong></p>
+<p>En este caso para hacerlo funcionar se coloca un archivo tipo <strong>shellscript</strong> se ejecutará cada hora, cada día, cada semana o cada mes, dependiendo del directorio en donde se sitúe.</p>
+</div>
+<ol start="2">
+<li>La segunda manera de programar tareas con <code>cron</code> es a través de manipular directamente el archivo <code>/etc/crontab</code>. Por defecto, este archivo tendrá este contenido:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">SHELL=/bin/bash</span> 
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">PATH=/sbin:/bin:/usr/sbin:/usr/bin</span> 
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain"># run-parts</span>  
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">01 * * * * root run-parts /etc/cron.hourly</span> 
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">02 4 * * * root run-parts /etc/cron.daily</span> 
+<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">22 4 * * 0 root run-parts /etc/cron.weekly</span> 
+<span class="linenos" data-linenos="7 "></span><span class="l l-Scalar l-Scalar-Plain">42 4 1 * * root run-parts /etc/cron.monthly</span>
+</code></pre></div>
+<p>En donde:</p>
+<ul>
+<li><strong>SHELL</strong> es el shell bajo el cual se ejecuta. Si no se especifica, se tomará por defecto el indicado en la línea <code>/etc/passwd</code> correspondiente al usuario que esté ejecutando <code>cron</code>.</li>
+<li><strong>PATH</strong> contiene la ruta a los directorios en los cuales buscará el comando a ejecutar. Éste es distinto al <strong>PATH</strong> global del sistema o del usuario.</li>
+</ul>
+<p>Después de estas dos variables, se establecen las tareas que se van a ejecutar, cuando y quien las va a realizar. Características:</p>
+<ul>
+<li>No hay límites en cuanto al número de tareas programadas,</li>
+<li>Es necesario realizar una por línea.</li>
+</ul>
+<p>Las siete columnas de los que cada tarea está compuesto son:</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minuto</td>
+<td>Establece el minuto de la hora en que la tarea será ejecutada, este valor debe oscilar entre 0 y 59.</td>
+</tr>
+<tr>
+<td>Hora</td>
+<td>Controla la hora en la que la tarea será ejecutada, se especifica en un formato de 24 horas, los valores deben estar entre 0 y 23, 0 es medianoche.</td>
+</tr>
+<tr>
+<td>Día del Mes</td>
+<td>Día del mes en que se va a ejecutar la tarea. Por ejemplo se indicaría 20, para ejecutar el comando el día 20 del mes.</td>
+</tr>
+<tr>
+<td>Mes</td>
+<td>Mes en que el comando se ejecutará, puede ser indicado numéricamente (1-12), o por el nombre del mes en inglés, solo las tres primeras letras.</td>
+</tr>
+<tr>
+<td>Día  semana</td>
+<td>Día en la semana en que se ejecutará el comando, puede ser numérico (0-7) o por el nombre del día en inglés, solo las tres primeras letras. Los valores 0 y 7 hacen referencia al mismo día de la semana, el domingo.</td>
+</tr>
+<tr>
+<td>Usuario</td>
+<td>Usuario que ejecuta el comando.</td>
+</tr>
+<tr>
+<td>Comando</td>
+<td>Comando, script o programa que se ejecuta. Este campo puede contener múltiples palabras y espacios.</td>
+</tr>
+</tbody>
+</table>
+<p>El uso de las cinco primeras columnas puede ser un tanto lioso al principio. Para aclarar conceptos se usarán algunos <strong>ejemplos</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 * * * *</strong></td>
+<td>Se ejecuta al minuto 1 de cada hora de todos los días.</td>
+</tr>
+<tr>
+<td><strong>15 8 * * *</strong></td>
+<td>A las 8:15 de cada día.</td>
+</tr>
+<tr>
+<td><strong>0 17 * * 0</strong></td>
+<td>A las 17:00 todos los domingos.</td>
+</tr>
+<tr>
+<td><strong>* 5 * * Sun</strong></td>
+<td>Cada minuto de 5:00 a 5:59 todos los domingos.</td>
+</tr>
+<tr>
+<td><strong>45 19 1 * *</strong></td>
+<td>A las 19:45 del primer día de cada mes.</td>
+</tr>
+<tr>
+<td><strong>1 * 20 7 *</strong></td>
+<td>Al minuto 1 de cada hora del 20 de julio.</td>
+</tr>
+<tr>
+<td><strong>10 1 * 12 1</strong></td>
+<td>A las 1:10 todos los lunes de diciembre.</td>
+</tr>
+<tr>
+<td><strong>0 12 16 * Wen</strong></td>
+<td>Al mediodía de los días 16 de cada mes y que sea Miércoles.</td>
+</tr>
+<tr>
+<td><strong>30 9 20 7 4</strong></td>
+<td>A las 9:30 del día 20 de julio y que sean jueves.</td>
+</tr>
+<tr>
+<td><strong>30 9 20 7 *</strong></td>
+<td>A las 9:30 del día 20 de julio sin importar el día de la semana.</td>
+</tr>
+<tr>
+<td><strong>20 * * * 6</strong></td>
+<td>Al minuto 20 de cada hora de los sábados.</td>
+</tr>
+<tr>
+<td><strong>20 * * 1 6</strong></td>
+<td>Al minuto 20 de cada hora de los sábados de enero.</td>
+</tr>
+</tbody>
+</table>
+<p>También es posible especificar listas en los campos. Las listas pueden estar expresadas en una comalista o a través de guiones.</p>
+<ul>
+<li><code>cron</code>, de igual manera soporta incrementos en las listas, que se indican de la siguiente manera:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>59 11 * 1-3 1,2,3,4,5</strong></td>
+<td>A las 11:59 de lunes a viernes, de enero a marzo.</td>
+</tr>
+<tr>
+<td><strong>45 * 10-25 * 6-7</strong></td>
+<td>Al minuto 45 de todas las horas de los días 10 al 25 de todos los meses, de sábados a domingos.</td>
+</tr>
+<tr>
+<td><strong>10,30,50 * * * 1,3,5</strong></td>
+<td>En el minuto 10, 30 y 50 de todas las horas de los días lunes, miércoles y viernes.</td>
+</tr>
+<tr>
+<td><strong>/15 10-14 * * *</strong></td>
+<td>Cada quince minutos de las 10:00 a las 14:00.</td>
+</tr>
+<tr>
+<td><strong>* 12 1-10/2 2,8 *</strong></td>
+<td>Cada minuto de la hora 12 en los días 1,3,5,7 y 9 de febrero y agosto. (el incremento en el tercer campo es de 2 y comienza a partir de 1).</td>
+</tr>
+<tr>
+<td><strong>0 /5 1-10,15,20-23 * 3</strong></td>
+<td>Cada 5 horas de los días 1 al 10, el día 15 y del día 20 al 23 de  cada mes y que el día sea miércoles.</td>
+</tr>
+<tr>
+<td><strong>3/3 2/4 2 2 2</strong></td>
+<td>Cada 3 minutos empezando por el minuto 3 (3,6,9...) de las  horas 2, 6, 10, 14, 18 y 22 (cada 4 horas empezando en la hora 2) del día 2 de febrero y que sea martes.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title"><strong>Nota</strong></p>
+<p>Como se puede apreciar en el último ejemplo la tarea <code>cron</code> que estuviera asignada a esta línea, sólo se ejecutaría si cumple con los cinco criterios, es decir, siempre es un <code>AND</code> que sólo resulta verdadero si todas las condiciones son ciertas.</p>
+</div>
+<h3 id="crontab-cron-con-multiples-usuarios">crontab (cron con múltiples usuarios)<a class="headerlink" href="#crontab-cron-con-multiples-usuarios" title="Permanent link">&para;</a></h3>
+<p><strong>GNU/Linux</strong> es un sistema multiusuario y <code>cron</code> es de las aplicaciones que soporta el trabajo con varios usuarios a la vez. Características:</p>
+<ul>
+<li>Cada usuario puede tener su propio archivo <strong>crontab</strong>, de hecho el <code>/etc/crontab</code> se asume que es el archivo del usuario root.</li>
+<li>Cualquier usuario puede disponer de su propio archivo de programación de tareas a través del comando crontab.</li>
+<li>En el directorio <code>/var/spool/cron/crontabs</code>, que puede variar según la distribución, se genera un archivo de tareas para cada usuario.</li>
+</ul>
+<p>El uso de crontab es:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">crontab -e</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><strong>Nota</strong></p>
+<ul>
+<li>Este comando abrirá el editor de texto por defecto con un archivo vacío y donde el usuario especificará las tareas que desea programar, y que se guardará  automáticamente  como <code>/var/spool/cron/crontabs/usuario</code>. </li>
+<li>Hay que tener en cuenta que si existe esta nueva lista de tareas programadas serán dos las que serán comprobadas en cada minuto por el demonio cron: la del usuario recién creada y la del sistema vista con anterioridad.</li>
+</ul>
+</div>
+<h2 id="actividades-de-desarrollo-ud4_02">Actividades de desarrollo UD4_02<a class="headerlink" href="#actividades-de-desarrollo-ud4_02" title="Permanent link">&para;</a></h2>
+<ol start="405">
+<li>
+<p><a href="Practica10_PWSH_Cron.html">Tareas Programadas con Powershell</a></p>
+</li>
+<li>
+<p>Programa con <code>cron</code> las siguientes tareas:</p>
+<ul>
+<li>Una copia de la carpeta /home a una carpeta de seguridad los días pares de cada mes, cada dos horas durante las 8:00 y las 15:00 horas.</li>
+<li>Un listado de los archivos que existen en el escritorio del usuario actual (usa el comando ls con un redireccionador) cada 5 minutos de todas las horas de los martes, jueves y viernes de los días impares.</li>
+</ul>
+</li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="042_ArchivosVirtualSWinstaladoRendimiento.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 4.2- VFS, Sw Instalado y Gestión Rendimiento" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              4.2- VFS, Sw Instalado y Gestión Rendimiento
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="051_AccesoRemotoLinux.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 5.1- Acceso Remoto en modo texto" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              5.1- Acceso Remoto en modo texto
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
