@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/01_ShellScripting/ProgramacionAula.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>Refuerzo y Ampliación - Administración de Sistemas Operativos</title>
+        <title>Programación de Aula - Administración de Sistemas Operativos</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#refuerzo-y-ampliacion" class="md-skip">
+        <a href="#programacion-de-aula" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Refuerzo y Ampliación
+              Programación de Aula
             
           </span>
         </div>
@@ -229,12 +229,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         1.- UD1. ShellScripting
@@ -250,11 +252,58 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="ProgramacionAula.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Programación de Aula
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ProgramacionAula.html" class="md-nav__link md-nav__link--active">
         Programación de Aula
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resultados-de-aprendizaje" class="md-nav__link">
+    Resultados de Aprendizaje
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#planificacion-temporal" class="md-nav__link">
+    Planificación Temporal
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -278,60 +327,221 @@
               
                 
                 
-                <h1 id="refuerzo-y-ampliacion">Refuerzo y Ampliación<a class="headerlink" href="#refuerzo-y-ampliacion" title="Permanent link">&para;</a></h1>
-<p>En esta sesión se trabajan actividades para reforzar los contenidos estudiados en esta unidad, y actividades de ampliación para profundizar en dichos contenidos.</p>
-<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Escribe el código de los scripts en <strong>ShellScript</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
+                <h1 id="programacion-de-aula">Programación de Aula<a class="headerlink" href="#programacion-de-aula" title="Permanent link">&para;</a></h1>
+<h2 id="resultados-de-aprendizaje">Resultados de Aprendizaje<a class="headerlink" href="#resultados-de-aprendizaje" title="Permanent link">&para;</a></h2>
+<p>Esta unidad cubre el <strong>Resultado de aprendizaje 7 (RA7)</strong> según el <strong>Real Decreto 1629/2009, de 30 de octubre</strong>, el cual es:</p>
+<ol start="7">
+<li>Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.</li>
+</ol>
+<p>Los criterios de evaluación asociados son:</p>
+<style>
+ol.criterio {
+  list-style-type: none;
+}
+</style>
+
+<div>
+  <ol class="criterio">
+    <li>a. Se han utilizado y combinado las estructuras del lenguaje para crear guiones.</li>
+    <li>b. Se han utilizado herramientas para depurar errores sintácticos y de ejecución.</li>
+    <li>g. Se han implantado guiones en sistemas libres y propietario.</li>
+    <li>h. Se han consultado y utilizado librerías de funciones.</li>
+    <li>i. Se han documentado los guiones creados.</li>
+  </ol>
 </div>
-<h3 id="refuerzo">Refuerzo<a class="headerlink" href="#refuerzo" title="Permanent link">&para;</a></h3>
-<ol start="115">
-<li>
-<p>Realiza un shell script que admita un único parámetro correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando <code>wc</code>.</p>
-</li>
-<li>
-<p>Modifica el shell script realizado en el ejercicio anterior para comprobar si el fichero existe. Si el fichero no existe, debe mostrar un mensaje de error y salir.</p>
-</li>
-<li>
-<p>Construye los siguientes dos shell script utilizando estructuras iterativas:</p>
-<ol>
-<li>el primero <code>ej108A.sh</code>, que pida un número e indique si se trata de un número par y si es número primo.</li>
-<li>el tercero <code>ej108B.sh</code>, que muestre las 10 primeras tablas de multiplicar por pantalla. Existirá un tiempo de espera de dos segundos entre tabla (usa el comando sleep para ello).</li>
-</ol>
-</li>
-<li>
-<p>Genera un script que muestre la tabla de multiplicar de un número introducido por pantalla por el usuario.</p>
-</li>
-</ol>
-<h3 id="ampliacion">Ampliación<a class="headerlink" href="#ampliacion" title="Permanent link">&para;</a></h3>
-<ol start="119">
-<li>
-<p>Escribe un shell script que genere dos vectores de quince elementos cada uno y los rellene con número aleatorios comprendidos entre 0 y 100. Después sume esas dos estructuras y muestre los tres vectores por pantalla. Para ello crea las funciones <strong>imprimir_array(array_a_imprimir)</strong> y <strong>sumar_array(array1, array2).</strong></p>
-</li>
-<li>
-<p>Realiza un script que permita crear un informe de las <strong>IP libres</strong> en la red en la que se encuentra el equipo. Debe contener las siguientes opciones:</p>
-<ol>
-<li>El informe contendrá un <strong>listado de todas las IP de la red</strong> a la que pertenece el equipo indicando si está libe o no (usa el comando ping).</li>
-<li>En el informe debe aparecer el <strong>tipo de red</strong> (rango CIDR) en el que está inmerso el ordenador con el <strong>nombre de la red</strong>, su <strong>broadcast</strong> y su <strong>máscara de subred</strong>. Esta información la podéis obtener desde el comando ifconfig.</li>
-</ol>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Para facilitar los cálculos asumimos que el equipo donde se ejecuta el script se encuentra en una única red, es decir, solo posee una tarjeta de red.</p>
-</div>
-<ol start="121">
-<li>Crea un shell script que funcione de manera similar a la papelera de reciclaje. El manejo de los ficheros se debe realizar a través de vectores. El programa debe mostrar el siguiente menú e implementar sus operaciones que serán implementadas a través de funciones:<ol>
-<li><strong>eliminar archivo</strong>. Esta operación recibe la ruta completa de un archivo y lo mueve al directorio <code>/home/tu_usuario/recycled.</code> Si no existe dicho directorio, el programa ha de crearlo.</li>
-<li><strong>restaurar archivo</strong>. Esta operación recibe el nombre de un archivo y lo mueve, desde la papelera de reciclaje, al directorio en el que estuviera anteriormente. El proceso de eliminación, debe haber almacenado, por tanto dicho directorio en un fichero de texto.</li>
-<li>restaurar toda la papelera. Esta operación es similar a la anterior, pero se efectúa sobre todos los ficheros de la papelera.</li>
-<li><strong>vaciar la papelera</strong>. Esta opción vacía el contenido de la papelera. Ninguno de los archivos será recuperable.</li>
-<li><strong>mostrar la papelera</strong>. Esta opción muestra el contenido de la papelera.</li>
-<li><strong>salir</strong>. Sale del programa.</li>
-</ol>
-</li>
-</ol>
+
+<style>
+    .heatMap td { 
+      text-align: left;
+      padding-left: 10px;
+    }
+    table caption {
+      padding: 10px;
+      background: #0077b6;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #060606;
+      font-weight: bold;
+    }
+</style>
+
+<h2 id="planificacion-temporal">Planificación Temporal<a class="headerlink" href="#planificacion-temporal" title="Permanent link">&para;</a></h2>
+<table border="1" width="100%" class="heatMap">
+  <tbody>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="10%" style="background: #48cae4"><p><b>Sesión.</b></p></td>
+          <td width="10%" style="background: #48cae4"><p><b>Fecha</b></p></td>
+          <td width="35%" style="background: #48cae4"><p><b>Contenido</b></p></td>
+          <td width="35%" style="background: #48cae4"><p><b>Recurso Didáctico</b></p></td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="10%">
+            <p>
+            1
+            </p>
+          </td>
+          <td width="10%">
+            <p>
+            14/09/22
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            Introducción ShellScripting, Creación ShellScript, Argumentos, Variables.
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            <!-- <a href="./011_ShellScript_Intro.html">Introducción ShellScripting</a> -->
+            Introducción ShellScripting
+            </p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="10%">
+            <p>
+            2
+            </p>
+          </td>
+          <td width="10%">
+            <p>
+            15/09/22
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            Sintaxis, Interacción con el usuario, Operadores, re-direcciones y tuberías.
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            <!-- <a href="./012_ShelScript_Sintaxis.html">Sintaxis ShellScripting</a> -->
+            Sintaxis ShellScripting
+            </p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="10%">
+            <p>
+            3
+            </p>
+          </td>
+          <td width="10%">
+            <p>
+            20/09/22
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            Control de Flujo. Estructuras condicionales e iterativas.
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            <!-- <a href="./013_ShellScript_ControlFlujo.html">Control de Flujo.</a> -->
+            Control de Flujo.
+            </p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="10%">
+            <p>
+            4
+            </p>
+          </td>
+          <td width="10%">
+            <p>
+            21/09/22
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            Vectores y funciones
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            <!-- <a href="./014_ShellScript_vectoresFunciones.html">Vectores y Funciones.</a> -->
+            Vectores y Funciones.
+            </p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="10%">
+            <p>
+            5
+            </p>
+          </td>
+          <td width="10%">
+            <p>
+            22/09/22
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            Refuerzo y Ampliación.
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            <!-- <a href="./015_ShellScript_RefuerzoAmpliacion.html">Refuerzo y Ampliación.</a> -->
+            Refuerzo y Ampliación.
+            </p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+<!-- <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="10%">
+            <p>
+            6
+            </p>
+          </td>
+          <td width="10%">
+            <p>
+            19/09/22
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            Prueba Específica
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+            <a href="./016_ShellScript_PruebaEspecifica.html">Prueba Específica.</a>
+            Prueba Específica.
+            </p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+  </tbody>
+</table> -->
                 
               
               
@@ -347,6 +557,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../index.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Inicio" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Inicio
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

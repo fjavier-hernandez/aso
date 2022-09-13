@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/01_ShellScripting/ResumenUD.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>Refuerzo y Ampliación - Administración de Sistemas Operativos</title>
+        <title>Resumen UD - Administración de Sistemas Operativos</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#refuerzo-y-ampliacion" class="md-skip">
+        <a href="#resumen-ud" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Refuerzo y Ampliación
+              Resumen UD
             
           </span>
         </div>
@@ -278,60 +278,283 @@
               
                 
                 
-                <h1 id="refuerzo-y-ampliacion">Refuerzo y Ampliación<a class="headerlink" href="#refuerzo-y-ampliacion" title="Permanent link">&para;</a></h1>
-<p>En esta sesión se trabajan actividades para reforzar los contenidos estudiados en esta unidad, y actividades de ampliación para profundizar en dichos contenidos.</p>
-<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Escribe el código de los scripts en <strong>ShellScript</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
-</div>
-<h3 id="refuerzo">Refuerzo<a class="headerlink" href="#refuerzo" title="Permanent link">&para;</a></h3>
-<ol start="115">
-<li>
-<p>Realiza un shell script que admita un único parámetro correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando <code>wc</code>.</p>
-</li>
-<li>
-<p>Modifica el shell script realizado en el ejercicio anterior para comprobar si el fichero existe. Si el fichero no existe, debe mostrar un mensaje de error y salir.</p>
-</li>
-<li>
-<p>Construye los siguientes dos shell script utilizando estructuras iterativas:</p>
-<ol>
-<li>el primero <code>ej108A.sh</code>, que pida un número e indique si se trata de un número par y si es número primo.</li>
-<li>el tercero <code>ej108B.sh</code>, que muestre las 10 primeras tablas de multiplicar por pantalla. Existirá un tiempo de espera de dos segundos entre tabla (usa el comando sleep para ello).</li>
-</ol>
-</li>
-<li>
-<p>Genera un script que muestre la tabla de multiplicar de un número introducido por pantalla por el usuario.</p>
-</li>
-</ol>
-<h3 id="ampliacion">Ampliación<a class="headerlink" href="#ampliacion" title="Permanent link">&para;</a></h3>
-<ol start="119">
-<li>
-<p>Escribe un shell script que genere dos vectores de quince elementos cada uno y los rellene con número aleatorios comprendidos entre 0 y 100. Después sume esas dos estructuras y muestre los tres vectores por pantalla. Para ello crea las funciones <strong>imprimir_array(array_a_imprimir)</strong> y <strong>sumar_array(array1, array2).</strong></p>
-</li>
-<li>
-<p>Realiza un script que permita crear un informe de las <strong>IP libres</strong> en la red en la que se encuentra el equipo. Debe contener las siguientes opciones:</p>
-<ol>
-<li>El informe contendrá un <strong>listado de todas las IP de la red</strong> a la que pertenece el equipo indicando si está libe o no (usa el comando ping).</li>
-<li>En el informe debe aparecer el <strong>tipo de red</strong> (rango CIDR) en el que está inmerso el ordenador con el <strong>nombre de la red</strong>, su <strong>broadcast</strong> y su <strong>máscara de subred</strong>. Esta información la podéis obtener desde el comando ifconfig.</li>
-</ol>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Para facilitar los cálculos asumimos que el equipo donde se ejecuta el script se encuentra en una única red, es decir, solo posee una tarjeta de red.</p>
-</div>
-<ol start="121">
-<li>Crea un shell script que funcione de manera similar a la papelera de reciclaje. El manejo de los ficheros se debe realizar a través de vectores. El programa debe mostrar el siguiente menú e implementar sus operaciones que serán implementadas a través de funciones:<ol>
-<li><strong>eliminar archivo</strong>. Esta operación recibe la ruta completa de un archivo y lo mueve al directorio <code>/home/tu_usuario/recycled.</code> Si no existe dicho directorio, el programa ha de crearlo.</li>
-<li><strong>restaurar archivo</strong>. Esta operación recibe el nombre de un archivo y lo mueve, desde la papelera de reciclaje, al directorio en el que estuviera anteriormente. El proceso de eliminación, debe haber almacenado, por tanto dicho directorio en un fichero de texto.</li>
-<li>restaurar toda la papelera. Esta operación es similar a la anterior, pero se efectúa sobre todos los ficheros de la papelera.</li>
-<li><strong>vaciar la papelera</strong>. Esta opción vacía el contenido de la papelera. Ninguno de los archivos será recuperable.</li>
-<li><strong>mostrar la papelera</strong>. Esta opción muestra el contenido de la papelera.</li>
-<li><strong>salir</strong>. Sale del programa.</li>
-</ol>
-</li>
-</ol>
+                <h1 id="resumen-ud">Resumen UD<a class="headerlink" href="#resumen-ud" title="Permanent link">&para;</a></h1>
+<p>A continuación se muestra un resumen de la Unidad Didáctica:</p>
+<style>
+    .heatMap td { 
+      text-align: left;
+      padding-left: 10px;
+    }
+    table caption {
+      padding: 10px;
+      background: #0077b6;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #060606;
+      font-weight: bold;
+    }
+</style>
+
+<table border="1" width="100%" class="heatMap">
+<caption><b> RESUMEN UNIDAD DIDÁCTICA</b></caption>
+  <tbody>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="15%" style="background: #48cae4"><p><b>Unidad Didáctica</b></p></td>
+          <td width="58%"><p><b>UD1.- ShellScripting.</b> Realización de Guiones en Sistemas Operativos Libres.</p></td>
+          <td width="7%" style="background: #48cae4"><p><b>Horas</b></p></td>
+          <td width="20%"><p>6 Sesiones - 12 Horas</p></td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="15%" style="background: #48cae4"><p><b>Resultados de Aprendizaje</b></p></td>
+          <td width="85%"><p><b>RA7.</b> Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.</p></td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="15%" style="background: #48cae4"><p><b>Preconocimiento</b></p></td>
+          <td width="85%"><p><b>Funcionamiento del terminal de Linux/GNU.</b> Aplicación de comandos. Utilización de editores. Conocimiento de permisos de archivos.</p></td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="50%" style="background: #48cae4"><p><b>Objetivos Operativos</b></p></td>
+          <td width="50%" style="background: #48cae4"><p><b>Competencias Personales y Sociales. Transversales</b></p></td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="50%">
+            <p>
+              <ul>
+                <li>Administración de terminal de Linux/GNU.</li>
+                <li>Conocer comandos básicos y avanzados en Shell.</li>
+                <li>Optimizar el código de los scripts mediante tuberías y redirecciones.</li>
+            </ul>
+            </p>
+          </td>
+          <td width="50%">
+            <p><b>14</b>. Gestionar y/o realizar el mantenimiento de los recursos de su área (programando y verificando su cumplimiento), en función de las cargas de trabajo y el plan de mantenimiento.</p>
+            <p><b>16</b>. Mantener el espíritu de innovación y actualización en el ámbito de su trabajo para adaptarse a los cambios tecnológicos y organizativos de su entorno profesional.</p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <td width="100%" style="background: #0096c7"><p><b>Contenidos conceptuales</b></p></td>
+      </table>
+    </tr>
+    <tr>
+      <table FRAME="border" RULES="none" width="100%" class="heatMap">
+        <tr>
+          <td width="50%">
+            <p>
+              <ul>
+                <li>Introducción Linux. Creación ShellScripts. Depuración.</li>
+                <li>Argumentos, variables, operadores; Entrada y Salida.</li>
+            </ul>
+            </p>
+          </td>
+          <td width="50%">
+             <p>
+              <ul>
+                <li>Control de Flujo. Estructuras condicionales e iterativas.</li>
+                <li>Funciones y vectores.</li>
+            </ul>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="100%" style="background: #0096c7"><p><b>Instrumentos Evaluación</b></p></td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="45%" style="background: #48cae4"><p><b>Actividades INICIALES (Enseñanza/Aprendizaje).</b></p></td>
+          <td width="35%" style="background: #48cae4"><p><b>Criterios Evaluación</b></p></td>
+          <td width="20%" style="background: #48cae4"><p><b>Instrumento Calificación</b></p></td>
+        </tr>
+      </table>
+    </tr>
+     <tr>
+       <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="45%">
+            <p><b>Actividades desde la 101 a la 104</b>. Basadas en Scripts de nivel bajo, en concreto, sobre el desarrollo de:</p>
+            <p>
+              <ul>
+                <li>Creación primeros scripts de nivel bajo</li>
+                <li>Depuración de scripts.</li>
+              </ul>
+            </p>
+          </td>
+          <td width="35%">
+            <p>
+              <ul>
+                  <li><b>CE7b. </b>Se han utilizado herramientas para depurar errores sintácticos y de ejecución.</li>
+                  <li><b>CE7g. </b>Se han implantado guiones en sistemas libres y propietarios.</li>
+                  <li><b>CE7i. </b>Se han documentado los guiones creados.</li>
+              </ul>
+            </p>
+          </td>
+          <td width="20%">
+            <p>
+              <ul>
+                <li><b>Rúbrica.</b></li>
+              </ul>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+       <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="45%" style="background: #48cae4"><p><b>Actividades DESARROLLO (Enseñanza/Aprendizaje).</b></p></td>
+          <td width="35%" style="background: #48cae4"><p><b>Criterios Evaluación</b></p></td>
+          <td width="20%" style="background: #48cae4"><p><b>Instrumento Calificación</b></p></td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="45%"> 
+              <ul>
+                <li><b>Actividades desde la 105 a la 107</b>. Interacción con usuario, utilización de variables, parámetros y operadores.</li>
+                <li><b>Actividades desde la 108 a la 110</b>. Control de Flujo. Estructuras condicionales e iterativas.</li>
+                <li><b>Actividades desde la 111 a la 114</b>. Vectores y funciones.</li>
+              </ul>
+          </td>
+          <td width="35%">
+            <p>
+              <ul>
+                  <li><b>CE7a. </b>Se han utilizado y combinado las estructuras del lenguaje crear guiones.</li>
+                  <li><b>CE7g. </b>Se han implantado guiones en sistemas libres y propietario.</li>
+                  <li><b>CE7h. </b>Se han consultado y utilizado librerías de funciones.</li>
+                  <li><b>CE7i. </b>Se han documentado los guiones creados.</li>
+              </ul>
+            </p>
+          </td>
+          <td width="20%"
+            <p>
+              <ul>
+                <li><b>Rúbrica.</b></li>
+              </ul>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+       <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="45%" style="background: #48cae4"><p><b>Actividades Refuerzo.</b></p></td>
+          <td width="35%" style="background: #48cae4"><p><b>Criterios Evaluación</b></p></td>
+          <td width="20%" style="background: #48cae4"><p><b>Instrumento Calificación</b></p></td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="45%"> 
+              <ul>
+                <li><b>Actividades desde la 115 a la 118</b>. Variables, parámetros, comprobaciones, estructuras condicionales e iterativas.</li>
+              </ul>
+          </td>
+          <td width="35%">
+            <p>
+              <ul>
+                  <li><b>CE7a. </b>Se han utilizado y combinado las estructuras del lenguaje crear guiones.</li>
+                  <li><b>CE7g. </b>Se han implantado guiones en sistemas libres y propietario.</li>
+                  <li><b>CE7i. </b>Se han documentado los guiones creados.</li>
+              </ul>
+            </p>
+          </td>
+          <td width="20%"
+            <p>
+              <ul>
+                <li><b>Rúbrica.</b></li>
+              </ul>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+       <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="45%" style="background: #48cae4"><p><b>Actividades Ampliación.</b></p></td>
+          <td width="35%" style="background: #48cae4"><p><b>Criterios Evaluación</b></p></td>
+          <td width="20%" style="background: #48cae4"><p><b>Instrumento Calificación</b></p></td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="45%"> 
+              <ul>
+                <li><b>Actividades desde la 119 a la 121</b>. Vectores, funciones, estructuras condicionales e iterativas.</li>
+              </ul>
+          </td>
+          <td width="35%">
+            <p>
+              <ul>
+                  <li><b>CE7a. </b>Se han utilizado y combinado las estructuras del lenguaje crear guiones.</li>
+                  <li><b>CE7g. </b>Se han implantado guiones en sistemas libres y propietario.</li>
+                  <li><b>CE7h. </b>Se han consultado y utilizado librerías de funciones.</li>
+                  <li><b>CE7i. </b>Se han documentado los guiones creados.</li>
+              </ul>
+            </p>
+          </td>
+          <td width="20%"
+            <p>
+              <ul>
+                <li><b>Rúbrica.</b></li>
+              </ul>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table border="1" width="100%" class="heatMap">
+        <tr>
+          <td width="100%" style="background: #0096c7"><p><b>Prueba específica de evaluación.</b></p></td>
+        </tr>
+        <td width="100%">
+          <p>
+          <ul>
+            <li></li>
+            <li></li>
+          </ul>
+          </p>
+        </td>
+      </table>
+    </tr>
+  </tbody>
+</table>
                 
               
               

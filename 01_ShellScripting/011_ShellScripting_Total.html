@@ -252,68 +252,8 @@
   
   
     <li class="md-nav__item">
-      <a href="index.html" class="md-nav__link">
+      <a href="ProgramacionAula.html" class="md-nav__link">
         Programación de Aula
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="011_ShellScript_Intro.html" class="md-nav__link">
-        1.1- Introducción
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="012_ShelScript_Sintaxis.html" class="md-nav__link">
-        1.2- Sintaxis
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="013_ShellScript_ControlFlujo.html" class="md-nav__link">
-        1.3- Control de flujo
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="014_ShellScript_VectoresFunciones.html" class="md-nav__link">
-        1.4- Vectores y funciones
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
-        1.5- Refuerzo y ampliación
       </a>
     </li>
   
@@ -521,12 +461,12 @@
 <li>Para crear un script utilizaremos cualquiera de los editores de texto plano como <em>vi</em>, <em>vim</em> , <em>nano</em>.</li>
 <li>Después de crear el archivo hay que dotarlo de permisos de lectura y ejecución. </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">chmod ugo=rx script.sh</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>chmod <span class="nv">ugo</span><span class="o">=</span>rx script.sh
 </code></pre></div>
 <ul>
 <li>Para ejecutar el archivo: ubicados en la carpeta que contiene el archivo, se pueden utilizar tres formas:<ul>
 <li>Se teclea el nombre del archivo en el terminal precedido del comando <strong>sh</strong>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sh script.sh</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sh script.sh
 </code></pre></div></li>
 <li>Precedido de un punto <em>.</em>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">. script.sh</span>
@@ -561,10 +501,10 @@
 <ul>
 <li>Genera, guarda y prueba el siguiente código.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#! /bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">clear</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">ls -la</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">echo “Listado realizado el “$(date)</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c">#! /bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">clear</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">ls </span><span class="n">-la</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo </span><span class="s2">&quot;Listado realizado el&quot;</span> <span class="p">$(</span><span class="n">date</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="comentarios">Comentarios<a class="headerlink" href="#comentarios" title="Permanent link">&para;</a></h3>
 <ul>
