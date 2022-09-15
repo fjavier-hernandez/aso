@@ -16,7 +16,7 @@
     
     
       
-        <title>Sintaxis - Administración de Sistemas Operativos</title>
+        <title>1.2- Sintaxis - Administración de Sistemas Operativos</title>
       
     
     
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sintaxis
+              1.2- Sintaxis
             
           </span>
         </div>
@@ -229,12 +229,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         1.- UD1. ShellScripting
@@ -271,6 +273,188 @@
   
 
           
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          1.2- Sintaxis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="012_ShelScript_Sintaxis.html" class="md-nav__link md-nav__link--active">
+        1.2- Sintaxis
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#argumentos-o-parametros" class="md-nav__link">
+    Argumentos o Parámetros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-de-entorno" class="md-nav__link">
+    Variables de entorno
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrada-y-salida-del-shell-script" class="md-nav__link">
+    Entrada y salida del Shell Script
+  </a>
+  
+    <nav class="md-nav" aria-label="Entrada y salida del Shell Script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    echo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    read
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores-en-shell-script" class="md-nav__link">
+    Operadores en shell script
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadores en shell script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aritmeticos" class="md-nav__link">
+    Aritméticos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacionales" class="md-nav__link">
+    Relacionales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logicos" class="md-nav__link">
+    Lógicos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expr" class="md-nav__link">
+    expr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#let" class="md-nav__link">
+    let
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expansores" class="md-nav__link">
+    expansores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redirecciones" class="md-nav__link">
+    Redirecciones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tuberias" class="md-nav__link">
+    Tuberías
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alias" class="md-nav__link">
+    alias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -293,15 +477,9 @@
                 <h1 id="sintaxis">Sintaxis<a class="headerlink" href="#sintaxis" title="Permanent link">&para;</a></h1>
 <h2 id="argumentos-o-parametros">Argumentos o Parámetros<a class="headerlink" href="#argumentos-o-parametros" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>Son especificaciones que se le hacen al programa al momento de llamarlo para obtener un efecto diferente.</p>
-</li>
-<li>
-<p>Introducen un valor, cadena o variable dentro del script.</p>
-</li>
-<li>
-<p>Utilización de parámetros:</p>
-</li>
+<li>Son especificaciones que se le hacen al programa al momento de llamarlo.</li>
+<li>Introducen un valor, cadena o variable dentro del script.</li>
+<li>Utilización de parámetros:</li>
 </ul>
 <table>
 <thead>
@@ -340,20 +518,27 @@
 <ul>
 <li>Ejemplo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">#!/bin/bash</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">echo ‘El primer parámetro que se ha pasado es ‘ $1</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">echo ‘El tercer parámetro que se ha pasado es ‘ $3</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain">echo ‘El conjunto de todos los parámetros</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">‘ $*</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain">echo ‘Me has pasado un total de ‘ $# ‘ parámetros’”</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="nt">echo ‘El parámetro 0 es </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">‘ $0</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">#Fin del script</span>
-<span class="linenos" data-linenos=" 8 "></span>
-<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">./script.sh  Caballo  Perro  675 Nueva</span>
-<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">El primer parámetro que se ha pasado es Caballo</span>
-<span class="linenos" data-linenos="11 "></span><span class="l l-Scalar l-Scalar-Plain">El tercer parámetro que se ha pasado es 675</span>
-<span class="linenos" data-linenos="12 "></span><span class="nt">El conjunto de todos los parámetros </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Caballo Perro 675 Nueva</span>
-<span class="linenos" data-linenos="13 "></span><span class="l l-Scalar l-Scalar-Plain">Me has pasado un total de 4 parámetros</span>
-<span class="linenos" data-linenos="14 "></span><span class="nt">El parámetro 0 es </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./script.sh</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">echo</span> ‘El primer parámetro que se ha pasado es ‘ <span class="nv">$1</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">echo</span> ‘El tercer parámetro que se ha pasado es ‘ <span class="nv">$3</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span> ‘El conjunto de todos los parámetros : ‘ <span class="nv">$*</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span> ‘Me has pasado un total de ‘ <span class="nv">$#</span> ‘ parámetros’”
+<span class="linenos" data-linenos="6 "></span><span class="nb">echo</span> ‘El parámetro <span class="m">0</span> es : ‘ <span class="nv">$0</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">#Fin del script</span>
+</code></pre></div>
+<ul>
+<li>Si por ejemplo se enviasen los siguientes parámetros:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>./script.sh  Caballo  Perro  <span class="m">675</span> Nueva
+</code></pre></div>
+<ul>
+<li>Se obtendría la siguiente salida:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>El primer parámetro que se ha pasado es Caballo
+<span class="linenos" data-linenos="2 "></span>El tercer parámetro que se ha pasado es <span class="m">675</span>
+<span class="linenos" data-linenos="3 "></span>El conjunto de todos los parámetros : Caballo Perro <span class="m">675</span> Nueva
+<span class="linenos" data-linenos="4 "></span>Me has pasado un total de <span class="m">4</span> parámetros
+<span class="linenos" data-linenos="5 "></span>El parámetro <span class="m">0</span> es : ./script.sh
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -369,8 +554,8 @@
 </div>
 <h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Es un parámetro que cambia su valor durante la ejecución del programa</li>
-<li>Se da un nombre para identificarla y recuperarla, antecedido por el carácter $</li>
+<li>Es un parámetro que cambia su valor durante la ejecución del programa.</li>
+<li>Se da un nombre para identificarla y recuperarla, antecedido por el carácter <code>$</code>.</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -382,12 +567,12 @@
 <ul>
 <li>Ejemplo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#! /bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#! /bin/bash</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">#*********************************</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1">#Este es mi segundo script</span>
 <span class="linenos" data-linenos="4 "></span><span class="c1">#*********************************</span>
-<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">MIVARIABLE=‘Administración de Sistemas Operativos ASO’</span>
-<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">echo $MIVARIABLE</span>
+<span class="linenos" data-linenos="5 "></span><span class="nv">MIVARIABLE</span><span class="o">=</span>‘Administración de Sistemas Operativos ASO’
+<span class="linenos" data-linenos="6 "></span><span class="nb">echo</span> <span class="nv">$MIVARIABLE</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -424,7 +609,7 @@
 </tr>
 <tr>
 <td><code>$PATH</code></td>
-<td>Lista los directorios de donde busca los programas</td>
+<td>Lista los directorios de donde se buscan los programas</td>
 </tr>
 <tr>
 <td><code>$RANDOM</code></td>
@@ -452,7 +637,7 @@
 <tbody>
 <tr>
 <td><code>-e</code></td>
-<td>para usar las opciones hay utilizar el modificador</td>
+<td>para usar las opciones hay que utilizar este modificador</td>
 </tr>
 <tr>
 <td><code>\c</code></td>
@@ -475,8 +660,8 @@
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <ul>
-<li>Si se antepone el símbolo del dólar delante de una variable, mostrará su contenido</li>
-<li>Si es necesario mostrar frases con espacios, debe situarse entre comillas</li>
+<li>Si se antepone el símbolo del dólar delante de una variable, mostrará su contenido.</li>
+<li>Si es necesario mostrar frases con espacios, debe situarse entre comillas.</li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -487,25 +672,25 @@
 </div>
 <ul>
 <li>Ejemplo:
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#!/bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">NOMBRE=Javi</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">echo “hola $NOMBRE”</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">NOMBRE</span><span class="o">=</span>Javi
+<span class="linenos" data-linenos="3 "></span><span class="nb">echo</span> “hola <span class="nv">$NOMBRE</span>”
 </code></pre></div></li>
 <li>El texto mostrado por pantalla será: <strong>hola javi</strong></li>
 </ul>
 <h3 id="read">read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Esta herramienta asigna el texto que el usuario ha escrito en el terminal y a una o más variables.</li>
-<li>Lo que hace <strong>read</strong> es detener la ejecución del shell script y pasa el testigo al usuario. </li>
+<li>Esta herramienta asigna el texto que el usuario ha escrito en el terminal a una o más variables.</li>
+<li>Lo que hace <strong>read</strong> es detener la ejecución del shell script y pasa el testigo al usuario.</li>
 <li>
 <p>Hasta que éste no introduzca los datos, la ejecución del programa no avanzará.</p>
 </li>
 <li>
 <p>Ejemplo:
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#!/bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="nt">echo “Introduce tu nombre</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">”</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">read NOMBRE</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">echo “Hola $NOMBRE”</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">echo</span> “Introduce tu nombre: ”
+<span class="linenos" data-linenos="3 "></span><span class="nb">read</span> NOMBRE
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span> “Hola <span class="nv">$NOMBRE</span>”
 </code></pre></div></p>
 </li>
 </ul>
@@ -515,9 +700,9 @@
 </div>
 <ul>
 <li>Ejemplo:
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#!/bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="nt">read -p “Introduce tres números (separados por un espacio)</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">” num1 num2 num3</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">echo “Los número introducidos son $num1, $num2 y $num3”</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">read</span> -p “Introduce tres números <span class="o">(</span>separados por un espacio<span class="o">)</span>: ” num1 num2 num3
+<span class="linenos" data-linenos="3 "></span><span class="nb">echo</span> “Los número introducidos son <span class="nv">$num1</span>, <span class="nv">$num2</span> y <span class="nv">$num3</span>”
 </code></pre></div></li>
 </ul>
 <div class="admonition info">
@@ -526,13 +711,13 @@
 </div>
 <h2 id="operadores-en-shell-script">Operadores en shell script<a class="headerlink" href="#operadores-en-shell-script" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Todas las variables creadas en un terminal se tratan como cadenas de texto, incluso si su contenido es sólo numérico.</li>
+<li>Todas las variables creadas en un terminal se tratan como cadenas de texto, incluso si su contenido es solo numérico.</li>
 <li>Este es el motivo por el cual si lanzamos el siguiente código, no se obtendrá el resultado esperado:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#!/bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">var1=15</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">var2=5</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">echo “$var1+$var2”</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">var1</span><span class="o">=</span><span class="m">15</span>
+<span class="linenos" data-linenos="3 "></span><span class="nv">var2</span><span class="o">=</span><span class="m">5</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span> “<span class="nv">$var1</span>+<span class="nv">$var2</span>”
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -544,10 +729,10 @@
 <ul>
 <li>Existen tres tipos de operadores según el trabajo que realicen: <strong>aritméticos, relacionales</strong> y <strong>lógicos</strong></li>
 </ul>
-<h3 id="aritmeticos">aritméticos<a class="headerlink" href="#aritmeticos" title="Permanent link">&para;</a></h3>
+<h3 id="aritmeticos">Aritméticos<a class="headerlink" href="#aritmeticos" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Los operadores aritméticos realizan operaciones matemáticas, como sumas o restas con operandos.</li>
-<li>"Manipulan" datos numéricos, tanto enteros como reales. </li>
+<li>"Manipulan" datos numéricos, tanto enteros como reales.</li>
 </ul>
 <table>
 <thead>
@@ -586,21 +771,21 @@
 <ul>
 <li>Ejemplo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">#*********************************</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">#Esto es mi tercer script</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">#*********************************</span>
 <span class="linenos" data-linenos=" 5 "></span>
-<span class="linenos" data-linenos=" 6 "></span><span class="l l-Scalar l-Scalar-Plain">NUMERO=4</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="l l-Scalar l-Scalar-Plain">let SUMA=NUMERO+3</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="l l-Scalar l-Scalar-Plain">echo $SUMA</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">NUMERO=5</span>
-<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">let SUMA=NUMERO+5</span>
-<span class="linenos" data-linenos="11 "></span><span class="l l-Scalar l-Scalar-Plain">echo $SUMA</span>
-<span class="linenos" data-linenos="12 "></span><span class="l l-Scalar l-Scalar-Plain">NUMERO=10</span>
-<span class="linenos" data-linenos="13 "></span><span class="l l-Scalar l-Scalar-Plain">let SUMA=NUMERO-10</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nv">NUMERO</span><span class="o">=</span><span class="m">4</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nb">let</span> <span class="nv">SUMA</span><span class="o">=</span>NUMERO+3
+<span class="linenos" data-linenos=" 8 "></span><span class="nb">echo</span> <span class="nv">$SUMA</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nv">NUMERO</span><span class="o">=</span><span class="m">5</span>
+<span class="linenos" data-linenos="10 "></span><span class="nb">let</span> <span class="nv">SUMA</span><span class="o">=</span>NUMERO+5
+<span class="linenos" data-linenos="11 "></span><span class="nb">echo</span> <span class="nv">$SUMA</span>
+<span class="linenos" data-linenos="12 "></span><span class="nv">NUMERO</span><span class="o">=</span><span class="m">10</span>
+<span class="linenos" data-linenos="13 "></span><span class="nb">let</span> <span class="nv">SUMA</span><span class="o">=</span>NUMERO-10
 </code></pre></div>
-<h3 id="relacionales">relacionales<a class="headerlink" href="#relacionales" title="Permanent link">&para;</a></h3>
+<h3 id="relacionales">Relacionales<a class="headerlink" href="#relacionales" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Este tipo de operadores tan sólo devuelven dos posibles valores; <strong>verdadero o falso</strong>.</li>
 <li>
@@ -686,7 +871,7 @@
 </tr>
 <tr>
 <td align="center"><code>-r</code></td>
-<td>Evalúa si la longitud de la cadena no es cero.</td>
+<td>Evalúa si el archivo esta vacío.</td>
 </tr>
 <tr>
 <td align="center"><code>-w</code></td>
@@ -716,7 +901,7 @@
 </table>
 </li>
 </ul>
-<h3 id="logicos">lógicos<a class="headerlink" href="#logicos" title="Permanent link">&para;</a></h3>
+<h3 id="logicos">Lógicos<a class="headerlink" href="#logicos" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Se utilizan para evaluar condiciones, no elementos.</li>
 <li>Comprueba el resultado de dos operandos y devuelve verdadero o falso en función del valor que arrojen los operandos.</li>
@@ -758,17 +943,17 @@
 <p class="admonition-title">Tip</p>
 <ul>
 <li><strong>MEJOR NO UTILIZAR</strong> </li>
-<li>Desafortunadamente, <strong>expr</strong> es difícil de utilizar debido a las colisiones entre su sintaxis y la propia del terminal. </li>
-<li>Puesto que * es el símbolo comodín, deberá ir precedido por una barra invertida para que el terminal lo interprete literalmente como un asterisco. </li>
+<li>Desafortunadamente, <strong>expr</strong> es difícil de utilizar debido a las colisiones entre su sintaxis y la propia terminal.</li>
+<li>Puesto que <code>*</code> es el símbolo comodín, deberá ir precedido por una barra invertida para que el terminal lo interprete literalmente como un asterisco.</li>
 <li>Además, es muy incómodo de trabajar ya que los espacios entre los elementos de una expresión son críticos.</li>
 </ul>
 </div>
 <ul>
 <li>Ejemplo:
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#!/bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">var=5</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">resultado=`expr $1 + $var + 1</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">echo $resultado`</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">var</span><span class="o">=</span><span class="m">5</span>
+<span class="linenos" data-linenos="3 "></span><span class="nv">resultado</span><span class="o">=</span><span class="sb">`</span>expr <span class="nv">$1</span> + <span class="nv">$var</span> + <span class="m">1</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span> <span class="nv">$resultado</span><span class="sb">`</span>
 </code></pre></div></li>
 </ul>
 <h3 id="let">let<a class="headerlink" href="#let" title="Permanent link">&para;</a></h3>
@@ -780,10 +965,10 @@
 </li>
 <li>
 <p>Ejemplo:
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#!/bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">var=5</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">let resultado=$1+var+1</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">echo $resultado</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">var</span><span class="o">=</span><span class="m">5</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">let</span> <span class="nv">resultado</span><span class="o">=</span><span class="nv">$1</span>+var+1
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span> <span class="nv">$resultado</span>
 </code></pre></div></p>
 </li>
 </ul>
@@ -795,10 +980,10 @@
 </li>
 <li>
 <p>Ejemplo:
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">#!/bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">var=5</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">echo $(($1+$var+1))</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">echo $(($1 + $var + 1))</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">var</span><span class="o">=</span><span class="m">5</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">echo</span> <span class="k">$((</span><span class="nv">$1</span><span class="o">+</span><span class="nv">$var</span><span class="o">+</span><span class="m">1</span><span class="k">))</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span> <span class="k">$((</span><span class="nv">$1</span> <span class="o">+</span> <span class="nv">$var</span> <span class="o">+</span> <span class="m">1</span><span class="k">))</span>
 </code></pre></div></p>
 </li>
 </ul>
@@ -843,7 +1028,7 @@
 </table>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sh script.sh 2&gt;/dev/null</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sh script.sh <span class="m">2</span>&gt;/dev/null
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -854,7 +1039,7 @@
 <li>Forma práctica de <strong>redireccionar la salida estándar de un programa</strong> hacia la entrada estándar de otro.</li>
 <li>Esto se logra usando el símbolo | (pipeline). Ejemplo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$ cat archivo.txt | wc</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$ cat archivo.txt <span class="p">|</span> wc
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -866,7 +1051,7 @@
 <li>Cada usuario puede asignar una palabra fácil de recordar a uno o más comandos que, por lo general, pueden ser más complicados de recordar.</li>
 <li>Ejemplo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">alias listado=’ls -lia&gt;’</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">alias</span> <span class="nv">listado</span><span class="o">=</span>’ls -lia&gt;’
 </code></pre></div>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
@@ -909,6 +1094,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="011_ShellScript_Intro.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 1.1- Introducción" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              1.1- Introducción
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
