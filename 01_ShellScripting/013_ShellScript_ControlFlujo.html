@@ -16,7 +16,7 @@
     
     
       
-        <title>Control de Flujo - Administración de Sistemas Operativos</title>
+        <title>1.3- Control de flujo - Administración de Sistemas Operativos</title>
       
     
     
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Control de Flujo
+              1.3- Control de flujo
             
           </span>
         </div>
@@ -229,12 +229,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         1.- UD1. ShellScripting
@@ -283,6 +285,105 @@
   
 
           
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          1.3- Control de flujo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="013_ShellScript_ControlFlujo.html" class="md-nav__link md-nav__link--active">
+        1.3- Control de flujo
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sistema-de-notacion" class="md-nav__link">
+    Sistema de notación
+  </a>
+  
+    <nav class="md-nav" aria-label="Sistema de notación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagramas-de-flujo" class="md-nav__link">
+    Diagramas de flujo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructuras" class="md-nav__link">
+    Estructuras
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructuras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-alternativas" class="md-nav__link">
+    Estructuras alternativas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-de-iteracion" class="md-nav__link">
+    Estructuras de iteración
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -317,7 +418,7 @@
 <li>Cada una de estas figuras representa un paso a seguir dentro del algoritmo.</li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">NOTA</p>
 <ul>
 <li>Para su construcción se han de respetar las siguientes reglas:<ol>
 <li>Tiene un elemento de inicio en la parte superior y uno final en la parte inferior.</li>
@@ -329,7 +430,6 @@
 </li>
 </ul>
 </div>
-<p>En lo sucesivo se ilustrarán las diferentes estructuras de control a través de esta técnica la cual facilita su comprensión.</p>
 <p>En la siguiente figura se puede observar <strong>simbología</strong> para diseñar diagramas de flujo.</p>
 <figure>
   <img src="imagenes/01/SimboloDiagrama.png" width="400"/>
@@ -352,8 +452,8 @@
 <p>La estructura secuencial no es válida para solucionar la mayoría de los problemas que se plantean.</p>
 </div>
 <ul>
-<li>Para ello es necesario la elección de un código u otro en función de ciertas condiciones, formado otro tipo de estrcuturas que son conocidas como <strong>estructuras condicionales</strong>; entre las cuales podemos destacar:<ol>
-<li><strong>Estructuras Alternativas</strong>, según si se cumple la condición o no, se realizará una tarea u otra. <ul>
+<li>Para ello es necesario la elección de un código u otro en función de ciertas condiciones, formado otro tipo de estructuras que son conocidas como <strong>estructuras condicionales</strong>; entre las cuales podemos destacar:<ol>
+<li><strong>Estructuras Alternativas</strong>, según si se cumple la condición o no, se realizará una tarea u otra.<ul>
 <li>Ejemplo de utilización con la sentencia: <strong>if</strong>.</li>
 </ul>
 </li>
@@ -364,7 +464,7 @@
 </ol>
 </li>
 </ul>
-<h3 id="estructuras-condicionales">Estructuras condicionales<a class="headerlink" href="#estructuras-condicionales" title="Permanent link">&para;</a></h3>
+<h3 id="estructuras-alternativas">Estructuras alternativas<a class="headerlink" href="#estructuras-alternativas" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Las estructuras de selección permiten ejecutar diferentes instrucciones dependiendo del valor de una variable o expresión.</li>
 <li>También se les llama ramificaciones, estructuras de decisión o alternativas.</li>
@@ -375,10 +475,10 @@
 <ul>
 <li>La forma general de la orden <strong>if</strong> es:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">if [ expresión ]</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">then</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">realizar este código si expresión es verdadera</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">fi</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="o">[</span> expresión <span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span>    realizar este código si expresión es verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">fi</span>
 </code></pre></div>
 <figure>
   <img src="imagenes/01/Estructura_If.png" width="200"/>
@@ -387,10 +487,10 @@
 
 <ul>
 <li>Ejemplo: 
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">if [ $# -eq 1 ]</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">then</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">VAR=$1</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">fi</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -eq <span class="m">1</span> <span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="nv">VAR</span><span class="o">=</span><span class="nv">$1</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">fi</span>
 </code></pre></div></li>
 </ul>
 <div class="admonition info">
@@ -406,12 +506,12 @@
 <li>En este caso se contempla también la posibilidad de ejecutar alguna acción si no se cumple la expresión.</li>
 <li>La forma general del <strong>if then else</strong> es:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">if [ expresión ]</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">then</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">realizar si expresión es verdadera</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">else</span>
-<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">realizar si expresión es falsa</span>
-<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">fi</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="o">[</span> expresión <span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span>    realizar si expresión es verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="5 "></span>    realizar si expresión es falsa
+<span class="linenos" data-linenos="6 "></span><span class="k">fi</span>
 </code></pre></div>
 <figure>
   <img src="imagenes/01/Estructura_If_else.png" width="300"/>
@@ -420,12 +520,12 @@
 
 <ul>
 <li>Ejemplo: 
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">if [ $a -gt $b ]</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">then</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo &quot;$a es mayor que $b&quot;</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">else</span>
-<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo &quot;$a es menor que $b&quot;</span>
-<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">fi</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="o">[</span> <span class="nv">$a</span> -gt <span class="nv">$b</span> <span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es mayor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es menor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">fi</span>
 </code></pre></div></li>
 </ul>
 <h4 id="la-estructura-if-then-elif-else">La estructura if then elif else<a class="headerlink" href="#la-estructura-if-then-elif-else" title="Permanent link">&para;</a></h4>
@@ -434,30 +534,30 @@
 <li>Es posible colocar tantos elif como condiciones se requiera evaluar.</li>
 <li>La forma general del <strong>if then elif else</strong> es:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">if [ exp1 ]</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">then</span>
-<span class="linenos" data-linenos=" 3 "></span>    <span class="l l-Scalar l-Scalar-Plain">realizar si exp1 es verdadera</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain">elif [ exp2 ]</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="l l-Scalar l-Scalar-Plain">then</span>
-<span class="linenos" data-linenos=" 6 "></span>    <span class="l l-Scalar l-Scalar-Plain">realizar si exp1 es falsa, pero es verdadera exp2</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="l l-Scalar l-Scalar-Plain">elif [ exp3 ]</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="l l-Scalar l-Scalar-Plain">then</span>
-<span class="linenos" data-linenos=" 9 "></span>    <span class="l l-Scalar l-Scalar-Plain">realizar si exp1 y exp2 son falsas, pero es verdadera exp3</span>
-<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">else</span>
-<span class="linenos" data-linenos="11 "></span>    <span class="l l-Scalar l-Scalar-Plain">realizar si todas las expresiones son falsas</span>
-<span class="linenos" data-linenos="12 "></span><span class="l l-Scalar l-Scalar-Plain">fi</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">if</span> <span class="o">[</span> exp1 <span class="o">]</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos=" 3 "></span>    realizar si exp1 es verdadera
+<span class="linenos" data-linenos=" 4 "></span><span class="k">elif</span> <span class="o">[</span> exp2 <span class="o">]</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="k">then</span>
+<span class="linenos" data-linenos=" 6 "></span>    realizar si exp1 es falsa, pero es verdadera exp2
+<span class="linenos" data-linenos=" 7 "></span><span class="k">elif</span> <span class="o">[</span> exp3 <span class="o">]</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">then</span>
+<span class="linenos" data-linenos=" 9 "></span>    realizar si exp1 y exp2 son falsas, pero es verdadera exp3
+<span class="linenos" data-linenos="10 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="11 "></span>    realizar si todas las expresiones son falsas
+<span class="linenos" data-linenos="12 "></span><span class="k">fi</span>
 </code></pre></div>
 <ul>
 <li>Ejemplo: 
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">if [ $a -gt $b ]</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">then</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo &quot;$a es mayor que $b&quot;</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">elif [ $a -eq $b ]</span>
-<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">then</span>
-<span class="linenos" data-linenos="6 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo &quot;$a es igual que $b&quot;</span>
-<span class="linenos" data-linenos="7 "></span><span class="l l-Scalar l-Scalar-Plain">else</span>
-<span class="linenos" data-linenos="8 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo &quot;$a es menor que $b&quot;</span>
-<span class="linenos" data-linenos="9 "></span><span class="l l-Scalar l-Scalar-Plain">fi</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="o">[</span> <span class="nv">$a</span> -gt <span class="nv">$b</span> <span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es mayor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">elif</span> <span class="o">[</span> <span class="nv">$a</span> -eq <span class="nv">$b</span> <span class="o">]</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="6 "></span>    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es igual que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="8 "></span>    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es menor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="9 "></span><span class="k">fi</span>
 </code></pre></div></li>
 </ul>
 <div class="admonition info">
@@ -474,17 +574,17 @@
 <li>La limitación que tan sólo se comprueba si es igual a ese valor.</li>
 <li>La forma general del <strong>case</strong> es:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">case VARIABLE in</span>
-<span class="linenos" data-linenos=" 2 "></span>    <span class="l l-Scalar l-Scalar-Plain">valor1)</span>
-<span class="linenos" data-linenos=" 3 "></span>        <span class="l l-Scalar l-Scalar-Plain">Se ejecuta si VARIABLE tiene el valor1</span>
-<span class="linenos" data-linenos=" 4 "></span>        <span class="l l-Scalar l-Scalar-Plain">;;</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="l l-Scalar l-Scalar-Plain">valor2)</span>
-<span class="linenos" data-linenos=" 6 "></span>        <span class="l l-Scalar l-Scalar-Plain">Se ejecuta si VARIABLE tiene el valor2</span>
-<span class="linenos" data-linenos=" 7 "></span>        <span class="l l-Scalar l-Scalar-Plain">;;</span>
-<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">*)</span>
-<span class="linenos" data-linenos=" 9 "></span>        <span class="l l-Scalar l-Scalar-Plain">Se ejecuta por defecto</span>
-<span class="linenos" data-linenos="10 "></span>        <span class="l l-Scalar l-Scalar-Plain">;;</span>
-<span class="linenos" data-linenos="11 "></span><span class="l l-Scalar l-Scalar-Plain">esac</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">case</span> VARIABLE <span class="k">in</span>
+<span class="linenos" data-linenos=" 2 "></span>    valor1<span class="o">)</span>
+<span class="linenos" data-linenos=" 3 "></span>        Se ejecuta si VARIABLE tiene el valor1
+<span class="linenos" data-linenos=" 4 "></span>        <span class="p">;;</span>
+<span class="linenos" data-linenos=" 5 "></span>    valor2<span class="o">)</span>
+<span class="linenos" data-linenos=" 6 "></span>        Se ejecuta si VARIABLE tiene el valor2
+<span class="linenos" data-linenos=" 7 "></span>        <span class="p">;;</span>
+<span class="linenos" data-linenos=" 8 "></span>    *<span class="o">)</span>
+<span class="linenos" data-linenos=" 9 "></span>        Se ejecuta por defecto
+<span class="linenos" data-linenos="10 "></span>        <span class="p">;;</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">esac</span>
 </code></pre></div>
 <figure>
   <img src="imagenes/01/EstructuraAlternativaMultiple.png" width="600"/>
@@ -510,22 +610,21 @@
 <li><strong>Contador:</strong> es una variable cuyo valor se incrementa o decrementa en una cantidad constante cada vez que se produce un determinado suceso o acción. Los contadores se utilizan con la finalidad de contar sucesos o acciones internas de un bucle.</li>
 </ol>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
+<p class="admonition-title">NOTA</p>
 <p>La inicialización consiste en asignarle al contador un valor. Se situará antes y fuera del bucle.</p>
 </div>
 <ol start="2">
-<li><strong>Acumulador o Totalizador</strong> es una variable que suma sobre sí misma un conjunto de valores para de esta manera tener el total de todos ellos en una sola variable. </li>
+<li><strong>Acumulador o Totalizador</strong> es una variable que suma sobre sí misma un conjunto de valores para de esta manera tener el total de todos ellos en una sola variable.</li>
 </ol>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
+<p class="admonition-title">NOTA</p>
 <p>La diferencia entre un contador y un acumulador es que mientras el primero va aumentando de uno en uno, el acumulador va aumentando en una cantidad variable.</p>
 </div>
 <ol start="3">
-<li><strong>Banderas</strong>, conocidas también como interruptores, switch, flags o conmutadores. Son variables que pueden tomar solamente dos valores
-durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los valores booleanos verdadero o falso. </li>
+<li><strong>Banderas</strong>, conocidas también como interruptores, switch, flags o conmutadores. Son variables que pueden tomar solamente dos valores durante la ejecución del programa, los cuales pueden ser <strong>cero o uno</strong>, o bien los valores <strong>booleanos verdadero o falso</strong>.</li>
 </ol>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
+<p class="admonition-title">NOTA</p>
 <p>Se les suele llamar interruptores porque cuando toman un valor están simulando un interruptor abierto/cerrado o encendido/apagado.</p>
 </div>
 <figure>
@@ -534,9 +633,9 @@ durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los
 </figure>
 
 <h4 id="las-estructuras-while-y-until">Las estructuras while y until<a class="headerlink" href="#las-estructuras-while-y-until" title="Permanent link">&para;</a></h4>
-<p>Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. El funcionamiento es lógico:</p>
+<p>Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. Funcionamiento:</p>
 <ul>
-<li>Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa. </li>
+<li>Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa.</li>
 <li>Si es verdadera entra en el bucle y ejecuta el código que contiene.</li>
 <li>Al finalizar la ejecución, al iterar, vuelve a evaluar la condición y vuelve a repetir la operación anterior.</li>
 </ul>
@@ -547,18 +646,18 @@ durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los
 <ul>
 <li>
 <p><code>WHILE</code>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">while [ expresión ]</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">código se repite MIENTRAS la expresión sea verdadera</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">while</span> <span class="o">[</span> expresión <span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span>    código se repite MIENTRAS la expresión sea verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
 </code></pre></div></p>
 </li>
 <li>
 <p><code>UNTIL</code>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">until [ expresión ]</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">código se repite HASTA que la expresión sea verdadera</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">until</span> <span class="o">[</span> expresión <span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span>    código se repite HASTA que la expresión sea verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
 </code></pre></div></p>
 </li>
 </ul>
@@ -569,16 +668,15 @@ durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los
 <ul>
 <li>Ejemplo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">while [ expresión ]</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">#! /bin/bash</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">read -p “Escribe un número</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">“ num</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain">i=1</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain">while [ $i -le 10 ]</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
-<span class="linenos" data-linenos=" 7 "></span>    <span class="l l-Scalar l-Scalar-Plain">let res=num*i</span>
-<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo “$i x $num = $res”</span>
-<span class="linenos" data-linenos=" 9 "></span>    <span class="l l-Scalar l-Scalar-Plain">let i=i+1</span>
-<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#! /bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">read</span> -p <span class="s2">&quot;Escribe un número: &quot;</span> num
+<span class="linenos" data-linenos="3 "></span><span class="nv">i</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le <span class="m">10</span> <span class="o">]</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="6 "></span>    <span class="nb">let</span> <span class="nv">res</span><span class="o">=</span>num*i
+<span class="linenos" data-linenos="7 "></span>    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2"> x </span><span class="nv">$num</span><span class="s2"> = </span><span class="nv">$res</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="8 "></span>    <span class="nb">let</span> <span class="nv">i</span><span class="o">=</span>i+1
+<span class="linenos" data-linenos="9 "></span><span class="k">done</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -590,30 +688,30 @@ durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los
 <li>No necesita condición de salida ya que al finalizar los elementos del conjunto acabará con su ejecución.</li>
 <li>la forma general es:</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">for variable in conjunto</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">estas líneas se repiten una vez por cada elemento del conjunto</span>
-<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">variable toma los valores del conjunto, uno en cada iteración</span>
-<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span> variable <span class="k">in</span> conjunto
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span>    estas líneas se repiten una vez por cada elemento del conjunto
+<span class="linenos" data-linenos="4 "></span>    variable toma los valores del conjunto, uno en cada iteración
+<span class="linenos" data-linenos="5 "></span><span class="k">done</span>
 </code></pre></div>
 * Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">#! /bin/bash</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="nt">read -p “Escribe la dirección de una carpeta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">“ car</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">for i in $(ls $car)</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="l l-Scalar l-Scalar-Plain">if [ -f $i ]</span>
-<span class="linenos" data-linenos=" 6 "></span>    <span class="l l-Scalar l-Scalar-Plain">then</span>
-<span class="linenos" data-linenos=" 7 "></span>        <span class="l l-Scalar l-Scalar-Plain">echo “$i es un archivo de tipo regular”</span>
-<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">elif [ -d $i ]</span>
-<span class="linenos" data-linenos=" 9 "></span>    <span class="l l-Scalar l-Scalar-Plain">then</span>
-<span class="linenos" data-linenos="10 "></span>        <span class="l l-Scalar l-Scalar-Plain">echo “$i es un archivo de tipo directorio”</span>
-<span class="linenos" data-linenos="11 "></span>    <span class="l l-Scalar l-Scalar-Plain">else</span>
-<span class="linenos" data-linenos="12 "></span>        <span class="l l-Scalar l-Scalar-Plain">echo “$i es otro tipo de archivo o no existe”</span>
-<span class="linenos" data-linenos="13 "></span>    <span class="l l-Scalar l-Scalar-Plain">fi</span>
-<span class="linenos" data-linenos="14 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#! /bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">read</span> -p “Escribe la dirección de una carpeta: “ car
+<span class="linenos" data-linenos=" 3 "></span><span class="k">for</span> i <span class="k">in</span> <span class="k">$(</span>ls <span class="nv">$car</span><span class="k">)</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">do</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$i</span> <span class="o">]</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="k">then</span>
+<span class="linenos" data-linenos=" 7 "></span>        <span class="nb">echo</span> “<span class="nv">$i</span> es un archivo de tipo regular”
+<span class="linenos" data-linenos=" 8 "></span>    <span class="k">elif</span> <span class="o">[</span> -d <span class="nv">$i</span> <span class="o">]</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="k">then</span>
+<span class="linenos" data-linenos="10 "></span>        <span class="nb">echo</span> “<span class="nv">$i</span> es un archivo de tipo directorio”
+<span class="linenos" data-linenos="11 "></span>    <span class="k">else</span>
+<span class="linenos" data-linenos="12 "></span>        <span class="nb">echo</span> “<span class="nv">$i</span> es otro tipo de archivo o no existe”
+<span class="linenos" data-linenos="13 "></span>    <span class="k">fi</span>
+<span class="linenos" data-linenos="14 "></span><span class="k">done</span>
 </code></pre></div>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
+<p class="admonition-title">NOTA</p>
 <p>Este ejemplo se van a mostrar los nombres de los ficheros que contiene un directorio y dirá si es un directorio o un fichero.</p>
 </div>
 <h5 id="romper-un-bucle-de-forma-deliberada">Romper un bucle de forma deliberada<a class="headerlink" href="#romper-un-bucle-de-forma-deliberada" title="Permanent link">&para;</a></h5>
@@ -661,6 +759,26 @@ durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="012_ShelScript_Sintaxis.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 1.2- Sintaxis" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              1.2- Sintaxis
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
