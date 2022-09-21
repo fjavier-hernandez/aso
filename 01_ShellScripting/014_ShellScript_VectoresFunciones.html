@@ -16,7 +16,7 @@
     
     
       
-        <title>Vectores y Funciones - Administración de Sistemas Operativos</title>
+        <title>1.4- Vectores y funciones - Administración de Sistemas Operativos</title>
       
     
     
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vectores y Funciones
+              1.4- Vectores y funciones
             
           </span>
         </div>
@@ -229,12 +229,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         1.- UD1. ShellScripting
@@ -295,6 +297,65 @@
   
 
           
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          1.4- Vectores y funciones
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="014_ShellScript_VectoresFunciones.html" class="md-nav__link md-nav__link--active">
+        1.4- Vectores y funciones
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vectores-en-shell-script" class="md-nav__link">
+    Vectores en shell script
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-en-shell-script" class="md-nav__link">
+    Funciones en shell script
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -324,7 +385,7 @@
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Un buen ejemplo de uso sería, por ejemplo, para recoger el listado de archivos que hay en una carpeta.</p>
+<p>Un buen ejemplo de uso sería, recoger el listado de archivos que hay en una carpeta.</p>
 </div>
 <figure>
   <img src="imagenes/01/EsquemaVector.png" width="500"/>
@@ -337,11 +398,11 @@
 <li><strong>Explícitamente:</strong> cuando el vector no requiere que se inicialice mientras se declara, es decir, pueden ser inicializados con posterioridad.</li>
 </ol>
 <p>Para declarar un vector hay que utilizar la siguiente estructura:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">declare -a meses=(&quot;enero&quot; &quot;febrero&quot; &quot;marzo&quot;)</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">declare</span> -a <span class="nv">meses</span><span class="o">=(</span><span class="s2">&quot;enero&quot;</span> <span class="s2">&quot;febrero&quot;</span> <span class="s2">&quot;marzo&quot;</span><span class="o">)</span>
 </code></pre></div>
 <p>También es posible utilizar alguna expresión para completar un vector, como con el operador rango ...</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">declare -a letras=( {N..Z} {s..z} )</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">echo ${letras[*]}</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">declare</span> -a <span class="nv">letras</span><span class="o">=(</span> <span class="o">{</span>N..Z<span class="o">}</span> <span class="o">{</span>s..z<span class="o">}</span> <span class="o">)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">echo</span> <span class="si">${</span><span class="nv">letras</span><span class="p">[*]</span><span class="si">}</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -355,12 +416,12 @@
 <li>Si el índice es mayor que la última posición de la estructura, se escribirá al final de la misma.</li>
 <li>Si se usa un índice que ya contiene un dato, éste será sobrescrito.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">meses[3]=&quot;abril&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>meses<span class="o">[</span><span class="m">3</span><span class="o">]=</span><span class="s2">&quot;abril&quot;</span>
 </code></pre></div>
 <ul>
 <li>Para mostrar el contenido del vector:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">echo ${meses[*]}</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">echo</span> <span class="si">${</span><span class="nv">meses</span><span class="p">[*]</span><span class="si">}</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -399,38 +460,38 @@ enero febrero marzo abril</p>
 <ul>
 <li>Para recorrer los valores que contiene esta estructura se puede utilizar un bucle <strong>for</strong></li>
 </ul>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">for item in ${meses[*]}</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo $item</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span> item <span class="k">in</span> <span class="si">${</span><span class="nv">meses</span><span class="p">[*]</span><span class="si">}</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="nb">echo</span> <span class="nv">$item</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
 </code></pre></div>
 * También se puede utilizar sus índices para mostrar los datos contenidos.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">for index in ${!meses[*]}</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo ${meses[$index]}</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span> index <span class="k">in</span> <span class="si">${</span><span class="p">!meses[*]</span><span class="si">}</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="nb">echo</span> <span class="si">${</span><span class="nv">meses</span><span class="p">[</span><span class="nv">$index</span><span class="p">]</span><span class="si">}</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
 </code></pre></div>
 <ul>
 <li>Es una estructura muy útil en la que se puede guardar cualquier tipo de información, como por ejemplo los ficheros que contiene una carpeta:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">i=0;</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">for fichero in $(ls -a)</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">do</span>
-<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">ficheros[$i]=$fichero;</span>
-<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">let i=i+1;</span>
-<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">done</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">i</span><span class="o">=</span><span class="m">0</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">for</span> fichero <span class="k">in</span> <span class="k">$(</span>ls -a<span class="k">)</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="4 "></span>    ficheros<span class="o">[</span><span class="nv">$i</span><span class="o">]=</span><span class="nv">$fichero</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="nb">let</span> <span class="nv">i</span><span class="o">=</span>i+1<span class="p">;</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">done</span>
 </code></pre></div>
 <h2 id="funciones-en-shell-script">Funciones en shell script<a class="headerlink" href="#funciones-en-shell-script" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Una función es un conjunto de líneas de código que se identifican a través de un identificador y que se ejecutan al invocar ese identificador.</li>
+<li>Una función es un conjunto de líneas de código que se distinguen a través de un identificador y que se ejecutan al invocar ese identificador.</li>
 <li>Se podría definir como un shell script dentro de un shell script.</li>
 <li>Sirve para organizarlo en unidades lógicas más pequeñas de manera que sea más fácil mantenerlo.</li>
 <li>Las funciones aceptan parámetros, de idéntica manera que los shell script, por lo que su uso también es muy intuitivo.</li>
 <li>La estructura de una función queda definida de la siguiente manera:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">function nombre_función(){</span>
-<span class="linenos" data-linenos="2 "></span>    <span class="l l-Scalar l-Scalar-Plain">código que se ejecutará al llamar a la función</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">function</span> nombre_función<span class="o">(){</span>
+<span class="linenos" data-linenos="2 "></span>    código que se ejecutará al llamar a la función
+<span class="linenos" data-linenos="3 "></span><span class="o">}</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -449,23 +510,23 @@ enero febrero marzo abril</p>
 <p>Ejemplo:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">#! /bin/bash</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">function imprimir_tabla(){</span>
-<span class="linenos" data-linenos=" 3 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo “Tabla del número $1”</span>
-<span class="linenos" data-linenos=" 4 "></span>    <span class="l l-Scalar l-Scalar-Plain">for i in 1 2 3 4 5 6 7 8 9 10</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="l l-Scalar l-Scalar-Plain">do</span>
-<span class="linenos" data-linenos=" 6 "></span>        <span class="l l-Scalar l-Scalar-Plain">let res=$1*i</span>
-<span class="linenos" data-linenos=" 7 "></span>    <span class="l l-Scalar l-Scalar-Plain">echo “$i x $1 = $res”</span>
-<span class="linenos" data-linenos=" 8 "></span>    <span class="l l-Scalar l-Scalar-Plain">done</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">read -p “Escribe un número</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">“ num</span>
-<span class="linenos" data-linenos="11 "></span><span class="l l-Scalar l-Scalar-Plain">imprimir_tabla $num</span>
-<span class="linenos" data-linenos="12 "></span><span class="l l-Scalar l-Scalar-Plain">imprimir_tabla 5</span>
-<span class="linenos" data-linenos="13 "></span><span class="err">}</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#! /bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">function</span> imprimir_tabla<span class="o">(){</span>
+<span class="linenos" data-linenos=" 3 "></span>    <span class="nb">echo</span> “Tabla del número <span class="nv">$1</span>”
+<span class="linenos" data-linenos=" 4 "></span>    <span class="k">for</span> i <span class="k">in</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> <span class="m">10</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="k">do</span>
+<span class="linenos" data-linenos=" 6 "></span>        <span class="nb">let</span> <span class="nv">res</span><span class="o">=</span><span class="nv">$1</span>*i
+<span class="linenos" data-linenos=" 7 "></span>    <span class="nb">echo</span> “<span class="nv">$i</span> x <span class="nv">$1</span> <span class="o">=</span> <span class="nv">$res</span>”
+<span class="linenos" data-linenos=" 8 "></span>    <span class="k">done</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="10 "></span><span class="nb">read</span> -p “Escribe un número: “ num
+<span class="linenos" data-linenos="11 "></span>imprimir_tabla <span class="nv">$num</span>
+<span class="linenos" data-linenos="12 "></span>imprimir_tabla <span class="m">5</span>
+<span class="linenos" data-linenos="13 "></span><span class="o">}</span>
 </code></pre></div>
 <ul>
 <li>En este ejemplo se ha construido una función para imprimir la tabla de multiplicar de un número pasado como parámetro.</li>
-<li>En la siguiente línea le pedimos al programa que imprima la tabla del número cinco. </li>
+<li>En la siguiente línea le pedimos al programa que imprima la tabla del número cinco.</li>
 <li>No se ha necesitado escribir el código que imprime la su tabla de multiplicar de nuevo, ya que con invocar el nombre de la función el programa ya sabe que código debe ejecutar.</li>
 </ul>
 <div class="admonition warning">
@@ -476,42 +537,30 @@ enero febrero marzo abril</p>
 <li>Es preferible utilizar el primer método para que devuelva un valor que será recogido en otra variable fuera de la función que lo originó.</li>
 </ul>
 </div>
-<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Escribe el código de los scripts en <strong>ShellScript</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
-</div>
-<ol start="111">
-<li>Realiza un script utilizando funciones que permita crear un informe de las <strong>IP libres</strong> en la red en la que se encuentra el equipo. Debe contener las siguientes opciones:<ol>
-<li>El informe contendrá un <strong>listado de todas las IP de la red</strong> a la que pertenece el equipo indicando si está libe o no (usa el comando ping).</li>
-<li>En el informe debe aparecer el <strong>tipo de red</strong> (rango CIDR) en el que está inmerso el ordenador con el <strong>nombre de la red</strong>, su <strong>broadcast</strong> y su <strong>máscara de subred</strong>. Esta información la podéis obtener desde el comando ifconfig.</li>
-</ol>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Para facilitar los cálculos asumimos que el equipo donde se ejecuta el script se encuentra en una única red, es decir, solo posee una tarjeta de red.</p>
-</div>
-<ol start="112">
-<li>
-<p>Crea un script que rellene un <strong>vector</strong> con cien valores aleatorios y muestre en pantalla en una sola línea los valores generados.</p>
-</li>
-<li>
-<p>Genera un script que rellene un <strong>vector</strong> con diez números pedidos al usuario y que los muestre por pantalla de la siguiente forma:</p>
-<ol>
-<li>en orden inverso a como han sido introducidos los valores</li>
-<li>los valores ordenados de menor a mayor en una sola línea</li>
-<li>los valores ordenados de mayor a menor en una sola línea</li>
-<li>la suma total de sus valores</li>
-<li>cantidad de valores pares que contiene el vector</li>
-<li>la suma total de números impares</li>
-<li>la media aritmética de los valores que contiene el vector</li>
-</ol>
-</li>
-<li>
-<p>Crea un script que muestre las opciones del ejercicio anterior con select. El usuario introducirá los valores del <strong>vector</strong> al iniciar el script. Cuando termine aparecerá el menú de selección (deberás añadir la opción para salir del script). Además deberás crear una <strong>función</strong> para cada opción del menú y llamarla en cada una de las opciones del select.</p>
-</li>
-</ol>
+<!-- ## Actividades
+
+!!! note
+    Escribe el código de los scripts en **ShellScript** que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.
+
+112. Realiza un script utilizando funciones que permita crear un informe de las **IP libres** en la red en la que se encuentra el equipo. Debe contener las siguientes opciones:
+    1. El informe contendrá un **listado de todas las IP de la red** a la que pertenece el equipo indicando si está libe o no (usa el comando ping).
+    2. En el informe debe aparecer el **tipo de red** (rango CIDR) en el que está inmerso el ordenador con el **nombre de la red**, su **broadcast** y su **máscara de subred**. Esta información la podéis obtener desde el comando ifconfig.
+
+!!! note
+    Para facilitar los cálculos asumimos que el equipo donde se ejecuta el script se encuentra en una única red, es decir, solo posee una tarjeta de red.
+
+113. Crea un script que rellene un **vector** con cien valores aleatorios y muestre en pantalla en una sola línea los valores generados.
+
+114. Genera un script que rellene un **vector** con diez números pedidos al usuario y que los muestre por pantalla de la siguiente forma:
+    1. en orden inverso a como han sido introducidos los valores
+    2. los valores ordenados de menor a mayor en una sola línea
+    3. los valores ordenados de mayor a menor en una sola línea
+    4. la suma total de sus valores
+    5. cantidad de valores pares que contiene el vector
+    6. la suma total de números impares
+    7. la media aritmética de los valores que contiene el vector
+
+114. Crea un script que muestre las opciones del ejercicio anterior con select. El usuario introducirá los valores del **vector** al iniciar el script. Cuando termine aparecerá el menú de selección (deberás añadir la opción para salir del script). Además deberás crear una **función** para cada opción del menú y llamarla en cada una de las opciones del select. -->
                 
               
               
@@ -527,6 +576,26 @@ enero febrero marzo abril</p>
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="013_ShellScript_ControlFlujo.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 1.3- Control de flujo" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              1.3- Control de flujo
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
