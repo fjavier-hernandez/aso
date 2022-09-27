@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/01_ShellScripting/index.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/02_PowerShell/021_Introduccio%CC%81nPwSh.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>Programación de Aula - Administración de Sistemas Operativos</title>
+        <title>2.1- Introducción - Administración de Sistemas Operativos</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#programacion-de-aula" class="md-skip">
+        <a href="#power-shell" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Programación de Aula
+              2.1- Introducción
             
           </span>
         </div>
@@ -252,7 +252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ProgramacionAula.html" class="md-nav__link">
+      <a href="../01_ShellScripting/ProgramacionAula.html" class="md-nav__link">
         Programación de Aula
       </a>
     </li>
@@ -264,7 +264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="011_ShellScript_Intro.html" class="md-nav__link">
+      <a href="../01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
         1.1- Introducción
       </a>
     </li>
@@ -276,7 +276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="012_ShelScript_Sintaxis.html" class="md-nav__link">
+      <a href="../01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
         1.2- Sintaxis
       </a>
     </li>
@@ -288,7 +288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="013_ShellScript_ControlFlujo.html" class="md-nav__link">
+      <a href="../01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
         1.3- Control de flujo
       </a>
     </li>
@@ -300,7 +300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+      <a href="../01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
         1.4- Vectores y Funciones
       </a>
     </li>
@@ -319,12 +319,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       <label class="md-nav__link" for="__nav_3">
         2.- UD2: PowerShell
@@ -342,7 +344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02_PowerShell/ProgramacionAula.html" class="md-nav__link">
+      <a href="ProgramacionAula.html" class="md-nav__link">
         Programación de Aula
       </a>
     </li>
@@ -352,11 +354,79 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../02_PowerShell/021_Introduccio%CC%81nPwSh.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.1- Introducción
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="021_Introduccio%CC%81nPwSh.html" class="md-nav__link md-nav__link--active">
         2.1- Introducción
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-script" class="md-nav__link">
+    Primer Script
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-ise" class="md-nav__link">
+    PowerShell ISE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comentarios" class="md-nav__link">
+    Comentarios
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depuracion" class="md-nav__link">
+    Depuración
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -380,216 +450,116 @@
               
                 
                 
-                <h1 id="programacion-de-aula">Programación de Aula<a class="headerlink" href="#programacion-de-aula" title="Permanent link">&para;</a></h1>
-<p>Esta unidad cubre el <strong>Resultado de aprendizaje 7 (RA7)</strong> según el <strong>Real Decreto 1629/2009, de 30 de octubre</strong>, el cual es:</p>
-<ol start="7">
-<li>Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.</li>
-</ol>
-<p>Los criterios de evaluación asociados son:</p>
-<style>
-ol.criterio {
-  list-style-type: none;
-}
-</style>
-
-<div>
-  <ol class="criterio">
-    <li>a. Se han utilizado y combinado las estructuras del lenguaje para crear guiones.</li>
-    <li>b. Se han utilizado herramientas para depurar errores sintácticos y de ejecución.</li>
-    <li>g. Se han implantado guiones en sistemas libres y propietario.</li>
-    <li>h. Se han consultado y utilizado librerías de funciones.</li>
-    <li>i. Se han documentado los guiones creados.</li>
-  </ol>
+                <h1 id="power-shell">Power Shell<a class="headerlink" href="#power-shell" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Los sistemas operativos basados en Microsoft Windows cuentan con la herramienta <strong>PowerShell</strong>, que surgió ante las carencias que presenta el viejo terminal basado en <strong>MS-DOS</strong>.</li>
+<li><strong>PowerShell</strong> es una interfaz de consola (CLI) con posibilidad de escritura y unión de comandos por medio de instrucciones (scripts). </li>
+<li>Esta interfaz de consola está diseñada para su uso por parte de <strong>administradores de sistemas</strong>, con el propósito de automatizar tareas o realizarlas de forma más controlada.</li>
+<li>En abril de 2006 Microsoft lanzó una nueva interfaz CLI, con una sintaxis moderna que comparte similitudes con el lenguaje Perl.<ul>
+<li><strong>Perl</strong> es un lenguaje de programación diseñado por Larry Wall en 1987. Perl toma características del lenguaje C, del lenguaje interpretado bourne shell, AWK, sed, Lisp y, en un grado inferior, de muchos otros lenguajes de programación.</li>
+</ul>
+</li>
+<li>Se trata de una interfaz gratuita, y que antes de Microsoft <strong>Windows 7</strong> no se incluía con el sistema operativo.</li>
+<li>En la actualidad, está incluida en todos los sistemas operativos de Microsoft, aunque requiere la presencia de <code>.NET</code> framework del que hereda sus características orientadas a objetos.</li>
+<li>En agosto de 2016, Microsoft publicó su código en GitHub para que pueda portarse a otros sistemas como GNU/Linux y MAC OSX.</li>
+<li>Los comandos incluidas en PowerShell reciben el nombre de <strong>cmdlets (command-let)</strong> y posee conjuntos específicos para trabajar con <em>Active Directory, Exchange</em>, entre otros roles de servidor.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>cmdlets</strong> Existen cientos de cdmlet en la <em>versión 5.1</em> de PowerShell. Es posible consultar la ayuda de cada uno de ellos en la página oficial de Microsoft.</p>
 </div>
+<ul>
+<li>Otra ventaja de PowerShell es que se dispone de la mayoría de comandos que del CLI tradicional de Microsoft. De ese modo, es posible ejecutar el comando <code>dir</code> en lugar del <code>Get-ChildItem</code>, cmdlet que realiza la misma tarea. En realidad lo que está usando es un alias del segundo para lanzar el primero.</li>
+<li>Dispone de auto-completado de comandos y parámetros que facilitará las tareas de creación de scripts. Basta con comenzar a escribir un cmdlet y pulsarla tecla Tab.</li>
+<li>Si utilizamos <strong>PowerShell ISE</strong> al escribir aparecerá una ventana con todos los cmdlets que coincidan con el texto escrito, incluso puede aparecer un recuadro con ayuda sobre su sintaxis. Para aceptar la sugerencia se pulsa la tecla Intro .</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Los nombres de todos los cmdlets están formados por un verbo, un guion y un nombre en singular. Habitualmente, se escribe con mayúsculas la primera letra de cada palabra, pero no se trata más que de una norma de estilo, porque <strong>PowerShell no distingue entre mayúsculas y minúsculas.</strong></p>
+</div>
+<h2 id="primer-script">Primer Script<a class="headerlink" href="#primer-script" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Al igual que ocurre en GNU/Linux un script de PowerShell no es más que un archivo de texto plano que contiene una secuencia de comando y de <strong>cmdlets</strong> para realizar una tarea.</li>
+<li>La diferencia con ellos es que aquí será necesario dotarlos de una extensión; <code>ps1</code>.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Hola!. Esto es mi primer script en PowerShell&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Y esto es una segunda línea&quot;</span>
+</code></pre></div>
+</div>
+<ul>
+<li>A continuación, se guarda el script desde el menú <code>Acción → Guardar Como…</code> asignándole un nombre.</li>
+<li>Para ejecutarlo tan sólo es necesario escribir su nombre en el terminal de PowerShell anteponiendo un punto y una barra.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">./</span><span class="n">Script</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+</div>
+<h2 id="powershell-ise">PowerShell ISE<a class="headerlink" href="#powershell-ise" title="Permanent link">&para;</a></h2>
+<ul>
+<li>PowerShell viene acompañado de una <strong>herramienta gráfica</strong> que facilita la administración de todos los scripts. Se denomina Microsoft <strong>PowerShell ISE (Integrated Scripting Environment)</strong>, y se accede a través de: <code>Administrador del servidor → Herramientas → Windows PowerShell ISE</code>.</li>
+<li>El uso de esta herramienta gráfica va a facilitar la creación de los scripts de forma significativa.</li>
+<li>Es práctico comenzar con esta ayuda ya que la sintaxis de los cmdlets, aunque sea lógica y sencilla, también lo es amplia y desconocida.</li>
+</ul>
+<figure>
+  <img src="imagenes/02/InterfazPowerShell.png" width="800"/>
+  <figcaption>Interfaz de la herramienta Windows PowerShell ISE</figcaption>
+</figure>
 
-<p>A continuación se muestra un resumen de la Unidad Didáctica:</p>
-<style>
-    .heatMap td { 
-      text-align: left;
-      padding-left: 10px;
-    }
-    table caption {
-      padding: 10px;
-      background: #0077b6;
-      border-style: solid;
-      border-width: 2px;
-      border-color: #060606;
-      font-weight: bold;
-    }
-</style>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Uno de los aspectos más interesantes que posee esta aplicación es la barra de información que muestra un listado de todos los <strong>cmdlets</strong> de esta herramienta. Permite filtrarlos por función y consultar la ayuda de cada uno de ellos.</li>
+<li>También posee un formulario destinado a generar el código de un <strong>cmdlet</strong> de forma automática.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>Creación de un comando que realice una copia de seguridad de los scripts de trabajo en una memoria externa. Es necesario el uso de Copy-Item para ello, pero no se conoce su sintaxis.</li>
+<li>Si escribimos este <strong>cmdlet</strong> en el recuadro <code>Nombre</code> y se pulsa sobre <code>Mostrar Ayuda</code>, aparecerá un formulario con sus opciones. Tras completar las necesarias y pulsando el botón <code>Insertar</code> situado en la parte inferior, el código completo será escrito la parte destinada al terminal.</li>
+</ul>
+</div>
+<figure>
+  <img src="imagenes/02/PS_ISE_EJEM.png" width="800"/>
+  <figcaption>Creación automática de scripts en Windows PowerShell ISE.</figcaption>
+</figure>
 
-<p>Detalle de la programación de Aula:</p>
-<table border="1" width="100%" class="heatMap">
-  <tbody>
-    <tr>
-      <table border="1" width="100%" class="heatMap">
-        <tr>
-          <td width="10%" style="background: #48cae4"><p><b>Sesión.</b></p></td>
-          <td width="10%" style="background: #48cae4"><p><b>Fecha</b></p></td>
-          <td width="35%" style="background: #48cae4"><p><b>Contenido</b></p></td>
-          <td width="35%" style="background: #48cae4"><p><b>Recurso Didáctico</b></p></td>
-        </tr>
-      </table>
-    </tr>
-    <tr>
-      <table border="1" width="100%" class="heatMap">
-        <tr>
-          <td width="10%">
-            <p>
-            1
-            </p>
-          </td>
-          <td width="10%">
-            <p>
-            07/09/22
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            Introducción ShellScripting, Creación ShellScript, Argumentos, Variables.
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            <a href="./011_ShellScript_Intro.html">Introducción ShellScripting</a>
-            </p>
-          </td>
-        </tr>
-      </table>
-    </tr>
-    <tr>
-      <table border="1" width="100%" class="heatMap">
-        <tr>
-          <td width="10%">
-            <p>
-            2
-            </p>
-          </td>
-          <td width="10%">
-            <p>
-            09/09/22
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            Sintaxis, Interacción con el usuario, Operadores, redirecciones y tuberias.
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            <a href="./012_ShelScript_Sintaxis.html">Sintaxis ShellScripting</a>
-            </p>
-          </td>
-        </tr>
-      </table>
-    </tr>
-    <tr>
-      <table border="1" width="100%" class="heatMap">
-        <tr>
-          <td width="10%">
-            <p>
-            3
-            </p>
-          </td>
-          <td width="10%">
-            <p>
-            12/09/22
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            Control de Flujo. Estructuras condicionales e iterativas.
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            <a href="./013_ShellScript_ControlFlujo.html">Control de Flujo.</a>
-            </p>
-          </td>
-        </tr>
-      </table>
-    </tr>
-    <tr>
-      <table border="1" width="100%" class="heatMap">
-        <tr>
-          <td width="10%">
-            <p>
-            4
-            </p>
-          </td>
-          <td width="10%">
-            <p>
-            14/09/22
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            Vectores y funciones
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            <a href="./014_ShellScript_vectoresFunciones.html">Vectores y Funciones.</a>
-            </p>
-          </td>
-        </tr>
-      </table>
-    </tr>
-    <tr>
-      <table border="1" width="100%" class="heatMap">
-        <tr>
-          <td width="10%">
-            <p>
-            5
-            </p>
-          </td>
-          <td width="10%">
-            <p>
-            16/09/22
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            Refuerzo y Ampliación
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            <a href="./015_ShellScript_RefuerzoAmpliacion.html">Refuerzo y Ampliación.</a>
-            </p>
-          </td>
-        </tr>
-      </table>
-    </tr>
-    <tr>
-      <table border="1" width="100%" class="heatMap">
-        <tr>
-          <td width="10%">
-            <p>
-            6
-            </p>
-          </td>
-          <td width="10%">
-            <p>
-            19/09/22
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            Prueba Específica
-            </p>
-          </td>
-          <td width="35%">
-            <p>
-            <!-- <a href="./016_ShellScript_PruebaEspecifica.html">Prueba Específica.</a> -->
-            Prueba Específica.
-            </p>
-          </td>
-        </tr>
-      </table>
-    </tr>
-  </tbody>
-</table>
+<ul>
+<li>Es posible ejecutar el script desde la <strong>herramienta gráfica</strong> pulsando la tecla <code>F5</code>, ejecutar una parte de él con <code>F8</code> o detener la ejecución con <code>Ctrl+Intro</code>.</li>
+</ul>
+<h2 id="comentarios">Comentarios<a class="headerlink" href="#comentarios" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Los comentarios en <strong>PowerShell</strong> se realizan precediendo a la línea con el carácter <code>#</code> si se trata de una sola línea y <code>&lt;#</code> y <code>#&gt;</code> si es multi-línea.</p>
+</div>
+<h2 id="depuracion">Depuración<a class="headerlink" href="#depuracion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>La depuración es el proceso de examinar un script mientras se ejecuta para identificar y corregir errores en las instrucciones del script.</li>
+<li>El depurador de PowerShell puede ayudarle a examinar e identificar errores e ineficiencias en los scripts, funciones, comandos, configuraciones o expresiones de PowerShell Desired State Configuration (DSC).</li>
+</ul>
+<p>El depurador de PowerShell incluye el siguiente conjunto de cmdlets:</p>
+<ul>
+<li><strong>Set-PSBreakpoint</strong>: establece puntos de interrupción en líneas, variables y comandos.</li>
+<li><strong>Get-PSBreakpoint</strong>: obtiene puntos de interrupción en la sesión actual.</li>
+<li><strong>Disable-PSBreakpoint</strong>: desactiva los puntos de interrupción en la sesión actual.</li>
+<li><strong>Enable-PSBreakpoint</strong>: vuelve a habilitar los puntos de interrupción en la sesión actual.</li>
+<li><strong>Remove-PSBreakpoint</strong>: elimina puntos de interrupción de la sesión actual.</li>
+<li><strong>Get-PSCallStack</strong>: muestra la pila de llamadas actual.</li>
+</ul>
+<!-- ## Actividades
+
+!!! note "NOTA"
+    Escribe el código de los scripts en **PowerShell** que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.
+
+201. Genera un Script que muestre los **procesos del sistema** ordenados por el **id**.
+
+202. Muestra los servicios cuyo nombre empiece por la letra `n`, utilizando la creación de un script.
+
+203. Crea un script que si no se le pasa ningún argumento nos lo diga. -->
                 
               
               
@@ -605,6 +575,26 @@ ol.criterio {
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="ProgramacionAula.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Programación de Aula" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Programación de Aula
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

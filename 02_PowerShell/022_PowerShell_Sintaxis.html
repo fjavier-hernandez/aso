@@ -1,0 +1,807 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/02_PowerShell/022_PowerShell_Sintaxis.html">
+      
+      <link rel="icon" href="../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>Sintaxis - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sintaxis" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sintaxis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- UD1. ShellScripting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- UD1. ShellScripting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- UD1. ShellScripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
+        1.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
+        1.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
+        1.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+        1.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- UD2: PowerShell
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- UD2: PowerShell" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- UD2: PowerShell
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="021_Introduccio%CC%81nPwSh.html" class="md-nav__link">
+        2.1- Introducción
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="sintaxis">Sintaxis<a class="headerlink" href="#sintaxis" title="Permanent link">&para;</a></h1>
+<h2 id="parametros-en-powershell">Parámetros en PowerShell<a class="headerlink" href="#parametros-en-powershell" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Como ocurría en GNU/Linux, los parámetros que reciba el script se deben recoger de forma interna en una variable para poder operar con ellos.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">param</span> <span class="p">(</span><span class="no">[string]</span><span class="nv">$nombre</span><span class="p">)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Hola!. Esto es mi primer script en PowerShell&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Y esto es una segunda línea&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Hola de nuevo, tu nombre es $nombre&quot;</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>El script anterior esperará un parámetro de tipo <code>string</code> que será contenido en la variable nombre.</li>
+<li>En la cuarta línea mostrará el contenido de la variable por pantalla. </li>
+</ul>
+</div>
+<ul>
+<li>Para poder ejecutar este script, será necesario acompañarlo de un parámetro del siguiente modo.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">./</span><span class="n">Script</span><span class="p">.</span><span class="n">ps1</span> <span class="err">“</span><span class="n">Fº</span> <span class="n">Javier</span> <span class="n">Hernández</span> <span class="n">Illán</span><span class="err">”</span>
+</code></pre></div>
+<ul>
+<li>Para entender por completo el ejemplo anterior, será necesario ver como PowerShell maneja las <strong>variables</strong>.</li>
+</ul>
+<h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Para definir una variable en PowerShell sólo tenemos que nombrarla utilizando para ello cualquier combinación de caracteres, ya sean números, letras o símbolos.</li>
+<li>Es posible utilizar espacios en el nombre, aunque en este caso el nombre debe ir rodeado por símbolos de llaves <strong>{}</strong>.</li>
+<li>Al contrario que ocurre en shellscript, PowerShell es <strong>fuertemente tipado</strong>, lo que significa que las variables no son tratadas como cadenas de texto, sino que hay que especificar el tipo de dato que se guardará en ella.</li>
+<li>Para definir variables es posible utilizar el método <strong>explícito</strong> (además con <strong>New-Variable</strong> y sus opciones), pero también se puede utilizar el método <strong>implícito</strong> anteponiendo el símbolo <strong>$</strong> delante del nombre.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Get-Variable</strong> En cualquier momento puedes obtener una lista completa de las variables que se hayan definido hasta ese momento. Para lograrlo, basta con utilizar Get- Variable.</p>
+</div>
+<h3 id="implicita">Implícita<a class="headerlink" href="#implicita" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[string]</code></td>
+<td>Cadena de caracteres Unicode</td>
+</tr>
+<tr>
+<td><code>[char]</code></td>
+<td>Un sólo carácter Unicode de 16 bits</td>
+</tr>
+<tr>
+<td><code>[byte]</code></td>
+<td>Un sólo carácter Unicode de 8 bits</td>
+</tr>
+<tr>
+<td><code>[int]</code></td>
+<td>Entero con signo de 32 bits</td>
+</tr>
+<tr>
+<td><code>[float]</code></td>
+<td>Número con coma flotante de 32 bits</td>
+</tr>
+<tr>
+<td><code>[double]</code></td>
+<td>Número con coma flotante de 64 bits</td>
+</tr>
+<tr>
+<td><code>[datetime]</code></td>
+<td>Fecha y Hora</td>
+</tr>
+<tr>
+<td><code>[bool]</code></td>
+<td>Valor lógico booleano</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$numero</span> <span class="p">=</span> <span class="n">9</span><span class="p">.</span><span class="n">99</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$Final_2021</span> <span class="p">=</span> <span class="n">30</span>
+<span class="linenos" data-linenos="3 "></span><span class="p">${</span><span class="nb">Mi </span><span class="n">variable</span><span class="p">}</span> <span class="p">=</span> <span class="err">“</span><span class="n">Contiene</span> <span class="n">espacios</span> <span class="n">en</span> <span class="n">el</span> <span class="n">nombre</span><span class="err">”</span>
+</code></pre></div>
+</div>
+<ul>
+<li>En la forma implícita el shell establece el tipo de dato de la variable en función del dato que se le asigne en su creación.</li>
+<li>En el ejemplo anterior <code>$numero</code> es de forma automática de tipo <code>[double]</code>, ya que al crearla se ha inicializado con un número con decimales. </li>
+<li>Por contra la variable <code>$Final_2021</code> es de tipo <code>[int]</code> ya que se ha guardado un número entero en ella.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li><strong>GetType</strong> Para poder obtener el tipo de dato  de una variable hay que usar el método <code>GetType().Name</code> sobre cualquier variable:</li>
+<li><code>Write-Host $feo.GetType().Name.</code></li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul>
+<li>Una variable cuya definición de tipo se ha realizado de forma implícita, podrá cambiar el tipo de dato almacenado durante la ejecución del programa sin experimentar ningún tipo de error. </li>
+<li>Esta práctica aunque cómoda <strong>no es muy recomendable</strong>.</li>
+</ul>
+</div>
+<h3 id="explicita">Explicita<a class="headerlink" href="#explicita" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Es buena idea tomar el control del tipado de las variables y asignarlo en función de las necesidades del programa. </li>
+<li>De esta forma se ahorrarán futuras conversiones de datos y posibles pérdidas de información.</li>
+<li>Para ello se usa la forma explícita de crear variables y junto con su creación se define el tipo de dato que va a contener.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">[float]</span> <span class="nv">$numero</span> <span class="p">=</span> <span class="n">9</span><span class="p">.</span><span class="n">99</span>
+<span class="linenos" data-linenos="2 "></span><span class="no">[int]</span> <span class="nv">$Final_2021</span> <span class="p">=</span> <span class="n">30</span>
+<span class="linenos" data-linenos="3 "></span><span class="no">[string]</span> <span class="p">${</span><span class="nb">Mi </span><span class="n">variable</span><span class="p">}</span> <span class="p">=</span> <span class="err">“</span><span class="n">Contiene</span> <span class="n">espacios</span> <span class="n">en</span> <span class="n">el</span> <span class="n">nombre</span><span class="err">”</span>
+</code></pre></div>
+</div>
+<p>Al contrario que en el caso anterior, cuando el dato asignado no coincida con el tipo esperado, pueden ocurrir dos cosas:</p>
+<ol>
+<li>que las características del dato se modifiquen para amoldarse al tipo de variable, lo que puede traducirse en la pérdida de datos y un mal funcionamiento del script,</li>
+<li>o que se producirá un error si esa conversión no es posible y se detenga el script.</li>
+</ol>
+<h2 id="interaccion-con-el-usuario">Interacción con el usuario<a class="headerlink" href="#interaccion-con-el-usuario" title="Permanent link">&para;</a></h2>
+<p>PowerShell posee dos cmdlets para realizar estas tareas. </p>
+<ol>
+<li>El primero de ellos es <strong>Write-Host</strong> y tiene un comportamiento similar al <strong>echo</strong> en GNU/Linux.</li>
+<li>El segundo comando para interactuar con el usuario es <strong>Read-Host</strong> el cual permite imprimir un mensaje por el terminal y recoger aquello que el usuario ha escrito. Funciona de forma muy parecida al comando <strong>read</strong> en el terminal de GNU/Linux.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">[string]</span> <span class="nv">$feo</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="err">“¿</span><span class="n">Cuál</span> <span class="n">es</span> <span class="n">el</span> <span class="n">nombre</span> <span class="nb">del </span><span class="n">marine</span> <span class="n">de</span> <span class="n">Doom</span><span class="p">?</span><span class="err">”</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="err">“</span><span class="n">No</span> <span class="n">se</span> <span class="n">sabe</span><span class="p">,</span> <span class="n">pero</span> <span class="n">lo</span> <span class="n">has</span> <span class="n">intentado</span> <span class="n">con</span> <span class="nv">$feo</span><span class="err">”</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Este script detendrá su ejecución en la línea donde aparece <strong>Read-Host</strong>, esperará a que el usuario conteste a la pregunta y seguirá con la ejecución, del mismo modo que ocurre con shellscript.</p>
+</div>
+<h2 id="operadores">Operadores<a class="headerlink" href="#operadores" title="Permanent link">&para;</a></h2>
+<h3 id="aritmeticos">Aritméticos<a class="headerlink" href="#aritmeticos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Las operaciones aritméticas en PowerShell son más intuitivas que en shellscript.</li>
+<li>Son las mismas que en el caso anterior: <code>+</code>, <code>-</code>, <code>*</code> , <code>/</code> y <code>%</code>.</li>
+<li>Su uso es más sencillo puesto que es el propio terminal en que realiza los cálculos aritméticos y no a través de un comando.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">[int]</span> <span class="nv">$a</span><span class="p">=</span><span class="n">10</span>
+<span class="linenos" data-linenos="2 "></span><span class="no">[float]</span> <span class="nv">$b</span><span class="p">=</span><span class="n">20</span>
+<span class="linenos" data-linenos="3 "></span><span class="no">[int]</span> <span class="nv">$res</span><span class="p">=</span><span class="nv">$a</span><span class="p">+</span><span class="nv">$b</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">Write-Host</span> <span class="nv">$res</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Write-Host</span> <span class="nv">$a</span><span class="p">+</span><span class="nv">$b</span>
+<span class="linenos" data-linenos="6 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;$a x $b = &quot;</span> <span class="p">(</span><span class="nv">$a</span><span class="p">*</span><span class="nv">$b</span><span class="p">)</span>
+</code></pre></div>
+ También se dispone de expansores de terminal como en GNU/Linux.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nótese que en la última línea aparece directamente el producto <strong>$a*$b</strong> ya que al rodear la operación con paréntesis, se convierte en un expansor, realiza la operación en su interior y envía el resultado fuera.</p>
+</div>
+<p>Existen variantes que simplifican el uso de algunos operadores.</p>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Uso</th>
+<th>Equivalencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+=</code></td>
+<td>$contador += 5</td>
+<td>$contador = $contador+5</td>
+</tr>
+<tr>
+<td><code>-=</code></td>
+<td>$contador -= 5</td>
+<td>$contador = $contador-5</td>
+</tr>
+<tr>
+<td><code>*=</code></td>
+<td>$contador *= 5</td>
+<td>$contador = $contador*5</td>
+</tr>
+<tr>
+<td><code>/=</code></td>
+<td>$contador /= 5</td>
+<td>$contador = $contador/5</td>
+</tr>
+</tbody>
+</table>
+<p>Además de estos operadores existen dos específicos para el incremento (<code>++</code>) y decremento (<code>--</code>) de una unidad, ideal para el uso de variables como contadores.</p>
+<h3 id="logicos">Lógicos<a class="headerlink" href="#logicos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-and</code></td>
+<td>Devuelve verdadero si las dos expresiones son verdaderas.</td>
+</tr>
+<tr>
+<td><code>-or</code></td>
+<td>Devuelve verdadero si una de las dos expresiones o las dos son verdaderas.</td>
+</tr>
+<tr>
+<td><code>-xor</code></td>
+<td>Devuelve verdadero si tan sólo una de las expresiones es verdadera.</td>
+</tr>
+<tr>
+<td><code>-not o !</code></td>
+<td>Devuelve verdadero cuando la expresión da el valor falso.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Write-Host</span> <span class="p">((</span><span class="n">6</span> <span class="o">-ge</span> <span class="n">4</span><span class="p">)</span> <span class="o">-and</span> <span class="p">(</span><span class="n">7</span> <span class="o">-le</span> <span class="n">7</span><span class="p">))</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="p">((</span><span class="n">10</span> <span class="o">-gt</span> <span class="n">1</span><span class="p">)</span> <span class="o">-or</span> <span class="p">(</span><span class="n">2</span> <span class="o">-lt</span> <span class="n">2</span><span class="p">))</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">Write-Host</span> <span class="p">((</span><span class="n">1</span> <span class="o">-gt</span> <span class="n">0</span><span class="p">)</span> <span class="n">-xor</span> <span class="p">(</span><span class="n">4</span> <span class="o">-le</span> <span class="n">1</span><span class="p">))</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">Write-Host</span> <span class="p">(</span> <span class="o">-not</span> <span class="p">(</span><span class="n">12</span> <span class="o">-lt</span> <span class="n">10</span><span class="p">))</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Write-Host</span> <span class="p">(!(</span><span class="n">12</span> <span class="o">-lt</span> <span class="n">10</span><span class="p">))</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>En el ejemplo anterior si se ejecuta el script en un terminal PowerShell, todos los resultados serán verdaderos.</p>
+</div>
+<ul>
+<li>Como en todos los lenguajes de programación fuertemente tipados, existen operadores lógicos para comprobar el tipo de dato de una variable, que resultan muy útiles para la interacción con los usuarios.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Acción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-is</code></td>
+<td>Devuelve verdadero si es del tipo indicado.</td>
+<td><code>“Javi” -is [string]</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-isnot</code></td>
+<td>Devuelve falso si es del tipo indicado.</td>
+<td><code>“Javi” -isnot [string]</code> es falso</td>
+</tr>
+<tr>
+<td><code>-as</code></td>
+<td>Convierte tipos de datos compatibles.</td>
+<td><code>$valor = 19.90</code>; <code>Write-Host ($valor -as [int])</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparacion">Comparación<a class="headerlink" href="#comparacion" title="Permanent link">&para;</a></h3>
+<p>los operadores tipo lógicos devuelven tan sólo un valor booleano que puede tener dos valores; <strong>verdadero o falso</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Acción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-eq</code></td>
+<td>Comprueba si son iguales.</td>
+<td><code>5 -eq 3</code> es falso</td>
+</tr>
+<tr>
+<td><code>-ieq</code></td>
+<td>Iguales. En cadenas no es casesensitive.</td>
+<td><code>“Javi” -ieq “javi”</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-ceq</code></td>
+<td>Iguales. En cadenas es casesensitive.</td>
+<td><code>“Javi” -ceq “javi”</code> es falso</td>
+</tr>
+<tr>
+<td><code>-ne</code></td>
+<td>Verifica si son diferentes.</td>
+<td><code>5 -ne 3</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-lt</code></td>
+<td>Coteja si la izquierda es menor que derecha.</td>
+<td><code>5 -lt 3</code> es falso</td>
+</tr>
+<tr>
+<td><code>-le</code></td>
+<td>Constata si la izquierda es menor o igual que derecha.</td>
+<td><code>5 -le 3</code> es falso</td>
+</tr>
+<tr>
+<td><code>-gt</code></td>
+<td>Examina si la izquierda en mayor que la derecha.</td>
+<td><code>5 -gt 3</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-ge</code></td>
+<td>Revisa si la izquierda en mayor o igual que la derecha.</td>
+<td><code>5 -ge 3</code> es verdadero</td>
+</tr>
+</tbody>
+</table>
+<p><strong>PowerShell</strong> añade operadores de comparación que aportan un nivel de complejidad mayor.</p>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Acción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-like</code></td>
+<td>Evalúa un patrón “es como”.</td>
+<td><code>“Perro” -like “Pe*”</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-notlike</code></td>
+<td>Evalúa un patrón “no es como”.</td>
+<td><code>“Perro” -notlike “Pe*”</code> es falso</td>
+</tr>
+<tr>
+<td><code>-contains</code></td>
+<td>Contiene un valor.</td>
+<td><code>1,2,3 -contains 2</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-notcontains</code></td>
+<td>No contiene un valor.</td>
+<td><code>1,2,3 -notcontains 2</code>es falso</td>
+</tr>
+</tbody>
+</table>
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Escribe el código de los scripts en <strong>PowerShell</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
+</div>
+<ol start="204">
+<li>
+<p>Diseña un script en Shell que pida al usuario dos números, los guarde en dos variables y los muestre por pantalla.</p>
+</li>
+<li>
+<p>Crea un script que si no se le pasa ningún argumento nos lo diga.</p>
+</li>
+<li>
+<p>Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.</p>
+<ul>
+<li>a%b</li>
+<li>a/c</li>
+<li>2 * b + 3 * (a-c)</li>
+<li>a * (b/c)</li>
+<li>(a*c)%b</li>
+</ul>
+</li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
