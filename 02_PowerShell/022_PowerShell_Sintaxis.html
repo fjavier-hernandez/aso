@@ -16,7 +16,7 @@
     
     
       
-        <title>Sintaxis - Administración de Sistemas Operativos</title>
+        <title>2.2- Sintaxis - Administración de Sistemas Operativos</title>
       
     
     
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sintaxis
+              2.2- Sintaxis
             
           </span>
         </div>
@@ -319,12 +319,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       <label class="md-nav__link" for="__nav_3">
         2.- UD2: PowerShell
@@ -361,6 +363,133 @@
   
 
           
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.2- Sintaxis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="022_PowerShell_Sintaxis.html" class="md-nav__link md-nav__link--active">
+        2.2- Sintaxis
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parametros-en-powershell" class="md-nav__link">
+    Parámetros en PowerShell
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implicita" class="md-nav__link">
+    Implícita
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicita" class="md-nav__link">
+    Explicita
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interaccion-con-el-usuario" class="md-nav__link">
+    Interacción con el usuario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores" class="md-nav__link">
+    Operadores
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aritmeticos" class="md-nav__link">
+    Aritméticos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logicos" class="md-nav__link">
+    Lógicos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparacion" class="md-nav__link">
+    Comparación
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -383,27 +512,29 @@
                 <h1 id="sintaxis">Sintaxis<a class="headerlink" href="#sintaxis" title="Permanent link">&para;</a></h1>
 <h2 id="parametros-en-powershell">Parámetros en PowerShell<a class="headerlink" href="#parametros-en-powershell" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Como ocurría en GNU/Linux, los parámetros que reciba el script se deben recoger de forma interna en una variable para poder operar con ellos.</li>
+<li>A diferencia de GNU/Linux, los parámetros que reciba el script en PowerShell se reciben en el array <strong>args</strong>,</li>
+<li>Cada posición del array <code>args[]</code> guarda los parámetros introducidos al script en el orden indicado.</li>
+<li>Por lo tanto para acceder a los parámetros introducidos se debe acceder al valor de la posición que se desee.</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">param</span> <span class="p">(</span><span class="no">[string]</span><span class="nv">$nombre</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">[string]</span><span class="nv">$param1</span><span class="p">=</span> <span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">]</span>
 <span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Hola!. Esto es mi primer script en PowerShell&quot;</span>
 <span class="linenos" data-linenos="3 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Y esto es una segunda línea&quot;</span>
-<span class="linenos" data-linenos="4 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Hola de nuevo, tu nombre es $nombre&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;El primer parámetro introducido es $param1&quot;</span>
 </code></pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
-<li>El script anterior esperará un parámetro de tipo <code>string</code> que será contenido en la variable nombre.</li>
-<li>En la cuarta línea mostrará el contenido de la variable por pantalla. </li>
+<li>El script anterior esperará un parámetro de tipo <code>string</code> que será contenido en la variable $param1.</li>
+<li>En la cuarta línea mostrará el contenido de la variable por pantalla.</li>
 </ul>
 </div>
 <ul>
 <li>Para poder ejecutar este script, será necesario acompañarlo de un parámetro del siguiente modo.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">./</span><span class="n">Script</span><span class="p">.</span><span class="n">ps1</span> <span class="err">“</span><span class="n">Fº</span> <span class="n">Javier</span> <span class="n">Hernández</span> <span class="n">Illán</span><span class="err">”</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">./</span><span class="n">Script</span><span class="p">.</span><span class="n">ps1</span> <span class="s2">&quot;Fº Javier Hernández Illán&quot;</span>
 </code></pre></div>
 <ul>
 <li>Para entender por completo el ejemplo anterior, será necesario ver como PowerShell maneja las <strong>variables</strong>.</li>
@@ -466,7 +597,7 @@
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$numero</span> <span class="p">=</span> <span class="n">9</span><span class="p">.</span><span class="n">99</span>
 <span class="linenos" data-linenos="2 "></span><span class="nv">$Final_2021</span> <span class="p">=</span> <span class="n">30</span>
-<span class="linenos" data-linenos="3 "></span><span class="p">${</span><span class="nb">Mi </span><span class="n">variable</span><span class="p">}</span> <span class="p">=</span> <span class="err">“</span><span class="n">Contiene</span> <span class="n">espacios</span> <span class="n">en</span> <span class="n">el</span> <span class="n">nombre</span><span class="err">”</span>
+<span class="linenos" data-linenos="3 "></span><span class="p">${</span><span class="nb">Mi </span><span class="n">variable</span><span class="p">}</span> <span class="p">=</span> <span class="s2">&quot;Contiene espacios en el nombre&quot;</span>
 </code></pre></div>
 </div>
 <ul>
@@ -478,7 +609,7 @@
 <p class="admonition-title">Info</p>
 <ul>
 <li><strong>GetType</strong> Para poder obtener el tipo de dato  de una variable hay que usar el método <code>GetType().Name</code> sobre cualquier variable:</li>
-<li><code>Write-Host $feo.GetType().Name.</code></li>
+<li><code>Write-Host $numero.GetType().Name.</code></li>
 </ul>
 </div>
 <div class="admonition tip">
@@ -498,22 +629,22 @@
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">[float]</span> <span class="nv">$numero</span> <span class="p">=</span> <span class="n">9</span><span class="p">.</span><span class="n">99</span>
 <span class="linenos" data-linenos="2 "></span><span class="no">[int]</span> <span class="nv">$Final_2021</span> <span class="p">=</span> <span class="n">30</span>
-<span class="linenos" data-linenos="3 "></span><span class="no">[string]</span> <span class="p">${</span><span class="nb">Mi </span><span class="n">variable</span><span class="p">}</span> <span class="p">=</span> <span class="err">“</span><span class="n">Contiene</span> <span class="n">espacios</span> <span class="n">en</span> <span class="n">el</span> <span class="n">nombre</span><span class="err">”</span>
+<span class="linenos" data-linenos="3 "></span><span class="no">[string]</span> <span class="p">${</span><span class="nb">Mi </span><span class="n">variable</span><span class="p">}</span> <span class="p">=</span> <span class="s2">&quot;Contiene espacios en el nombre&quot;</span>
 </code></pre></div>
 </div>
 <p>Al contrario que en el caso anterior, cuando el dato asignado no coincida con el tipo esperado, pueden ocurrir dos cosas:</p>
 <ol>
-<li>que las características del dato se modifiquen para amoldarse al tipo de variable, lo que puede traducirse en la pérdida de datos y un mal funcionamiento del script,</li>
-<li>o que se producirá un error si esa conversión no es posible y se detenga el script.</li>
+<li>Se modifiquen las características del dato para amoldarse al tipo de variable, lo que puede traducirse en la pérdida de datos y un mal funcionamiento del script,</li>
+<li>Se produzca un error si esa conversión no es posible y se detenga el script.</li>
 </ol>
 <h2 id="interaccion-con-el-usuario">Interacción con el usuario<a class="headerlink" href="#interaccion-con-el-usuario" title="Permanent link">&para;</a></h2>
-<p>PowerShell posee dos cmdlets para realizar estas tareas. </p>
+<p>PowerShell posee dos cmdlets para realizar estas tareas.</p>
 <ol>
 <li>El primero de ellos es <strong>Write-Host</strong> y tiene un comportamiento similar al <strong>echo</strong> en GNU/Linux.</li>
 <li>El segundo comando para interactuar con el usuario es <strong>Read-Host</strong> el cual permite imprimir un mensaje por el terminal y recoger aquello que el usuario ha escrito. Funciona de forma muy parecida al comando <strong>read</strong> en el terminal de GNU/Linux.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">[string]</span> <span class="nv">$feo</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="err">“¿</span><span class="n">Cuál</span> <span class="n">es</span> <span class="n">el</span> <span class="n">nombre</span> <span class="nb">del </span><span class="n">marine</span> <span class="n">de</span> <span class="n">Doom</span><span class="p">?</span><span class="err">”</span>
-<span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="err">“</span><span class="n">No</span> <span class="n">se</span> <span class="n">sabe</span><span class="p">,</span> <span class="n">pero</span> <span class="n">lo</span> <span class="n">has</span> <span class="n">intentado</span> <span class="n">con</span> <span class="nv">$feo</span><span class="err">”</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">[string]</span> <span class="nv">$marine</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;¿Cuál es el nombre del marine de Doom?&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;No se sabe, pero lo has intentado con $marine</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -626,12 +757,12 @@
 <tr>
 <td><code>-is</code></td>
 <td>Devuelve verdadero si es del tipo indicado.</td>
-<td><code>“Javi” -is [string]</code> es verdadero</td>
+<td><code>"Javi" -is [string]</code> es verdadero</td>
 </tr>
 <tr>
 <td><code>-isnot</code></td>
 <td>Devuelve falso si es del tipo indicado.</td>
-<td><code>“Javi” -isnot [string]</code> es falso</td>
+<td><code>"Javi" -isnot [string]</code> es falso</td>
 </tr>
 <tr>
 <td><code>-as</code></td>
@@ -659,12 +790,12 @@
 <tr>
 <td><code>-ieq</code></td>
 <td>Iguales. En cadenas no es casesensitive.</td>
-<td><code>“Javi” -ieq “javi”</code> es verdadero</td>
+<td><code>"Javi" -ieq "javi"</code> es verdadero</td>
 </tr>
 <tr>
 <td><code>-ceq</code></td>
 <td>Iguales. En cadenas es casesensitive.</td>
-<td><code>“Javi” -ceq “javi”</code> es falso</td>
+<td><code>"Javi" -ceq "javi"</code> es falso</td>
 </tr>
 <tr>
 <td><code>-ne</code></td>
@@ -705,13 +836,13 @@
 <tbody>
 <tr>
 <td><code>-like</code></td>
-<td>Evalúa un patrón “es como”.</td>
-<td><code>“Perro” -like “Pe*”</code> es verdadero</td>
+<td>Evalúa un patrón "es como".</td>
+<td><code>"Perro" -like "Pe*"</code> es verdadero</td>
 </tr>
 <tr>
 <td><code>-notlike</code></td>
-<td>Evalúa un patrón “no es como”.</td>
-<td><code>“Perro” -notlike “Pe*”</code> es falso</td>
+<td>Evalúa un patrón "no es como".</td>
+<td><code>"Perro" -notlike "Pe*"</code> es falso</td>
 </tr>
 <tr>
 <td><code>-contains</code></td>
@@ -730,24 +861,16 @@
 <p class="admonition-title">NOTA</p>
 <p>Escribe el código de los scripts en <strong>PowerShell</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
 </div>
-<ol start="204">
-<li>
-<p>Diseña un script en Shell que pida al usuario dos números, los guarde en dos variables y los muestre por pantalla.</p>
-</li>
-<li>
-<p>Crea un script que si no se le pasa ningún argumento nos lo diga.</p>
-</li>
-<li>
-<p>Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.</p>
-<ul>
-<li>a%b</li>
-<li>a/c</li>
-<li>2 * b + 3 * (a-c)</li>
-<li>a * (b/c)</li>
-<li>(a*c)%b</li>
-</ul>
-</li>
-</ol>
+<!-- 203. Crea un script que si no se le pasa ningún argumento nos lo diga.
+
+204. Diseña un script en Shell que pida al usuario dos números, los guarde en dos variables y los muestre por pantalla.
+
+205. Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.
+    * a%b
+    * a/c
+    * 2 * b + 3 * (a-c)
+    * a * (b/c)
+    * (a*c)%b -->
                 
               
               
@@ -763,6 +886,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="021_Introduccio%CC%81nPwSh.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 2.1- Introducción" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              2.1- Introducción
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
