@@ -16,7 +16,7 @@
     
     
       
-        <title>Control de Flujo - Administración de Sistemas Operativos</title>
+        <title>2.3- Control de flujo - Administración de Sistemas Operativos</title>
       
     
     
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Control de Flujo
+              2.3- Control de flujo
             
           </span>
         </div>
@@ -319,12 +319,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       <label class="md-nav__link" for="__nav_3">
         2.- UD2: PowerShell
@@ -373,6 +375,106 @@
   
 
           
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.3- Control de flujo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="023_PowerShell_ControlFlujo.html" class="md-nav__link md-nav__link--active">
+        2.3- Control de flujo
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estructuras" class="md-nav__link">
+    Estructuras
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructuras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternativa-simple" class="md-nav__link">
+    Alternativa Simple
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternativa-doble" class="md-nav__link">
+    Alternativa doble
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternativa-multiple" class="md-nav__link">
+    Alternativa múltiple
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-equivalente-a-case-en-gnulinux" class="md-nav__link">
+    El equivalente a case en GNU/Linux
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-iterativas" class="md-nav__link">
+    Estructuras iterativas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -393,7 +495,7 @@
                 
                 
                 <h1 id="control-de-flujo">Control de Flujo<a class="headerlink" href="#control-de-flujo" title="Permanent link">&para;</a></h1>
-<h2 id="control-del-flujo-en-powershell">Control del flujo en PowerShell<a class="headerlink" href="#control-del-flujo-en-powershell" title="Permanent link">&para;</a></h2>
+<h2 id="estructuras">Estructuras<a class="headerlink" href="#estructuras" title="Permanent link">&para;</a></h2>
 <p>En esta parte se indicará tan sólo la sintaxis de las estructuras alternativas e iterativas, ya que los conceptos teóricos ya se han abordado en el apartado de Shellscript.</p>
 <h3 id="alternativa-simple">Alternativa Simple<a class="headerlink" href="#alternativa-simple" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>    <span class="k">if</span> <span class="p">(</span> <span class="n">condición</span> <span class="p">){</span>
@@ -496,7 +598,7 @@
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p><code>-wildcard</code>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">switch</span> <span class="o">-wildcard</span> <span class="p">(</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Escribe u número de teléfono&quot;</span> <span class="p">){</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">switch</span> <span class="o">-wildcard</span> <span class="p">(</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Escribe un número de teléfono&quot;</span> <span class="p">){</span>
 <span class="linenos" data-linenos="2 "></span>    <span class="s2">&quot;8*&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Es un teléfono fijo: $_&quot;</span><span class="p">;</span> <span class="k">break</span> <span class="p">}</span>
 <span class="linenos" data-linenos="3 "></span>    <span class="s2">&quot;9*&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Es un teléfono fijo: $_&quot;</span><span class="p">;</span> <span class="k">break</span> <span class="p">}</span>
 <span class="linenos" data-linenos="4 "></span>    <span class="s2">&quot;6*&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Es un teléfono móvil: $_&quot;</span><span class="p">;</span> <span class="k">break</span> <span class="p">}</span>
@@ -564,27 +666,16 @@
 <p class="admonition-title">NOTA</p>
 <p>Escribe el código de los scripts en <strong>PowerShell</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
 </div>
-<ol start="207">
-<li>
-<p>Crea un script PowerShell que al ejecutarlo muestre por pantalla uno de estos mensajes <strong>“Buenos días”</strong>, <strong>“Buenas tardes”</strong> o <strong>“Buenas noches”</strong>, en función de la hora que sea en el sistema (de 8:00 de la mañana a 15:00 será mañana, de 15:00 a 20:00 será tarde y el resto será noche). Usa el <code>cmdlet Get-Date</code>.</p>
-</li>
-<li>
-<p>Construye tres script PowerShell utilizando estructuras iterativas:</p>
-<ol>
-<li>el primero <strong>ej208A.ps1</strong>, que imprima la <strong>tabla de multiplicar</strong> de un número preguntado al usuario. Este
-número debe ser entero positivo.</li>
-<li>el segundo <strong>ej208B.ps1</strong>, que pida un número e indique si se trata de un número par y si es número primo.</li>
-<li>el tercero <strong>ej208C.ps1</strong>, que muestre las diez primeras tablas de multiplicar por pantalla. Hay un tiempo de espera de un segundo entre ellas. Utiliza las estructuras <strong>while, do while, for y foreach y el cmdlet Start-Sleep.</strong></li>
-</ol>
-</li>
-<li>
-<p>Diseña un script PowerShell que lea un vector con 365 temperaturas y calcule la media y cuantos días han estado por encima y cuantos por debajo de ella. Rellena el vector con valores aleatorios entre -5 y 35, para ello usa Get-Random.</p>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">NOTA</p>
-<p>Utiliza en la generación de los scripts los <strong>cmdlets</strong> de depuración si así lo consideras  al haber encontrado problemas en la ejecución.</p>
-</div>
+<!-- 207. Crea un script PowerShell que al ejecutarlo muestre por pantalla uno de estos mensajes **“Buenos días”**, **“Buenas tardes”** o **“Buenas noches”**, en función de la hora que sea en el sistema (de 8:00 de la mañana a 15:00 será mañana, de 15:00 a 20:00 será tarde y el resto será noche). Usa el `cmdlet Get-Date`.
+
+208. Construye tres script PowerShell utilizando estructuras iterativas:
+    1. el primero **ej208A.ps1**, que imprima la **tabla de multiplicar** de un número preguntado al usuario. Este
+    número debe ser entero positivo.
+    2. el segundo **ej208B.ps1**, que pida un número e indique si se trata de un número par y si es número primo.
+    3. el tercero **ej208C.ps1**, que muestre las diez primeras tablas de multiplicar por pantalla. Hay un tiempo de espera de un segundo entre ellas. Utiliza las estructuras **while, do while, for y foreach y el cmdlet Start-Sleep.**
+
+!!! note "NOTA"
+    Utiliza en la generación de los scripts los **cmdlets** de depuración si así lo consideras  al haber encontrado problemas en la ejecución. -->
                 
               
               
@@ -600,6 +691,26 @@ número debe ser entero positivo.</li>
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="022_PowerShell_Sintaxis.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 2.2- Sintaxis" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              2.2- Sintaxis
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
