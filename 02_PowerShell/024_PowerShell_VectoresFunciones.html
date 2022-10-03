@@ -16,7 +16,7 @@
     
     
       
-        <title>Vectores y Funciones - Administración de Sistemas Operativos</title>
+        <title>2.4- Vectores y Funciones - Administración de Sistemas Operativos</title>
       
     
     
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vectores y Funciones
+              2.4- Vectores y Funciones
             
           </span>
         </div>
@@ -319,12 +319,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       <label class="md-nav__link" for="__nav_3">
         2.- UD2: PowerShell
@@ -385,6 +387,65 @@
   
 
           
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.4- Vectores y Funciones
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="024_PowerShell_VectoresFunciones.html" class="md-nav__link md-nav__link--active">
+        2.4- Vectores y Funciones
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vectores" class="md-nav__link">
+    Vectores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones" class="md-nav__link">
+    Funciones
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -407,7 +468,7 @@
                 <h1 id="vectores-y-funciones">Vectores y Funciones<a class="headerlink" href="#vectores-y-funciones" title="Permanent link">&para;</a></h1>
 <h2 id="vectores">Vectores<a class="headerlink" href="#vectores" title="Permanent link">&para;</a></h2>
 <ul>
-<li>PowerShell considera como un vector a toda colección de objetos, sea cual sea su tipo. </li>
+<li>PowerShell considera como un vector a toda colección de objetos, sea cual sea su tipo.</li>
 <li>Los elementos que lo conforman pueden estar separados por comas, estar expresados por el operador de rango <code>..</code> o ser el resultado de alguna expresión que devuelva una colección, como así lo hacen muchos cmdlets.</li>
 </ul>
 <div class="admonition example">
@@ -473,7 +534,7 @@
 <h2 id="funciones">Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h2>
 <p>También en PowerShell es posible utilizar funciones a través de la siguiente estructura:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">Function</span> <span class="p">&lt;</span><span class="n">NOMBRE</span><span class="p">&gt;</span> <span class="p">{</span>
-<span class="linenos" data-linenos="2 "></span>    <span class="k">Param</span> <span class="p">(&lt;</span><span class="n">Parametro</span><span class="p">&gt;,&lt;</span><span class="n">Parametro</span><span class="p">&gt;,...)</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="k">Param</span> <span class="p">(&lt;</span><span class="n">Parámetro</span><span class="p">&gt;,&lt;</span><span class="n">Parámetro</span><span class="p">&gt;,...)</span>
 <span class="linenos" data-linenos="3 "></span>        <span class="n">Comandos</span> <span class="n">PowerShell</span>
 <span class="linenos" data-linenos="4 "></span><span class="p">}</span>
 </code></pre></div>
@@ -495,28 +556,21 @@
 <p>Si se ejecuta la siguiente instrucción: <code>Get-Sumar 2 8</code> La salida del terminal será <code>La suma es 10</code>.</p>
 </div>
 <p>Si se necesita que las funciones estén disponibles durante la sesión del usuario o si es necesario enlazarlas desde otro script, se deberá utilizar la notación de punto, del mismo modo que ocurría en shell script.</p>
-<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">NOTA</p>
-<p>Escribe el código de los scripts en <strong>PowerShell</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
-</div>
-<ol start="209">
-<li>
-<p>Diseña un script PowerShell que lea un vector con 365 temperaturas y calcule la media y cuantos días han estado por encima y cuantos por debajo de ella. Rellena el vector con valores aleatorios entre -5 y 35, para ello usa Get-Random.</p>
-</li>
-<li>
-<p>Crea un script PowerShell para que haga una <strong>copias de seguridad</strong> de todos los archivos del directorio de trabajo del usuario actual. Deberá realizar las siguientes acciones:</p>
-<ul>
-<li><strong>comprobará</strong> si el archivo ya existe en la copia de seguridad, si es así comprobará cual de los dos es más reciente y que tamaño tienen. Si es más reciente o posee un tamaño mayor, lo copiará. En cualquier otro caso, no lo copia.</li>
-<li>llevará un <strong>registro</strong> de todos los archivos copiados cada vez que se ejecute mediante un archivo de bitácora. Guarda este fichero el directorio que contiene el script.</li>
-</ul>
-</li>
-</ol>
-<p>Crea una <strong>función</strong> para cada tarea realizada en este script.</p>
-<div class="admonition note">
-<p class="admonition-title">NOTA</p>
-<p>Utiliza en la generación de los scripts los <strong>cmdlets</strong> de depuración si así lo consideras  al haber encontrado problemas en la ejecución.</p>
-</div>
+<!-- ## Actividades
+
+!!! note "NOTA"
+    Escribe el código de los scripts en **PowerShell** que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.
+
+209. Diseña un script PowerShell que lea un vector con 365 temperaturas y calcule la media y cuantos días han estado por encima y cuantos por debajo de ella. Rellena el vector con valores aleatorios entre -5 y 35, para ello usa Get-Random.
+
+210. Crea un script PowerShell para que haga una **copias de seguridad** de todos los archivos del directorio de trabajo del usuario actual. Deberá realizar las siguientes acciones:
+    * **comprobará** si el archivo ya existe en la copia de seguridad, si es así comprobará cual de los dos es más reciente y que tamaño tienen. Si es más reciente o posee un tamaño mayor, lo copiará. En cualquier otro caso, no lo copia.
+    * llevará un **registro** de todos los archivos copiados cada vez que se ejecute mediante un archivo de bitácora. Guarda este fichero el directorio que contiene el script.
+
+Crea una **función** para cada tarea realizada en este script.
+
+!!! note "NOTA"
+    Utiliza en la generación de los scripts los **cmdlets** de depuración si así lo consideras  al haber encontrado problemas en la ejecución. -->
                 
               
               
@@ -532,6 +586,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="023_PowerShell_ControlFlujo.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 2.3- Control de flujo" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              2.3- Control de flujo
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
