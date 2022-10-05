@@ -1,0 +1,825 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/03_Procesos/033_GestionProcesos.html">
+      
+      <link rel="icon" href="../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>Gestión de procesos en los Sistemas Opertivos. - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gestion-de-procesos-en-los-sistemas-opertivos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Gestión de procesos en los Sistemas Opertivos.
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- UD1. ShellScripting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- UD1. ShellScripting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- UD1. ShellScripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
+        1.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
+        1.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
+        1.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+        1.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- UD2: PowerShell
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- UD2: PowerShell" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- UD2: PowerShell
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/021_Introduccio%CC%81nPwSh.html" class="md-nav__link">
+        2.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/022_PowerShell_Sintaxis.html" class="md-nav__link">
+        2.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/023_PowerShell_ControlFlujo.html" class="md-nav__link">
+        2.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/024_PowerShell_VectoresFunciones.html" class="md-nav__link">
+        2.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        3.- UD3: Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- UD3: Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          3.- UD3: Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="031_Planificador.html" class="md-nav__link">
+        3.1- Planificación y sincronización de procesos
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="gestion-de-procesos-en-los-sistemas-opertivos">Gestión de procesos en los Sistemas Opertivos.<a class="headerlink" href="#gestion-de-procesos-en-los-sistemas-opertivos" title="Permanent link">&para;</a></h1>
+<h2 id="gestion-de-procesos-de-linux">Gestión de procesos de Linux.<a class="headerlink" href="#gestion-de-procesos-de-linux" title="Permanent link">&para;</a></h2>
+<p>Un proceso en Linux es, en resumen, un programa en ejecución. Un proceso puede crear a su vez otros procesos. Al proceso que genera otro proceso se le llama proceso padre. Al proceso generado por otro proceso se le llama proceso hijo. Los procesos pueden ser padres e hijos y además, varios procesos pueden ser hijos del mismo padre a la vez. Veamos un ejemplo. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>El terminal o consola es un proceso</strong>, ya que se trata de un programa que ejecutamos. Si en el terminal escribimos, por ejemplo, el comando “ls -l”, se estaría generando un nuevo proceso que sería proceso hijo del terminal. En este caso el shell sería el proceso padre y el comando “ls -l” sería el proceso hijo.</p>
+</div>
+<p>Resumen de comandos de manejo de procesos</p>
+<figure>
+  <img src="./imagenes/03/032/001.png" width="850"/>
+  <figcaption>Ejemplo de Multiprogramación</figcaption>
+</figure>
+
+<h3 id="trabajando-con-procesos">Trabajando con procesos.<a class="headerlink" href="#trabajando-con-procesos" title="Permanent link">&para;</a></h3>
+<h4 id="el-comando-ps">El comando ps.<a class="headerlink" href="#el-comando-ps" title="Permanent link">&para;</a></h4>
+<p>El comando ps proporciona información sobre los procesos que se están ejecutando en el sistema.  Si  escribimos  en  el  terminal  <code>ps</code>,  obtendremos  como  salida  un  listado  de  los procesos lanzados con el usuario actual que aún se están ejecutando. </p>
+<p><img alt="" src="imagenes/03/032/Aspose.Words.2177c6ff-7d85-4309-b617-fd4f137d41dc.001.png" /></p>
+<p>Veamos qué significan cada una de las columnas que se muestran cuando ejecutamos el comando ps. </p>
+<ul>
+<li>La primera columna es el <strong>PID</strong> o identificador de proceso. Cada proceso tiene un asociado identificador que es único, es decir que no puede haber dos procesos con el mismo identificador.</li>
+<li>La  segunda  columna  nos  informa  del  terminal  en  el  que  se  está  ejecutando  el proceso.  Si  aparece  una  interrogación  (?),  el  proceso  no  tiene  asociada  ninguna terminal.</li>
+<li>La tercera columna indica el tiempo total que ha estado ejecutándose el proceso. </li>
+<li>La cuarta columna es el nombre del proceso.</li>
+</ul>
+<p>En la imagen anterior observamos que hay dos procesos corriendo: el bash, que es el shell o intérprete de comandos, y el comando ps.</p>
+<p>El comando ps admite algunos <strong>parámetros/modificadores</strong>:</p>
+<p><strong>-e</strong> devuelve un listado de todos los procesos que se están ejecutando. </p>
+<p><strong>-f</strong> devuelve un listado extendido. En este último caso veremos en pantalla el <strong>PPID</strong> del proceso (identificador del proceso padre) y la hora en la que se ejecutó el proceso (STIME).</p>
+<p><img alt="" src="imagenes/03/032/Aspose.Words.2177c6ff-7d85-4309-b617-fd4f137d41dc.002.png" /></p>
+<p><strong>-ef</strong> obtendríamos un listado extendido de todos los procesos que se están ejecutando en el sistema. </p>
+<p><strong>-u</strong>  informa  de  los  procesos  lanzado  por  un  determinado  usuario.  De  tal  forma  que  si escribimos “<strong>ps -u alex</strong>”, aparecerá un listado de los procesos que está ejecutando el usuario alex. </p>
+<h4 id="el-comando-pstree">El comando pstree<a class="headerlink" href="#el-comando-pstree" title="Permanent link">&para;</a></h4>
+<p>El comando pstree visualiza, en forma de árbol, todos los procesos del sistema. Así podemos ver las relaciones que existen entre los procesos. </p>
+<p><img alt="" src="imagenes/03/032/Aspose.Words.2177c6ff-7d85-4309-b617-fd4f137d41dc.003.jpeg" /></p>
+<h4 id="el-comando-top">El comando top<a class="headerlink" href="#el-comando-top" title="Permanent link">&para;</a></h4>
+<p>El comando top devuelve un listado de los procesos de forma parecida a como lo hace ps, con la diferencia que la información mostrada se va actualizando periódicamente lo que nos permite ver la evolución del estado de los procesos. Además, en la parte superior muestra información adicional, como el espacio en memoria ocupado por los procesos, el espacio ocupado por la memoria de intercambio o swap, el número total de tareas o procesos que se están ejecutando, el número de usuarios o el porcentaje de uso del procesador. </p>
+<p><img alt="" src="imagenes/03/032/Aspose.Words.2177c6ff-7d85-4309-b617-fd4f137d41dc.004.jpeg" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Mientras el comando top está en marcha podremos cambiar fácilmente la prioridad de los procesos. A modo de resumen cada proceso en Linux tiene un nivel de prioridad que va de -20 (prioridad más  alta)  hasta  20  (prioridad  más  baja).  </li>
+<li>Cuanto  mayor  sea  el  nivel  de  prioridad,  más lentamente se ejecutará el proceso. </li>
+<li>¿Y cómo podemos cambiar con top la prioridad de un proceso? Muy sencillo. Con el comando top en marcha pulsamos la tecla <strong>"r"</strong>. A continuación introducimos el PID del proceso al que vamos a cambiar la prioridad, y acto seguido el nivel de prioridad que vamos a asignar. Debemos tener en cuenta una consideración, solamente el superusuario <strong>"root"</strong> puede asignar valores negativos a la prioridad de un proceso. </li>
+</ul>
+</div>
+<h4 id="procesos-en-primer-plano-y-segundo-plano">Procesos en primer plano y segundo plano<a class="headerlink" href="#procesos-en-primer-plano-y-segundo-plano" title="Permanent link">&para;</a></h4>
+<p>Los procesos pueden ejecutarse en primer plano o segundo plano. El proceso que está en primer plano es aquel con el que se interactúa. Si ejecutamos, por ejemplo, el comando <code>ls -l</code>, se  mostrará  por  pantalla  el  resultado,  y  hasta  que  no  acabe  de  mostrarse  el  listado  no podremos ejecutar ningún otro comando. En este caso el terminal permanece bloqueado, sin poder introducir ningún otro comando, hasta que el proceso en primer plano termine.</p>
+<p>Pondremos un proceso en segundo plano añadiendo el símbolo ampersand (&amp;) al final del comando. Cuando se ejecuta un proceso en segundo plano, se permite al usuario iniciar y trabajar con otros procesos. </p>
+<ul>
+<li>Ejemplo: </li>
+</ul>
+<p><strong>$ sleep 10 &amp;</strong> </p>
+<p>El  comando  sleep  simplemente  espera  el  número  de  segundos  que  le  pasemos como parámetro.</p>
+<p><img alt="" src="imagenes/03/032/Aspose.Words.2177c6ff-7d85-4309-b617-fd4f137d41dc.005.png" /></p>
+<p>En la imagen anterior se observa que al ejecutar un proceso en segundo plano se devuelve un número entre corchetes seguido de otro número. El número entre corchetes indica el número de procesos que se tienen ejecutándose en segundo plano. El segundo número es el PID o identificador del proceso. </p>
+<p>Para ver que trabajos se están ejecutando en segundo plano, se usa el comando <strong>jobs</strong>. </p>
+<p><img alt="" src="imagenes/03/032/Aspose.Words.2177c6ff-7d85-4309-b617-fd4f137d41dc.006.png" /></p>
+<p>El signo + seguido del número de trabajo entre corchetes indica el trabajo más reciente que se está ejecutando. El signo menos indica el siguiente trabajo más reciente. </p>
+<h4 id="pasar-procesos-en-segundo-plano-a-primer-plano">Pasar procesos en segundo plano a primer plano<a class="headerlink" href="#pasar-procesos-en-segundo-plano-a-primer-plano" title="Permanent link">&para;</a></h4>
+<p>Para pasar procesos en segundo plano a primer plano, se utiliza el comando fg, seguido de %n, donde n es el número de proceso que queremos pasar a primer plano. Por ejemplo, fg %1 pondría en primer plano la tarea número 1. En la siguiente imagen se ejecuta sleep 80 en segundo plano, y después pasa a primer plano con el comando fg. </p>
+<p><img alt="" src="imagenes/03/032/Aspose.Words.2177c6ff-7d85-4309-b617-fd4f137d41dc.007.png" /></p>
+<h4 id="pasar-procesos-en-primer-plano-a-segundo-plano">Pasar procesos en primer plano a segundo plano<a class="headerlink" href="#pasar-procesos-en-primer-plano-a-segundo-plano" title="Permanent link">&para;</a></h4>
+<p>El comando <strong>bg</strong> permite pasar procesos desde primer plano a segundo plano. Para pasar un proceso que se encuentra en primer plano a segundo plano, debemos suspenderlo primero utilizando la combinación de teclas Ctrl+Z. Cuando se pulsa esa combinación de teclas, el proceso en ejecución se para y no vuelve a ejecutarse hasta que se pasa a primer o segundo plano. Con bg pasaremos el proceso a segundo plano. </p>
+<h4 id="cambiando-la-prioridad-de-los-procesos">Cambiando la prioridad de los procesos<a class="headerlink" href="#cambiando-la-prioridad-de-los-procesos" title="Permanent link">&para;</a></h4>
+<p>Como  anteriormente  se  ha  comentado  antes,  cada  proceso  en  Linux  tiene  un  nivel  de prioridad que oscila entre -20 (prioridad más alta) y 20 (prioridad más baja). Cuanto mayor sea  el  nivel  de  prioridad,  más  lentamente  se  ejecutará  el  proceso.  <strong>Solamente  el superusuario ‘root’ puede asignar valores negativos a la prioridad de un proceso.</strong> </p>
+<p>Para asignar determinada prioridad a un proceso en concreto se utiliza el comando <strong>nice</strong>. </p>
+<h5 id="nice-prioridad-proceso">nice prioridad proceso<a class="headerlink" href="#nice-prioridad-proceso" title="Permanent link">&para;</a></h5>
+<p>Podemos cambiar la prioridad de un proceso con el comando <strong>renice</strong>. Este comando admite los siguientes parámetros/modificadores: </p>
+<ul>
+<li><strong>-g</strong>. Establece el nivel de prioridad de los procesos ejecutados por los miembros del grupo especificado. </li>
+<li><strong>-u</strong>. Establece el nivel de prioridad de los procesos ejecutados por los miembros del usuario especificado. </li>
+<li><strong>-p</strong>. Indica el nivel de prioridad para el proceso especificado. </li>
+</ul>
+<p><strong>Finalizar procesos</strong> </p>
+<p>Para finalizar un proceso se utiliza el comando <strong>kill</strong>, que tiene la siguiente sintaxis: </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">kill [parámetro] PID</span> 
+</code></pre></div>
+<p>Si, por ejemplo, queremos eliminar un proceso con PID 17122, tendríamos que escribir: kill 17122.Puede  que  en  ocasiones  el  proceso  no  finalice  al  emplear  el  comando  kill  sin parámetros. Para matar un proceso asegurándonos de que no ignorará la petición de finalizar su ejecución se emplea el parámetro -9. </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">kill -9 17122</span> 
+</code></pre></div>
+<p>Hay un total de 32 señales que se pueden enviar a los procesos. Las más utilizadas son las siguientes: </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">kill -1 (Sighup). Reinicia el proceso.</span> 
+<span class="linenos" data-linenos="2 "></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">kill -9 (SigKill). Mata el proceso.</span> 
+<span class="linenos" data-linenos="3 "></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">kill -15 (SigTerm). Termina el proceso.</span> 
+</code></pre></div>
+<p>Por otra parte, el comando <strong>killall <em>nombre_programa</em></strong> finaliza todos los procesos que estén ejecutando el programa.</p>
+<h2 id="gestion-de-procesos-con-powershell">Gestión de procesos con Powershell.<a class="headerlink" href="#gestion-de-procesos-con-powershell" title="Permanent link">&para;</a></h2>
+<h4 id="obtener-procesos-get-process">Obtener procesos (Get-Process)<a class="headerlink" href="#obtener-procesos-get-process" title="Permanent link">&para;</a></h4>
+<p>Para obtener los procesos que se están ejecutando en el equipo local, ejecute <code>Get-Process</code> sin parámetros.</p>
+<p>Puede obtener determinados procesos especificando sus nombres de proceso o identificadores de proceso. El siguiente comando obtiene el proceso inactivo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -id 0</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------    -----      ----- -----   ------     -- -----------</span>
+<span class="linenos" data-linenos="3 "></span>      <span class="l l-Scalar l-Scalar-Plain">0       0        0         16     0               0 Idle</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Aunque es normal que los cmdlets no devuelvan datos en algunas situaciones, cuando se especifica un proceso por su id. de proceso <code>Get-Process</code>, genera un error si no encuentra ninguna coincidencia, porque la intención habitual consiste en recuperar un proceso en ejecución conocido. Si no hay ningún proceso con ese identificador, es probable que el identificador sea incorrecto o que el proceso de interés haya terminado:</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Id 99</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">Get-Process </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">No process with process ID 99 was found.</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">At line:1 char:12</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">+ Get-Process  &lt;&lt;&lt;&lt; -Id 99</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Puede usar el parámetro <code>Name</code> del cmdlet <code>Get-Process</code> para especificar un subconjunto de procesos basado en el nombre del proceso. El parámetro <code>Name</code> puede tomar varios nombres de una lista de nombres separados por comas y admite el uso de caracteres comodín, para que pueda escribir patrones de nombre.</p>
+</div>
+<ul>
+<li>Por ejemplo, el siguiente comando obtiene el proceso cuyos nombres comienzan por "ex".</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name ex*</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------    -----      ----- -----   ------     -- -----------</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">234       7     5572      12484   134     2.98   1684 EXCEL</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">555      15    34500      12384   134   105.25    728 explorer</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dado que la clase System.Diagnostics.Process de .NET es la base de los procesos de Windows PowerShell, sigue algunas de las convenciones usadas por System.Diagnostics.Process. Una de estas convenciones es que el nombre de proceso de un archivo ejecutable nunca incluya ".exe" al final del nombre del ejecutable.</p>
+</div>
+<ul>
+<li><code>Get-Process</code> también acepta varios valores para el parámetro Name.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name exp*,power*</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------    -----      ----- -----   ------     -- -----------</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">540      15    35172      48148   141    88.44    408 explorer</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">605       9    30668      29800   155     7.11   3052 powershell</span>
+</code></pre></div>
+<ul>
+<li>Puede usar el parámetro ComputerName de <code>Get-Process</code> para obtener procesos en equipos remotos. Por ejemplo, el comando siguiente obtiene los procesos de PowerShell en el equipo local (representado por "localhost") y en dos equipos remotos.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name PowerShell -ComputerName localhost, Server01, Server02</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------    -----      ----- -----   ------     -- -----------</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">258       8    29772      38636   130            3700 powershell</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">398      24    75988      76800   572            5816 powershell</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">605       9    30668      29800   155     7.11   3052 powershell</span>
+</code></pre></div>
+<p>Los nombres de equipo no son evidentes en esta presentación, pero se almacenan en la propiedad MachineName de los objetos de proceso que devuelve <code>Get-Process</code>. El siguiente comando usa el cmdlet <code>Format-Table</code> para mostrar el identificador de proceso y las propiedades ProcessName y MachineName(ComputerName) de los objetos de proceso.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name PowerShell -ComputerName localhost, Server01, Server01 |</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="l l-Scalar l-Scalar-Plain">Format-Table -Property ID, ProcessName, MachineName</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>  <span class="l l-Scalar l-Scalar-Plain">Id ProcessName MachineName</span>
+<span class="linenos" data-linenos="2 "></span>  <span class="l l-Scalar l-Scalar-Plain">-- ----------- -----------</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">3700 powershell  Server01</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">3052 powershell  Server02</span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">5816 powershell  localhost</span>
+</code></pre></div>
+<p>Este comando más complejo agrega la propiedad MachineName a la presentación estándar de <code>Get-Process</code>.</p>
+<p>PowerShellCopiar</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process powershell -ComputerName localhost, Server01, Server02 |</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="l l-Scalar l-Scalar-Plain">Format-Table -Property Handles,</span>
+<span class="linenos" data-linenos="3 "></span>        <span class="l l-Scalar l-Scalar-Plain">@{Label=&quot;NPM(K)&quot;;Expression={[int]($_.NPM/1024)}},</span>
+<span class="linenos" data-linenos="4 "></span>        <span class="l l-Scalar l-Scalar-Plain">@{Label=&quot;PM(K)&quot;;Expression={[int]($_.PM/1024)}},</span>
+<span class="linenos" data-linenos="5 "></span>        <span class="l l-Scalar l-Scalar-Plain">@{Label=&quot;WS(K)&quot;;Expression={[int]($_.WS/1024)}},</span>
+<span class="linenos" data-linenos="6 "></span>        <span class="l l-Scalar l-Scalar-Plain">@{Label=&quot;VM(M)&quot;;Expression={[int]($_.VM/1MB)}},</span>
+<span class="linenos" data-linenos="7 "></span>        <span class="l l-Scalar l-Scalar-Plain">@{Label=&quot;CPU(s)&quot;;Expression={if ($_.CPU -ne $()){$_.CPU.ToString(&quot;N&quot;)}}},</span>
+<span class="linenos" data-linenos="8 "></span>        <span class="l l-Scalar l-Scalar-Plain">Id, ProcessName, MachineName -auto</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)  PM(K) WS(K) VM(M) CPU(s)  Id ProcessName  MachineName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------  ----- ----- ----- ------  -- -----------  -----------</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">258       8  29772 38636   130         3700 powershell Server01</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">398      24  75988 76800   572         5816 powershell localhost</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">605       9  30668 29800   155 7.11    3052 powershell Server02</span>
+</code></pre></div>
+<h4 id="detener-procesos-stop-process">Detener procesos (Stop-Process)<a class="headerlink" href="#detener-procesos-stop-process" title="Permanent link">&para;</a></h4>
+<ul>
+<li>El cmdlet <code>Stop-Process</code> toma un nombre o un identificador para especificar un proceso que quiere detener. Su capacidad para detener procesos dependerá de sus permisos. Algunos procesos no se pueden detener. Por ejemplo, si intenta detener el proceso inactivo, obtendrá un error:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Stop-Process -Name Idle</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">Stop-Process </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Process &#39;Idle (0)&#39; cannot be stopped due to the following error</span><span class="p p-Indicator">:</span>
+<span class="linenos" data-linenos="2 "></span> <span class="l l-Scalar l-Scalar-Plain">Access is denied</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">At line:1 char:13</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">+ Stop-Process  &lt;&lt;&lt;&lt; -Name Idle</span>
+</code></pre></div>
+<p>También puede forzar la solicitud con el parámetro <code>Confirm</code>. Este parámetro es especialmente útil si se usa un carácter comodín al especificar el nombre del proceso, ya que accidentalmente podría coincidir con algunos procesos que no quiere detener:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Stop-Process -Name t*,e* -Confirm</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">Confirm</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">Are you sure you want to perform this action?</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="l l-Scalar l-Scalar-Plain">Performing operation &quot;Stop-Process&quot; on Target &quot;explorer (408)&quot;.</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain">[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain">(default is &quot;Y&quot;):n</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="l l-Scalar l-Scalar-Plain">Confirm</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="l l-Scalar l-Scalar-Plain">Are you sure you want to perform this action?</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="l l-Scalar l-Scalar-Plain">Performing operation &quot;Stop-Process&quot; on Target &quot;taskmgr (4072)&quot;.</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help</span>
+<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">(default is &quot;Y&quot;):n</span>
+</code></pre></div>
+<p>La manipulación de procesos complejos es posible si se usan algunos cmdlets de filtrado de objetos. Dado que un objeto Process tiene una propiedad Responding que es <code>true</code> cuando ya no responde, puede detener todas las aplicaciones que no respondan con el comando siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process | Where-Object -FilterScript {$_.Responding -eq $false} | Stop-Process</span>
+</code></pre></div>
+<ul>
+<li>Puede usar el mismo enfoque en otras situaciones. Por ejemplo, supongamos que una aplicación de área de notificaciones secundaria se ejecuta automáticamente cuando los usuarios inician otra aplicación. Es posible que esto no funcione correctamente en las sesiones de Terminal Services (Terminales de Servicios de Escritorio Remoto), pero lo quiera seguir manteniendo en las sesiones que se ejecutan en la consola del equipo físico. Las sesiones conectadas en el escritorio del equipo físico siempre tienen un identificador de la sesión 0, por lo que puede detener todas las instancias del proceso que están en otras sesiones mediante <code>Where-Object</code> y el proceso, <strong>SessionId</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name BadApp | Where-Object -FilterScript {$_.SessionId -neq 0} | Stop-Process</span>
+</code></pre></div>
+<p>El cmdlet <code>Stop-Process</code> no tiene un parámetro ComputerName. Por lo tanto, para ejecutar un comando para detener un proceso en un equipo remoto, debe usar el cmdlet <code>Invoke-Command</code>. Por ejemplo, para detener el proceso de PowerShell en el equipo remoto Server01, escriba:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Invoke-Command -ComputerName Server01 {Stop-Process Powershell}</span>
+</code></pre></div>
+<h4 id="detener-todas-las-demas-sesiones-de-windows-powershell">Detener todas las demás sesiones de Windows PowerShell<a class="headerlink" href="#detener-todas-las-demas-sesiones-de-windows-powershell" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>En ocasiones puede ser útil poder detener todas las sesiones de Windows PowerShell que se están ejecutando, excepto la sesión actual. Si una sesión usa demasiados recursos o es inaccesible (quizás se esté ejecutando de forma remota o en otra sesión de escritorio), es posible que no pueda detenerla directamente. Si intenta detener todas las sesiones que se están ejecutando, la sesión actual podría finalizar en su lugar.</p>
+</li>
+<li>
+<p>Cada sesión de Windows PowerShell tiene un PID de variable de entorno que contiene el identificador del proceso de Windows PowerShell. Puede comprobar el $PID con el identificador de cada sesión y finalizar solo las sesiones de Windows PowerShell que tengan un identificador diferente. El siguiente comando de canalización realiza esta acción y devuelve la lista de las sesiones finalizadas (debido al uso del parámetro <code>PassThru</code>):</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Get-Process -Name powershell | Where-Object -FilterScript {$_.Id -ne $PID} |</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="l l-Scalar l-Scalar-Plain">Stop-Process -PassThru</span>
+</code></pre></div>
+<ul>
+<li>La salida de este comando seria:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">-------  ------    -----      ----- -----   ------     -- -----------</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="l l-Scalar l-Scalar-Plain">334       9    23348      29136   143     1.03    388 powershell</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="l l-Scalar l-Scalar-Plain">304       9    23152      29040   143     1.03    632 powershell</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="l l-Scalar l-Scalar-Plain">302       9    20916      26804   143     1.03   1116 powershell</span>
+<span class="linenos" data-linenos="6 "></span>    <span class="l l-Scalar l-Scalar-Plain">335       9    25656      31412   143     1.09   3452 powershell</span>
+<span class="linenos" data-linenos="7 "></span>    <span class="l l-Scalar l-Scalar-Plain">303       9    23156      29044   143     1.05   3608 powershell</span>
+<span class="linenos" data-linenos="8 "></span>    <span class="l l-Scalar l-Scalar-Plain">287       9    21044      26928   143     1.02   3672 powershell</span>
+</code></pre></div>
+<h4 id="iniciar-depurar-y-esperar-procesos">Iniciar, depurar y esperar procesos<a class="headerlink" href="#iniciar-depurar-y-esperar-procesos" title="Permanent link">&para;</a></h4>
+<p>Windows PowerShell también incluye cmdlets para iniciar (o reiniciar) y depurar un proceso, así como para esperar a que un proceso se complete antes de ejecutar un comando. Se pueden realizar con los siguientes cmdlets.</p>
+<ul>
+<li>Start-Process</li>
+<li>Wait-Process</li>
+<li>Debug-Process</li>
+<li>Invoke-Command</li>
+</ul>
+<h3 id="actividades-de-desarrollo-ud3_01-shellscripting">Actividades de desarrollo UD3_01 ShellScripting<a class="headerlink" href="#actividades-de-desarrollo-ud3_01-shellscripting" title="Permanent link">&para;</a></h3>
+<ol start="305">
+<li>
+<p>Realiza un script de Shell que encuentre todos los procesos activos e imprima por pantalla al usuario la política de programación.</p>
+</li>
+<li>
+<p>Modifica el script anterior para que de la opción al usuario de aumentar o disminuir la prioridad de un proceso, a elegir por el usuario ambas variables.</p>
+</li>
+<li>
+<p>Modifica el script anterior para que de la opción al usuario de matar un proceso, a elegir por el usuario.</p>
+</li>
+</ol>
+<h3 id="actividades-ud03_02-powershell">Actividades UD03_02 PowerShell<a class="headerlink" href="#actividades-ud03_02-powershell" title="Permanent link">&para;</a></h3>
+<ol start="308">
+<li>Realiza un script en PoserShell que realice los siguientes puntos:</li>
+</ol>
+<ul>
+<li>Cuenta el número de procesos en ejecución en el sistema, y los muestre por pantalla.</li>
+<li>Ver que programas se ejecutan en el inicio de sesión y los muestre por pantalla.</li>
+<li>Guardar los un listado de los procesos en un csv e Imprima por plantilla el archivo.</li>
+</ul>
+<ol start="309">
+<li>Realiza un script en PoserShell que realice los siguientes puntos:</li>
+</ol>
+<ul>
+<li>Lista los procesos que tengan un alto consumo de CPU.</li>
+<li>Detenga el proceso con mayor consumo.</li>
+<li>Mostrar los procesos cuya zona de memoria para trabajar sea mayor que 100 MB y a continuación los detenga.</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
