@@ -16,7 +16,7 @@
     
     
       
-        <title>Hilos de ejecución. (threads o procesos ligeros) - Administración de Sistemas Operativos</title>
+        <title>3.2- Hilos, Sincronización e interrupciones, Herramientas gráficas - Administración de Sistemas Operativos</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hilos-de-ejecucion-threads-o-procesos-ligeros" class="md-skip">
+        <a href="#hilos" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hilos de ejecución. (threads o procesos ligeros)
+              3.2- Hilos, Sincronización e interrupciones, Herramientas gráficas
             
           </span>
         </div>
@@ -409,12 +409,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         3.- UD3: Administración de procesos del sistema
@@ -445,8 +447,135 @@
   
     <li class="md-nav__item">
       <a href="031_Planificador.html" class="md-nav__link">
-        3.1- Planificación y sincronización de procesos
+        3.1- Introducción Procesos, Planificador
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.2- Hilos, Sincronización e interrupciones, Herramientas gráficas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="032_Hilos.html" class="md-nav__link md-nav__link--active">
+        3.2- Hilos, Sincronización e interrupciones, Herramientas gráficas
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definicion" class="md-nav__link">
+    Definición
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ventajas-de-los-hilos-frente-a-los-procesos" class="md-nav__link">
+    Ventajas de los hilos frente a los procesos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sincronizacion-y-comunicacion-entre-procesos" class="md-nav__link">
+    Sincronización y Comunicación entre procesos
+  </a>
+  
+    <nav class="md-nav" aria-label="Sincronización y Comunicación entre procesos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mensajes" class="md-nav__link">
+    Mensajes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#senales" class="md-nav__link">
+    Señales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interrupciones-y-excepciones" class="md-nav__link">
+    Interrupciones y excepciones
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#casos-y-soluciones-de-sincronizacion" class="md-nav__link">
+    Casos y soluciones de sincronización
+  </a>
+  
+    <nav class="md-nav" aria-label="Casos y soluciones de sincronización">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#casos-de-necesidad-de-sincronizacion" class="md-nav__link">
+    Casos de necesidad de sincronización
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soluciones" class="md-nav__link">
+    Soluciones
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herramientas-graficas" class="md-nav__link">
+    Herramientas gráficas
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -470,21 +599,22 @@
               
                 
                 
-                <h1 id="hilos-de-ejecucion-threads-o-procesos-ligeros">Hilos de ejecución. (threads o procesos ligeros)<a class="headerlink" href="#hilos-de-ejecucion-threads-o-procesos-ligeros" title="Permanent link">&para;</a></h1>
-<p>Un hilo o hebra, proceso ligero o subproceso <strong>es una secuencia de tareas encadenadas muy pequeña</strong> que puede ser ejecutada por un sistema operativo.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+                <h1 id="hilos">Hilos<a class="headerlink" href="#hilos" title="Permanent link">&para;</a></h1>
+<h2 id="definicion">Definición<a class="headerlink" href="#definicion" title="Permanent link">&para;</a></h2>
+<p>Un hilo o hebra (Thread), proceso ligero o subproceso <strong>es la secuencia de instrucciones más elemental, que puede ser gestionada por el planificador</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
 <p>A priori los procesos <strong>pueden ejecutarse como un solo hilo</strong>, es decir, las instrucciones ván siguiendo un orden y nunca se pueden ejecutar a la vez dos instrucciones del mismo proceso.</p>
 </div>
 <p>El concepto de <strong>multihilo</strong> consiste en que partes del mismo proceso pueden ejecutarse en paralelo, es decir , el mismo programa tiene partes que pueden ejecutarse a la vez. De este modo, se puede ahorrar tiempo. Por ejemplo, un navegador de internet puede tener varios hilos, uno muestra las imágenes mientras otro recupera datos de la red.</p>
 <figure>
   <img src="./imagenes/03/031/005.png" width="650"/>
-  <figcaption>Estados en los que puede estar un proceso</figcaption>
+  <figcaption>Estados en los que puede estar los procesos e hilos en el navegador.</figcaption>
 </figure>
 
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Es fácil confundir hilos y procesos. <strong>La diferencia principal</strong> es que un proceso tiene asignado un un BCP y los hilos son parte del mismo proceso. Esto significa entre otras cosas que la memoria que se asigna al proceso la compartirán todos los hilos. También comparten el resto de recursos como ficheros abiertos, etc. Esto quiere decir que si uno de los hilos modifica un recurso o una variable de memoria, el cambio afectará al resto de hilos del proceso. Debido a esto <strong>es importante la sincronización entre hilos</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
+<p>Es fácil confundir hilos y procesos. <strong>La diferencia principal</strong> es que un proceso tiene asignado un un BCP y los hilos son parte del mismo proceso. Esto significa entre otras cosas que la memoria que se asigna al proceso la compartirán todos los hilos. También comparten el resto de recursos como ficheros abiertos, etc. Por lo tanto si uno de los hilos modifica un recurso o una variable de memoria, el cambio afectará al resto de hilos del proceso. Debido a esto <strong>es importante la sincronización entre hilos</strong>.</p>
 </div>
 <p>Cada hilo tendrá un identificador, un contador de programa y una pila propias. Se pueden distinguir los siguientes tipos de hilos:</p>
 <ul>
@@ -501,7 +631,7 @@
   <figcaption>Estados en los que puede estar un proceso</figcaption>
 </figure>
 
-<h2 id="ventajas-de-los-hilos-frente-a-los-procesos">Ventajas de los hilos frente a los procesos.<a class="headerlink" href="#ventajas-de-los-hilos-frente-a-los-procesos" title="Permanent link">&para;</a></h2>
+<h2 id="ventajas-de-los-hilos-frente-a-los-procesos">Ventajas de los hilos frente a los procesos<a class="headerlink" href="#ventajas-de-los-hilos-frente-a-los-procesos" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>Los hilos son mucho <strong>más ligeros</strong> que los procesos. En la creación de procesos se necesita un tiempo para la adjudicación de memoria y de recursos que no es necesaria en el caso de cambio entre hilos. También el cambio de contexto es mucho más "Pesado" en el caso de los procesos.</p>
@@ -514,20 +644,46 @@
 </li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">INFO</p>
 <p>Un proceso multihilo no desaparece hasta que no han terminado todos sus hilos.</p>
 </div>
-<h1 id="sincronizacion-y-comunicacion-entre-procesos">Sincronización y Comunicación entre procesos<a class="headerlink" href="#sincronizacion-y-comunicacion-entre-procesos" title="Permanent link">&para;</a></h1>
-<p>Hay procesos independientes y otros que deben comunicarse y sincronizarse con otros. En este caso <strong>se utilizan señales para enviar información entre procesos</strong>, y de este modo poder gestionar recursos y zonas de memoria compartida. </p>
-<p>A continuación se muestran varios ejemplos en los que se evidencia la necesidad de sincronización entre procesos.</p>
+<h2 id="sincronizacion-y-comunicacion-entre-procesos">Sincronización y Comunicación entre procesos<a class="headerlink" href="#sincronizacion-y-comunicacion-entre-procesos" title="Permanent link">&para;</a></h2>
+<p>Hay procesos independientes y otros que deben comunicarse y sincronizarse con otros. En este caso <strong>se utilizan señales para enviar información entre procesos</strong>, y de este modo poder gestionar recursos y zonas de memoria compartida.</p>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
+<p class="admonition-title">Ejemplo</p>
 <p>Un proceso <strong>(P1)</strong> puede necesitar un dato que otro proceso <strong>(P2)</strong> produce y hasta que esto no ocurra, no podrá continuar con su ejecución. En este caso el proceso P1 se quedará <strong>bloqueado</strong> hasta que reciba una señal que le enviará P2, indicándole que ya tiene disponible el dato.</p>
 </div>
-<h2 id="condiciones-de-competencia">Condiciones de competencia<a class="headerlink" href="#condiciones-de-competencia" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Antes de conocer diferentes casos problemáticos y sus posibles soluciones se debe conocer los siguientes elementos que interactúan en la comunicación de procesos.</p>
+</div>
+<h3 id="mensajes">Mensajes<a class="headerlink" href="#mensajes" title="Permanent link">&para;</a></h3>
+<p>Cuando los procesos tienen que compartir información, incluso en equipos remotos, pueden utilizar colas de mensajes para enviarla. Los procesos introducen y extraen los mensajes, con la información necesaria a enviar al proceso o entidad que se necesite en cada caso.</p>
+<p>Existen varios <strong>"tipos"</strong> de mensajes distintos, de forma que cada tipo de mensaje contiene una información distinta y va identificado por un entero.</p>
+<h3 id="senales">Señales<a class="headerlink" href="#senales" title="Permanent link">&para;</a></h3>
+<p>Las señales se utilizan para sincronizar procesos. Cada señal tiene un comportamiento por defecto, como puede ser pausar un proceso o pararlo. La mayoría de ellas pueden ser tratadas de forma que el programa la recoja y realice una serie de instrucciones cuando esta llegue.</p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Hay formas de pasar señales al sistema operativo, por ejemplo, cuando pulsamos control+C, o utilizando funciones del sistema para enviar una determinada señal a un proceso para modificar la forma de actuar de éste en ese momento dado.</p>
+</div>
+<h3 id="interrupciones-y-excepciones">Interrupciones y excepciones<a class="headerlink" href="#interrupciones-y-excepciones" title="Permanent link">&para;</a></h3>
+<p><strong>Una Interrupción</strong> es una señal que envía un dispositivo de E/S al procesador para pedir que se le atienda. Cada interrupción tiene asociada una rutina que debe pasar a ejecutarse cuando esta se produzca. También existen las interrupciones de Software, que envían los programas de usuario al sistema operativo para requerir su atención.</p>
+<p>El siguiente esquema muestra un resumen del concepto de Interrupción.</p>
+<figure>
+  <img src="./imagenes/03/031/017.png" width="750"/>
+  <figcaption>Resumen Interrupción</figcaption>
+</figure>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
+<p><strong>Una excepción</strong> se produce cuando hay una instrucción errónea en un programa, por ejemplo, una división por 0. En ese momento el sistema operativo debe realizar las acciones oportunas. En ciertos intervalos de tiempo puede convenir no aceptar señales de interrupción. Por ello las interrupciones pueden inhibirse por software, según lo necesite el sistema.</p>
+</div>
+<h2 id="casos-y-soluciones-de-sincronizacion">Casos y soluciones de sincronización<a class="headerlink" href="#casos-y-soluciones-de-sincronizacion" title="Permanent link">&para;</a></h2>
+<p>Una vez conocidos los elementos que se relacionan en la sincronización, en los siguientes apartados se muestran varias situaciones en los que se evidencia la necesidad de sincronización entre procesos, por problemas de acceso a recursos compartidos y las principales posibles soluciones planteadas.</p>
+<h3 id="casos-de-necesidad-de-sincronizacion">Casos de necesidad de sincronización<a class="headerlink" href="#casos-de-necesidad-de-sincronizacion" title="Permanent link">&para;</a></h3>
+<h4 id="condiciones-de-competencia">Condiciones de competencia<a class="headerlink" href="#condiciones-de-competencia" title="Permanent link">&para;</a></h4>
 <p>Existen una serie de casos en los que pueden aparecer ciertos problemas denominados <strong>Condiciones de competencia</strong>; los cuales ocurren cuando dos o más procesos intentan acceder a un mismo recurso.</p>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
+<p class="admonition-title">Ejemplo</p>
 <p><strong>P1</strong> y <strong>P2</strong> intentan acceder a una variable global en memoria que llamaremos <strong>A</strong> pongamos que con un valor inicial de <strong>5</strong>. P1 se encarga de sumar 2 a la variable y P2 de restarle 1.Lo normal es que si entra P1 , modifica A y luego lo hace P2, el resultado de A sea 6.</p>
 </div>
 <p>Pero puede darse el siguiente caso :</p>
@@ -542,106 +698,114 @@
 <p>Cuando el proceso P1 vuelva a tener el procesador, dejará su resultado (5+2=7) en la variable A de memoria, machacando el resultado de P2 y se habrá perdido la operación que realizó dicho proceso.</p>
 </li>
 </ol>
-<h3 id="interbloqueo-o-abrazo">Interbloqueo o abrazo<a class="headerlink" href="#interbloqueo-o-abrazo" title="Permanent link">&para;</a></h3>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>En el caso de competencia por recursos, el sistema operativo también se debe asegurar de que no se produce <strong>Interbloqueo o abrazo</strong> Esto ocurre, por ejemplo, cuando un proceso <strong>P1 necesita dos recursos R1 y R2; A su vez otro proceso P2</strong> precisa también los mismos recursos.</p>
-</div>
-<figure>
-  <img src="./imagenes/03/031/019.png" width="750"/>
-  <figcaption>Interbloqueo</figcaption>
-</figure>
-
+<h4 id="interbloqueo-o-abrazo">Interbloqueo o abrazo<a class="headerlink" href="#interbloqueo-o-abrazo" title="Permanent link">&para;</a></h4>
+<p>En el caso de competencia por recursos, el sistema operativo también se debe asegurar de que no se produce <strong>Interbloqueo o abrazo</strong> Esto ocurre, por ejemplo, cuando un proceso <strong>P1 necesita dos recursos R1 y R2; A su vez otro proceso P2</strong> precisa también los mismos recursos. Más en detalle puede ocurrir:</p>
 <ol>
 <li>
-<p>P1 recibe la cpu y ocupa el recurso R1, y pierde el procesador.</p>
+<p><strong>P1</strong> recibe la cpu y ocupa el recurso <strong>R1</strong>, y pierde el procesador.</p>
 </li>
 <li>
-<p>Entra P2 en el sistema y coge el recurso R2, como no puede coger el recurso R1 se bloquea.</p>
+<p>Entra <strong>P2</strong> en el sistema y coge el recurso <strong>R2</strong>, como no puede coger el recurso <strong>R1</strong> se bloquea.</p>
 </li>
 <li>
-<p>Pasa el procesador al proceso P1, pero este no puede coger el recurso R2, con lo que también se bloquea.</p>
+<p>Pasa el procesador al proceso <strong>P1</strong>, pero este no puede coger el recurso <strong>R2</strong>, con lo que también se bloquea.</p>
 </li>
 <li>
 <p>El resultado es que tenemos dos procesos que se bloquean mutuamente y no pueden avanzar en su ejecución.</p>
 </li>
 </ol>
-<p>Para solucionar las condiciones de competencia se implementó un modelo para prohibir que dos procesos accedan al mismo recurso. El modelo en cuestión se denomina <strong>exclusión mutua</strong>.</p>
-<h3 id="exclusion-mutua">Exclusión mutua<a class="headerlink" href="#exclusion-mutua" title="Permanent link">&para;</a></h3>
-<p>Para poder explicar la Exclusión mutua debemos definir el concepto de sección crítica.</p>
-<div class="admonition definition">
-<p class="admonition-title">Definition</p>
-<p><strong>La sección crítica</strong> de un programa es la zona del programa en la que se puede modificar el recurso que comparten varios procesos, dependiendo de permisos preestablecidos.</p>
-</div>
+<figure>
+  <img src="./imagenes/03/031/019.png" width="750"/>
+  <figcaption>Interbloqueo</figcaption>
+</figure>
+
+<p>Para solucionar las condiciones de competencia se implementó un modelo para prohibir que dos procesos accedan al mismo recurso. El modelo en cuestión se denomina <strong>exclusión mutua</strong>, explicado en el siguiente sub-apartado.</p>
+<h3 id="soluciones">Soluciones<a class="headerlink" href="#soluciones" title="Permanent link">&para;</a></h3>
+<p>La solución principal que se plantea para los casos anteriores es la <strong>exclusión mutua</strong>, explicada a continuación.</p>
+<h4 id="exclusion-mutua">Exclusión mutua<a class="headerlink" href="#exclusion-mutua" title="Permanent link">&para;</a></h4>
+<p>La <strong>Exclusión mutua</strong> evita que dos Procesos accedan a datos compartidos y los modifiquen simultáneamente, para ello utiliza <strong>La sección crítica</strong> de un programa, la cual es la zona del programa en la que se puede modificar el recurso que comparten varios procesos, dependiendo de permisos preestablecidos. El siguiente esquema/resumen aclara estos conceptos:</p>
 <figure>
   <img src="./imagenes/03/031/018.png" width="750"/>
   <figcaption>Resumen Exclusión Mutua</figcaption>
 </figure>
 
-<p>Las <strong>soluciones de exclusión mutua</strong> con espera ocupada funcionan de la siguiente manera: cuando un proceso intenta entrar a su región crítica, verifica si está permitida la entrada. Si no, el proceso se queda esperando hasta obtener el permiso. Para ello se pueden utilizar diferentes métodos como son:</p>
+<p>Las <strong>soluciones de exclusión mutua</strong> con espera ocupada funcionan de la siguiente manera: </p>
+<ul>
+<li>Cuando un proceso intenta entrar a su región crítica, verifica si está permitida la entrada. Si no, el proceso se queda esperando hasta obtener el permiso.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Siguiendo la anterior premisa se destacan los siguientes métodos:</p>
+</div>
 <ol>
 <li>
-<p><strong>Desactivación de interrupciones</strong>: </p>
+<p><strong>Desactivación de interrupciones</strong></p>
 <ul>
 <li>El método más simple para evitar las condiciones de competencia es hacer que cada proceso desactive todas sus interrupciones antes de entrar a su sección crítica y las active una vez que salió de la misma. De esta forma, no sale de la cpu hasta que no ha terminado la ejecución del la sección crítica.</li>
-<li>Este modelo tiene un <strong>gran problema</strong> y es que si se produce un fallo mientras que el proceso está en la región crítica no puede salir de la misma y el sistema operativo no recuperaría el control.</li>
+<li>Este modelo tiene un <strong>gran problema</strong> y es que si se produce un fallo mientras que el proceso está en la región crítica no puede salir de la misma el sistema operativo no recuperaría el control.</li>
 </ul>
 </li>
 <li>
-<p><strong>Semáforos y variable cerradura</strong>: </p>
+<p><strong>Semáforos y variable cerradura</strong>:</p>
 <ul>
-<li>En éste caso se genera una variable , que se conoce como que puede tener dos valores:</li>
-<li><strong>o bien 0</strong>: no hay ningún proceso en su sección crítica.</li>
-<li><strong>o bien 1</strong>: indica que la sección crítica está ocupada. </li>
+<li>En éste caso se genera una variable, con dos valores 0 o 1:<ul>
+<li><strong>0</strong>: no hay ningún proceso en su sección crítica.</li>
+<li><strong>1</strong>: indica que la sección crítica está ocupada.</li>
+</ul>
+</li>
 <li>Entonces cada proceso antes de ingresar a la sección crítica verifica el estado de la variable de cerradura y en caso de que la misma este en 0, le cambia el valor y accede a la misma y en caso de que la misma sea 1 el proceso se queda esperando hasta que el mismo sea 0.</li>
-<li>El problema aquí se presenta si dos procesos verifican al mismo tiempo que la variable cerradura está en e ingresan a la región crítica al mismo tiempo.</li>
+<li>El problema aquí se presenta si dos procesos verifican al mismo tiempo que la variable cerradura ingresando a la región crítica al mismo tiempo.</li>
 </ul>
 </li>
 <li>
-<p><strong>Alternancia estricta</strong>: </p>
+<p><strong>Alternancia estricta</strong>:</p>
 <ul>
 <li>El algoritmo de alternancia estricta no bloquea el acceso a la región crítica cuando otro proceso se está ejecutando, sino que coge el recurso para sí durante toda la ejecución del programa. Esta solución requiere que los dos procesos se alternen de manera estricta.</li>
 <li><strong>Su desventaja</strong> es que acopla los procesos fuertemente, esto significa que los procesos lentos atrasan a los procesos rápidos..</li>
 </ul>
 </li>
 <li>
-<p><strong>Instrucción TSL</strong>: </p>
-<ul>
-<li>Esta solución requiere ayuda del hardware y es debido a que en general las computadoras diseñadas para tener más de un procesador tienen una instrucción <strong>TEST AND SET LOCK (TSL)</strong>; esta instrucción hardware es utilizada por ciertos procesadores para facilitar la creación de semáforos y otras herramientas necesarias para la programación concurrente en computadores. </li>
-<li>TSL es una instrucción máquina que realiza dos acciones: <strong>(1) Leer el contenido</strong> de una palabra de la memoria en un registro y <strong>(2) almacenar un valor distinto de cero</strong> en dicha palabra de memoria. Al tratarse de una instrucción máquina, el procesador nos garantiza que la instrucción TSL es realizada sin ningún tipo de interrupción por parte de otro proceso, es decir las operaciones de lectura y escritura de la palabra tienen la garantía de ser indivisibles. </li>
-<li>Además, si nos encontramos en un sistema multiprocesador, ninguno de los demás procesadores tendrá acceso a la palabra hasta que termine de ejecutarse la instrucción. El procesador que ejecuta la instrucción TSL cierra el bus de la memoria para prohibir a los demás el acceso a la memoria hasta el término de la instrucción.</li>
-<li>El modelo de espera acotada tiene el <strong>inconveniente</strong> que se desperdicia tiempo de procesador, al perder tiempo durante la espera que el proceso pasa al estado de "dormido".</li>
-</ul>
-</li>
-<li>
 <p><strong>Monitores</strong>: </p>
 <ul>
-<li>Un monitor es una colección de procedimientos, variables y estructuras de datos que están todos agrupados juntos en un tipo especial de módulo o paquete; para poder acceder a un recurso , el proceso debe utilizar obligatoriamente los procedimientos del monitor, y este se encarga de realizar la exclusión mutua del recurso.</li>
-<li>Características:</li>
-<li>Los monitores tienen una importante propiedad que los hace útiles para lograr la exclusión mutua: sólo puede haber un proceso activo en un monitor en cualquier instante. </li>
-<li>Los monitores son una construcción del lenguaje de programación, por lo que el compilador sabe que son especiales y puede manejar las llamadas a los procedimientos del monitor en forma distinta a las llamadas a otros procedimientos. </li>
-<li>Por lo general, cuando un proceso llama a un procedimiento de monitor, las primeras instrucciones del procedimiento comprobarán si hay algún otro proceso activo en un momento dado dentro del monitor. De ser así, el proceso invocador se suspenderá hasta que el otro proceso haya dejado el monitor. Si no hay otro proceso utilizando el monitor, el proceso invocador puede entrar.</li>
-<li>Un problema con los monitores (y también con los semáforos) es que están diseñados para resolver el problema de exclusión mutua en una o más CPUs que tengan acceso a una memoria común. </li>
+<li>Un monitor es una colección de procedimientos, variables y estructuras de datos que están todos agrupados juntos en un tipo especial de módulo o paquete. Para poder acceder a un recurso , el proceso debe utilizar obligatoriamente los procedimientos del monitor, y este se encarga de realizar la exclusión mutua del recurso.</li>
 </ul>
 </li>
 </ol>
-<h2 id="mensajes">Mensajes<a class="headerlink" href="#mensajes" title="Permanent link">&para;</a></h2>
-<p>Cuando los procesos tienen que compartir información, incluso en equipos remotos, pueden utilizar colas de mensajes para enviarla. Los procesos introducen mensajes con la información necesaria en la cola y se van almacenando en ella. Cuando un proceso extrae un mensaje de la cola, recoge el primero que se introdujo y este se borra.</p>
-<p>También es posible hacer <strong>"tipos"</strong> de mensajes distintos, de forma que cada tipo de mensaje contiene una información distinta y va identificado por un entero. Los procesos pueden leer sólo los mensajes de un determinado tipo.</p>
-<h2 id="senales">Señales<a class="headerlink" href="#senales" title="Permanent link">&para;</a></h2>
-<p>Las señales se utilizan para sincronizar procesos. Cada señal tiene un comportamiento por defecto, como puede ser pausar un proceso o pararlo. La mayoría de ellas pueden ser tratadas de forma que el programa la recoja y realice una serie de instrucciones cuando esta llegue.</p>
-<div class="admonition examples">
-<p class="admonition-title">Examples</p>
-<p>Hay formas de pasar señales al sistema operativo, por ejemplo, cuando pulsamos control+C, o utilizando funciones del sistema para enviar una determinada señal a un proceso para modificar la forma de actuar de este en ese momento dado.</p>
-</div>
-<h1 id="interrupciones-y-excepciones">Interrupciones y excepciones<a class="headerlink" href="#interrupciones-y-excepciones" title="Permanent link">&para;</a></h1>
-<p><strong>Una Interrupción</strong> es una señal que envía un dispositivo de E/S al procesador para pedir que se le atienda. Cada interrupción tiene asociada una rutina que debe pasar a ejecutarse cuando esta se produzca. También existen las interrupciones de Software, que envían los programas de usuario al sistema operativo para requerir su atención.</p>
+<h2 id="herramientas-graficas">Herramientas gráficas<a class="headerlink" href="#herramientas-graficas" title="Permanent link">&para;</a></h2>
+<p>En <strong>GNU/Linux</strong> existen diversas herramientas gráficas para obtener información de los distintos procesos o programas activos. Como existen varios servidores gráficos: KDE, GNOME, etc. Se destacan dos: <strong>ksysguard</strong> para KDE y <strong>gnome-system-monitor</strong> para GNOME.</p>
+<ul>
+<li>En <strong>Debian/ubuntu</strong> la herramienta gráfica se encuentra en aplicaciones &gt; herramientas del sistema &gt; <strong>monitor del sistema</strong>.</li>
+<li>En el caso de <strong>Windows</strong>, existe en el administrador de tareas, sobre la pestaña "<strong>rendimiento</strong>". Luego pulsaremos abajo en el enlace de "<strong>monitor de recursos</strong>". En esta nueva ventana tendremos dividido cada proceso en consumo de la CPU y en sub-procesos (threads).</li>
+</ul>
 <figure>
-  <img src="./imagenes/03/031/017.png" width="750"/>
-  <figcaption>Resumen Interrupción</figcaption>
+  <img src="./imagenes/03/031/020.png" width="750"/>
+  <figcaption>Monitor de recursos (Windows)</figcaption>
 </figure>
 
-<p><strong>Una excepción</strong> se produce cuando hay una instrucción errónea en un programa, por ejemplo, una división por 0. En ese momento el sistema operativo debe realizar las acciones oportunas. En ciertos intervalos de tiempo puede convenir no aceptar señales de interrupción. Por ello las interrupciones pueden inhibirse por programa.</p>
+<ul>
+<li>En el <strong>monitor de actividad</strong> de Mac, se muestran directamente los sub-procesos enumerados en la pantalla principal.</li>
+</ul>
+<figure>
+  <img src="./imagenes/03/031/021.png" width="750"/>
+  <figcaption>Monitor de actividad (Mac)</figcaption>
+</figure>
+
+<!-- ## Actividades
+
+305. Investiga  y analiza las diferentes funciones de las herramientas gráficas para identificar y gestionar procesos e hilos de ubuntu client y Windows 10. Genera máquinas virtuales de los respectivos Sistemas Operativos si fuera necesario.
+
+Se debe realizar un informe al menos con la búsqueda y resultado de las siguientes funciones (se debe especificar cómo se realizan):
+
+- **Identificar**: entre procesos e hilos.
+- **Detener**: cuando detiene un proceso se está indicando al sistema operativo que pause la ejecución de ese programa.
+- **Continuar**: use esta opción para reiniciar un proceso que se pausó o detuvo.
+- **Finalizar**: para finalizar un proceso de forma limpia.
+- **Matar**: finaliza un proceso inmediatamente sin tener en cuenta si termina limpiamente. 
+- **Cambiar**: la prioridad del proceso.
+
+!!! note "NOTA"
+    - Si alguna de las funciones no existe en las herramientas gráficas, simplemente se indicará en el informe como que no es posible realizarla, justificándolo.
+    - La mayoría de los procesos tendrán la prioridad predeterminada establecida en Normal ( 0 ). En Linux, los números que van de -20 a +19 representan la prioridad del proceso. Cuanto menor sea el número de prioridad del proceso, más prioridad tendrá en la CPU. Por ejemplo, un proceso con una prioridad de -3 tendrá más tiempo de CPU que otro proceso con una prioridad de 6. -->
                 
               
               
@@ -657,6 +821,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="031_Planificador.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 3.1- Introducción Procesos, Planificador" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              3.1- Introducción Procesos, Planificador
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
