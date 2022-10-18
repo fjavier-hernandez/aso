@@ -580,6 +580,19 @@
     Iniciar procesos
   </a>
   
+    <nav class="md-nav" aria-label="Iniciar procesos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -893,7 +906,7 @@
 <p class="admonition-title">Consejo</p>
 <ul>
 <li>La manipulación de procesos complejos es posible si se usan algunos cmdlets de filtrado de objetos. </li>
-<li>Dado que un objeto Process tiene una propiedad Responding que es <code>true</code> cuando ya no responde, puede detener todas las aplicaciones que no respondan con el comando siguiente:</li>
+<li>Dado que un objeto Process tiene una propiedad Responding que es <code>false</code> cuando ya no responde, puede detener todas las aplicaciones que no respondan con el comando siguiente:</li>
 </ul>
 </div>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Get-Process</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="n">-FilterScript</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Responding</span> <span class="o">-eq</span> <span class="nv">$false</span><span class="p">}</span> <span class="p">|</span> <span class="nb">Stop-Process</span>
@@ -936,22 +949,27 @@
 </div>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">PS </span><span class="p">/</span><span class="n">Users</span><span class="p">/</span><span class="n">aso</span><span class="p">&gt;</span> <span class="nb">Start-Process</span> <span class="n">Microsoft-edge</span><span class="p">://</span>
 </code></pre></div>
-<!-- ### Actividades
-
-!!! note "NOTA"
-    Escribe el código de los scripts en **PowerShell** que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.
-
-308. Realiza un script en PoserShell que realice los siguientes puntos:
-
-- Cuenta el número de procesos en ejecución en el sistema, y los muestre por pantalla.
-- Ver que programas se ejecutan en el inicio de sesión y los muestre por pantalla.
-- Guardar los un listado de los procesos en un csv e Imprima por pantalla el archivo.
-
-309. Realiza un script en PoserShell que realice los siguientes puntos:
-
-- Lista los procesos que tengan un alto consumo de CPU.
-- Detenga el proceso con mayor consumo.
-- Mostrar los procesos cuya zona de memoria para trabajar sea mayor que 100 MB y a continuación los detenga. -->
+<h3 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Escribe el código de los scripts en <strong>PowerShell</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
+</div>
+<ol start="308">
+<li>Realiza un script en PoserShell que realice los siguientes puntos:</li>
+</ol>
+<ul>
+<li>Cuenta el número de procesos en ejecución en el sistema, y los muestre por pantalla.</li>
+<li>Ver que programas se ejecutan en el inicio de sesión y los muestre por pantalla.</li>
+<li>Guardar los un listado de los procesos en un csv e Imprima por pantalla el archivo.</li>
+</ul>
+<ol start="309">
+<li>Realiza un script en PoserShell que realice los siguientes puntos:</li>
+</ol>
+<ul>
+<li>Lista los procesos que tengan un alto consumo de CPU.</li>
+<li>Detenga el proceso con mayor consumo.</li>
+<li>Mostrar los procesos cuya zona de memoria para trabajar sea mayor que 100 MB y a continuación los detenga.</li>
+</ul>
                 
               
               
