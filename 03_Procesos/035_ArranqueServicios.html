@@ -645,6 +645,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -958,40 +965,46 @@
 <li>En el siguiente enlace se puede observar un resumen de los comandos principales para la Administración de servicios. <strong>ENLACE</strong>: <a href="036_AdministracionServicios.html">Administración de Servicios</a></li>
 </ul>
 </div>
-<!-- ### Actividades
-
-310. En esta práctica se van a instalar **dos sistemas operativos** en una misma máquina virtual (y disco duro). Debemos crear un sistema de arranque que nos permita elegir el sistema operativo con el que deseamos arrancar nuestro equipo. Para ello, sigue los pasos que se describen a continuación.
-
-- Crea una máquina virtual denominada “**Dual**”.
-- Particiona el disco para contener un sistema operativo cliente de Microsoft, uno basado en GNU/Linux y dos particiones de datos, con los nombres `DOCUMENTOS` y `EXPEDIENTES` que podrán ser accedidas sea cual sea el sistema operativo que se arranque. Crea un esquema con las particiones, su tamaño y el sistema de archivos que se usará en cada caso. El particionado se realizará con el sistema MBR.
-- Instala los sistemas operativos en el siguiente orden: Microsoft Windows 10 y Ubuntu Desktop.
-- Al finalizar la instalación, debe quedar un menú de inicio con varios sistemas operativos. menú **GRUB**.
-- Una vez instalados los sistemas operativos en el mismo disco duro, modifica el GRUB para que el sistema operativo a iniciar por defecto sea el de Microsoft y que espere 15 segundos antes de iniciarlo. Realiza esta tarea en CLI.
-- Modifica el GRUB de para que se inicie el sistema operativo de Ubuntu por defecto pero que el tiempo empleado sea de 5 segundos antes de iniciarlo.
-
-311. Investiga y Contesta las siguiente cuestiones: (Puedes apoyarte en la máquina virtual para resolverlas).
-
-  - ¿Qué debemos hacer para que, aunque ese instalado el servidor gráfico, la máquina arranque sin él. Justifique convenientemente la respuesta.
-  - Comprobar si el servidor SSH ha arrancado correctamente.
-  - Supongamos que descubrimos que, tras arrancar el sistema, SSH no ha arrancado como esperábamos que hiciera. ¿Qué podemos mirar para diagnosticar qué ha fallado? Considere dos posibilidades:
+<h3 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h3>
+<ol start="310">
+<li>En esta práctica se van a instalar <strong>dos sistemas operativos</strong> en una misma máquina virtual (y disco duro). Debemos crear un sistema de arranque que nos permita elegir el sistema operativo con el que deseamos arrancar nuestro equipo. Para ello, sigue los pasos que se describen a continuación.</li>
+</ol>
+<ul>
+<li>Crea una máquina virtual denominada “<strong>Dual</strong>”.</li>
+<li>Particiona el disco para contener un sistema operativo cliente de Microsoft, uno basado en GNU/Linux y dos particiones de datos, con los nombres <code>DOCUMENTOS</code> y <code>EXPEDIENTES</code> que podrán ser accedidas sea cual sea el sistema operativo que se arranque. Crea un esquema con las particiones, su tamaño y el sistema de archivos que se usará en cada caso. El particionado se realizará con el sistema MBR.</li>
+<li>Instala los sistemas operativos en el siguiente orden: Microsoft Windows 10 y Ubuntu Desktop.</li>
+<li>Al finalizar la instalación, debe quedar un menú de inicio con varios sistemas operativos. menú <strong>GRUB</strong>.</li>
+<li>Una vez instalados los sistemas operativos en el mismo disco duro, modifica el GRUB para que el sistema operativo a iniciar por defecto sea el de Microsoft y que espere 15 segundos antes de iniciarlo. Realiza esta tarea en CLI.</li>
+<li>Modifica el GRUB de para que se inicie el sistema operativo de Ubuntu por defecto pero que el tiempo empleado sea de 5 segundos antes de iniciarlo.</li>
+</ul>
+<ol start="311">
+<li>Investiga y Contesta las siguiente cuestiones: (Puedes apoyarte en la máquina virtual para resolverlas).</li>
+</ol>
+<ul>
+<li>¿Qué debemos hacer para que, aunque ese instalado el servidor gráfico, la máquina arranque sin él. Justifique convenientemente la respuesta.</li>
+<li>Comprobar si el servidor SSH ha arrancado correctamente.</li>
+<li>Supongamos que descubrimos que, tras arrancar el sistema, SSH no ha arrancado como esperábamos que hiciera. ¿Qué podemos mirar para diagnosticar qué ha fallado? Considere dos posibilidades:</li>
+</ul>
 <style>
 ol.criterio {
   list-style-type: none;
 }
 </style>
 
-  <ol class="criterio">
+<ol class="criterio">
     <li>a) Que el servicio no ha arrancado porque falló su arranque.</li>
     <li>b) Que ni siquiera se intentó el arranque.</li>
   </ol>
 
-  - Describa qué ocurre si se hace lo siguiente:
-
+<ul>
+<li>Describa qué ocurre si se hace lo siguiente:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>apt-get update <span class="o">&amp;&amp;</span> apt-get install -y isc-dhcp-server
 <span class="linenos" data-linenos="2 "></span>systemctl disable isc-dhcp-server
 </code></pre></div>
-
-  - Compruebe si ha fallado el arranque de algún servicio durante el proceso de arranque del sistema. -->
+<ul>
+<li>Compruebe si ha fallado el arranque de algún servicio durante el proceso de arranque del sistema.</li>
+</ul>
                 
               
               
