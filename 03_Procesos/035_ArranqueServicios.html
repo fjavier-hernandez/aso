@@ -16,7 +16,7 @@
     
     
       
-        <title>Secuencia de arranque del sistema. Demonios y servicios. - Administración de Sistemas Operativos</title>
+        <title>3.5- Arranque del sistema. Servicios. Systemd. - Administración de Sistemas Operativos</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#secuencia-de-arranque-del-sistema-demonios-y-servicios" class="md-skip">
+        <a href="#arranque-del-sistema-servicios-systemd" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Secuencia de arranque del sistema. Demonios y servicios.
+              3.5- Arranque del sistema. Servicios. Systemd.
             
           </span>
         </div>
@@ -264,6 +264,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../01_ShellScripting/ResumenUD.html" class="md-nav__link">
+        Resumen UD
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
         1.1- Introducción
       </a>
@@ -302,6 +314,30 @@
     <li class="md-nav__item">
       <a href="../01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
         1.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
+        1.5- Refuerzo y ampliación
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
+        1.6- Prueba Auditoria
       </a>
     </li>
   
@@ -409,12 +445,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         3.- UD3: Administración de procesos del sistema
@@ -487,6 +525,139 @@
   
 
           
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.5- Arranque del sistema. Servicios. Systemd.
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="035_ArranqueServicios.html" class="md-nav__link md-nav__link--active">
+        3.5- Arranque del sistema. Servicios. Systemd.
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arranque-en-linux" class="md-nav__link">
+    Arranque en Linux
+  </a>
+  
+    <nav class="md-nav" aria-label="Arranque en Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1a-etapa-la-bios" class="md-nav__link">
+    1ª etapa: La BIOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2a-etapa-fase-del-cargador-de-arranque-grub-o-lilo" class="md-nav__link">
+    2ª Etapa: Fase del cargador de arranque GRUB o LILO
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3a-etapa-fase-del-kernel" class="md-nav__link">
+    3ª etapa: Fase del kernel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arranque-de-windows-y-windows-server" class="md-nav__link">
+    Arranque de Windows y Windows Server
+  </a>
+  
+    <nav class="md-nav" aria-label="Arranque de Windows y Windows Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-server" class="md-nav__link">
+    Windows Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modificacion-arranque" class="md-nav__link">
+    Modificación Arranque.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daemon" class="md-nav__link">
+    Daemon
+  </a>
+  
+    <nav class="md-nav" aria-label="Daemon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemd" class="md-nav__link">
+    Systemd
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -506,11 +677,18 @@
               
                 
                 
-                <h1 id="secuencia-de-arranque-del-sistema-demonios-y-servicios">Secuencia de arranque del sistema. Demonios y servicios.<a class="headerlink" href="#secuencia-de-arranque-del-sistema-demonios-y-servicios" title="Permanent link">&para;</a></h1>
-<p>En informática, el <strong>arranque o secuencia de arranque</strong> (en inglés: <strong>bootstrapping, boot o booting</strong>) es el proceso que inicia el gestor de arranque; programa ejecutado por el BIOS cuando se enciende una computadora. Se encarga de la <strong>inicialización del sistema operativo y de los dispositivos</strong>.</p>
+                <h1 id="arranque-del-sistema-servicios-systemd">Arranque del sistema. Servicios. Systemd<a class="headerlink" href="#arranque-del-sistema-servicios-systemd" title="Permanent link">&para;</a></h1>
+<p>En informática, el <strong>arranque o secuencia de arranque</strong> (en inglés: <strong>bootstrapping, boot o booting</strong>) se define:</p>
+<div class="admonition abstract">
+<p class="admonition-title">Definición Arranque del sistema</p>
+<ul>
+<li>Es el proceso que inicia el gestor de arranque; programa ejecutado por el Software BIOS cuando se enciende una computadora.</li>
+<li>Se encarga de la <strong>inicialización del sistema operativo y de los dispositivos</strong>.</li>
+</ul>
+</div>
 <p>A nivel conceptual los pasos de arranque de un sistema informático se muestran en la siguiente figura:</p>
 <figure>
-  <img src="./imagenes/03/033/001.png" width="650"/>
+  <img src="./imagenes/03/035/001.png" width="650"/>
   <figcaption>Pasos Arranque</figcaption>
 </figure>
 
@@ -523,7 +701,7 @@
 <li>Y en la cuarta y última etapa tendremos en memoria los programas de usuario conviviendo junto con el propio sistema operativo, quienes tomarán el control del sistema.</li>
 </ol>
 <figure>
-  <img src="./imagenes/03/033/002.png" width="650"/>
+  <img src="./imagenes/03/035/002.png" width="650"/>
   <figcaption>Pasos Arranque Linux</figcaption>
 </figure>
 
@@ -536,12 +714,12 @@
 <p>Como en la mayoría de arquitecturas este programa se encuentra en el <strong>MBR</strong> o <strong>GPT</strong>, el cual es de 512 bytes, este espacio no es suficiente para cargar en su totalidad un sistema operativo. <strong>Por eso, el cargador de arranque consta de varias etapas. Las primeras operaciones las realiza la BIOS</strong>. </p>
 </div>
 <figure>
-  <img src="./imagenes/03/033/003.png" width="650"/>
+  <img src="./imagenes/03/035/003.png" width="650"/>
   <figcaption>Esquema MBR</figcaption>
 </figure>
 
 <figure>
-  <img src="./imagenes/03/033/003_B.png" width="650"/>
+  <img src="./imagenes/03/035/003_B.png" width="650"/>
   <figcaption>Esquema GPT</figcaption>
 </figure>
 
@@ -574,12 +752,12 @@
 <li><code>sudo update-grub</code>← Actualizar cambios</li>
 </ul>
 <figure>
-  <img src="./imagenes/03/033/004_A.png" width="650"/>
+  <img src="./imagenes/03/035/004_A.png" width="650"/>
   <figcaption>Ejemplo de GRUB</figcaption>
 </figure>
 
 <figure>
-  <img src="./imagenes/03/033/004_B.png" width="650"/>
+  <img src="./imagenes/03/035/004_B.png" width="650"/>
   <figcaption>Ejemplo de GRUB</figcaption>
 </figure>
 
@@ -644,7 +822,7 @@
 <h3 id="windows-server">Windows Server<a class="headerlink" href="#windows-server" title="Permanent link">&para;</a></h3>
 <p>En Windows Server se encuentan unas características avanzadas entre las que destacan:</p>
 <ul>
-<li>Usa un n<strong>uevo almacén de datos</strong> para los datos de configuración de arranque, <code>Boot.ini</code> sustituye al anterior cargador de Windows (<code>Ntldr.exe</code>). </li>
+<li>Usa un <strong>nuevo almacén de datos</strong> para los datos de configuración de arranque, <code>Boot.ini</code> sustituye al anterior cargador de Windows (<code>Ntldr.exe</code>). </li>
 <li>Incluye también un administrador de arranque de Windows y un cargador de arranque de Windows nuevos.</li>
 </ul>
 <p>A partir del Windows Server 2008, encontramos 3 aplicaciones de arranque:</p>
@@ -660,7 +838,7 @@
 </li>
 </ul>
 <figure>
-  <img src="./imagenes/03/033/006_B.png" width="650"/>
+  <img src="./imagenes/03/035/006_B.png" width="650"/>
   <figcaption>Características Bootmgr</figcaption>
 </figure>
 
@@ -688,7 +866,7 @@
 <div class="admonition example">
 <p class="admonition-title">Ejemplo</p>
 <ul>
-<li>Ejemplo de modificación de <strong>bcdedit</strong> -&gt; <a href="https://ikastaroak.birt.eus/edu/argitalpen/backupa/20200331/1920k/es/ASIR/ISO/ISO02/es_ASIR_ISO02_Contenidos/3.1.EditorBCDedit.pdf">Enlace:Ejemplos de parámetros usados en el editor BCDEdit.exe</a></li>
+<li>Ejemplo de modificación de <strong>bcdedit</strong> -&gt; <a href="https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcdedit-command-line-options?view=windows-11">Enlace:Ejemplos de parámetros usados en el editor BCDEdit.exe</a></li>
 </ul>
 </div>
 <div class="admonition example">
@@ -698,31 +876,50 @@
 </ul>
 </div>
 <h2 id="daemon">Daemon<a class="headerlink" href="#daemon" title="Permanent link">&para;</a></h2>
-<p><strong>Daemon</strong>, <strong>servicio</strong> o <strong>programa residente</strong> es es un tipo especial de programa que se ejecuta en segundo plano, en vez de ser controlado directamente por el usuario; <strong>estos programas se encuentran cargados en memoria de forma permanente durante la ejecución del sistema operativo</strong> y son los encargados de ofrecer un servicio al resto de programas o incluso otros demonios. Suelen iniciarse con el sistema operativo y se apagan con él.</p>
+<p><strong>Daemon</strong>, <strong>servicio</strong> o <strong>programa residente</strong> es es un tipo especial de programa que se ejecuta en segundo plano, en vez de ser controlado directamente por el usuario.</p>
+<ul>
+<li><strong>Estos programas se encuentran cargados en memoria de forma permanente durante la ejecución del sistema operativo.</strong> </li>
+<li>Son los encargados de ofrecer un servicio al resto de programas o incluso otros demonios. Suelen iniciarse con el sistema operativo y se apagan con él.</li>
+</ul>
 <p>Los daemon suelen tener las siguientes características:</p>
 <ul>
 <li><strong>No disponen de una "interfaz"</strong> directa con el usuario, ya sea gráfica o textual.</li>
-<li><strong>No hacen uso de las entradas y salidas estándar para comunicar errores o registrar su funcionamiento</strong>, sino que usan archivos del sistema en zonas especiales (<code>/var/log/</code> en los UNIX más modernos) o utilizan otros daemon especializados en dicho registro como el <code>syslogd</code>.</li>
+<li><strong>No hacen uso de las entradas y salidas estándar para comunicar errores o registrar su funcionamiento</strong>, sino que usan archivos del sistema en zonas especiales.</li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Registro funcionamiento servicios</p>
+<ul>
+<li><code>/var/log/</code> en los UNIX más modernos </li>
+<li>o utilizan otros daemon especializados en dicho registro como el <code>syslogd</code>.</li>
+</ul>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Ejemplo</p>
 <p>Por ejemplo, una máquina que alberga un servidor web utilizará un daemon <strong>httpd (HTTP Daemon)</strong> para ofrecer el servicio y que los visitantes a dicha web puedan acceder.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Historia</p>
-<p>Según una investigación realizada por <strong>Richard Steinberg</strong>, la palabra daemon fue utilizada en <strong>1963</strong> por primera vez, en el área de la informática, para denominar a un <strong>proceso que realizaba backups en unas cintas</strong>. Este proceso se utilizó en el proyecto <strong>MAC</strong> del <strong>MIT</strong>y en una computadora <strong>IBM 7094</strong>.</p>
+<p>Según una investigación realizada por <strong>Richard Steinberg</strong>, la palabra daemon fue utilizada en <strong>1963</strong> por primera vez, en el área de la informática, para denominar a un <strong>proceso que realizaba backups en unas cintas</strong>. Este proceso se utilizó en el proyecto <strong>MAC</strong> del <strong>MIT</strong> y en una computadora <strong>IBM 7094</strong>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Los programas daemon reciben este nombre en los sistemas UNIX. En otros sistemas existen procesos similares como los <code>TSRs</code> de <code>MS-DOS</code> o los <code>servicios de Windows</code>.</p>
 </div>
 <figure>
-  <img src="./imagenes/03/033/008.png" width="750"/>
+  <img src="./imagenes/03/035/008.png" width="750"/>
   <figcaption>Ejemplo Daemons</figcaption>
 </figure>
 
 <h3 id="systemd">Systemd<a class="headerlink" href="#systemd" title="Permanent link">&para;</a></h3>
-<p><strong>Systemd</strong> es un conjunto de demonios o daemons de administración de sistema, bibliotecas y herramientas diseñados como una plataforma de administración y configuración central para interactuar con el núcleo del Sistema operativo GNU/Linux.</p>
+<p><strong>SystemD</strong> es un gestor de sistema desarrollado a partir de 2009 en principio para la distribución Red Hat, pero que ha acabado siendo adoptado por la mayoría de las distribuciones modernas de linux, excepto *slackware y gentoo. </p>
+<ul>
+<li>
+<p>A pesar que <strong>SystemD</strong> utiliza características exclusivas de linux (por lo tanto no es implementable para otros unices) se ha convertido en el estándar de facto para el arranque de los sistemas linux.</p>
+</li>
+<li>
+<p>SystemD está constituido por un conjunto de <strong>demonios</strong> o daemons de administración de sistema, bibliotecas y herramientas diseñados como una plataforma de administración y configuración central para interactuar con el núcleo del Sistema operativo GNU/Linux.</p>
+</li>
+</ul>
 <p>Características:</p>
 <ul>
 <li>Descrito por sus autores como un "<strong>bloque de construcción básico</strong>" para un sistema operativo.</li>
@@ -731,7 +928,7 @@
 <li>Uno de los principales objetivos de <code>systemd</code> es unificar configuraciones básicas de <strong>Linux</strong> y los comportamientos de servicios en todas las distribuciones.</li>
 </ul>
 <figure>
-  <img src="./imagenes/03/033/009.png" width="750"/>
+  <img src="./imagenes/03/035/009.png" width="750"/>
   <figcaption>Inicio de systemd en Fedora 17</figcaption>
 </figure>
 
@@ -748,25 +945,53 @@
 <p>En el proceso de arranque en <strong>Linux</strong>, <strong>es el primer proceso que se ejecuta en el espacio de usuario</strong>, por lo tanto, también es el proceso padre de todos los procesos hijos en el espacio de usuario.</p>
 </div>
 <figure>
-  <img src="./imagenes/03/033/010.png" width="750"/>
+  <img src="./imagenes/03/035/010.png" width="750"/>
   <figcaption>Arquitectura de Systemd</figcaption>
 </figure>
 
-<p>el comando <code>systemctl</code>, que es la herramienta de administración central para controlar el sistema init. Explicaremos cómo administrar servicios, comprobar estados, cambiar estados del sistema y trabajar con los archivos de configuración.</p>
-<p>En el siguiente enlace se puede observar un resumen de los comandos principales para <a href="Administración de servicios.md">Administración de Servicios</a></p>
-<h3 id="actividades-ud03_03">Actividades UD03_03<a class="headerlink" href="#actividades-ud03_03" title="Permanent link">&para;</a></h3>
-<ol start="310">
-<li>En esta práctica se van a instalar <strong>dos sistemas operativos</strong> en una misma máquina virtual (y disco duro). Debemos crear un sistema de arranque que nos permita elegir el sistema operativo con el que deseamos arrancar nuestro equipo. Para ello, sigue los pasos que se describen a continuación.</li>
-</ol>
+<p>el comando <code>systemctl</code>, que es la herramienta de administración central para controlar el sistema init. </p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
 <ul>
-<li>Crea una máquina virtual denominada “<strong>Dual</strong>”.</li>
-<li>Particiona el disco para contener un sistema operativo cliente de Microsoft, uno basado en GNU/Linux y dos particiones de datos, con los nombres <code>DOCUMENTOS</code> y <code>EXPEDIENTES</code> que podrán ser accedidas sea cual sea el sistema operativo que se arranque. Crea un esquema con las particiones, su tamaño y el sistema de archivos que se usará en cada caso. El particionado se realizará con el sistema MBR.</li>
-<li>Instala los sistemas operativos en el siguiente orden: Microsoft Windows 10 y Ubuntu Desktop.</li>
-<li>Al finalizar la instalación, debe quedar un menú de inicio con varios sistemas operativos. menú <strong>GRUB</strong>.</li>
-<li>Una vez instalados los sistemas operativos en el mismo disco duro, modifica el GRUB de para que el sistema operativo a iniciar por defecto sea el de Microsoft y que espere 15 segundos antes de iniciarlo. Realiza esta tarea en CLI.</li>
-<li>Modifica el GRUB de para que se inicie el sistema operativo de Ubuntu por defecto pero que el tiempo empleado sea de 5 segundos antes de iniciarlo.</li>
+<li>Aunque no es competencia de este módulo el estudio de cómo administrar servicios, comprobar estados, cambiar estados del sistema y trabajar con los archivos de configuración, <strong>se recomiendan los siguientes enlaces</strong>.</li>
+<li>Enlace oficial de Red Hat de Systemd. <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/chap-managing_services_with_systemd">Systemd Red Hat</a> <em>Nota</em>: posiblemente sea necesaria cuenta gratuita.</li>
+<li>En el siguiente enlace se puede observar un resumen de los comandos principales para la Administración de servicios. <strong>ENLACE</strong>: <a href="036_AdministracionServicios.html">Administración de Servicios</a></li>
 </ul>
-<p>Redacta un documento en el que indiques los pasos que sigues para realizar esta configuración.</p>
+</div>
+<!-- ### Actividades
+
+310. En esta práctica se van a instalar **dos sistemas operativos** en una misma máquina virtual (y disco duro). Debemos crear un sistema de arranque que nos permita elegir el sistema operativo con el que deseamos arrancar nuestro equipo. Para ello, sigue los pasos que se describen a continuación.
+
+- Crea una máquina virtual denominada “**Dual**”.
+- Particiona el disco para contener un sistema operativo cliente de Microsoft, uno basado en GNU/Linux y dos particiones de datos, con los nombres `DOCUMENTOS` y `EXPEDIENTES` que podrán ser accedidas sea cual sea el sistema operativo que se arranque. Crea un esquema con las particiones, su tamaño y el sistema de archivos que se usará en cada caso. El particionado se realizará con el sistema MBR.
+- Instala los sistemas operativos en el siguiente orden: Microsoft Windows 10 y Ubuntu Desktop.
+- Al finalizar la instalación, debe quedar un menú de inicio con varios sistemas operativos. menú **GRUB**.
+- Una vez instalados los sistemas operativos en el mismo disco duro, modifica el GRUB para que el sistema operativo a iniciar por defecto sea el de Microsoft y que espere 15 segundos antes de iniciarlo. Realiza esta tarea en CLI.
+- Modifica el GRUB de para que se inicie el sistema operativo de Ubuntu por defecto pero que el tiempo empleado sea de 5 segundos antes de iniciarlo.
+
+311. Investiga y Contesta las siguiente cuestiones: (Puedes apoyarte en la máquina virtual para resolverlas).
+
+  - ¿Qué debemos hacer para que, aunque ese instalado el servidor gráfico, la máquina arranque sin él. Justifique convenientemente la respuesta.
+  - Comprobar si el servidor SSH ha arrancado correctamente.
+  - Supongamos que descubrimos que, tras arrancar el sistema, SSH no ha arrancado como esperábamos que hiciera. ¿Qué podemos mirar para diagnosticar qué ha fallado? Considere dos posibilidades:
+<style>
+ol.criterio {
+  list-style-type: none;
+}
+</style>
+
+  <ol class="criterio">
+    <li>a) Que el servicio no ha arrancado porque falló su arranque.</li>
+    <li>b) Que ni siquiera se intentó el arranque.</li>
+  </ol>
+
+  - Describa qué ocurre si se hace lo siguiente:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>apt-get update <span class="o">&amp;&amp;</span> apt-get install -y isc-dhcp-server
+<span class="linenos" data-linenos="2 "></span>systemctl disable isc-dhcp-server
+</code></pre></div>
+
+  - Compruebe si ha fallado el arranque de algún servicio durante el proceso de arranque del sistema. -->
                 
               
               
@@ -782,6 +1007,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="034_GestionProcesosPWSH.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 3.4- Gestión de procesos en PowerShell." rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              3.4- Gestión de procesos en PowerShell.
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

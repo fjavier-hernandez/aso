@@ -16,7 +16,7 @@
     
     
       
-        <title>Refuerzo y Ampliación - Administración de Sistemas Operativos</title>
+        <title>1.5- Refuerzo y ampliación - Administración de Sistemas Operativos</title>
       
     
     
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Refuerzo y Ampliación
+              1.5- Refuerzo y ampliación
             
           </span>
         </div>
@@ -229,12 +229,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         1.- UD1. ShellScripting
@@ -254,6 +256,18 @@
     <li class="md-nav__item">
       <a href="ProgramacionAula.html" class="md-nav__link">
         Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ResumenUD.html" class="md-nav__link">
+        Resumen UD
       </a>
     </li>
   
@@ -302,6 +316,90 @@
     <li class="md-nav__item">
       <a href="014_ShellScript_VectoresFunciones.html" class="md-nav__link">
         1.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          1.5- Refuerzo y ampliación
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link md-nav__link--active">
+        1.5- Refuerzo y ampliación
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+    <nav class="md-nav" aria-label="Actividades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#refuerzo" class="md-nav__link">
+    Refuerzo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ampliacion" class="md-nav__link">
+    Ampliación
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
+        1.6- Prueba Auditoria
       </a>
     </li>
   
@@ -487,6 +585,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/035_ArranqueServicios.html" class="md-nav__link">
+        3.5- Arranque del sistema. Servicios. Systemd.
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -514,7 +624,7 @@
 <p>Escribe el código de los scripts en <strong>ShellScript</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
 </div>
 <h3 id="refuerzo">Refuerzo<a class="headerlink" href="#refuerzo" title="Permanent link">&para;</a></h3>
-<ol start="115">
+<ol start="116">
 <li>
 <p>Realiza un shell script que admita un único parámetro correspondiente al nombre de un fichero de texto. Mostrará por pantalla el número de líneas del mismo utilizando el comando <code>wc</code>.</p>
 </li>
@@ -533,7 +643,7 @@
 </li>
 </ol>
 <h3 id="ampliacion">Ampliación<a class="headerlink" href="#ampliacion" title="Permanent link">&para;</a></h3>
-<ol start="119">
+<ol start="120">
 <li>
 <p>Escribe un shell script que genere dos vectores de quince elementos cada uno y los rellene con número aleatorios comprendidos entre 0 y 100. Después sume esas dos estructuras y muestre los tres vectores por pantalla. Para ello crea las funciones <strong>imprimir_array(array_a_imprimir)</strong> y <strong>sumar_array(array1, array2).</strong></p>
 </li>
@@ -549,7 +659,7 @@
 <p class="admonition-title">Note</p>
 <p>Para facilitar los cálculos asumimos que el equipo donde se ejecuta el script se encuentra en una única red, es decir, solo posee una tarjeta de red.</p>
 </div>
-<ol start="121">
+<ol start="122">
 <li>Crea un shell script que funcione de manera similar a la papelera de reciclaje. El manejo de los ficheros se debe realizar a través de vectores. El programa debe mostrar el siguiente menú e implementar sus operaciones que serán implementadas a través de funciones:<ol>
 <li><strong>eliminar archivo</strong>. Esta operación recibe la ruta completa de un archivo y lo mueve al directorio <code>/home/tu_usuario/recycled.</code> Si no existe dicho directorio, el programa ha de crearlo.</li>
 <li><strong>restaurar archivo</strong>. Esta operación recibe el nombre de un archivo y lo mueve, desde la papelera de reciclaje, al directorio en el que estuviera anteriormente. El proceso de eliminación, debe haber almacenado, por tanto dicho directorio en un fichero de texto.</li>
@@ -575,6 +685,41 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="014_ShellScript_VectoresFunciones.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 1.4- Vectores y Funciones" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              1.4- Vectores y Funciones
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="016_ShellScript_PruebaEspecifica.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 1.6- Prueba Auditoria" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              1.6- Prueba Auditoria
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
