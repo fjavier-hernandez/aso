@@ -690,6 +690,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cheat-sheet-ldap" class="md-nav__link">
+    Cheat Sheet LDAP
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -943,9 +950,254 @@ otra parte del directorio a la que no pertenece.</li>
 <p class="admonition-title">Note</p>
 <p>Este servicio esta gestionado desde el fichero: <strong>/etc/nsswitch.conf</strong></p>
 </div>
-<!-- # Actividades
-
-[Configuración básica e instalación de OpenLDAP](Practica01_LDAP.md) -->
+<h2 id="cheat-sheet-ldap">Cheat Sheet LDAP<a class="headerlink" href="#cheat-sheet-ldap" title="Permanent link">&para;</a></h2>
+<p>En el siguiente sub-apartado se realizará la instalación y configuración del servicio OpenLDAP.</p>
+<ul>
+<li>En primer lugar se muestran unas tablas resumen de definiciones de elementos y siglas que pueden ser útiles para dicha instalación. De todas formas en el punto <strong>4.3. Modelo de Información de LDAP</strong> se estudiarán más en detalle.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Elemento LDAP</th>
+<th>Definición</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entry</td>
+<td>una colección de información sobre una entidad</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>attribute</td>
+<td>conserva los datos para una entrada</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>object­Class</td>
+<td>elementos de esquema que especifican colecciones de tipos de atributos que pueden estar relacionados con un tipo particular de objeto, proceso u otra entidad</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dn</td>
+<td>identifica de forma única esa entrada y su posición en la jerarquía del árbol de información del directorio (DIT)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>rdn</td>
+<td>la parte relativa de un nombre distintivo (DN)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>oid</td>
+<td>una cadena que se utiliza para identificar de forma única varios elementos en el protocolo LDAP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Atributos</th>
+<th>Definición</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cn</td>
+<td>common name</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>name, same as cn</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dn</td>
+<td>distin­guished name</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dc</td>
+<td>domain component</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>manager</td>
+<td>manager</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>company</td>
+<td>company</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>department</td>
+<td>department</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>o</td>
+<td>organi­zation</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ou</td>
+<td>organi­zat­ional unit</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>uid</td>
+<td>user id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>descri­ption</td>
+<td>descri­ption</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>displa­yName</td>
+<td>display name</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>givenName</td>
+<td>first name</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sn</td>
+<td>surname</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td>job title</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>location</td>
+<td>location</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>l</td>
+<td>location</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>street­Address</td>
+<td>first line of address</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>postalCode</td>
+<td>zip code</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>c</td>
+<td>country</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>st</td>
+<td>state</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>homephone</td>
+<td>home phone number</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>mobile phone number</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>teleph­one­Number</td>
+<td>office phone number</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h1>
+<!-- [Instalación y configuración básica del servidor Open LDAP](./Practica01_LDAP.html) -->
+<p>--&gt;</p>
+<ul>
+<li>Realizar un informe breve en pdf con la captura del <strong>slapcat</strong> que confirme que se ha instalado y configurado el OpenLDAP.</li>
+<li>Debe aparecer el dominio: <strong>nombre.apellidos.ldap</strong></li>
+</ul>
                 
               
               

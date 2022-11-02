@@ -16,7 +16,7 @@
     
     
       
-        <title>Practica01 LDAP - Administración de Sistemas Operativos</title>
+        <title>Instalación y configuración básica del servidor Open LDAP - Administración de Sistemas Operativos</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuracion-basica-del-servidor" class="md-skip">
+        <a href="#instalacion-y-configuracion-basica-del-servidor-open-ldap" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Practica01 LDAP
+              Instalación y configuración básica del servidor Open LDAP
             
           </span>
         </div>
@@ -608,66 +608,83 @@
               
                 
                 
-                  <h1>Practica01 LDAP</h1>
-                
-                <h2 id="configuracion-basica-del-servidor">Configuración básica del servidor<a class="headerlink" href="#configuracion-basica-del-servidor" title="Permanent link">&para;</a></h2>
-<p>Vamos a comenzar por modificar el contenido del fichero /etc/hosts para indicar un FQDN a nuestro servidor. El objetivo de este cambio es que cuando hagamos referencia a pandora.ldap, nuestro sistema entienda que nos estamos refiriendo al servidor. Esto, además, facilitará la labor de configuración de nuestro servicio de directorio.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Primeramente se puede utilizar IP fijas en el aula que serán: <code>192.168.5.1X</code>, modificando el archivo <code>/etc/netplan/00-installer-config.yaml</code></p>
+                <h1 id="instalacion-y-configuracion-basica-del-servidor-open-ldap">Instalación y configuración básica del servidor Open LDAP<a class="headerlink" href="#instalacion-y-configuracion-basica-del-servidor-open-ldap" title="Permanent link">&para;</a></h1>
+<p>Antes de comenzar la instalación de OpenLDAP, es recomendable realizar unos pasos previos, a continuación se describen:</p>
+<ol>
+<li>En primer lugar se aconseja utilizar IP fijas en el aula, que serán clase c de esta forma: <code>192.168.5.X</code>, donde X será el número de puesto.</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
 </div>
-<p><img alt="" src="imagenes/02/NetplanEx.png" width="600px" /></p>
-<p>A continuación se modifica el archivo Hots para cambiar el nombre de la máquina en el dominio configurado.</p>
+<p>Para ello se modifica el archivo <code>/etc/netplan/00-installer-config.yaml</code></p>
+<p><img alt="" src="imagenes/02/421NetplanstaticIP.png" width="600px" /></p>
+<p>La <strong>figura anterior</strong> muestra un ejemplo de modificación con una red para <strong>ubuntu server 22.04</strong> con una red <strong>192.168.8.0/24</strong>.</p>
+<ol start="2">
+<li>A continuación se modifica el archivo Hots para cambiar el nombre de la máquina en el dominio configurado. Con las siguientes premisas.</li>
+</ol>
+<ul>
+<li>Modificar el contenido del fichero <code>/etc/hosts</code> para indicar un <strong>FQDN ( fully qualified domain name)</strong> a nuestro servidor. </li>
+<li><strong>FQDN</strong> es un nombre de dominio completo que incluye el nombre de la computadora y el nombre de dominio asociado a ese equipo.​​ Por ejemplo, dada la computadora llamada <strong>«aso»</strong> y el nombre de dominio <strong>«aso.ldap.»</strong></li>
+<li>El objetivo de este cambio es que cuando hagamos referencia a aso.ldap, nuestro sistema entienda que nos estamos refiriendo al servidor. Esto, además, facilitará la labor de configuración de nuestro servicio de directorio.</li>
+<li>Para modificar el dicho archivo se ejecuta el siguiente comando.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/hosts
 </code></pre></div>
-<p><img alt="" src="https://blog.juananpc.es/wp-content/uploads/2021/07/00.png" /></p>
-<p>Otra opción puede ser.</p>
-<p><img alt="" src="imagenes/02/hosts.png" width="600px" /></p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+</div>
+<p><img alt="" src="imagenes/02/422HostsFQDN.png" width="600px" /></p>
 <h2 id="implantacion-del-servicio-openldap">Implantación del Servicio OpenLDAP<a class="headerlink" href="#implantacion-del-servicio-openldap" title="Permanent link">&para;</a></h2>
-<p>Ahora vamos a ver, en forma de guía práctica, la implantación del servicio OpenLDAP en nuestro servidor Ubuntu 20.04</p>
-<p>En primer lugar, vamos a instalar los paquetes necesarios en nuestro servidor. </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt install slapd ldap-utils
-</code></pre></div>
+<p>En este apartado se explican en forma de guía práctica los pasos de la implantación del servicio OpenLDAP en un servidor Ubuntu 22.04</p>
 <div class="admonition tip">
-<p class="admonition-title">Tip</p>
+<p class="admonition-title">Consejo</p>
 <p>A priori se podría revisar con antelación los paquetes a instalar con: <code>apt show slapd</code></p>
 </div>
-<p><img alt="" src="imagenes/02/InfoPaqueteLdap.png" width="600px" /></p>
+<p><img alt="" src="imagenes/02/423InfoPaqueteLdap.png" width="1200px" /></p>
+<ol>
+<li><strong>Instalación</strong>: Se instalan los paquetes necesarios en el servidor.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt install slapd ldap-utils
+</code></pre></div>
 <p>Seguidamente se instala el paquete de LDAP.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/01-1.png" /></p>
-<p>Automáticamente nos aparecerá una ventana donde introduciremos la contraseña de administrador para el directorio LDAP. Seguidamente terminará el proceso de instalación.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/02.png" /></p>
-<p>Podemos comprobar que se ha instalado correctamente ejecutando el comando slapcat. Dicho comando nos mostrará en formato LDIF el contenido de las entradas existentes en el servicio de directorio.</p>
+<p><img alt="" src="imagenes/02/424InstallLdapCommand.png" width="600px" /></p>
+<p>Automáticamente nos aparecerá una ventana donde introduciremos la contraseña (En este caso <strong>aso</strong>, pero se aconseja introducir una contraseña más robusta) de administrador para el directorio LDAP. Seguidamente terminará el proceso de instalación.</p>
+<p><img alt="" src="imagenes/02/425ConfigLDAP1.png" width="600px" /></p>
+<p>Se puede comprobar que se ha instalado correctamente ejecutando el comando <strong>slapcat</strong>. Dicho comando muestra en formato <strong>LDIF</strong> el contenido de las entradas existentes en el servicio de directorio.</p>
 <p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo slapcat
 </code></pre></div>
-<img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/03.png" /></p>
-<p>Además se puede comprobar que el servicio esta corriendo con</p>
+<img alt="" src="imagenes/02/426CheckInstallLDAP.png" width="600px" /></p>
+<p>Además se puede comprobar que el servicio esta corriendo con:</p>
 <p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>systemctl status slapd.service
 </code></pre></div>
-<img alt="" src="imagenes/02/LdapRunning.png" /></p>
+<img alt="" src="imagenes/02/427CheckInstallLDAP2.png" width="1200px" /></p>
 <p>También se puede comprobar si el servicio de directorio OpenLdap esta escuchando por el <code>puerto 389</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ss -lntp
 </code></pre></div>
-<p><img alt="" src="imagenes/02/PortLdap.png" /></p>
-<p>Ahora vamos a realizar la configuración de nuestro servicio de directorio usando el asistente de slapd. Para ello ejecutamos la siguiente instrucción:</p>
+<p><img alt="" src="imagenes/02/428PortLdap.png" width="1200px" /></p>
+<ol start="2">
+<li><strong>Configuración</strong>: se realiza la configuración de nuestro servicio de directorio usando el asistente de <code>slapd</code>. Para ello se ejecuta la siguiente instrucción:</li>
+</ol>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo dpkg-reconfigure slapd
 </code></pre></div>
-<p>El primer paso del asistente nos pregunta si queremos omitir la configuración del servidor OpenLDAP. Elegiremos que NO para poder configurarlo.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/04.png" /></p>
-<p>A continuación nos pregunta por el dominio en el que se encuentra nuestro servidor, esto va a formar parte del DN del directorio LDAP. Al haberlo indicado anteriormente en el fichero /etc/hosts, automáticamente el asistente lo recoge y solo debemos darle a OK. Si no lo hubiésemos indicado, habría que indicarlo manualmente.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/05.png" /></p>
-<p>Luego nos pregunta por el nombre de la organización a la que va a pertenecer nuestro servidor LDAP. Se puede elegir una contraseña fácil para la práctica como <strong>pandora</strong>. Pulsamos OK.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/06.png" /></p>
-<p>Ahora nos vuelve a pedir la contraseña de administrador del directorio LDAP. Esta que pongamos va a machacar la que indicamos en el proceso de instalación y será la definitiva. Como suele pasar, la deberemos introducir dos veces para evitar errores tipográficos.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/07.png" /></p>
-<p>Seguidamente nos pregunta si queremos que se elimine la base de datos del directorio LDAP cuando se borre el paquete slapd del sistema. Le diremos que NO.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/09.png" /></p>
-<p>Y por último nos pregunta si queremos mover los datos de alguna antigua base de datos de directorio LDAP a la nueva que estamos configurando. En nuestro caso, como no tenemos ninguna antigua no va afectar en nada, lo dejaremos en SI y finalizaremos la configuración.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/10.png" /></p>
-<p>Una vez finalizado el asistente, volvemos a ejecutar el comando slapcat y veremos como se han modificado los valores de los atributos de las entradas, con los datos que nosotros acabamos de indicar. </p>
+<p>El primer paso del asistente pregunta si quiere omitir la configuración del servidor OpenLDAP. Elegiremos que <strong>NO</strong> para poder configurarlo.</p>
+<p><img alt="" src="imagenes/02/429Config1.png" width="1200px" /></p>
+<p>A continuación pregunta por el dominio en el que se encuentra nel servidor, esto va a formar parte del DN del directorio LDAP. Al haberlo indicado anteriormente en el fichero <code>/etc/hosts</code>, automáticamente el asistente lo recoge y lo modificamos para añadir aso, quedaría <strong>aso.ldap</strong>.</p>
+<p><img alt="" src="imagenes/02/430Config2.png" width="1200px" /></p>
+<p>Luego pregunta por el nombre de la organización a la que va a pertenecer nuestro servidor LDAP.</p>
+<p><img alt="" src="imagenes/02/431Config3.png" width="1200px" /></p>
+<p>Se puede elegir una contraseña fácil para la práctica como <strong>asoldap</strong>. Pulsamos OK.</p>
+<p><img alt="" src="imagenes/02/432Config4.png" width="1200px" /></p>
+<p>Además nos vuelve a pedir la contraseña de administrador del directorio LDAP. Esta que pongamos va a machacar la que indicamos en el proceso de instalación y será la definitiva. Como suele pasar, la deberemos introducir dos veces para evitar errores tipográficos.</p>
+<p><img alt="" src="imagenes/02/433Config5.png" width="1200px" /></p>
+<p>Seguidamente pregunta si se elimina la base de datos del directorio LDAP cuando se borre el paquete slapd del sistema. Se indicará que <strong>NO</strong>.</p>
+<p><img alt="" src="imagenes/02/434Config6.png" width="1000px" /></p>
+<p>Y por último pregunta si se quiere mover los datos de alguna antigua base de datos de directorio LDAP a la nueva que se está configurando. En este caso, como no se tiene ninguna antigua no va afectar en nada, lo dejaremos en <strong>SI</strong> y finalizará la configuración.</p>
+<p><img alt="" src="imagenes/02/435Config7.png" width="1200px" /></p>
+<p>Una vez finalizado el asistente, se vuelve a ejecutar el comando <strong>slapcat</strong> y se observa como se han modificado los valores de los atributos de las entradas, con los datos que se acaban de indicar. </p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo slapcat
 </code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/11.png" /></p>
+<p><img alt="" src="imagenes/02/436Config8.png" width="1200px" /></p>
                 
               
               
