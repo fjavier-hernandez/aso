@@ -16,7 +16,7 @@
     
     
       
-        <title>Modelo de Información de LDAP - Administración de Sistemas Operativos</title>
+        <title>4.3- Modelo de Información de LDAP - Administración de Sistemas Operativos</title>
       
     
     
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Modelo de Información de LDAP
+              4.3- Modelo de Información de LDAP
             
           </span>
         </div>
@@ -547,12 +547,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       <label class="md-nav__link" for="__nav_5">
         4.- Servicios de Directorio Libres: LDAP
@@ -601,6 +603,79 @@
   
 
           
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4.3- Modelo de Información de LDAP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="042_LDAP_DIT.html" class="md-nav__link md-nav__link--active">
+        4.3- Modelo de Información de LDAP
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrada" class="md-nav__link">
+    Entrada
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clases-de-objetos-objectclasses" class="md-nav__link">
+    Clases de objetos (objectClasses)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos" class="md-nav__link">
+    Atributos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldif" class="md-nav__link">
+    LDIF
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -630,11 +705,12 @@
 <li>Puede verse que cada componente (la coma es el carácter separador) se muestra como un par <strong>«atributo=valor»</strong> donde el atributo es una abreviatura usada por LDAP.</li>
 </ul>
 </div>
-<p>Cada <strong>entrada</strong> en el árbol tiene una <em>entrada principal</em> (objeto) y cero o más <em>entradas secundarias</em> (objetos). Cada entrada secundaria (objeto) es un hermano de las otras entradas secundarias de su padre.</p>
-<p>Cada entrada se compone de (es una instancia de) una o más <strong>clases de objeto</strong> (<strong>objectClasses</strong>). Las <strong>objectClasses</strong> contienen cero o más atributos. Los atributos tienen nombres (y a veces abreviaturas o <strong>alias</strong>) y normalmente contienen datos. </p>
+<p>Cada <strong>entrada</strong> en el árbol tiene:</p>
 <ul>
-<li>A continuación se muestra un diagrama para entender mejor estos conceptos:</li>
+<li>Una <em>entrada principal</em> (objeto) y cero o más <em>entradas secundarias</em> (objetos). Cada entrada secundaria (objeto) es un <strong>hermano</strong> de las otras entradas secundarias de su padre.</li>
+<li>Cada entrada es una instancia de una o más <strong>clases de objeto</strong> (<strong>objectClasses</strong>). Las <strong>objectClasses</strong> contienen cero o más atributos. Los atributos se definen con nombres o <strong>alias</strong> y normalmente contienen datos.</li>
 </ul>
+<p>A continuación se muestra un diagrama para entender mejor estos conceptos:</p>
 <figure>
   <img src="imagenes/02/ModeloLDAP.png" width="700"/>
   <figcaption>Modelo de información (datos) LDAP DIT</figcaption>
@@ -645,10 +721,10 @@
 <li>Cada <strong>entrada</strong> (1) se compone de una o más <strong>clases de objetos</strong> (2)</li>
 <li>Cada <strong>objectClass</strong> (2) tiene un nombre y es un contenedor de atributos (su definición identifica los atributos que puede o debe contener)</li>
 <li>Cada <strong>atributo</strong> (3) tiene un nombre, contiene datos y es miembro de una o más <strong>clases de objetos</strong> (2)</li>
-<li>Cuando se completa el DIT, cada <strong>entrada</strong> se identificará de forma única (en relación con su entrada principal) en la jerarquía por los datos que contiene (en sus atributos que están contenidos en su (s) objectClasses (s)).</li>
+<li>Cuando se completa el DIT, cada <strong>entrada</strong> se identificará de forma única en relación con su <em>entrada principal</em> siguiendo la jerarquía del DIT y por los datos que contiene según sus atributos definidos en las objectClasses a las que pertenecen.</li>
 </ol>
 <h3 id="entrada">Entrada<a class="headerlink" href="#entrada" title="Permanent link">&para;</a></h3>
-<p>Una <strong>entrada LDAP</strong> es una recopilación de información sobre una entidad. Cada entrada consta de tres componentes principales:</p>
+<p>Una <strong>entrada LDAP</strong> es una recopilación de información sobre una entidad que formará un objeto. Cada entrada consta de tres componentes principales:</p>
 <ul>
 <li>Nombre distinguido DN y RDN (Relative Distinguished Name)</li>
 <li>Colección de clases de objetos (objectClasses)</li>
@@ -658,7 +734,7 @@
 <h4 id="dn-y-rdn">DN y RDN<a class="headerlink" href="#dn-y-rdn" title="Permanent link">&para;</a></h4>
 <p><strong>El nombre distinguido de una entrada, a menudo denominado DN</strong>, identifica de forma única esa entrada y su posición en la jerarquía del árbol de información de directorio (DIT). <strong>El DN de una entrada LDAP es muy parecido a la ruta a un archivo en un sistema de archivos</strong>.</p>
 <ul>
-<li>Un <strong>DN LDAP se compone de cero o más elementos</strong> denominados nombres distinguidos relativos o <strong>RDN</strong>. Cada RDN se compone de uno o más (generalmente solo uno) pares de atributo-valor. </li>
+<li>Un <strong>DN LDAP se compone de elementos</strong> denominados nombres distinguidos relativos o <strong>RDN</strong>. Cada RDN se compone de uno o más (generalmente solo uno) pares de atributo-valor.</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -667,30 +743,34 @@
 <li>Si un RDN tiene varios pares de atributo-valor, están separados por signos más, como <strong>"givenName = John + sn = Doe"</strong>.</li>
 </ul>
 </div>
-<h5 id="dse">DSE<a class="headerlink" href="#dse" title="Permanent link">&para;</a></h5>
-<p><strong>El nombre distinguido especial compuesto por cero RDN</strong> (y por lo tanto tiene una representación de cadena que es solo una <strong>cadena vacía</strong>) a veces se denomina <strong>"DN nulo"</strong> y hace referencia a un tipo especial de entrada llamado <strong>DSE raíz</strong> que proporciona información sobre el contenido y las capacidades de el servidor de directorio.</p>
-<h5 id="multiples-rdn">Múltiples RDN<a class="headerlink" href="#multiples-rdn" title="Permanent link">&para;</a></h5>
-<p>Para DN con <strong>múltiples RDN</strong>, el orden de los RDN especifica la posición de la entrada asociada en el DIT. Los RDN están separados por comas, y cada RDN en un DN representa un nivel en la jerarquía en orden descendente (es decir, acercándose a la raíz del árbol, que se denomina contexto de nomenclatura).</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<ul>
+<li><strong>El nombre distinguido especial compuesto por cero RDN</strong> (y por lo tanto tiene una representación de cadena que es solo una <strong>cadena vacía</strong>) a veces se denomina <strong>"DN nulo"</strong> y hace referencia a un tipo especial de entrada llamado <strong>DSE raíz</strong> que proporciona información sobre el contenido y las capacidades de el servidor de directorio.</li>
+<li>Para DN con <strong>múltiples RDN</strong>, el orden de los RDN especifica la posición de la entrada asociada en el DIT.</li>
+</ul>
+</div>
+<p>Los RDN están separados por comas, y cada RDN en un DN representa un nivel en la jerarquía en orden descendente (es decir, acercándose a la raíz del árbol, que se denomina contexto de nomenclatura).</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p>el DN <strong>"uid = john.doe, ou = People, dc = example, dc = com"</strong> tiene cuatro RDN.</p>
+<p>El DN <strong>"uid = john.doe, ou = People, dc = example, dc = com"</strong> tiene cuatro RDN.</p>
 </div>
 <h3 id="clases-de-objetos-objectclasses">Clases de objetos (objectClasses)<a class="headerlink" href="#clases-de-objetos-objectclasses" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Las clases de objeto son <strong>elementos de esquema que especifican colecciones de tipos de atributos</strong> que pueden estar relacionados con un tipo particular de objeto, proceso u otra entidad.</li>
 <li>Las <strong>clases de objetos</strong> son, esencialmente, <strong>contenedores de atributos</strong> y se describen utilizando definiciones <strong>ASN.1</strong> .</li>
 <li>Cada <strong>objectClass tiene un nombre único</strong>.</li>
-<li>Existe un número confuso de <strong>clases de objetos</strong> <strong>PREDEFINIDAS</strong>, cada una de las cuales contiene un montón de <strong>atributos</strong> adecuados para casi todas las implementaciones LDAP comunes.</li>
+<li>Existe un número confuso de <strong>clases de objetos</strong> <strong>PREDEFINIDAS</strong>, cada una de las cuales contiene una gran cantidad de <strong>atributos</strong> adecuados para casi todas las implementaciones LDAP comunes.</li>
 </ul>
 <p>Las clases de objetos tienen tres características principales:</p>
 <ol>
-<li>La <strong>clase de objeto</strong> define si un miembro de atributo <strong>MUST</strong> ( obligatorio ) estar presente o <strong>MAY</strong> ( opcional ) estar presente.</li>
-<li>Cada <strong>clase de objeto</strong> tiene un tipo que pueden ser <em>estructurales</em>, <em>auxiliar</em> o <em>RESUMEN</em>. En esta etapa es suficiente saber que debe haber una, y solo una, <strong>clase de objeto</strong> <em>ESTRUCTURAL </em>en una entrada y que puede haber cero o más clases de objeto <em>AUXILIAR</em>.</li>
-<li>Una <strong>clase de objeto</strong> puede ser parte de una jerarquía, en cuyo caso <strong>hereda</strong> todas las características de su (s) clase (s) de objeto principal (incluidos todos los atributos que contiene).</li>
+<li>La <strong>clase de objeto</strong> define si un miembro de atributo es <strong>MUST</strong> ( obligatorio ) o <strong>MAY</strong> ( opcional ).</li>
+<li>Los tipos de <strong>clases de objeto</strong> son <em>estructurales</em>, <em>auxiliar</em> o <em>RESUMEN</em>, caracterizadas por su nombre.</li>
+<li>Una <strong>clase de objeto</strong> puede ser parte de una jerarquía, en cuyo caso <strong>hereda</strong> todas las características de sus clases de objeto principal (incluidos todos los atributos que contiene).</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>objectClasses</strong> son contenedores y controlan qué atributos se pueden agregar a cada entrada, pero por lo demás tienden a permanecer en segundo plano en lo que respecta al acceso e interrogación (búsqueda) del DIT. <strong>Los atributos y las entradas son los elementos realmente visibles</strong>.</p>
+<p><strong>objectClasses o clases de objeto</strong> son contenedores y controlan qué atributos se pueden agregar a cada entrada, pero por lo demás tienden a permanecer en segundo plano en lo que respecta al acceso y búsqueda en el DIT. <strong>Los atributos y las entradas son los elementos realmente visibles</strong>.</p>
 </div>
 <h3 id="atributos">Atributos<a class="headerlink" href="#atributos" title="Permanent link">&para;</a></h3>
 <p>Cada <strong>atributo</strong> de una entrada tendrá un <strong>tipo</strong> y un <strong>valor</strong> con el formato atributo/valor que permite caracterizar un aspecto del objeto que define la entrada. Estos atributos tienen nombres que hacen referencia a su contenido y pueden ser de dos tipos:</p>
@@ -722,27 +802,30 @@
 </figure>
 
 <h4 id="caracteristicas-de-atributos">Características de Atributos<a class="headerlink" href="#caracteristicas-de-atributos" title="Permanent link">&para;</a></h4>
-<p>Cada <strong>atributo</strong> tiene un nombre único (<strong>y una forma abreviada o alias</strong>) y normalmente contiene datos. Los atributos siempre están asociados con (son miembros de) una o más <strong>ObjectClasses</strong> . Los atributos tienen una serie de características interesantes:</p>
+<p>Cada <strong>atributo</strong> tiene un nombre único (<strong>y una forma abreviada o alias</strong>) y normalmente contiene datos. Los atributos siempre están asociados con (o son miembros de) una o más <strong>ObjectClasses</strong> . Los atributos tienen una serie de características interesantes:</p>
 <ol>
 <li>Todos los <strong>atributos</strong> son miembros de una o más <strong>clases de objeto</strong>.</li>
 <li>Cada <strong>atributo</strong> define el tipo de datos (la palabra clave es SINTAXIS) que puede contener. Los tipos de datos pueden ser: <em>Strings</em>, <em>Numbers (Integer)</em>, <em>Time</em>, <em>Telephone Numbers</em>, <em>Boolean</em>, <em>Binary</em>, <em>Distinguished Name</em>, <em>Bit Strings</em>, <em>LDAP Supported Syntaxes</em>.</li>
-<li>Los atributos pueden formar parte de una <em>jerarquía</em>, en cuyo caso el atributo <em>hijo hereda todas las características del atributo padre</em>. En el caso de los atributos, se usa una jerarquía para simplificar y acortar las definiciones de atributos (en ASN.1) donde muchos atributos comparten propiedades comunes como la longitud máxima o si son o no sensibles a mayúsculas y minúsculas, etc. ningún otro significado.</li>
+<li>Los atributos pueden formar parte de una <strong>jerarquía</strong>, en cuyo caso el atributo <em>hijo hereda todas las características del atributo padre</em>. En el caso de los atributos, se usa una jerarquía para simplificar y acortar las definiciones de atributos (en ASN.1) donde muchos atributos comparten propiedades comunes como la longitud máxima o si son o no sensibles a mayúsculas y minúsculas, etc. ningún otro significado.</li>
 <li>Los atributos pueden ser opcionales (la palabra clave es <strong>MAY</strong>) u obligatorios (la palabra clave es <strong>MUST</strong>) como se describe en las definiciones <em>ASN.1</em> para la clase de objeto de la que son miembros. Un atributo puede ser opcional en una clase de objeto y obligatorio en otra. Es la clase de objeto la que determina esta propiedad.</li>
-<li>Los <strong>atributos</strong> aparentemente son <strong>aleatorios</strong> que se recogen de todas partes de la documentación; es confuso al principio, pero proviene de la característica opcional de la mayoría de los atributos. Permite un enfoque de '<em>pick-n-mix</em>' para poblar una entrada. Se puede buscar el atributo que se desee, y buscar la clase de objeto de la que es miembro (puede haber más de uno) y confirmar que todos los demás atributos que no se desean utilizar en la clase de objeto sean opcionales. Se puede revisar en <a href="http://zytrax.com/books/ldap/ape/index.html#attributes">Atributos comunmente utilizados</a>.</li>
 <li>Los atributos pueden tener un valor <em>ÚNICO</em> o <em>MÚLTIPLE</em> (como se describe en sus definiciones ASN.1 ). <ol>
-<li><strong>VALOR ÚNICO</strong> significa que solo un valor de datos puede estar presente para el atributo . </li>
-<li><strong>MULTIVALOR</strong> significa que el atributo puede aparecer varias veces en una clase de <strong>entrada / objeto</strong> con diferentes valores de datos. 
-Si el atributo describe, por ejemplo, una dirección de correo electrónico, puede haber una, dos o 500 definiciones del atributo, cada una con una dirección de correo diferente (es múltipl ); este es uno de los varios métodos para tratar los alias de correo electrónico en los diseños de directorios. En este caso el valor predeterminado de un atributo es MULTIVALOR (permitir múltiples valores).</li>
+<li><strong>VALOR ÚNICO</strong> significa que solo un valor de datos puede estar presente para el atributo.</li>
+<li><strong>MULTIVALOR</strong> significa que el atributo puede aparecer varias veces en una clase de <strong>entrada / objeto</strong> con diferentes valores de datos.
+Por ejemplo, Si el atributo describe, por ejemplo, una dirección de correo electrónico, puede haber una, dos o 500 definiciones del atributo, cada una con una dirección de correo diferente (es múltiple).</li>
 </ol>
 </li>
-<li>Los atributos tienen nombres y, a veces, un alias (como se describe en sus definiciones ASN.1), por ejemplo, el atributo con un nombre de cn es un miembro del objectClass llamado person (y muchos otros) y tiene un alias de commonName . Se puede utilizar commonName o cn para hacer referencia a este atributo .</li>
-<li>En cada nivel de la jerarquía, <strong>los datos contenidos en un atributo se pueden utilizar para identificar de forma única la entrada</strong>. Puede ser cualquier atributo de la entrada. Incluso puede ser una combinación de dos o más atributos.</li>
+<li>Los atributos tienen nombres y, a veces, un alias (como se describe en sus definiciones ASN.1), por ejemplo, el atributo con un nombre de <strong>cn</strong> y tiene un alias de <strong>commonName</strong> . Se puede utilizar commonName o cn para hacer referencia a este atributo .</li>
+<li>En cada nivel de la jerarquía, <strong>los datos contenidos en un atributo se pueden utilizar para identificar de forma única la entrada</strong>.</li>
 <li>Los valores de atributo seleccionados para contener los datos únicos a veces se denominan atributos de nomenclatura o el nombre distinguido relativo (RDN), ya comentados.</li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Se pueden consultar en <a href="http://zytrax.com/books/ldap/ape/index.html#attributes">Atributos comunmente utilizados</a>.</p>
+</div>
 <h2 id="ldif">LDIF<a class="headerlink" href="#ldif" title="Permanent link">&para;</a></h2>
-<p>La adición de entradas se puede realizar de diversas formas, una de las cuales es mediante el uso de <strong>archivos de intercambio de datos LDAP (LDIF)</strong>.</p>
+<p>Para la gestión de los elementos comentados en el servicio de LDAP se utilizan <strong>archivos de intercambio de datos LDAP llamados LDIF</strong>.</p>
 <ul>
-<li>Los <strong>LDIF</strong> son archivos de texto que describen la jerarquía del árbol, el árbol de <strong>información del directorio (DIT)</strong>, y los datos que se agregarán a cada atributo. </li>
+<li>Los <strong>LDIF</strong> son archivos de texto que describen la jerarquía del árbol, el árbol de <strong>información del directorio (DIT)</strong>, y los datos que se agregarán a cada atributo.</li>
 <li>El siguiente es un ejemplo simple de un archivo LDIF que configura un DN raíz (dc = ejemplo, dc = com) y agrega tres entradas secundarias debajo de una entrada de <strong>personas</strong>.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -809,9 +892,8 @@ Si el atributo describe, por ejemplo, una dirección de correo electrónico, pue
 <span class="linenos" data-linenos="62 "></span><span class="nt">mail</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">j.smith@example.com</span>
 <span class="linenos" data-linenos="63 "></span><span class="nt">ou</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">accounting</span>
 </code></pre></div>
-<ul>
-<li>base.ldif</li>
-</ul>
+<!-- * base.ldif
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ou=usuarios,dc=pandora,dc=ldap</span>
 <span class="linenos" data-linenos="2 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">organizationalUnit</span>
 <span class="linenos" data-linenos="3 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">top</span>
@@ -822,9 +904,9 @@ Si el atributo describe, por ejemplo, una dirección de correo electrónico, pue
 <span class="linenos" data-linenos="8 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">top</span>
 <span class="linenos" data-linenos="9 "></span><span class="nt">ou</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">grupos</span>
 </code></pre></div>
-<ul>
-<li>content.ldif </li>
-</ul>
+
+* content.ldif 
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=devops,ou=grupos,dc=pandora,dc=ldap</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">posixGroup</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="nt">cn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">devops</span>
@@ -843,25 +925,29 @@ Si el atributo describe, por ejemplo, una dirección de correo electrónico, pue
 <span class="linenos" data-linenos="16 "></span><span class="nt">gidNumber</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10000</span>
 <span class="linenos" data-linenos="17 "></span><span class="nt">homeDirectory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/mordecai</span>
 </code></pre></div>
-<h2 id="actividades-desarrollo-ud2_01">Actividades Desarrollo UD2_01<a class="headerlink" href="#actividades-desarrollo-ud2_01" title="Permanent link">&para;</a></h2>
-<p><a name="Actividades Desarrollo UD2_01"></a>
-<a href="Practica02_LDAP.html">Creación de usuarios y grupos OpenLDAP</a></p>
-<h2 id="actividades-desarrollo-ud2_02">Actividades Desarrollo UD2_02<a class="headerlink" href="#actividades-desarrollo-ud2_02" title="Permanent link">&para;</a></h2>
-<p><a href="Practica03_LDAP.html">Configuración de equipo cliente</a></p>
-<h2 id="actividades-desarrollo-ud2_03">Actividades Desarrollo UD2_03<a class="headerlink" href="#actividades-desarrollo-ud2_03" title="Permanent link">&para;</a></h2>
-<ol start="201">
-<li>En este ejercicio se deben utilizar los <strong>comandos de OpenLdap</strong> instalados en el paquete <code>LDAPutils</code>.<ol>
-<li>Añade un nuevo grupo y dentro de el un nuevo usuario a la estructura de directorio creada en la práctica superior.</li>
-<li>Crea una contraseña para el usuario.</li>
-<li>Modifica el uid creado de inicio.</li>
-<li>Crea un segundo usuario, dentro de <strong>usuarios</strong></li>
-<li>Elimina el segundo usuario creado.</li>
-</ol>
-</li>
-</ol>
-<p>En cada subapartado comprueba que se han introducido correctamente las modificaciones en el <strong>DIT</strong>.</p>
-<h2 id="actividades-desarrollo-ud2_04">Actividades Desarrollo UD2_04<a class="headerlink" href="#actividades-desarrollo-ud2_04" title="Permanent link">&para;</a></h2>
-<p><a href="phpLDAPadmin.md">Instalación y configuración phpLDAPadmin</a></p>
+
+## Actividades Desarrollo UD2_01 
+<a name="Actividades Desarrollo UD2_01"></a>
+[Creación de usuarios y grupos OpenLDAP](Practica02_LDAP.md)
+
+## Actividades Desarrollo UD2_02
+
+[Configuración de equipo cliente](Practica03_LDAP.md)
+
+## Actividades Desarrollo UD2_03
+
+201. En este ejercicio se deben utilizar los **comandos de OpenLdap** instalados en el paquete `LDAPutils`.
+    1. Añade un nuevo grupo y dentro de el un nuevo usuario a la estructura de directorio creada en la práctica superior.
+    2. Crea una contraseña para el usuario.
+    3. Modifica el uid creado de inicio.
+    4. Crea un segundo usuario, dentro de **usuarios**
+    5. Elimina el segundo usuario creado.
+
+En cada subapartado comprueba que se han introducido correctamente las modificaciones en el **DIT**.
+
+## Actividades Desarrollo UD2_04
+
+[Instalación y configuración phpLDAPadmin](phpLDAPadmin.md) -->
                 
               
               
@@ -877,6 +963,26 @@ Si el atributo describe, por ejemplo, una dirección de correo electrónico, pue
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="Practica01_LDAP.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 4.2- Instalación y configuración de OpenLDAP" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              4.2- Instalación y configuración de OpenLDAP
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
