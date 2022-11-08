@@ -16,7 +16,7 @@
     
     
       
-        <title>Practica02 LDAP - Administración de Sistemas Operativos</title>
+        <title>4.4- Creación de usuarios y grupos OpenLDAP - Administración de Sistemas Operativos</title>
       
     
     
@@ -79,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#creacion-de-usuarios-y-grupos-openldap" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -104,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Practica02 LDAP
+              4.4- Creación de usuarios y grupos OpenLDAP
             
           </span>
         </div>
@@ -542,12 +547,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       <label class="md-nav__link" for="__nav_5">
         4.- Servicios de Directorio Libres: LDAP
@@ -608,6 +615,65 @@
   
 
           
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4.4- Creación de usuarios y grupos OpenLDAP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Practica02_LDAP.html" class="md-nav__link md-nav__link--active">
+        4.4- Creación de usuarios y grupos OpenLDAP
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#baseldif" class="md-nav__link">
+    base.ldif
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contentldif" class="md-nav__link">
+    content.ldif
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -627,128 +693,181 @@
               
                 
                 
-                  <h1>Practica02 LDAP</h1>
-                
-                <p>Con nuestro servicio instalado y configurado, el siguiente paso es crear la estructura básica del directorio. Es decir, crearemos la estructura jerárquica del árbol (DIT -- Directory Information Tree).</p>
-<p>Una de las formas más sencillas de añadir entradas al directorio es mediante ficheros LDIF (LDAP Data Interchange Format). Básicamente se tratan de ficheros en texto plano con un formato particular que debemos conocer para poder construirlos correctamente. El formato básico de una entrada es el siguiente:</p>
+                <h1 id="creacion-de-usuarios-y-grupos-openldap">Creación de usuarios y grupos OpenLDAP<a class="headerlink" href="#creacion-de-usuarios-y-grupos-openldap" title="Permanent link">&para;</a></h1>
+<p>Con el servicio instalado y configurado, el siguiente paso es crear la estructura básica del directorio. Es decir, se creará la estructura jerárquica del árbol (DIT -- Directory Information Tree).</p>
+<ul>
+<li>Una de las formas más sencillas de añadir entradas al directorio es mediante ficheros LDIF (LDAP Data Interchange Format). </li>
+<li>Básicamente se tratan de ficheros en texto plano con un formato particular que debemos conocer para poder construirlos correctamente. El formato básico de una entrada es el siguiente:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span># comentario
 <span class="linenos" data-linenos="2 "></span>dn: &lt;nombre distintivo único&gt;
 <span class="linenos" data-linenos="3 "></span>&lt;atributo&gt;: &lt;valor&gt;
 <span class="linenos" data-linenos="4 "></span>&lt;atributo&gt;: &lt;valor&gt;
 <span class="linenos" data-linenos="5 "></span>...
 </code></pre></div>
-<p>Teniendo en cuenta lo anteriormente mencionado, procedemos a crear un fichero base que contenga los tipos de objetos básicos del directorio. </p>
+<h2 id="baseldif">base.ldif<a class="headerlink" href="#baseldif" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Teniendo en cuenta lo anteriormente mencionado, procedemos a crear un fichero base que contenga los tipos de objetos básicos del directorio.</li>
+</ol>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano base.ldif
 </code></pre></div>
-<p>En él vamos a crear dos entradas referentes a unidades organizativas: «usuarios» y «grupos». Las unidades organizativas, como su propio nombre indica, son atributos que nos van a servir para estructurar de forma idónea nuestro árbol del directorio LDAP. Estas dos entradas serán la base de nuestro árbol ya que de ellas dependerán varias entradas más adelante.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/12.png" /></p>
-<p>Una vez creado el fichero base.ldif, procedemos a cargarlo en directorio LDAP. Para ello ejecutamos la siguiente instrucción:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo ldapadd -x -D cn=admin,dc=pandora,dc=ldap -W -f base.ldif
+<ol start="2">
+<li>Se genera el base.ldif siguiendo las siguientes premisas:</li>
+</ol>
+<ul>
+<li>En el LDIF se crean dos entradas referentes a unidades organizativas: «usuarios» y «grupos». </li>
+<li>Las unidades organizativas, como su propio nombre indica, son atributos que nos van a servir para estructurar de forma idónea el árbol del directorio LDAP.</li>
+<li>Estas dos entradas serán la base del árbol ya que de ellas dependerán varias entradas más adelante.</li>
+<li>Se genera el base.ldif con las siguientes entradas, cambiando aso por dominio de cada alumna o alumno.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>dn: ou=usuarios,dc=aso,dc=ldap
+<span class="linenos" data-linenos="2 "></span>objectClass: organizationalUnit
+<span class="linenos" data-linenos="3 "></span>objectClass: top
+<span class="linenos" data-linenos="4 "></span>ou: usuarios
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span>dn: ou=grupos,dc=aso,dc=ldap
+<span class="linenos" data-linenos="7 "></span>objectClass: organizationalUnit
+<span class="linenos" data-linenos="8 "></span>objectClass: top
+<span class="linenos" data-linenos="9 "></span>ou: grupos
 </code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/14.png" /></p>
-<p>Una vez cargadas las entradas, vamos a proceder a crear nuevas entradas que colgarán de las unidades organizativas que acabamos de crear. Vamos a crear una entrada para un grupo y una entrada para un usuario.</p>
-<p>Antes que nada, como buena práctica de seguridad, vamos a generar una contraseña cifrada para asignárselas a los usuarios en el fichero LDIF que vamos a crear. Para ello ejecutamos el siguiente comando:</p>
+<p><img alt="" src="imagenes/02/4201.png" /></p>
+<ol start="3">
+<li>Una vez creado el fichero base.ldif, se procede a cargar en el directorio LDAP. Para ello se ejecuta la siguiente instrucción:</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Importante haber anotado correctamente la contraseña introducida en la configuración del LDAP.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo ldapadd -x -D cn=admin,dc=aso,dc=ldap -W -f base.ldif
+</code></pre></div>
+<p><img alt="" src="imagenes/02/4202.png" /></p>
+<ol start="4">
+<li>Una vez cargadas las entradas, se a procede a crear nuevas entradas que colgarán de las unidades organizativas que acabamos de crear. Se crea una entrada para un grupo y una entrada para un usuario.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Antes que nada, como buena práctica de seguridad, se genera una contraseña cifrada para asignárselas a los usuarios en el fichero LDIF que se va a crear. Para ello se ejecuta el siguiente comando:</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>slappasswd
 </code></pre></div>
-<p>Escribimos la contraseña dos veces y nos devolverá la misma cifrada por el algoritmo criptográfico SSHA.</p>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/15.png" /></p>
-<p>Ahora que tenemos la contraseña cifrada creamos nuestro fichero content.ldif, donde vamos a crear dos entradas: un grupo llamado devops que colgará de la unidad organizativa grupos y un usuario llamado mordecai que colgará de la unidad organizativa usuarios y a su vez pertenecerá al grupo devops.</p>
+<ul>
+<li>Se escribe la contraseña dos veces y nos devolverá la misma cifrada por el algoritmo criptográfico SSHA.</li>
+</ul>
+<p><img alt="" src="imagenes/02/4203.png" /></p>
+<h2 id="contentldif">content.ldif<a class="headerlink" href="#contentldif" title="Permanent link">&para;</a></h2>
+<ol start="5">
+<li>A continuación se utiliza la contraseña cifrada en el fichero content.ldif, donde se crean dos entradas:</li>
+</ol>
+<ul>
+<li>Un grupo llamado <strong>devops</strong> que colgará de la unidad organizativa grupos.</li>
+<li>Un usuario llamado <strong>mordecai</strong> que colgará de la unidad organizativa usuarios y a su vez pertenecerá al grupo <strong>devops</strong>.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano content.ldif
 </code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/16.png" /></p>
-<p>De la misma forma que anteriormente, procedemos a cargar las entradas en el directorio LDAP ejecutando la siguiente instrucción:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo ldapadd -x -D cn=admin,dc=pandora,dc=ldap -W -f content.ldif
+<ul>
+<li>Se puede copiar el siguiente archivo modificado el dominio y contraseña correspondiente en cada caso.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>dn: cn=devops,ou=grupos,dc=aso,dc=ldap
+<span class="linenos" data-linenos=" 2 "></span>objectClass: posixGroup
+<span class="linenos" data-linenos=" 3 "></span>cn: devops
+<span class="linenos" data-linenos=" 4 "></span>gidNumber: 10000
+<span class="linenos" data-linenos=" 5 "></span>memberUid: devops
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>dn: uid=mordecai,ou=usuarios,dc=aso,dc=ldap
+<span class="linenos" data-linenos=" 8 "></span>objectClass: inetOrgPerson
+<span class="linenos" data-linenos=" 9 "></span>objectClass: posixAccount
+<span class="linenos" data-linenos="10 "></span>objectClass: shadowAccount
+<span class="linenos" data-linenos="11 "></span>cn: Mordecai
+<span class="linenos" data-linenos="12 "></span>sn: Geek
+<span class="linenos" data-linenos="13 "></span>userPassword: {SSHA}U61BxzFQtTVdVuJM7JG8KZhigYoURs16
+<span class="linenos" data-linenos="14 "></span>loginshell: /bin/bash
+<span class="linenos" data-linenos="15 "></span>uidNumber: 10000
+<span class="linenos" data-linenos="16 "></span>gidNumber: 10000
+<span class="linenos" data-linenos="17 "></span>homeDirectory: /home/mordecai
 </code></pre></div>
-<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/17.png" /></p>
-<p>Llegados a este punto ya tenemos una estructura jerárquica del árbol creada de la siguiente manera:</p>
-<p><img alt="" src="https://blog.juananpc.es/wp-content/uploads/2021/07/arbol.png" /></p>
+<p><img alt="" src="imagenes/02/4204.png" /></p>
+<ol start="6">
+<li>De la misma forma que anteriormente, se procede a cargar las entradas en el directorio LDAP ejecutando la siguiente instrucción:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo ldapadd -x -D cn=admin,dc=aso,dc=ldap -W -f content.ldif
+</code></pre></div>
+<p><img alt="" src="imagenes/02/4205.png" /></p>
+<p>En  este punto ya se tiene una estructura jerárquica del árbol creada de la siguiente manera (sustituyendo pandora por el correspondiente dominio):</p>
+<p><img alt="" src="imagenes/02/4206.png" /></p>
 <p>Para poder ver las diferentes entradas que forman nuestro directorio LDAP ejecutamos el comando slapcat.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo slapcat
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span> dn: dc=pandora,dc=ldap
-<span class="linenos" data-linenos=" 2 "></span> objectClass: top
-<span class="linenos" data-linenos=" 3 "></span> objectClass: dcObject
-<span class="linenos" data-linenos=" 4 "></span> objectClass: organization
-<span class="linenos" data-linenos=" 5 "></span> o: pandora
-<span class="linenos" data-linenos=" 6 "></span> dc: pandora
-<span class="linenos" data-linenos=" 7 "></span> structuralObjectClass: organization
-<span class="linenos" data-linenos=" 8 "></span> entryUUID: 7b982cc0-d599-103a-93b2-3d7047cfd04f
-<span class="linenos" data-linenos=" 9 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="10 "></span> createTimestamp: 20201218162610Z
-<span class="linenos" data-linenos="11 "></span> entryCSN: 20201218162610.450021Z#000000#000#000000
-<span class="linenos" data-linenos="12 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="13 "></span> modifyTimestamp: 20201218162610Z
-<span class="linenos" data-linenos="14 "></span>
-<span class="linenos" data-linenos="15 "></span> dn: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="16 "></span> objectClass: simpleSecurityObject
-<span class="linenos" data-linenos="17 "></span> objectClass: organizationalRole
-<span class="linenos" data-linenos="18 "></span> cn: admin
-<span class="linenos" data-linenos="19 "></span> description: LDAP administrator
-<span class="linenos" data-linenos="20 "></span> userPassword:: e1NTSEF9MmRTdDVqK0ZtVFJpdFAwQ0g4QmkyNUkwK242dFcxakc=
-<span class="linenos" data-linenos="21 "></span> structuralObjectClass: organizationalRole
-<span class="linenos" data-linenos="22 "></span> entryUUID: 7b9b37a8-d599-103a-93b3-3d7047cfd04f
-<span class="linenos" data-linenos="23 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="24 "></span> createTimestamp: 20201218162610Z
-<span class="linenos" data-linenos="25 "></span> entryCSN: 20201218162610.470043Z#000000#000#000000
-<span class="linenos" data-linenos="26 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="27 "></span> modifyTimestamp: 20201218162610Z
-<span class="linenos" data-linenos="28 "></span>
-<span class="linenos" data-linenos="29 "></span> dn: ou=usuarios,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="30 "></span> objectClass: organizationalUnit
-<span class="linenos" data-linenos="31 "></span> objectClass: top
-<span class="linenos" data-linenos="32 "></span> ou: usuarios
-<span class="linenos" data-linenos="33 "></span> structuralObjectClass: organizationalUnit
-<span class="linenos" data-linenos="34 "></span> entryUUID: 4159df9c-d74a-103a-86e5-c92b1d7a3d24
-<span class="linenos" data-linenos="35 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="36 "></span> createTimestamp: 20201220200404Z
-<span class="linenos" data-linenos="37 "></span> entryCSN: 20201220200404.817837Z#000000#000#000000
-<span class="linenos" data-linenos="38 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="39 "></span> modifyTimestamp: 20201220200404Z
-<span class="linenos" data-linenos="40 "></span>
-<span class="linenos" data-linenos="41 "></span> dn: ou=grupos,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="42 "></span> objectClass: organizationalUnit
-<span class="linenos" data-linenos="43 "></span> objectClass: top
-<span class="linenos" data-linenos="44 "></span> ou: grupos
-<span class="linenos" data-linenos="45 "></span> structuralObjectClass: organizationalUnit
-<span class="linenos" data-linenos="46 "></span> entryUUID: 416283fe-d74a-103a-86e6-c92b1d7a3d24
-<span class="linenos" data-linenos="47 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="48 "></span> createTimestamp: 20201220200404Z
-<span class="linenos" data-linenos="49 "></span> entryCSN: 20201220200404.874510Z#000000#000#000000
-<span class="linenos" data-linenos="50 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="51 "></span> modifyTimestamp: 20201220200404Z
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span> root@aso:/home/sor# slapcat
+<span class="linenos" data-linenos=" 2 "></span>dn: dc=aso,dc=ldap
+<span class="linenos" data-linenos=" 3 "></span>objectClass: top
+<span class="linenos" data-linenos=" 4 "></span>objectClass: dcObject
+<span class="linenos" data-linenos=" 5 "></span>objectClass: organization
+<span class="linenos" data-linenos=" 6 "></span>o: aso
+<span class="linenos" data-linenos=" 7 "></span>dc: aso
+<span class="linenos" data-linenos=" 8 "></span>structuralObjectClass: organization
+<span class="linenos" data-linenos=" 9 "></span>entryUUID: be2252ee-f335-103c-895b-fdc9e52a62b4
+<span class="linenos" data-linenos="10 "></span>creatorsName: cn=admin,dc=aso,dc=ldap
+<span class="linenos" data-linenos="11 "></span>createTimestamp: 20221107221742Z
+<span class="linenos" data-linenos="12 "></span>entryCSN: 20221107221742.637560Z#000000#000#000000
+<span class="linenos" data-linenos="13 "></span>modifiersName: cn=admin,dc=aso,dc=ldap
+<span class="linenos" data-linenos="14 "></span>modifyTimestamp: 20221107221742Z
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span>dn: ou=usuarios,dc=aso,dc=ldap
+<span class="linenos" data-linenos="17 "></span>objectClass: organizationalUnit
+<span class="linenos" data-linenos="18 "></span>objectClass: top
+<span class="linenos" data-linenos="19 "></span>ou: usuarios
+<span class="linenos" data-linenos="20 "></span>structuralObjectClass: organizationalUnit
+<span class="linenos" data-linenos="21 "></span>entryUUID: 9cec530a-f339-103c-8382-ab30731258a0
+<span class="linenos" data-linenos="22 "></span>creatorsName: cn=admin,dc=aso,dc=ldap
+<span class="linenos" data-linenos="23 "></span>createTimestamp: 20221107224524Z
+<span class="linenos" data-linenos="24 "></span>entryCSN: 20221107224524.905787Z#000000#000#000000
+<span class="linenos" data-linenos="25 "></span>modifiersName: cn=admin,dc=aso,dc=ldap
+<span class="linenos" data-linenos="26 "></span>modifyTimestamp: 20221107224524Z
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span>dn: ou=grupos,dc=aso,dc=ldap
+<span class="linenos" data-linenos="29 "></span>objectClass: organizationalUnit
+<span class="linenos" data-linenos="30 "></span>objectClass: top
+<span class="linenos" data-linenos="31 "></span>ou: grupos
+<span class="linenos" data-linenos="32 "></span>structuralObjectClass: organizationalUnit
+<span class="linenos" data-linenos="33 "></span>entryUUID: 9cee76a8-f339-103c-8383-ab30731258a0
+<span class="linenos" data-linenos="34 "></span>creatorsName: cn=admin,dc=aso,dc=ldap
+<span class="linenos" data-linenos="35 "></span>createTimestamp: 20221107224524Z
+<span class="linenos" data-linenos="36 "></span>entryCSN: 20221107224524.919838Z#000000#000#000000
+<span class="linenos" data-linenos="37 "></span>modifiersName: cn=admin,dc=aso,dc=ldap
+<span class="linenos" data-linenos="38 "></span>modifyTimestamp: 20221107224524Z
+<span class="linenos" data-linenos="39 "></span>
+<span class="linenos" data-linenos="40 "></span>dn: cn=devops,ou=grupos,dc=aso,dc=ldap
+<span class="linenos" data-linenos="41 "></span>objectClass: posixGroup
+<span class="linenos" data-linenos="42 "></span>cn: devops
+<span class="linenos" data-linenos="43 "></span>gidNumber: 10000
+<span class="linenos" data-linenos="44 "></span>memberUid: devops
+<span class="linenos" data-linenos="45 "></span>structuralObjectClass: posixGroup
+<span class="linenos" data-linenos="46 "></span>entryUUID: 66e8da30-f33e-103c-8384-ab30731258a0
+<span class="linenos" data-linenos="47 "></span>creatorsName: cn=admin,dc=aso,dc=ldap
+<span class="linenos" data-linenos="48 "></span>createTimestamp: 20221107231941Z
+<span class="linenos" data-linenos="49 "></span>entryCSN: 20221107231941.769744Z#000000#000#000000
+<span class="linenos" data-linenos="50 "></span>modifiersName: cn=admin,dc=aso,dc=ldap
+<span class="linenos" data-linenos="51 "></span>modifyTimestamp: 20221107231941Z
 <span class="linenos" data-linenos="52 "></span>
-<span class="linenos" data-linenos="53 "></span> dn: cn=devops,ou=grupos,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="54 "></span> objectClass: posixGroup
-<span class="linenos" data-linenos="55 "></span> cn: devops
-<span class="linenos" data-linenos="56 "></span> gidNumber: 10000
-<span class="linenos" data-linenos="57 "></span> memberUid: devops
-<span class="linenos" data-linenos="58 "></span> structuralObjectClass: posixGroup
-<span class="linenos" data-linenos="59 "></span> entryUUID: fdac9144-d7f4-103a-86e7-c92b1d7a3d24
-<span class="linenos" data-linenos="60 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="61 "></span> createTimestamp: 20201221162615Z
-<span class="linenos" data-linenos="62 "></span> entryCSN: 20201221162615.215505Z#000000#000#000000
-<span class="linenos" data-linenos="63 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="64 "></span> modifyTimestamp: 20201221162615Z
-<span class="linenos" data-linenos="65 "></span>
-<span class="linenos" data-linenos="66 "></span> dn: uid=mordecai,ou=usuarios,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="67 "></span> objectClass: inetOrgPerson
-<span class="linenos" data-linenos="68 "></span> objectClass: posixAccount
-<span class="linenos" data-linenos="69 "></span> objectClass: shadowAccount
-<span class="linenos" data-linenos="70 "></span> cn: Mordecai
-<span class="linenos" data-linenos="71 "></span> sn: Geek
-<span class="linenos" data-linenos="72 "></span> userPassword:: e1NTSEF9Z0d1eUZkMGlyVld5WkNkSUNRN1AySytUUENPQ0I5ZUI=
-<span class="linenos" data-linenos="73 "></span> loginShell: /bin/bash
-<span class="linenos" data-linenos="74 "></span> uidNumber: 10000
-<span class="linenos" data-linenos="75 "></span> gidNumber: 10000
-<span class="linenos" data-linenos="76 "></span> homeDirectory: /home/mordecai
-<span class="linenos" data-linenos="77 "></span> structuralObjectClass: inetOrgPerson
-<span class="linenos" data-linenos="78 "></span> uid: mordecai
-<span class="linenos" data-linenos="79 "></span> entryUUID: fdb16106-d7f4-103a-86e8-c92b1d7a3d24
-<span class="linenos" data-linenos="80 "></span> creatorsName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="81 "></span> createTimestamp: 20201221162615Z
-<span class="linenos" data-linenos="82 "></span> entryCSN: 20201221162615.247033Z#000000#000#000000
-<span class="linenos" data-linenos="83 "></span> modifiersName: cn=admin,dc=pandora,dc=ldap
-<span class="linenos" data-linenos="84 "></span> modifyTimestamp: 20201221162615Z
+<span class="linenos" data-linenos="53 "></span>dn: uid=mordecai,ou=usuarios,dc=aso,dc=ldap
+<span class="linenos" data-linenos="54 "></span>objectClass: inetOrgPerson
+<span class="linenos" data-linenos="55 "></span>objectClass: posixAccount
+<span class="linenos" data-linenos="56 "></span>objectClass: shadowAccount
+<span class="linenos" data-linenos="57 "></span>cn: Mordecai
+<span class="linenos" data-linenos="58 "></span>sn: Geek
+<span class="linenos" data-linenos="59 "></span>userPassword:: e1NTSEF9VTYxQnh6RlF0VFZkVnVKTTdKRzhLWmhpZ1lvVVJzMTY=
+<span class="linenos" data-linenos="60 "></span>loginShell: /bin/bash
+<span class="linenos" data-linenos="61 "></span>uidNumber: 10000
+<span class="linenos" data-linenos="62 "></span>gidNumber: 10000
+<span class="linenos" data-linenos="63 "></span>homeDirectory: /home/mordecai
+<span class="linenos" data-linenos="64 "></span>structuralObjectClass: inetOrgPerson
+<span class="linenos" data-linenos="65 "></span>uid: mordecai
+<span class="linenos" data-linenos="66 "></span>entryUUID: 66ed8418-f33e-103c-8385-ab30731258a0
+<span class="linenos" data-linenos="67 "></span>creatorsName: cn=admin,dc=aso,dc=ldap
+<span class="linenos" data-linenos="68 "></span>createTimestamp: 20221107231941Z
+<span class="linenos" data-linenos="69 "></span>entryCSN: 20221107231941.800307Z#000000#000#000000
+<span class="linenos" data-linenos="70 "></span>modifiersName: cn=admin,dc=aso,dc=ldap
+<span class="linenos" data-linenos="71 "></span>modifyTimestamp: 20221107231941Z
 </code></pre></div>
                 
               
@@ -765,6 +884,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="042_LDAP_DIT.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 4.3- Modelo de Información de LDAP" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              4.3- Modelo de Información de LDAP
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
