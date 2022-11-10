@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/04_LDAP/Practica02_LDAP.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/04_LDAP/042_InstalacionConfigLDAP_PR.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>4.4- Creación de usuarios y grupos OpenLDAP - Administración de Sistemas Operativos</title>
+        <title>4.2- Instalación y configuración de OpenLDAP - Administración de Sistemas Operativos</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creacion-de-usuarios-y-grupos-openldap" class="md-skip">
+        <a href="#instalacion-y-configuracion-basica-del-servidor-open-ldap" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4.4- Creación de usuarios y grupos OpenLDAP
+              4.2- Instalación y configuración de OpenLDAP
             
           </span>
         </div>
@@ -594,30 +594,6 @@
             
   
   
-  
-    <li class="md-nav__item">
-      <a href="Practica01_LDAP.html" class="md-nav__link">
-        4.2- Instalación y configuración de OpenLDAP
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="042_LDAP_DIT.html" class="md-nav__link">
-        4.3- Modelo de Información de LDAP
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
     
   
   
@@ -630,12 +606,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          4.4- Creación de usuarios y grupos OpenLDAP
+          4.2- Instalación y configuración de OpenLDAP
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="Practica02_LDAP.html" class="md-nav__link md-nav__link--active">
-        4.4- Creación de usuarios y grupos OpenLDAP
+      <a href="042_InstalacionConfigLDAP_PR.html" class="md-nav__link md-nav__link--active">
+        4.2- Instalación y configuración de OpenLDAP
       </a>
       
         
@@ -653,15 +629,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#baseldif" class="md-nav__link">
-    base.ldif
+  <a href="#enunciado" class="md-nav__link">
+    Enunciado
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#contentldif" class="md-nav__link">
-    content.ldif
+  <a href="#pasos-iniciales" class="md-nav__link">
+    Pasos Iniciales
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-y-configuracion-del-servicio-openldap" class="md-nav__link">
+    Instalación y configuración del Servicio OpenLDAP
   </a>
   
 </li>
@@ -670,6 +653,30 @@
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="043_LDAP_DIT.html" class="md-nav__link">
+        4.3- Modelo de Información de LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="044_UsersLDAP.html" class="md-nav__link">
+        4.4- Creación  y comprobación de Usuarios/Grupos OpenLDAP
+      </a>
     </li>
   
 
@@ -693,182 +700,92 @@
               
                 
                 
-                <h1 id="creacion-de-usuarios-y-grupos-openldap">Creación de usuarios y grupos OpenLDAP<a class="headerlink" href="#creacion-de-usuarios-y-grupos-openldap" title="Permanent link">&para;</a></h1>
-<p>Con el servicio instalado y configurado, el siguiente paso es crear la estructura básica del directorio. Es decir, se creará la estructura jerárquica del árbol (DIT -- Directory Information Tree).</p>
+                <h1 id="instalacion-y-configuracion-basica-del-servidor-open-ldap">Instalación y configuración básica del servidor Open LDAP<a class="headerlink" href="#instalacion-y-configuracion-basica-del-servidor-open-ldap" title="Permanent link">&para;</a></h1>
+<h2 id="enunciado">Enunciado<a class="headerlink" href="#enunciado" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Una de las formas más sencillas de añadir entradas al directorio es mediante ficheros LDIF (LDAP Data Interchange Format). </li>
-<li>Básicamente se tratan de ficheros en texto plano con un formato particular que debemos conocer para poder construirlos correctamente. El formato básico de una entrada es el siguiente:</li>
+<li>Se debe Realizar un informe breve en pdf con la captura del <strong>slapcat</strong> que confirme que se ha instalado y configurado el OpenLDAP.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span># comentario
-<span class="linenos" data-linenos="2 "></span>dn: &lt;nombre distintivo único&gt;
-<span class="linenos" data-linenos="3 "></span>&lt;atributo&gt;: &lt;valor&gt;
-<span class="linenos" data-linenos="4 "></span>&lt;atributo&gt;: &lt;valor&gt;
-<span class="linenos" data-linenos="5 "></span>...
-</code></pre></div>
-<h2 id="baseldif">base.ldif<a class="headerlink" href="#baseldif" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Teniendo en cuenta lo anteriormente mencionado, procedemos a crear un fichero base que contenga los tipos de objetos básicos del directorio.</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano base.ldif
-</code></pre></div>
-<ol start="2">
-<li>Se genera el base.ldif siguiendo las siguientes premisas:</li>
-</ol>
-<ul>
-<li>En el LDIF se crean dos entradas referentes a unidades organizativas: «usuarios» y «grupos». </li>
-<li>Las unidades organizativas, como su propio nombre indica, son atributos que nos van a servir para estructurar de forma idónea el árbol del directorio LDAP.</li>
-<li>Estas dos entradas serán la base del árbol ya que de ellas dependerán varias entradas más adelante.</li>
-<li>Se genera el base.ldif con las siguientes entradas, cambiando aso por dominio de cada alumna o alumno.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>dn: ou=usuarios,dc=aso,dc=ldap
-<span class="linenos" data-linenos="2 "></span>objectClass: organizationalUnit
-<span class="linenos" data-linenos="3 "></span>objectClass: top
-<span class="linenos" data-linenos="4 "></span>ou: usuarios
-<span class="linenos" data-linenos="5 "></span>
-<span class="linenos" data-linenos="6 "></span>dn: ou=grupos,dc=aso,dc=ldap
-<span class="linenos" data-linenos="7 "></span>objectClass: organizationalUnit
-<span class="linenos" data-linenos="8 "></span>objectClass: top
-<span class="linenos" data-linenos="9 "></span>ou: grupos
-</code></pre></div>
-<p><img alt="" src="imagenes/02/4201.png" /></p>
-<ol start="3">
-<li>Una vez creado el fichero base.ldif, se procede a cargar en el directorio LDAP. Para ello se ejecuta la siguiente instrucción:</li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<p>Importante haber anotado correctamente la contraseña introducida en la configuración del LDAP.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Debe aparecer el dominio: <strong>nombre.apellidos.ldap</strong></p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo ldapadd -x -D cn=admin,dc=aso,dc=ldap -W -f base.ldif
-</code></pre></div>
-<p><img alt="" src="imagenes/02/4202.png" /></p>
-<ol start="4">
-<li>Una vez cargadas las entradas, se a procede a crear nuevas entradas que colgarán de las unidades organizativas que acabamos de crear. Se crea una entrada para un grupo y una entrada para un usuario.</li>
+<h2 id="pasos-iniciales">Pasos Iniciales<a class="headerlink" href="#pasos-iniciales" title="Permanent link">&para;</a></h2>
+<p>Antes de comenzar la instalación de OpenLDAP, es recomendable realizar unos pasos previos, a continuación se describen:</p>
+<ol>
+<li>En primer lugar se aconseja utilizar IP fijas en el aula, que serán clase c de esta forma: <code>192.168.5.X</code>, donde X será el número de puesto.</li>
 </ol>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+</div>
+<p>Para ello se modifica el archivo <code>/etc/netplan/00-installer-config.yaml</code></p>
+<p><img alt="" src="imagenes/02/421NetplanstaticIP.png" /></p>
+<p>La <strong>figura anterior</strong> muestra un ejemplo de modificación con una red para <strong>ubuntu server 22.04</strong> con una red <strong>192.168.8.0/24</strong>.</p>
+<ol start="2">
+<li>A continuación se modifica el archivo Hots para cambiar el nombre de la máquina en el dominio configurado. Con las siguientes premisas.</li>
+</ol>
+<ul>
+<li>Modificar el contenido del fichero <code>/etc/hosts</code> para indicar un <strong>FQDN ( fully qualified domain name)</strong> a nuestro servidor. </li>
+<li><strong>FQDN</strong> es un nombre de dominio completo que incluye el nombre de la computadora y el nombre de dominio asociado a ese equipo.​​ Por ejemplo, dada la computadora llamada <strong>«aso»</strong> y el nombre de dominio <strong>«aso.ldap.»</strong></li>
+<li>El objetivo de este cambio es que cuando hagamos referencia a aso.ldap, nuestro sistema entienda que nos estamos refiriendo al servidor. Esto, además, facilitará la labor de configuración de nuestro servicio de directorio.</li>
+<li>Para modificar el dicho archivo se ejecuta el siguiente comando.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/hosts
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+</div>
+<p><img alt="" src="imagenes/02/422HostsFQDN.png" /></p>
+<h2 id="instalacion-y-configuracion-del-servicio-openldap">Instalación y configuración del Servicio OpenLDAP<a class="headerlink" href="#instalacion-y-configuracion-del-servicio-openldap" title="Permanent link">&para;</a></h2>
+<p>En este apartado se explican en forma de guía práctica los pasos de la implantación del servicio OpenLDAP en un servidor Ubuntu 22.04</p>
 <div class="admonition tip">
 <p class="admonition-title">Consejo</p>
-<p>Antes que nada, como buena práctica de seguridad, se genera una contraseña cifrada para asignárselas a los usuarios en el fichero LDIF que se va a crear. Para ello se ejecuta el siguiente comando:</p>
+<p>A priori se podría revisar con antelación los paquetes a instalar con: <code>apt show slapd</code></p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>slappasswd
-</code></pre></div>
-<ul>
-<li>Se escribe la contraseña dos veces y nos devolverá la misma cifrada por el algoritmo criptográfico SSHA.</li>
-</ul>
-<p><img alt="" src="imagenes/02/4203.png" /></p>
-<h2 id="contentldif">content.ldif<a class="headerlink" href="#contentldif" title="Permanent link">&para;</a></h2>
-<ol start="5">
-<li>A continuación se utiliza la contraseña cifrada en el fichero content.ldif, donde se crean dos entradas:</li>
+<p><img alt="" src="imagenes/02/423InfoPaqueteLdap.png" /></p>
+<ol>
+<li><strong>Instalación</strong>: Se instalan los paquetes necesarios en el servidor.</li>
 </ol>
-<ul>
-<li>Un grupo llamado <strong>devops</strong> que colgará de la unidad organizativa grupos.</li>
-<li>Un usuario llamado <strong>mordecai</strong> que colgará de la unidad organizativa usuarios y a su vez pertenecerá al grupo <strong>devops</strong>.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano content.ldif
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt install slapd
 </code></pre></div>
-<ul>
-<li>Se puede copiar el siguiente archivo modificado el dominio y contraseña correspondiente en cada caso.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>dn: cn=devops,ou=grupos,dc=aso,dc=ldap
-<span class="linenos" data-linenos=" 2 "></span>objectClass: posixGroup
-<span class="linenos" data-linenos=" 3 "></span>cn: devops
-<span class="linenos" data-linenos=" 4 "></span>gidNumber: 10000
-<span class="linenos" data-linenos=" 5 "></span>memberUid: devops
-<span class="linenos" data-linenos=" 6 "></span>
-<span class="linenos" data-linenos=" 7 "></span>dn: uid=mordecai,ou=usuarios,dc=aso,dc=ldap
-<span class="linenos" data-linenos=" 8 "></span>objectClass: inetOrgPerson
-<span class="linenos" data-linenos=" 9 "></span>objectClass: posixAccount
-<span class="linenos" data-linenos="10 "></span>objectClass: shadowAccount
-<span class="linenos" data-linenos="11 "></span>cn: Mordecai
-<span class="linenos" data-linenos="12 "></span>sn: Geek
-<span class="linenos" data-linenos="13 "></span>userPassword: {SSHA}U61BxzFQtTVdVuJM7JG8KZhigYoURs16
-<span class="linenos" data-linenos="14 "></span>loginshell: /bin/bash
-<span class="linenos" data-linenos="15 "></span>uidNumber: 10000
-<span class="linenos" data-linenos="16 "></span>gidNumber: 10000
-<span class="linenos" data-linenos="17 "></span>homeDirectory: /home/mordecai
+<p>Seguidamente se instala el paquete de LDAP.</p>
+<p><img alt="" src="imagenes/02/424InstallLdapCommand.png" /></p>
+<p>Automáticamente nos aparecerá una ventana donde introduciremos la contraseña (En este caso <strong>aso</strong>, pero se aconseja introducir una contraseña más robusta) de administrador para el directorio LDAP. Seguidamente terminará el proceso de instalación.</p>
+<p><img alt="" src="imagenes/02/425ConfigLDAP1.png" /></p>
+<p>Se puede comprobar que se ha instalado correctamente ejecutando el comando <strong>slapcat</strong>. Dicho comando muestra en formato <strong>LDIF</strong> el contenido de las entradas existentes en el servicio de directorio.</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo slapcat
 </code></pre></div>
-<p><img alt="" src="imagenes/02/4204.png" /></p>
-<ol start="6">
-<li>De la misma forma que anteriormente, se procede a cargar las entradas en el directorio LDAP ejecutando la siguiente instrucción:</li>
+<img alt="" src="imagenes/02/426CheckInstallLDAP.png" /></p>
+<p>Además se puede comprobar que el servicio esta corriendo con:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>systemctl status slapd.service
+</code></pre></div>
+<img alt="" src="imagenes/02/427CheckInstallLDAP2.png" /></p>
+<p>También se puede comprobar si el servicio de directorio OpenLdap esta escuchando por el <code>puerto 389</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ss -lntp
+</code></pre></div>
+<p><img alt="" src="imagenes/02/428PortLdap.png" /></p>
+<ol start="2">
+<li><strong>Configuración</strong>: se realiza la configuración de nuestro servicio de directorio usando el asistente de <code>slapd</code>. Para ello se ejecuta la siguiente instrucción:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo ldapadd -x -D cn=admin,dc=aso,dc=ldap -W -f content.ldif
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo dpkg-reconfigure slapd
 </code></pre></div>
-<p><img alt="" src="imagenes/02/4205.png" /></p>
-<p>En  este punto ya se tiene una estructura jerárquica del árbol creada de la siguiente manera (sustituyendo pandora por el correspondiente dominio):</p>
-<p><img alt="" src="imagenes/02/4206.png" /></p>
-<p>Para poder ver las diferentes entradas que forman nuestro directorio LDAP ejecutamos el comando slapcat.</p>
+<p>El primer paso del asistente pregunta si quiere omitir la configuración del servidor OpenLDAP. Elegiremos que <strong>NO</strong> para poder configurarlo.</p>
+<p><img alt="" src="imagenes/02/429Config1.png" /></p>
+<p>A continuación pregunta por el dominio en el que se encuentra nel servidor, esto va a formar parte del DN del directorio LDAP. Al haberlo indicado anteriormente en el fichero <code>/etc/hosts</code>, automáticamente el asistente lo recoge y lo modificamos para añadir aso, quedaría <strong>aso.ldap</strong>.</p>
+<p><img alt="" src="imagenes/02/430Config2.png" /></p>
+<p>Luego pregunta por el nombre de la organización a la que va a pertenecer nuestro servidor LDAP.</p>
+<p><img alt="" src="imagenes/02/431Config3.png" /></p>
+<p>Se puede elegir una contraseña fácil para la práctica como <strong>asoldap</strong>. Pulsamos OK.</p>
+<p><img alt="" src="imagenes/02/432Config4.png" /></p>
+<p>Además nos vuelve a pedir la contraseña de administrador del directorio LDAP. Esta que pongamos va a machacar la que indicamos en el proceso de instalación y será la definitiva. Como suele pasar, la deberemos introducir dos veces para evitar errores tipográficos.</p>
+<p><img alt="" src="imagenes/02/433Config5.png" /></p>
+<p>Seguidamente pregunta si se elimina la base de datos del directorio LDAP cuando se borre el paquete slapd del sistema. Se indicará que <strong>NO</strong>.</p>
+<p><img alt="" src="imagenes/02/434Config6.png" /></p>
+<p>Y por último pregunta si se quiere mover los datos de alguna antigua base de datos de directorio LDAP a la nueva que se está configurando. En este caso, como no se tiene ninguna antigua no va afectar en nada, lo dejaremos en <strong>SI</strong> y finalizará la configuración.</p>
+<p><img alt="" src="imagenes/02/435Config7.png" /></p>
+<p>Una vez finalizado el asistente, se vuelve a ejecutar el comando <strong>slapcat</strong> y se observa como se han modificado los valores de los atributos de las entradas, con los datos que se acaban de indicar. </p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo slapcat
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span> root@aso:/home/sor# slapcat
-<span class="linenos" data-linenos=" 2 "></span>dn: dc=aso,dc=ldap
-<span class="linenos" data-linenos=" 3 "></span>objectClass: top
-<span class="linenos" data-linenos=" 4 "></span>objectClass: dcObject
-<span class="linenos" data-linenos=" 5 "></span>objectClass: organization
-<span class="linenos" data-linenos=" 6 "></span>o: aso
-<span class="linenos" data-linenos=" 7 "></span>dc: aso
-<span class="linenos" data-linenos=" 8 "></span>structuralObjectClass: organization
-<span class="linenos" data-linenos=" 9 "></span>entryUUID: be2252ee-f335-103c-895b-fdc9e52a62b4
-<span class="linenos" data-linenos="10 "></span>creatorsName: cn=admin,dc=aso,dc=ldap
-<span class="linenos" data-linenos="11 "></span>createTimestamp: 20221107221742Z
-<span class="linenos" data-linenos="12 "></span>entryCSN: 20221107221742.637560Z#000000#000#000000
-<span class="linenos" data-linenos="13 "></span>modifiersName: cn=admin,dc=aso,dc=ldap
-<span class="linenos" data-linenos="14 "></span>modifyTimestamp: 20221107221742Z
-<span class="linenos" data-linenos="15 "></span>
-<span class="linenos" data-linenos="16 "></span>dn: ou=usuarios,dc=aso,dc=ldap
-<span class="linenos" data-linenos="17 "></span>objectClass: organizationalUnit
-<span class="linenos" data-linenos="18 "></span>objectClass: top
-<span class="linenos" data-linenos="19 "></span>ou: usuarios
-<span class="linenos" data-linenos="20 "></span>structuralObjectClass: organizationalUnit
-<span class="linenos" data-linenos="21 "></span>entryUUID: 9cec530a-f339-103c-8382-ab30731258a0
-<span class="linenos" data-linenos="22 "></span>creatorsName: cn=admin,dc=aso,dc=ldap
-<span class="linenos" data-linenos="23 "></span>createTimestamp: 20221107224524Z
-<span class="linenos" data-linenos="24 "></span>entryCSN: 20221107224524.905787Z#000000#000#000000
-<span class="linenos" data-linenos="25 "></span>modifiersName: cn=admin,dc=aso,dc=ldap
-<span class="linenos" data-linenos="26 "></span>modifyTimestamp: 20221107224524Z
-<span class="linenos" data-linenos="27 "></span>
-<span class="linenos" data-linenos="28 "></span>dn: ou=grupos,dc=aso,dc=ldap
-<span class="linenos" data-linenos="29 "></span>objectClass: organizationalUnit
-<span class="linenos" data-linenos="30 "></span>objectClass: top
-<span class="linenos" data-linenos="31 "></span>ou: grupos
-<span class="linenos" data-linenos="32 "></span>structuralObjectClass: organizationalUnit
-<span class="linenos" data-linenos="33 "></span>entryUUID: 9cee76a8-f339-103c-8383-ab30731258a0
-<span class="linenos" data-linenos="34 "></span>creatorsName: cn=admin,dc=aso,dc=ldap
-<span class="linenos" data-linenos="35 "></span>createTimestamp: 20221107224524Z
-<span class="linenos" data-linenos="36 "></span>entryCSN: 20221107224524.919838Z#000000#000#000000
-<span class="linenos" data-linenos="37 "></span>modifiersName: cn=admin,dc=aso,dc=ldap
-<span class="linenos" data-linenos="38 "></span>modifyTimestamp: 20221107224524Z
-<span class="linenos" data-linenos="39 "></span>
-<span class="linenos" data-linenos="40 "></span>dn: cn=devops,ou=grupos,dc=aso,dc=ldap
-<span class="linenos" data-linenos="41 "></span>objectClass: posixGroup
-<span class="linenos" data-linenos="42 "></span>cn: devops
-<span class="linenos" data-linenos="43 "></span>gidNumber: 10000
-<span class="linenos" data-linenos="44 "></span>memberUid: devops
-<span class="linenos" data-linenos="45 "></span>structuralObjectClass: posixGroup
-<span class="linenos" data-linenos="46 "></span>entryUUID: 66e8da30-f33e-103c-8384-ab30731258a0
-<span class="linenos" data-linenos="47 "></span>creatorsName: cn=admin,dc=aso,dc=ldap
-<span class="linenos" data-linenos="48 "></span>createTimestamp: 20221107231941Z
-<span class="linenos" data-linenos="49 "></span>entryCSN: 20221107231941.769744Z#000000#000#000000
-<span class="linenos" data-linenos="50 "></span>modifiersName: cn=admin,dc=aso,dc=ldap
-<span class="linenos" data-linenos="51 "></span>modifyTimestamp: 20221107231941Z
-<span class="linenos" data-linenos="52 "></span>
-<span class="linenos" data-linenos="53 "></span>dn: uid=mordecai,ou=usuarios,dc=aso,dc=ldap
-<span class="linenos" data-linenos="54 "></span>objectClass: inetOrgPerson
-<span class="linenos" data-linenos="55 "></span>objectClass: posixAccount
-<span class="linenos" data-linenos="56 "></span>objectClass: shadowAccount
-<span class="linenos" data-linenos="57 "></span>cn: Mordecai
-<span class="linenos" data-linenos="58 "></span>sn: Geek
-<span class="linenos" data-linenos="59 "></span>userPassword:: e1NTSEF9VTYxQnh6RlF0VFZkVnVKTTdKRzhLWmhpZ1lvVVJzMTY=
-<span class="linenos" data-linenos="60 "></span>loginShell: /bin/bash
-<span class="linenos" data-linenos="61 "></span>uidNumber: 10000
-<span class="linenos" data-linenos="62 "></span>gidNumber: 10000
-<span class="linenos" data-linenos="63 "></span>homeDirectory: /home/mordecai
-<span class="linenos" data-linenos="64 "></span>structuralObjectClass: inetOrgPerson
-<span class="linenos" data-linenos="65 "></span>uid: mordecai
-<span class="linenos" data-linenos="66 "></span>entryUUID: 66ed8418-f33e-103c-8385-ab30731258a0
-<span class="linenos" data-linenos="67 "></span>creatorsName: cn=admin,dc=aso,dc=ldap
-<span class="linenos" data-linenos="68 "></span>createTimestamp: 20221107231941Z
-<span class="linenos" data-linenos="69 "></span>entryCSN: 20221107231941.800307Z#000000#000#000000
-<span class="linenos" data-linenos="70 "></span>modifiersName: cn=admin,dc=aso,dc=ldap
-<span class="linenos" data-linenos="71 "></span>modifyTimestamp: 20221107231941Z
-</code></pre></div>
+<p><img alt="" src="imagenes/02/436Config8.png" /></p>
                 
               
               
@@ -888,7 +805,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Pie">
       
         
-        <a href="042_LDAP_DIT.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 4.3- Modelo de Información de LDAP" rel="prev">
+        <a href="041_Introduccion_SDyLDAP.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 4.1- Introducción Servicios de directorio y LDAP" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -897,11 +814,26 @@
               <span class="md-footer__direction">
                 Anterior
               </span>
-              4.3- Modelo de Información de LDAP
+              4.1- Introducción Servicios de directorio y LDAP
             </div>
           </div>
         </a>
       
+      
+        
+        <a href="043_LDAP_DIT.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 4.3- Modelo de Información de LDAP" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              4.3- Modelo de Información de LDAP
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/04_LDAP/Practica01_LDAP.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/04_LDAP/LDAPutilsSobras.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>4.2- Instalación y configuración de OpenLDAP - Administración de Sistemas Operativos</title>
+        <title>LDAPutilsSobras - Administración de Sistemas Operativos</title>
       
     
     
@@ -79,11 +79,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#instalacion-y-configuracion-basica-del-servidor-open-ldap" class="md-skip">
-          Saltar a contenido
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -109,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4.2- Instalación y configuración de OpenLDAP
+              LDAPutilsSobras
             
           </span>
         </div>
@@ -547,14 +542,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
       <label class="md-nav__link" for="__nav_5">
         4.- Servicios de Directorio Libres: LDAP
@@ -594,51 +587,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          4.2- Instalación y configuración de OpenLDAP
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="Practica01_LDAP.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="042_InstalacionConfigLDAP_PR.html" class="md-nav__link">
         4.2- Instalación y configuración de OpenLDAP
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#implantacion-del-servicio-openldap" class="md-nav__link">
-    Implantación del Servicio OpenLDAP
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -648,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="042_LDAP_DIT.html" class="md-nav__link">
+      <a href="043_LDAP_DIT.html" class="md-nav__link">
         4.3- Modelo de Información de LDAP
       </a>
     </li>
@@ -660,8 +613,8 @@
   
   
     <li class="md-nav__item">
-      <a href="Practica02_LDAP.html" class="md-nav__link">
-        4.4- Creación de usuarios y grupos OpenLDAP
+      <a href="044_UsersLDAP.html" class="md-nav__link">
+        4.4- Creación  y comprobación de Usuarios/Grupos OpenLDAP
       </a>
     </li>
   
@@ -686,83 +639,157 @@
               
                 
                 
-                <h1 id="instalacion-y-configuracion-basica-del-servidor-open-ldap">Instalación y configuración básica del servidor Open LDAP<a class="headerlink" href="#instalacion-y-configuracion-basica-del-servidor-open-ldap" title="Permanent link">&para;</a></h1>
-<p>Antes de comenzar la instalación de OpenLDAP, es recomendable realizar unos pasos previos, a continuación se describen:</p>
-<ol>
-<li>En primer lugar se aconseja utilizar IP fijas en el aula, que serán clase c de esta forma: <code>192.168.5.X</code>, donde X será el número de puesto.</li>
-</ol>
-<div class="admonition example">
-<p class="admonition-title">Ejemplo</p>
-</div>
-<p>Para ello se modifica el archivo <code>/etc/netplan/00-installer-config.yaml</code></p>
-<p><img alt="" src="imagenes/02/421NetplanstaticIP.png" /></p>
-<p>La <strong>figura anterior</strong> muestra un ejemplo de modificación con una red para <strong>ubuntu server 22.04</strong> con una red <strong>192.168.8.0/24</strong>.</p>
-<ol start="2">
-<li>A continuación se modifica el archivo Hots para cambiar el nombre de la máquina en el dominio configurado. Con las siguientes premisas.</li>
-</ol>
+                  <h1>LDAPutilsSobras</h1>
+                
+                <p>La herramienta <code>ldapsearch</code>, provista por el paquete, resulta muy conveniente al momento de hacer consultas sobre los datos dentro de un directorio LDAP desde línea de comandos. Este artículo presenta una serie de consultas de ejemplo que pueden resultar muy útiles para obtener información valiosa de un árbol LDAP.</p>
+<h4 id="obtener-todos-los-objetos-de-un-directorio">Obtener todos los objetos de un directorio<a class="headerlink" href="#obtener-todos-los-objetos-de-un-directorio" title="Permanent link">&para;</a></h4>
+<p>Para obtener todos los objetos en un directorio (dn) a partir de cierta base (<code>dc=linuxito,dc=com</code>) y sin límite de para la respuesta, utilizar una consulta como la siguiente:</p>
+<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)
+</pre>
+
 <ul>
-<li>Modificar el contenido del fichero <code>/etc/hosts</code> para indicar un <strong>FQDN ( fully qualified domain name)</strong> a nuestro servidor. </li>
-<li><strong>FQDN</strong> es un nombre de dominio completo que incluye el nombre de la computadora y el nombre de dominio asociado a ese equipo.​​ Por ejemplo, dada la computadora llamada <strong>«aso»</strong> y el nombre de dominio <strong>«aso.ldap.»</strong></li>
-<li>El objetivo de este cambio es que cuando hagamos referencia a aso.ldap, nuestro sistema entienda que nos estamos refiriendo al servidor. Esto, además, facilitará la labor de configuración de nuestro servicio de directorio.</li>
-<li>Para modificar el dicho archivo se ejecuta el siguiente comando.</li>
+<li><code>-z 0</code>: evita cortar la respuesta una vez alcanzado cierto límite (cantidad de entradas).</li>
+<li><code>-H ldap://localhost:389</code>: indica que consulte al servidor LDAP en el puerto 389 del host local.</li>
+<li><code>-W</code>: indica que solicite la contraseña para el método de autenticación simple de manera interactiva.</li>
+<li><code>-D "cn=root,dc=linuxito,dc=com"</code>: especifica el usuario con el cual se autentica en el servidor LDAP.</li>
+<li><code>-b "dc=linuxito,dc=com"</code>: especifica la base desde donde comenzar la búsqueda (en este caso se trata de la raíz del directorio).</li>
+<li><code>"(objectclass=*)"</code>: especifica el filtro para la búsqueda (en este ejemplo todos los objetos, este a su vez es el filtro por defecto).</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/hosts
-</code></pre></div>
-<div class="admonition example">
-<p class="admonition-title">Ejemplo</p>
-</div>
-<p><img alt="" src="imagenes/02/422HostsFQDN.png" /></p>
-<h2 id="implantacion-del-servicio-openldap">Implantación del Servicio OpenLDAP<a class="headerlink" href="#implantacion-del-servicio-openldap" title="Permanent link">&para;</a></h2>
-<p>En este apartado se explican en forma de guía práctica los pasos de la implantación del servicio OpenLDAP en un servidor Ubuntu 22.04</p>
-<div class="admonition tip">
-<p class="admonition-title">Consejo</p>
-<p>A priori se podría revisar con antelación los paquetes a instalar con: <code>apt show slapd</code></p>
-</div>
-<p><img alt="" src="imagenes/02/423InfoPaqueteLdap.png" /></p>
-<ol>
-<li><strong>Instalación</strong>: Se instalan los paquetes necesarios en el servidor.</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt install slapd
-</code></pre></div>
-<p>Seguidamente se instala el paquete de LDAP.</p>
-<p><img alt="" src="imagenes/02/424InstallLdapCommand.png" /></p>
-<p>Automáticamente nos aparecerá una ventana donde introduciremos la contraseña (En este caso <strong>aso</strong>, pero se aconseja introducir una contraseña más robusta) de administrador para el directorio LDAP. Seguidamente terminará el proceso de instalación.</p>
-<p><img alt="" src="imagenes/02/425ConfigLDAP1.png" /></p>
-<p>Se puede comprobar que se ha instalado correctamente ejecutando el comando <strong>slapcat</strong>. Dicho comando muestra en formato <strong>LDIF</strong> el contenido de las entradas existentes en el servicio de directorio.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo slapcat
-</code></pre></div>
-<img alt="" src="imagenes/02/426CheckInstallLDAP.png" /></p>
-<p>Además se puede comprobar que el servicio esta corriendo con:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>systemctl status slapd.service
-</code></pre></div>
-<img alt="" src="imagenes/02/427CheckInstallLDAP2.png" /></p>
-<p>También se puede comprobar si el servicio de directorio OpenLdap esta escuchando por el <code>puerto 389</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ss -lntp
-</code></pre></div>
-<p><img alt="" src="imagenes/02/428PortLdap.png" /></p>
-<ol start="2">
-<li><strong>Configuración</strong>: se realiza la configuración de nuestro servicio de directorio usando el asistente de <code>slapd</code>. Para ello se ejecuta la siguiente instrucción:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo dpkg-reconfigure slapd
-</code></pre></div>
-<p>El primer paso del asistente pregunta si quiere omitir la configuración del servidor OpenLDAP. Elegiremos que <strong>NO</strong> para poder configurarlo.</p>
-<p><img alt="" src="imagenes/02/429Config1.png" /></p>
-<p>A continuación pregunta por el dominio en el que se encuentra nel servidor, esto va a formar parte del DN del directorio LDAP. Al haberlo indicado anteriormente en el fichero <code>/etc/hosts</code>, automáticamente el asistente lo recoge y lo modificamos para añadir aso, quedaría <strong>aso.ldap</strong>.</p>
-<p><img alt="" src="imagenes/02/430Config2.png" /></p>
-<p>Luego pregunta por el nombre de la organización a la que va a pertenecer nuestro servidor LDAP.</p>
-<p><img alt="" src="imagenes/02/431Config3.png" /></p>
-<p>Se puede elegir una contraseña fácil para la práctica como <strong>asoldap</strong>. Pulsamos OK.</p>
-<p><img alt="" src="imagenes/02/432Config4.png" /></p>
-<p>Además nos vuelve a pedir la contraseña de administrador del directorio LDAP. Esta que pongamos va a machacar la que indicamos en el proceso de instalación y será la definitiva. Como suele pasar, la deberemos introducir dos veces para evitar errores tipográficos.</p>
-<p><img alt="" src="imagenes/02/433Config5.png" /></p>
-<p>Seguidamente pregunta si se elimina la base de datos del directorio LDAP cuando se borre el paquete slapd del sistema. Se indicará que <strong>NO</strong>.</p>
-<p><img alt="" src="imagenes/02/434Config6.png" /></p>
-<p>Y por último pregunta si se quiere mover los datos de alguna antigua base de datos de directorio LDAP a la nueva que se está configurando. En este caso, como no se tiene ninguna antigua no va afectar en nada, lo dejaremos en <strong>SI</strong> y finalizará la configuración.</p>
-<p><img alt="" src="imagenes/02/435Config7.png" /></p>
-<p>Una vez finalizado el asistente, se vuelve a ejecutar el comando <strong>slapcat</strong> y se observa como se han modificado los valores de los atributos de las entradas, con los datos que se acaban de indicar. </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo slapcat
-</code></pre></div>
-<p><img alt="" src="imagenes/02/436Config8.png" /></p>
+<p>El punto importante es no olvidar especificar la base (<code>-b</code>). De lo contrario probablemente no haya resultados en la búsqueda:</p>
+<pre># search result
+search: 2
+result: 32 No such object
+</pre>
+
+<p>Ejemplo (utilizando <code>grep</code> para filtrar sólo los dn):</p>
+<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)" | grep "dn:"
+Enter LDAP Password: 
+dn: dc=linuxito,dc=com
+dn: cn=Manager,dc=linuxito,dc=com
+dn: ou=users,dc=linuxito,dc=com
+dn: uid=emiliano,ou=users,dc=linuxito,dc=com
+dn: uid=test,ou=users,dc=linuxito,dc=com
+dn: ou=fusiondirectory,dc=linuxito,dc=com
+dn: cn=config,ou=fusiondirectory,dc=linuxito,dc=com
+dn: ou=aclroles,dc=linuxito,dc=com
+dn: cn=admin,ou=aclroles,dc=linuxito,dc=com
+dn: ou=people,dc=linuxito,dc=com
+dn: uid=fd-admin,ou=people,dc=linuxito,dc=com
+dn: cn=manager,ou=aclroles,dc=linuxito,dc=com
+dn: cn=editowninfos,ou=aclroles,dc=linuxito,dc=com
+dn: cn=editownpwd,ou=aclroles,dc=linuxito,dc=com
+dn: ou=recovery,ou=fusiondirectory,dc=linuxito,dc=com
+dn: ou=reminder,ou=fusiondirectory,dc=linuxito,dc=com
+dn: ou=locks,ou=fusiondirectory,dc=linuxito,dc=com
+dn: ou=snapshots,dc=linuxito,dc=com
+</pre>
+
+<p>Recordar que hay exactamente un <a href="https://www.ldap.com/ldap-dns-and-rdns">dn</a> (<em>distinguished name</em>) por cada entrada en el árbol.</p>
+<p>Por supuesto al salida es muy extensa y presenta todos los atributos para cada entrada en el árbol. Se recomienda utilizar <code>grep</code> para filtrar y lograr una salida más legible (recuperar sólo aquella información que nos interesa).</p>
+<h4 id="obtener-todas-las-unidades-organizacionales">Obtener todas las unidades organizacionales<a class="headerlink" href="#obtener-todas-las-unidades-organizacionales" title="Permanent link">&para;</a></h4>
+<p>Las <a href="https://technet.microsoft.com/en-us/library/cc978003.aspx">ou</a> (<em>Organizational Unit</em>) definen la jerarquía dentro de un dominio. Generalmente se utilizan para definir los departamentos o áreas dentro de una organización (empresa, red, sociedad, etc.).</p>
+<p>Para obtener una lista de todas las ou presentes en un directorio, se puede utilizar el filtro <code>"(ou=*)"</code>:</p>
+<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(ou=*)"
+</pre>
+
+<p>Ejemplo:</p>
+<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(ou=*)" | grep "dn:"
+Enter LDAP Password: 
+dn: dc=linuxito,dc=com
+dn: ou=users,dc=linuxito,dc=com
+dn: ou=fusiondirectory,dc=linuxito,dc=com
+dn: ou=aclroles,dc=linuxito,dc=com
+dn: ou=people,dc=linuxito,dc=com
+dn: ou=recovery,ou=fusiondirectory,dc=linuxito,dc=com
+dn: ou=reminder,ou=fusiondirectory,dc=linuxito,dc=com
+dn: ou=locks,ou=fusiondirectory,dc=linuxito,dc=com
+dn: ou=snapshots,dc=linuxito,dc=com
+</pre>
+
+<h4 id="listar-todos-los-usuarios">Listar todos los usuarios<a class="headerlink" href="#listar-todos-los-usuarios" title="Permanent link">&para;</a></h4>
+<p>Esta consulta depende de la jerarquía y la clase utilizada para almacenar usuarios dentro de un árbol LDAP. Sin embargo, generalmente se utiliza la clase <a href="https://tools.ietf.org/html/rfc2798">inetOrgPerson</a> para almacenar usuarios dentro de un directorio LDAP, la cual posee el atributo <code>uid</code>.</p>
+<p>De esta forma, para listar todos los usuarios presentes en un directorio, simplemente recurrir al filtro <code>"(uid=*)"</code>:</p>
+<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(uid=*)"
+</pre>
+
+<p>Por ejemplo:</p>
+<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(uid=*)" | grep -B 1 "dn:"
+Enter LDAP Password: 
+# emiliano, users, linuxito.com
+dn: uid=emiliano,ou=users,dc=linuxito,dc=com
+--
+# test, users, linuxito.com
+dn: uid=test,ou=users,dc=linuxito,dc=com
+--
+# fd-admin, people, linuxito.com
+dn: uid=fd-admin,ou=people,dc=linuxito,dc=com
+</pre>
+
+<h4 id="determinar-todas-las-clases-en-uso">Determinar todas las clases en uso<a class="headerlink" href="#determinar-todas-las-clases-en-uso" title="Permanent link">&para;</a></h4>
+<p>Las clases de un directorio LDAP determinan el formato con el que se representan los datos de los objetos almacenados en el árbol. Cada objeto (entrada en un directorio LDAP) pertenece a al menos una clase. Sin embargo es común que cada objeto pertenezca a varias clases. Básicamente las clases definen qué atributos y de qué formato puede poseer un objeto.</p>
+<p>Para listar todas las clases actualmente en uso por todos los objetos, es necesario volcar todo el contenido del árbol y filtrar con <code>grep</code>:</p>
+<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)" | grep objectClass | sort | uniq
+</pre>
+
+<p>Por ejemplo:</p>
+<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)" | grep objectClass | sort | uniq
+Enter LDAP Password: 
+objectClass: account
+objectClass: dcObject
+objectClass: fdAliasPluginConf
+objectClass: fdApplicationsPluginConf
+objectClass: fdAuditPluginConf
+objectClass: fdAutofsPluginConf
+objectClass: fdCommunityPluginConf
+objectClass: fdDashboardPluginConf
+objectClass: fdDhcpPluginConf
+objectClass: fdDnsPluginConf
+objectClass: fdDsaPluginConf
+objectClass: fdEjbcaPluginConf
+objectClass: fdFaiPluginConf
+objectClass: fdInventoryPluginConf
+objectClass: fdMailPluginConf
+objectClass: fdNagiosPluginConf
+objectClass: fdNetgroupPluginConf
+objectClass: fdNewsletterPluginConf
+objectClass: fdOpsiPluginConf
+objectClass: fdPasswordRecoveryConf
+objectClass: fdPersonalPluginConf
+objectClass: fdPpolicyPluginConf
+objectClass: fdRepositoryPluginConf
+objectClass: fdSambaPluginConf
+objectClass: fdSogoPluginConf
+objectClass: fdSudoPluginConf
+objectClass: fdSupannPluginConf
+objectClass: fdSympaPluginConf
+objectClass: fdSystemsPluginConf
+objectClass: fdUserReminderPluginConf
+objectClass: fdWebservicePluginConf
+objectClass: fusionDirectoryConf
+objectClass: fusionDirectoryPluginsConf
+objectClass: gosaAcl
+objectClass: gosaDepartment
+objectClass: gosaRole
+objectClass: inetOrgPerson
+objectClass: organization
+objectClass: organizationalPerson
+objectClass: organizationalRole
+objectClass: organizationalUnit
+objectClass: person
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+</pre>
+
+<p>Esta consulta permitirá identificar qué <em>schemas</em> dentro de una servidor LDAP están siendo utilizados y cuáles no.</p>
+<h4 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="https://technet.microsoft.com/en-us/library/cc977992.aspx">Object Naming - Microsoft TechNet</a></li>
+<li><a href="https://technet.microsoft.com/en-us/library/cc978003.aspx">Organizational Units - Microsoft TechNet</a></li>
+<li><a href="https://www.ldap.com/ldap-dns-and-rdns">LDAP DNs and RDNs</a></li>
+<li><a href="http://www.ldapexplorer.com/en/manual/107060000-ldap-object-classes.htm">LDAP Object Classes</a></li>
+<li><a href="https://tools.ietf.org/html/rfc2798">RFC 2798 - Definition of the inetOrgPerson LDAP Object Class</a></li>
+</ul>
                 
               
               
@@ -778,41 +805,6 @@
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Pie">
-      
-        
-        <a href="041_Introduccion_SDyLDAP.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 4.1- Introducción Servicios de directorio y LDAP" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Anterior
-              </span>
-              4.1- Introducción Servicios de directorio y LDAP
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="042_LDAP_DIT.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 4.3- Modelo de Información de LDAP" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Siguiente
-              </span>
-              4.3- Modelo de Información de LDAP
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

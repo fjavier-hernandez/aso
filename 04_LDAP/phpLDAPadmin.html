@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/04_LDAP/044_LDAPutilsSobras.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/04_LDAP/phpLDAPadmin.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>044 LDAPutilsSobras - Administración de Sistemas Operativos</title>
+        <title>phpLDAPadmin - Administración de Sistemas Operativos</title>
       
     
     
@@ -79,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#como-instalar-phpldapadmin" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -104,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              044 LDAPutilsSobras
+              phpLDAPadmin
             
           </span>
         </div>
@@ -589,7 +594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Practica01_LDAP.html" class="md-nav__link">
+      <a href="042_InstalacionConfigLDAP_PR.html" class="md-nav__link">
         4.2- Instalación y configuración de OpenLDAP
       </a>
     </li>
@@ -601,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="042_LDAP_DIT.html" class="md-nav__link">
+      <a href="043_LDAP_DIT.html" class="md-nav__link">
         4.3- Modelo de Información de LDAP
       </a>
     </li>
@@ -613,8 +618,8 @@
   
   
     <li class="md-nav__item">
-      <a href="Practica02_LDAP.html" class="md-nav__link">
-        4.4- Creación de usuarios y grupos OpenLDAP
+      <a href="044_UsersLDAP.html" class="md-nav__link">
+        4.4- Creación  y comprobación de Usuarios/Grupos OpenLDAP
       </a>
     </li>
   
@@ -639,157 +644,78 @@
               
                 
                 
-                  <h1>044 LDAPutilsSobras</h1>
+                  <h1>phpLDAPadmin</h1>
                 
-                <p>La herramienta <code>ldapsearch</code>, provista por el paquete, resulta muy conveniente al momento de hacer consultas sobre los datos dentro de un directorio LDAP desde línea de comandos. Este artículo presenta una serie de consultas de ejemplo que pueden resultar muy útiles para obtener información valiosa de un árbol LDAP.</p>
-<h4 id="obtener-todos-los-objetos-de-un-directorio">Obtener todos los objetos de un directorio<a class="headerlink" href="#obtener-todos-los-objetos-de-un-directorio" title="Permanent link">&para;</a></h4>
-<p>Para obtener todos los objetos en un directorio (dn) a partir de cierta base (<code>dc=linuxito,dc=com</code>) y sin límite de para la respuesta, utilizar una consulta como la siguiente:</p>
-<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)
-</pre>
-
+                <h2 id="como-instalar-phpldapadmin">Cómo instalar phpLDAPadmin<a class="headerlink" href="#como-instalar-phpldapadmin" title="Permanent link">&para;</a></h2>
+<p>En primer lugar se necesita instalar Apache:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt-get install apache2</span>
+</code></pre></div>
+<p>Ahora podemos instalar la herramienta de administración basada en web con el comando: </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt-get install phpldapadmin -y</span>
+</code></pre></div>
+<p>Abra el archivo de configuración phpLDAPadmin con el comando: </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo nano /etc/phpldapadmin/config.php</span>
+</code></pre></div>
+<p>Edite las siguientes líneas (asegúrese de cambiar el dominio para que coincida con el suyo y la dirección IP para que coincida con su servidor de alojamiento): </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;server&#39;,&#39;name&#39;,&#39;My LDAP Server&#39;);</span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;server&#39;,&#39;host&#39;,&#39;192.168.5.X&#39;);</span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;;setValue(&#39;server&#39;,&#39;base&#39;,array(&#39;dc=pandora,dc=ldap&#39;));</span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;login&#39;,&#39;auth_type&#39;,&#39;session&#39;);</span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;login&#39;,&#39;bind_id&#39;,&#39;cn=admin,dc=pandora,dc=ldap&#39;);</span>
+<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;auto_number&#39;,&#39;min&#39;,array(&#39;uidNumber&#39;=&gt;10000,&#39;gidNumber&#39;=&gt;10000));</span>
+</code></pre></div>
+<p>Deshabilite el sitio predeterminado de Apache con el comando: </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo a2dissite 000-default.conf</span>
+</code></pre></div>
+<p>Reinicie Apache con el comando: </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart apache2</span>
+</code></pre></div>
+<h2 id="como-acceder-a-phpldapadmin">Cómo acceder a phpLDAPadmin<a class="headerlink" href="#como-acceder-a-phpldapadmin" title="Permanent link">&para;</a></h2>
+<p>Con todo resuelto, abra un navegador web y apúntelo a <em>http: // SERVIDOR / phpldapadmin</em> (donde SERVER es la dirección IP de su servidor de alojamiento). Su nombre de usuario predeterminado (en el formulario <em>cn = admin, dc = pandora, dc = ldap</em>) se completará automáticamente. </p>
+<p>Escriba la contraseña de administrador que creó y haga clic en Autenticar. Debería encontrarse en la página principal de phpLDAPadmin, listo para trabajar:</p>
+<p><img alt="" src="imagenes/02/pandora_phpLDAP.png" /></p>
+<p>Para la advertencia, simplemente puede reemplazar las llaves ( ) con corchetes ( ) en la línea afectada, 1614.\
+<em><code>Deprecated: Array and string offset access syntax with curly braces is deprecated in /usr/share/phpldapadmin/lib/functions.php on line 1614</code></em><code>{}``[]</code></p>
+<p>Haga clic en iniciar sesión para iniciar sesión en su interfaz de usuario web phpLDAPadmin. Como ya definimos el DN de enlace de administrador, simplemente ingrese la contraseña e inicie sesión;</p>
+<p><img alt="" src="imagenes/02/InSesLDAP.png" /></p>
+<p>Tras la autenticación exitosa, se accede en el panel de phpLDAPadmin.</p>
+<p><img alt="" src="imagenes/02/panelLDAP.png" /></p>
+<p>Ahora puede administrar su servidor LDAP con una interfaz web.</p>
+<h3 id="crear-usuario-y-grupo-ldap-en-phpldapadmin">Crear usuario y grupo LDAP en phpLDAPadmin<a class="headerlink" href="#crear-usuario-y-grupo-ldap-en-phpldapadmin" title="Permanent link">&para;</a></h3>
+<p>Como ejemplo, aprenderemos cómo crear un usuario LDAP y su grupo usando phpLDAPadmin.</p>
+<h4 id="crear-grupo-posixgroup">Crear grupo posixGroup<a class="headerlink" href="#crear-grupo-posixgroup" title="Permanent link">&para;</a></h4>
+<p>Para crear un grupo dentro de otro Haga clic en <code>ou=grupos</code>. Luego haga clic en <code 1="1" opción="opción">Create new entry here</code> o haga clic en <code 2="2" opción="opción">Create a child entry</code>.</p>
+<p><img alt="" src="imagenes/02/CrearUserLDAPGUI.png" /></p>
+<p>A continuación, haga clic en la <code>Generic: Posix Group</code>plantilla para crear un grupo de usuarios LDAP.</p>
+<p><img alt="" src="imagenes/02/GrupoPhPLdap.png" /></p>
+<p>Ingrese el nombre del grupo, que en este caso lo configuramos para que sea el mismo que el uid del usuario que vamos a crear.</p>
+<p>Si desea que otros usuarios formen parte del grupo, seleccione sus nombres de usuario. Haga clic <code>Create Object</code>una vez hecho y confirme los cambios.</p>
+<p><img alt="" src="imagenes/02/CrearObjetoPhPLDAP.png" /></p>
+<h4 id="crear-usuario-posixaccount">Crear usuario posixAccount<a class="headerlink" href="#crear-usuario-posixaccount" title="Permanent link">&para;</a></h4>
+<p>Una vez que haya creado un grupo de usuarios, proceda a crear la cuenta de usuario. Haga clic en <code>ou=grupos</code>y de manera similar, tiene dos opciones, hacer clic <code>Create new entry here</code>o hacer clic <code>Create a child entry</code>.</p>
+<p>Seleccione la <code>Generic: User Account</code>plantilla para crear el objeto de usuario.</p>
+<p>Generar hash de contraseña de usuario;</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">slappasswd</span>
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">Nueva contraseña</span><span class="p p-Indicator">:</span> <span class="nt">contraseña Vuelva a ingresar la nueva contraseña</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">contraseña</span>
+<span class="linenos" data-linenos="4 "></span><span class="p p-Indicator">{</span><span class="nv">SSHA</span><span class="p p-Indicator">}</span> <span class="l l-Scalar l-Scalar-Plain">vrJOf + / AFD9pdGKo / azGavDfbZ8OGJX1</span>
+</code></pre></div>
+<p>Si necesita verificar si la contraseña coincide con el hash pegado, haga clic en <strong>verificar contraseña</strong>.</p>
+<p>Cuando establezca la contraseña, seleccione <strong>ssha</strong> y pegue el hash anterior como contraseña.</p>
+<p>Complete los detalles del usuario de manera apropiada como se muestra en la captura de pantalla a continuación;</p>
+<p><img alt="" src="imagenes/02/UserDataPhPLDAP.png" /></p>
+<p>Una vez hecho esto, haga clic <code>Create Object</code> y confirme los cambios.</p>
+<p><img alt="" src="imagenes/02/FinUserPhpLDAP.png" /></p>
+<p>Tenga en cuenta que para poder tener bash entre las opciones de shell, edite la plantilla de creación posixAccount y agregue la opción bash ejecutando el comando;</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sed -i &#39;/&lt;value id=&quot;\/bin\/tsh&quot;&gt;\/bin\/tsh&lt;\/value&gt;/a \\t&lt;value id=&quot;/bin/bash&quot;&gt;\/bin\/bash&lt;\/value&gt;&#39; /etc/phpldapadmin/templates/creation/posixAccount.xml</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul>
-<li><code>-z 0</code>: evita cortar la respuesta una vez alcanzado cierto límite (cantidad de entradas).</li>
-<li><code>-H ldap://localhost:389</code>: indica que consulte al servidor LDAP en el puerto 389 del host local.</li>
-<li><code>-W</code>: indica que solicite la contraseña para el método de autenticación simple de manera interactiva.</li>
-<li><code>-D "cn=root,dc=linuxito,dc=com"</code>: especifica el usuario con el cual se autentica en el servidor LDAP.</li>
-<li><code>-b "dc=linuxito,dc=com"</code>: especifica la base desde donde comenzar la búsqueda (en este caso se trata de la raíz del directorio).</li>
-<li><code>"(objectclass=*)"</code>: especifica el filtro para la búsqueda (en este ejemplo todos los objetos, este a su vez es el filtro por defecto).</li>
+<li>Si tiene la información del usuario en un archivo LDIF, puede importar este archivo haciendo clic en importar en la barra de menú superior del panel izquierdo.</li>
+<li>Para confirmar la creación del usuario en el backend del servidor OpenLDAP puede utilizar el comnado <code>ldapsearch</code></li>
 </ul>
-<p>El punto importante es no olvidar especificar la base (<code>-b</code>). De lo contrario probablemente no haya resultados en la búsqueda:</p>
-<pre># search result
-search: 2
-result: 32 No such object
-</pre>
-
-<p>Ejemplo (utilizando <code>grep</code> para filtrar sólo los dn):</p>
-<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)" | grep "dn:"
-Enter LDAP Password: 
-dn: dc=linuxito,dc=com
-dn: cn=Manager,dc=linuxito,dc=com
-dn: ou=users,dc=linuxito,dc=com
-dn: uid=emiliano,ou=users,dc=linuxito,dc=com
-dn: uid=test,ou=users,dc=linuxito,dc=com
-dn: ou=fusiondirectory,dc=linuxito,dc=com
-dn: cn=config,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=aclroles,dc=linuxito,dc=com
-dn: cn=admin,ou=aclroles,dc=linuxito,dc=com
-dn: ou=people,dc=linuxito,dc=com
-dn: uid=fd-admin,ou=people,dc=linuxito,dc=com
-dn: cn=manager,ou=aclroles,dc=linuxito,dc=com
-dn: cn=editowninfos,ou=aclroles,dc=linuxito,dc=com
-dn: cn=editownpwd,ou=aclroles,dc=linuxito,dc=com
-dn: ou=recovery,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=reminder,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=locks,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=snapshots,dc=linuxito,dc=com
-</pre>
-
-<p>Recordar que hay exactamente un <a href="https://www.ldap.com/ldap-dns-and-rdns">dn</a> (<em>distinguished name</em>) por cada entrada en el árbol.</p>
-<p>Por supuesto al salida es muy extensa y presenta todos los atributos para cada entrada en el árbol. Se recomienda utilizar <code>grep</code> para filtrar y lograr una salida más legible (recuperar sólo aquella información que nos interesa).</p>
-<h4 id="obtener-todas-las-unidades-organizacionales">Obtener todas las unidades organizacionales<a class="headerlink" href="#obtener-todas-las-unidades-organizacionales" title="Permanent link">&para;</a></h4>
-<p>Las <a href="https://technet.microsoft.com/en-us/library/cc978003.aspx">ou</a> (<em>Organizational Unit</em>) definen la jerarquía dentro de un dominio. Generalmente se utilizan para definir los departamentos o áreas dentro de una organización (empresa, red, sociedad, etc.).</p>
-<p>Para obtener una lista de todas las ou presentes en un directorio, se puede utilizar el filtro <code>"(ou=*)"</code>:</p>
-<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(ou=*)"
-</pre>
-
-<p>Ejemplo:</p>
-<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(ou=*)" | grep "dn:"
-Enter LDAP Password: 
-dn: dc=linuxito,dc=com
-dn: ou=users,dc=linuxito,dc=com
-dn: ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=aclroles,dc=linuxito,dc=com
-dn: ou=people,dc=linuxito,dc=com
-dn: ou=recovery,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=reminder,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=locks,ou=fusiondirectory,dc=linuxito,dc=com
-dn: ou=snapshots,dc=linuxito,dc=com
-</pre>
-
-<h4 id="listar-todos-los-usuarios">Listar todos los usuarios<a class="headerlink" href="#listar-todos-los-usuarios" title="Permanent link">&para;</a></h4>
-<p>Esta consulta depende de la jerarquía y la clase utilizada para almacenar usuarios dentro de un árbol LDAP. Sin embargo, generalmente se utiliza la clase <a href="https://tools.ietf.org/html/rfc2798">inetOrgPerson</a> para almacenar usuarios dentro de un directorio LDAP, la cual posee el atributo <code>uid</code>.</p>
-<p>De esta forma, para listar todos los usuarios presentes en un directorio, simplemente recurrir al filtro <code>"(uid=*)"</code>:</p>
-<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(uid=*)"
-</pre>
-
-<p>Por ejemplo:</p>
-<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(uid=*)" | grep -B 1 "dn:"
-Enter LDAP Password: 
-# emiliano, users, linuxito.com
-dn: uid=emiliano,ou=users,dc=linuxito,dc=com
---
-# test, users, linuxito.com
-dn: uid=test,ou=users,dc=linuxito,dc=com
---
-# fd-admin, people, linuxito.com
-dn: uid=fd-admin,ou=people,dc=linuxito,dc=com
-</pre>
-
-<h4 id="determinar-todas-las-clases-en-uso">Determinar todas las clases en uso<a class="headerlink" href="#determinar-todas-las-clases-en-uso" title="Permanent link">&para;</a></h4>
-<p>Las clases de un directorio LDAP determinan el formato con el que se representan los datos de los objetos almacenados en el árbol. Cada objeto (entrada en un directorio LDAP) pertenece a al menos una clase. Sin embargo es común que cada objeto pertenezca a varias clases. Básicamente las clases definen qué atributos y de qué formato puede poseer un objeto.</p>
-<p>Para listar todas las clases actualmente en uso por todos los objetos, es necesario volcar todo el contenido del árbol y filtrar con <code>grep</code>:</p>
-<pre>ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)" | grep objectClass | sort | uniq
-</pre>
-
-<p>Por ejemplo:</p>
-<pre class="konsole">root@debian:~# ldapsearch -z 0 -H ldap://localhost:389 -W -D "cn=root,dc=linuxito,dc=com" -b "dc=linuxito,dc=com" "(objectclass=*)" | grep objectClass | sort | uniq
-Enter LDAP Password: 
-objectClass: account
-objectClass: dcObject
-objectClass: fdAliasPluginConf
-objectClass: fdApplicationsPluginConf
-objectClass: fdAuditPluginConf
-objectClass: fdAutofsPluginConf
-objectClass: fdCommunityPluginConf
-objectClass: fdDashboardPluginConf
-objectClass: fdDhcpPluginConf
-objectClass: fdDnsPluginConf
-objectClass: fdDsaPluginConf
-objectClass: fdEjbcaPluginConf
-objectClass: fdFaiPluginConf
-objectClass: fdInventoryPluginConf
-objectClass: fdMailPluginConf
-objectClass: fdNagiosPluginConf
-objectClass: fdNetgroupPluginConf
-objectClass: fdNewsletterPluginConf
-objectClass: fdOpsiPluginConf
-objectClass: fdPasswordRecoveryConf
-objectClass: fdPersonalPluginConf
-objectClass: fdPpolicyPluginConf
-objectClass: fdRepositoryPluginConf
-objectClass: fdSambaPluginConf
-objectClass: fdSogoPluginConf
-objectClass: fdSudoPluginConf
-objectClass: fdSupannPluginConf
-objectClass: fdSympaPluginConf
-objectClass: fdSystemsPluginConf
-objectClass: fdUserReminderPluginConf
-objectClass: fdWebservicePluginConf
-objectClass: fusionDirectoryConf
-objectClass: fusionDirectoryPluginsConf
-objectClass: gosaAcl
-objectClass: gosaDepartment
-objectClass: gosaRole
-objectClass: inetOrgPerson
-objectClass: organization
-objectClass: organizationalPerson
-objectClass: organizationalRole
-objectClass: organizationalUnit
-objectClass: person
-objectClass: posixAccount
-objectClass: shadowAccount
-objectClass: top
-</pre>
-
-<p>Esta consulta permitirá identificar qué <em>schemas</em> dentro de una servidor LDAP están siendo utilizados y cuáles no.</p>
-<h4 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h4>
-<ul>
-<li><a href="https://technet.microsoft.com/en-us/library/cc977992.aspx">Object Naming - Microsoft TechNet</a></li>
-<li><a href="https://technet.microsoft.com/en-us/library/cc978003.aspx">Organizational Units - Microsoft TechNet</a></li>
-<li><a href="https://www.ldap.com/ldap-dns-and-rdns">LDAP DNs and RDNs</a></li>
-<li><a href="http://www.ldapexplorer.com/en/manual/107060000-ldap-object-classes.htm">LDAP Object Classes</a></li>
-<li><a href="https://tools.ietf.org/html/rfc2798">RFC 2798 - Definition of the inetOrgPerson LDAP Object Class</a></li>
-</ul>
+</div>
                 
               
               

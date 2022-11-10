@@ -1,0 +1,1122 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/04_LDAP/044_UsersLDAP.html">
+      
+      <link rel="icon" href="../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>4.4- Creación y comprobación de Usuarios/Grupos OpenLDAP - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#creacion-de-usuarios-y-grupos-openldap" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.4- Creación  y comprobación de Usuarios/Grupos OpenLDAP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- UD1. ShellScripting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- UD1. ShellScripting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- UD1. ShellScripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/ResumenUD.html" class="md-nav__link">
+        Resumen UD
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
+        1.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
+        1.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
+        1.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+        1.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
+        1.5- Refuerzo y ampliación
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
+        1.6- Prueba Auditoria
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- UD2: PowerShell
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- UD2: PowerShell" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- UD2: PowerShell
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/021_Introduccio%CC%81nPwSh.html" class="md-nav__link">
+        2.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/022_PowerShell_Sintaxis.html" class="md-nav__link">
+        2.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/023_PowerShell_ControlFlujo.html" class="md-nav__link">
+        2.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/024_PowerShell_VectoresFunciones.html" class="md-nav__link">
+        2.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        3.- UD3: Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- UD3: Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          3.- UD3: Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/031_Planificador.html" class="md-nav__link">
+        3.1- Introducción Procesos, Planificador
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/032_Hilos.html" class="md-nav__link">
+        3.2- Hilos, Sincronización e interrupciones, Herramientas gráficas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/033_GestionProcesosShell.html" class="md-nav__link">
+        3.3- Gestión de procesos en Shell de Linux.
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/034_GestionProcesosPWSH.html" class="md-nav__link">
+        3.4- Gestión de procesos en PowerShell.
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/035_ArranqueServicios.html" class="md-nav__link">
+        3.5- Arranque del sistema. Servicios. Systemd.
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        4.- Servicios de Directorio Libres: LDAP
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4.- Servicios de Directorio Libres: LDAP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Servicios de Directorio Libres: LDAP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="041_Introduccion_SDyLDAP.html" class="md-nav__link">
+        4.1- Introducción Servicios de directorio y LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="042_InstalacionConfigLDAP_PR.html" class="md-nav__link">
+        4.2- Instalación y configuración de OpenLDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="043_LDAP_DIT.html" class="md-nav__link">
+        4.3- Modelo de Información de LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4.4- Creación  y comprobación de Usuarios/Grupos OpenLDAP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="044_UsersLDAP.html" class="md-nav__link md-nav__link--active">
+        4.4- Creación  y comprobación de Usuarios/Grupos OpenLDAP
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enunciado" class="md-nav__link">
+    Enunciado
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recordatorio" class="md-nav__link">
+    Recordatorio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#baseldif" class="md-nav__link">
+    base.ldif
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contentldif" class="md-nav__link">
+    content.ldif
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comprobacion-configuracion-de-equipo-cliente" class="md-nav__link">
+    Comprobación. Configuración de equipo cliente
+  </a>
+  
+    <nav class="md-nav" aria-label="Comprobación. Configuración de equipo cliente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-en-cliente" class="md-nav__link">
+    Instalación en cliente
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inicio-sesion-por-cli" class="md-nav__link">
+    Inicio Sesión por CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inicio-sesion-por-gui" class="md-nav__link">
+    Inicio Sesión por GUI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="creacion-de-usuarios-y-grupos-openldap">Creación de usuarios y grupos OpenLDAP<a class="headerlink" href="#creacion-de-usuarios-y-grupos-openldap" title="Permanent link">&para;</a></h1>
+<h2 id="enunciado">Enunciado<a class="headerlink" href="#enunciado" title="Permanent link">&para;</a></h2>
+<p>Se debe realizar un informe breve en pdf con las capturas:</p>
+<ul>
+<li>Captura del <strong>slapcat</strong> que confirme que se han creado y configurado los usuarios y grupos según el DIT que se aporta durante la guía.</li>
+<li>Captura del inicio de sesión con el usuario del cliente con CLI y GUI. Se requerirá en clase auditoría del inicio de sesión.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Debe aparecer el dominio: <strong>nombre.apellidos.ldap</strong></p>
+</div>
+<h2 id="recordatorio">Recordatorio<a class="headerlink" href="#recordatorio" title="Permanent link">&para;</a></h2>
+<p>Con el servicio instalado y configurado, el siguiente paso es crear la estructura básica del directorio. Es decir, se creará la estructura jerárquica del árbol (DIT -- Directory Information Tree).</p>
+<ul>
+<li>Una de las formas más sencillas de añadir entradas al directorio es mediante ficheros LDIF (LDAP Data Interchange Format). </li>
+<li>Básicamente se tratan de ficheros en texto plano con un formato particular que debemos conocer para poder construirlos correctamente. El formato básico de una entrada es el siguiente:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># comentario</span>
+<span class="linenos" data-linenos="2 "></span>dn: &lt;nombre distintivo único&gt;
+<span class="linenos" data-linenos="3 "></span>&lt;atributo&gt;: &lt;valor&gt;
+<span class="linenos" data-linenos="4 "></span>&lt;atributo&gt;: &lt;valor&gt;
+<span class="linenos" data-linenos="5 "></span>...
+</code></pre></div>
+<h2 id="baseldif">base.ldif<a class="headerlink" href="#baseldif" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Teniendo en cuenta lo anteriormente mencionado, procedemos a crear un fichero base que contenga los tipos de objetos básicos del directorio.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano base.ldif
+</code></pre></div>
+<ol start="2">
+<li>Se genera el base.ldif siguiendo las siguientes premisas:</li>
+</ol>
+<ul>
+<li>En el LDIF se crean dos entradas referentes a unidades organizativas: «usuarios» y «grupos». </li>
+<li>Las unidades organizativas, como su propio nombre indica, son atributos que nos van a servir para estructurar de forma idónea el árbol del directorio LDAP.</li>
+<li>Estas dos entradas serán la base del árbol ya que de ellas dependerán varias entradas más adelante.</li>
+<li>Se genera el base.ldif con las siguientes entradas, cambiando aso por dominio de cada alumna o alumno.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>dn: <span class="nv">ou</span><span class="o">=</span>usuarios,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="2 "></span>objectClass: organizationalUnit
+<span class="linenos" data-linenos="3 "></span>objectClass: top
+<span class="linenos" data-linenos="4 "></span>ou: usuarios
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span>dn: <span class="nv">ou</span><span class="o">=</span>grupos,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="7 "></span>objectClass: organizationalUnit
+<span class="linenos" data-linenos="8 "></span>objectClass: top
+<span class="linenos" data-linenos="9 "></span>ou: grupos
+</code></pre></div>
+<p><img alt="" src="imagenes/02/4201.png" /></p>
+<ol start="3">
+<li>Una vez creado el fichero base.ldif, se procede a cargar en el directorio LDAP. Para ello se ejecuta la siguiente instrucción:</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Importante haber anotado correctamente la contraseña introducida en la configuración del LDAP.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo ldapadd -x -D <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap -W -f base.ldif
+</code></pre></div>
+<p><img alt="" src="imagenes/02/4202.png" /></p>
+<ol start="4">
+<li>Una vez cargadas las entradas, se a procede a crear nuevas entradas que colgarán de las unidades organizativas que acabamos de crear. Se crea una entrada para un grupo y una entrada para un usuario.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Antes que nada, como buena práctica de seguridad, se genera una contraseña cifrada para asignárselas a los usuarios en el fichero LDIF que se va a crear. Para ello se ejecuta el siguiente comando:</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>slappasswd
+</code></pre></div>
+<ul>
+<li>Se escribe la contraseña dos veces y nos devolverá la misma cifrada por el algoritmo criptográfico SSHA.</li>
+</ul>
+<p><img alt="" src="imagenes/02/4203.png" /></p>
+<h2 id="contentldif">content.ldif<a class="headerlink" href="#contentldif" title="Permanent link">&para;</a></h2>
+<ol start="5">
+<li>A continuación se utiliza la contraseña cifrada en el fichero content.ldif, donde se crean dos entradas:</li>
+</ol>
+<ul>
+<li>Un grupo llamado <strong>devops</strong> que colgará de la unidad organizativa grupos.</li>
+<li>Un usuario llamado <strong>mordecai</strong> que colgará de la unidad organizativa usuarios y a su vez pertenecerá al grupo <strong>devops</strong>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano content.ldif
+</code></pre></div>
+<ul>
+<li>Se puede copiar el siguiente archivo modificado el dominio y contraseña correspondiente en cada caso.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>dn: <span class="nv">cn</span><span class="o">=</span>devops,ou<span class="o">=</span>grupos,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos=" 2 "></span>objectClass: posixGroup
+<span class="linenos" data-linenos=" 3 "></span>cn: devops
+<span class="linenos" data-linenos=" 4 "></span>gidNumber: <span class="m">10000</span>
+<span class="linenos" data-linenos=" 5 "></span>memberUid: devops
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>dn: <span class="nv">uid</span><span class="o">=</span>mordecai,ou<span class="o">=</span>usuarios,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos=" 8 "></span>objectClass: inetOrgPerson
+<span class="linenos" data-linenos=" 9 "></span>objectClass: posixAccount
+<span class="linenos" data-linenos="10 "></span>objectClass: shadowAccount
+<span class="linenos" data-linenos="11 "></span>cn: Mordecai
+<span class="linenos" data-linenos="12 "></span>sn: Geek
+<span class="linenos" data-linenos="13 "></span>userPassword: <span class="o">{</span>SSHA<span class="o">}</span>U61BxzFQtTVdVuJM7JG8KZhigYoURs16
+<span class="linenos" data-linenos="14 "></span>loginshell: /bin/bash
+<span class="linenos" data-linenos="15 "></span>uidNumber: <span class="m">10000</span>
+<span class="linenos" data-linenos="16 "></span>gidNumber: <span class="m">10000</span>
+<span class="linenos" data-linenos="17 "></span>homeDirectory: /home/mordecai
+</code></pre></div>
+<p><img alt="" src="imagenes/02/4204.png" /></p>
+<ol start="6">
+<li>De la misma forma que anteriormente, se procede a cargar las entradas en el directorio LDAP ejecutando la siguiente instrucción:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo ldapadd -x -D <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap -W -f content.ldif
+</code></pre></div>
+<p><img alt="" src="imagenes/02/4205.png" /></p>
+<p>En  este punto ya se tiene una estructura jerárquica del árbol creada de la siguiente manera (sustituyendo pandora por el correspondiente dominio):</p>
+<p><img alt="" src="imagenes/02/4206.png" /></p>
+<p>Para poder ver las diferentes entradas que forman nuestro directorio LDAP ejecutamos el comando slapcat.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo slapcat
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span> root@aso:/home/sor# slapcat
+<span class="linenos" data-linenos=" 2 "></span>dn: <span class="nv">dc</span><span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos=" 3 "></span>objectClass: top
+<span class="linenos" data-linenos=" 4 "></span>objectClass: dcObject
+<span class="linenos" data-linenos=" 5 "></span>objectClass: organization
+<span class="linenos" data-linenos=" 6 "></span>o: aso
+<span class="linenos" data-linenos=" 7 "></span>dc: aso
+<span class="linenos" data-linenos=" 8 "></span>structuralObjectClass: organization
+<span class="linenos" data-linenos=" 9 "></span>entryUUID: be2252ee-f335-103c-895b-fdc9e52a62b4
+<span class="linenos" data-linenos="10 "></span>creatorsName: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="11 "></span>createTimestamp: 20221107221742Z
+<span class="linenos" data-linenos="12 "></span>entryCSN: <span class="m">20221107221742</span>.637560Z#000000#000#000000
+<span class="linenos" data-linenos="13 "></span>modifiersName: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="14 "></span>modifyTimestamp: 20221107221742Z
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span>dn: <span class="nv">ou</span><span class="o">=</span>usuarios,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="17 "></span>objectClass: organizationalUnit
+<span class="linenos" data-linenos="18 "></span>objectClass: top
+<span class="linenos" data-linenos="19 "></span>ou: usuarios
+<span class="linenos" data-linenos="20 "></span>structuralObjectClass: organizationalUnit
+<span class="linenos" data-linenos="21 "></span>entryUUID: 9cec530a-f339-103c-8382-ab30731258a0
+<span class="linenos" data-linenos="22 "></span>creatorsName: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="23 "></span>createTimestamp: 20221107224524Z
+<span class="linenos" data-linenos="24 "></span>entryCSN: <span class="m">20221107224524</span>.905787Z#000000#000#000000
+<span class="linenos" data-linenos="25 "></span>modifiersName: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="26 "></span>modifyTimestamp: 20221107224524Z
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span>dn: <span class="nv">ou</span><span class="o">=</span>grupos,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="29 "></span>objectClass: organizationalUnit
+<span class="linenos" data-linenos="30 "></span>objectClass: top
+<span class="linenos" data-linenos="31 "></span>ou: grupos
+<span class="linenos" data-linenos="32 "></span>structuralObjectClass: organizationalUnit
+<span class="linenos" data-linenos="33 "></span>entryUUID: 9cee76a8-f339-103c-8383-ab30731258a0
+<span class="linenos" data-linenos="34 "></span>creatorsName: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="35 "></span>createTimestamp: 20221107224524Z
+<span class="linenos" data-linenos="36 "></span>entryCSN: <span class="m">20221107224524</span>.919838Z#000000#000#000000
+<span class="linenos" data-linenos="37 "></span>modifiersName: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="38 "></span>modifyTimestamp: 20221107224524Z
+<span class="linenos" data-linenos="39 "></span>
+<span class="linenos" data-linenos="40 "></span>dn: <span class="nv">cn</span><span class="o">=</span>devops,ou<span class="o">=</span>grupos,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="41 "></span>objectClass: posixGroup
+<span class="linenos" data-linenos="42 "></span>cn: devops
+<span class="linenos" data-linenos="43 "></span>gidNumber: <span class="m">10000</span>
+<span class="linenos" data-linenos="44 "></span>memberUid: devops
+<span class="linenos" data-linenos="45 "></span>structuralObjectClass: posixGroup
+<span class="linenos" data-linenos="46 "></span>entryUUID: 66e8da30-f33e-103c-8384-ab30731258a0
+<span class="linenos" data-linenos="47 "></span>creatorsName: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="48 "></span>createTimestamp: 20221107231941Z
+<span class="linenos" data-linenos="49 "></span>entryCSN: <span class="m">20221107231941</span>.769744Z#000000#000#000000
+<span class="linenos" data-linenos="50 "></span>modifiersName: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="51 "></span>modifyTimestamp: 20221107231941Z
+<span class="linenos" data-linenos="52 "></span>
+<span class="linenos" data-linenos="53 "></span>dn: <span class="nv">uid</span><span class="o">=</span>mordecai,ou<span class="o">=</span>usuarios,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="54 "></span>objectClass: inetOrgPerson
+<span class="linenos" data-linenos="55 "></span>objectClass: posixAccount
+<span class="linenos" data-linenos="56 "></span>objectClass: shadowAccount
+<span class="linenos" data-linenos="57 "></span>cn: Mordecai
+<span class="linenos" data-linenos="58 "></span>sn: Geek
+<span class="linenos" data-linenos="59 "></span>userPassword:: <span class="nv">e1NTSEF9VTYxQnh6RlF0VFZkVnVKTTdKRzhLWmhpZ1lvVVJzMTY</span><span class="o">=</span>
+<span class="linenos" data-linenos="60 "></span>loginShell: /bin/bash
+<span class="linenos" data-linenos="61 "></span>uidNumber: <span class="m">10000</span>
+<span class="linenos" data-linenos="62 "></span>gidNumber: <span class="m">10000</span>
+<span class="linenos" data-linenos="63 "></span>homeDirectory: /home/mordecai
+<span class="linenos" data-linenos="64 "></span>structuralObjectClass: inetOrgPerson
+<span class="linenos" data-linenos="65 "></span>uid: mordecai
+<span class="linenos" data-linenos="66 "></span>entryUUID: 66ed8418-f33e-103c-8385-ab30731258a0
+<span class="linenos" data-linenos="67 "></span>creatorsName: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="68 "></span>createTimestamp: 20221107231941Z
+<span class="linenos" data-linenos="69 "></span>entryCSN: <span class="m">20221107231941</span>.800307Z#000000#000#000000
+<span class="linenos" data-linenos="70 "></span>modifiersName: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>aso,dc<span class="o">=</span>ldap
+<span class="linenos" data-linenos="71 "></span>modifyTimestamp: 20221107231941Z
+</code></pre></div>
+<h2 id="comprobacion-configuracion-de-equipo-cliente">Comprobación. Configuración de equipo cliente<a class="headerlink" href="#comprobacion-configuracion-de-equipo-cliente" title="Permanent link">&para;</a></h2>
+<p>A continuación se indica como configurar un equipo cliente con el fin de poder iniciar sesión en él a partir de un usuario creado en el directorio LDAP.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<ul>
+<li>Los ejemplos de las capturas deben cambiar según el nombre del usuario cliente o red privada a utilizar entre servidor y cliente</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<ul>
+<li>Añadir un segundo adaptador de red al servidor ubuntu on OpenLDAP instalado, aplicar una red interna y configurar en ese nuevo adaptador una IP estática para comunicarse con el cliente, pueden ser del rango <strong>192.168.1.0/24</strong></li>
+<li>Configurar en el cliente ubuntu una IP estática del mismo rango.</li>
+</ul>
+</div>
+<h3 id="instalacion-en-cliente">Instalación en cliente<a class="headerlink" href="#instalacion-en-cliente" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Instalación en el cliente de los paquetes necesarios:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt install libnss-ldap libpam-ldap ldap-utils
+</code></pre></div>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/19.png" /></p>
+<p>Automáticamente se abrirá el asistente de configuración donde se indicarán los datos del servidor de LDAP.</p>
+<p>En primer lugar, nos solicita la dirección URI del servidor. Se sustituye la cadena por la IP del servidor LDAP.</p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/20.png" /></p>
+<p>A continuación escribiremos el nombre distinguido único (DN) de nuestro directorio LDAP.</p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/21.png" /></p>
+<p>En el siguiente paso se da a elegir la versión del protocolo LDAP que vamos utilizar. Se elije la versión más actual, en este caso la 3.</p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/22.png" /></p>
+<p>Ahora se indica si las aplicaciones que utilicen PAM deberán comportarse del mismo modo que cuando cambiamos contraseñas locales. Esto hará que las contraseñas se almacenen en un fichero independiente que sólo podrá ser leído por root. Se selecciona <strong>SI</strong>.</p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/23.png" /></p>
+<p>A continuación se pregunta si es necesario identificarse para realizar consultas en la base de datos del directorio LDAP. Se selecciona NO.</p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/24.png" /></p>
+<p>En el siguiente paso se indica el nombre de la cuenta LDAP con privilegios para realizar cambios en las contraseñas. Dicha cuenta será la del administrador de nuestro directorio LDAP, se indica su DN completo.</p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/25.png" /></p>
+<p>Y por último, nos solicita la contraseña de la cuenta que hemos indicado justo antes (la que indicamos para el administrador en el asistente de configuración de OpenLDAP). Habrá que escribirla por duplicado.</p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/26.png" /></p>
+<p>Una vez finalizado el asistente de configuración, se realizan las modificaciones en el fichero /etc/nsswitch.conf. </p>
+<ul>
+<li>Se indica al sistema que realice búsquedas sobre usuarios en el directorio LDAP además de en el propio sistema.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/nsswitch.conf
+</code></pre></div>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/27.png" /></p>
+<p>Ahora se realizan modificaciones en el fichero /<code>etc/pam.d/common-password</code>. </p>
+<ul>
+<li>Se elimina la cadena <strong>use_authtok</strong> de la línea 26. Quitando dicha cadena, el sistema permite usar varios métodos de autenticación.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/pam.d/common-password
+</code></pre></div>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/28.png" /></p>
+<p>Por último, se modifica el fichero /etc/pam.d/common-session. </p>
+<ul>
+<li>se añade una línea al final del fichero para indicar que cuando un usuario de LDAP inicie sesión en el sistema, se cree su directorio Home en el equipo.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/pam.d/common-session
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>session optional      pam_mkhomedir.so <span class="nv">skel</span><span class="o">=</span>/etc/skel <span class="nv">umask</span><span class="o">=</span><span class="m">077</span>
+</code></pre></div>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/29.png" /></p>
+<p>Una vez realizados todos los cambios en los ficheros anteriores, se puede comprobar la interacción entre equipo cliente y servidor de directorio LDAP. </p>
+<ul>
+<li>Para ello se puede lanzar una búsqueda a través de la terminal y se observará si responde.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ldapsearch -x -H ldap://192.168.1.100 -b <span class="s2">&quot;dc=pandora,dc=ldap&quot;</span>
+</code></pre></div>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/30.png" /></p>
+<p>Como se puede ver, el servidor LDAP nos responde mostrándo el resultado a la búsqueda que se ha realizado, que en este caso se trata de todas las entradas que se encuentran definidas en él.</p>
+<p>A modo de resumen en este punto:</p>
+<ul>
+<li>Ya está el directorio LDAP configurado, poblado y funcionando en el servidor.</li>
+<li>El cliente configurado para poder conectar con el servicio de directorio y poder iniciar sesión en el sistema con usuarios registrados en LDAP.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>De momento, solo a través de consola.)</p>
+</div>
+<h3 id="inicio-sesion-por-cli">Inicio Sesión por CLI<a class="headerlink" href="#inicio-sesion-por-cli" title="Permanent link">&para;</a></h3>
+<p>En este sub-apartado se realiza prueba de inicio de sesión por consola y comprobación del directorio Home del usuario registrado en LDAP.</p>
+<p>Antes que nada, se visualiza el contenido del directorio <strong>/home</strong> y se comprueba que ahora mismo solo existe el de usuario.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ll /home
+</code></pre></div>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/31.png" /></p>
+<ul>
+<li>Si se abre un nuevo entorno de terminal tecleando <strong>Ctrl + Alt + F5</strong>, e se inicia sesión con el usuario <strong>mordecai</strong> registrado anteriormente en LDAP. Se observa que al iniciar sesión se creara en el equipo cliente el directorio /home/mordecai.</li>
+</ul>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/32.png" /></p>
+<ul>
+<li>
+<p>Se pueden ejecutar algunos comandos más para verificar la identidad del usuario y ver que pertenece al grupo <strong>devops</strong> tal y como se creo en las entradas en nuestro directorio LDAP.</p>
+</li>
+<li>
+<p>Además también se verifica que el directorio /home/mordecai pertenece y se ha creado con los permisos necesarios para dicho usuario.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>id
+<span class="linenos" data-linenos="2 "></span><span class="nb">pwd</span>
+<span class="linenos" data-linenos="3 "></span>ll /home
+</code></pre></div>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/33.png" /></p>
+<h3 id="inicio-sesion-por-gui">Inicio Sesión por GUI<a class="headerlink" href="#inicio-sesion-por-gui" title="Permanent link">&para;</a></h3>
+<p>Como se ha mencionado antes, hasta ahora solo era posible iniciar sesión en el equipo cliente por terminal. Para iniciar sesión con usuarios de LDAP en modo gráfico se necesita el paquete <code>nslcd</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt install nslcd
+</code></pre></div>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/34.png" /></p>
+<p>Al instalar el paquete, se abrirá un asistente de configuración automáticamente donde se ha de indicar nuevamente la URI de nuestro servidor LDAP y su DN (Distinguished Name). Probablemente los datos vengan ya indicados por lo que solo se pulsará Aceptar en ambas ventanas sin necesidad de modificar nada.</p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/35.png" /></p>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/36.png" /></p>
+<p>Al terminal de instalar el paquete, se debe reiniciar el sistema para un correcto funcionamiento. Tras reiniciar ya se puede iniciar sesión con nuestro usuario Mordecai, directamente desde la pantalla de Login del sistema.</p>
+<p><img alt="" src="https://blog.juananpc.es/wp-content/uploads/2021/07/40.png" /></p>
+<p>Tras iniciar sesión, se creará un perfil para el usuario y ya podrá usar el sistema de forma completamente gráfica además de por terminal. </p>
+<ul>
+<li>Se puede verificar la identidad del usuario desde consola y ver que sigue siendo tal cual se configuró en nuestro directorio LDAP.</li>
+</ul>
+<p><img alt="" src="https://blog.sysdual.com/wp-content/uploads/2020/12/39-1024x768.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="043_LDAP_DIT.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 4.3- Modelo de Información de LDAP" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              4.3- Modelo de Información de LDAP
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
