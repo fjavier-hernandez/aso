@@ -16,7 +16,7 @@
     
     
       
-        <title>045 LDAP EsquemaHerramientas - Administración de Sistemas Operativos</title>
+        <title>4.5- Esquema LDAP - Administración de Sistemas Operativos</title>
       
     
     
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              045 LDAP EsquemaHerramientas
+              4.5- Esquema LDAP
             
           </span>
         </div>
@@ -547,12 +547,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       <label class="md-nav__link" for="__nav_5">
         4.- Servicios de Directorio Libres: LDAP
@@ -619,8 +621,96 @@
   
     <li class="md-nav__item">
       <a href="044_UsersLDAP.html" class="md-nav__link">
-        4.4- Creación  y comprobación de Usuarios/Grupos OpenLDAP
+        4.4- Creación y comprobación de Usuarios/Grupos OpenLDAP
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4.5- Esquema LDAP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="045_LDAP_EsquemaHerramientas.html" class="md-nav__link md-nav__link--active">
+        4.5- Esquema LDAP
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#esquema-ldap" class="md-nav__link">
+    Esquema LDAP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herramientas-de-gestion-de-usuarios" class="md-nav__link">
+    Herramientas de gestión de usuarios.
+  </a>
+  
+    <nav class="md-nav" aria-label="Herramientas de gestión de usuarios.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ldap-utils" class="md-nav__link">
+    ldap-utils
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-openldap" class="md-nav__link">
+    Configuración de OpenLDAP
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración de OpenLDAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slapdconf" class="md-nav__link">
+    slapd.conf
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -644,13 +734,22 @@
               
                 
                 
-                  <h1>045 LDAP EsquemaHerramientas</h1>
+                  <h1>4.5- Esquema LDAP</h1>
                 
                 <h2 id="esquema-ldap">Esquema LDAP<a class="headerlink" href="#esquema-ldap" title="Permanent link">&para;</a></h2>
-<p>El <strong>esquema</strong> es una parte importante de LDAP. Similar a la definición del esquema de la base de datos, el esquema LDAP define la estructura y las reglas que debe seguir un directorio LDAP, como qué atributos tendrá una clase de objeto, qué estructura tienen estos atributos, etc. </p>
+<p>El <strong>esquema</strong> es una parte importante de LDAP. Similar a la definición del esquema de la base de datos, el esquema LDAP define la estructura y las reglas que debe seguir un directorio LDAP, como qué atributos tendrá una clase de objeto, qué estructura tienen estos atributos, tipos de datos etc. </p>
 <ul>
-<li>El <strong>servidor LDAP</strong> proporciona una manera de <strong>identificar categorías, atributos</strong> y otra información en el directorio LDAP, para que el servidor LDAP pueda reconocerlos. <strong>Para realizarlo se utlizan esquemas</strong>, que no es más que una <strong>unidad de empaquetado conveniente para contener clases de objetos y atributos muy similares</strong>.</li>
-<li><strong>La principal diferencia</strong> con las bases de datos relacionales del protocolo LDAP es que estas ya están predefinidas en los esquemas. por lo que nos ahorramos en insertar y definir las tablas de información.</li>
+<li>El <strong>servidor LDAP</strong> proporciona una manera de <strong>identificar categorías, atributos</strong> y otra información en el directorio LDAP, para que el servidor LDAP pueda reconocerlos. <strong>Para realizarlo se utilizan esquemas</strong>, que no es más que una <strong>unidad de empaquetado para contener clases de objetos y atributos muy similares</strong>.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Recordatorio</p>
+<ul>
+<li>Las clase de objetos se pueden ver en <a href="https://www.zytrax.com/books/ldap/ape/index.html#objectclasses">ObjectClass Cytrax</a></li>
+</ul>
+</div>
+<ul>
+<li>La metáfora que se puede realizar es que el <strong>Esquema LDAP</strong> es como una <strong>base de datos relacional</strong>.</li>
+<li><strong>La principal diferencia</strong> con las bases de datos relacionales con protocolo LDAP es que estas ya están predefinidas en los esquemas. por lo que nos ahorramos en insertar y definir las tablas de información.</li>
 <li>En <strong>OpenLDAP</strong> los esquemas instalados se encuentran en cn = schema, cn = config y se pueden instalar esquemas adicionales usando este procedimiento.</li>
 </ul>
 <p>El siguiente diagrama ilustra el uso de esquemas como unidades de empaquetado:</p>
@@ -674,7 +773,7 @@
 <p>Una vez configurado el servidor LDAP, para la utilización normal debemos aprender cómo se añaden nuevos usuarios o se modifican los atributos de los existentes.</p>
 <ul>
 <li>
-<p>Para los objetos iniciales del directorio, primero se debe escribir un fichero en formato <strong>LDIF</strong> que incluya todos los atributos de la entrada y añadirla al directorio con slapadd. En la <a href="#Actividades Desarrollo UD2_01">Actividades Desarrollo UD2_01</a>, se realizará un ejemplo guiado al respecto.</p>
+<p>Para los objetos iniciales del directorio, primero se debe escribir un fichero en formato <strong>LDIF</strong> que incluya todos los atributos de la entrada y añadirla al directorio con slapadd. Como se realizó en el apartado  <strong>4.4-Creación y comprobación de Usuarios</strong>.</p>
 </li>
 <li>
 <p>Este método es totalmente inadecuado para la utilización cuando el directorio está activo. Existen varias formas de actualizar las entradas del directorio o añadir nuevas, y en primer lugar veremos la utilización de las herramientas incluidas en el paquete <strong>ldap-utils</strong>.</p>
@@ -737,7 +836,13 @@
 </ul>
 <p><img alt="" src="imagenes/02/BusqUsuerLDAP.png" /></p>
 <h4 id="determinar-todas-las-clases-en-uso">Determinar todas las clases en uso<a class="headerlink" href="#determinar-todas-las-clases-en-uso" title="Permanent link">&para;</a></h4>
-<p>Las clases de un directorio LDAP determinan el formato con el que se representan los datos de los objetos almacenados en el árbol. Cada objeto (entrada en un directorio LDAP) pertenece a al menos una clase. Sin embargo es común que cada objeto pertenezca a varias clases. Básicamente las clases definen qué atributos y de qué formato puede poseer un objeto.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Recordatorio</p>
+<ul>
+<li>Las clases de un directorio LDAP determinan el formato con el que se representan los datos de los objetos almacenados en el árbol. Cada objeto (entrada en un directorio LDAP) pertenece al menos una clase. </li>
+<li>Sin embargo es común que cada objeto pertenezca a varias clases. Básicamente las clases definen qué atributos y de qué formato puede poseer un objeto.</li>
+</ul>
+</div>
 <p>Para listar todas las clases actualmente en uso por todos los objetos, es necesario volcar todo el contenido del árbol y filtrar con <code>grep</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapsearch -z 0 -H ldap://localhost:389 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -b &quot;dc=pandora,dc=ldap&quot; &quot;(objectclass=*)&quot; | grep objectClass | sort | uniq</span>
 </code></pre></div>
@@ -788,7 +893,7 @@
 <li>
 <p>Añadir y eliminar usuarios con <code>ldapadd</code> &amp; <code>ldapdelete</code></p>
 <ol>
-<li>Se crea un archivo .ldif para añadir un nuevo grupo y se añade con <code>ldapadd</code>:</li>
+<li>Se crea un archivo .ldif para añadir un nuevo usuario y se añade con <code>ldapadd</code>:</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">nano javier.ldif</span>
 </code></pre></div>
@@ -891,7 +996,7 @@
 
 <p>El árbol de configuración de slapd-config tiene una estructura muy específica. La raíz del árbol se denomina cn = config y contiene ajustes de configuración global.</p>
 <h4 id="directivas-de-configuracion">Directivas de configuración<a class="headerlink" href="#directivas-de-configuracion" title="Permanent link">&para;</a></h4>
-<p>De las directivas más comunes mostradas en el arblo se destaca centro de <code>cn = config</code> la directiva <code>olcLogLevel</code></p>
+<p>De las directivas más comunes mostradas en el árbol se destaca dentro de <code>cn = config</code> la directiva <code>olcLogLevel</code></p>
 <ul>
 <li>Esta directiva especifica el nivel en el que las declaraciones de depuración y las estadísticas de operación deben registrarse en el syslog (actualmente registrado en la función <strong>syslogd (8) LOG_LOCAL4 )</strong>. </li>
 <li>Debe haber configurado OpenLDAP --enable-debug (el predeterminado) para que esto funcione (excepto para los dos niveles de estadísticas, que siempre están habilitados).</li>
@@ -899,40 +1004,43 @@
 <h5 id="configuracion-logging">Configuración logging<a class="headerlink" href="#configuracion-logging" title="Permanent link">&para;</a></h5>
 <p>El registro de actividad para slapd es muy útil cuando se implementa una solución basada en OpenLDAP, pero debe habilitarse manualmente después de la instalación del software. De lo contrario, solo aparecerán mensajes rudimentarios en los registros. El registro, como cualquier otra configuración similar, se habilita a través de la base de datos <strong>slapd-config</strong> .</p>
 <ul>
-<li>OpenLDAP viene con múltiples niveles de registro y cada uno contiene el más bajo (aditivo). </li>
-<li>Un buen nivel para probar son las <em>estadísticas</em> . La página de manual de <a href="https://manpages.ubuntu.com/manpages/focal/en/man5/slapd-config.5.html?_ga=2.248400327.1524111619.1636497214-637147953.1635270894">slapd-config</a> tiene más que decir sobre los diferentes subsistemas.</li>
+<li>OpenLDAP viene con múltiples niveles de registro.</li>
+<li>Un buen nivel para probar son las <em>estadísticas</em> y se pueden configurar en La página de manual oficial en ubuntu de <a href="https://manpages.ubuntu.com/manpages/focal/en/man5/slapd-config.5.html?_ga=2.248400327.1524111619.1636497214-637147953.1635270894">slapd-config</a>.</li>
 </ul>
-<ol>
-<li>Cree el archivo <code>logging.ldif</code> con el siguiente contenido:</li>
-</ol>
+<!-- - Los pasos a realizar serían:
+
+1. Cree el archivo `logging.ldif` con el siguiente contenido:
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=config</span>
 <span class="linenos" data-linenos="2 "></span><span class="nt">changetype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">modify</span>
 <span class="linenos" data-linenos="3 "></span><span class="nt">replace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">olcLogLevel</span>
 <span class="linenos" data-linenos="4 "></span><span class="nt">olcLogLevel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">stats</span>
 </code></pre></div>
-<ol start="2">
-<li>Implementar el cambio:</li>
-</ol>
+
+2. Se implementa el cambio:
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f logging.ldif</span>
 </code></pre></div>
-<p>Esto producirá una cantidad significativa de registro y querrá volver a un nivel menos detallado una vez que su sistema esté en producción. Mientras está en este modo detallado, el motor syslog de su host (rsyslog) puede tener dificultades para mantenerse al día y puede dejar caer mensajes:</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><strong>rsyslogd-2177: imuxsock lost 228 messages from pid 2547 due to rate-limiting</strong></p>
-</div>
-<p>Puede considerarse un cambio en la configuración de <code>rsyslog</code>. En <code>/etc/rsyslog.conf</code>, ponga:</p>
+
+Esto producirá una cantidad significativa de registro y querrá volver a un nivel menos detallado una vez que su sistema esté en producción. Mientras está en este modo detallado, el motor syslog de su host (rsyslog) puede tener dificultades para mantenerse al día y puede dejar caer mensajes:
+
+!!! Warning
+    **rsyslogd-2177: imuxsock lost 228 messages from pid 2547 due to rate-limiting**
+
+Puede considerarse un cambio en la configuración de para evitar estos problemas `rsyslog`. En `/etc/rsyslog.conf`, ponga:
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Disable rate limiting</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1"># (default is 200 messages in 5 seconds; below we make the 5 become 0)</span>
 <span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">$SystemLogRateLimitInterval 0</span>
 </code></pre></div>
-<ol start="3">
-<li>Y luego reinicie el demonio rsyslog:</li>
-</ol>
+
+3. Y luego reinicie el demonio rsyslog:
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart syslog.service</span>
 </code></pre></div>
-<ol start="4">
-<li>Los Registros de OpenLDAP a través de syslogd <strong>LOCAL4</strong> (Nivel warning de Syslog). Para transmitir el registro LDAP a un archivo separado de syslog, agregue una línea como esta a <strong>syslog.conf</strong> ( <code>/etc/rsyslog.conf</code>):</li>
-</ol>
+
+4. Los Registros de OpenLDAP a través de syslogd **LOCAL4** (Nivel warning de Syslog). Para transmitir el registro LDAP a un archivo separado de syslog, agregue una línea como esta a **syslog.conf** ( `/etc/rsyslog.conf`):
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># a. agregar a syslog.conf</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">local4. * /var/log/ldap.log</span>
 <span class="linenos" data-linenos=" 3 "></span>
@@ -944,7 +1052,8 @@
 <span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">O</span>
 <span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl restart syslog.service</span>
 </code></pre></div>
-<p><a href="http://www.zytrax.com/books/ldap/ch6/#logfile">Más información sobre looging OpenLdap</a></p>
+
+[Más información sobre looging OpenLdap](http://www.zytrax.com/books/ldap/ch6/#logfile) -->
                 
               
               
@@ -960,6 +1069,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="044_UsersLDAP.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 4.4- Creación y comprobación de Usuarios/Grupos OpenLDAP" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              4.4- Creación y comprobación de Usuarios/Grupos OpenLDAP
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
