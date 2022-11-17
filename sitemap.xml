@@ -181,6 +181,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://fjavier-hernandez.github.io/aso/04_LDAP/046_LDAP_Graficas.html</loc>
+         <lastmod>2022-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://fjavier-hernandez.github.io/aso/04_LDAP/LDAPutilsSobras.html</loc>
          <lastmod>2022-11-17</lastmod>
          <changefreq>daily</changefreq>
@@ -197,11 +202,6 @@
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/04_LDAP/ResumenUD.html</loc>
-         <lastmod>2022-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://fjavier-hernandez.github.io/aso/04_LDAP/phpLDAPadmin.html</loc>
          <lastmod>2022-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>

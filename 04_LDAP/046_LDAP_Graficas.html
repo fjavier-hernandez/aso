@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/04_LDAP/phpLDAPadmin.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/04_LDAP/046_LDAP_Graficas.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>phpLDAPadmin - Administración de Sistemas Operativos</title>
+        <title>4.6- Gestión usuarios LDAP con GUI - Administración de Sistemas Operativos</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#como-instalar-phpldapadmin" class="md-skip">
+        <a href="#gestion-usuarios-ldap-con-gui" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              phpLDAPadmin
+              4.6- Gestión usuarios LDAP con GUI
             
           </span>
         </div>
@@ -547,12 +547,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       <label class="md-nav__link" for="__nav_5">
         4.- Servicios de Directorio Libres: LDAP
@@ -637,6 +639,99 @@
   
 
           
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4.6- Gestión usuarios LDAP con GUI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="046_LDAP_Graficas.html" class="md-nav__link md-nav__link--active">
+        4.6- Gestión usuarios LDAP con GUI
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-phpldapadmin" class="md-nav__link">
+    Instalación phpLDAPadmin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceso-phpldapadmin" class="md-nav__link">
+    Acceso phpLDAPadmin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crear-usuario-y-grupo-ldap-en-phpldapadmin" class="md-nav__link">
+    Crear usuario y grupo LDAP en phpLDAPadmin
+  </a>
+  
+    <nav class="md-nav" aria-label="Crear usuario y grupo LDAP en phpLDAPadmin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-grupo-posixgroup" class="md-nav__link">
+    Crear grupo posixGroup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-usuario-posixaccount" class="md-nav__link">
+    Crear usuario posixAccount
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -656,70 +751,125 @@
               
                 
                 
-                  <h1>phpLDAPadmin</h1>
-                
-                <h2 id="como-instalar-phpldapadmin">Cómo instalar phpLDAPadmin<a class="headerlink" href="#como-instalar-phpldapadmin" title="Permanent link">&para;</a></h2>
-<p>En primer lugar se necesita instalar Apache:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt-get install apache2</span>
+                <h1 id="gestion-usuarios-ldap-con-gui">Gestión usuarios LDAP con GUI<a class="headerlink" href="#gestion-usuarios-ldap-con-gui" title="Permanent link">&para;</a></h1>
+<p>El acceso gráfico a LDAP se realiza mediante web con el servicio <strong>phpLDAPadmin</strong>, a continuación se muestra su instalación y configuración:</p>
+<h2 id="instalacion-phpldapadmin">Instalación phpLDAPadmin<a class="headerlink" href="#instalacion-phpldapadmin" title="Permanent link">&para;</a></h2>
+<ol>
+<li>En primer lugar se necesita instalar Apache:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt-get install apache2
 </code></pre></div>
-<p>Ahora podemos instalar la herramienta de administración basada en web con el comando: </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt-get install phpldapadmin -y</span>
+<ol start="2">
+<li>Seguidamente se debe instalar la herramienta de administración basada en web con el comando:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt-get install phpldapadmin -y
 </code></pre></div>
-<p>Abra el archivo de configuración phpLDAPadmin con el comando: </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo nano /etc/phpldapadmin/config.php</span>
+<ol start="3">
+<li>Abra el archivo de configuración <strong>phpLDAPadmin</strong> con el comando:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo nano /etc/phpldapadmin/config.php
 </code></pre></div>
-<p>Edite las siguientes líneas (asegúrese de cambiar el dominio para que coincida con el suyo y la dirección IP para que coincida con su servidor de alojamiento): </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;server&#39;,&#39;name&#39;,&#39;My LDAP Server&#39;);</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;server&#39;,&#39;host&#39;,&#39;192.168.5.X&#39;);</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;;setValue(&#39;server&#39;,&#39;base&#39;,array(&#39;dc=pandora,dc=ldap&#39;));</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;login&#39;,&#39;auth_type&#39;,&#39;session&#39;);</span>
-<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;login&#39;,&#39;bind_id&#39;,&#39;cn=admin,dc=pandora,dc=ldap&#39;);</span>
-<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">$servers-&gt;setValue(&#39;auto_number&#39;,&#39;min&#39;,array(&#39;uidNumber&#39;=&gt;10000,&#39;gidNumber&#39;=&gt;10000));</span>
+<ol start="4">
+<li>Edite las siguientes líneas (asegúrese de cambiar el dominio para que coincida con el suyo y la dirección IP para que coincida con su servidor de alojamiento):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$servers</span>-&gt;setValue<span class="o">(</span><span class="s1">&#39;server&#39;</span>,<span class="s1">&#39;name&#39;</span>,<span class="s1">&#39;My LDAP Server&#39;</span><span class="o">)</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$servers</span>-&gt;setValue<span class="o">(</span><span class="s1">&#39;server&#39;</span>,<span class="s1">&#39;host&#39;</span>,<span class="s1">&#39;192.168.5.X&#39;</span><span class="o">)</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="nv">$servers</span>-&gt;<span class="p">;</span>setValue<span class="o">(</span><span class="s1">&#39;server&#39;</span>,<span class="s1">&#39;base&#39;</span>,array<span class="o">(</span><span class="s1">&#39;dc=pandora,dc=ldap&#39;</span><span class="o">))</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="nv">$servers</span>-&gt;setValue<span class="o">(</span><span class="s1">&#39;login&#39;</span>,<span class="s1">&#39;auth_type&#39;</span>,<span class="s1">&#39;session&#39;</span><span class="o">)</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="nv">$servers</span>-&gt;setValue<span class="o">(</span><span class="s1">&#39;login&#39;</span>,<span class="s1">&#39;bind_id&#39;</span>,<span class="s1">&#39;cn=admin,dc=pandora,dc=ldap&#39;</span><span class="o">)</span><span class="p">;</span>
+<span class="linenos" data-linenos="6 "></span><span class="nv">$servers</span>-&gt;setValue<span class="o">(</span><span class="s1">&#39;auto_number&#39;</span>,<span class="s1">&#39;min&#39;</span>,array<span class="o">(</span><span class="s1">&#39;uidNumber&#39;</span><span class="o">=</span>&gt;10000,<span class="s1">&#39;gidNumber&#39;</span><span class="o">=</span>&gt;10000<span class="o">))</span><span class="p">;</span>
 </code></pre></div>
-<p>Deshabilite el sitio predeterminado de Apache con el comando: </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo a2dissite 000-default.conf</span>
+<ol start="5">
+<li>Deshabilite el sitio predeterminado de Apache con el comando:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo a2dissite <span class="m">000</span>-default.conf
 </code></pre></div>
-<p>Reinicie Apache con el comando: </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart apache2</span>
+<ol start="6">
+<li>Reinicie Apache con el comando:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo systemctl restart apache2
 </code></pre></div>
-<h2 id="como-acceder-a-phpldapadmin">Cómo acceder a phpLDAPadmin<a class="headerlink" href="#como-acceder-a-phpldapadmin" title="Permanent link">&para;</a></h2>
-<p>Con todo resuelto, abra un navegador web y apúntelo a <em>http: // SERVIDOR / phpldapadmin</em> (donde SERVER es la dirección IP de su servidor de alojamiento). Su nombre de usuario predeterminado (en el formulario <em>cn = admin, dc = pandora, dc = ldap</em>) se completará automáticamente. </p>
-<p>Escriba la contraseña de administrador que creó y haga clic en Autenticar. Debería encontrarse en la página principal de phpLDAPadmin, listo para trabajar:</p>
+<h2 id="acceso-phpldapadmin">Acceso phpLDAPadmin<a class="headerlink" href="#acceso-phpldapadmin" title="Permanent link">&para;</a></h2>
+<ol>
+<li>En un navegador web se debe introducir la url: <strong>http: // SERVIDOR / phpldapadmin</strong></li>
+</ol>
+<ul>
+<li>Donde SERVER es la dirección IP de su servidor de alojamiento. </li>
+<li>Su nombre de usuario predeterminado (en el formulario <em>cn = admin, dc = dominio, dc = ldap</em>) se completará automáticamente.</li>
+</ul>
+<ol start="2">
+<li>Escriba la contraseña de administrador que creó y haga clic en Autenticar. Debería encontrarse en la página principal de phpLDAPadmin, listo para trabajar:</li>
+</ol>
 <p><img alt="" src="imagenes/02/pandora_phpLDAP.png" /></p>
-<p>Para la advertencia, simplemente puede reemplazar las llaves ( ) con corchetes ( ) en la línea afectada, 1614.\
-<em><code>Deprecated: Array and string offset access syntax with curly braces is deprecated in /usr/share/phpldapadmin/lib/functions.php on line 1614</code></em><code>{}``[]</code></p>
-<p>Haga clic en iniciar sesión para iniciar sesión en su interfaz de usuario web phpLDAPadmin. Como ya definimos el DN de enlace de administrador, simplemente ingrese la contraseña e inicie sesión;</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>Para la advertencia, simplemente puede reemplazar las llaves ( ) con corchetes en la línea afectada, 1614.</li>
+<li><code>Deprecated: Array and string offset access syntax with curly braces is deprecated in /usr/share/phpldapadmin/lib/functions.php on line 1614</code>*<code>{}``[]</code></li>
+</ul>
+</div>
+<ol start="3">
+<li>Haga clic en iniciar sesión para iniciar sesión en su interfaz de usuario web <strong>phpLDAPadmin</strong>. Como ya definimos el <strong>DN</strong> de enlace de administrador, simplemente ingrese la contraseña e inicie sesión;</li>
+</ol>
 <p><img alt="" src="imagenes/02/InSesLDAP.png" /></p>
-<p>Tras la autenticación exitosa, se accede en el panel de phpLDAPadmin.</p>
+<ol start="4">
+<li>Tras la autenticación exitosa, se accede en el panel de phpLDAPadmin.</li>
+</ol>
 <p><img alt="" src="imagenes/02/panelLDAP.png" /></p>
-<p>Ahora puede administrar su servidor LDAP con una interfaz web.</p>
-<h3 id="crear-usuario-y-grupo-ldap-en-phpldapadmin">Crear usuario y grupo LDAP en phpLDAPadmin<a class="headerlink" href="#crear-usuario-y-grupo-ldap-en-phpldapadmin" title="Permanent link">&para;</a></h3>
-<p>Como ejemplo, aprenderemos cómo crear un usuario LDAP y su grupo usando phpLDAPadmin.</p>
-<h4 id="crear-grupo-posixgroup">Crear grupo posixGroup<a class="headerlink" href="#crear-grupo-posixgroup" title="Permanent link">&para;</a></h4>
-<p>Para crear un grupo dentro de otro Haga clic en <code>ou=grupos</code>. Luego haga clic en <code 1="1" opción="opción">Create new entry here</code> o haga clic en <code 2="2" opción="opción">Create a child entry</code>.</p>
+<ol start="5">
+<li>Ahora puede administrar su servidor LDAP con una interfaz web.</li>
+</ol>
+<h2 id="crear-usuario-y-grupo-ldap-en-phpldapadmin">Crear usuario y grupo LDAP en phpLDAPadmin<a class="headerlink" href="#crear-usuario-y-grupo-ldap-en-phpldapadmin" title="Permanent link">&para;</a></h2>
+<p>Como ejemplo, se muestra cómo crear un usuario LDAP y su grupo usando phpLDAPadmin.</p>
+<h3 id="crear-grupo-posixgroup">Crear grupo posixGroup<a class="headerlink" href="#crear-grupo-posixgroup" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Para crear un grupo dentro de otro Haga clic en <code>ou=grupos</code>. Luego haga clic en <code 1="1" opción="opción">Create new entry here</code> o haga clic en <code 2="2" opción="opción">Create a child entry</code>.</li>
+</ol>
 <p><img alt="" src="imagenes/02/CrearUserLDAPGUI.png" /></p>
-<p>A continuación, haga clic en la <code>Generic: Posix Group</code>plantilla para crear un grupo de usuarios LDAP.</p>
+<ol start="2">
+<li>A continuación, haga clic en la <code>Generic: Posix Group</code>plantilla para crear un grupo de usuarios LDAP.</li>
+</ol>
 <p><img alt="" src="imagenes/02/GrupoPhPLdap.png" /></p>
+<ol start="3">
+<li>
 <p>Ingrese el nombre del grupo, que en este caso lo configuramos para que sea el mismo que el uid del usuario que vamos a crear.</p>
+</li>
+<li>
 <p>Si desea que otros usuarios formen parte del grupo, seleccione sus nombres de usuario. Haga clic <code>Create Object</code>una vez hecho y confirme los cambios.</p>
+</li>
+</ol>
 <p><img alt="" src="imagenes/02/CrearObjetoPhPLDAP.png" /></p>
-<h4 id="crear-usuario-posixaccount">Crear usuario posixAccount<a class="headerlink" href="#crear-usuario-posixaccount" title="Permanent link">&para;</a></h4>
+<h3 id="crear-usuario-posixaccount">Crear usuario posixAccount<a class="headerlink" href="#crear-usuario-posixaccount" title="Permanent link">&para;</a></h3>
 <p>Una vez que haya creado un grupo de usuarios, proceda a crear la cuenta de usuario. Haga clic en <code>ou=grupos</code>y de manera similar, tiene dos opciones, hacer clic <code>Create new entry here</code>o hacer clic <code>Create a child entry</code>.</p>
-<p>Seleccione la <code>Generic: User Account</code>plantilla para crear el objeto de usuario.</p>
+<ol>
+<li>Seleccione la <code>Generic: User Account</code>plantilla para crear el objeto de usuario.</li>
+</ol>
 <p>Generar hash de contraseña de usuario;</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">slappasswd</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>slappasswd
 <span class="linenos" data-linenos="2 "></span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">Nueva contraseña</span><span class="p p-Indicator">:</span> <span class="nt">contraseña Vuelva a ingresar la nueva contraseña</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">contraseña</span>
-<span class="linenos" data-linenos="4 "></span><span class="p p-Indicator">{</span><span class="nv">SSHA</span><span class="p p-Indicator">}</span> <span class="l l-Scalar l-Scalar-Plain">vrJOf + / AFD9pdGKo / azGavDfbZ8OGJX1</span>
+<span class="linenos" data-linenos="3 "></span>Nueva contraseña: contraseña Vuelva a ingresar la nueva contraseña: contraseña
+<span class="linenos" data-linenos="4 "></span><span class="o">{</span>SSHA<span class="o">}</span> vrJOf + / AFD9pdGKo / azGavDfbZ8OGJX1
 </code></pre></div>
+<ol start="2">
+<li>
 <p>Si necesita verificar si la contraseña coincide con el hash pegado, haga clic en <strong>verificar contraseña</strong>.</p>
+</li>
+<li>
 <p>Cuando establezca la contraseña, seleccione <strong>ssha</strong> y pegue el hash anterior como contraseña.</p>
+</li>
+<li>
 <p>Complete los detalles del usuario de manera apropiada como se muestra en la captura de pantalla a continuación;</p>
+</li>
+</ol>
 <p><img alt="" src="imagenes/02/UserDataPhPLDAP.png" /></p>
-<p>Una vez hecho esto, haga clic <code>Create Object</code> y confirme los cambios.</p>
+<ol start="5">
+<li>Una vez hecho esto, haga clic <code>Create Object</code> y confirme los cambios.</li>
+</ol>
 <p><img alt="" src="imagenes/02/FinUserPhpLDAP.png" /></p>
-<p>Tenga en cuenta que para poder tener bash entre las opciones de shell, edite la plantilla de creación posixAccount y agregue la opción bash ejecutando el comando;</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sed -i &#39;/&lt;value id=&quot;\/bin\/tsh&quot;&gt;\/bin\/tsh&lt;\/value&gt;/a \\t&lt;value id=&quot;/bin/bash&quot;&gt;\/bin\/bash&lt;\/value&gt;&#39; /etc/phpldapadmin/templates/creation/posixAccount.xml</span>
+<ol start="6">
+<li>Tenga en cuenta que para poder tener bash entre las opciones de shell, edite la plantilla de creación posixAccount y agregue la opción bash ejecutando el comando;</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sed -i <span class="s1">&#39;/&lt;value id=&quot;\/bin\/tsh&quot;&gt;\/bin\/tsh&lt;\/value&gt;/a \\t&lt;value id=&quot;/bin/bash&quot;&gt;\/bin\/bash&lt;\/value&gt;&#39;</span> /etc/phpldapadmin/templates/creation/posixAccount.xml
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -728,6 +878,17 @@
 <li>Para confirmar la creación del usuario en el backend del servidor OpenLDAP puede utilizar el comnado <code>ldapsearch</code></li>
 </ul>
 </div>
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<ol start="202">
+<li>En este ejercicio se deben utilizar <strong>phpLDAPadmin</strong> para realizar los siguiente apartados:<ol>
+<li>Añade un nuevo grupo y dentro de el un nuevo usuario a la estructura de directorio creada en la práctica superior.</li>
+<li>Crea una contraseña para el usuario.</li>
+<li>Modifica el uid creado de inicio.</li>
+<li>Crea un segundo usuario, dentro de <strong>usuarios</strong></li>
+<li>Elimina el segundo usuario creado.</li>
+</ol>
+</li>
+</ol>
                 
               
               
@@ -743,6 +904,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="045_LDAP_EsquemaHerramientas.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 4.5- Esquema LDAP" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              4.5- Esquema LDAP
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
