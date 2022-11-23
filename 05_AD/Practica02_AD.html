@@ -711,6 +711,16 @@
                 
                 
                 <h1 id="configuracion-basica-windows-server">Configuración Básica Windows Server<a class="headerlink" href="#configuracion-basica-windows-server" title="Permanent link">&para;</a></h1>
+<h2 id="puntos-de-guia">Puntos de guía<a class="headerlink" href="#puntos-de-guia" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Crea un usuario con permisos de administrador.</li>
+<li>Configura el Escritorio Remoto para que el nuevo usuario pueda acceder y que además solo se pueda acceder desde una red privada. Añade una captura con el nuevo usuario accediendo en remoto al servidor y de la configuración del firewall.</li>
+<li>¿Qué dos formas de gestión remota hay para Windows Server?</li>
+<li>¿Podríamos gestionar a través de Escritorio remoto 2 personas Windows Server a la vez con la misma cuenta?</li>
+<li>Explica la diferencia entre una regla de entrada del firewall y una regla de salida.</li>
+<li>Activa la regla de Entrada “Supervisión de máquina virtual (Solicitud de eco – ICMPv4 de entrada). Además debes modificar dicha regla para que solo acepte solicitudes de equipos del dominio. Adjunta pantalla de ambas tareas.</li>
+<li>Comprueba que efectivamente puedes navegar desde el Windows Server. Crea una regla de salida que corte el tráfico TCP a los puertos 80 y 443. A continuación prueba a navegar. ¿Qué sucede? ¿A qué hacen referencia los puertos 80 y 443? Adjunta pantallas de la configuración de la regla. Finalmente deshabilita la regla para poder navegar, aunque un servidor Windows no tiene por qué tener ninguna necesidad de navegación web.</li>
+</ol>
 <h2 id="rastreador-de-eventos">Rastreador de eventos<a class="headerlink" href="#rastreador-de-eventos" title="Permanent link">&para;</a></h2>
 <p>Un servidor, habitualmente, no debe apagarse o reiniciarse, al no ser que sea por un motivo de avería o mantenimiento. Es por ello que cada vez que necesitemos reiniciarlo/apagarlo dejemos anotado a que es debido dicha acción.</p>
 <p>En Windows Server es recomendable usar “<strong>alt + f4</strong>” para apagar, ya que nos permitirá dejar una descripción de la razón por la que vamos a reiniciar/apagar el servidor. Obviamente esta descripción quedará almacenada en los logs y registros del sistema. </p>
@@ -882,34 +892,6 @@
 <figure>
   <img src="./imagenes/02/PracticasAD/23.png" width="900"/>
 </figure>
-
-<h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p>Sigue todos los pasos de configuración del tutorial.</p>
-</li>
-<li>
-<p>Crea un usuario con permisos de administrador.</p>
-</li>
-<li>
-<p>Configura el Escritorio Remoto para que el nuevo usuario pueda acceder y que además solo se pueda acceder desde una red privada. Añade una captura con el nuevo usuario accediendo en remoto al servidor y de la configuración del firewall.</p>
-</li>
-<li>
-<p>¿Qué dos formas de gestión remota hay para Windows Server?</p>
-</li>
-<li>
-<p>¿Podríamos gestionar a través de Escritorio remoto 2 personas Windows Server a la vez con la misma cuenta?</p>
-</li>
-<li>
-<p>Explica la diferencia entre una regla de entrada del firewall y una regla de salida.</p>
-</li>
-<li>
-<p>Activa la regla de Entrada “Supervisión de máquina virtual (Solicitud de eco – ICMPv4 de entrada). Además debes modificar dicha regla para que solo acepte solicitudes de equipos del dominio. Adjunta pantalla de ambas tareas.</p>
-</li>
-<li>
-<p>Comprueba que efectivamente puedes navegar desde el Windows Server. Crea una regla de salida que corte el tráfico TCP a los puertos 80 y 443. A continuación prueba a navegar. ¿Qué sucede? ¿A qué hacen referencia los puertos 80 y 443? Adjunta pantallas de la configuración de la regla. Finalmente deshabilita la regla para poder navegar, aunque un servidor Windows no tiene por qué tener ninguna necesidad de navegación web.</p>
-</li>
-</ol>
                 
               
               

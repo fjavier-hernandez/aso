@@ -16,7 +16,7 @@
     
     
       
-        <title>Práctica01_AD - Administración de Sistemas Operativos</title>
+        <title>Windows Server - Administración de Sistemas Operativos</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica01_ad" class="md-skip">
+        <a href="#windows-server" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica01_AD
+              Windows Server
             
           </span>
         </div>
@@ -710,19 +710,17 @@
               
                 
                 
-                <h1 id="practica01_ad">Práctica01_AD<a class="headerlink" href="#practica01_ad" title="Permanent link">&para;</a></h1>
-<h2 id="windows-server">Windows Server.<a class="headerlink" href="#windows-server" title="Permanent link">&para;</a></h2>
+                <h1 id="windows-server">Windows Server<a class="headerlink" href="#windows-server" title="Permanent link">&para;</a></h1>
 <p>Instala la máquina de Windows Server bajada de la plataforma Azure, comprobando antes los requisitos del sistema:</p>
-<h3 id="requisitos-del-sistema">Requisitos del Sistema<a class="headerlink" href="#requisitos-del-sistema" title="Permanent link">&para;</a></h3>
-<p>Podemos ver los requisitos del sistema en: </p>
-<p><a href="https://docs.microsoft.com/es-es/windows-server/get-started-19/sys-reqs-19">https://docs.microsoft.com/es-es/windows-server/get-started-19/sys-reqs-19</a></p>
+<h2 id="requisitos-del-sistema">Requisitos del Sistema<a class="headerlink" href="#requisitos-del-sistema" title="Permanent link">&para;</a></h2>
+<p>Podemos ver los requisitos del sistema en: <a href="https://docs.microsoft.com/es-es/windows-server/get-started-19/sys-reqs-19">PINCHA AQUÍ (Requisitos del Sistema)</a></p>
 <p>Básicamente los requerimientos <strong>mínimos</strong> son:</p>
 <ul>
 <li>Procesador 64 bits a 1,4GHz.</li>
 <li>RAM 2GB con entorno de escritorio.</li>
 <li>32GB de Disco Duro.</li>
 </ul>
-<h3 id="licencias-cal-client-access-licence">Licencias CAL (Client Access Licence)<a class="headerlink" href="#licencias-cal-client-access-licence" title="Permanent link">&para;</a></h3>
+<h2 id="licencias-cal-client-access-licence">Licencias CAL (Client Access Licence)<a class="headerlink" href="#licencias-cal-client-access-licence" title="Permanent link">&para;</a></h2>
 <p>Existen 3 tipos de licencias CAL:</p>
 <ul>
 <li>
@@ -745,7 +743,7 @@
 <p class="admonition-title">Example</p>
 <p>En mi empresa cada trabajador dispone de un portátil y un ordenador fijo de oficina. Por tanto, como cada usuario tiene 1 o más dispositivos, es más rentable tener licencias por usuario.</p>
 </div>
-<h3 id="versiones-de-windows-server">Versiones de Windows Server<a class="headerlink" href="#versiones-de-windows-server" title="Permanent link">&para;</a></h3>
+<h2 id="versiones-de-windows-server">Versiones de Windows Server<a class="headerlink" href="#versiones-de-windows-server" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="imagenes/02/PracticasAD/VersionesWinServer.png" width="1200px" /></p>
 <p>Existen 3 versiones, de más sencillo y barato a más caro, estos son: Essentials, Standard y Datacenter.</p>
 <ul>
@@ -774,7 +772,7 @@
   <figcaption>Características de las Versiones de Windows Server</figcaption>
 </figure>
 
-<h3 id="azure">Azure<a class="headerlink" href="#azure" title="Permanent link">&para;</a></h3>
+<h2 id="azure">Azure<a class="headerlink" href="#azure" title="Permanent link">&para;</a></h2>
 <p>Azure es la plataforma <strong>cloud</strong> de Microsoft. Esta plataforma cloud nos ofrece poder crear y gestionar servidores virtuales en dicha plataforma. Podemos gestionar la red virtual entre nuestros servidores virtuales, crear plataformas de desarrollo o integrar aplicaciones, gestionar el almacenamiento y las copias de seguridad,  monitorización de los servicios, etc. Todo esto de una forma sencilla con una interfaz de usuario.</p>
 <p>Las principales ventajas son:</p>
 <ul>
@@ -783,7 +781,7 @@
 <li>Es más fácil redundar los datos y tener tu sistema disponible para los clientes. Es decir, imagina que no usas Azure y tienes tu servidor en la empresa y hay un corte de suministro eléctrico, los clientes se quedarán sin servicio, por tanto no tienes una alta disponibilidad.</li>
 </ul>
 <p>La principal desventaja es que tus datos están en una empresa externa, la cual en principio no puede comercializar con dichos datos, ni siquiera acceder a ellos, no obstante es algo a tener en cuenta.</p>
-<h3 id="hyper-v">Hyper-V<a class="headerlink" href="#hyper-v" title="Permanent link">&para;</a></h3>
+<h2 id="hyper-v">Hyper-V<a class="headerlink" href="#hyper-v" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Hyper-V</strong> es un hipervisor de máquinas virtuales, es decir, permite la creación y gestión de máquinas virtuales. Es un hipervisor de <strong>tipo 1</strong> (bare metal), es decir, viene integrado en el propio sistema operativo y por tanto no requiere de instalaciones adicionales. </li>
 <li>Vmware o VirtualBox serían un ejemplo de hipervisor de <strong>tipo 2</strong>, los cuales deben ser instalados encima del sistema operativo (Windows/MAC/Linux) de la máquina anfitriona.</li>
