@@ -1,11 +1,8 @@
 # Sintaxis
-
 ## Argumentos o Parámetros
 
-* Son especificaciones que se le hacen al programa al momento de llamarlo para obtener un efecto diferente.
-
+* Son especificaciones que se le hacen al programa al momento de llamarlo.
 * Introducen un valor, cadena o variable dentro del script.
-
 * Utilización de parámetros:
 
 | Símbolo                           | Función                                                                                       |
@@ -19,7 +16,7 @@
 
 * Ejemplo:
 
-``` yaml
+``` bash
 #!/bin/bash
 echo ‘El primer parámetro que se ha pasado es ‘ $1
 echo ‘El tercer parámetro que se ha pasado es ‘ $3
@@ -27,8 +24,17 @@ echo ‘El conjunto de todos los parámetros : ‘ $*
 echo ‘Me has pasado un total de ‘ $# ‘ parámetros’”
 echo ‘El parámetro 0 es : ‘ $0
 #Fin del script
+```
 
+* Si por ejemplo se enviasen los siguientes parámetros:
+
+``` bash
 ./script.sh  Caballo  Perro  675 Nueva
+```
+
+* Se obtendría la siguiente salida:
+
+``` bash
 El primer parámetro que se ha pasado es Caballo
 El tercer parámetro que se ha pasado es 675
 El conjunto de todos los parámetros : Caballo Perro 675 Nueva
@@ -45,8 +51,8 @@ El parámetro 0 es : ./script.sh
 
 ## Variables
 
-* Es un parámetro que cambia su valor durante la ejecución del programa
-* Se da un nombre para identificarla y recuperarla, antecedido por el carácter $
+* Es un parámetro que cambia su valor durante la ejecución del programa.
+* Se da un nombre para identificarla y recuperarla, antecedido por el carácter `$`.
 
 !!! info
     * En shellscript **no se declaran y no importa el tipo**.
@@ -54,7 +60,7 @@ El parámetro 0 es : ./script.sh
 
 * Ejemplo:
 
-``` yaml
+``` bash
 #! /bin/bash
 #*********************************
 #Este es mi segundo script
@@ -80,7 +86,7 @@ Ejemplo de principales variables de entorno:
 | --------------------------------- | ----------------------------------------------------- |
 | `$BASH`                         | Ruta del programa Bash                                |
 | `$HOME`                         | Ruta completa del home del usuario                    |
-| `$PATH`                         | Lista los directorios de donde busca los programas    |
+| `$PATH`                         | Lista los directorios de donde se buscan los programas    |
 | `$RANDOM`                       | Devuelve un valor numérico aleatorio                  |
 
 ## Entrada y salida del Shell Script
@@ -94,7 +100,7 @@ Ejemplo de principales variables de entorno:
 
 | Modificador | Función  |
 | ------------| -------- |
-| `-e`| para usar las opciones hay utilizar el modificador  |
+| `-e`| para usar las opciones hay que utilizar este modificador  |
 | `\c`  | Sirve para eliminar el salto de línea natural del comando **echo**.  |
 | `\n`  | nueva línea.  |
 | `\t`  | tabulador horizontal.  |
@@ -102,14 +108,14 @@ Ejemplo de principales variables de entorno:
 
 
 !!! info
-    * Si se antepone el símbolo del dólar delante de una variable, mostrará su contenido
-    * Si es necesario mostrar frases con espacios, debe situarse entre comillas
+    * Si se antepone el símbolo del dólar delante de una variable, mostrará su contenido.
+    * Si es necesario mostrar frases con espacios, debe situarse entre comillas.
     
 !!! warning
     * La orden echo permite expandir variables siempre que se usen las comillas dobles.
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 NOMBRE=Javi
 echo “hola $NOMBRE”
@@ -117,12 +123,12 @@ echo “hola $NOMBRE”
 * El texto mostrado por pantalla será: **hola javi**
 
 ### read
- * Esta herramienta asigna el texto que el usuario ha escrito en el terminal y a una o más variables.
- * Lo que hace **read** es detener la ejecución del shell script y pasa el testigo al usuario. 
+* Esta herramienta asigna el texto que el usuario ha escrito en el terminal a una o más variables.
+* Lo que hace **read** es detener la ejecución del shell script y pasa el testigo al usuario.
 * Hasta que éste no introduzca los datos, la ejecución del programa no avanzará.
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 echo “Introduce tu nombre: ”
 read NOMBRE
@@ -133,7 +139,7 @@ echo “Hola $NOMBRE”
     Cuando se utiliza read con varios nombres de variables, el primer campo tecleado por el usuario se asigna a la primera variable, el segundo campo a la segunda y así sucesivamente
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 read -p “Introduce tres números (separados por un espacio): ” num1 num2 num3
 echo “Los número introducidos son $num1, $num2 y $num3”
@@ -144,10 +150,10 @@ echo “Los número introducidos son $num1, $num2 y $num3”
 
 ## Operadores en shell script
 
-* Todas las variables creadas en un terminal se tratan como cadenas de texto, incluso si su contenido es sólo numérico.
+* Todas las variables creadas en un terminal se tratan como cadenas de texto, incluso si su contenido es solo numérico.
 * Este es el motivo por el cual si lanzamos el siguiente código, no se obtendrá el resultado esperado:
 
-``` yaml
+``` bash
 #!/bin/bash
 var1=15
 var2=5
@@ -159,10 +165,10 @@ echo “$var1+$var2”
 
 * Existen tres tipos de operadores según el trabajo que realicen: **aritméticos, relacionales** y **lógicos**
 
-### aritméticos
+### Aritméticos
 
 * Los operadores aritméticos realizan operaciones matemáticas, como sumas o restas con operandos.
-* "Manipulan" datos numéricos, tanto enteros como reales. 
+* "Manipulan" datos numéricos, tanto enteros como reales.
 
 | Símbolo                           | Función                  |
 | :---------------------------------: | ------------------------ |
@@ -175,7 +181,7 @@ echo “$var1+$var2”
 
 * Ejemplo:
 
-``` yaml
+``` bash
 #!/bin/bash
 #*********************************
 #Esto es mi tercer script
@@ -191,7 +197,7 @@ NUMERO=10
 let SUMA=NUMERO-10
 ```    
 
-### relacionales
+### Relacionales
 
 * Este tipo de operadores tan sólo devuelven dos posibles valores; **verdadero o falso**.
 * Existen subtipos según se comparen cadenas o números.
@@ -222,15 +228,15 @@ let SUMA=NUMERO-10
     | Operador | Acción |  
     |:-----:|------------------------------------------------|
     | `-a` | Comprueba si existe el archivo.           |
-    | `-r` | Evalúa si la longitud de la cadena no es cero.         |   
+    | `-r` | Evalúa si el archivo esta vacío.         |   
     | `-w` | Confirma si existe el archivo y tiene permisos de escritura.  |  
     | `-x` | Constata si existe el archivo y tiene permisos de ejecución.  | 
-    | `-f` | Escruta si existe y es un fichero regular.    |  
-    | `-d` | Escruta si existe y es un fichero regular.    |  
+    | `-f` | Escruta si existe y es un archivo de tipo regular.    |  
+    | `-d` | Escruta si existe y es un archivo de tipo directorio.    |  
     | `-h` | Coteja si existe y es un enlace.     |  
     | `-s` | Revisa si existe el archivo y su tamaño es mayor a cero.   |  
 
-### lógicos
+### Lógicos
 
 * Se utilizan para evaluar condiciones, no elementos.
 * Comprueba el resultado de dos operandos y devuelve verdadero o falso en función del valor que arrojen los operandos.
@@ -253,12 +259,12 @@ let SUMA=NUMERO-10
 
 !!! tip
     * **MEJOR NO UTILIZAR** 
-    * Desafortunadamente, **expr** es difícil de utilizar debido a las colisiones entre su sintaxis y la propia del terminal. 
-    * Puesto que * es el símbolo comodín, deberá ir precedido por una barra invertida para que el terminal lo interprete literalmente como un asterisco. 
+    * Desafortunadamente, **expr** es difícil de utilizar debido a las colisiones entre su sintaxis y la propia terminal.
+    * Puesto que `*` es el símbolo comodín, deberá ir precedido por una barra invertida para que el terminal lo interprete literalmente como un asterisco.
     * Además, es muy incómodo de trabajar ya que los espacios entre los elementos de una expresión son críticos.
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 var=5
 resultado=`expr $1 + $var + 1
@@ -272,7 +278,7 @@ echo $resultado`
 * Se configura como un comando más cómodo de ejecutar.
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 var=5
 let resultado=$1+var+1
@@ -285,7 +291,7 @@ echo $resultado
 * Realizan la operación contenida dentro de ellos lanzando la ejecución fuera de ellos una vez resuelta.
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 var=5
 echo $(($1+$var+1))
@@ -308,24 +314,24 @@ echo $(($1 + $var + 1))
     | `2>` | envía la salida de **stderr** (error estándar) a un fichero especificado|
 * Ejemplo:
 
-``` yaml
+``` bash
 sh script.sh 2>/dev/null
 ```
 !!! info
     El objetivo de la expresión anterior puede ser utilizada en la administración de sistemas para descartar el error estándar de un proceso, de esta forma no aparecerán los mensajes de error por el terminal; **es muy utilizado**.
 
 
-## Tuberías 
+## Tuberías
 
 * Forma práctica de **redireccionar la salida estándar de un programa** hacia la entrada estándar de otro.
-* Esto se logra usando el símbolo | (pipeline). Ejemplo:
+* Esto se logra usando el símbolo `|` (pipeline). Ejemplo:
 
-``` yaml
+``` bash
 $ cat archivo.txt | wc
 ```
 
 !!! info
-    El comando anterior utiliza tuberias para redireccionar la salida estándar del comando cat y pasarla como entrada estándar del comando wc para contar las líneas y palabras de un archivo.
+    El comando anterior utiliza tuberías para redireccionar la salida estándar del comando cat y pasarla como entrada estándar del comando wc para contar las líneas y palabras de un archivo.
 
 ## alias
 
@@ -333,7 +339,7 @@ $ cat archivo.txt | wc
 * Cada usuario puede asignar una palabra fácil de recordar a uno o más comandos que, por lo general, pueden ser más complicados de recordar.
 * Ejemplo:
 
-``` yaml
+``` bash
 alias listado=’ls -lia>’
 ```
 ## Actividades

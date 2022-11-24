@@ -1,9 +1,9 @@
 # Introducción
 
-Para administrar sistemas operativos es crucial manejar y dominar las interfaces (terminales) disponibles que nos permiten gestionarlos, entre dichas interfaces destacan los siguientes tipos:
+Para administrar sistemas operativos es crucial manejar y dominar las interfaces (terminales) disponibles que nos permiten gestionarlos. Entre dichas interfaces destacan los siguientes tipos:
 
-* De líneas texto (**CLI**, Command-Line Interface, interfaz de línea de comandos),
-* Gráficos (**GUI**, Graphical User Interface, interfaz gráfica de usuario),
+* De líneas  de texto (**CLI**, Command-Line Interface, interfaz de línea de comandos),
+* Gráficos/ventanas (**GUI**, Graphical User Interface, interfaz gráfica de usuario),
 * De lenguaje natural (**NUI**, Natural User Interface, interfaz natural de usuario, ejemplo SIRI en IOS).
 
 Este tema se centra en Sistemas basados en código libre del tipo UNIX, debido a su amplio despliegue en empresas para implementar servicios, más en concreto de distribuciones **Linux/GNU**.
@@ -16,12 +16,12 @@ El CLI de las distribuciones de **Linux/GNU** es conocido como Shell o terminal,
 </figure>
 
 !!! tip "**NOTA**"
-    * Por lo tanto, es buena práctica que el administrador del sistemas tenga conocimientos en el manejo y gestión del terminal Shell, así como en la programación de scripts.
+    * Por lo tanto, es buena práctica que el administrador del sistemas tenga conocimientos en el manejo y gestión del terminal Shell, **así como en la programación de scripts**.
 
 ## Shell
 
 * En informática, el **shell o intérprete de comandos**, es el programa informático que permite a los usuarios interactuar con el sistema, procesando las órdenes que se le indican; además provee una interfaz de usuario para acceder a los servicios del sistema operativo.
-* Los comandos ejecutables desde el shell pueden clasificarse en *internos* (corresponden en realidad a órdenes interpretadas por el propio shell) y *externos* (corresponden a ficheros ejecutables externos al shell, conocidos como guiones o scripts).
+* Los comandos ejecutables desde el shell pueden clasificarse en **internos** (corresponden en realidad a órdenes interpretadas por el propio shell) y **externos** (corresponden a ficheros ejecutables externos al shell, conocidos como guiones o scripts).
 
 !!! info "**IMPORTANTE:**"
     * Linux dispone de varios Shell diferentes *csh*, *bash*, *sh*, *ksh*, *zsh*, etc... A destacar:
@@ -39,7 +39,7 @@ El CLI de las distribuciones de **Linux/GNU** es conocido como Shell o terminal,
 * **Argumentos**, elementos necesarios para realizar la acción del comando.
 
 !!! Warning
-    * Un dato a tener en cuenta cuando se trabaja con un terminal, es que GNU/Linux distingue entre mayúsculas y nimúsculas, es decir, la ejecución de comandos en el CLI de Linux es **CASE SENSITIVE**.
+    * Un dato a tener en cuenta cuando se trabaja con un terminal, es que GNU/Linux distingue entre mayúsculas y minúsculas, es decir, la ejecución de comandos en el CLI de Linux es **CASE SENSITIVE**.
 
 
 ### Principales comandos
@@ -56,17 +56,17 @@ El CLI de las distribuciones de **Linux/GNU** es conocido como Shell o terminal,
 
 ## Shell Script en GNU/Linux
 
-* Un Shell script (guión) es un archivo de texto que contiene una serie de comandos que, ordenados de forma específica, realizan la tarea para la que fueron diseñados, es decir, es un programa escrito de comandos Shell para ser ejecutados de forma secuencial.
+* Un Shell script (guion) es un archivo de texto que contiene una serie de comandos que, ordenados de forma específica, realizan la tarea para la que fueron diseñados, es decir, es un programa escrito de comandos Shell para ser ejecutados de forma secuencial.
 * De esta forma se pueden automatizar tareas repetitivas ahorrando tiempo al administrador.
 * Un programa escrito en shell se denomina shellscript, programa shell o simplemente un shell.
 
 ### Estructura general
 
-* En su forma más básica, un shell-script puede ser un simple fichero de texto que contenga uno o varios comandos. 
+* En su forma más básica, un shell-script puede ser un simple fichero de texto que contenga uno o varios comandos.
 * Para ayudar a la identificación del contenido a partir del nombre del archivo, es habitual que los shell scripts tengan la extensión «.sh»,
 * Se seguirá este criterio pero hay que tener en cuenta que es informativo y opcional.
 
-``` yaml
+``` bash
 #!/bin/bash
 #*********************************
 #Este es mi primer script
@@ -80,19 +80,19 @@ echo Hola Mundo
 * Para crear un script utilizaremos cualquiera de los editores de texto plano como *vi*, *vim* , *nano*.
 * Después de crear el archivo hay que dotarlo de permisos de lectura y ejecución. 
 
-``` yaml
+``` bash
 chmod ugo=rx script.sh
 ```
 
 * Para ejecutar el archivo: (ubicados en la carpeta que contiene el archivo), se pueden utilizar el siguiente archivo:
 
-    ``` yaml
+    ``` bash
     ./script.sh
     ```
 
 * Además se puede utilizar otro método que consiste en definir la carpeta dentro de la variable de entorno **PATH** (editando el fichero **.bashrc**.) Una vez realizado ya se podría ejecutar directamente el fichero con el nombre del script.
 
-    ``` yaml
+    ``` bash
     mkdir /home/administrador/scripts
     PATH=$PATH:/home/administrador/scripts
     export PATH
@@ -106,7 +106,7 @@ chmod ugo=rx script.sh
 
 * Crea un ejemplo llamado *listar.sh*, se aconseja ejecutar los siguientes comandos de forma secuencial.
 
-``` yaml
+``` bash
 cd ~
 mkdir scripts
 cd scripts
@@ -116,7 +116,7 @@ nano listar.sh
 
 * Genera, guarda y prueba el siguiente código.
 
-``` yaml
+``` bash
 #! /bin/bash
 clear
 ls -la
@@ -129,7 +129,7 @@ echo “Listado realizado el “$(date)
 * Cuando el terminal encuentra una línea que comienza con este carácter, ignora todo lo que existe desde él hasta el final de línea.
 * A esta regla existe una excepción:
 
-``` yaml
+``` bash
     #!/bin/bash
 ```
 

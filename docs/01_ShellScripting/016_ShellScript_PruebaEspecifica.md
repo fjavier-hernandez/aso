@@ -183,15 +183,14 @@ echo "$num1""$num2"
 
 ## Práctica
 
-1. Escribe tres shell script utilizando estructuras alternativas:
-    1. El primero ej1A.sh, que pida al usuario tres números y los muestre ordenados de mayor a menor. Se deberá comprobar que los datos facilitados por el usuario son válidos.
-    2. El segundo ej1B.sh, que a partir de una fecha introducida por teclado con el formato DÍA, MES, AÑO, se obtenga la fecha del día siguiente.
-    3. El tercero ej1C.sh, que acepte una calificación numérica y visualice la correspondiente en letra:
+1. Escribe un shell script que pida al usuario tres números y los muestre ordenados de mayor a menor.
+2. Realiza un shell script que a partir de una fecha introducida por teclado con el formato DÍA, MES, AÑO, se obtenga la fecha del día siguiente.
+3. Crea un shell script que acepte una calificación numérica y visualice la correspondiente en letra, según la figura adjunta. Se deberá comprobar que los datos introducidos por el usuario son válidos.
 
 <figure>
   <img src="imagenes/01/ejercicio1cExamUD1.png" />
 </figure>
 
-2. Escribe un shell script que genere dos vectores de quince elementos cada uno y los rellene con número aleatorios comprendidos entre 0 y 100. Después sume esas dos estructuras y muestre los tres vectores por pantalla. 
+4. Escribe un shell script que genere dos vectores de quince elementos cada uno y los rellene con número aleatorios comprendidos entre 0 y 100. Después sume esas dos estructuras y muestre los tres vectores por pantalla. 
 
 - Para ello crea las funciones **imprimir_array(array_a_imprimir)** y **sumar_array(array1, array2)**.

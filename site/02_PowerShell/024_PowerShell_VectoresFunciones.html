@@ -1,0 +1,973 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/02_PowerShell/024_PowerShell_VectoresFunciones.html">
+      
+      <link rel="icon" href="../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>2.4- Vectores y Funciones - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vectores-y-funciones" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.4- Vectores y Funciones
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- UD1. ShellScripting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- UD1. ShellScripting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- UD1. ShellScripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/ResumenUD.html" class="md-nav__link">
+        Resumen UD
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
+        1.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
+        1.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
+        1.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+        1.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
+        1.5- Refuerzo y ampliación
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
+        1.6- Prueba Auditoria
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- UD2: PowerShell
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- UD2: PowerShell" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- UD2: PowerShell
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="021_Introduccio%CC%81nPwSh.html" class="md-nav__link">
+        2.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="022_PowerShell_Sintaxis.html" class="md-nav__link">
+        2.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="023_PowerShell_ControlFlujo.html" class="md-nav__link">
+        2.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.4- Vectores y Funciones
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="024_PowerShell_VectoresFunciones.html" class="md-nav__link md-nav__link--active">
+        2.4- Vectores y Funciones
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vectores" class="md-nav__link">
+    Vectores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones" class="md-nav__link">
+    Funciones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        3.- UD3: Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- UD3: Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          3.- UD3: Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/031_Planificador.html" class="md-nav__link">
+        3.1- Introducción Procesos, Planificador
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/032_Hilos.html" class="md-nav__link">
+        3.2- Hilos, Sincronización e interrupciones, Herramientas gráficas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/033_GestionProcesosShell.html" class="md-nav__link">
+        3.3- Gestión de procesos en Shell de Linux.
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/034_GestionProcesosPWSH.html" class="md-nav__link">
+        3.4- Gestión de procesos en PowerShell.
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/035_ArranqueServicios.html" class="md-nav__link">
+        3.5- Arranque del sistema. Servicios. Systemd.
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        4.- Servicios de Directorio Libres: LDAP
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4.- Servicios de Directorio Libres: LDAP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Servicios de Directorio Libres: LDAP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/041_Introduccion_SDyLDAP.html" class="md-nav__link">
+        4.1- Introducción Servicios de directorio y LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/042_InstalacionConfigLDAP_PR.html" class="md-nav__link">
+        4.2- Instalación y configuración de OpenLDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/043_LDAP_DIT.html" class="md-nav__link">
+        4.3- Modelo de Información de LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/044_UsersLDAP.html" class="md-nav__link">
+        4.4- Creación y comprobación de Usuarios/Grupos OpenLDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/045_LDAP_EsquemaHerramientas.html" class="md-nav__link">
+        4.5- Esquema LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/046_LDAP_Graficas.html" class="md-nav__link">
+        4.6- Gestión usuarios LDAP con GUI
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        5.- Servicios de Directorio Propietarios: Active Directory
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="5.- Servicios de Directorio Propietarios: Active Directory" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          5.- Servicios de Directorio Propietarios: Active Directory
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_AD/051_ActiveDirectory.html" class="md-nav__link">
+        5.1- Introducción Active Directory
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="vectores-y-funciones">Vectores y Funciones<a class="headerlink" href="#vectores-y-funciones" title="Permanent link">&para;</a></h1>
+<h2 id="vectores">Vectores<a class="headerlink" href="#vectores" title="Permanent link">&para;</a></h2>
+<ul>
+<li>PowerShell considera como un vector a toda colección de objetos, sea cual sea su tipo.</li>
+<li>Los elementos que lo conforman pueden estar separados por comas, estar expresados por el operador de rango <code>..</code> o ser el resultado de alguna expresión que devuelva una colección, como así lo hacen muchos cmdlets.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$Vacia</span> <span class="p">=</span> <span class="p">@{}</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$Enteros</span> <span class="p">=</span> <span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">,</span><span class="n">4</span><span class="p">,</span><span class="n">5</span>
+<span class="linenos" data-linenos="3 "></span><span class="nv">$Texto</span> <span class="p">=</span> <span class="err">“</span><span class="n">Lunes</span><span class="err">”</span><span class="p">,</span><span class="err">“</span><span class="n">Martes</span><span class="err">”</span><span class="p">,</span><span class="err">”</span><span class="n">Miércoles</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">Jueves</span><span class="err">”</span><span class="p">,</span><span class="err">”</span><span class="n">Viernes</span><span class="err">”</span>
+<span class="linenos" data-linenos="4 "></span><span class="nv">$EnterosRango</span> <span class="p">=</span> <span class="n">1</span><span class="p">..</span><span class="n">10</span>
+</code></pre></div>
+</div>
+<p>De esta forma se han definido cuatro vectores; el segundo contendrá enteros y el tercero cadenas de caracteres. La última línea asigna los valores desde el 1 al 10 utilizando el operador rango <code>..</code> .</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>El operador de <strong>rango</strong> representa una secuencia de enteros, con los límites superior e inferior separados por dos puntos decimales. Permite expresar el rango en orden ascendente o descendente, así como también que los límites inferior o superior sean establecidos por medio de variables que contengan enteros.</p>
+</div>
+<ul>
+<li>Un vector también puede definirse como el resultado de una expresión.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$EnterosFor</span> <span class="p">=</span> <span class="p">@(</span><span class="k">For</span><span class="p">(</span><span class="nv">$i</span><span class="p">;</span><span class="nv">$i</span> <span class="p">&lt;</span> <span class="n">5</span><span class="p">;</span><span class="nv">$i</span><span class="p">++){</span><span class="nv">$i</span><span class="p">})</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$Comando</span> <span class="p">=</span> <span class="nb">Get-Process</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">ProcessName</span>
+</code></pre></div>
+</div>
+<p>En la primera línea <code>$enteros</code> será completado a través del resultado de una estructura iterativa, mientras que la segunda contendrá el resultado del cmdlet indicado. Además de todas estas formas de declaración, también se puede realizar a través del cmdlet <code>New-Variable</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">Enteros</span> <span class="n">-Value</span> <span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">,</span><span class="n">4</span><span class="p">,</span><span class="n">5</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">Texto</span> <span class="n">-Value</span> <span class="s2">&quot;Lunes&quot;</span><span class="p">,</span><span class="s2">&quot;Martes&quot;</span><span class="p">,</span><span class="s2">&quot;Miércoles&quot;</span><span class="p">,</span><span class="s2">&quot;Jueves&quot;</span><span class="p">,</span><span class="s2">&quot;Viernes&quot;</span> <span class="err">–</span><span class="n">Force</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">EnterosRango</span> <span class="n">-Value</span> <span class="p">(</span><span class="n">1</span><span class="p">..</span><span class="n">5</span><span class="p">)</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">EnterosFor</span> <span class="n">-value</span> <span class="p">(.</span> <span class="p">{</span><span class="k">For</span><span class="p">(</span><span class="nv">$i</span><span class="p">=</span><span class="n">1</span><span class="p">;</span><span class="nv">$i</span> <span class="o">-lt</span> <span class="n">5</span><span class="p">;</span><span class="nv">$i</span><span class="p">++){</span><span class="nv">$i</span><span class="p">}})</span> <span class="n">-Force</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>El atributo <code>-Force</code> sobrescribe la variable si esta ya existe, de ese modo no saltará ningún error a la hora de definir estas variables.</p>
+</div>
+<ul>
+<li>Para obtener el número de elementos de un vector se utiliza el método Length, si se aplica a un elemento del vector, devolverá el tamaño de este elemento, no del vector completo.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$Texto</span><span class="p">.</span><span class="n">Length</span> <span class="c"># mostrará 5 por pantalla</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$Texto</span><span class="p">[</span><span class="n">2</span><span class="p">].</span><span class="n">Length</span> <span class="c"># mostrará 9, las letras de “Miércoles”</span>
+</code></pre></div>
+</div>
+<ul>
+<li>Para añadir elementos al final de un vector se utiliza el operador <code>+=</code>.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$Enteros</span> <span class="p">+=</span> <span class="n">6</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$Texto</span> <span class="p">+=</span> <span class="err">“</span><span class="n">Sábado</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">Domingo</span><span class="err">”</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La primera línea añade el entero 6 al vector <code>$Enteros</code>, mientras que en la segunda se añaden los elementos “Sábado” y “Domingo” al vector <code>$Texto</code>.</p>
+</div>
+<ul>
+<li>Para eliminar un elemento de un vector PowerShell no ofrece un sistema parecido al de añadir valores, sino que tendrá que reescribirse el vector de nuevo sin los valores no deseados.</li>
+</ul>
+<h2 id="funciones">Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h2>
+<p>También en PowerShell es posible utilizar funciones a través de la siguiente estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">Function</span> <span class="p">&lt;</span><span class="n">NOMBRE</span><span class="p">&gt;</span> <span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="k">Param</span> <span class="p">(&lt;</span><span class="n">Parámetro</span><span class="p">&gt;,&lt;</span><span class="n">Parámetro</span><span class="p">&gt;,...)</span>
+<span class="linenos" data-linenos="3 "></span>        <span class="n">Comandos</span> <span class="n">PowerShell</span>
+<span class="linenos" data-linenos="4 "></span><span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>El paso de parámetros a una función se realiza de idéntica forma que en shell script. <strong>La principal diferencia</strong> entre las funciones usadas en shell script es que ahora es preferible <strong>declarar y tipar</strong> antes de iniciar con el código de la función.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">Function</span> <span class="nb">Get-Sumar</span> <span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="k">param</span> <span class="p">(</span><span class="no">[integer]</span> <span class="nv">$a</span><span class="p">,</span> <span class="no">[integer]</span> <span class="nv">$b</span><span class="p">)</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="nv">$sumar</span> <span class="p">=</span> <span class="nv">$a</span> <span class="p">+</span> <span class="nv">$b</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="nb">Write-Host</span> <span class="err">“</span><span class="n">La</span> <span class="n">suma</span> <span class="n">es</span> <span class="nv">$sumar</span><span class="err">”</span>
+<span class="linenos" data-linenos="5 "></span><span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Si se ejecuta la siguiente instrucción: <code>Get-Sumar 2 8</code> La salida del terminal será <code>La suma es 10</code>.</p>
+</div>
+<p>Si se necesita que las funciones estén disponibles durante la sesión del usuario o si es necesario enlazarlas desde otro script, se deberá utilizar la notación de punto, del mismo modo que ocurría en shell script.</p>
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Escribe el código de los scripts en <strong>PowerShell</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
+</div>
+<ol start="209">
+<li>
+<p>Diseña un script PowerShell que lea un vector con 365 temperaturas y calcule la media y cuantos días han estado por encima y cuantos por debajo de ella. Rellena el vector con valores aleatorios entre -5 y 35, para ello usa Get-Random.</p>
+</li>
+<li>
+<p>Crea un script PowerShell para que haga una <strong>copias de seguridad</strong> de todos los archivos del directorio de trabajo del usuario actual. Deberá realizar las siguientes acciones:</p>
+<ul>
+<li><strong>comprobará</strong> si el archivo ya existe en la copia de seguridad, si es así comprobará cual de los dos es más reciente y que tamaño tienen. Si es más reciente o posee un tamaño mayor, lo copiará. En cualquier otro caso, no lo copia.</li>
+<li>llevará un <strong>registro</strong> de todos los archivos copiados cada vez que se ejecute mediante un archivo de bitácora. Guarda este fichero el directorio que contiene el script.</li>
+</ul>
+</li>
+</ol>
+<p>Crea una <strong>función</strong> para cada tarea realizada en este script.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Utiliza en la generación de los scripts los <strong>cmdlets</strong> de depuración si así lo consideras  al haber encontrado problemas en la ejecución.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="023_PowerShell_ControlFlujo.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 2.3- Control de flujo" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              2.3- Control de flujo
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../03_Procesos/ProgramacionAula.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Programación de Aula" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Programación de Aula
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>

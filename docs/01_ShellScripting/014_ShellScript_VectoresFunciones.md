@@ -8,7 +8,7 @@
 * Para acceder a cada elemento será necesario especificar la posición que ocupan dentro de ella, teniendo presente que la numeración de los vectores comienza desde cero, no desde uno.
 
 !!! info
-    Un buen ejemplo de uso sería, por ejemplo, para recoger el listado de archivos que hay en una carpeta.
+    Un buen ejemplo de uso sería, recoger el listado de archivos que hay en una carpeta.
 
 <figure>
   <img src="imagenes/01/EsquemaVector.png" width="500"/>
@@ -22,13 +22,13 @@ Para definir un vector disponemos de dos formas:
 
 Para declarar un vector hay que utilizar la siguiente estructura:
 
-``` yaml
+``` bash
 declare -a meses=("enero" "febrero" "marzo")
 ```
 
 También es posible utilizar alguna expresión para completar un vector, como con el operador rango ...
 
-``` yaml
+``` bash
 declare -a letras=( {N..Z} {s..z} )
 echo ${letras[*]}
 ```
@@ -41,13 +41,13 @@ echo ${letras[*]}
 * Si el índice es mayor que la última posición de la estructura, se escribirá al final de la misma.
 * Si se usa un índice que ya contiene un dato, éste será sobrescrito.
 
-``` yaml
+``` bash
 meses[3]="abril"
 ```
 
 * Para mostrar el contenido del vector:
 
-``` yaml
+``` bash
 echo ${meses[*]}
 ```
 
@@ -66,7 +66,7 @@ echo ${meses[*]}
 
 * Para recorrer los valores que contiene esta estructura se puede utilizar un bucle **for**
 
-``` yaml
+``` bash
 for item in ${meses[*]}
 do
     echo $item
@@ -74,7 +74,7 @@ done
 ```
 * También se puede utilizar sus índices para mostrar los datos contenidos.
 
-``` yaml
+``` bash
 for index in ${!meses[*]}
 do
     echo ${meses[$index]}
@@ -83,7 +83,7 @@ done
 
 * Es una estructura muy útil en la que se puede guardar cualquier tipo de información, como por ejemplo los ficheros que contiene una carpeta:
 
-``` yaml
+``` bash
 i=0;
 for fichero in $(ls -a)
 do
@@ -94,13 +94,13 @@ done
 
 ## Funciones en shell script
 
-* Una función es un conjunto de líneas de código que se identifican a través de un identificador y que se ejecutan al invocar ese identificador.
+* Una función es un conjunto de líneas de código que se distinguen a través de un identificador y que se ejecutan al invocar ese identificador.
 * Se podría definir como un shell script dentro de un shell script.
 * Sirve para organizarlo en unidades lógicas más pequeñas de manera que sea más fácil mantenerlo.
 * Las funciones aceptan parámetros, de idéntica manera que los shell script, por lo que su uso también es muy intuitivo.
 * La estructura de una función queda definida de la siguiente manera:
 
-``` yaml
+``` bash
 function nombre_función(){
     código que se ejecutará al llamar a la función
 }
@@ -116,7 +116,7 @@ function nombre_función(){
 
 * Ejemplo:
 
-``` yaml
+``` bash
 #! /bin/bash
 function imprimir_tabla(){
     echo “Tabla del número $1”
@@ -129,11 +129,10 @@ function imprimir_tabla(){
 read -p “Escribe un número: “ num
 imprimir_tabla $num
 imprimir_tabla 5
-}
 ```
 
 * En este ejemplo se ha construido una función para imprimir la tabla de multiplicar de un número pasado como parámetro.
-* En la siguiente línea le pedimos al programa que imprima la tabla del número cinco. 
+* En la siguiente línea le pedimos al programa que imprima la tabla del número cinco.
 * No se ha necesitado escribir el código que imprime la su tabla de multiplicar de nuevo, ya que con invocar el nombre de la función el programa ya sabe que código debe ejecutar.
 
 !!! warning
@@ -146,16 +145,16 @@ imprimir_tabla 5
 !!! note
     Escribe el código de los scripts en **ShellScript** que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.
 
-111. Realiza un script utilizando funciones que permita crear un informe de las **IP libres** en la red en la que se encuentra el equipo. Debe contener las siguientes opciones:
+112. Realiza un script utilizando funciones que permita crear un informe de las **IP libres** en la red en la que se encuentra el equipo. Debe contener las siguientes opciones:
     1. El informe contendrá un **listado de todas las IP de la red** a la que pertenece el equipo indicando si está libe o no (usa el comando ping).
     2. En el informe debe aparecer el **tipo de red** (rango CIDR) en el que está inmerso el ordenador con el **nombre de la red**, su **broadcast** y su **máscara de subred**. Esta información la podéis obtener desde el comando ifconfig.
 
 !!! note
     Para facilitar los cálculos asumimos que el equipo donde se ejecuta el script se encuentra en una única red, es decir, solo posee una tarjeta de red.
 
-112. Crea un script que rellene un **vector** con cien valores aleatorios y muestre en pantalla en una sola línea los valores generados.
+113. Crea un script que rellene un **vector** con cien valores aleatorios y muestre en pantalla en una sola línea los valores generados.
 
-113. Genera un script que rellene un **vector** con diez números pedidos al usuario y que los muestre por pantalla de la siguiente forma:
+114. Genera un script que rellene un **vector** con diez números pedidos al usuario y que los muestre por pantalla de la siguiente forma:
     1. en orden inverso a como han sido introducidos los valores
     2. los valores ordenados de menor a mayor en una sola línea
     3. los valores ordenados de mayor a menor en una sola línea

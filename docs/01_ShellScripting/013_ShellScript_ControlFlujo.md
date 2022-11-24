@@ -13,15 +13,13 @@
 * Para diseñarlos se emplean figuras normalizadas que representan una acción dentro del procedimiento.
 * Cada una de estas figuras representa un paso a seguir dentro del algoritmo.
 
-!!! note
+!!! note "NOTA"
     * Para su construcción se han de respetar las siguientes reglas:
         1. Tiene un elemento de inicio en la parte superior y uno final en la parte inferior.
         2. Se escribe de arriba hacia abajo y de izquierda a derecha.
         3. Siempre se usan flechas verticales u horizontales, jamás curvas u oblicuas
         4. Se debe evitar cruce de flujos.
         5. En cada paso expresar una acción concreta.
-
-En lo sucesivo se ilustrarán las diferentes estructuras de control a través de esta técnica la cual facilita su comprensión.
 
 En la siguiente figura se puede observar **simbología** para diseñar diagramas de flujo.
 
@@ -44,13 +42,13 @@ En la siguiente figura se puede observar **simbología** para diseñar diagramas
 !!! warning
     La estructura secuencial no es válida para solucionar la mayoría de los problemas que se plantean.
 
-* Para ello es necesario la elección de un código u otro en función de ciertas condiciones, formado otro tipo de estrcuturas que son conocidas como **estructuras condicionales**; entre las cuales podemos destacar:
-    1. **Estructuras Alternativas**, según si se cumple la condición o no, se realizará una tarea u otra. 
+* Para ello es necesario la elección de un código u otro en función de ciertas condiciones, formado otro tipo de estructuras que son conocidas como **estructuras condicionales**; entre las cuales podemos destacar:
+    1. **Estructuras Alternativas**, según si se cumple la condición o no, se realizará una tarea u otra.
         * Ejemplo de utilización con la sentencia: **if**.
     2. **Estructuras Iterativas**, cuando necesario ejecutar algunas instrucciones repetidas veces.
         * Ejemplo de utilización con la sentencia: **for**.
 
-### Estructuras condicionales
+### Estructuras alternativas
 
 * Las estructuras de selección permiten ejecutar diferentes instrucciones dependiendo del valor de una variable o expresión.
 * También se les llama ramificaciones, estructuras de decisión o alternativas.
@@ -61,7 +59,7 @@ En la siguiente figura se puede observar **simbología** para diseñar diagramas
 
 * La forma general de la orden **if** es:
 
-``` yaml
+``` bash
 if [ expresión ]
 then
     realizar este código si expresión es verdadera
@@ -74,7 +72,7 @@ fi
 </figure>
 
 * Ejemplo: 
-``` yaml
+``` bash
 if [ $# -eq 1 ]
 then
     VAR=$1
@@ -92,7 +90,7 @@ fi
 * En este caso se contempla también la posibilidad de ejecutar alguna acción si no se cumple la expresión.
 * La forma general del **if then else** es:
 
-``` yaml
+``` bash
 if [ expresión ]
 then
     realizar si expresión es verdadera
@@ -107,7 +105,7 @@ fi
 </figure>
 
 * Ejemplo: 
-``` yaml
+``` bash
 if [ $a -gt $b ]
 then
     echo "$a es mayor que $b"
@@ -122,7 +120,7 @@ fi
 * Es posible colocar tantos elif como condiciones se requiera evaluar.
 * La forma general del **if then elif else** es:
 
-``` yaml
+``` bash
 if [ exp1 ]
 then
     realizar si exp1 es verdadera
@@ -138,7 +136,7 @@ fi
 ```
 
 * Ejemplo: 
-``` yaml
+``` bash
 if [ $a -gt $b ]
 then
     echo "$a es mayor que $b"
@@ -162,7 +160,7 @@ fi
 * La limitación que tan sólo se comprueba si es igual a ese valor.
 * La forma general del **case** es:
 
-``` yaml
+``` bash
 case VARIABLE in
     valor1)
         Se ejecuta si VARIABLE tiene el valor1
@@ -195,18 +193,17 @@ esac
 
 1. **Contador:** es una variable cuyo valor se incrementa o decrementa en una cantidad constante cada vez que se produce un determinado suceso o acción. Los contadores se utilizan con la finalidad de contar sucesos o acciones internas de un bucle.
 
-!!! info
+!!! info "NOTA"
     La inicialización consiste en asignarle al contador un valor. Se situará antes y fuera del bucle.
 
-2. **Acumulador o Totalizador** es una variable que suma sobre sí misma un conjunto de valores para de esta manera tener el total de todos ellos en una sola variable. 
+2. **Acumulador o Totalizador** es una variable que suma sobre sí misma un conjunto de valores para de esta manera tener el total de todos ellos en una sola variable.
 
-!!! info
+!!! info "NOTA"
     La diferencia entre un contador y un acumulador es que mientras el primero va aumentando de uno en uno, el acumulador va aumentando en una cantidad variable.
 
-3. **Banderas**, conocidas también como interruptores, switch, flags o conmutadores. Son variables que pueden tomar solamente dos valores
-durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los valores booleanos verdadero o falso. 
+3. **Banderas**, conocidas también como interruptores, switch, flags o conmutadores. Son variables que pueden tomar solamente dos valores durante la ejecución del programa, los cuales pueden ser **cero o uno**, o bien los valores **booleanos verdadero o falso**.
 
-!!! info
+!!! info "NOTA"
     Se les suele llamar interruptores porque cuando toman un valor están simulando un interruptor abierto/cerrado o encendido/apagado.
 
 <figure>
@@ -216,9 +213,9 @@ durante la ejecución del programa, los cuales pueden ser cero o uno, o bien los
 
 #### Las estructuras while y until
 
-Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. El funcionamiento es lógico:
+Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. Funcionamiento:
 
-* Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa. 
+* Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa.
 * Si es verdadera entra en el bucle y ejecuta el código que contiene.
 * Al finalizar la ejecución, al iterar, vuelve a evaluar la condición y vuelve a repetir la operación anterior.
 
@@ -226,7 +223,7 @@ Estas estructuras van a repetir el código que contienen mientras la expresión 
     Al construir una estructura while es preciso asegurarse que en algún momento de su ejecución la condición dejará de cumplirse y se romperá el ciclo, si no, éste será infinito, a menos que el usuario o el sistema interrumpa su ejecución.
 
 * `WHILE`
-``` yaml
+``` bash
 while [ expresión ]
 do
     código se repite MIENTRAS la expresión sea verdadera
@@ -234,7 +231,7 @@ done
 ```
 
 * `UNTIL`
-``` yaml
+``` bash
 until [ expresión ]
 do
     código se repite HASTA que la expresión sea verdadera
@@ -246,15 +243,14 @@ done
 
 * Ejemplo:
 
-``` yaml
-while [ expresión ]
+``` bash
 #! /bin/bash
-read -p “Escribe un número: “ num
+read -p "Escribe un número: " num
 i=1
 while [ $i -le 10 ]
 do
     let res=num*i
-    echo “$i x $num = $res”
+    echo "$i x $num = $res"
     let i=i+1
 done
 ```
@@ -267,7 +263,7 @@ done
 * No necesita condición de salida ya que al finalizar los elementos del conjunto acabará con su ejecución.
 * la forma general es:
 
-``` yaml
+``` bash
 for variable in conjunto
 do
     estas líneas se repiten una vez por cada elemento del conjunto
@@ -276,7 +272,7 @@ done
 ```
 * Ejemplo:
 
-``` yaml
+``` bash
 #! /bin/bash
 read -p “Escribe la dirección de una carpeta: “ car
 for i in $(ls $car)
@@ -292,7 +288,7 @@ do
     fi
 done
 ```
-!!! info 
+!!! info "NOTA"
     Este ejemplo se van a mostrar los nombres de los ficheros que contiene un directorio y dirá si es un directorio o un fichero.
 
 ##### Romper un bucle de forma deliberada
@@ -308,13 +304,13 @@ No sólo es posible terminar un bucle cuando se cumpla una condición o cuando s
 !!! note
     Escribe el código de los scripts en **ShellScript** que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.
 
-108. Crea un shell script que al ejecutarlo muestre por pantalla uno de estos mensajes **“Buenos días”**, **“Buenas tardes”** o **“Buenas noches”**, en función de la hora que sea en el sistema (de 8:00 de la mañana a 15:00 será mañana, de 15:00 a 20:00 será tarde y el resto será noche). Para obtener la hora del sistema utiliza el comando date.
+109. Crea un shell script que al ejecutarlo muestre por pantalla uno de estos mensajes **“Buenos días”**, **“Buenas tardes”** o **“Buenas noches”**, en función de la hora que sea en el sistema (de 8:00 de la mañana a 15:00 será mañana, de 15:00 a 20:00 será tarde y el resto será noche). Para obtener la hora del sistema utiliza el comando date.
 
-109. Construye un programa denominado AGENDA que permita mediante un menú, el mantenimiento de un pequeño archivo lista.txt con el nombre, dirección y teléfono de varias personas. Debes incluir estas opciones al programa:
+110. Construye un programa denominado AGENDA que permita mediante un menú, el mantenimiento de un pequeño archivo lista.txt con el nombre, dirección y teléfono de varias personas. Debes incluir estas opciones al programa:
     * **Añadir** (añadir un registro)
     * **Buscar** (buscar entradas por nombre, dirección o teléfono)
     * **Listar** (visualizar todo el archivo).
     * **Ordenar** (ordenar los registros alfabéticamente).
     * **Borrar** (borrar el archivo).
 
-110. Crea un shell script que sume los números del 1 al 1000 mediante una estructura `for`, `while` y `until`.
+111. Crea un shell script que sume los números del 1 al 1000 mediante una estructura `for`, `while` y `until`.

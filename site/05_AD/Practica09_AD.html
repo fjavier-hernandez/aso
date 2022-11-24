@@ -1,0 +1,1172 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/05_AD/Practica09_AD.html">
+      
+      <link rel="icon" href="../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>Permisos, directivas de grupo y perfiles II - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#permisos-directivas-de-grupo-y-perfiles-ii" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Permisos, directivas de grupo y perfiles II
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        1.- UD1. ShellScripting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="1.- UD1. ShellScripting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- UD1. ShellScripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/ResumenUD.html" class="md-nav__link">
+        Resumen UD
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
+        1.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
+        1.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
+        1.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+        1.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
+        1.5- Refuerzo y ampliación
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
+        1.6- Prueba Auditoria
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        2.- UD2: PowerShell
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2.- UD2: PowerShell" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- UD2: PowerShell
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/021_Introduccio%CC%81nPwSh.html" class="md-nav__link">
+        2.1- Introducción
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/022_PowerShell_Sintaxis.html" class="md-nav__link">
+        2.2- Sintaxis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/023_PowerShell_ControlFlujo.html" class="md-nav__link">
+        2.3- Control de flujo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/024_PowerShell_VectoresFunciones.html" class="md-nav__link">
+        2.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        3.- UD3: Administración de procesos del sistema
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3.- UD3: Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          3.- UD3: Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/031_Planificador.html" class="md-nav__link">
+        3.1- Introducción Procesos, Planificador
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/032_Hilos.html" class="md-nav__link">
+        3.2- Hilos, Sincronización e interrupciones, Herramientas gráficas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/033_GestionProcesosShell.html" class="md-nav__link">
+        3.3- Gestión de procesos en Shell de Linux.
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/034_GestionProcesosPWSH.html" class="md-nav__link">
+        3.4- Gestión de procesos en PowerShell.
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/035_ArranqueServicios.html" class="md-nav__link">
+        3.5- Arranque del sistema. Servicios. Systemd.
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        4.- Servicios de Directorio Libres: LDAP
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4.- Servicios de Directorio Libres: LDAP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Servicios de Directorio Libres: LDAP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/041_Introduccion_SDyLDAP.html" class="md-nav__link">
+        4.1- Introducción Servicios de directorio y LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/042_InstalacionConfigLDAP_PR.html" class="md-nav__link">
+        4.2- Instalación y configuración de OpenLDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/043_LDAP_DIT.html" class="md-nav__link">
+        4.3- Modelo de Información de LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/044_UsersLDAP.html" class="md-nav__link">
+        4.4- Creación y comprobación de Usuarios/Grupos OpenLDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/045_LDAP_EsquemaHerramientas.html" class="md-nav__link">
+        4.5- Esquema LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/046_LDAP_Graficas.html" class="md-nav__link">
+        4.6- Gestión usuarios LDAP con GUI
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        5.- Servicios de Directorio Propietarios: Active Directory
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="5.- Servicios de Directorio Propietarios: Active Directory" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          5.- Servicios de Directorio Propietarios: Active Directory
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="051_ActiveDirectory.html" class="md-nav__link">
+        5.1- Introducción Active Directory
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="permisos-directivas-de-grupo-y-perfiles-ii">Permisos, directivas de grupo y perfiles II<a class="headerlink" href="#permisos-directivas-de-grupo-y-perfiles-ii" title="Permanent link">&para;</a></h1>
+<p>Objetivos de esta práctica:</p>
+<ul>
+<li>Establecimiento de carpetas particulares de los usuarios del dominio.</li>
+<li>Ejecución de comandos de inicio de sesión.</li>
+<li>Configuración del entorno de trabajo del usuario mediante perfiles.</li>
+</ul>
+<h1 id="carpetas-personales">Carpetas Personales<a class="headerlink" href="#carpetas-personales" title="Permanent link">&para;</a></h1>
+<p>Una de las opciones más utilizadas que puede configurarse en la ficha '<strong>Perfiles</strong>' de las propiedades de la cuenta de usuario es
+el establecimiento de una unidad en red personal para cada usuario a la que únicamente él tiene acceso:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/001.png" width="550"/>
+  <figcaption>Carpeta particular.</figcaption>
+</figure>
+
+<p>Para configurarla, basta crear una carpeta a la que se tenga acceso desde la red. Esta carpeta la tenemos creada en el disco
+<code>c:\Pistonazo_users</code> y dentro de esta carpeta están las carpetas de cada uno de los usuarios. Bastará asignar la ruta de esa
+carpeta a cada uno de los usuarios. Por ejemplo, vamos a asignar la unidad Z: a la carpeta personal de cada uno de los
+usuarios de nuestra organización Pistonazo:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/002.png" width="850"/>
+  <figcaption>Carpetas particulares.</figcaption>
+</figure>
+
+<p>Asignaremos estas carpetas a cada uno de los usuarios. Para ello desde la pestaña perfil:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/003.png" width="850"/>
+  <figcaption>Carpetas particulares.</figcaption>
+</figure>
+
+<p>La carpeta del usuario debe ser una carpeta compartida y con permisos de escritura. En nuestro caso utilizaremos las carpetas
+que creamos en la sección de Permisos NTFS por línea de comandos. Creamos una carpeta en <code>C:\Pistonazo_Users</code>, esta
+carpeta tiene permisos de acceso el grupo Pistonazo y los Administradores. Por tanto, el recurso
+<code>\\192.168.100.1\Pistonazo_users\%username%</code> será la carpeta de cada uno de los usuarios.</p>
+<p>La variable <code>%username%</code> sustituye el valor por el identificador de usuario.</p>
+<h3 id="carpetas-personales-ocultas">Carpetas personales ocultas<a class="headerlink" href="#carpetas-personales-ocultas" title="Permanent link">&para;</a></h3>
+<p>Si quisiéramos que las carpetas personales estuvieran ocultas, bastaría con añadir un <code>$</code> al final del nombre del recurso
+compartido. En nuestro caso, podíamos haber compartido el recurso Pistonazo_Users con un <code>$</code> al final y así ocultar las
+carpetas de usuarios.</p>
+<p>Podéis probar el siguiente script que elimina toda la estructura pistonazo y la regenera con carpetas ocultas asignando las
+carpetas personales a los usuarios:</p>
+<h4 id="pistonazo-completo-bat">Pistonazo Completo .BAT<a class="headerlink" href="#pistonazo-completo-bat" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="l l-Scalar l-Scalar-Plain">REM ELIMINANDO OU PISTONAZO</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">dsrm -subtree -noprompt -c &quot;ou=Pistonazo, dc=cefire2017, dc=local&quot;</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain">Rem Creación de Unidades Organizativas</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain">dsadd ou &quot;ou=Pistonazo, dc=cefire2017, dc=local&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (secciones.csv) do dsadd ou &quot;ou=%%a, ou=Pistonazo,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="l l-Scalar l-Scalar-Plain">dc=cefire2017, dc=local&quot; -desc &quot;%%b&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (departamentos.csv) do dsadd ou &quot;ou=%%b, ou=%%a,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">ou=Pistonazo, dc=cefire2017, dc=local&quot; -desc &quot;%%b&quot;</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="l l-Scalar l-Scalar-Plain">Rem Creacion de grupos</span>
+<span class="linenos" data-linenos="12 "></span><span class="l l-Scalar l-Scalar-Plain">dsadd group &quot;cn=Pistonazo, ou=Pistonazo, dc=cefire2017, dc=local&quot;</span>
+<span class="linenos" data-linenos="13 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (secciones.csv) do dsadd group &quot;cn=%%a, ou=%%a,</span>
+<span class="linenos" data-linenos="14 "></span><span class="l l-Scalar l-Scalar-Plain">ou=Pistonazo, dc=cefire2017, dc=local&quot; -memberof &quot;cn=Pistonazo, ou=Pistonazo, dc=cefire2017,</span>
+<span class="linenos" data-linenos="15 "></span><span class="l l-Scalar l-Scalar-Plain">dc=local&quot;</span>
+<span class="linenos" data-linenos="16 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (departamentos.csv) do dsadd group &quot;cn=%%b, ou=%%b,</span>
+<span class="linenos" data-linenos="17 "></span><span class="l l-Scalar l-Scalar-Plain">ou=%%a, ou=Pistonazo, dc=cefire2017, dc=local&quot; -memberof &quot;cn=%%a, ou=%%a, ou=Pistonazo,</span>
+<span class="linenos" data-linenos="18 "></span><span class="l l-Scalar l-Scalar-Plain">dc=cefire2017, dc=local&quot;</span>
+<span class="linenos" data-linenos="19 "></span><span class="l l-Scalar l-Scalar-Plain">REM Creacion de usuarios</span>
+<span class="linenos" data-linenos="20 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-3 delims=, skip=1&quot; %%a in (personal.csv) do dsadd user &quot;cn=%%a, ou=%%b, ou=%%c,</span>
+<span class="linenos" data-linenos="21 "></span><span class="l l-Scalar l-Scalar-Plain">ou=Pistonazo, dc=cefire2017, dc=local&quot; -memberof &quot;cn=%%b, ou=%%b, ou=%%c, ou=Pistonazo,</span>
+<span class="linenos" data-linenos="22 "></span><span class="l l-Scalar l-Scalar-Plain">dc=cefire2017, dc=local&quot; -samid &quot;%%a&quot; -upn &quot;%%a@CEFIRE2017.LOCAL&quot; -pwd &quot;cefire2017.&quot; -fn &quot;%%a&quot; -</span>
+<span class="linenos" data-linenos="23 "></span><span class="l l-Scalar l-Scalar-Plain">mustchpwd &quot;yes&quot;</span>
+<span class="linenos" data-linenos="24 "></span><span class="l l-Scalar l-Scalar-Plain">REM Borrando carpetas</span>
+<span class="linenos" data-linenos="25 "></span><span class="l l-Scalar l-Scalar-Plain">rmdir c:\pistonazo</span>
+<span class="linenos" data-linenos="26 "></span><span class="l l-Scalar l-Scalar-Plain">REM Creando carpetas</span>
+<span class="linenos" data-linenos="27 "></span><span class="l l-Scalar l-Scalar-Plain">mkdir c:\pistonazo</span>
+<span class="linenos" data-linenos="28 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (secciones.csv) do mkdir c:\pistonazo\%%a</span>
+<span class="linenos" data-linenos="29 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (departamentos.csv) do mkdir c:\pistonazo\%%a\%%b</span>
+<span class="linenos" data-linenos="30 "></span><span class="l l-Scalar l-Scalar-Plain">icacls c:\Pistonazo /inheritance:r</span>
+<span class="linenos" data-linenos="31 "></span><span class="l l-Scalar l-Scalar-Plain">icacls c:\Pistonazo /GRANT Administradores:(OI)(CI)F</span>
+<span class="linenos" data-linenos="32 "></span><span class="l l-Scalar l-Scalar-Plain">icacls c:\Pistonazo /GRANT Pistonazo:RX</span>
+<span class="linenos" data-linenos="33 "></span>
+<span class="linenos" data-linenos="34 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (secciones.csv) do mkdir c:\pistonazo\%%a</span>
+<span class="linenos" data-linenos="35 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (secciones.csv) do icacls c:\pistonazo\%%a /GRANT %%a:RX</span>
+<span class="linenos" data-linenos="36 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (departamentos.csv) do mkdir c:\pistonazo\%%a\%%b</span>
+<span class="linenos" data-linenos="37 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-2 delims=, skip=1&quot; %%a in (departamentos.csv) do icacls c:\pistonazo\%%a\%%b</span>
+<span class="linenos" data-linenos="38 "></span><span class="l l-Scalar l-Scalar-Plain">/GRANT %%b:(OI)(CI)F</span>
+<span class="linenos" data-linenos="39 "></span>
+<span class="linenos" data-linenos="40 "></span><span class="l l-Scalar l-Scalar-Plain">net share Pistonazo /delete</span>
+<span class="linenos" data-linenos="41 "></span><span class="l l-Scalar l-Scalar-Plain">net share Pistonazo=c:\Pistonazo /grant:Administradores,FULL /grant:Pistonazo,CHANGE</span>
+<span class="linenos" data-linenos="42 "></span><span class="l l-Scalar l-Scalar-Plain">mkdir c:\Pistonazo_users</span>
+<span class="linenos" data-linenos="43 "></span><span class="l l-Scalar l-Scalar-Plain">icacls c:\Pistonazo_users /inheritance:r</span>
+<span class="linenos" data-linenos="44 "></span><span class="l l-Scalar l-Scalar-Plain">icacls c:\Pistonazo_users /grant Administradores:(OI)(CI)F</span>
+<span class="linenos" data-linenos="45 "></span><span class="l l-Scalar l-Scalar-Plain">icacls c:\Pistonazo_users /grant Pistonazo:RX</span>
+<span class="linenos" data-linenos="46 "></span><span class="l l-Scalar l-Scalar-Plain">REM Creacion de carpetas de usuarios</span>
+<span class="linenos" data-linenos="47 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-3 delims=, skip=1&quot; %%a in (personal.csv) do mkdir c:\Pistonazo_users\%%a</span>
+<span class="linenos" data-linenos="48 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-3 delims=, skip=1&quot; %%a in (personal.csv) do icacls c:\Pistonazo_users\%%a /grant</span>
+<span class="linenos" data-linenos="49 "></span><span class="l l-Scalar l-Scalar-Plain">%%a:(OI)(CI)F</span>
+<span class="linenos" data-linenos="50 "></span>
+<span class="linenos" data-linenos="51 "></span><span class="l l-Scalar l-Scalar-Plain">net share Pistonazo_users /delete</span>
+<span class="linenos" data-linenos="52 "></span><span class="l l-Scalar l-Scalar-Plain">net share Pistonazo_users$ /delete</span>
+<span class="linenos" data-linenos="53 "></span><span class="l l-Scalar l-Scalar-Plain">net share Pistonazo_users$=c:\Pistonazo_users /grant:Administradores,FULL /grant:Pistonazo,CHANGE</span>
+<span class="linenos" data-linenos="54 "></span>
+<span class="linenos" data-linenos="55 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-3 delims=, skip=1&quot; %%a in (personal.csv) do dsmod user &quot;cn=%%a, ou=%%b, ou=%%c,</span>
+<span class="linenos" data-linenos="56 "></span><span class="l l-Scalar l-Scalar-Plain">ou=Pistonazo, dc=cefire2017, dc=local&quot; -hmdrv Z</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">-hmdir &quot;\\192.168.100.1\Pistonazo_users$\%%a&quot;</span>
+</code></pre></div>
+<h2 id="version-completa-en-powershell-pistonazocompletopsps1">Version completa en POWERSHELL (pistonazoCompletoPS.ps1)<a class="headerlink" href="#version-completa-en-powershell-pistonazocompletopsps1" title="Permanent link">&para;</a></h2>
+<p>En PowerShell sería:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="  1 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Creando Estructura de OU y Grupos...&quot;</span>
+<span class="linenos" data-linenos="  2 "></span><span class="l l-Scalar l-Scalar-Plain">New-ADOrganizationalUnit -Name &quot;Pistonazo&quot; -Path &quot;DC=CEFIRE2019, DC=LOCAL&quot; -Description</span>
+<span class="linenos" data-linenos="  3 "></span><span class="l l-Scalar l-Scalar-Plain">&quot;Unidad organizativa Pistonazo&quot; -ProtectedFromAccidentalDeletion $false</span>
+<span class="linenos" data-linenos="  4 "></span><span class="l l-Scalar l-Scalar-Plain">New-ADGroup -Name &quot;Pistonazo&quot; -GroupScope Global -Path</span>
+<span class="linenos" data-linenos="  5 "></span><span class="l l-Scalar l-Scalar-Plain">&quot;OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos="  6 "></span><span class="l l-Scalar l-Scalar-Plain">$secciones = Import-CSV -Path &quot;./secciones.csv&quot;</span>
+<span class="linenos" data-linenos="  7 "></span><span class="l l-Scalar l-Scalar-Plain">$group = Get-ADGroup &quot;CN=Pistonazo,OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos="  8 "></span><span class="l l-Scalar l-Scalar-Plain">foreach ($ou in $secciones) {</span>
+<span class="linenos" data-linenos="  9 "></span><span class="l l-Scalar l-Scalar-Plain">New-ADOrganizationalUnit -Name ($ou.seccion) -Path &quot;OU=Pistonazo, DC=CEFIRE2019,</span>
+<span class="linenos" data-linenos=" 10 "></span><span class="l l-Scalar l-Scalar-Plain">DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 11 "></span><span class="l l-Scalar l-Scalar-Plain">$path=&quot;OU=&quot;+($ou.seccion)+&quot;,OU=Pistonazo, DC=CEFIRE2019, DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 12 "></span><span class="l l-Scalar l-Scalar-Plain">New-ADGroup -Name $ou.seccion -GroupScope Global -Path $path</span>
+<span class="linenos" data-linenos=" 13 "></span><span class="l l-Scalar l-Scalar-Plain">$member = &quot;CN=&quot;+($ou.seccion)+&quot;,&quot;+$path</span>
+<span class="linenos" data-linenos=" 14 "></span><span class="l l-Scalar l-Scalar-Plain">Add-ADGroupMember $group -Members $member</span>
+<span class="linenos" data-linenos=" 15 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Unidad $($ou.seccion) creada!&quot;</span>
+<span class="linenos" data-linenos=" 16 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="linenos" data-linenos=" 17 "></span><span class="l l-Scalar l-Scalar-Plain">$departamentos = Import-CSV -Path &quot;./departamentos.csv&quot;</span>
+<span class="linenos" data-linenos=" 18 "></span><span class="l l-Scalar l-Scalar-Plain">foreach ($ou in $departamentos) {</span>
+<span class="linenos" data-linenos=" 19 "></span><span class="l l-Scalar l-Scalar-Plain">$path=&quot;OU=&quot;+($ou.seccion)+&quot;, OU=Pistonazo, DC=CEFIRE2019, DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 20 "></span><span class="l l-Scalar l-Scalar-Plain">New-ADOrganizationalUnit -Name ($ou.departamento) -Path $path</span>
+<span class="linenos" data-linenos=" 21 "></span><span class="l l-Scalar l-Scalar-Plain">$path=&quot;OU=&quot;+($ou.departamento)+&quot;,OU=&quot;+$ou.seccion+&quot;,OU=Pistonazo, DC=CEFIRE2019,</span>
+<span class="linenos" data-linenos=" 22 "></span><span class="l l-Scalar l-Scalar-Plain">DC=LOCAL&quot;</span>
+<span class="linenos" data-linenos=" 23 "></span><span class="l l-Scalar l-Scalar-Plain">New-ADGroup -Name $ou.departamento -GroupScope Global -Path $path</span>
+<span class="linenos" data-linenos=" 24 "></span><span class="l l-Scalar l-Scalar-Plain">$group = Get-ADGroup</span>
+<span class="linenos" data-linenos=" 25 "></span><span class="l l-Scalar l-Scalar-Plain">(&quot;CN=&quot;+$ou.seccion+&quot;,OU=&quot;+$ou.seccion+&quot;,OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL&quot;)</span>
+<span class="linenos" data-linenos=" 26 "></span><span class="l l-Scalar l-Scalar-Plain">$member = &quot;CN=&quot;+($ou.departamento)+&quot;,&quot;+$path</span>
+<span class="linenos" data-linenos=" 27 "></span><span class="l l-Scalar l-Scalar-Plain">Add-ADGroupMember $group -Members $member</span>
+<span class="linenos" data-linenos=" 28 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Unidad $($ou.departamento) - $($ou.seccion) creada!&quot;</span>
+<span class="linenos" data-linenos=" 29 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="linenos" data-linenos=" 30 "></span><span class="l l-Scalar l-Scalar-Plain">$usuarios = Import-CSV -Path &quot;./personal.csv&quot;</span>
+<span class="linenos" data-linenos=" 31 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Creando usuarios....&quot;</span>
+<span class="linenos" data-linenos=" 32 "></span><span class="l l-Scalar l-Scalar-Plain">foreach ($user in $usuarios) {</span>
+<span class="linenos" data-linenos=" 33 "></span><span class="l l-Scalar l-Scalar-Plain">$login = $user.login</span>
+<span class="linenos" data-linenos=" 34 "></span>
+<span class="linenos" data-linenos=" 35 "></span><span class="l l-Scalar l-Scalar-Plain">$path=&quot;OU=&quot;+$user.departamento+&quot;,OU=&quot;+$user.seccion+&quot;,OU=Pistonazo,DC=CEFIRE2019,DC=LOCAL</span>
+<span class="linenos" data-linenos=" 36 "></span><span class="l l-Scalar l-Scalar-Plain">New-ADUser -Name $login -Path $path -SamAccountName $login -UserPrincipalName</span>
+<span class="linenos" data-linenos=" 37 "></span><span class="l l-Scalar l-Scalar-Plain">($login+&quot;@CEFIRE2019.LOCAL&quot;) -AccountPassword (ConvertTo-SecureString &quot;cefire2019.&quot; -</span>
+<span class="linenos" data-linenos=" 38 "></span><span class="l l-Scalar l-Scalar-Plain">AsPlainText -Force) -GivenName $login -ChangePasswordAtLogon $true -Enabled $true</span>
+<span class="linenos" data-linenos=" 39 "></span><span class="l l-Scalar l-Scalar-Plain">$group = Get-ADGroup</span>
+<span class="linenos" data-linenos=" 40 "></span><span class="l l-Scalar l-Scalar-Plain">(&quot;CN=&quot;+$user.departamento+&quot;,OU=&quot;+$user.departamento+&quot;,OU=&quot;+$user.seccion+&quot;,OU=Pistonazo,D</span>
+<span class="linenos" data-linenos=" 41 "></span><span class="l l-Scalar l-Scalar-Plain">$member = &quot;CN=&quot;+$login+&quot;,&quot;+$path</span>
+<span class="linenos" data-linenos=" 42 "></span><span class="l l-Scalar l-Scalar-Plain">Add-ADGroupMember $group -Members $member</span>
+<span class="linenos" data-linenos=" 43 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Usuario $($user.login) creado!&quot;</span>
+<span class="linenos" data-linenos=" 44 "></span>
+<span class="linenos" data-linenos=" 45 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="linenos" data-linenos=" 46 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Host &quot;Creamos la estructura de Pistonazo...&quot;</span>
+<span class="linenos" data-linenos=" 47 "></span><span class="l l-Scalar l-Scalar-Plain">Remove-Item C:\Pistonazo -Force</span>
+<span class="linenos" data-linenos=" 48 "></span><span class="l l-Scalar l-Scalar-Plain">New-Item C:\Pistonazo -Type Directory</span>
+<span class="linenos" data-linenos=" 49 "></span><span class="l l-Scalar l-Scalar-Plain">$acl = Get-Acl C:\Pistonazo</span>
+<span class="linenos" data-linenos=" 50 "></span><span class="l l-Scalar l-Scalar-Plain">$acl.SetAccessRuleProtection($true, $false)</span>
+<span class="linenos" data-linenos=" 51 "></span><span class="l l-Scalar l-Scalar-Plain">$rule = New-Object</span>
+<span class="linenos" data-linenos=" 52 "></span>
+<span class="linenos" data-linenos=" 53 "></span>
+<span class="linenos" data-linenos=" 54 "></span><span class="l l-Scalar l-Scalar-Plain">System.Security.AccessControl.FileSystemAccessRule(&quot;Administradores&quot;,&quot;FullControl&quot;,</span>
+<span class="linenos" data-linenos=" 55 "></span><span class="l l-Scalar l-Scalar-Plain">&quot;ContainerInherit, ObjectInherit&quot;, &quot;None&quot;, &quot;Allow&quot;)</span>
+<span class="linenos" data-linenos=" 56 "></span><span class="l l-Scalar l-Scalar-Plain">$acl.AddAccessRule($rule)</span>
+<span class="linenos" data-linenos=" 57 "></span><span class="l l-Scalar l-Scalar-Plain">$rule = New-Object</span>
+<span class="linenos" data-linenos=" 58 "></span><span class="l l-Scalar l-Scalar-Plain">System.Security.AccessControl.FileSystemAccessRule(&quot;Pistonazo&quot;,&quot;ReadAndExecute&quot;, &quot;None&quot;,</span>
+<span class="linenos" data-linenos=" 59 "></span><span class="l l-Scalar l-Scalar-Plain">&quot;None&quot;, &quot;Allow&quot;)</span>
+<span class="linenos" data-linenos=" 60 "></span><span class="l l-Scalar l-Scalar-Plain">$acl.AddAccessRule($rule)</span>
+<span class="linenos" data-linenos=" 61 "></span><span class="l l-Scalar l-Scalar-Plain">Set-Acl -path C:\Pistonazo -AclObject $acl</span>
+<span class="linenos" data-linenos=" 62 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Host &quot;Asignamos Permisos&quot;</span>
+<span class="linenos" data-linenos=" 63 "></span><span class="l l-Scalar l-Scalar-Plain">$deps = Import-CSV -Path &quot;./departamentos.csv&quot;</span>
+<span class="linenos" data-linenos=" 64 "></span><span class="l l-Scalar l-Scalar-Plain">foreach ($ou in $deps) {</span>
+<span class="linenos" data-linenos=" 65 "></span><span class="l l-Scalar l-Scalar-Plain">New-Item C:\Pistonazo\$($ou.seccion)\$($ou.departamento) -Type Directory -Force</span>
+<span class="linenos" data-linenos=" 66 "></span><span class="l l-Scalar l-Scalar-Plain">$acl = Get-Acl C:\Pistonazo\$($ou.seccion)</span>
+<span class="linenos" data-linenos=" 67 "></span><span class="l l-Scalar l-Scalar-Plain">$rule = New-Object</span>
+<span class="linenos" data-linenos=" 68 "></span><span class="l l-Scalar l-Scalar-Plain">System.Security.AccessControl.FileSystemAccessRule($($ou.seccion),&quot;ReadAndExecute&quot;,</span>
+<span class="linenos" data-linenos=" 69 "></span><span class="l l-Scalar l-Scalar-Plain">&quot;None&quot;, &quot;None&quot;, &quot;Allow&quot;)</span>
+<span class="linenos" data-linenos=" 70 "></span><span class="l l-Scalar l-Scalar-Plain">$acl.AddAccessRule($rule)</span>
+<span class="linenos" data-linenos=" 71 "></span><span class="l l-Scalar l-Scalar-Plain">Set-Acl -path C:\Pistonazo\$($ou.seccion) -AclObject $acl</span>
+<span class="linenos" data-linenos=" 72 "></span><span class="l l-Scalar l-Scalar-Plain">$acl = Get-Acl C:\Pistonazo\$($ou.seccion)\$($ou.departamento)</span>
+<span class="linenos" data-linenos=" 73 "></span><span class="l l-Scalar l-Scalar-Plain">$rule = New-Object</span>
+<span class="linenos" data-linenos=" 74 "></span><span class="l l-Scalar l-Scalar-Plain">System.Security.AccessControl.FileSystemAccessRule($($ou.departamento),&quot;FullControl&quot;,</span>
+<span class="linenos" data-linenos=" 75 "></span><span class="l l-Scalar l-Scalar-Plain">&quot;ContainerInherit, ObjectInherit&quot;, &quot;None&quot;, &quot;Allow&quot;)</span>
+<span class="linenos" data-linenos=" 76 "></span><span class="l l-Scalar l-Scalar-Plain">$acl.AddAccessRule($rule)</span>
+<span class="linenos" data-linenos=" 77 "></span><span class="l l-Scalar l-Scalar-Plain">Set-Acl -path C:\Pistonazo\$($ou.seccion)\\$($ou.departamento) -AclObject $acl</span>
+<span class="linenos" data-linenos=" 78 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="linenos" data-linenos=" 79 "></span>
+<span class="linenos" data-linenos=" 80 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Host &quot;Creamos la estructura de Carpetas de Usuarios&quot;</span>
+<span class="linenos" data-linenos=" 81 "></span><span class="l l-Scalar l-Scalar-Plain">Remove-Item C:\Pistonazo_users -Force</span>
+<span class="linenos" data-linenos=" 82 "></span><span class="l l-Scalar l-Scalar-Plain">New-Item C:\Pistonazo_users -Type Directory</span>
+<span class="linenos" data-linenos=" 83 "></span><span class="l l-Scalar l-Scalar-Plain">$acl = Get-Acl C:\Pistonazo_users</span>
+<span class="linenos" data-linenos=" 84 "></span><span class="l l-Scalar l-Scalar-Plain">$acl.SetAccessRuleProtection($true, $false)</span>
+<span class="linenos" data-linenos=" 85 "></span><span class="l l-Scalar l-Scalar-Plain">$rule = New-Object</span>
+<span class="linenos" data-linenos=" 86 "></span><span class="l l-Scalar l-Scalar-Plain">System.Security.AccessControl.FileSystemAccessRule(&quot;Administradores&quot;,&quot;FullControl&quot;,</span>
+<span class="linenos" data-linenos=" 87 "></span><span class="l l-Scalar l-Scalar-Plain">&quot;ContainerInherit, ObjectInherit&quot;, &quot;None&quot;, &quot;Allow&quot;)</span>
+<span class="linenos" data-linenos=" 88 "></span><span class="l l-Scalar l-Scalar-Plain">$acl.AddAccessRule($rule)</span>
+<span class="linenos" data-linenos=" 89 "></span><span class="l l-Scalar l-Scalar-Plain">$rule = New-Object</span>
+<span class="linenos" data-linenos=" 90 "></span><span class="l l-Scalar l-Scalar-Plain">System.Security.AccessControl.FileSystemAccessRule(&quot;Pistonazo&quot;,&quot;ReadAndExecute&quot;, &quot;None&quot;,</span>
+<span class="linenos" data-linenos=" 91 "></span><span class="l l-Scalar l-Scalar-Plain">&quot;None&quot;, &quot;Allow&quot;)</span>
+<span class="linenos" data-linenos=" 92 "></span><span class="l l-Scalar l-Scalar-Plain">$acl.AddAccessRule($rule)</span>
+<span class="linenos" data-linenos=" 93 "></span><span class="l l-Scalar l-Scalar-Plain">Set-Acl -path C:\Pistonazo_users -AclObject $acl</span>
+<span class="linenos" data-linenos=" 94 "></span><span class="l l-Scalar l-Scalar-Plain">$usuarios = Import-CSV -Path &quot;./personal.csv&quot;</span>
+<span class="linenos" data-linenos=" 95 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Creando carpetas de usuarios....&quot;</span>
+<span class="linenos" data-linenos=" 96 "></span><span class="l l-Scalar l-Scalar-Plain">foreach ($user in $usuarios) {</span>
+<span class="linenos" data-linenos=" 97 "></span><span class="l l-Scalar l-Scalar-Plain">$login = $user.login</span>
+<span class="linenos" data-linenos=" 98 "></span><span class="l l-Scalar l-Scalar-Plain">New-Item C:\Pistonazo_users\$($user.login) -Type Directory</span>
+<span class="linenos" data-linenos=" 99 "></span><span class="l l-Scalar l-Scalar-Plain">$acl = Get-Acl C:\Pistonazo_users\$($user.login)</span>
+<span class="linenos" data-linenos="100 "></span><span class="l l-Scalar l-Scalar-Plain">$rule = New-Object</span>
+<span class="linenos" data-linenos="101 "></span><span class="l l-Scalar l-Scalar-Plain">System.Security.AccessControl.FileSystemAccessRule($($user.login),&quot;FullControl&quot;,</span>
+<span class="linenos" data-linenos="102 "></span><span class="l l-Scalar l-Scalar-Plain">&quot;ContainerInherit, ObjectInherit&quot;, &quot;None&quot;, &quot;Allow&quot;)</span>
+<span class="linenos" data-linenos="103 "></span><span class="l l-Scalar l-Scalar-Plain">$acl.AddAccessRule($rule)</span>
+<span class="linenos" data-linenos="104 "></span><span class="l l-Scalar l-Scalar-Plain">Set-Acl -path C:\Pistonazo_users\$($user.login) -AclObject $acl</span>
+<span class="linenos" data-linenos="105 "></span>
+<span class="linenos" data-linenos="106 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="linenos" data-linenos="107 "></span><span class="l l-Scalar l-Scalar-Plain">New-SmbShare -Name Pistonazo_Users$ -Path c:\Pistonazo_Users -ChangeAccess Pistonazo -</span>
+<span class="linenos" data-linenos="108 "></span><span class="l l-Scalar l-Scalar-Plain">FullAccess Administradores</span>
+<span class="linenos" data-linenos="109 "></span>
+<span class="linenos" data-linenos="110 "></span><span class="l l-Scalar l-Scalar-Plain">New-SmbShare -Name Pistonazo -Path c:\Pistonazo -ChangeAccess Pistonazo -FullAccess</span>
+<span class="linenos" data-linenos="111 "></span><span class="l l-Scalar l-Scalar-Plain">Administradores</span>
+<span class="linenos" data-linenos="112 "></span>
+<span class="linenos" data-linenos="113 "></span><span class="l l-Scalar l-Scalar-Plain">$usuarios = Import-CSV -Path &quot;./personal.csv&quot;</span>
+<span class="linenos" data-linenos="114 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Modificando atributos de usuarios....&quot;</span>
+<span class="linenos" data-linenos="115 "></span><span class="l l-Scalar l-Scalar-Plain">foreach ($user in $usuarios) {</span>
+<span class="linenos" data-linenos="116 "></span><span class="l l-Scalar l-Scalar-Plain">$userObj =</span>
+<span class="linenos" data-linenos="117 "></span><span class="l l-Scalar l-Scalar-Plain">&quot;CN=&quot;+$user.login+&quot;,OU=&quot;+$user.departamento+&quot;,OU=&quot;+$user.seccion+&quot;,OU=Pistonazo,DC=CEFIRE</span>
+<span class="linenos" data-linenos="118 "></span><span class="l l-Scalar l-Scalar-Plain">$usuario = Get-ADUser -Identity $userObj</span>
+<span class="linenos" data-linenos="119 "></span><span class="l l-Scalar l-Scalar-Plain">Set-ADUser -Identity $usuario -ScriptPath &quot;Pistonazo2.bat&quot; -HomeDrive &quot;Z:&quot; -</span>
+<span class="linenos" data-linenos="120 "></span><span class="l l-Scalar l-Scalar-Plain">HomeDirectory &quot;\\192.168.100.1\Pistonazo_users$\$($user.login)&quot;</span>
+<span class="linenos" data-linenos="121 "></span><span class="l l-Scalar l-Scalar-Plain">Write-Output &quot;Usuario $usuario encontrado!&quot;</span>
+<span class="linenos" data-linenos="122 "></span><span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+<h2 id="comandos-de-inicio-de-sesion">Comandos de inicio de sesión<a class="headerlink" href="#comandos-de-inicio-de-sesion" title="Permanent link">&para;</a></h2>
+<p>Otra opción que podemos configurar dentro de la ficha perfil consiste en indicar un script que se ejecutará en cada inicio de
+sesión de manera automática y transparente al usuario. Para ello desde la pestaña perfil del usuario accedemos a Script de
+inicio de sesión:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/004.png" width="450"/>
+  <figcaption>Script de inicio de sesión.</figcaption>
+</figure>
+
+<p>Estos scripts deben hallarse en la carpeta compartida NETLOGON, cuya dirección local en el controlador de dominio es:
+<code>C:\Windows\SYSVOL\sysvolCEFIRE2017.LOCAL\scripts</code>. En este caso concreto, la dirección local y la dirección en red serían
+respectivamente:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/005.png" width="850"/>
+  <figcaption>Ruta Netlogon.</figcaption>
+</figure>
+
+<p>Crearemos en esta carpeta un fichero llamado pistonazo.bat. Que será donde añadamos los comandos que queremos que se
+ejecuten cuando un usuario inicie la sesión:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/006.png" width="850"/>
+  <figcaption>Fichero pistonazo.bat</figcaption>
+</figure>
+
+<p>Hay que tener en cuenta que por defecto están las extensiones de archivo ocultas. Para evitar confusiones con los archivos,
+vamos a marcar que nos muestre las extensiones de los archivos. Para ello seleccionamos Vista y marcamos extensiones de
+archivo:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/007.png" width="850"/>
+  <figcaption>Marcar extensiones de archivos en Netlogon</figcaption>
+</figure>
+
+<h3 id="ejemplos-de-scripts-de-inicio-de-sesion-asignacion-de-unidad-de-red">Ejemplos de scripts de inicio de sesión: Asignación de unidad de red<a class="headerlink" href="#ejemplos-de-scripts-de-inicio-de-sesion-asignacion-de-unidad-de-red" title="Permanent link">&para;</a></h3>
+<p>Vamos a hacer que se monte de manera automática la unidad P: que será la unidad donde se encuentren las carpetas de los
+departamentos de los usuarios de la organización Pistonazo. </p>
+<p>Para ello, añadiremos a nuestro script, el comando <strong><em>Net Use P:\192.168.100.1\Pistonazo</em></strong></p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/008.png" width="850"/>
+  <figcaption>Pistonazo.bat</figcaption>
+</figure>
+
+<p>Ahora lo que haremos será modificar el campo Script de inicio de sesión a los usuarios de la organización Pistonazo. Podemos
+añadir a nuestro script el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">FOR /F &quot;tokens=1-3 delims=, skip=1&quot; %%a in (personal.csv) do dsmod user &quot;cn=%%a, ou=%%b, ou=%%c, ou=Pistonazo, dc=cefire2017, dc=local&quot; -loscr &quot;pistonazo.bat&quot;</span>
+</code></pre></div>
+<p>También podemos ejecutar el siguiente comando desde la línea de comandos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">dsmod user &quot;OU=Pistonazo, DC=CEFIRE2017, DC=LOCAL&quot; | dsmod user -loscr &quot;Pistonazo.bat&quot;</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/009.png" width="850"/>
+  <figcaption>dsmod user para modificar el script de inicio</figcaption>
+</figure>
+
+<p>Esto habrá modificado el campo Script de inicio de sesión de nuestros usuarios de la organización de Pistonazo:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/010.png" width="650"/>
+  <figcaption>Script de inicio de sesión</figcaption>
+</figure>
+
+<p>Y ahora si iniciamos sesión con alguno de los usuarios de Pistonazo, veremos que nos habrá añadido una nueva unidad de
+red, la unidad P: que conectará a la estructura de Pistonazo que se encuentra en el servidor:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/011.png" width="850"/>
+  <figcaption>Unidad de red Pistonazo</figcaption>
+</figure>
+
+<h3 id="ejemplos-de-scripts-de-inicio-de-sesion-asignacion-de-unidad-de-red_1">Ejemplos de scripts de inicio de sesión: Asignación de unidad de red<a class="headerlink" href="#ejemplos-de-scripts-de-inicio-de-sesion-asignacion-de-unidad-de-red_1" title="Permanent link">&para;</a></h3>
+<p>Supongamos que queremos enviar un mensaje a los usuarios cuando se conecten al sistema. Suele ser habitual enviar
+mensajes del tipo 'Guarda los datos en red' o 'No instales software sin permiso del administrador', o simplemente avisar de
+paradas planeadas en el sistema. Para enviar este tipo de mensajes automáticamente cuando el usuario inicia sesión
+podemos utilizar el comando msg dentro del fichero de comandos de inicio de sesión que hemos creado en el punto anterior:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">if NOT EXIST P</span><span class="p">:</span> <span class="nt">net use P</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">\\192.168.100.1\Pistonazo</span>
+<span class="linenos" data-linenos="2 "></span><span class="nt">msg %username% Recuerda guardar los datos en las unidades Z</span><span class="p">:</span> <span class="nt">o P</span><span class="p">:</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/012.png" width="850"/>
+  <figcaption>Mensajes de aviso a usuarios</figcaption>
+</figure>
+
+<h2 id="perfiles">Perfiles<a class="headerlink" href="#perfiles" title="Permanent link">&para;</a></h2>
+<p>Podemos definir un perfil como aquellos aspectos de configuración del equipo y del entorno de trabajo propios del usuario y
+que además son exportables a otras máquinas de manera transparente al mismo. En otras palabras, mediante los perfiles
+conseguimos que el usuario independientemente del equipo en el que inicie la sesión disponga de un entorno de trabajo
+similar. Todo esto se entenderá mejor con los ejemplos preparados en las secciones siguientes.</p>
+<p>Existen tres tipos de perfiles:</p>
+<ol>
+<li><strong>Perfiles locales</strong> : se almacenan en el equipo, y configuran el entorno de trabajo de cada usuario. No los abordaremos
+en este curso ya que lo que nos interesa es la gestión centralizada de recursos.</li>
+<li><strong>Perfiles móviles</strong> : el usuario configura el entorno de trabajo a su gusto en un equipo, y al iniciar sesión en cualquier
+otra estación de trabajo, la configuración se importa y aplica a ese nuevo equipo. Abordaremos este tipo de perfiles
+más adelante.</li>
+<li><strong>Perfiles obligatorios</strong> : un usuario con permisos de administración define la configuración del entorno de trabajo, y se
+aplica a los usuarios del dominio. Estos pueden modificarla durante la sesión, pero al iniciar otra sesión, se vuelve a
+cargar la configuración del perfil obligatorio. En lugar de trabajar con perfiles obligatorios, en el apartado anterior
+hemos visto cómo configurar entornos de trabajo definidos para los miembros de una unidad organizativa de una
+manera más cómoda y potente.</li>
+</ol>
+<h3 id="perfiles-moviles">Perfiles móviles<a class="headerlink" href="#perfiles-moviles" title="Permanent link">&para;</a></h3>
+<p>Como se ha comentado en el apartado anterior, los perfiles consisten en una serie de ficheros de configuración del entorno de
+trabajo, que se aplican a todos los equipos de la red desde donde pueda iniciar sesión el usuario. Estos ficheros de configuración deben almacenarse en una ubicación accesible por los equipos clientes, como por ejemplo el controlador de dominio.</p>
+<p>Concretamente, almacenaremos los perfiles en una carpeta de perfil. Esta carpeta de perfil la crearemos dentro de las
+carpetas particulares de los usuarios. Por ejemplo, vamos a hacer que los usuarios del departamento Gestión tengan un perfil
+móvil:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/013.png" width="850"/>
+  <figcaption>Perfil móvil para usuarios de departamento Gestión</figcaption>
+</figure>
+
+<p>Esto hará que estos usuarios cuando inicien sesión en alguna de las máquinas cliente de nuestro dominio, recupere todo su
+perfil de la carpeta personal del usuario. Para ello, vamos a modificar el siguiente campo de la pestaña perfil:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/014.png" width="850"/>
+  <figcaption>Perfil móvil usuario usudir1</figcaption>
+</figure>
+
+<p>Y estableceremos la ruta de acceso al perfil. En nuestro caso, vamos a establecer la ruta de acceso al perfil móvil, dentro de la
+carpeta personal del usuario. Por tanto, seleccionaremos los dos usuarios y con el botón de la derecha del ratón:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/015.png" width="850"/>
+  <figcaption>Perfil móvil usuarios gestion</figcaption>
+</figure>
+
+<p>Y para la ruta del perfil móvil estableceremos la siguiente dirección: <code>\\192.168.100.1\Pistonazo_users$\%username%\perfil</code></p>
+<p>De esta forma cuando algún usuario de Gestión inicie sesión, se creará en la carpeta personal su perfil. Así
+independientemente del equipo donde se conecte, siempre tendrá la información:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/016.png" width="850"/>
+  <figcaption>Creación de carpeta de perfil móvil</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><strong>Carga en red Perfil Móvil</strong> : Hay que tener en cuenta de que cuando un usuario con perfil móvil inicia la sesión, la información del servidor se copia al cliente. Cuando cierra la sesión se realiza la operación inversa. Un alto número de usuario con perfil móvil puede sobrecargar la red demasiado. Por tanto, hay que saber exactamente en qué usuarios debemos aplicar esta característica.</li>
+</ul>
+</div>
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<p>En esta actividad, vamos a seguir con la organización de vuestra empresa. La que realizasteis en la práctica anterior:</p>
+<p>Un supuesto ejemplo de empresa:</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/017.png" width="850"/>
+  <figcaption>Estructura Empresa</figcaption>
+</figure>
+
+<ol>
+<li>Crear la estructura de carpetas en disco y definir los siguientes permisos:</li>
+</ol>
+<p>Se puede seguir el siguiente ejemplo: A la carpeta principal Empresa, sólo podrán acceder los miembros del grupo Empresa. En esta carpeta solo tendrán acceso de lectura. Cada departamento podrá entrar en su carpeta con permisos de control total y no podrá acceder al resto de departamentos de la empresa.</p>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/018.png" width="850"/>
+  <figcaption>Estructura de carpetas Empresa</figcaption>
+</figure>
+
+<ol start="2">
+<li>Crear también la estructura para almacenar las carpetas particulares de los usuarios. Por ejemplo en <code>C:\Empresa_users</code></li>
+</ol>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/019.png" width="650"/>
+  <figcaption>Carpeta de usuarios</figcaption>
+</figure>
+
+<ol start="3">
+<li>Cuando un usuario inicie sesión, conectará de manera automática la carpeta personal en la unidad X: y la carpeta de
+empresas en la unidad Y:</li>
+</ol>
+<figure>
+  <img src="./imagenes/02/PracticasAD/PR09/020.png" width="850"/>
+  <figcaption>Inicio sesión usuario Empresa</figcaption>
+</figure>
+
+<p>Para esta actividad hay que utilizar los scripts <code>pistonazoCompleto.bat | pistonazoCompletoPS.ps1</code>; </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Se debe adaptadar a la actividad y explicar cada parte del script.</p>
+</div>
+<ul>
+<li><strong>En esta actividad se entregará un script.ps1 y script.bat con las órdenes para crear las carpetas de los departamentos, las carpetas de los usuarios y los permisos correspondientes.</strong> </li>
+<li><strong>También un informe con una captura de pantalla con las unidades de red montadas de un usuario.</strong></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>

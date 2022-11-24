@@ -124,22 +124,22 @@
 * Para crear un script utilizaremos cualquiera de los editores de texto plano como *vi*, *vim* , *nano*.
 * Después de crear el archivo hay que dotarlo de permisos de lectura y ejecución. 
 
-``` yaml
+``` bash
 chmod ugo=rx script.sh
 ```
 
 * Para ejecutar el archivo: ubicados en la carpeta que contiene el archivo, se pueden utilizar tres formas:
     * Se teclea el nombre del archivo en el terminal precedido del comando **sh**
-    ``` yaml
+    ``` bash
     sh script.sh
     ```
     * Precedido de un punto *.*
-    ``` yaml
+    ``` bash
     . script.sh
     ./ script.sh
     ```
     * Definir la carpeta dentro de la variable de entorno **PATH** (también editando el fichero **.bashrc**). Una vez realizado ya se podría ejecutar directamente el fichero con el nombre del script.
-    ``` yaml
+    ``` bash
     mkdir /home/administrador/scripts
     PATH=$PATH:/home/administrador/scripts
     export PATH
@@ -154,7 +154,7 @@ chmod ugo=rx script.sh
 
 * Crea un ejemplo llamado *listar.sh*
 
-``` yaml
+``` bash
 cd ~
 mkdir scripts
 cd scripts
@@ -164,11 +164,11 @@ nano listar.sh
 
 * Genera, guarda y prueba el siguiente código.
 
-``` yaml
+``` pwsh
 #! /bin/bash
 clear
 ls -la
-echo “Listado realizado el “$(date)
+echo "Listado realizado el" $(date)
 ```
 
 ### Comentarios 
@@ -177,7 +177,7 @@ echo “Listado realizado el “$(date)
 * Cuando el terminal encuentra una línea que comienza con este carácter, ignora todo lo que existe desde él hasta el final de línea.
 * A esta regla existe una excepción:
 
-``` yaml
+``` bash
     #!/bin/bash
 ```
 
@@ -205,7 +205,7 @@ echo “Listado realizado el “$(date)
 
 * Ejemplo:
 
-``` yaml
+``` bash
 #!/bin/bash
 echo ‘El primer parámetro que se ha pasado es ‘ $1
 echo ‘El tercer parámetro que se ha pasado es ‘ $3
@@ -240,7 +240,7 @@ El parámetro 0 es : ./script.sh
 
 * Ejemplo:
 
-``` yaml
+``` bash
 #! /bin/bash
 #*********************************
 #Este es mi segundo script
@@ -295,7 +295,7 @@ Ejemplo de principales variables de entorno:
     * La orden echo permite expandir variables siempre que se usen las comillas dobles.
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 NOMBRE=Javi
 echo “hola $NOMBRE”
@@ -308,7 +308,7 @@ echo “hola $NOMBRE”
 * Hasta que éste no introduzca los datos, la ejecución del programa no avanzará.
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 echo “Introduce tu nombre: ”
 read NOMBRE
@@ -319,7 +319,7 @@ echo “Hola $NOMBRE”
     Cuando se utiliza read con varios nombres de variables, el primer campo tecleado por el usuario se asigna a la primera variable, el segundo campo a la segunda y así sucesivamente
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 read -p “Introduce tres números (separados por un espacio): ” num1 num2 num3
 echo “Los número introducidos son $num1, $num2 y $num3”
@@ -333,7 +333,7 @@ echo “Los número introducidos son $num1, $num2 y $num3”
 * Todas las variables creadas en un terminal se tratan como cadenas de texto, incluso si su contenido es sólo numérico.
 * Este es el motivo por el cual si lanzamos el siguiente código, no se obtendrá el resultado esperado:
 
-``` yaml
+``` bash
 #!/bin/bash
 var1=15
 var2=5
@@ -361,7 +361,7 @@ echo “$var1+$var2”
 
 * Ejemplo:
 
-``` yaml
+``` bash
 #!/bin/bash
 #*********************************
 #Esto es mi tercer script
@@ -444,7 +444,7 @@ let SUMA=NUMERO-10
     * Además, es muy incómodo de trabajar ya que los espacios entre los elementos de una expresión son críticos.
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 var=5
 resultado=`expr $1 + $var + 1
@@ -458,7 +458,7 @@ echo $resultado`
 * Se configura como un comando más cómodo de ejecutar.
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 var=5
 let resultado=$1+var+1
@@ -471,7 +471,7 @@ echo $resultado
 * Realizan la operación contenida dentro de ellos lanzando la ejecución fuera de ellos una vez resuelta.
 
 * Ejemplo:
-``` yaml
+``` bash
 #!/bin/bash
 var=5
 echo $(($1+$var+1))
@@ -494,7 +494,7 @@ echo $(($1 + $var + 1))
     | `2>` | envía la salida de **stderr** (error estándar) a un fichero especificado|
 * Ejemplo:
 
-``` yaml
+``` bash
 sh script.sh 2>/dev/null
 ```
 !!! info
@@ -506,7 +506,7 @@ sh script.sh 2>/dev/null
 * Forma práctica de **redireccionar la salida estándar de un programa** hacia la entrada estándar de otro.
 * Esto se logra usando el símbolo | (pipeline). Ejemplo:
 
-``` yaml
+``` bash
 $ cat archivo.txt | wc
 ```
 
@@ -519,7 +519,7 @@ $ cat archivo.txt | wc
 * Cada usuario puede asignar una palabra fácil de recordar a uno o más comandos que, por lo general, pueden ser más complicados de recordar.
 * Ejemplo:
 
-``` yaml
+``` bash
 alias listado=’ls -lia>’
 ```
 ## Sistema de notación
@@ -583,7 +583,7 @@ En la siguiente figura se puede observar **simbología** para diseñar diagramas
 
 * La forma general de la orden **if** es:
 
-``` yaml
+``` bash
 if [ expresión ]
 then
     realizar este código si expresión es verdadera
@@ -596,7 +596,7 @@ fi
 </figure>
 
 * Ejemplo: 
-``` yaml
+``` bash
 if [ $# -eq 1 ]
 then
     VAR=$1
@@ -614,7 +614,7 @@ fi
 * En este caso se contempla también la posibilidad de ejecutar alguna acción si no se cumple la expresión.
 * La forma general del **if then else** es:
 
-``` yaml
+``` bash
 if [ expresión ]
 then
     realizar si expresión es verdadera
@@ -629,7 +629,7 @@ fi
 </figure>
 
 * Ejemplo: 
-``` yaml
+``` bash
 if [ $a -gt $b ]
 then
     echo "$a es mayor que $b"
@@ -644,7 +644,7 @@ fi
 * Es posible colocar tantos elif como condiciones se requiera evaluar.
 * La forma general del **if then elif else** es:
 
-``` yaml
+``` bash
 if [ exp1 ]
 then
     realizar si exp1 es verdadera
@@ -660,7 +660,7 @@ fi
 ```
 
 * Ejemplo: 
-``` yaml
+``` bash
 if [ $a -gt $b ]
 then
     echo "$a es mayor que $b"
@@ -684,7 +684,7 @@ fi
 * La limitación que tan sólo se comprueba si es igual a ese valor.
 * La forma general del **case** es:
 
-``` yaml
+``` bash
 case VARIABLE in
     valor1)
         Se ejecuta si VARIABLE tiene el valor1
@@ -748,7 +748,7 @@ Estas estructuras van a repetir el código que contienen mientras la expresión 
     Al construir una estructura while es preciso asegurarse que en algún momento de su ejecución la condición dejará de cumplirse y se romperá el ciclo, si no, éste será infinito, a menos que el usuario o el sistema interrumpa su ejecución.
 
 * `WHILE`
-``` yaml
+``` bash
 while [ expresión ]
 do
     código se repite MIENTRAS la expresión sea verdadera
@@ -756,7 +756,7 @@ done
 ```
 
 * `UNTIL`
-``` yaml
+``` bash
 until [ expresión ]
 do
     código se repite HASTA que la expresión sea verdadera
@@ -768,7 +768,7 @@ done
 
 * Ejemplo:
 
-``` yaml
+``` bash
 while [ expresión ]
 #! /bin/bash
 read -p “Escribe un número: “ num
@@ -789,7 +789,7 @@ done
 * No necesita condición de salida ya que al finalizar los elementos del conjunto acabará con su ejecución.
 * la forma general es:
 
-``` yaml
+``` bash
 for variable in conjunto
 do
     estas líneas se repiten una vez por cada elemento del conjunto
@@ -798,7 +798,7 @@ done
 ```
 * Ejemplo:
 
-``` yaml
+``` bash
 #! /bin/bash
 read -p “Escribe la dirección de una carpeta: “ car
 for i in $(ls $car)
@@ -847,13 +847,13 @@ Para definir un vector disponemos de dos formas:
 
 Para declarar un vector hay que utilizar la siguiente estructura:
 
-``` yaml
+``` bash
 declare -a meses=("enero" "febrero" "marzo")
 ```
 
 También es posible utilizar alguna expresión para completar un vector, como con el operador rango ...
 
-``` yaml
+``` bash
 declare -a letras=( {N..Z} {s..z} )
 echo ${letras[*]}
 ```
@@ -866,13 +866,13 @@ echo ${letras[*]}
 * Si el índice es mayor que la última posición de la estructura, se escribirá al final de la misma.
 * Si se usa un índice que ya contiene un dato, éste será sobrescrito.
 
-``` yaml
+``` bash
 meses[3]="abril"
 ```
 
 * Para mostrar el contenido del vector:
 
-``` yaml
+``` bash
 echo ${meses[*]}
 ```
 
@@ -891,7 +891,7 @@ echo ${meses[*]}
 
 * Para recorrer los valores que contiene esta estructura se puede utilizar un bucle **for**
 
-``` yaml
+``` bash
 for item in ${meses[*]}
 do
     echo $item
@@ -899,7 +899,7 @@ done
 ```
 * También se puede utilizar sus índices para mostrar los datos contenidos.
 
-``` yaml
+``` bash
 for index in ${!meses[*]}
 do
     echo ${meses[$index]}
@@ -908,7 +908,7 @@ done
 
 * Es una estructura muy útil en la que se puede guardar cualquier tipo de información, como por ejemplo los ficheros que contiene una carpeta:
 
-``` yaml
+``` bash
 i=0;
 for fichero in $(ls -a)
 do
@@ -924,7 +924,7 @@ done
 * Las funciones aceptan parámetros, de idéntica manera que los shell script, por lo que su uso también es muy intuitivo.
 * La estructura de una función queda definida de la siguiente manera:
 
-``` yaml
+``` bash
 function nombre_función(){
     código que se ejecutará al llamar a la función
 }
@@ -940,7 +940,7 @@ function nombre_función(){
 
 * Ejemplo:
 
-``` yaml
+``` bash
 #! /bin/bash
 function imprimir_tabla(){
     echo “Tabla del número $1”
