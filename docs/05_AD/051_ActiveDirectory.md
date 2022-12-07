@@ -211,6 +211,9 @@ Cuando vayamos a añadir nuestro rol de Active Directory al servidor, veremos qu
     1. [Windows Server](Practica01_AD.md)
     2. [Configuración Básica Windows Server](Practica02_AD.md)
     3. [Configuración Básica Windows Server II](Practica03_AD.md)
+    4. [Instalación Active Directory I](Practica04_AD.md)
+    5. [Instalación Active Directory II](Practica05_AD.md)
+    6. [Administración de Usuarios y Grupos](Practica06_AD.md)
 
 <!-- ## Actividades Desarrollo Active Directory UD02_6
 

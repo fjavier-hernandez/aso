@@ -246,4 +246,4 @@ En el siguiente sub-apartado se realizará la instalación y configuración del 
 
 ## Actividades
 
-[Instalación y configuración básica del servidor Open LDAP](./Practica01_LDAP.html)
+[Instalación y configuración básica del servidor Open LDAP](./042_InstalacionConfigLDAP_PR.md)

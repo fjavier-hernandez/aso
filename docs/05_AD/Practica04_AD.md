@@ -1,6 +1,4 @@
-# Práctica04_AD
-
-# Instalación de Active DirectoryInstalación de Active Directory I
+# Instalación de Active Directory I
 
 Objetivos de esta práctica:
 
