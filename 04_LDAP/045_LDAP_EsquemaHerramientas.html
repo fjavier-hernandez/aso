@@ -8,11 +8,10 @@
       
       
       
-      
         <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/04_LDAP/045_LDAP_EsquemaHerramientas.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -20,41 +19,33 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.975780f9.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
         
       
+      
+
     
     
     
       
+        
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
-    
     
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
-  
-
-
-  
-
-  
-
-
-  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-0CPJP88MBF",{page_path:t.pathname})})})</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF"></script>
-
-
+    
     
     
   </head>
@@ -70,9 +61,8 @@
     <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent="">
   
     
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
-      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -89,7 +79,10 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+    
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
     <a href="../index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
       
@@ -97,7 +90,7 @@
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -120,19 +113,21 @@
         
           
           
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
             </label>
           
         
           
           
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
           
             <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
             </label>
           
         
@@ -141,22 +136,21 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -176,11 +170,14 @@
     
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -236,10 +233,32 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
-      <label class="md-nav__link" for="__nav_2">
-        1.- UD1. ShellScripting
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          1.- UD1. ShellScripting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="1.- UD1. ShellScripting" data-md-level="1">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
@@ -248,6 +267,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -258,8 +278,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -270,8 +292,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -282,8 +306,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -294,8 +320,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -306,8 +334,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -318,8 +348,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -330,8 +362,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -342,6 +376,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -362,10 +397,26 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
-      <label class="md-nav__link" for="__nav_3">
-        2.- UD2: PowerShell
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          2.- UD2: PowerShell
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="2.- UD2: PowerShell" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
@@ -374,6 +425,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -384,8 +436,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -396,8 +450,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -408,8 +464,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -420,8 +478,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -432,6 +492,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -452,10 +513,28 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
-      <label class="md-nav__link" for="__nav_4">
-        3.- UD3: Administración de procesos del sistema
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          3.- UD3: Administración de procesos del sistema
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="3.- UD3: Administración de procesos del sistema" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
@@ -464,6 +543,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -474,8 +554,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -486,8 +568,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -498,8 +582,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -510,8 +596,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -522,8 +610,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -534,6 +624,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -556,10 +647,30 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
-      <label class="md-nav__link" for="__nav_5">
-        4.- Servicios de Directorio Libres: LDAP
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          4.- Servicios de Directorio Libres: LDAP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="4.- Servicios de Directorio Libres: LDAP" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
@@ -568,6 +679,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -578,8 +690,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -590,8 +704,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -602,8 +718,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -614,8 +732,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -626,8 +746,10 @@
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -649,6 +771,7 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
   
   
@@ -721,8 +844,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -733,6 +858,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -753,10 +879,18 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
-      <label class="md-nav__link" for="__nav_6">
-        5.- Servicios de Directorio Propietarios: Active Directory
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          5.- Servicios de Directorio Propietarios: Active Directory
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="5.- Servicios de Directorio Propietarios: Active Directory" data-md-level="1">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
@@ -765,6 +899,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -775,6 +910,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -790,14 +926,16 @@
             
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-                
-                  <h1>4.5- Esquema LDAP</h1>
-                
-                <h2 id="esquema-ldap">Esquema LDAP<a class="headerlink" href="#esquema-ldap" title="Permanent link">&para;</a></h2>
+                  
+
+
+  <h1>4.5- Esquema LDAP</h1>
+
+<h2 id="esquema-ldap">Esquema LDAP<a class="headerlink" href="#esquema-ldap" title="Permanent link">&para;</a></h2>
 <p>El <strong>esquema</strong> es una parte importante de LDAP. Similar a la definición del esquema de la base de datos, el esquema LDAP define la estructura y las reglas que debe seguir un directorio LDAP, como qué atributos tendrá una clase de objeto, qué estructura tienen estos atributos, tipos de datos etc. </p>
 <ul>
 <li>El <strong>servidor LDAP</strong> proporciona una manera de <strong>identificar categorías, atributos</strong> y otra información en el directorio LDAP, para que el servidor LDAP pueda reconocerlos. <strong>Para realizarlo se utilizan esquemas</strong>, que no es más que una <strong>unidad de empaquetado para contener clases de objetos y atributos muy similares</strong>.</li>
@@ -820,15 +958,15 @@
 </figure>
 
 <p>A nivel de comandos se pueden ver los esquemas predefinidos con:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">cd /etc/ldap/slapd.d/cn\=config/</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">cd /etc/ldap/slapd.d/cn\=config/</span><span class="w"></span>
 </code></pre></div>
 <p>En el directorio <code>cn\=schema</code> se pueden ver los esquemas y ademas se pueden añadir más, pero no suele ser frecuente.</p>
 <p>Para buscar los esquemas se puede utilizar:
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{3\}inetorgperson.ldif|awk &#39;{print $5}&#39;</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{2\}inetorgperson.ldif|awk &#39;{print $5}&#39;</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{2\}nis.ldif|awk &#39;{print $5}&#39;</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{1\}cosine.ldif|awk &#39;{print $5}&#39;</span>
-<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{0\}core.ldif|awk &#39;{print $5}&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{3\}inetorgperson.ldif|awk &#39;{print $5}&#39;</span><span class="w"></span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{2\}inetorgperson.ldif|awk &#39;{print $5}&#39;</span><span class="w"></span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{2\}nis.ldif|awk &#39;{print $5}&#39;</span><span class="w"></span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{1\}cosine.ldif|awk &#39;{print $5}&#39;</span><span class="w"></span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">grep olcObjectClasses cn\=\{0\}core.ldif|awk &#39;{print $5}&#39;</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="herramientas-de-gestion-de-usuarios">Herramientas de gestión de usuarios.<a class="headerlink" href="#herramientas-de-gestion-de-usuarios" title="Permanent link">&para;</a></h2>
 <p>Una vez configurado el servidor LDAP, para la utilización normal debemos aprender cómo se añaden nuevos usuarios o se modifican los atributos de los existentes.</p>
@@ -852,7 +990,7 @@
 </ul>
 <h4 id="obtener-todos-los-objetos-de-un-directorio">Obtener todos los objetos de un directorio<a class="headerlink" href="#obtener-todos-los-objetos-de-un-directorio" title="Permanent link">&para;</a></h4>
 <p>Para obtener todos los objetos en un directorio (dn) a partir de cierta base con el ejemplo de la práctica (<code>dc=pandora,dc=ldap</code>) y sin límite de para la respuesta, utilizar una consulta como la siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapsearch -z 0 -H ldap://localhost:389 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -b &quot;dc=pandora,dc=ldap&quot; &quot;(objectclass=*)&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapsearch -z 0 -H ldap://localhost:389 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -b &quot;dc=pandora,dc=ldap&quot; &quot;(objectclass=*)&quot;</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -872,7 +1010,7 @@
 <ul>
 <li>A este ejemplo se le puede añadir <code>grep</code> para filtrar sólo los dn:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapsearch -z 0 -H ldap://localhost:389 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -b &quot;dc=pandora,dc=ldap&quot; &quot;(objectclass=*)&quot; | grep &quot;dn:&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapsearch -z 0 -H ldap://localhost:389 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -b &quot;dc=pandora,dc=ldap&quot; &quot;(objectclass=*)&quot; | grep &quot;dn:&quot;</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>El resultado sería parecido a:</li>
@@ -881,7 +1019,7 @@
 <h4 id="obtener-todas-las-unidades-organizacionales">Obtener todas las unidades organizacionales<a class="headerlink" href="#obtener-todas-las-unidades-organizacionales" title="Permanent link">&para;</a></h4>
 <p>Las <a href="https://technet.microsoft.com/en-us/library/cc978003.aspx">ou</a> (<em>Organizational Unit</em>) definen la jerarquía dentro de un dominio. Generalmente se utilizan para definir los departamentos o áreas dentro de una organización (empresa, red, sociedad, etc.).</p>
 <p>Para obtener una lista de todas las ou presentes en un directorio, se puede utilizar el filtro <code>"(ou=*)"</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapsearch -z 0 -H ldap://localhost:389 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -b &quot;dc=pandora,dc=ldap&quot; &quot;(ou=*)&quot; | grep &quot;dn:&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapsearch -z 0 -H ldap://localhost:389 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -b &quot;dc=pandora,dc=ldap&quot; &quot;(ou=*)&quot; | grep &quot;dn:&quot;</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>Resultado</li>
@@ -890,7 +1028,7 @@
 <h4 id="listar-todos-los-usuarios">Listar todos los usuarios<a class="headerlink" href="#listar-todos-los-usuarios" title="Permanent link">&para;</a></h4>
 <p>Esta consulta depende de la jerarquía y la clase utilizada para almacenar usuarios dentro de un árbol LDAP. Sin embargo, generalmente se utiliza la clase <a href="https://tools.ietf.org/html/rfc2798">inetOrgPerson</a> para almacenar usuarios dentro de un directorio LDAP, la cual posee el atributo <code>uid</code>.</p>
 <p>De esta forma, para listar todos los usuarios presentes en un directorio, simplemente recurrir al filtro <code>"(uid=*)"</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapsearch -z 0 -H ldap://localhost:389 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -b &quot;dc=pandora,dc=ldap&quot; &quot;(uid=*)&quot; | grep &quot;dn:&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapsearch -z 0 -H ldap://localhost:389 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -b &quot;dc=pandora,dc=ldap&quot; &quot;(uid=*)&quot; | grep &quot;dn:&quot;</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>Resultado</li>
@@ -905,7 +1043,7 @@
 </ul>
 </div>
 <p>Para listar todas las clases actualmente en uso por todos los objetos, es necesario volcar todo el contenido del árbol y filtrar con <code>grep</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapsearch -z 0 -H ldap://localhost:389 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -b &quot;dc=pandora,dc=ldap&quot; &quot;(objectclass=*)&quot; | grep objectClass | sort | uniq</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapsearch -z 0 -H ldap://localhost:389 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -b &quot;dc=pandora,dc=ldap&quot; &quot;(objectclass=*)&quot; | grep objectClass | sort | uniq</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>Resultado</li>
@@ -936,19 +1074,19 @@
 <ol>
 <li>Se crea un archivo .ldif para añadir un nuevo grupo y se añade con <code>ldapadd</code>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">nano aso.ldif</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">nano aso.ldif</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ou=aso,dc=pandora,dc=ldap</span>
-<span class="linenos" data-linenos="2 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">organizationalUnit</span>
-<span class="linenos" data-linenos="3 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">top</span>
-<span class="linenos" data-linenos="4 "></span><span class="nt">ou</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aso</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">dn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ou=aso,dc=pandora,dc=ldap</span><span class="w"></span>
+<span class="linenos" data-linenos="2 "></span><span class="nt">objectClass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organizationalUnit</span><span class="w"></span>
+<span class="linenos" data-linenos="3 "></span><span class="nt">objectClass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">top</span><span class="w"></span>
+<span class="linenos" data-linenos="4 "></span><span class="nt">ou</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aso</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapadd -x -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -f aso.ldif</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapadd -x -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -f aso.ldif</span><span class="w"></span>
 </code></pre></div>
 <ol start="2">
 <li>Para borrarlo se utilizaría: </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapdelete -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; &quot;ou=aso,dc=pandora,dc=ldap&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapdelete -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; &quot;ou=aso,dc=pandora,dc=ldap&quot;</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
@@ -956,26 +1094,26 @@
 <ol>
 <li>Se crea un archivo .ldif para añadir un nuevo usuario y se añade con <code>ldapadd</code>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">nano javier.ldif</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">nano javier.ldif</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">uid=javier,ou=usuarios,dc=pandora,dc=ldap</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">inetOrgPerson</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">posixAccount</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="nt">objectClass</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">shadowAccount</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="nt">cn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Javier</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="nt">sn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Hernandez</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="nt">userPassword</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nv">SSHA</span><span class="p p-Indicator">}</span><span class="l l-Scalar l-Scalar-Plain">latDDmodpsLUWDqwd/adk/j2tTDgz3NX</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="nt">loginshell</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="nt">uidNumber</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10001</span>
-<span class="linenos" data-linenos="10 "></span><span class="nt">gidNumber</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10001</span>
-<span class="linenos" data-linenos="11 "></span><span class="nt">homeDirectory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/javier</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">dn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid=javier,ou=usuarios,dc=pandora,dc=ldap</span><span class="w"></span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nt">objectClass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inetOrgPerson</span><span class="w"></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nt">objectClass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">posixAccount</span><span class="w"></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="nt">objectClass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shadowAccount</span><span class="w"></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nt">cn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Javier</span><span class="w"></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nt">sn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hernandez</span><span class="w"></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nt">userPassword</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">SSHA</span><span class="p p-Indicator">}</span><span class="l l-Scalar l-Scalar-Plain">latDDmodpsLUWDqwd/adk/j2tTDgz3NX</span><span class="w"></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="nt">loginshell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span><span class="w"></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nt">uidNumber</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10001</span><span class="w"></span>
+<span class="linenos" data-linenos="10 "></span><span class="nt">gidNumber</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10001</span><span class="w"></span>
+<span class="linenos" data-linenos="11 "></span><span class="nt">homeDirectory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/javier</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapadd -x -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -f javier.ldif</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapadd -x -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -f javier.ldif</span><span class="w"></span>
 </code></pre></div>
 <ol start="2">
 <li>Para borrarlo se utilizaría: </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapdelete -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; &quot;uid=javier,ou=aso,dc=pandora,dc=ldap&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapdelete -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; &quot;uid=javier,ou=aso,dc=pandora,dc=ldap&quot;</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
@@ -983,17 +1121,17 @@
 <ol>
 <li>Se crea un archivo .ldif especificando las modificaciones:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">nano cambios1.ldif</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">nano cambios1.ldif</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">uid=javier,ou=aso,dc=pandora,dc=ldap</span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">changetype:modify</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">replace:uidNumber</span>
-<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">uidNumber:10002</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">dn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid=javier,ou=aso,dc=pandora,dc=ldap</span><span class="w"></span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">changetype:modify</span><span class="w"></span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">replace:uidNumber</span><span class="w"></span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">uidNumber:10002</span><span class="w"></span>
 </code></pre></div>
 <ol start="2">
 <li>Para modificarlo se utilizaría: </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapmodify -x -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -f cambios1.ldif</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldapmodify -x -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -f cambios1.ldif</span><span class="w"></span>
 </code></pre></div>
 </li>
 </ol>
@@ -1015,7 +1153,7 @@
 <ol>
 <li>Añadir contraseña</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldappasswd -s 1234 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -x &quot;uid=javier,ou=aso,dc=pandora,dc=ldap&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">ldappasswd -s 1234 -W -D &quot;cn=admin,dc=pandora,dc=ldap&quot; -x &quot;uid=javier,ou=aso,dc=pandora,dc=ldap&quot;</span><span class="w"></span>
 </code></pre></div>
 </li>
 </ol>
@@ -1072,15 +1210,15 @@
 
 1. Cree el archivo `logging.ldif` con el siguiente contenido:
 
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=config</span>
-<span class="linenos" data-linenos="2 "></span><span class="nt">changetype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">modify</span>
-<span class="linenos" data-linenos="3 "></span><span class="nt">replace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">olcLogLevel</span>
-<span class="linenos" data-linenos="4 "></span><span class="nt">olcLogLevel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">stats</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">dn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cn=config</span><span class="w"></span>
+<span class="linenos" data-linenos="2 "></span><span class="nt">changetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">modify</span><span class="w"></span>
+<span class="linenos" data-linenos="3 "></span><span class="nt">replace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">olcLogLevel</span><span class="w"></span>
+<span class="linenos" data-linenos="4 "></span><span class="nt">olcLogLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stats</span><span class="w"></span>
 </code></pre></div>
 
 2. Se implementa el cambio:
 
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f logging.ldif</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f logging.ldif</span><span class="w"></span>
 </code></pre></div>
 
 Esto producirá una cantidad significativa de registro y querrá volver a un nivel menos detallado una vez que su sistema esté en producción. Mientras está en este modo detallado, el motor syslog de su host (rsyslog) puede tener dificultades para mantenerse al día y puede dejar caer mensajes:
@@ -1090,28 +1228,28 @@ Esto producirá una cantidad significativa de registro y querrá volver a un niv
 
 Puede considerarse un cambio en la configuración de para evitar estos problemas `rsyslog`. En `/etc/rsyslog.conf`, ponga:
 
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Disable rate limiting</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1"># (default is 200 messages in 5 seconds; below we make the 5 become 0)</span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">$SystemLogRateLimitInterval 0</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Disable rate limiting</span><span class="w"></span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># (default is 200 messages in 5 seconds; below we make the 5 become 0)</span><span class="w"></span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">$SystemLogRateLimitInterval 0</span><span class="w"></span>
 </code></pre></div>
 
 3. Y luego reinicie el demonio rsyslog:
 
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart syslog.service</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart syslog.service</span><span class="w"></span>
 </code></pre></div>
 
 4. Los Registros de OpenLDAP a través de syslogd **LOCAL4** (Nivel warning de Syslog). Para transmitir el registro LDAP a un archivo separado de syslog, agregue una línea como esta a **syslog.conf** ( `/etc/rsyslog.conf`):
 
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># a. agregar a syslog.conf</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">local4. * /var/log/ldap.log</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># a. agregar a syslog.conf</span><span class="w"></span>
+<span class="linenos" data-linenos=" 2 "></span><span class="l l-Scalar l-Scalar-Plain">local4. * /var/log/ldap.log</span><span class="w"></span>
 <span class="linenos" data-linenos=" 3 "></span>
-<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain"># b. crear un archivo de registro vacío</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain">toque /var/log/ldap.log</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="l l-Scalar l-Scalar-Plain"># b. crear un archivo de registro vacío</span><span class="w"></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="l l-Scalar l-Scalar-Plain">toque /var/log/ldap.log</span><span class="w"></span>
 <span class="linenos" data-linenos=" 6 "></span>
-<span class="linenos" data-linenos=" 7 "></span><span class="l l-Scalar l-Scalar-Plain"># c. reiniciar syslogd</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="l l-Scalar l-Scalar-Plain">killall -HUP syslogd</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">O</span>
-<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl restart syslog.service</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="l l-Scalar l-Scalar-Plain"># c. reiniciar syslogd</span><span class="w"></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="l l-Scalar l-Scalar-Plain">killall -HUP syslogd</span><span class="w"></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="l l-Scalar l-Scalar-Plain">O</span><span class="w"></span>
+<span class="linenos" data-linenos="10 "></span><span class="l l-Scalar l-Scalar-Plain">systemctl restart syslog.service</span><span class="w"></span>
 </code></pre></div>
 
 [Más información sobre looging OpenLdap](http://www.zytrax.com/books/ldap/ch6/#logfile) -->
@@ -1128,28 +1266,29 @@ Puede considerarse un cambio en la configuración de para evitar estos problemas
 </li>
 </ol>
 <p>En cada sub-apartado comprueba que se han introducido correctamente las modificaciones en el <strong>DIT</strong>.</p>
-                
-              
-              
-                
 
 
-              
-            </article>
-          </div>
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Pie">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Pie" >
       
         
         <a href="044_UsersLDAP.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 4.4- Creación y comprobación de Usuarios/Grupos OpenLDAP" rel="prev">
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
@@ -1173,7 +1312,7 @@ Puede considerarse un cambio en la configuración de para evitar estos problemas
             </div>
           </div>
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
           </div>
         </a>
       
@@ -1181,29 +1320,20 @@ Puede considerarse un cambio en la configuración de para evitar estos problemas
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
-          </div>
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
-  <div class="md-footer-social">
-    
-      
-      
-      <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
-      </a>
-    
-  </div>
-
     </div>
   </div>
 </footer>
@@ -1212,11 +1342,13 @@ Puede considerarse un cambio en la configuración de para evitar estos problemas
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>
