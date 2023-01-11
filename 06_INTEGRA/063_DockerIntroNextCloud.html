@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/063_Docker.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/063_DockerIntroNextCloud.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Docker - Administración de Sistemas Operativos</title>
+        <title>6.3- Docker Introducción y NextCloud - Administración de Sistemas Operativos</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker" class="md-skip">
+        <a href="#docker-introduccion" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker
+              6.3- Docker Introducción y NextCloud
             
           </span>
         </div>
@@ -838,15 +838,19 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
+        
+          
         
           
         
@@ -894,6 +898,284 @@
 
             
           
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          6.3- Docker Introducción y NextCloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="063_DockerIntroNextCloud.html" class="md-nav__link md-nav__link--active">
+        6.3- Docker Introducción y NextCloud
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-previos" class="md-nav__link">
+    Conceptos Previos
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptos Previos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#virtualizacion-hipervisor" class="md-nav__link">
+    Virtualización: Hipervisor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenedores" class="md-nav__link">
+    Contenedores
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenedores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maquinas-virtuales-vs-contenedores" class="md-nav__link">
+    Máquinas Virtuales VS Contenedores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microservicios" class="md-nav__link">
+    Microservicios
+  </a>
+  
+    <nav class="md-nav" aria-label="Microservicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-principales-contenedores" class="md-nav__link">
+    Características principales Contenedores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristicas-principales-de-docker" class="md-nav__link">
+    Características principales de Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-docker" class="md-nav__link">
+    Arquitectura Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    Instalación
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-instalacion-en-ubuntu-server" class="md-nav__link">
+    Ejemplo Instalación en Ubuntu server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#principales-comandos" class="md-nav__link">
+    Principales Comandos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-contenedor" class="md-nav__link">
+    Primer Contenedor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#volumenes" class="md-nav__link">
+    Volúmenes
+  </a>
+  
+    <nav class="md-nav" aria-label="Volúmenes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-volumenes" class="md-nav__link">
+    Ventajas Volúmenes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones" class="md-nav__link">
+    Opciones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    Ejemplo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redes" class="md-nav__link">
+    Redes
+  </a>
+  
+    <nav class="md-nav" aria-label="Redes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opciones-y-tipos" class="md-nav__link">
+    Opciones y tipos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nextcloud" class="md-nav__link">
+    NextCloud
+  </a>
+  
+    <nav class="md-nav" aria-label="NextCloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas" class="md-nav__link">
+    Características
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades.
+  </a>
+  
+    <nav class="md-nav" aria-label="Actividades.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enunciado" class="md-nav__link">
+    Enunciado
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premisas" class="md-nav__link">
+    Premisas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investiga" class="md-nav__link">
+    Investiga
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pruebas" class="md-nav__link">
+    Pruebas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ayuda" class="md-nav__link">
+    Ayuda
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -915,10 +1197,10 @@
                   
 
 
-<h1 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
+<h1 id="docker-introduccion">DOCKER INTRODUCCIÓN<a class="headerlink" href="#docker-introduccion" title="Permanent link">&para;</a></h1>
 <figure style="float: right;">
     <img src="imagenes/01/DockerImage.png" width="350"/>
-    <figcaption>Logo Docker.</figcaption>
+    <figcaption><b>Figura 1:</b> Logo Docker.</figcaption>
 </figure>
 
 <p><strong>Docker</strong> (estibador en ingles) es un <strong>Sistema de Virtualización de Aplicaciones mediante contenedores</strong>, creado por <em>Solomon Hykes</em> y su equipo de ingenieros.</p>
@@ -938,10 +1220,13 @@
 <li>Y tampoco sería virtualización la simulación, que consiste en imitar el aspecto visual del sistema imitado. Por ejemplo, podríamos instalar un tema de escritorio en <strong>GNOME</strong> o <strong>KDE</strong> que imitara el escritorio de Windows. El problema de esta simulación sería que realmente no estaríamos utilizando Windows sino simplemente algo que parece Windows. Así que, por ejemplo, no podríamos instalar una aplicación de Windows puesto que el sistema operativo sería Linux, que no acepta instaladores de Windows.</li>
 </ul>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">A tener en cuenta</p>
 <ul>
-<li>Los sistemas operativos son los encargados de la gestión del hardware y requieren un control completo del mismo, por lo que dos sistemas operativos no pueden en principio estar funcionando a la vez sobre el mismo hardware.</li>
-<li>La solución para la virtualización es la existencia de un <strong>hipervisor</strong> (en inglés, hypervisor).</li>
+<li>Los <strong>sistemas operativos</strong> son los encargados de la <strong>gestión del hardware y requieren un control completo</strong> del mismo, por lo que dos sistemas operativos <strong>no pueden en principio estar funcionando a la vez</strong> sobre el mismo hardware.</li>
+<li>La solución para la <strong>virtualización</strong> es la existencia de un <strong>hipervisor</strong> (en inglés, hypervisor).</li>
 </ul>
+</div>
 <h4 id="ventajas-virtualizacion">Ventajas Virtualización<a class="headerlink" href="#ventajas-virtualizacion" title="Permanent link">&para;</a></h4>
 <p>La virtualización tiene muchas aplicaciones interesantes:</p>
 <ul>
@@ -996,6 +1281,28 @@
   <figcaption>Contenedores Vs Máquinas Virtuales.</figcaption>
 </figure>
 
+<h2 id="microservicios">Microservicios<a class="headerlink" href="#microservicios" title="Permanent link">&para;</a></h2>
+<p>Uno de los objetivos principales de la configuración e implantación de contenedores es solucionar los problemas de:</p>
+<ul>
+<li><strong>Errores de dependencias</strong> entre diferentes Sistemas Operativos de los trabajadores y máquinas de puesta en marcha.</li>
+<li>Evitar la <strong>Elevada carga y capacidad</strong> de las Máquinas Virtuales.</li>
+<li>
+<p>Caída de todos los servicios instalados de forma monolítica en los servidores.</p>
+</li>
+<li>
+<p>Tipos de despliegue:</p>
+<ul>
+<li><strong>SOA (Service Oriented Architecture)</strong> → Diferentes Máquinas una con cada Servicio conectadas.</li>
+<li><strong>Monolítico</strong> → Todos los servicios en la misma máquina.</li>
+<li><strong>MicroServicios</strong> → División más pequeña de los servicios.</li>
+</ul>
+</li>
+</ul>
+<figure>
+    <img src="imagenes/01/Microservicios.png"/>
+    <figcaption>Monolítico Vs Microservicios.</figcaption>
+</figure>
+
 <h3 id="caracteristicas-principales-contenedores">Características principales Contenedores<a class="headerlink" href="#caracteristicas-principales-contenedores" title="Permanent link">&para;</a></h3>
 <p>En resumen los contenedores:</p>
 <ul>
@@ -1006,6 +1313,11 @@
 <li>Los contenedores suelen ser elementos <strong>efímeros</strong>.</li>
 </ul>
 <h2 id="caracteristicas-principales-de-docker">Características principales de Docker<a class="headerlink" href="#caracteristicas-principales-de-docker" title="Permanent link">&para;</a></h2>
+<div class="admonition abstract">
+<p class="admonition-title">Por lo tanto se define Docker como...</p>
+<p>Un proyecto de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software, proporcionando una capa adicional de abstracción y automatización de virtualización de aplicaciones en múltiples sistemas operativos.​</p>
+</div>
+<p>Sus principales características son:</p>
 <ul>
 <li>Docker es una API amigable del tipo <strong>Open Source</strong>.</li>
 <li>Genera un <strong>proceso aislado</strong> del resto de los procesos de la máquina gracias a: Ejecutar sobre su propio sistema de ficheros, con su propio espacio de usuarios y procesos, y sus propias interfaces de red... </li>
@@ -1029,7 +1341,7 @@
 </ul>
 </li>
 <li><strong>"Daemon Docker" (Servicio)</strong>: lleva a cabo Gestión y enlace de los componentes del gestor.</li>
-<li><strong>Imágenes</strong>: Las imágenes son una especie de plantillas que contienen como mínimo todo el software que necesita la aplicación para ponerse en marcha. están formadas por una colección ordenada de: <em>Sistemas Archivos</em>; <em>Repositorios</em>; <em>Comandos</em>; <em>Parámetros</em>; <em>Aplicaciones</em>.</li>
+<li><strong>Imágenes</strong>: Las imágenes son una especie de plantillas que contienen como mínimo todo el software que necesita la aplicación para ponerse en marcha. están formadas por una colección ordenada de: <em>Sistemas Archivos</em>, <em>Repositorios</em>, <em>Comandos</em>, <em>Parámetros</em>, <em>Aplicaciones</em>.</li>
 <li><strong>Contenedores</strong>: son el conjunto de procesos que encapsulan e identifican a una Imagen. Pueden ser:<ul>
 <li>Creado, inicializado, parado, vuelto a ejecutar y destruido.</li>
 </ul>
@@ -1051,28 +1363,6 @@
 <li>Las <strong>imágenes</strong> se pueden crear a partir de otras imágenes más básicas incluyendo software adicional en forma de capas. Todos los contenedores creados a partir de una imagen contienen el mismo software, aunque en el momento de su creación se pueden personalizar algunos detalles</li>
 </ul>
 </div>
-<h2 id="microservicios">Microservicios<a class="headerlink" href="#microservicios" title="Permanent link">&para;</a></h2>
-<p>Uno de los objetivos principales de la configuración e implantación con Docker es es solucionar los problemas de:</p>
-<ul>
-<li><strong>Errores de dependencias</strong> entre diferentes Sistemas Operativos de los trabajadores y máquinas de puesta en marcha.</li>
-<li>Evitar la <strong>Elevada carga y capacidad</strong> de las Máquinas Virtuales.</li>
-<li>
-<p>Caida de todos los servicios instalados de forma monolítica en los servidores.</p>
-</li>
-<li>
-<p>Tipos de despliegue:</p>
-<ul>
-<li><strong>Monolítico</strong> → Todos los servicios en la misma máquina.</li>
-<li><strong>SOA (Service Oriented Architecture)</strong> → Diferentes Máquinas una con cada Servicio conectadas.</li>
-<li><strong>MicroServicios</strong> →División más pequeña de los servicios.</li>
-</ul>
-</li>
-</ul>
-<figure>
-    <img src="imagenes/01/Microservicios.png"/>
-    <figcaption>Momolítico Vs Microservicios.</figcaption>
-</figure>
-
 <h2 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h2>
 <p>Para la Instalación de <strong>Docker</strong> es recomendable seguir la documentación oficial. Además se recomienda Instalar máquina Ubuntu Server última versión e instalar Docker en ella.</p>
 <ul>
@@ -1450,125 +1740,103 @@ o también</p>
 <p class="admonition-title">Note</p>
 <p>En este caso no se comparten las variables de entorno.</p>
 </div>
-<h2 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h2>
-<p>Existen dos opciones destacables en Docker para agilizar el despliegue de Imagenes y contenedores: Dockerfile y Docker-compose</p>
-<ul>
-<li><strong>Dockerfile</strong>: es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.</li>
-</ul>
-<div class="admonition summary">
-<p class="admonition-title">Summary</p>
-<p>Imágenes→ docker build → docker_file</p>
-</div>
-<ul>
-<li><strong>Docker-compose</strong>: es una herramienta que permite simplificar el uso de Docker. A partir de archivos bash es mas sencillo crear contendores, conectarlos, habilitar puertos, volumenes, etc.</li>
-</ul>
-<div class="admonition summary">
-<p class="admonition-title">Summary</p>
-<p>Contenedores→ docker run → docker_compose.yml</p>
-</div>
-<h3 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
-<p>Las instrucciones principales que pueden utilizarse en un Dockerfile son:</p>
+<!-- ## Tools
+
+Existen dos opciones destacables en Docker para agilizar el despliegue de Imagenes y contenedores: Dockerfile y Docker-compose
+
+* **Dockerfile**: es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.
+
+!!! Summary
+    Imágenes→ docker build → docker_file
+
+* **Docker-compose**: es una herramienta que permite simplificar el uso de Docker. A partir de archivos bash es mas sencillo crear contendores, conectarlos, habilitar puertos, volumenes, etc.
+
+!!! Summary
+    Contenedores→ docker run → docker_compose.yml
+
+### Dockerfile
+
+Las instrucciones principales que pueden utilizarse en un Dockerfile son:
+
 <figure>
     <img src="imagenes/01/InstruccionesDockefile.png" width="850"/>
 </figure>
 
-<ul>
-<li>Ver también: <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles</a></li>
-</ul>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>A continuación se muestra un ejemplo para la realización de la práctica de ampliación extraido de <a href="https://hub.docker.com/_/httpd">Apache oficial de docker</a>.</p>
-</div>
-<ol>
-<li><strong>Primer paso</strong>: generar imagen con un <strong>Dockerfile</strong>.</li>
-</ol>
-<ul>
-<li>
-<p>Se crea el archivo de texto dockerfile.
+* Ver también: [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+
+!!! Example
+    A continuación se muestra un ejemplo para la realización de la práctica de ampliación extraido de [Apache oficial de docker](https://hub.docker.com/_/httpd).
+
+1. **Primer paso**: generar imagen con un **Dockerfile**.
+
+* Se crea el archivo de texto dockerfile.
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir docker
 <span class="linenos" data-linenos="2 "></span>touch dockerfile
 <span class="linenos" data-linenos="3 "></span>nano dockerfile
-</code></pre></div></p>
-</li>
-<li>
-<p>Ejemplo edición Dockerfile.</p>
-</li>
-</ul>
+</code></pre></div>
+
+* Ejemplo edición Dockerfile.
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># syntax=docker/dockerfile:1</span>
 <span class="linenos" data-linenos="2 "></span>FROM nginx:alpine
 <span class="linenos" data-linenos="3 "></span>RUN apk update
 <span class="linenos" data-linenos="4 "></span>COPY index.html/ /usr/share/nginx/html/
 </code></pre></div>
-<div class="admonition nota">
-<p class="admonition-title">Nota</p>
-<p>Se puede probar a introducir el volumen en el docker file: <code>VOLUME /myvol1</code></p>
-</div>
-<ul>
-<li>Se crea la imagen y el contenedor.
+
+!!! Nota
+    Se puede probar a introducir el volumen en el docker file: `VOLUME /myvol1`
+
+* Se crea la imagen y el contenedor.
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker build -t franciscojav1981/my-nginx .
 <span class="linenos" data-linenos="2 "></span>docker run -dit --name my-nginx -p <span class="m">8081</span>:80 franciscojav1981/my-nginx
-</code></pre></div></li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<ul>
-<li><strong>Mucho cuidado</strong> con el último punto de la instucción de build, tiene un espacio antes. Es el último argumento (y el único imprescindible) es el nombre del archivo Dockerfile que tiene que utilizar para generar la imagen. Como en este caso se encuentra en el mismo directorio y tiene el nombre predeterminado Dockerfile, se puede escribir simplemente punto (<code>.</code>).</li>
-<li>Para indicar el nombre de la imagen se debe añadir la opción <code>-t</code>. El nombre de la imagen debe seguir el patrón <code>nombre-de-usuario/nombre-de-imagen</code>. Si la imagen sólo se va a utilizar localmente, el nombre de usuario y de la imagen pueden ser cualquier palabra.</li>
-</ul>
-</div>
-<ol start="2">
-<li><strong>Segundo paso</strong>: subir imagen al Docker Hub.</li>
-</ol>
-<ul>
-<li>Se debe generar una cuenta de Docker Hub con la cuenta corporativa de Office 365: <a href="https://hub.docker.com/signup">Sign Up</a></li>
-<li>
-<p>Con el comando <code>docker login</code>, se realiza el acceso a la plataforma desde el terminal, introduciendo usuario y contraseña.
+</code></pre></div>
+
+!!! Warning
+    * **Mucho cuidado** con el último punto de la instucción de build, tiene un espacio antes. Es el último argumento (y el único imprescindible) es el nombre del archivo Dockerfile que tiene que utilizar para generar la imagen. Como en este caso se encuentra en el mismo directorio y tiene el nombre predeterminado Dockerfile, se puede escribir simplemente punto (`.`).
+    * Para indicar el nombre de la imagen se debe añadir la opción `-t`. El nombre de la imagen debe seguir el patrón `nombre-de-usuario/nombre-de-imagen`. Si la imagen sólo se va a utilizar localmente, el nombre de usuario y de la imagen pueden ser cualquier palabra.
+
+2. **Segundo paso**: subir imagen al Docker Hub.
+
+* Se debe generar una cuenta de Docker Hub con la cuenta corporativa de Office 365: [Sign Up](https://hub.docker.com/signup)
+* Con el comando `docker login`, se realiza el acceso a la plataforma desde el terminal, introduciendo usuario y contraseña.
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker login
-</code></pre></div></p>
-</li>
-<li>
-<p>Con el comando <code>docker push</code>, se realiza el "Upload" de la imagen.</p>
-</li>
-</ul>
+</code></pre></div>
+
+* Con el comando `docker push`, se realiza el "Upload" de la imagen.
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker push franciscojav1981/my-nginx
 </code></pre></div>
-<ul>
-<li>Por último Se debe comprobar accediendo a la platadorma de Docker Hub.</li>
-</ul>
+
+* Por último Se debe comprobar accediendo a la platadorma de Docker Hub.
+
 <figure>
     <img src="imagenes/01/DockerHub.png"/>
 </figure>
 
-<h3 id="docker-compose">Docker-compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p><strong>Docker-compose</strong> es otro proyecto open source que permite definir aplicaciones muilti-contenedor de una manera sencilla y declarativa.</p>
-</li>
-<li>
-<p>Es una alternativa más cómoda al uso de los comandos docker run y docker build, que resultan un tanto tediosos cuando trabajamos con aplicaciones de varios componentes.</p>
-</li>
-<li>
-<p>Se define un fichero <code>docker-compose.yml</code> que se puede observar en el ejemplo realizado en la práctica en el último apartado.</p>
-</li>
-</ul>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>A continuación se muestra un ejemplo para la realización de la práctica de ampliación: <a href="https://docs.docker.com/samples/wordpress/">Instalación Wordpress</a></p>
-</div>
-<ol>
-<li><strong>Primer Paso</strong>: instalación de Docker-compose.</li>
-</ol>
-<ul>
-<li><a href="https://docs.docker.com/compose/install/">Install Docker Compose</a></li>
-</ul>
-<ol start="2">
-<li><strong>Segundo paso</strong>: Crear directorio del proyecto y dentro el archivo <code>bash</code>.</li>
-</ol>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir my_wordpress
+
+### Docker-compose
+
+* **Docker-compose** es otro proyecto open source que permite definir aplicaciones muilti-contenedor de una manera sencilla y declarativa.
+
+* Es una alternativa más cómoda al uso de los comandos docker run y docker build, que resultan un tanto tediosos cuando trabajamos con aplicaciones de varios componentes.
+
+* Se define un fichero `docker-compose.yml` que se puede observar en el ejemplo realizado en la práctica en el último apartado.
+
+!!! Example
+    A continuación se muestra un ejemplo para la realización de la práctica de ampliación: [Instalación Wordpress](https://docs.docker.com/samples/wordpress/)
+
+1. **Primer Paso**: instalación de Docker-compose.
+
+* [Install Docker Compose](https://docs.docker.com/compose/install/)
+
+2. **Segundo paso**: Crear directorio del proyecto y dentro el archivo `bash`.
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir my_wordpress
 <span class="linenos" data-linenos="2 "></span>touch docker-compose.yml
 <span class="linenos" data-linenos="3 "></span>nano docker-compose.yml
 </code></pre></div>
-3. <strong>Tercer paso</strong>: se edita el <code>bash</code>.</p>
+3. **Tercer paso**: se edita el `bash`.
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>version: <span class="s2">&quot;3.9&quot;</span>
 <span class="linenos" data-linenos=" 2 "></span>
 <span class="linenos" data-linenos=" 3 "></span>services:
@@ -1601,13 +1869,61 @@ o también</p>
 <span class="linenos" data-linenos="30 "></span>  db_data: <span class="o">{}</span>
 <span class="linenos" data-linenos="31 "></span>  wordpress_data: <span class="o">{}</span>
 </code></pre></div>
-<ol start="4">
-<li><strong>Cuarto paso</strong>: en la carpeta creada del proyecto se ejecuta el comando de <code>docker-compose up -d</code></li>
-</ol>
+
+4. **Cuarto paso**: en la carpeta creada del proyecto se ejecuta el comando de `docker-compose up -d`
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker-compose up -d
 </code></pre></div>
+
+* Por último Se comprueba que se ha creado el contenedor. -->
+
+<figure style="float: right;">
+    <img src="imagenes/07/074/001.png" width="200"/>
+</figure>
+
+<h2 id="nextcloud">NextCloud<a class="headerlink" href="#nextcloud" title="Permanent link">&para;</a></h2>
+<p><strong>Nextcloud</strong> hace referencia al conjunto de herramientas software de <strong>código abierto</strong> con arquitectura <strong>cliente-servidor</strong>, que permiten la creación de <strong>servicios de alojamiento de archivos</strong> en servidores privados.</p>
+<h3 id="caracteristicas">Características<a class="headerlink" href="#caracteristicas" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Por último Se comprueba que se ha creado el contenedor.</li>
+<li>Los archivos Nextcloud <strong>son almacenados en estructuras de directorio convencionales</strong> y se pueden acceder a través del protocolo <strong>WebDAV</strong> si es necesario.</li>
+<li>Los archivos son <strong>encriptados</strong> en la transmisión y opcionalmente durante el almacenamiento.</li>
+<li>Los usuarios pueden manejar <strong>calendarios</strong> (CalDAV), <strong>contactos</strong> (CardDAV), <strong>tareas programadas</strong> y reproducir <strong>contenido multimedia</strong> (Ampache).</li>
+<li>Permite la administración de usuarios y grupos de usuarios (vía OpenID o LDAP) y definir permisos de acceso.</li>
+<li>Posibilidad de añadir aplicaciones (de un solo clic) y conexiones con <strong>Dropbox</strong>, <strong>Google Drive</strong> y <strong>Amazon S3</strong>.</li>
+<li>Disponibilidad de acceso a diferentes <strong>bases de datos</strong> mediante SQLite, MariaDB, MySQL, Oracle Database, y PostgreSQL.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>WebDAV</strong> es un grupo de trabajo del <strong>Internet Engineering Task Force (IETF)</strong>. El término significa <strong>"Autoría y versionado distribuidos por Web" (Web Distributed Authoring and Versioning)</strong>, y <strong>se refiere al protocolo</strong> (más precisamente, a la extensión del protocolo) que el grupo definió. Este protocolo proporciona funcionalidades para <strong>crear, cambiar y mover documentos en un servidor remoto</strong> (típicamente un servidor web).</p>
+</div>
+<h2 id="actividades">Actividades.<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<h3 id="enunciado">Enunciado<a class="headerlink" href="#enunciado" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Estamos trabajando en una empresa que tiene la necesidad de compartir recursos (carpetas documentos, imágenes...), tanto entre las personas dentro de la empresa como con clientes fuera de ésta.</li>
+<li>Para haceros valer dentro de la empresa indicáis que podéis montar un servidor <strong>NextCloud</strong> en unos pocos minutos para solventar dicho problema.</li>
+<li>La empresa cuenta con un equipo Linux que hace de servidor, decidís hacer uso de <strong>docker</strong> para levantar el servicio NextCloud de una forma muy rápida y sencilla.</li>
+</ul>
+<h3 id="premisas">Premisas<a class="headerlink" href="#premisas" title="Permanent link">&para;</a></h3>
+<ul>
+<li>El servicio docker se debe levantar en la red <strong>192.168.20.0/24</strong>.</li>
+<li>Debe tener la traducción estática del puerto <strong>80</strong> de la máquina anfitriona al puerto <strong>80</strong> del contenedor.</li>
+<li>Debe tener un volumen asociado llamado <strong>"volNextCloud"</strong>.</li>
+</ul>
+<h3 id="investiga">Investiga<a class="headerlink" href="#investiga" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Crea el contenedor Nextcloud ¿Al crear el contenedor se ha generado automáticamente algún volumen? ¿Cuál?</li>
+<li>Dentro del sistema anfitrión (lliurex/Windows) ¿Dónde está guardado el fichero subido previamente?</li>
+<li>¿Este contenedor es persistente? ¿Qué significa que el contenedor es persistente? ¿Cómo lo has comprobado?</li>
+</ul>
+<h3 id="pruebas">Pruebas<a class="headerlink" href="#pruebas" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Sube un fichero de prueba, comprueba si está en la carpeta volumen creada. En caso de no estar:</li>
+<li>Prueba a subir un fichero a la plataforma NextCloud. Acto seguido dentro del contenedor busca en que directorio se ha guardado dicho fichero.</li>
+</ul>
+<h3 id="ayuda">Ayuda<a class="headerlink" href="#ayuda" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Página oficial para la Instalación en ubuntu en el siguiente enlace <a href="https://docs.docker.com/engine/install/ubuntu/">Instalación en Ubuntu Documentación</a></li>
+<li>Lee la documentación sobre la imagen NextCloud que hay en <a href="https://hub.docker.com/_/nextcloud">Dockerhub Nextcloud_Docker</a>.</li>
 </ul>
 
 
@@ -1624,6 +1940,27 @@ o también</p>
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Pie" >
+      
+        
+        <a href="062_NFS.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 6.2- NFS" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              6.2- NFS
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

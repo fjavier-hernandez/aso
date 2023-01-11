@@ -852,6 +852,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_7">
@@ -894,6 +896,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="063_DockerIntroNextCloud.html" class="md-nav__link">
+        6.3- Docker Introducción y NextCloud
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -917,6 +933,18 @@
 
 <h1 id="instalacion-y-configuracion-en-un-cliente-windows-10">Instalación  y configuración en un cliente Windows 10<a class="headerlink" href="#instalacion-y-configuracion-en-un-cliente-windows-10" title="Permanent link">&para;</a></h1>
 <p>En esta práctica se realiza la instalación y configuración de NFS en un cliente Windows 10 con el objetivo de acceder a la carpeta compartida en el servidor NFS.</p>
+<h2 id="entrega">Entrega<a class="headerlink" href="#entrega" title="Permanent link">&para;</a></h2>
+<p>En esta práctica se debe entregar un breve informe en <strong>pdf</strong>, en el "moodle", con capturas explicativas de:</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Las capturas deben ser realizadas del servidor ubuntu 22.04, pero de los resultados ejecutados desde una carpeta personal de un usuario creado por el alumnado, es decir, desde <code>/home/NombreAlumna</code> o <code>/home/NombreAlumno</code>.</p>
+</div>
+<ul>
+<li><strong>Figura 2:</strong> Instalación NFS en "WindowsClient".</li>
+<li><strong>Figura 3:</strong> Acceso a las carpetas compartidas de  NFS de forma esporádica.</li>
+<li><strong>Figura 5:</strong> Edición <strong>nfs.bat</strong>.</li>
+<li>Comprobación se crea automáticamente la carpeta compartida.</li>
+</ul>
 <h2 id="instalacion-nfs-en-windows-10">Instalación NFS en Windows 10<a class="headerlink" href="#instalacion-nfs-en-windows-10" title="Permanent link">&para;</a></h2>
 <p>A continuación se muestran los pasos para la instalación:</p>
 <ol>
@@ -924,7 +952,7 @@
 </ol>
 <figure>
   <img src="./imagenes/07/073/gifs/014G.gif"/>
-  <figcaption>Acceso a Programas y características.</figcaption>
+  <figcaption><b>Figura 1:</b> Acceso a Programas y características.</figcaption>
 </figure>
 
 <ol start="2">
@@ -940,7 +968,7 @@
 </ul>
 <figure>
   <img src="./imagenes/07/073/gifs/015G.gif"/>
-  <figcaption>Marcado NFS y Herramientas administrativas.</figcaption>
+  <figcaption><b>Figura 2:</b> Marcado NFS y Herramientas administrativas.</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -948,6 +976,75 @@
 <p>Después de este paso se queda instalado NFS en el cliente.</p>
 </div>
 <h2 id="acceso-puntual-a-la-carpeta-compartida">Acceso puntual a la carpeta compartida<a class="headerlink" href="#acceso-puntual-a-la-carpeta-compartida" title="Permanent link">&para;</a></h2>
+<p>Para acceder a los datos compartidos por el servidor NFS de un modo esporádico, se puede abriendo una nueva ventana del explorador de archivos y, en su barra de direcciones, escribir la dirección IP del servidor precedida de dos barras inclinadas (\). En este caso:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="se">\\</span><span class="m">192</span>.168.2.4
+</code></pre></div>
+<figure>
+  <img src="./imagenes/07/073/gifs/016G.gif"/>
+  <figcaption><b>Figura 3:</b> Acceso a las carpetas compartidas de  NFS de forma esporádica.</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<ul>
+<li>Si existen problemas de acceso se puede revisar:</li>
+<li>Permisos carpetas superiores a la /compartida, configurar a 755, son los predeterminados del NFS nativo de Windows.</li>
+<li>añadir la ruta completa de /compartida si esta configurada en /etc/exports con la virgulilla.</li>
+</ul>
+</div>
+<h2 id="montar-las-carpetas-nfs-automaticamente-durante-el-inicio-de-windows">Montar las carpetas NFS automáticamente durante el inicio de Windows<a class="headerlink" href="#montar-las-carpetas-nfs-automaticamente-durante-el-inicio-de-windows" title="Permanent link">&para;</a></h2>
+<p>El sistema operativo Windows dispone de una carpeta especial, llamada Inicio, donde se pueden incluir archivos para que se ejecuten durante el arranque del equipo.</p>
+<ol>
+<li>Para abrirla, se usa la combinación de teclas <code>Windows + R</code> o escribir en la barra de búsqueda ejecutar, para obtener la ventana Ejecutar. En ella, se escribe la siguiente orden:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>shell:startup
+</code></pre></div>
+<ol start="2">
+<li>
+<p>Al hacerlo, se abrirá el Explorador de archivos, mostrando el contenido de la carpeta Inicio. Interesa que se muestren las extensiones de los archivos, a continuación se hace clic sobre el menú <code>Vista</code>, y se debe marcar la opción de <code>Mostrar extensiones de los archivos</code></p>
+</li>
+<li>
+<p>A continuación, clic con el botón derecho del ratón, sobre cualquier espacio libre de la ventana, para crear un nuevo archivo de texto con el nombre <code>nfs.bat</code>.</p>
+</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/073/gifs/017G.gif"/>
+  <figcaption><b>Figura 4:</b> Creación <b>nfs.bat</b> en carpeta <b>Inicio</b></figcaption>
+</figure>
+
+<ol start="4">
+<li>
+<p>Se edita el archivo para darle contenido. Se hace clic, con el botón derecho del ratón, sobre su nombre y en el menú de contexto que aparece, hacemos clic sobre la opción Editar.</p>
+</li>
+<li>
+<p>El resultado será una nueva ventana del <code>Bloc de notas</code>, con su espacio de trabajo completamente limpio. En él, se escribe lo siguiente:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mount -o anon <span class="m">192</span>.168.2.4:/home/sor/compartida N:
+</code></pre></div>
+<ul>
+<li>
+<p>Donde:</p>
+</li>
+<li>
+<p>El argumento -o anon hará que la carpeta se monte usando un usuario anónimo.</p>
+</li>
+<li>
+<p>A continuación, se incluye la dirección IP del servidor y la ruta de la carpeta compartida.</p>
+</li>
+<li>
+<p>Por último, se incluye la letra de unidad que usará Windows para referirse a la carpeta.</p>
+</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/073/gifs/018G.gif"/>
+  <figcaption><b>Figura 5:</b> Edición <b>nfs.bat</b></figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Por último solo quedaría comprobar tras el reinicio que se monta automáticamente la carpeta compartida.</p>
+</div>
 
 
 

@@ -15,7 +15,7 @@
     
     
       
-        <title>INSTALACIÓN Y CONFIGURACIÓN DE NFS EN CLIENTE LUBUNTU - Administración de Sistemas Operativos</title>
+        <title>INSTALACIÓN Y CONFIGURACIÓN DE NFS EN CLIENTE UBUNTU Y WINDOWS 10 - Administración de Sistemas Operativos</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#instalacion-y-configuracion-de-nfs-en-cliente-lubuntu" class="md-skip">
+        <a href="#instalacion-y-configuracion-de-nfs-en-cliente-ubuntu-y-windows-10" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              INSTALACIÓN Y CONFIGURACIÓN DE NFS EN CLIENTE LUBUNTU
+              INSTALACIÓN Y CONFIGURACIÓN DE NFS EN CLIENTE UBUNTU Y WINDOWS 10
             
           </span>
         </div>
@@ -852,6 +852,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_7">
@@ -894,6 +896,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="063_DockerIntroNextCloud.html" class="md-nav__link">
+        6.3- Docker Introducción y NextCloud
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -915,9 +931,23 @@
                   
 
 
-<h1 id="instalacion-y-configuracion-de-nfs-en-cliente-lubuntu">INSTALACIÓN Y CONFIGURACIÓN DE NFS EN CLIENTE LUBUNTU<a class="headerlink" href="#instalacion-y-configuracion-de-nfs-en-cliente-lubuntu" title="Permanent link">&para;</a></h1>
+<h1 id="instalacion-y-configuracion-de-nfs-en-cliente-ubuntu-y-windows-10">INSTALACIÓN Y CONFIGURACIÓN DE NFS EN CLIENTE UBUNTU Y WINDOWS 10<a class="headerlink" href="#instalacion-y-configuracion-de-nfs-en-cliente-ubuntu-y-windows-10" title="Permanent link">&para;</a></h1>
 <h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
 <p>En esta práctica se realiza la instalación y configuración de NFS en un cliente Lubuntu con el objetivo de acceder a la carpeta compartida en el servidor NFS.</p>
+<h2 id="entrega">Entrega<a class="headerlink" href="#entrega" title="Permanent link">&para;</a></h2>
+<p>En esta práctica se debe entregar un breve informe en <strong>pdf</strong>, en el "moodle", con capturas explicativas de:</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Las capturas deben ser realizadas del servidor ubuntu 22.04, pero de los resultados ejecutados desde una carpeta personal de un usuario creado por el alumnado, es decir, desde <code>/home/NombreAlumna</code> o <code>/home/NombreAlumno</code>.</p>
+</div>
+<ul>
+<li><strong>Figura 3:</strong> Creación carpeta en "UbuntuClient".</li>
+<li><strong>Figura 4:</strong> Cambio de permisos en las carpetas compartidas.</li>
+<li><strong>Figura 5:</strong> Montaje de las carpetas y comprobación.</li>
+<li><strong>Figura 7:</strong> Configuración automática de montaje de carpetas en fstab.</li>
+<li><strong>Figura 9:</strong> Instalación NFS en "WindowsClient".</li>
+<li><strong>Figura 10:</strong> Acceso a las carpetas compartidas de NFS.</li>
+</ul>
 <h2 id="instalacion-de-nfs-en-cliente-lubuntu">Instalación de NFS en Cliente Lubuntu<a class="headerlink" href="#instalacion-de-nfs-en-cliente-lubuntu" title="Permanent link">&para;</a></h2>
 <p>Los siguiente pasos muestran los comandos a realizar para instalar NFS en un cliente.</p>
 <ol>
@@ -927,7 +957,7 @@
 </code></pre></div>
 <figure>
   <img src="./imagenes/07/073/gifs/007G.gif"/>
-  <figcaption>Actualización Lubuntu.</figcaption>
+  <figcaption><b>Figura 1:</b> Actualización Lubuntu.</figcaption>
 </figure>
 
 <ol start="2">
@@ -937,7 +967,7 @@
 </code></pre></div>
 <figure>
   <img src="./imagenes/07/073/gifs/008G.gif"/>
-  <figcaption>Instalación NFS en Lubuntu.</figcaption>
+  <figcaption><b>Figura 2:</b> Instalación NFS en Lubuntu.</figcaption>
 </figure>
 
 <h2 id="acceder-a-la-carpeta-compartida-en-el-servidor-nfs-desde-un-cliente-lubuntu">Acceder a la carpeta compartida en el servidor NFS desde un cliente Lubuntu<a class="headerlink" href="#acceder-a-la-carpeta-compartida-en-el-servidor-nfs-desde-un-cliente-lubuntu" title="Permanent link">&para;</a></h2>
@@ -964,7 +994,7 @@
 </code></pre></div>
 <figure>
   <img src="./imagenes/07/073/gifs/009G.gif"/>
-  <figcaption>Creación carpeta en Lubuntu.</figcaption>
+  <figcaption><b>Figura 3:</b> Creación carpeta en Lubuntu.</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -982,7 +1012,7 @@
 </code></pre></div>
 <figure>
   <img src="./imagenes/07/073/gifs/010G.gif"/>
-  <figcaption>Cambio de permisos en las carpetas.</figcaption>
+  <figcaption><b>Figura 4:</b> Cambio de permisos en las carpetas.</figcaption>
 </figure>
 
 <h2 id="montaje-para-las-carpetas-compartidas">Montaje para las carpetas compartidas<a class="headerlink" href="#montaje-para-las-carpetas-compartidas" title="Permanent link">&para;</a></h2>
@@ -995,7 +1025,7 @@
 </code></pre></div>
 <figure>
   <img src="./imagenes/07/073/gifs/011G.gif"/>
-  <figcaption>Montaje de las carpetas y comprobación.</figcaption>
+  <figcaption><b>Figura 5:</b> Montaje de las carpetas y comprobación.</figcaption>
 </figure>
 
 <h2 id="crear-archivos-en-las-carpetas-compartidas">Crear archivos en las carpetas compartidas<a class="headerlink" href="#crear-archivos-en-las-carpetas-compartidas" title="Permanent link">&para;</a></h2>
@@ -1005,7 +1035,7 @@
 </code></pre></div>
 <figure>
   <img src="./imagenes/07/073/gifs/012G.gif"/>
-  <figcaption>Crear archivos y comprobación.</figcaption>
+  <figcaption><b>Figura 6:</b> Crear archivos y comprobación.</figcaption>
 </figure>
 
 <h2 id="montar-automaticamente-las-carpetas-compartidas-al-iniciar-el-cliente">Montar automáticamente las carpetas compartidas al iniciar el cliente<a class="headerlink" href="#montar-automaticamente-las-carpetas-compartidas-al-iniciar-el-cliente" title="Permanent link">&para;</a></h2>
@@ -1040,12 +1070,59 @@
 </code></pre></div>
 <figure>
   <img src="./imagenes/07/073/gifs/013G.gif"/>
-  <figcaption>Crear archivos y comprobación.</figcaption>
+  <figcaption><b>Figura 7:</b> Configuración automática de montaje de carpetas en fstab.</figcaption>
 </figure>
 
 <div class="admonition tip">
-<p class="admonition-title">Consejo</p>
+<p class="admonition-title">Comprobación</p>
 <p>Por último solo quedaría comprobar tras el reinicio que se monta automáticamente la carpeta compartida.</p>
+</div>
+<h2 id="instalacion-nfs-en-windows-10">Instalación NFS en Windows 10<a class="headerlink" href="#instalacion-nfs-en-windows-10" title="Permanent link">&para;</a></h2>
+<p>A continuación se muestran los pasos para la instalación:</p>
+<ol>
+<li>Se debe acceder al <strong>Panel de control</strong> &#8594; <strong>Programas y características</strong>.</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/073/gifs/014G.gif"/>
+  <figcaption><b>Figura 8:</b> Acceso a Programas y características.</figcaption>
+</figure>
+
+<ol start="2">
+<li>A continuación se hace clic sobre el enlace <strong>Activar o desactivar las características de Windows</strong>, en el panel izquierdo de la ventana.</li>
+</ol>
+<ul>
+<li>
+<p>De este modo, se consigue que se abra una nueva ventana, en este caso, titulada <strong>Características de Windows</strong>. En ella, se debe desplazar hacia abajo, hasta encontrar una categoría titulada Servicios para NFS.</p>
+</li>
+<li>
+<p>Una vez localizada, se despliega para mostrar su contenido y, en su interior, se debe marcar las opciones Cliente para <strong>NFS</strong> y <strong>Herramientas administrativas</strong>.</p>
+</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/073/gifs/015G.gif"/>
+  <figcaption><b>Figura 9:</b> Marcado NFS y Herramientas administrativas.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Después de este paso se queda instalado NFS en el cliente.</p>
+</div>
+<h2 id="acceso-desde-w10-a-la-carpeta-compartida-del-servidor-nfs">Acceso desde W10 a la carpeta compartida del servidor NFS<a class="headerlink" href="#acceso-desde-w10-a-la-carpeta-compartida-del-servidor-nfs" title="Permanent link">&para;</a></h2>
+<p>Para acceder a los datos compartidos por el servidor NFS de un modo esporádico, se puede abriendo una nueva ventana del explorador de archivos y, en su barra de direcciones, escribir la dirección IP del servidor precedida de dos barras inclinadas (\). En este caso:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="se">\\</span><span class="m">192</span>.168.2.4
+</code></pre></div>
+<figure>
+  <img src="./imagenes/07/073/gifs/016G.gif"/>
+  <figcaption><b>Figura 10:</b> Acceso a las carpetas compartidas de  NFS de forma esporádica.</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<ul>
+<li>Si existen problemas de acceso se puede revisar:</li>
+<li>Permisos carpetas superiores a la /compartida, configurar a 755, son los predeterminados del NFS nativo de Windows.</li>
+<li>Añadir la ruta completa de /compartida si esta configurada en /etc/exports con la virgulilla.</li>
+</ul>
 </div>
 
 
