@@ -15,7 +15,7 @@
     
     
       
-        <title>UD1 PRÁCTICA NEXTCLOUD-DOCKER SOLUCIÓN - Administración de Sistemas Operativos</title>
+        <title>PRÁCTICA NEXTCLOUD-DOCKER SOLUCIÓN - Administración de Sistemas Operativos</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ud1-practica-nextcloud-docker-solucion" class="md-skip">
+        <a href="#practica-nextcloud-docker-solucion" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              UD1 PRÁCTICA NEXTCLOUD-DOCKER SOLUCIÓN
+              PRÁCTICA NEXTCLOUD-DOCKER SOLUCIÓN
             
           </span>
         </div>
@@ -856,6 +856,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_7">
@@ -926,6 +928,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="065_Samba.html" class="md-nav__link">
+        6.5- Samba
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -947,39 +963,8 @@
                   
 
 
-<h1 id="ud1-practica-nextcloud-docker-solucion">UD1 PRÁCTICA NEXTCLOUD-DOCKER SOLUCIÓN<a class="headerlink" href="#ud1-practica-nextcloud-docker-solucion" title="Permanent link">&para;</a></h1>
-<h2 id="enunciado">Enunciado<a class="headerlink" href="#enunciado" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Estamos trabajando en una empresa maravillosa y tienen la necesidad de compartir recursos (carpetas documentos, imágenes...), tanto entre las personas dentro de la empresa como con clientes fuera de ésta.</li>
-<li>Para haceros valer dentro de la empresa indicáis que podéis montar un servidor <strong>NextCloud</strong> en unos pocos minutos para solventar dicho problema.</li>
-<li>La empresa cuenta con un equipo Linux que hace de servidor, decidís hacer uso de <strong>docker</strong> para levantar el servicio NextCloud de una forma muy rápida y sencilla.</li>
-</ul>
-<h2 id="premisas">Premisas<a class="headerlink" href="#premisas" title="Permanent link">&para;</a></h2>
-<ul>
-<li>El servicio docker se debe levantar en la red <strong>192.168.20.0/24</strong>.</li>
-<li>Debe tener la traducción estática del puerto <strong>80</strong> de la máquina anfitriona al puerto <strong>80</strong> del contenedor.</li>
-<li>Debe tener un volumen asociado llamado <strong>"volNextCloud"</strong>.</li>
-</ul>
-<h2 id="investiga">Investiga<a class="headerlink" href="#investiga" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Crea el contenedor Nextcloud ¿Al crear el contenedor se ha generado automáticamente algún volumen? ¿Cuál?</li>
-<li>Dentro del sistema anfitrión (lliurex/Windows) ¿Dónde está guardado el fichero subido previamente?</li>
-<li>¿Este contenedor es persistente? ¿Qué significa que el contenedor es persistente? ¿Cómo lo has comprobado?</li>
-</ul>
-<h2 id="pruebas">Pruebas<a class="headerlink" href="#pruebas" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Sube un fichero de prueba, comprueba si está en la carpeta volumen creada. En caso de no estar:</li>
-<li>Prueba a subir un fichero a la plataforma NextCloud. Acto seguido dentro del contenedor busca en que directorio se ha guardado dicho fichero.</li>
-</ul>
-<h2 id="ayuda">Ayuda<a class="headerlink" href="#ayuda" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Página oficial para la Instalación en ubuntu en el siguiente enlace <a href="https://docs.docker.com/engine/install/ubuntu/">Instalación en Ubuntu Documentación</a></li>
-<li>Lee la documentación sobre la imagen NextCloud que hay en <a href="https://hub.docker.com/_/nextcloud">Dockerhub Nextcloud_Docker</a>.</li>
-</ul>
-<div style="page-break-before:always;"></div>
-
-<h2 id="solucion-propuesta">Solución propuesta<a class="headerlink" href="#solucion-propuesta" title="Permanent link">&para;</a></h2>
-<h3 id="instalacion-docker">Instalación Docker<a class="headerlink" href="#instalacion-docker" title="Permanent link">&para;</a></h3>
+<h1 id="practica-nextcloud-docker-solucion">PRÁCTICA NEXTCLOUD-DOCKER SOLUCIÓN<a class="headerlink" href="#practica-nextcloud-docker-solucion" title="Permanent link">&para;</a></h1>
+<h2 id="instalacion-docker">Instalación Docker<a class="headerlink" href="#instalacion-docker" title="Permanent link">&para;</a></h2>
 <p>Se realiza la instalación de Docker en una máquina virtual de Ubuntu 22.04 siguiendo el método <a href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository">Install using the repository</a></p>
 <ol>
 <li>Se realiza un actualización y se instalan los paquetes necesarios para usar el repositorio sobre HTTPS:</li>
@@ -1172,7 +1157,7 @@
 
 <div style="page-break-before:always;"></div>
 
-<h3 id="comprobacion">Comprobación<a class="headerlink" href="#comprobacion" title="Permanent link">&para;</a></h3>
+<h3 id="comprobacion-nextcloud-con-volumen-persistente">Comprobación NextCloud con volumen persistente<a class="headerlink" href="#comprobacion-nextcloud-con-volumen-persistente" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Se sube un fichero como el caso anterior.</li>
 </ol>
@@ -1201,7 +1186,7 @@
 
 <h2 id="network">Network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Este apartado se comentó en clase que se podía dejar sin realizar. Pero como se observa en el código del ejercicio anterior en el mismo comando se ha estado introduciendo la IP del enunciado. Para que dicha IP se refleje en el contenedor además debe existir una red creada previamente y apuntar a ella. en los siguientes pasos se muestra.</li>
+<li>Se observa en el código del apartado anterior en el mismo comando se ha estado introduciendo la IP del enunciado. Para que dicha IP se refleje en el contenedor además debe existir una red creada previamente y apuntar a ella. en los siguientes pasos se muestra.</li>
 </ul>
 <ol>
 <li>Crear red:</li>
@@ -1220,7 +1205,7 @@
 </ol>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker inspect -f <span class="s1">&#39;{{range.NetworkSettings.Networks}} {{.IPAddress}}{{end}}&#39;</span> CONTAINER_ID
 </code></pre></div>
-<h3 id="comprobacion_1">Comprobación<a class="headerlink" href="#comprobacion_1" title="Permanent link">&para;</a></h3>
+<h3 id="comprobacion-ip">Comprobación IP<a class="headerlink" href="#comprobacion-ip" title="Permanent link">&para;</a></h3>
 <ul>
 <li>En la siguiente figura se muestra la comprobación de la red y la IP del contenedor:</li>
 </ul>
