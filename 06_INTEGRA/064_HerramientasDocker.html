@@ -860,6 +860,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_7">
@@ -1004,8 +1006,22 @@
   
   
     <li class="md-nav__item">
-      <a href="065_Samba.html" class="md-nav__link">
-        6.5- Samba
+      <a href="065_IntroSamba.html" class="md-nav__link">
+        6.5- Introducción Samba
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="066_SambaSecUsers.html" class="md-nav__link">
+        6.6- Secciones y Usuarios Samba
       </a>
     </li>
   
@@ -1204,7 +1220,14 @@
 <ul>
 <li>Crea un contenedor con el servicio de NFS. Adjunta captura con el contenedor corriendo.</li>
 <li>Monta la carpeta compartida de forma automática en un cliente. Adjunta capturas de los pasos a realizar.</li>
-<li>Crea un archivo de texto de prueba, entra al contenedor y confirma que se ha creado.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Montar la carpeta desde el raíz del servidor a cualquier carpeta.</p>
+</div>
+<p>¿Por qué se puede montar la carpeta desde la raíz del servidor? Te puedes apoyar en las notas de la imagen de NFS para contestar. Imagen en el siguiente enlace: <a href="https://hub.docker.com/r/itsthenetwork/nfs-server-alpine">itsthenetwork/nfs-server-alpine</a></p>
+<ul>
+<li>Crea un archivo de texto de prueba, entra al contenedor o servidor y confirma que se ha creado.</li>
 <li>
 <p>¿Qué pasa si paras y destruyes el contenedor? ¿Cómo se podría solucionar?.</p>
 </li>
@@ -1227,6 +1250,9 @@
 <span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
 <span class="linenos" data-linenos="14 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2049:2049</span><span class="w"></span>
 </code></pre></div>
+<!-- ## Soluciones
+
+[Solución Práctica NFS-DockerCompose](NFSDockerComposeSolucion.md) -->
 
 
 
@@ -1263,13 +1289,13 @@
       
       
         
-        <a href="065_Samba.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 6.5- Samba" rel="next">
+        <a href="065_IntroSamba.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 6.5- Introducción Samba" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Siguiente
               </span>
-              6.5- Samba
+              6.5- Introducción Samba
             </div>
           </div>
           <div class="md-footer__button md-icon">

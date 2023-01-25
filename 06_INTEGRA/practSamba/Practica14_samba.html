@@ -858,6 +858,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_7">
@@ -934,8 +936,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../065_Samba.html" class="md-nav__link">
-        6.5- Samba
+      <a href="../065_IntroSamba.html" class="md-nav__link">
+        6.5- Introducción Samba
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../066_SambaSecUsers.html" class="md-nav__link">
+        6.6- Secciones y Usuarios Samba
       </a>
     </li>
   
@@ -967,7 +983,7 @@
 <h2 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo apt install samba</span><span class="w"></span>
 </code></pre></div>
-<h2 id="configuracion">Configuración<a class="headerlink" href="#configuracion" title="Permanent link">&para;</a></h2>
+<h2 id="configuracion-de-carpetas-compartidas">Configuración de carpetas compartidas<a class="headerlink" href="#configuracion-de-carpetas-compartidas" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Editamos el fichero de configuración: <code>/etc/samba/smb.conf</code></p>
@@ -1015,7 +1031,35 @@
 <li>Es importante comprender que tenemos dos niveles de seguridad. El establecido por el fichero de configuración samba y los propios permisos del directorio compartido.</li>
 </ul>
 </div>
-<h2 id="acceso-desde-windows">Acceso desde Windows:<a class="headerlink" href="#acceso-desde-windows" title="Permanent link">&para;</a></h2>
+<h1 id="integracion-de-permisos">Integración de permisos<a class="headerlink" href="#integracion-de-permisos" title="Permanent link">&para;</a></h1>
+<p>La gestión de grupos y permisos de usuarios y grupos es sustancialmente diferente en Sistemas Unix y en Sistemas Microsoft Windows.</p>
+<ul>
+<li>
+<p>En los <strong><em>Sistemas Unix</em></strong>, la gestión de los permisos que los usuarios y los grupos de usuarios tienen sobre los archivos se realiza mediante un sencillo esquema de tres tipos de permisos (lectura, escritura y ejecución) aplicables a tres tipos de usuarios (propietario, grupo propietario y resto). Este sencillo esquema se desarrolló en los <strong>años 70</strong> y <strong>aún hoy resulta adecuado</strong> para la gran mayoría de los sistemas en red que podamos encontrar en cualquier tipo de organización, desde pequeñas redes a las más grandes. Es cierto que tiene algunas limitaciones pero la ventaja de ser sencillo hace que su administración sea fácil y su rendimiento muy elevado.</p>
+</li>
+<li>
+<p>En los <strong><em>Sistemas Microsoft Windows</em></strong>, la gestión de los permisos que los usuarios y los grupos de usuarios tienen sobre los archivos, se realiza mediante un complejo esquema de listas de control de acceso <strong>(ACLs = Access Control Lists)</strong> para cada carpeta y cada archivo. El sistema de ACLs tiene la <strong>ventaja de ser mucho más flexible que el sistema Unix ya que se pueden establecer más tipos de permisos</strong>, establecer permisos solo a algunos usuarios y algunos grupos, denegar permisos, etc..., pero como hemos comentado anteriormente, <strong>en la mayoría de los casos, con las prestaciones del Sistema Unix es suficiente</strong>. En el lado contrario, el sistema de <strong>ACLs es más complejo de administrar</strong> y más lento ya que antes de acceder a las carpetas o archivos, el sistema debe comprobar listas mientras que en Unix hace una operación lógica de los bits que especifican los permisos lo cual es muchísimo más rápido.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<ul>
+<li><strong>Samba</strong> tiene también implementado el sistema de ACLs y se gestiona utilizando el comando <code>smbcacls</code>, no obstante, <strong>la recomendación es utilizar el sistema de gestión de permisos de Unix. Aunque existan carpetas compartidas con samba, en última estancia imperan los permisos de Unix</strong>. </li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Por ejemplo, si tenemos compartida una carpeta llamada <code>profesores</code> con permisos de escritura para el <strong>grupo profesores</strong>, todos los usuarios que pertenezcan al <strong>grupo profesores</strong> podrán realizar cambios en la carpeta, pero si dentro de dicha carpeta existe otra llamada 'confidencial' sobre la cual no tiene permiso para entrar el <strong>grupo profesores</strong>, ningún profesor podrá ver su contenido aunque esté dentro de una carpeta compartida.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">consejo</p>
+<p>Para realizar una gestión eficaz de usuarios, grupos y permisos, <strong>se recomienda utilizar los permisos de Unix que permiten asignar permisos de lectura, escritura y ejecución</strong> al usuario propietario del archivo, al grupo propietario del archivo y al resto de usuarios del sistema.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">advertencia</p>
+<p>Puede ocurrir que exista contradicción entre los permisos del sistema Unix y los permisos del recurso compartido en samba, por ejemplo, podemos tener una carpeta compartida llamada almacen-software con permisos Unix de lectura, escritura y ejecución para todos, en cambio si en el archivo de configuración de samba, dicho recurso tiene el parámetro read only = yes, no será posible realizar cambios ya que está compartido con permiso de 'solo lectura'. Cuando los permisos Unix se contradicen con los permisos samba, el permiso efectivo es el más restrictivo de los dos.</p>
+</div>
+<h2 id="acceso-desde-cliente-windows">Acceso desde Cliente Windows<a class="headerlink" href="#acceso-desde-cliente-windows" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Abrimos un explorador de directorios.</li>
 <li>Seleccionamos Red (Network)</li>
