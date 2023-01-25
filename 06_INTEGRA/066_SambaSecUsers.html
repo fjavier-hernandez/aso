@@ -1014,8 +1014,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#smbpasswd1" class="md-nav__link">
-    smbpasswd1.
+  <a href="#creacion-de-un-usuario-de-samba-con-smbpasswd" class="md-nav__link">
+    Creación de un usuario de samba con smbpasswd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eliminar-un-usuario-de-samba" class="md-nav__link">
+    Eliminar un usuario de samba
   </a>
   
 </li>
@@ -1109,8 +1116,8 @@
 <ul>
 <li><code>[global]</code>: Es la sección principal que nos permite configurar los parámetros generales del servicio. Las opciones especificadas aquí afectan a cualquier recurso compartido. </li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
 <p>A tener en cuenta, si una misma opción se declara en la sección global y en otra sección, por ejemplo una carpeta compartida con el nombre <code>ejercicio1</code>, tendrá mayor peso la de la sección más específica, es decir, la especificada en la sección llamada <code>ejercicio1</code>.</p>
 </div>
 <ul>
@@ -1212,8 +1219,7 @@
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">hosts allow = 127.0.0.1 192.168.2.0/24 192.168.3.0/24</span><span class="w"></span>
 <span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">hosts deny = 127.0.0.1 192.168.2.0/24 192.168.3.0/24</span><span class="w"></span>
 </code></pre></div>
-<!-- **El que cuenta es el primero que coincida, por tanto sí permitiría el acceso.** -->
-
+<p><strong>El que cuenta es el primero que coincida, por tanto sí permitiría el acceso.</strong></p>
 <ol start="2">
 <li>En la sección <code>[homes]</code> se muestra el siguiente ejemplo:</li>
 </ol>
@@ -1242,34 +1248,39 @@
 <span class="linenos" data-linenos="4 "></span>    min print <span class="nv">space</span> <span class="o">=</span> <span class="m">2000</span>
 </code></pre></div>
 <h2 id="usuarios">Usuarios<a class="headerlink" href="#usuarios" title="Permanent link">&para;</a></h2>
-<p>Para que esa administración sea posible, samba dispone de su propia base de datos de 'usuarios samba' pero como los usuarios utilizan otros recursos del servidor como carpetas e impresoras, es necesario que estén creados en el sistema Unix. Resumiendo, podemos decir que <strong>para poder ser usuario de samba, es necesario disponer de una cuenta de usuario en Unix y de una cuenta de usuario en samba</strong>.</p>
+<ul>
+<li>
+<p>Para que esa administración sea posible, <strong>Samba</strong> dispone de su propia base de datos de <code>usuarios samba</code> pero como los usuarios utilizan otros recursos del servidor como carpetas e impresoras, es necesario que estén creados en el sistema Unix.</p>
+</li>
+<li>
+<p>Resumiendo, podemos decir que <strong>para poder ser usuario de samba, es necesario disponer de una cuenta de usuario en Unix y de una cuenta de usuario en samba</strong>.</p>
+</li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title">Gestión usuarios</p>
 <ul>
 <li>La gestión de usuarios de samba se puede realizar de dos formas: </li>
 <li>con el comando <code>smbpasswd</code>. Con dicho comando, entre otras cosas podremos crear y eliminar usuarios, cambiar su contraseña, etc.</li>
-<li>Con herramientas/comandos de <code>samba-utils</code> a través de los comandos <strong>samba-tool user</strong> y <strong>samba-tool group</strong>.</li>
+<li>A través de los comandos <strong>samba-tool user</strong> y <strong>samba-tool group</strong>.</li>
 </ul>
 </div>
 <ul>
-<li>Inicialmente se van a describir con la primera opción.</li>
+<li>Inicialmente se van a realizar con la primera opción.</li>
 </ul>
-<h3 id="smbpasswd1">smbpasswd1.<a class="headerlink" href="#smbpasswd1" title="Permanent link">&para;</a></h3>
-<p>Creación de un usuario de samba</p>
-<p>Para crear un usuario de samba debemos utilizar el comando <code>smbpasswd</code>, pero antes debemos haber creado el usuario en Unix. </p>
+<h3 id="creacion-de-un-usuario-de-samba-con-smbpasswd">Creación de un usuario de samba con smbpasswd<a class="headerlink" href="#creacion-de-un-usuario-de-samba-con-smbpasswd" title="Permanent link">&para;</a></h3>
+<p>Para crear un usuario de samba se puede utilizar el comando <code>smbpasswd</code>, pero antes debemos haber creado el usuario en Unix.</p>
 <div class="admonition example">
-<p class="admonition-title">Ejemplo, supongamos que queremos crear en Unix al usuario pepe</p>
+<p class="admonition-title">Ejemplo</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Creación de un usuario en unix</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Creación del usuario pepe</span>
 <span class="linenos" data-linenos="2 "></span>sudo useradd pepe
-<span class="linenos" data-linenos="3 "></span><span class="c1"># Si deseamos que pepe pueda disfrutar de los servicios samba, debemos crear a pepe como usuario de samba ejecutando el siguiente comando:</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># Si se desea que pepe pueda disfrutar de los servicios samba, debemos crear a pepe como usuario de samba ejecutando el siguiente comando:</span>
 <span class="linenos" data-linenos="4 "></span>sudo smbpasswd -a pepe
-<span class="linenos" data-linenos="5 "></span><span class="c1">#Con la opción -a indicamos que añada al usuario. Acto seguido nos preguntará dos veces la contraseña que deseamos poner al usuario. Lo razonable es que sea la misma contraseña que tiene el usuario en Unix. </span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># Con la opción -a indicamos que añada al usuario. </span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># Acto seguido nos preguntará dos veces la contraseña que deseamos poner al usuario. Lo razonable es que sea la misma contraseña que tiene el usuario en Unix. </span>
 </code></pre></div>
-<ol start="2">
-<li>Eliminar un usuario de samba</li>
-</ol>
-<p>Para eliminar un usuario de samba debemos ejecutar smbpasswd con la opción <code>-x</code>, </p>
+<h3 id="eliminar-un-usuario-de-samba">Eliminar un usuario de samba<a class="headerlink" href="#eliminar-un-usuario-de-samba" title="Permanent link">&para;</a></h3>
+<p>Para eliminar un usuario de samba debemos ejecutar <code>smbpasswd</code> con la opción <code>-x</code>, </p>
 <div class="admonition example">
 <p class="admonition-title">Ejemplo</p>
 </div>
@@ -1282,31 +1293,43 @@
 </ol>
 <ul>
 <li><code>-d</code>: Deshabilitar un usuario</li>
-<li><code>-e</code>: Habilitar un usuario</li>
-<li><code>-n</code>: Usuario sin password. Necesita parámetro null passwords = yes en sección 'global' del archivo de configuración de samba</li>
+<li><code>-e</code>: Habilitar un usuario.</li>
 <li><code>-m</code>: Indica que es una cuenta de máquina (equipo)</li>
+<li><code>-n</code>: Usuario sin password.</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La última opción Necesita parámetro null passwords = yes en sección 'global' del archivo de configuración de samba</p>
+</div>
 <h3 id="el-usuario-invitado">El usuario Invitado<a class="headerlink" href="#el-usuario-invitado" title="Permanent link">&para;</a></h3>
 <p>Cuando accedemos como “<strong>invitado</strong>” (guest ok) por defecto accedemos como el usuario <code>nobody:nogroup</code>. Esto se puede modificar usando el siguiente parámetro:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">force user = javi</span><span class="w"></span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">force group = alumnos</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>force <span class="nv">user</span> <span class="o">=</span> javi
+<span class="linenos" data-linenos="2 "></span>force <span class="nv">group</span> <span class="o">=</span> alumnos
 </code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Opción</p>
 <p>De esta forma cuando accedamos al sistema como invitado accederemos como el usuario javi que tiene el grupo principal alumnos.</p>
+</div>
 <h3 id="restriccion-por-usuarios">Restricción por usuarios<a class="headerlink" href="#restriccion-por-usuarios" title="Permanent link">&para;</a></h3>
 <p>En caso de que no permitamos el acceso de invitados (guest ok = no) el servidor nos solicitará nuestras credenciales:</p>
 <figure>
-  <img src="./imagenes/07/072/006.png" width="650"/>
+  <img src="./imagenes/07/072/006.png" width="450"/>
 </figure>
 
-<p>Se puede restringir los usuarios que pueden tener acceso a un recurso:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">valid users = javi pepe jorge</span><span class="w"></span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">invalid users = root @profesores @root</span><span class="w"></span>
+<ul>
+<li>Por otra parte se puede restringir los usuarios que pueden tener acceso a un recurso:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>valid <span class="nv">users</span> <span class="o">=</span> javi pepe jorge
+<span class="linenos" data-linenos="2 "></span>invalid <span class="nv">users</span> <span class="o">=</span> root @profesores @root
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title"><strong>NOTA:</strong></p>
+<p class="admonition-title">Nota</p>
 <p>El <code>“@”</code> indica que se hace referencia a un grupo. Por tanto ningún usuario perteneciente al grupo root o de profesores puede acceder.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">admin users = javi</span><span class="w"></span>
+<ul>
+<li>Además se pueden crear usuarios administradores.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>admin <span class="nv">users</span> <span class="o">=</span> javi
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title"><strong>NOTA:</strong></p>
@@ -1317,20 +1340,20 @@
 <p>Si un usuario está en el listado de “valid users” y en el de “invalid users” se le deniega el acceso.</p>
 </div>
 <h3 id="autentificacion-en-samba-a-traves-de-usuarios">Autentificación en Samba a través de usuarios<a class="headerlink" href="#autentificacion-en-samba-a-traves-de-usuarios" title="Permanent link">&para;</a></h3>
-<p>Para autentificarse en samba a través de usuarios se deben cumplir 2 requisitos:</p>
+<p>Para autentificarse en <code>Samba</code> a través de usuarios se deben cumplir 2 requisitos:</p>
 <ol>
 <li>El usuario debe existir en el sistema <code>/etc/passwd</code></li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo useradd -s /bin/true “usuario”</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo useradd -s /bin/true “usuario”
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title"><strong>NOTA:</strong></p>
-<p>De esta forma no se crea el /home del usuario y no se permite el acceso al sistema si no es a través de samba. Es decir, el usuario no se podría conectar a través de ssh o localmente.</p>
+<p class="admonition-title"><strong>Nota</strong></p>
+<p>De esta forma no se crea el <code>/home</code> del usuario y no se permite el acceso al sistema si no es a través de <strong>Samba</strong>. Es decir, el usuario no se podría conectar a través de <code>ssh</code> o localmente.</p>
 </div>
 <ol start="2">
-<li>El usuario debe existir en el servicio de samba (<code>pbedit -L</code>).</li>
+<li>El usuario debe existir en el servicio de samba. Para listar los usuarios se utiliza el comando <code>pbedit -L</code>.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo smbpasswd –a “usuario”</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo smbpasswd –a “usuario”
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title"><strong>NOTA:</strong></p>
@@ -1339,7 +1362,7 @@
 <ul>
 <li><strong>Listar usuarios dados de alta en SAMBA:</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">pdbedit -L</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pdbedit -L
 </code></pre></div>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <h3 id="secciones-samba">Secciones SAMBA<a class="headerlink" href="#secciones-samba" title="Permanent link">&para;</a></h3>
@@ -1351,19 +1374,22 @@
 </ul>
 </div>
 <ol>
-<li>Haz que todos los /homes de los usuarios sean navegables, que cualquiera pueda acceder sin credenciales y que solo tengan permisos de lectura. Recuerda que también deberás tener en cuenta los permisos dentro del servidor Linux. Haz captura de la configuración realizada en smb.conf y del explorador de Windows accediendo a tu /home de Ubuntu.</li>
-<li>Cambia en el servidor, en la sección [homes], la opción read only a no. Haz una captura de los permisos de tu carpeta /home. Prueba a crear un fichero desde Windows. ¿Qué sucede y por qué?</li>
+<li>Haz que todos los <code>/homes</code> de los usuarios sean navegables, que cualquiera pueda acceder sin credenciales y que solo tengan permisos de lectura. Recuerda que también deberás tener en cuenta los permisos dentro del servidor Linux. Haz captura de la configuración realizada en <code>smb.conf</code> y del explorador de Windows accediendo a tu <code>/home</code> de Ubuntu.</li>
+<li>Cambia en el servidor, en la sección [homes], la opción read only a no. Haz una captura de los permisos de tu carpeta <code>/home</code>. Prueba a crear un fichero desde Windows. ¿Qué sucede y por qué?</li>
 <li>Indica la configuración del servicio más adecuada si quisiera permitir únicamente los equipos de la red 10.0.0.0/8  ¿Sigues teniendo acceso desde el cliente? ¿Por qué?</li>
 <li>Ahora cambia la restricción para permitir acceso únicamente a los hosts de la red en la que te encuentres.</li>
 </ol>
 <h3 id="usuarios-samba">Usuarios SAMBA<a class="headerlink" href="#usuarios-samba" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Prueba a crear un usuario con smbpasswd sin que éste exista en el sistema Linux. ¿Qué sucede? Adjunta una captura.</li>
-<li>Crea el usuario “leonardo” en el sistema linux, recuerda que dicho usuario solo debe ser capaz de acceder al sistema a través de samba. Posteriormente crealo para samba. Visualiza los usuarios de samba y fíjate en el UID asignado al usuario recién creado ¿tiene el mismo UID que en el sistema Linux (/etc/passwd)? Adjunta capturas de todo el proceso.</li>
+<ol start="5">
+<li>Prueba a crear un usuario con <code>smbpasswd</code> sin que éste exista en el sistema Linux. ¿Qué sucede? Adjunta una captura.</li>
+<li>Crea el usuario <strong>“leonardo”</strong> en el sistema linux, recuerda que dicho usuario solo debe ser capaz de acceder al sistema a través de <strong>Samba</strong>. Posteriormente créalo para <strong>Samba</strong>. Visualiza los usuarios de samba y fíjate en el <code>UID</code> asignado al usuario recién creado ¿tiene el mismo UID que en el sistema Linux (<code>/etc/passwd</code>)? Adjunta capturas de todo el proceso.</li>
 <li>Cierra la sesión actual en el servidor (exit) e intenta iniciar sesión con el usuario “leonardo” ¿Qué sucede y por qué?</li>
-<li>Edita en el servidor la sección [homes] con “force user = root”. Reinicia el servicio. Intenta crear, desde el cliente de Windows, un documento en el escritorio del /home compartido. ¿Te permite crearlo? ¿Por qué? ¿Qué permisos y usuario propietario tiene el fichero creado? Adjunta capturas a las explicaciones.</li>
-<li>Cambia la configuración en el servidor de la carpeta “/home/usuario/ejercicio2” para que no permita el acceso de invitados y solo permita al usuario “leonardo”. Muestra la configuración. Intenta acceder desde el cliente Windows con las credenciales de tu usuario (en vez de javi usa tu usuario) ¿Qué sucede? Adjunta capturas de pantalla.</li>
+<li>Edita en el servidor la sección [homes] con “force user = root”. Reinicia el servicio. Intenta crear, desde el cliente de Windows, un documento en el escritorio del <code>/home</code> compartido. ¿Te permite crearlo? ¿Por qué? ¿Qué permisos y usuario propietario tiene el fichero creado? Adjunta capturas a las explicaciones.</li>
+<li>Cambia la configuración en el servidor de la carpeta “<code>/home/usuario/ejercicio2</code>” para que no permita el acceso de invitados y solo permita al usuario <strong>“leonardo”</strong>. Muestra la configuración. Intenta acceder desde el cliente Windows con las credenciales de tu usuario ¿Qué sucede? Adjunta capturas de pantalla.</li>
 </ol>
+<!-- smb encrypt = required
+client min protocol = SMB2
+client max protocol = SMB3 -->
 
 
 

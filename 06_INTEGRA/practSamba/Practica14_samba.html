@@ -1031,33 +1031,49 @@
 <li>Es importante comprender que tenemos dos niveles de seguridad. El establecido por el fichero de configuración samba y los propios permisos del directorio compartido.</li>
 </ul>
 </div>
-<h1 id="integracion-de-permisos">Integración de permisos<a class="headerlink" href="#integracion-de-permisos" title="Permanent link">&para;</a></h1>
-<p>La gestión de grupos y permisos de usuarios y grupos es sustancialmente diferente en Sistemas Unix y en Sistemas Microsoft Windows.</p>
+<h2 id="integracion-de-permisos">Integración de permisos<a class="headerlink" href="#integracion-de-permisos" title="Permanent link">&para;</a></h2>
+<p>La gestión de permisos de usuarios y grupos es sustancialmente diferente en Sistemas Unix y en Sistemas Microsoft Windows. A continuación se describen las diferencias.</p>
+<h3 id="permisos-unix">Permisos Unix<a class="headerlink" href="#permisos-unix" title="Permanent link">&para;</a></h3>
 <ul>
-<li>
-<p>En los <strong><em>Sistemas Unix</em></strong>, la gestión de los permisos que los usuarios y los grupos de usuarios tienen sobre los archivos se realiza mediante un sencillo esquema de tres tipos de permisos (lectura, escritura y ejecución) aplicables a tres tipos de usuarios (propietario, grupo propietario y resto). Este sencillo esquema se desarrolló en los <strong>años 70</strong> y <strong>aún hoy resulta adecuado</strong> para la gran mayoría de los sistemas en red que podamos encontrar en cualquier tipo de organización, desde pequeñas redes a las más grandes. Es cierto que tiene algunas limitaciones pero la ventaja de ser sencillo hace que su administración sea fácil y su rendimiento muy elevado.</p>
-</li>
-<li>
-<p>En los <strong><em>Sistemas Microsoft Windows</em></strong>, la gestión de los permisos que los usuarios y los grupos de usuarios tienen sobre los archivos, se realiza mediante un complejo esquema de listas de control de acceso <strong>(ACLs = Access Control Lists)</strong> para cada carpeta y cada archivo. El sistema de ACLs tiene la <strong>ventaja de ser mucho más flexible que el sistema Unix ya que se pueden establecer más tipos de permisos</strong>, establecer permisos solo a algunos usuarios y algunos grupos, denegar permisos, etc..., pero como hemos comentado anteriormente, <strong>en la mayoría de los casos, con las prestaciones del Sistema Unix es suficiente</strong>. En el lado contrario, el sistema de <strong>ACLs es más complejo de administrar</strong> y más lento ya que antes de acceder a las carpetas o archivos, el sistema debe comprobar listas mientras que en Unix hace una operación lógica de los bits que especifican los permisos lo cual es muchísimo más rápido.</p>
-</li>
+<li>En los <strong><em>Sistemas Unix</em></strong>, la gestión de los permisos que los usuarios y los grupos de usuarios tienen sobre los archivos se realiza mediante un sencillo esquema de <strong>tres tipos de permisos (lectura, escritura y ejecución)</strong> aplicables a tres tipos de usuarios <strong>(propietario, grupo propietario y resto)</strong>, los cuales se denominan trios de permisos. </li>
 </ul>
+<p>En la siguiente figura se puede observar su funcionamiento:</p>
+<figure>
+  <img src="./imagenes/07/072/004B.png" width="650"/>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title">Ventajas</p>
+<ul>
+<li>Este sencillo esquema se desarrolló en los <strong>años 70</strong> y <strong>aún hoy resulta adecuado</strong> para la gran mayoría de los sistemas en red que podamos encontrar en cualquier tipo de organización, desde pequeñas redes a las más grandes.</li>
+<li>Es cierto que tiene algunas limitaciones pero la ventaja de ser sencillo hace que su <strong>administración sea fácil y su rendimiento muy elevado.</strong></li>
+</ul>
+</div>
+<h3 id="permisos-windows">Permisos Windows<a class="headerlink" href="#permisos-windows" title="Permanent link">&para;</a></h3>
+<ul>
+<li>En los <strong><em>Sistemas Microsoft Windows</em></strong>, la gestión de los permisos que los usuarios y los grupos de usuarios tienen sobre los archivos, se realiza mediante un complejo esquema de listas de control de acceso <strong>(ACLs = Access Control Lists)</strong> para cada carpeta y cada archivo. </li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Ventajas</p>
+<ul>
+<li>El sistema de ACLs tiene la <strong>ventaja de ser mucho más flexible que el sistema Unix ya que se pueden establecer más tipos de permisos</strong>, establecer permisos solo a algunos usuarios y algunos grupos, denegar permisos, etc..., pero como hemos comentado anteriormente, <strong>en la mayoría de los casos, con las prestaciones del Sistema Unix es suficiente</strong>.</li>
+</ul>
+</div>
 <div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<ul>
-<li><strong>Samba</strong> tiene también implementado el sistema de ACLs y se gestiona utilizando el comando <code>smbcacls</code>, no obstante, <strong>la recomendación es utilizar el sistema de gestión de permisos de Unix. Aunque existan carpetas compartidas con samba, en última estancia imperan los permisos de Unix</strong>. </li>
-</ul>
+<p class="admonition-title">Desventajas</p>
+<p>En el lado contrario, el sistema de <strong>ACLs es más complejo de administrar</strong> y más lento ya que antes de acceder a las carpetas o archivos, el sistema debe comprobar listas mientras que en <strong>Unix</strong> hace una operación lógica de los bits que especifican los permisos lo cual <strong>es muchísimo más rápido</strong>.</p>
 </div>
-<div class="admonition example">
-<p class="admonition-title">Ejemplo</p>
-<p>Por ejemplo, si tenemos compartida una carpeta llamada <code>profesores</code> con permisos de escritura para el <strong>grupo profesores</strong>, todos los usuarios que pertenezcan al <strong>grupo profesores</strong> podrán realizar cambios en la carpeta, pero si dentro de dicha carpeta existe otra llamada 'confidencial' sobre la cual no tiene permiso para entrar el <strong>grupo profesores</strong>, ningún profesor podrá ver su contenido aunque esté dentro de una carpeta compartida.</p>
-</div>
+<h3 id="permisos-samba">Permisos Samba<a class="headerlink" href="#permisos-samba" title="Permanent link">&para;</a></h3>
+<p><strong>Samba</strong> tiene también implementado el sistema de <strong>ACLs</strong> y se gestiona utilizando el comando <code>smbcacls</code>, no obstante, **la recomendación es utilizar el sistema de gestión de permisos de Unix.</p>
 <div class="admonition tip">
 <p class="admonition-title">consejo</p>
 <p>Para realizar una gestión eficaz de usuarios, grupos y permisos, <strong>se recomienda utilizar los permisos de Unix que permiten asignar permisos de lectura, escritura y ejecución</strong> al usuario propietario del archivo, al grupo propietario del archivo y al resto de usuarios del sistema.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">advertencia</p>
-<p>Puede ocurrir que exista contradicción entre los permisos del sistema Unix y los permisos del recurso compartido en samba, por ejemplo, podemos tener una carpeta compartida llamada almacen-software con permisos Unix de lectura, escritura y ejecución para todos, en cambio si en el archivo de configuración de samba, dicho recurso tiene el parámetro read only = yes, no será posible realizar cambios ya que está compartido con permiso de 'solo lectura'. Cuando los permisos Unix se contradicen con los permisos samba, el permiso efectivo es el más restrictivo de los dos.</p>
+<ul>
+<li>Puede ocurrir que exista contradicción entre los permisos del sistema Unix y los permisos del recurso compartido en samba, por ejemplo, podemos tener una carpeta compartida llamada almacen-software con permisos Unix de lectura, escritura y ejecución para todos, en cambio si en el archivo de configuración de samba, dicho recurso tiene el parámetro read only = yes, no será posible realizar cambios ya que está compartido con permiso de 'solo lectura'. - Cuando los permisos Unix se contradicen con los permisos samba, <strong>el permiso efectivo es el más restrictivo de los dos</strong>.</li>
+</ul>
 </div>
 <h2 id="acceso-desde-cliente-windows">Acceso desde Cliente Windows<a class="headerlink" href="#acceso-desde-cliente-windows" title="Permanent link">&para;</a></h2>
 <ol>
