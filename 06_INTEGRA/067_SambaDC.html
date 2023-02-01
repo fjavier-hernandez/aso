@@ -1015,6 +1015,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#instalacion-samba-dc" class="md-nav__link">
+    Instalación Samba-DC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-samba-dc" class="md-nav__link">
+    Configuración Samba-DC
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1052,11 +1066,14 @@
 
 <p>Los objetivos de esta sección son:</p>
 <ul>
+<li>Preparación del servidor.</li>
 <li>Instalar el Controlador de Dominio en Samba.</li>
-<li>Crear clientes de windows.</li>
-<li>Configurar los recursos compartidos.</li>
+<li>Acceder y Crear clientes de windows.</li>
 <li>Activar la aplicación de gestión RSAT.</li>
 </ul>
+<!-- - Configurar los recursos compartidos. -->
+
+<p><a href="https://wiki.samba.org/index.php/Setting_up_Samba_as_an_Active_Directory_Domain_Controller#Provisioning_Samba_AD_in_Interactive_Mode">Webgrafía</a></p>
 <h2 id="recordatorio-controlador-de-dominio-dc">Recordatorio Controlador de Dominio (DC).<a class="headerlink" href="#recordatorio-controlador-de-dominio-dc" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Es un <strong>servidor</strong> que se ocupa de permitir el acceso de determinados usuarios a recursos compartidos del dominio.</li>
@@ -1080,13 +1097,19 @@ servicio DNS permite la resolución de ese nombre de dominio al direccionamiento
 <h2 id="preparacion">Preparación<a class="headerlink" href="#preparacion" title="Permanent link">&para;</a></h2>
 <p>Antes de la instalación del <strong>Controlador de Dominio o Domain Controler DC</strong> mediante <code>Samba</code>, es necesaria, la preparación del servidor a nivel de red y dominio. Para ello se detallan los siguientes pasos:</p>
 <ol>
-<li>Restaura un <strong>snapshot</strong> "limpio" de tu máquina virtual de <code>Ubuntu 22.04</code>.</li>
+<li>Restaura un <strong>snapshot</strong> "limpio" de tu máquina virtual de <code>Ubuntu 22.04</code> y se realiza un update.</li>
+</ol>
+<figure>
+  <img src="./imagenes/067/000G.gif"/>
+  <figcaption>Comprobación versión Ubuntu.</figcaption>
+</figure>
+
+<ol start="2">
 <li>Configura la máquina virtual en formato “<strong>Nat Network</strong>”.</li>
-<li>Establecemos una configuración de red para tu servidor.<ol>
-<li>Se establece una IP estática en el servidor del rango configurado en la red NAT, en este caso se realiza editando el fichero <code>nano /etc/netplan/00-installer-config.yaml</code> de la siguiente forma:</li>
 </ol>
-</li>
-</ol>
+<!-- 3. Establecemos una configuración de red para tu servidor.
+    1. Se establece una IP estática en el servidor del rango configurado en la red NAT, en este caso se realiza editando el fichero `nano /etc/netplan/00-installer-config.yaml` de la siguiente forma:
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># This is the network config written by &#39;subiquity&#39;</span>
 <span class="linenos" data-linenos=" 2 "></span>network:
 <span class="linenos" data-linenos=" 3 "></span>  ethernets:
@@ -1102,35 +1125,31 @@ servicio DNS permite la resolución de ese nombre de dominio al direccionamiento
 <span class="linenos" data-linenos="13 "></span>          via: <span class="m">192</span>.168.2.1
 <span class="linenos" data-linenos="14 "></span>  version: <span class="m">2</span>
 </code></pre></div>
+
 <figure>
   <img src="./imagenes/067/002P.png"/>
   <figcaption>Configuración de IP estática en Red NAT.</figcaption>
 </figure>
 
-<div class="admonition tip">
-<p class="admonition-title">A tener en cuenta</p>
-<ul>
-<li>En la configuración del archivo de red se crea un parámetro denominado <code>search</code>, el cual se configura para realizar un <strong>dominio de búsqueda</strong> (<strong>Search Domain</strong>), el cual nos va a permitir que si el servidor recibe una búsqueda de petición de un recurso, por ejemplo “maquina03”, automáticamente el servidor va intentar buscar por el nombre de dominio completo: “maquina01.aso.com”. Es decir, intenta resolver una ruta relativa de dominio (<code>PQDN</code>) a una ruta absoluta de dominio (<code>FQDN</code>).
--Recordatorio: se debe de aplicar los cambios con <strong>netplan apply</strong>.</li>
-</ul>
-</div>
+!!! tip "A tener en cuenta"
+    - En la configuración del archivo de red se crea un parámetro denominado `search`, el cual se configura para realizar un **dominio de búsqueda** (**Search Domain**), el cual nos va a permitir que si el servidor recibe una búsqueda de petición de un recurso, por ejemplo “maquina03”, automáticamente el servidor va intentar buscar por el nombre de dominio completo: “maquina01.aso.com”. Es decir, intenta resolver una ruta relativa de dominio (`PQDN`) a una ruta absoluta de dominio (`FQDN`).
+    -Recordatorio: se debe de aplicar los cambios con **netplan apply**. -->
+
 <!-- <figure>
   <img src="./imagenes/07/072/007.png" width="550"/>
 </figure> -->
 
-<ol start="3">
-<li>Instala los paquetes “<code>dnsutils</code>”.<ol>
-<li>El paquete <code>dnsutils</code> simplemente es una serie de herramientas que ayudan a comprobar la resolución del nombre de nuestro dominio es correcta.</li>
-</ol>
-</li>
-</ol>
+<!-- 3. Instala los paquetes “`dnsutils`”.
+    1. El paquete `dnsutils` simplemente es una serie de herramientas que ayudan a comprobar la resolución del nombre de nuestro dominio es correcta.
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt-get update -y
 <span class="linenos" data-linenos="2 "></span>sudo apt-get dnsutils
 </code></pre></div>
+
 <figure>
   <img src="./imagenes/067/001G.gif"/>
   <figcaption>Instalación dnsutils.</figcaption>
-</figure>
+</figure> -->
 
 <!-- 5. Es conveniente saber cuál es el nombre de nuestra máquina:
 
@@ -1138,14 +1157,20 @@ servicio DNS permite la resolución de ese nombre de dominio al direccionamiento
   <img src="./imagenes/07/072/008.png" width="550"/>
 </figure> -->
 
-<ol start="4">
-<li>En el fichero <code>“/etc/hosts”</code> es como un servicio DNS local, es decir, tiene una serie de pares <code>nombres/IP</code> que resuelve localmente.<ol>
-<li>Realiza una copia de seguridad del fichero <code>/etc/hosts</code>.</li>
-<li>Modifica el fichero original (<code>/etc/hosts</code>) para que resuelva el nombre de tu máquina y tu FQDN en este caso <code>NombreAlum@.aso.local</code>.</li>
-<li>Comprueba con un ping a los nombres que funciona y te contesta con la IP.</li>
+<ol start="3">
+<li>A continuación se establece el nombre de host del servidor este caso <code>profesor.aso.local</code> y se añade el servidor al archivo de hosts.</li>
 </ol>
-</li>
-</ol>
+<div class="admonition warning">
+<p class="admonition-title"><strong>CUIDADO</strong></p>
+<p><strong>Se debe cambiar profesor por el nombre de la alumna o alumno.</strong></p>
+</div>
+<p>3.1. Cambio de nombre de hosts a profesor.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>hostnamectl set-hostname profesor
+</code></pre></div>
+<p>3.2. El fichero <code>/etc/hosts</code> es como un servicio DNS local, es decir, tiene una serie de pares <code>nombres/IP</code> que resuelve localmente.
+    1. Realiza una copia de seguridad del fichero <code>/etc/hosts</code>.
+    2. Modifica el fichero original (<code>/etc/hosts</code>) para que resuelva el nombre de tu máquina y tu FQDN en este caso <code>profesor.aso.local</code>.
+    3. Comprueba con un ping a los nombres que funciona y te contesta con la IP.</p>
 <div class="admonition example">
 <p class="admonition-title">Por ejemplo</p>
 <p>Inicialmente En este caso el servidor se llama aso, por lo tanto si se realiza un ping a <code>aso</code> antes de modificar el /etc/hosts la máquina debe saber resolverlo a la IP <code>127.0.1.1</code> que por defecto en ubuntu se utiliza para determinar la dirección IP que corresponde al nombre de host.</p>
@@ -1154,7 +1179,7 @@ servicio DNS permite la resolución de ese nombre de dominio al direccionamiento
 <li>En este caso el fichero modificado quedaría:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="m">127</span>.0.0.1 localhost
-<span class="linenos" data-linenos="2 "></span><span class="m">192</span>.168.2.2 profesor.aso.local aso
+<span class="linenos" data-linenos="2 "></span><span class="m">192</span>.168.2.4 profesor.aso.local profesor
 <span class="linenos" data-linenos="3 "></span>
 <span class="linenos" data-linenos="4 "></span><span class="c1"># The following lines are desirable for IPv6 capable hosts</span>
 <span class="linenos" data-linenos="5 "></span>::1     ip6-localhost ip6-loopback
@@ -1165,14 +1190,62 @@ servicio DNS permite la resolución de ese nombre de dominio al direccionamiento
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Cuidado</p>
-<p>La nueva IP de resolución debe ser la configurada com IP estática.</p>
+<p>La nueva IP es la recibida en el servidor del <code>DHCP</code> de la RedNAT configurada.</p>
 </div>
-<ul>
-<li>Ejecución y comprobación.</li>
-</ul>
+<p>3.3. Ejecución y comprobación.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># verifica FQDN</span>
+<span class="linenos" data-linenos="2 "></span>hostname -f
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># verifica FQDN si resuelve a la IP del servidor</span>
+<span class="linenos" data-linenos="5 "></span>ping -c3 dc1.cn.lan
+</code></pre></div>
 <figure>
   <img src="./imagenes/067/002G.gif"/>
   <figcaption>Modificación del <b>/etc/hosts</b> y comprobaciones de ping.</figcaption>
+</figure>
+
+<ol start="4">
+<li>Se configura la resolución de nombres en el archivo <code>resolv.conf</code> encargado de redireccionar las peticiones de <code>DNS</code>.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">A tener en cuenta</p>
+<ul>
+<li>Para realizar un <strong>dominio de búsqueda</strong> (<strong>Search Domain</strong>), el cual nos va a permitir que si el servidor recibe una búsqueda de petición de un recurso, por ejemplo “maquina01”, automáticamente el servidor va intentar buscar por el nombre de dominio completo: “maquina01.aso.com”. Es decir, intenta resolver una ruta relativa de dominio (<code>PQDN</code>) a una ruta absoluta de dominio (<code>FQDN</code>).</li>
+<li><strong>Recordatorio</strong>: se debe de aplicar los cambios con <strong>netplan apply</strong>.</li>
+</ul>
+</div>
+<p>a. Se desactiva el servicio de resolución de DNS.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Para y desactiva el servicio de resolución de DNS</span>
+<span class="linenos" data-linenos="2 "></span>sudo systemctl disable --now systemd-resolved
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Elimina el link simbólico de /etc/resolv.conf</span>
+<span class="linenos" data-linenos="5 "></span>sudo unlink /etc/resolv.conf
+</code></pre></div>
+<p>b. Se crea un nuevo <code>resolv</code></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Crea un nuevo archivo /etc/resolv.conf</span>
+<span class="linenos" data-linenos="2 "></span>nano /etc/resolv.conf
+</code></pre></div>
+<p>c. Se introduce las siguientes líneas en el archivo nuevo.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Samba server IP address</span>
+<span class="linenos" data-linenos="2 "></span>nameserver <span class="m">192</span>.168.2.4
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># fallback resolver Quad9</span>
+<span class="linenos" data-linenos="5 "></span>nameserver <span class="m">9</span>.9.9.9
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Dominio principal de Samba</span>
+<span class="linenos" data-linenos="8 "></span>search aso.local
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado</p>
+<p>La IP es la recibida en el servidor del <code>DHCP</code> de la RedNAT configurada</p>
+</div>
+<p>d. Se hace inmutable el archivo para evitar que cualquier instalación de otros servicios lo modifique automáticamente.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># add attribute immutable to the file /etc/resolv.conf</span>
+<span class="linenos" data-linenos="2 "></span>sudo chattr +i /etc/resolv.conf
+</code></pre></div>
+<figure>
+  <img src="./imagenes/067/008G.gif"/>
+  <figcaption>Configuración de resolución de nombres.</figcaption>
 </figure>
 
 <!-- <figure>
@@ -1195,31 +1268,26 @@ servicio DNS permite la resolución de ese nombre de dominio al direccionamiento
   <figcaption>Comprobaciónes de ping.</figcaption>
 </figure> -->
 
-<ol start="7">
-<li>A continuación instalamos los paquetes “<strong>attr</strong>” y “<strong>acl</strong>” que nos darán más opciones de seguridad y mayor compatibilidad al interconectar con equipos clientes Windows a nuestro dominio.</li>
-</ol>
+<!-- 7. A continuación instalamos los paquetes “**attr**” y “**acl**” que nos darán más opciones de seguridad y mayor compatibilidad al interconectar con equipos clientes Windows a nuestro dominio.
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt-get install attr acl
 </code></pre></div>
+
 <figure>
   <img src="./imagenes/067/003G.gif"/>
   <figcaption>Instalación de los paquetes <b>attr</b> y <b>acl</b>.</figcaption>
 </figure>
 
-<ol start="8">
-<li>En el siguiente paso se aplican estos paquetes al <strong>sistema cuando se arranque</strong>. Para ello, Se realiza una copia de seguridad del fichero <code>/etc/fstab</code> y posteriormente lo editamos. <strong>Importante</strong> que el separador en este fichero es el tabulador.<ol>
-<li>Simplemente hay que añadir en el raíz (“/”) las opciones <strong>user_xattr,acl,barrier=1,defaults</strong> donde antes sólo ponía <code>defaults 0 1</code>.</li>
-</ol>
-</li>
-</ol>
+8. En el siguiente paso se aplican estos paquetes al **sistema cuando se arranque**. Para ello, Se realiza una copia de seguridad del fichero `/etc/fstab` y posteriormente lo editamos. **Importante** que el separador en este fichero es el tabulador.
+    1. Simplemente hay que añadir en el raíz (“/”) las opciones **user_xattr,acl,barrier=1,defaults** donde antes sólo ponía `defaults 0 1`.
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>user_xattr,acl,barrier<span class="o">=</span><span class="m">1</span>,defaults
 </code></pre></div>
-<div class="admonition warning advertencia">
-<p class="admonition-title">Warning</p>
-<ul>
-<li>Importante no equivocarse y hacerlo en el “/”, no en el <code>/boot</code> ni en la memoria <strong>swap</strong>.</li>
-<li>Reiniciar el server (reboot).</li>
-</ul>
-</div>
+
+!!! warning advertencia
+    - Importante no equivocarse y hacerlo en el “/”, no en el `/boot` ni en la memoria **swap**.
+    - Reiniciar el server (reboot).
+
 <figure>
   <img src="./imagenes/067/004G.gif"/>
   <figcaption>Aplicar <b>attr</b> y <b>acl</b> al sector de arranque.</figcaption>
@@ -1232,19 +1300,18 @@ servicio DNS permite la resolución de ese nombre de dominio al direccionamiento
   <figcaption>attr y acl acl al sector de arranque en /etc/fstab.</figcaption>
 </figure> -->
 
-<ol start="9">
-<li>Se instala el paquete <strong>NTP</strong>, ya que es necesario tener sincronizada la hora para servicios del estilo <strong>firewall</strong>, <strong>LDAP</strong>, para los registros de los logs, para el servicio activo de Windows, etc.<ol>
-<li>Se puede comprobar que el servicio está activo con <code>“systemctl status ntp”</code></li>
-</ol>
-</li>
-</ol>
+<!-- 9. Se instala el paquete **NTP**, ya que es necesario tener sincronizada la hora para servicios del estilo **firewall**, **LDAP**, para los registros de los logs, para el servicio activo de Windows, etc.
+    1. Se puede comprobar que el servicio está activo con `“systemctl status ntp”`
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt-get install ntp
 </code></pre></div>
+
 <figure>
   <img src="./imagenes/067/005G.gif"/>
   <figcaption>Instalación y comprobación <b>NTP</b>.</figcaption>
-</figure>
+</figure> -->
 
+<h2 id="instalacion-samba-dc">Instalación Samba-DC<a class="headerlink" href="#instalacion-samba-dc" title="Permanent link">&para;</a></h2>
 <!-- 10. **Detenemos y deshabilitamos** cualquier servicio que tuviéramos de samba (que no fuera de
     controlador de dominio) previa a la instalación.
 
@@ -1254,57 +1321,214 @@ servicio DNS permite la resolución de ese nombre de dominio al direccionamiento
 
 11. Eliminamos cualquier configuración previa de samba o de kerberos.
 
-12. Vamos a instalar los siguientes paquetes:
-    1. **Samba** &#8594 En el paquete ya viene integrado un módulo de LDAP para almacenar los usuarios.
-    2. **krb5-config** &#8594 Es la configuración de Kerberos que usaremos en samba. Habrá que instalarlo más adelante.
-    3. **winbind** &#8594 Paquete necesario para que un cliente de Windows se pueda autentificar en nuestro sistema DC en Linux.
-    4. **smbclient** &#8594 Instalaremos el cliente samba, simplemente para tener ciertos comandos de consulta, realmente no es necesario para montar el servidor.
+apt-get install -y acl attr samba samba-dsdb-modules samba-vfs-modules smbclient winbind libpam-winbind libnss-winbind libpam-krb5 krb5-config krb5-user dnsutils chrony net-tools -->
 
-13. Durante la instalación del **Kerberos** nos pedirá 3 cosas principalmente:
-    a. El reino (realm): Pondremos el mismo que nuestro dominio.
-    b. La IP del servidor Kerberos
-    c. La IP para la administración del Kerberos.
-
-En este caso nuestro servidor de kerberos va a estar en el propio controlador de dominio que estamos
-configurando, pero en otra situación se podría tratar de una máquina independiente.
-
+<ol>
+<li>Se instalan los siguientes paquetes:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt-get update -y
+<span class="linenos" data-linenos="2 "></span>sudo apt-get install -y acl attr samba samba-dsdb-modules samba-vfs-modules smbclient winbind libpam-winbind libnss-winbind libpam-krb5 krb5-config krb5-user chrony net-tools
+</code></pre></div>
+<div class="admonition abstract">
+<p class="admonition-title">Donde se destacan los siguientes:</p>
+<ol>
+<li><strong>Samba</strong> &#8594; En el paquete ya viene integrado un módulo de <code>LDAP</code> para almacenar los usuarios.</li>
+<li><strong>krb5-config</strong> &#8594; Es la configuración de <code>Kerberos</code> que usaremos en samba. Habrá que instalarlo más adelante.</li>
+<li><strong>winbind</strong> &#8594; Paquete necesario para que un cliente de <code>Windows</code> se pueda autentificar en nuestro sistema DC en Linux.</li>
+<li><strong>smbclient</strong> &#8594; Se instala el cliente samba, simplemente para tener ciertos comandos de consulta, realmente no es necesario para montar el servidor.</li>
+</ol>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Durante la instalación del <strong>Kerberos</strong> nos pedirá 3 cosas principalmente:</p>
+<ol>
+<li><strong>El reino (realm)</strong>: se indicará el mismo que el dominio configurado en el archivo de configuración de red.</li>
+<li><strong>La IP del servidor Kerberos</strong>: FQDN.</li>
+<li><strong>La IP para la administración del Kerberos</strong>: FQDN.</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><strong>Nota</strong></p>
+<p>En este caso el servidor de kerberos va a estar en el propio controlador de dominio, pero en otra situación se podría tratar de una máquina independiente.</p>
+</div>
 <figure>
+  <img src="./imagenes/067/006G.gif"/>
+  <figcaption>Instalación samba y paquetes necesarios.</figcaption>
+</figure>
+
+<!-- <figure>
   <img src="./imagenes/07/072/015.png" width="750"/>
+</figure> -->
+
+<ol start="2">
+<li>A continuación se necesita detener varios servicios instalados con anterioridad y que ahora serán
+gestionados a través de Samba. Se paran y se deshabilitan.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># stop and disable samba services - smbd, nmbd, and winbind</span>
+<span class="linenos" data-linenos="2 "></span>sudo systemctl disable --now smbd nmbd winbind
+</code></pre></div>
+<ol start="3">
+<li>Se activa el servicio <strong>samba-ad-dc</strong> mediante los siguientes comandos:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>systemctl unmask samba-ad-dc
+<span class="linenos" data-linenos="2 "></span>systemctl <span class="nb">enable</span> samba-ad-dc
+</code></pre></div>
+<figure>
+  <img src="./imagenes/067/007G.gif"/>
+  <figcaption>Instalación samba y paquetes necesarios.</figcaption>
 </figure>
 
-14. Comprobamos que el servicio **samba-ad-dc** funciona y está activo:
-
-<figure>
+<!-- <figure>
   <img src="./imagenes/07/072/016.png" width="750"/>
+</figure> -->
+
+<h2 id="configuracion-samba-dc">Configuración Samba-DC<a class="headerlink" href="#configuracion-samba-dc" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Antes de pasar a configurar Samba, es conveniente guardar el fichero de configuración original, por si hubiera que retomar la instalación desde este punto:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.copia
+</code></pre></div>
+<ol start="2">
+<li>El siguiente paso es configurar el controlador de dominio de <code>Samba</code> mediante el uso de samba-tool.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>samba-tool domain provision --use-rfc2307 --interactive
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<ul>
+<li>Dentro de la configuración cogerá el <strong>reino/dominio</strong> del servidor, por lo tanto no se tiene que rellenar nada, <strong>excepto la parte de DNS forwarder que se usará Quad9, el cual es DNS recursivo público global que tiene como objetivo proteger a los usuarios del malware y el phishing. (9.9.9.9)</strong>.</li>
+<li>La razón de esta configuración es porque el servidor actuará como DNS, pero si no se puede resolver una página pasaremos la solicitud de resolución al servidor DNS forwarder (9.9.9.9).</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Como <strong>contraseña</strong> de administrador necesita tener una <strong>mayúscula/minúscula/número/longitud de 8</strong>. El usuario por defecto es “administrator”, en este caso se usará <strong>AsoAula5</strong></p>
+</div>
+<ul>
+<li>Si todo ha salido bien, se creará el fichero <code>smb.conf</code> acorde con la configuración:</li>
+</ul>
+<figure>
+  <img src="./imagenes/067/009G.gif"/>
+  <figcaption>Configuración Samba y comprobación.</figcaption>
 </figure>
 
-15. hora vamos a pasar a configurar el controlador de dominio de samba. Vamos a hacer uso de samba-tool para completar la configuración:
-    1. `samba-tool domain provision --use-rfc2307 --interactive`
-
-Dentro de la configuración cogerá el reino/dominio de nuestro servidor, por lo que no tenemos que rellenar nada, **excepto la parte de DNS forwarder que usaremos la DNS de google (8.8.8.8)**. Esto lo hacemos porque nosotros seremos el servidor DNS, pero si no sabemos resolver una página pasaremos la solicitud de resolución al servidor DNS forwarder (8.8.8.8).
-
-Como **contraseña** de administrador necesita tener una **mayúscula/minúscula/número/longitud de 8**. El usuario por defecto es “administrator”
-
-Si todo ha salido bien, nos habrá creado el fichero smb.conf acorde a nuestra configuración:
-
-<figure>
+<!-- <figure>
   <img src="./imagenes/07/072/017.png" width="750"/>
-</figure>
+</figure> -->
 
-- **[global]**: Donde se puede observar todos los datos de configuración del dominio, además de los
-roles para los que se ha creado (DC-AD).
-- **[netlogon]**: Ya ha creado de forma automática la carpeta para los scripts de inicio de sesión de
-los clientes.
-- **[sysvol]**: El sysvol es reponsable de replicar las GPOs (Políticas de Grupos) aplicadas en el editor
-de directivas de grupo, todos los cambios y GPOs nuevos son replicados por alli.
-
-16. Ahora pasamos a instalar Kerberos, antes solo habíamos asociado la configuración a samba (reino, dns, password, etc). Para ello instalamos el paquete “**krb5-user**”.
-
+<ul>
+<li><strong>[global]</strong>: Donde se puede observar todos los datos de configuración del dominio, además de los
+roles para los que se ha creado (DC-AD).</li>
+<li><strong>[netlogon]</strong>: Ya ha creado de forma automática la carpeta para los scripts de inicio de sesión de
+los clientes.</li>
+<li><strong>[sysvol]</strong>: El sysvol es reponsable de replicar las GPOs (Políticas de Grupos) aplicadas en el editor
+de directivas de grupo, todos los cambios y GPOs nuevos son replicados por allí.</li>
+</ul>
+<ol start="3">
+<li>Ahora pasamos a instalar Kerberos, antes solo habíamos asociado la configuración a samba (reino, dns, password, etc). Para ello se realiza una copia de seguridad de la configuración actual y se copia la realizada por Samba.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Renombra la configuración por defecto de Kerberos a krb5.conf.original</span>
+<span class="linenos" data-linenos="2 "></span>sudo mv /etc/krb5.conf /etc/krb5.conf.original
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Copia la configuración generada samba-tool</span>
+<span class="linenos" data-linenos="5 "></span>sudo cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
+</code></pre></div>
 <figure>
-  <img src="./imagenes/07/072/018.png" width="750"/>
+  <img src="./imagenes/067/010G.gif"/>
+  <figcaption>Configuración Kerberos.</figcaption>
 </figure>
 
-17. A continuación copiamos la configuración de kerberos para samba por la configuración por defecto de kerberos:
+<ol start="4">
+<li>Se incializa el servicio de Samba</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># start samba-ad-dc service</span>
+<span class="linenos" data-linenos="2 "></span>sudo systemctl start samba-ad-dc
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># verify samba-ad-dc service</span>
+<span class="linenos" data-linenos="5 "></span>sudo systemctl status samba-ad-dc
+</code></pre></div>
+<figure>
+  <img src="./imagenes/067/011G.gif"/>
+  <figcaption>Inicia Samba y comprueba.</figcaption>
+</figure>
+
+<!-- <figure>
+  <img src="./imagenes/07/072/018.png" width="750"/>
+</figure> -->
+
+<ol start="5">
+<li>Se configura la sincronización del tiempo para que el servidor este en hora, con el objetivo de realizar de forma adecuada tareas de resolución de incidencias.</li>
+</ol>
+<p>5.1. Se establecen los permisos para NTP (Network Time Protocol). En la instalación de Samba se utilizó el paquete <code>chrony</code>, el cual es una implementación del Network Time Protocol. Es una alternativa a ntpd, que es una implementación de referencia de NTP. A continuación se muestran los comando para dar los permisos adecuados a <code>chrony</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Permite al grupo _chrony leer en el directorio ntp_signd</span>
+<span class="linenos" data-linenos="2 "></span>sudo chown root:_chrony /var/lib/samba/ntp_signd/
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Cambia los permisos en el directorio ntp_signd.</span>
+<span class="linenos" data-linenos="5 "></span>sudo chmod <span class="m">750</span> /var/lib/samba/ntp_signd/
+</code></pre></div>
+<p>5.2 Configuración de <code>Chrony</code>, dentro del archivo de configuración <code>/etc/chrony/chrony.conf</code> se añaden las siguientes líneas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># bind el servicio de chrony a la dirección IP del Samba AD.</span>
+<span class="linenos" data-linenos="2 "></span>bindcmdaddress <span class="m">192</span>.168.2.4
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Permite a los clientes de la red conectar al Chrony NTP server en este caso:</span>
+<span class="linenos" data-linenos="5 "></span>allow <span class="m">192</span>.168.2.0/24
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Especifica el directorio del ntpsigndsocket para el Samba AD.</span>
+<span class="linenos" data-linenos="8 "></span>ntpsigndsocket /var/lib/samba/ntp_signd
+</code></pre></div>
+<p>5.3 Se reinicia el servicio y se comprueba su estado.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Reinicia el servicio chronyd.</span>
+<span class="linenos" data-linenos="2 "></span>sudo systemctl restart chronyd
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Verifica el estado de chronyd</span>
+<span class="linenos" data-linenos="5 "></span>sudo systemctl status chronyd
+</code></pre></div>
+<figure>
+  <img src="./imagenes/067/012G.gif"/>
+  <figcaption>Instalación y configuración de <b>chronyd.</b></figcaption>
+</figure>
+
+<h1 id="conprobacion-del-samba-active-directory">Conprobación del Samba Active Directory<a class="headerlink" href="#conprobacion-del-samba-active-directory" title="Permanent link">&para;</a></h1>
+<ol>
+<li>Verificaciones del dominio.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Verifica el Dominio</span>
+<span class="linenos" data-linenos="2 "></span>host -t A aso.local
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Verifica el FQDN</span>
+<span class="linenos" data-linenos="5 "></span>host -t A profesor.aso.local
+</code></pre></div>
+<ol start="2">
+<li>Comprobación de <code>Kerberos</code> y <code>ldap</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Comprobación del registro SRV para _kerberos. </span>
+<span class="linenos" data-linenos="2 "></span>host -t SRV _kerberos._udp.aso.local
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Comprobación del registro SRV para _ldap</span>
+<span class="linenos" data-linenos="5 "></span>host -t SRV _ldap._tcp.aso.local
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>El registro <code>SRV</code> es un registro de recursos del sistema de nombres de dominio (<code>DNS</code>). Se usa para identificar equipos que hospedan servicios.</p>
+</div>
+<ol start="3">
+<li>Comprobar el <code>login</code> con el usuario <code>administrator</code> con el comando <code>kinit</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Autenticate a Kerberos con el usuario administrator.</span>
+<span class="linenos" data-linenos="2 "></span>kinit administrator@ASO.LOCAL
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Verifica la lista de accesos.</span>
+<span class="linenos" data-linenos="5 "></span>klist
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado</p>
+<p>A tener en cuenta las mayúsculas del dominio en el comando <code>kinit</code>.</p>
+</div>
+<figure>
+  <img src="./imagenes/067/013G.gif"/>
+  <figcaption>Comprobaciones</figcaption>
+</figure>
+
+<!-- 17. A continuación copiamos la configuración de kerberos para samba por la configuración por defecto de kerberos:
 
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">cp /var/lib/samba/private/krb5.conf /etc/krb5.conf</span><span class="w"></span>
 </code></pre></div>
