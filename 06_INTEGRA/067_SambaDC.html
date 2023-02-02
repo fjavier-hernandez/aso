@@ -1197,7 +1197,7 @@ servicio DNS permite la resolución de ese nombre de dominio al direccionamiento
 <span class="linenos" data-linenos="2 "></span>hostname -f
 <span class="linenos" data-linenos="3 "></span>
 <span class="linenos" data-linenos="4 "></span><span class="c1"># verifica FQDN si resuelve a la IP del servidor</span>
-<span class="linenos" data-linenos="5 "></span>ping -c3 dc1.cn.lan
+<span class="linenos" data-linenos="5 "></span>ping -c3 profesor.aso.local
 </code></pre></div>
 <figure>
   <img src="./imagenes/067/002G.gif"/>
@@ -1424,7 +1424,7 @@ los clientes.</li>
 de directivas de grupo, todos los cambios y GPOs nuevos son replicados por allí.</li>
 </ul>
 <ol start="3">
-<li>Ahora pasamos a instalar Kerberos, antes solo habíamos asociado la configuración a samba (reino, dns, password, etc). Para ello se realiza una copia de seguridad de la configuración actual y se copia la realizada por Samba.</li>
+<li>Ahora se instala Kerberos, antes solo se había asociado la configuración a <code>Samba</code> (reino, dns, password, etc). Para ello se realiza una copia de seguridad de la configuración actual y se sobrescribe la realizada por Samba.</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Renombra la configuración por defecto de Kerberos a krb5.conf.original</span>
 <span class="linenos" data-linenos="2 "></span>sudo mv /etc/krb5.conf /etc/krb5.conf.original
@@ -1528,6 +1528,120 @@ de directivas de grupo, todos los cambios y GPOs nuevos son replicados por allí
   <figcaption>Comprobaciones</figcaption>
 </figure>
 
+<h2 id="creacion-y-acceso-de-usuarios">Creación y acceso de usuarios<a class="headerlink" href="#creacion-y-acceso-de-usuarios" title="Permanent link">&para;</a></h2>
+<p>Existen diferentes formas de crear usuarios, se destacan dos:</p>
+<ol>
+<li>Mediante comandos de <code>Samba</code>.</li>
+<li>A través de la herramienta de gestión <code>RSAT</code>.</li>
+</ol>
+<p>A continuación se describen ambos métodos:</p>
+<h3 id="crear-usuario-con-samba-tool">Crear usuario con samba-tool<a class="headerlink" href="#crear-usuario-con-samba-tool" title="Permanent link">&para;</a></h3>
+<ul>
+<li>En este caso se utiliza los comandos de samba-tool para crear el usuario:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Crea un nuevo usuario en Samba.</span>
+<span class="linenos" data-linenos="2 "></span>sudo samba-tool user create javi
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Comprueba los usuarios de Samba.</span>
+<span class="linenos" data-linenos="5 "></span>sudo samba-tool user list
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Como se ha explicado en secciones anteriores los usuarios creado en <code>Samba</code> deben estar creados también en el sistema.</p>
+</div>
+<h2 id="acceso-al-samba-dc-desde-un-windows-client">Acceso al Samba-DC desde un Windows Client<a class="headerlink" href="#acceso-al-samba-dc-desde-un-windows-client" title="Permanent link">&para;</a></h2>
+<h3 id="configuracion-de-dns-y-comprobacion">Configuración de DNS y comprobación<a class="headerlink" href="#configuracion-de-dns-y-comprobacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Se accede al cliente, en este caso <strong>Windows 10</strong> y se configuran los <code>DNS</code> del <code>Samba-DC</code>.</li>
+</ul>
+<figure>
+  <img src="./imagenes/067/014G.gif"/>
+  <figcaption>Configuración DNS de Samba-DC en WinClient.</figcaption>
+</figure>
+
+<ul>
+<li>Por otro lado se pueden comprobar los DNS mediante comandos de PowerShell.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># En Powershell</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Get-DnsClientServerAddress</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># ping al AD domain profesor.aso.local</span>
+<span class="linenos" data-linenos="5 "></span><span class="n">ping</span> <span class="n">profesor</span><span class="p">.</span><span class="n">aso</span><span class="p">.</span><span class="n">local</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c"># ping al AD domain aso.local</span>
+<span class="linenos" data-linenos="8 "></span><span class="n">ping</span> <span class="n">aso</span><span class="p">.</span><span class="n">local</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/067/015G.gif"/>
+  <figcaption>Comprobación DNS con PowerShell.</figcaption>
+</figure>
+
+<h3 id="anadir-cliente-al-active-directory-con-powershell">Añadir cliente al Active Directory con PowerShell<a class="headerlink" href="#anadir-cliente-al-active-directory-con-powershell" title="Permanent link">&para;</a></h3>
+<ul>
+<li>El siguiente paso es añadir el Cliente al Controlador de Dominio, y en este caso lo vamos a hacer por PowerShell con el siguiente comando:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Añade Windows 10 al Active Directory usando POWERSHELL</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Add-Computer</span> <span class="n">-DomainName</span> <span class="s2">&quot;aso.local&quot;</span> <span class="n">-Restart</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/067/016G.gif"/>
+  <figcaption>Añadir cliente al dominio mediante PowerShell.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Al reiniciar debe aparecer el login para el Dominio.</p>
+</div>
+<ul>
+<li>Comprobación de usuarios en el DC desde el Windows Client.</li>
+</ul>
+<figure>
+  <img src="./imagenes/067/017G.gif"/>
+  <figcaption>Comprobación usuarios desde W10.</figcaption>
+</figure>
+
+<h2 id="descargar-y-activar-la-aplicacion-rsat">Descargar y Activar la Aplicación RSAT<a class="headerlink" href="#descargar-y-activar-la-aplicacion-rsat" title="Permanent link">&para;</a></h2>
+<p><strong>RSAT</strong> (Remote Server Administration Tools) es una aplicación cuyo objetivo es administrar el servidor
+pensada para instalarse en clientes que replica las herramientas disponibles en el controlador del dominio.</p>
+<p>La aplicación se puede descargar del siguiente enlace <a href="https://www.microsoft.com/es-ES/download/details.aspx?id=45520">RSAT</a></p>
+<ul>
+<li>Se descarga e instala:</li>
+</ul>
+<figure>
+  <img src="./imagenes/067/018G.gif"/>
+  <figcaption>Descarga e instalación de RSAT en W10.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<ul>
+<li>Se debe reiniciar para que aparezca en herramientas administrativas, las aplicaciones del AD.</li>
+</ul>
+</div>
+<ul>
+<li>Otra opción de instalación de diferentes paquetes.</li>
+</ul>
+<figure>
+  <img src="./imagenes/067/019G.gif"/>
+  <figcaption>Herramientas del AD.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/067/020G.gif"/>
+  <figcaption>Herramientas del AD II.</figcaption>
+</figure>
+
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Realiza un informe con las capturas explicadas de los principales pasos de esta guía y sus comprobaciones.</li>
+<li>Añade un usuario mediante las herramientas del AD. Reinicia W10 y logueate con este nuevo usuario.</li>
+<li>Elige de entre estas dos distribuciones de Linux Red Hat o Manjaro para añadir el cliente al AD y loguearte con alguno de los usuarios configurados.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Añade capturas con sus correspondientes aclaraciones en cada aparatado.</p>
+</div>
+<!-- -------------------------------------------------------------------------------------------------------- -->
 <!-- 17. A continuación copiamos la configuración de kerberos para samba por la configuración por defecto de kerberos:
 
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">cp /var/lib/samba/private/krb5.conf /etc/krb5.conf</span><span class="w"></span>
