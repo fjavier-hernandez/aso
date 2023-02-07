@@ -8,21 +8,21 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/index.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/vagrant-cheat-sheet.html">
       
-      <link rel="icon" href="imagenes/favicon.png">
+      <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Administración de Sistemas Operativos</title>
+        <title>Vagrant cheat sheet - Administración de Sistemas Operativos</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.975780f9.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.975780f9.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.2505c338.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
         
       
       
@@ -39,9 +39,9 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#administracion-de-sistemas-operativos" class="md-skip">
+        <a href="#creating-a-vm" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -84,9 +84,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
       
-  <img src="imagenes/logofp.png" alt="logo">
+  <img src="../imagenes/logofp.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Inicio
+              Vagrant cheat sheet
             
           </span>
         </div>
@@ -195,9 +195,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
       
-  <img src="imagenes/logofp.png" alt="logo">
+  <img src="../imagenes/logofp.png" alt="logo">
 
     </a>
     Administración de Sistemas Operativos
@@ -211,113 +211,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Inicio
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
         Inicio
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#que-voy-a-aprender" class="md-nav__link">
-    ¿Qué voy a aprender?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resultados-de-aprendizaje" class="md-nav__link">
-    Resultados de aprendizaje
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unidades-didacticas-temporalizacion" class="md-nav__link">
-    Unidades didácticas / Temporalización
-  </a>
-  
-    <nav class="md-nav" aria-label="Unidades didácticas / Temporalización">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#primera-evaluacion" class="md-nav__link">
-    Primera evaluación
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#segunda-evaluacion" class="md-nav__link">
-    Segunda evaluación
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#evaluacion" class="md-nav__link">
-    Evaluación
-  </a>
-  
-    <nav class="md-nav" aria-label="Evaluación">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instrumentos-de-calificacion" class="md-nav__link">
-    Instrumentos de calificación
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instrumentos-de-evaluacion" class="md-nav__link">
-    Instrumentos de Evaluación
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -374,7 +272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01_ShellScripting/ProgramacionAula.html" class="md-nav__link">
+      <a href="../01_ShellScripting/ProgramacionAula.html" class="md-nav__link">
         Programación de Aula
       </a>
     </li>
@@ -388,7 +286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01_ShellScripting/ResumenUD.html" class="md-nav__link">
+      <a href="../01_ShellScripting/ResumenUD.html" class="md-nav__link">
         Resumen UD
       </a>
     </li>
@@ -402,7 +300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
+      <a href="../01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
         1.1- Introducción
       </a>
     </li>
@@ -416,7 +314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
+      <a href="../01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
         1.2- Sintaxis
       </a>
     </li>
@@ -430,7 +328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
+      <a href="../01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
         1.3- Control de flujo
       </a>
     </li>
@@ -444,7 +342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+      <a href="../01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
         1.4- Vectores y Funciones
       </a>
     </li>
@@ -458,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
+      <a href="../01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
         1.5- Refuerzo y ampliación
       </a>
     </li>
@@ -472,7 +370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01_ShellScripting/016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
+      <a href="../01_ShellScripting/016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
         1.6- Prueba Auditoria
       </a>
     </li>
@@ -532,7 +430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02_PowerShell/ProgramacionAula.html" class="md-nav__link">
+      <a href="../02_PowerShell/ProgramacionAula.html" class="md-nav__link">
         Programación de Aula
       </a>
     </li>
@@ -546,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02_PowerShell/021_Introduccio%CC%81nPwSh.html" class="md-nav__link">
+      <a href="../02_PowerShell/021_Introduccio%CC%81nPwSh.html" class="md-nav__link">
         2.1- Introducción
       </a>
     </li>
@@ -560,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02_PowerShell/022_PowerShell_Sintaxis.html" class="md-nav__link">
+      <a href="../02_PowerShell/022_PowerShell_Sintaxis.html" class="md-nav__link">
         2.2- Sintaxis
       </a>
     </li>
@@ -574,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02_PowerShell/023_PowerShell_ControlFlujo.html" class="md-nav__link">
+      <a href="../02_PowerShell/023_PowerShell_ControlFlujo.html" class="md-nav__link">
         2.3- Control de flujo
       </a>
     </li>
@@ -588,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02_PowerShell/024_PowerShell_VectoresFunciones.html" class="md-nav__link">
+      <a href="../02_PowerShell/024_PowerShell_VectoresFunciones.html" class="md-nav__link">
         2.4- Vectores y Funciones
       </a>
     </li>
@@ -650,7 +548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03_Procesos/ProgramacionAula.html" class="md-nav__link">
+      <a href="../03_Procesos/ProgramacionAula.html" class="md-nav__link">
         Programación de Aula
       </a>
     </li>
@@ -664,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03_Procesos/031_Planificador.html" class="md-nav__link">
+      <a href="../03_Procesos/031_Planificador.html" class="md-nav__link">
         3.1- Introducción Procesos, Planificador
       </a>
     </li>
@@ -678,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03_Procesos/032_Hilos.html" class="md-nav__link">
+      <a href="../03_Procesos/032_Hilos.html" class="md-nav__link">
         3.2- Hilos, Sincronización e interrupciones, Herramientas gráficas
       </a>
     </li>
@@ -692,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03_Procesos/033_GestionProcesosShell.html" class="md-nav__link">
+      <a href="../03_Procesos/033_GestionProcesosShell.html" class="md-nav__link">
         3.3- Gestión de procesos en Shell de Linux.
       </a>
     </li>
@@ -706,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03_Procesos/034_GestionProcesosPWSH.html" class="md-nav__link">
+      <a href="../03_Procesos/034_GestionProcesosPWSH.html" class="md-nav__link">
         3.4- Gestión de procesos en PowerShell.
       </a>
     </li>
@@ -720,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03_Procesos/035_ArranqueServicios.html" class="md-nav__link">
+      <a href="../03_Procesos/035_ArranqueServicios.html" class="md-nav__link">
         3.5- Arranque del sistema. Servicios. Systemd.
       </a>
     </li>
@@ -784,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04_LDAP/ProgramacionAula.html" class="md-nav__link">
+      <a href="../04_LDAP/ProgramacionAula.html" class="md-nav__link">
         Programación de Aula
       </a>
     </li>
@@ -798,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04_LDAP/041_Introduccion_SDyLDAP.html" class="md-nav__link">
+      <a href="../04_LDAP/041_Introduccion_SDyLDAP.html" class="md-nav__link">
         4.1- Introducción Servicios de directorio y LDAP
       </a>
     </li>
@@ -812,7 +710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04_LDAP/042_InstalacionConfigLDAP_PR.html" class="md-nav__link">
+      <a href="../04_LDAP/042_InstalacionConfigLDAP_PR.html" class="md-nav__link">
         4.2- Instalación y configuración de OpenLDAP
       </a>
     </li>
@@ -826,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04_LDAP/043_LDAP_DIT.html" class="md-nav__link">
+      <a href="../04_LDAP/043_LDAP_DIT.html" class="md-nav__link">
         4.3- Modelo de Información de LDAP
       </a>
     </li>
@@ -840,7 +738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04_LDAP/044_UsersLDAP.html" class="md-nav__link">
+      <a href="../04_LDAP/044_UsersLDAP.html" class="md-nav__link">
         4.4- Creación y comprobación de Usuarios/Grupos OpenLDAP
       </a>
     </li>
@@ -854,7 +752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04_LDAP/045_LDAP_EsquemaHerramientas.html" class="md-nav__link">
+      <a href="../04_LDAP/045_LDAP_EsquemaHerramientas.html" class="md-nav__link">
         4.5- Esquema LDAP
       </a>
     </li>
@@ -868,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04_LDAP/046_LDAP_Graficas.html" class="md-nav__link">
+      <a href="../04_LDAP/046_LDAP_Graficas.html" class="md-nav__link">
         4.6- Gestión usuarios LDAP con GUI
       </a>
     </li>
@@ -920,7 +818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05_AD/051_ActiveDirectory.html" class="md-nav__link">
+      <a href="../05_AD/051_ActiveDirectory.html" class="md-nav__link">
         5.1- Introducción Active Directory
       </a>
     </li>
@@ -986,7 +884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06_INTEGRA/061_ServiciosRedRecursosCompartidos.html" class="md-nav__link">
+      <a href="061_ServiciosRedRecursosCompartidos.html" class="md-nav__link">
         6.1- Introducción: Sistemas heterogéneos
       </a>
     </li>
@@ -1000,7 +898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06_INTEGRA/062_NFS.html" class="md-nav__link">
+      <a href="062_NFS.html" class="md-nav__link">
         6.2- NFS
       </a>
     </li>
@@ -1014,7 +912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06_INTEGRA/063_DockerIntroNextCloud.html" class="md-nav__link">
+      <a href="063_DockerIntroNextCloud.html" class="md-nav__link">
         6.3- Docker Introducción y NextCloud
       </a>
     </li>
@@ -1028,7 +926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06_INTEGRA/064_HerramientasDocker.html" class="md-nav__link">
+      <a href="064_HerramientasDocker.html" class="md-nav__link">
         6.4- Herramientas de Docker
       </a>
     </li>
@@ -1042,7 +940,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06_INTEGRA/065_IntroSamba.html" class="md-nav__link">
+      <a href="065_IntroSamba.html" class="md-nav__link">
         6.5- Introducción Samba
       </a>
     </li>
@@ -1056,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06_INTEGRA/066_SambaSecUsers.html" class="md-nav__link">
+      <a href="066_SambaSecUsers.html" class="md-nav__link">
         6.6- Secciones y usuarios Samba
       </a>
     </li>
@@ -1070,7 +968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06_INTEGRA/067_SambaDC.html" class="md-nav__link">
+      <a href="067_SambaDC.html" class="md-nav__link">
         6.7- Samba Domain Controller
       </a>
     </li>
@@ -1084,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06_INTEGRA/068_VagrantIntro.html" class="md-nav__link">
+      <a href="068_VagrantIntro.html" class="md-nav__link">
         6.8- Despliegue de Sistemas Heterogéneos con Vagrant
       </a>
     </li>
@@ -1113,142 +1011,63 @@
                   
 
 
-<h1 id="administracion-de-sistemas-operativos">Administración de Sistemas Operativos<a class="headerlink" href="#administracion-de-sistemas-operativos" title="Permanent link">&para;</a></h1>
-<p>Aquí puedes encontrar los apuntes del módulo de <strong><em>Administración de Sistemas Operativos</em></strong>, que se imparte en el segundo curso del ciclo formativo de grado superior de Administración de Sistemas Informáticos en Red.</p>
+<p>Typing <code>vagrant</code> from the command line will display a list of all available commands.</p>
+<p>Be sure that you are in the same directory as the Vagrantfile when running these commands!</p>
+<h1 id="creating-a-vm">Creating a VM<a class="headerlink" href="#creating-a-vm" title="Permanent link">&para;</a></h1>
 <ul>
-<li>La duración del módulo es de <strong>120 horas lectivas</strong>, a razón de <strong>6 horas semanales</strong>, y se desarrolla a lo largo de los <strong>dos primeros trimestres del curso</strong>.</li>
-<li>Se ha planificado basándose en <strong>3 sesiones lectivas por semana</strong>, con <strong>2 horas de duración cada una de ellas</strong>.</li>
+<li><code>vagrant init</code>           -- Initialize Vagrant with a Vagrantfile and ./.vagrant directory, using no specified base image. Before you can do vagrant up, you'll need to specify a base image in the Vagrantfile.</li>
+<li><code>vagrant init &lt;boxpath&gt;</code> -- Initialize Vagrant with a specific box. To find a box, go to the <a href="https://app.vagrantup.com/boxes/search">public Vagrant box catalog</a>. When you find one you like, just replace it's name with boxpath. For example, <code>vagrant init ubuntu/trusty64</code>.</li>
 </ul>
-<h2 id="que-voy-a-aprender">¿Qué voy a aprender?<a class="headerlink" href="#que-voy-a-aprender" title="Permanent link">&para;</a></h2>
+<h1 id="starting-a-vm">Starting a VM<a class="headerlink" href="#starting-a-vm" title="Permanent link">&para;</a></h1>
 <ul>
-<li>Administrar sistemas operativos de servidor, instalando y configurando el software, en condiciones de calidad para asegurar el funcionamiento del sistema.</li>
-<li>Administrar servicios de recursos compartidos (acceso a directorios, impresión, accesos remotos, entre otros) instalando y configurando el software, en condiciones de calidad.</li>
-<li>Administrar usuarios de acuerdo a las especificaciones de explotación para garantizar los accesos y la disponibilidad de los recursos del sistema.</li>
-<li>Gestionar los recursos de diferentes sistemas operativos (programando y verificando su cumplimiento).</li>
+<li><code>vagrant up</code>                  -- starts vagrant environment (also provisions only on the FIRST vagrant up)</li>
+<li><code>vagrant resume</code>              -- resume a suspended machine (vagrant up works just fine for this as well)</li>
+<li><code>vagrant provision</code>           -- forces reprovisioning of the vagrant machine</li>
+<li><code>vagrant reload</code>              -- restarts vagrant machine, loads new Vagrantfile configuration</li>
+<li><code>vagrant reload --provision</code>  -- restart the virtual machine and force provisioning</li>
 </ul>
-<h2 id="resultados-de-aprendizaje">Resultados de aprendizaje<a class="headerlink" href="#resultados-de-aprendizaje" title="Permanent link">&para;</a></h2>
-<p>Un <em>Resultado de Aprendizaje</em> <strong>"es una declaración de lo que el estudiante se espera que conozca, comprenda y sea capaz de hacer al finalizar un periodo de aprendizaje".</strong> Los resultados de aprendizaje de ASO vienen definidos en el <a href="https://www.boe.es/eli/es/rd/2009/10/30/1629">RD 1629/2009.</a></p>
-<p>Los Resultados de Aprendizaje de ASO son:</p>
-<ol>
-<li>Administra el servicio de directorio interpretando especificaciones e integrándolo en una red.</li>
-<li>Administra procesos del sistema describiéndolos y aplicando criterios de seguridad y eficiencia.</li>
-<li>Gestiona la automatización de tareas del sistema, aplicando criterios de eficiencia y utilizando comandos y herramientas gráficas.</li>
-<li>Administra de forma remota el sistema operativo en red valorando su importancia y aplicando criterios de seguridad.</li>
-<li>Administra servidores de impresión describiendo sus funciones e integrándolos en una red.</li>
-<li>Integra sistemas operativos libres y propietarios, justificando y garantizando su interoperabilidad.</li>
-<li>Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.</li>
-</ol>
-<h2 id="unidades-didacticas-temporalizacion">Unidades didácticas / Temporalización<a class="headerlink" href="#unidades-didacticas-temporalizacion" title="Permanent link">&para;</a></h2>
-<p>A continuación se muestran las unidades didácticas y una estimación temporal de cada una de ellas, repartidas en cada evaluación con una duración aproximada de <strong>30 sesiones por evaluación</strong>.</p>
-<h3 id="primera-evaluacion">Primera evaluación<a class="headerlink" href="#primera-evaluacion" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>ShellScripting. (6 sesiones, 12 horas)</strong><ul>
-<li>ShellScripting, creación scripts, variables, parámetros, operadores.</li>
-<li>ShellScripting, Re-direcciones, tuberías.</li>
-<li>Control de flujo en Shell, vectores.</li>
-</ul>
-</li>
-<li><strong>PowerShell. (6 sesiones, 12 horas)</strong><ul>
-<li>PowerShell, creación scripts, variables, parámetros, operadores.</li>
-<li>PowerShell, Control de flujo, y vectores.</li>
-</ul>
-</li>
-<li><strong>Administración de Procesos del Sistema. (6 sesiones, 12 horas)</strong><ul>
-<li>Procesos. Tipos. Estados. Estructura. Transiciones, Hilos.</li>
-<li>Planificador, Tipos de algoritmos de planificación, Sincronización e interrupciones entre procesos.</li>
-<li>Gestión de procesos, demonios/servicios con Shell y Powershell.</li>
-</ul>
-</li>
-<li><strong>Servicios de Directorio Libres: LDAP. (6 sesiones, 12 horas)</strong><ul>
-<li>Servicios Directorio, LDAP, Autentificación usuarios (PAM, NSS).</li>
-<li>LDAP, modelo información, Esquema.</li>
-<li>LDAP, Configuración, herramientas de gestión.</li>
-</ul>
-</li>
-<li><strong>Servicios de Directorio Propietarios: Active Directory (6 sesiones, 12 horas).</strong><ul>
-<li>Active Directory, configuración básica Windows Server.</li>
-<li>Active Directory, Instalación AD, Creación estructura empresa.</li>
-<li>AD, Permisos, directivas de grupo, perfiles y relaciones de confianza.</li>
-</ul>
-</li>
-</ol>
-<h3 id="segunda-evaluacion">Segunda evaluación<a class="headerlink" href="#segunda-evaluacion" title="Permanent link">&para;</a></h3>
-<ol start="6">
-<li><strong>Integración de sistemas operativos en red. (12 sesiones, 24 horas).</strong><ul>
-<li>Escenarios heterogéneos, Protocolos para redes heterogéneas, servicios de recursos compartidos.</li>
-<li>NFS, Instalación, Permisos, Montaje automático de un cliente NFS, configuración de ficheros.</li>
-<li>NextCloud, Instalación, configuración de ficheros y permisos de usuario.</li>
-<li>SAMBA, fichero configuración, Creación directorio compartido, Integración de permisos.</li>
-<li>SAMBA, Administración de servicios con RSAT, perfiles de usuario y carpetas personales, cuotas.</li>
-</ul>
-</li>
-<li><strong>Información del sistema operativo (6 sesiones, 12 horas).</strong><ul>
-<li>Estructura directorios. Búsqueda de información del sistema. Rendimiento. Estadísticas.</li>
-<li>Planificación de Tareas, Programador de tareas, <code>crontab</code>.</li>
-<li>Servicio Monitorización, Nagios, PRTG, OpenNMS.</li>
-</ul>
-</li>
-<li><strong>Servicios de acceso y administración remota (6 sesiones, 12 horas).</strong> <ul>
-<li>Acceso remoto en modo texto <code>SSH</code>. Tunelización.</li>
-<li>Escritorio Remoto:  RDP y xRDP. Acceso remoto de equipos en el AD con PWSH.</li>
-<li>Herramientas gráficas externas, TeamViewer, AnyDesk y Apache Guacamole.</li>
-</ul>
-</li>
-<li><strong>Administración de Servidores de Impresión (6 sesiones, 12 horas).</strong><ul>
-<li>Sistemas de Impresión, Puertos y protocolos de impresión.</li>
-<li>Servidor de impresión en GNU/Linux, <code>CUPS</code>. Órdenes para la gestión de impresoras y trabajos.</li>
-<li>Administración de los Servicios de Impresión en Windows Server.</li>
-</ul>
-</li>
-</ol>
-<h2 id="evaluacion">Evaluación<a class="headerlink" href="#evaluacion" title="Permanent link">&para;</a></h2>
-<h3 id="instrumentos-de-calificacion">Instrumentos de calificación<a class="headerlink" href="#instrumentos-de-calificacion" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>Instrumento de calificación 1 (IC1):</strong>: <em>escala de valores</em> comprendidas entre 0 y 3 puntos calificados de la siguiente forma:</p>
+<h1 id="getting-into-a-vm">Getting into a VM<a class="headerlink" href="#getting-into-a-vm" title="Permanent link">&para;</a></h1>
 <ul>
-<li><strong>0</strong>: No entregada.</li>
-<li><strong>1</strong>: Entregada pero solución errónea o incompleta.</li>
-<li><strong>2</strong>: Entregada y solución aceptable, aunque tiene algún apartado incompleto.</li>
-<li><strong>3</strong>: Entregada y solución correcta.</li>
+<li><code>vagrant ssh</code>           -- connects to machine via SSH</li>
+<li><code>vagrant ssh &lt;boxname&gt;</code> -- If you give your box a name in your Vagrantfile, you can ssh into it with boxname. Works from any directory.</li>
 </ul>
-</li>
-<li>
-<p><strong>Instrumento de calificación 2 (IC2):</strong> <em>escala de valores</em> comprendidas entre 0 y 7 puntos calificados de la siguiente forma:</p>
+<h1 id="stopping-a-vm">Stopping a VM<a class="headerlink" href="#stopping-a-vm" title="Permanent link">&para;</a></h1>
 <ul>
-<li><strong>0</strong>: No entregada</li>
-<li><strong>1-3</strong>: Entregada pero solución errónea o incompleta</li>
-<li><strong>3-6</strong>: Entregada y solución aceptable, aunque tiene algún apartado incompleto.</li>
-<li><strong>7</strong>: Entregada y solución correcta.</li>
+<li><code>vagrant halt</code>        -- stops the vagrant machine</li>
+<li><code>vagrant suspend</code>     -- suspends a virtual machine (remembers state)</li>
 </ul>
-</li>
-</ol>
-<h3 id="instrumentos-de-evaluacion">Instrumentos de Evaluación<a class="headerlink" href="#instrumentos-de-evaluacion" title="Permanent link">&para;</a></h3>
-<p>La nota de cada <strong>Resultado de Aprendizaje</strong> se calcula mediante la media ponderada de los puntos obtenidos, de los siguientes instrumentos de evaluación.</p>
-<ol>
-<li>
-<p><strong>Instrumento de Evaluación 1 (IE1). Trabajo en Clase/Actividades.</strong></p>
-<ol>
-<li>Se evalúan todas las actividades realizadas en clase y en casa.</li>
-<li>Las actividades se evalúan mediante tareas en el <code>moodle</code> aplicando el <strong>IC1</strong>.</li>
-</ol>
-</li>
-<li>
-<p><strong>Instrumentos de Evaluación 2 (IE2). Pruebas de Auditoría.</strong></p>
-<ol>
-<li>Cuestionario multi-opción (test) de 20 preguntas sobre la teoría de la unidad.</li>
-<li>Ejercicios prácticos sobre las actividades realizadas de la unidad.</li>
-</ol>
-</li>
-</ol>
-<div class="admonition not">
-<p class="admonition-title"><strong>Nota</strong>:</p>
-<p>Esta prueba se califica entre 0 y 30 puntos siguiendo las siguientes premisas:</p>
-</div>
+<h1 id="cleaning-up-a-vm">Cleaning Up a VM<a class="headerlink" href="#cleaning-up-a-vm" title="Permanent link">&para;</a></h1>
 <ul>
-<li><strong>0-10</strong> puntos. Donde Cada dos contestaciones incorrectas contestadas resta una bien.</li>
-<li><strong>0-6</strong> puntos: dos ejercicios de <em>nivel medio-bajo</em>, 3 puntos cada uno de ellos aplicando <strong>IC1</strong>.</li>
-<li><strong>0-14</strong> puntos: dos ejercicios de <em>nivel medio-alto</em> aplicando <strong>IC2</strong></li>
+<li><code>vagrant destroy</code>     -- stops and deletes all traces of the vagrant machine</li>
+<li><code>vagrant destroy -f</code>   -- same as above, without confirmation</li>
+</ul>
+<h1 id="boxes">Boxes<a class="headerlink" href="#boxes" title="Permanent link">&para;</a></h1>
+<ul>
+<li><code>vagrant box list</code>              -- see a list of all installed boxes on your computer</li>
+<li><code>vagrant box add &lt;name&gt; &lt;url&gt;</code>  -- download a box image to your computer</li>
+<li><code>vagrant box outdated</code>          -- check for updates vagrant box update</li>
+<li><code>vagrant box remove &lt;name&gt;</code>   -- deletes a box from the machine</li>
+<li><code>vagrant package</code>               -- packages a running virtualbox env in a reusable box</li>
+</ul>
+<h1 id="saving-progress">Saving Progress<a class="headerlink" href="#saving-progress" title="Permanent link">&para;</a></h1>
+<p>-<code>vagrant snapshot save [options] [vm-name] &lt;name&gt;</code> -- vm-name is often <code>default</code>. Allows us to save so that we can rollback at a later time</p>
+<h1 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h1>
+<ul>
+<li><code>vagrant -v</code>                    -- get the vagrant version</li>
+<li><code>vagrant status</code>                -- outputs status of the vagrant machine</li>
+<li><code>vagrant global-status</code>         -- outputs status of all vagrant machines</li>
+<li><code>vagrant global-status --prune</code> -- same as above, but prunes invalid entries</li>
+<li><code>vagrant provision --debug</code>     -- use the debug flag to increase the verbosity of the output</li>
+<li><code>vagrant push</code>                  -- yes, vagrant can be configured to <a href="http://docs.vagrantup.com/v2/push/index.html">deploy code</a>!</li>
+<li><code>vagrant up --provision | tee provision.log</code>  -- Runs <code>vagrant up</code>, forces provisioning and logs all output to a file</li>
+</ul>
+<h1 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="https://github.com/cogitatio/vagrant-hostsupdater">vagrant-hostsupdater</a> : <code>$ vagrant plugin install vagrant-hostsupdater</code> to update your <code>/etc/hosts</code> file automatically each time you start/stop your vagrant box.</li>
+</ul>
+<h1 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h1>
+<ul>
+<li>If you are using <a href="https://github.com/varying-vagrant-vagrants/vvv/">VVV</a>, you can enable xdebug by running <code>vagrant ssh</code> and then <code>xdebug_on</code> from the virtual machine's CLI.</li>
 </ul>
 
 
@@ -1265,27 +1084,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Pie" >
-      
-      
-        
-        <a href="01_ShellScripting/ProgramacionAula.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Programación de Aula" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Siguiente
-              </span>
-              Programación de Aula
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1312,10 +1110,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
     
     
