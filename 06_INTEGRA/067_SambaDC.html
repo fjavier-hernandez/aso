@@ -1031,6 +1031,81 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#comprobacion-del-samba-active-directory" class="md-nav__link">
+    Comprobación del Samba Active Directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creacion-y-acceso-de-usuarios" class="md-nav__link">
+    Creación y acceso de usuarios
+  </a>
+  
+    <nav class="md-nav" aria-label="Creación y acceso de usuarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-usuario-con-samba-tool" class="md-nav__link">
+    Crear usuario con samba-tool
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceso-al-samba-dc-desde-un-windows-client" class="md-nav__link">
+    Acceso al Samba-DC desde un Windows Client
+  </a>
+  
+    <nav class="md-nav" aria-label="Acceso al Samba-DC desde un Windows Client">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-dns-y-comprobacion" class="md-nav__link">
+    Configuración de DNS y comprobación
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anadir-cliente-al-active-directory-con-powershell" class="md-nav__link">
+    Añadir cliente al Active Directory con PowerShell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descargar-y-activar-la-aplicacion-rsat" class="md-nav__link">
+    Descargar y Activar la Aplicación RSAT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceso-samba-dc-desde-un-fedora" class="md-nav__link">
+    Acceso Samba-DC desde un fedora
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1503,7 +1578,7 @@ de directivas de grupo, todos los cambios y GPOs nuevos son replicados por allí
   <figcaption>Instalación y configuración de <b>chronyd.</b></figcaption>
 </figure>
 
-<h1 id="conprobacion-del-samba-active-directory">Conprobación del Samba Active Directory<a class="headerlink" href="#conprobacion-del-samba-active-directory" title="Permanent link">&para;</a></h1>
+<h2 id="comprobacion-del-samba-active-directory">Comprobación del Samba Active Directory<a class="headerlink" href="#comprobacion-del-samba-active-directory" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Verificaciones del dominio.</li>
 </ol>
@@ -1647,11 +1722,71 @@ pensada para instalarse en clientes que replica las herramientas disponibles en 
   <figcaption>Herramientas del AD II.</figcaption>
 </figure>
 
+<h2 id="acceso-samba-dc-desde-un-fedora">Acceso Samba-DC desde un fedora<a class="headerlink" href="#acceso-samba-dc-desde-un-fedora" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Ubuntu Server</p>
+<p>En el Ubuntu Server es necesario añadir repositorios.</p>
+</div>
+<ol>
+<li><strong>En Ubuntu Server</strong>, es necesario añadir los repositorios del "Universe".</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo add-apt-repository universe
+<span class="linenos" data-linenos="2 "></span>sudo add-apt-repository multiverse
+<span class="linenos" data-linenos="3 "></span>sudo apt update
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Cliente</p>
+<p>En el cliente.</p>
+</div>
+<ol start="2">
+<li>Se Establece nombre de host.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo hostnamectl set-hostname fedora.aso.local
+</code></pre></div>
+<ol start="3">
+<li>En Fedora, se edita la configuración Resolved.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano /etc/systemd/resolved.conf
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># Añade las siguientes líneas</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">[</span>Resolve<span class="o">]</span>
+<span class="linenos" data-linenos="5 "></span><span class="nv">DNS</span><span class="o">=</span><span class="m">192</span>.168.2.4 <span class="m">9</span>.9.9.9 <span class="m">8</span>.8.8.8
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Guarda y reinicia el servicio.</span>
+<span class="linenos" data-linenos="8 "></span>sudo systemctl restart systemd-resolved
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Ubuntu Server</p>
+<p>De nuevo en el Ubuntu Server es necesario añadir unos paquetes.</p>
+</div>
+<ol start="4">
+<li>Se Instalan los paquetes necesarios (<strong>solo Ubuntu</strong>)</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt -y install realmd libnss-sss libpam-sss sssd sssd-tools adcli samba-common-bin oddjob oddjob-mkhomedir packagekit
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Cliente</p>
+<p>Ya en el cliente.</p>
+</div>
+<ol start="5">
+<li>(Opcional) Descubrir dominio.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo realm discover aso.local
+</code></pre></div>
+<ol start="6">
+<li>Se añade al dominio.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo realm join -U Administrator aso.local
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Al reiniciar el cliente se podrá iniciar sesión como usuario del dominio.</p>
+</div>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Realiza un informe con las capturas explicadas de los principales pasos de esta guía y sus comprobaciones.</li>
 <li>Añade un usuario mediante las herramientas del AD. Reinicia W10 y logueate con este nuevo usuario.</li>
-<li>Elige de entre estas dos distribuciones de Linux Red Hat o Manjaro para añadir el cliente al AD y loguearte con alguno de los usuarios configurados.</li>
+<li>Elige de entre estas dos distribuciones de Linux Red Hat, Manjaro o Fedora para añadir el cliente al AD y loguearte con alguno de los usuarios configurados.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>

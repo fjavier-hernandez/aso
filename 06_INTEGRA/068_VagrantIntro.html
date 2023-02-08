@@ -1149,6 +1149,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#directorio-compartido" class="md-nav__link">
+    Directorio compartido
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vagrantfile" class="md-nav__link">
+    Vagrantfile
+  </a>
+  
+    <nav class="md-nav" aria-label="Vagrantfile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modificaciones-de-la-maquina-virtual" class="md-nav__link">
+    Modificaciones de la máquina virtual
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#actividades" class="md-nav__link">
     Actividades
   </a>
@@ -1336,6 +1363,11 @@
 </ol>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>vagrant ssh
 </code></pre></div>
+<figure>
+  <img src="./imagenes/068/001G.gif"/>
+  <figcaption>Creación del proyecto de Vagrant, inicialización de MV y comprobación.</figcaption>
+</figure>
+
 <h2 id="configuracion-basica">Configuración básica<a class="headerlink" href="#configuracion-basica" title="Permanent link">&para;</a></h2>
 <p>Por defecto, Vagrant almacena las VMs ‘boxed’ en la ruta <code>~/.vagrant.d</code>. Estas ‘boxes’ suelen ser ficheros de gran tamaño, y podemos considerarlas como una ‘imagen modelo’ de las MVs que tendremos en ejecución. Se pueden compartir entre diferentes usuarios, con el objetivo de optimizar el espacio utilizado en disco.</p>
 <p>La ubicación del directorio principal de Vagrant puede modificarse a través de la variable de entorno VAGRANT_HOME. Por ejemplo, a través del siguiente comando:</p>
@@ -1417,8 +1449,80 @@
 <li><code>vagrant push</code>                  -- ¡sí, vagrant se puede configurar para implementar código! <a href="http://docs.vagrantup.com/v2/push/index.html">deploy code</a>!</li>
 <li><code>vagrant up --provision | tee provision.log</code>  -- Ejecuta <code>vagrant up</code>, fuerza el aprovisionamiento y registra toda la salida en un archivo</li>
 </ul>
+<h2 id="directorio-compartido">Directorio compartido<a class="headerlink" href="#directorio-compartido" title="Permanent link">&para;</a></h2>
+<p>Por defecto cuando se ejecuta una MV con Vagrant se crea una carpeta compartida entre el Anfitrión y la MV. en este caso:</p>
+<figure>
+  <img src="./imagenes/068/006P.png"/>
+  <figcaption>Directorio compartido por defecto en Vagrant.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/068/007P.png"/>
+  <figcaption>En la MV de Vagrant se observa el Vagrantfile.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Generar archivos</p>
+<p>Si se genera un archivo en esta carpeta se generaría también en el anfitrión.</p>
+</div>
+<h2 id="vagrantfile">Vagrantfile<a class="headerlink" href="#vagrantfile" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Para visualizar por consola la lista de máquina virtuales en virtual box se puede utilizar el comando: <code>VBoxManage list vms</code></p>
+</div>
+<ul>
+<li>La configuración de un escenario concreto se realiza de forma bastante simple mediante modificaciones en el <code>Vagrantfile</code>, que está escrito en formato Ruby, como ya se ha comentado.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Realmente la configuración que se aplica es la aplicación en serie de varios <code>Vagranfiles</code>, tal como se explica en en la documentación oficial en <a href="https://developer.hashicorp.com/vagrant/docs/vagrantfile#load-order-and-merging">Load Order and Merging</a>, aunque lo más habitual es que se cargue el <code>Vagrantfile</code> que incluye el box y el que exista en el directorio de trabajo, siendo este último el que se modifica en la mayoría de los casos.</p>
+</div>
+<h3 id="modificaciones-de-la-maquina-virtual">Modificaciones de la máquina virtual<a class="headerlink" href="#modificaciones-de-la-maquina-virtual" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Las modificaciones se configuran en el espacio de nombres <code>config.vm</code>, prefijo que antecede a los parámetros en este caso, <code>por ejemplo</code> para modificar el hostname de la máquina se utiliza:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>config.vm.hostname <span class="o">=</span> <span class="s2">&quot;UbuntuServer22_Vagrant&quot;</span>
+</code></pre></div>
+<figure>
+  <img src="./imagenes/068/002G.gif"/>
+  <figcaption>Generar hostname a la MV de Vagrant.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El resto de parámetros que se pueden modificar los encontramos en la documentación de <a href="https://developer.hashicorp.com/vagrant/docs/vagrantfile/machine_settings">Vagrant: Machine Settings</a>, dejando en este caso para secciones posteriores algunos de los aspectos que necesitan más desarrollo como la configuración de la red o la configuración integrada de la máquina virtual mediante shell scripts o mediante aplicaciones como <code>Ansible</code> o <code>Puppet</code>.</p>
+</div>
+<ul>
+<li>Los parámetros relativos a las <strong>características de hardware de la máquina virtual</strong> dependen del proveedor en Vagrant y en el caso de VirtualBox se definen mediante una sub-sección desde donde se realizan las modificaciones apropiadas en un Vagrantfile. <strong>Por ejemplo</strong> para cambiar el nombre de la máquina virtual, la memoria RAM asignada y el número de núcleos virtuales.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span> config.vm.provider <span class="s2">&quot;virtualbox&quot;</span> <span class="k">do</span> <span class="p">|</span>vb<span class="p">|</span>
+<span class="linenos" data-linenos="2 "></span>     vb.name <span class="o">=</span> <span class="s2">&quot;nombre&quot;</span>
+<span class="linenos" data-linenos="3 "></span>     vb.memory <span class="o">=</span> <span class="s2">&quot;512&quot;</span>
+<span class="linenos" data-linenos="4 "></span>     vb.cpus <span class="o">=</span> <span class="m">2</span>
+<span class="linenos" data-linenos="5 "></span>   end
+</code></pre></div>
+<ul>
+<li>Como la forma habitual de gestionar máquinas virtuales en <code>Vagrant</code> es mediante la línea de comandos y accediendo a ellas a través de ssh, no tiene mucho sentido que se arranque una interfaz gráfica, pero en algunas ocasiones es conveniente. Para activar la interfaz gráfica de usuario al levantar la máquina, se debe añadir la siguiente línea al <code>Vagrantfile</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>config.vm.provider <span class="s2">&quot;virtualbox&quot;</span> <span class="k">do</span> <span class="p">|</span>vb<span class="p">|</span>
+<span class="linenos" data-linenos="2 "></span>     vb.gui <span class="o">=</span> <span class="nb">true</span>     
+<span class="linenos" data-linenos="3 "></span>   end
+</code></pre></div>
+<!-- ### Aprovisionamiento ligero (thin provisioning)
+
+Aprovisionamiento ligero (thin provisioning) es una técnica muy utilizada en diferentes sistemas de virtualización y consiste en crear un disco de imagen de máquina virtual que incluya sólo las modificaciones respecto a una imagen base, consiguiendo un ahorro significativo de espacio en disco a costa de una pequeña penalización en rendimiento. Configura un Vagrantfile para que se realice aprovisionamiento ligero.
+
+``` bash
+config.vm.provider "virtualbox" do |vb|
+     vb.name = "ligera"
+     vb.linked_clone = true
+   end
+``` -->
+
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
-<p>Monta el escenario necesario para trabajar con <code>Vagrant</code>.</p>
+<ol start="681">
+<li>Monta el escenario necesario para trabajar con <code>Vagrant</code>.</li>
+</ol>
 <ul>
 <li>Instala <code>Vagrant</code>.</li>
 <li>Realiza un primer proyecto.</li>
