@@ -1073,6 +1073,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#crear-una-mv-ya-configurada" class="md-nav__link">
+    Crear una MV ya configurada
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configuracion-basica" class="md-nav__link">
     Configuración básica
   </a>
@@ -1170,8 +1177,56 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#aprovisionamiento-ligero-thin-provisioning" class="md-nav__link">
+    Aprovisionamiento ligero (thin provisioning)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redireccion-de-puertos" class="md-nav__link">
+    Redirección de puertos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redes" class="md-nav__link">
+    Redes
+  </a>
+  
+    <nav class="md-nav" aria-label="Redes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#red-privada" class="md-nav__link">
+    Red privada
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red-publica" class="md-nav__link">
+    Red pública
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multimaquinas" class="md-nav__link">
+    Multimáquinas
+  </a>
   
 </li>
       
@@ -1368,6 +1423,20 @@
   <figcaption>Creación del proyecto de Vagrant, inicialización de MV y comprobación.</figcaption>
 </figure>
 
+<h2 id="crear-una-mv-ya-configurada">Crear una MV ya configurada<a class="headerlink" href="#crear-una-mv-ya-configurada" title="Permanent link">&para;</a></h2>
+<p>Hay <code>Boxes</code> subidas al Vagrant Cloud que no solo aportan un Sistema Operativo "limpio" sino que a parte tienen configurada alguna aplicación o servicio, para añadirlas correctamente su Vagrantfile viene especificado en el <code>git</code> que aparece en la descripción de la <code>box</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p><a href="https://app.vagrantup.com/rasmus/boxes/php7dev">rasmus/php7dev</a></p>
+</div>
+<p>Para realizar un uso adecuado de está caja se clona el repositorio que contiene el Vagrantfile configurado con las características de esta imagen:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span> git clone https://github.com/rlerdorf/php7dev.git
+</code></pre></div>
+<!-- <figure>
+  <img src="./imagenes/068/003G.gif"/>
+  <figcaption>Creación de una MV configurada.</figcaption>
+</figure> -->
+
 <h2 id="configuracion-basica">Configuración básica<a class="headerlink" href="#configuracion-basica" title="Permanent link">&para;</a></h2>
 <p>Por defecto, Vagrant almacena las VMs ‘boxed’ en la ruta <code>~/.vagrant.d</code>. Estas ‘boxes’ suelen ser ficheros de gran tamaño, y podemos considerarlas como una ‘imagen modelo’ de las MVs que tendremos en ejecución. Se pueden compartir entre diferentes usuarios, con el objetivo de optimizar el espacio utilizado en disco.</p>
 <p>La ubicación del directorio principal de Vagrant puede modificarse a través de la variable de entorno VAGRANT_HOME. Por ejemplo, a través del siguiente comando:</p>
@@ -1392,8 +1461,17 @@
 </ol>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">export</span> <span class="nv">VAGRANT_HOME</span><span class="o">=</span><span class="s2">&quot;/Volumes/[VOLUME_NAME]/vagrant_home&quot;</span>
 </code></pre></div>
+<ul>
+<li>Para editarlo directamente:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">echo</span> <span class="s1">&#39;export VAGRANT_HOME=&quot;/Volumes/[VOLUME_NAME]/vagrant_home&#39;</span> &gt;&gt; ~/.bash_profile
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">advertencia</p>
+<p>Para hacerlo permanente y no solo valga para una sesión, es necesario introducirlo en el <code>.bash_profile</code></p>
+</div>
 <ol start="4">
-<li>(<code>OPCIONAL</code>) Abre VirtualBox, vaya a Preferencias y establezca la carpeta de máquina predeterminada en una ubicación en su disco duro externo (por ejemplo una nueva carpeta llamada "VMs VirtualBox").</li>
+<li>Abre VirtualBox, vaya a Preferencias y establezca la carpeta de máquina predeterminada en una ubicación en su disco duro externo (por ejemplo una nueva carpeta llamada "VMs VirtualBox").</li>
 </ol>
 <h2 id="principales-comandos-vagrant">Principales comandos Vagrant<a class="headerlink" href="#principales-comandos-vagrant" title="Permanent link">&para;</a></h2>
 <p>En la <a href="https://developer.hashicorp.com/vagrant/docs/cli">DOCUMENTACIÓN OFICIAL</a> se encuentran todos los comandos de Vagrant, en los siguiente apartados se realiza un resumen de los más utilizados.</p>
@@ -1508,17 +1586,112 @@
 <span class="linenos" data-linenos="2 "></span>     vb.gui <span class="o">=</span> <span class="nb">true</span>     
 <span class="linenos" data-linenos="3 "></span>   end
 </code></pre></div>
-<!-- ### Aprovisionamiento ligero (thin provisioning)
+<h3 id="aprovisionamiento-ligero-thin-provisioning">Aprovisionamiento ligero (thin provisioning)<a class="headerlink" href="#aprovisionamiento-ligero-thin-provisioning" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Para los casos de necesidad de clonar muchas máquinas se aconseja utilizar el <strong>Aprovisionamiento ligero (thin provisioning)</strong>, el cual es una técnica muy utilizada en diferentes sistemas de virtualización.</p>
+</li>
+<li>
+<p>Dicha técnica consiste en crear un disco de imagen de máquina virtual que incluya sólo las modificaciones respecto a una imagen base, consiguiendo un ahorro significativo de espacio en disco a costa de una pequeña penalización en rendimiento. </p>
+</li>
+<li>
+<p>A continuación se muestra la configuración de un Vagrantfile para que realiza el <code>aprovisionamiento ligero</code>.</p>
+</li>
+</ul>
+<ol>
+<li>Revisamos cuanto ocupa la MV de ejemplo de hashicorp.</li>
+</ol>
+<figure>
+  <img src="./imagenes/068/008P.png"/>
+</figure>
 
-Aprovisionamiento ligero (thin provisioning) es una técnica muy utilizada en diferentes sistemas de virtualización y consiste en crear un disco de imagen de máquina virtual que incluya sólo las modificaciones respecto a una imagen base, consiguiendo un ahorro significativo de espacio en disco a costa de una pequeña penalización en rendimiento. Configura un Vagrantfile para que se realice aprovisionamiento ligero.
+<ol start="2">
+<li>Para hacer la creación de la máquina ligera clonada se realiza en una carpeta a parte un nuevo proyecto y añadimos las siguientes líneas al <code>Vagrantfile</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>config.vm.provider <span class="s2">&quot;virtualbox&quot;</span> <span class="k">do</span> <span class="p">|</span>vb<span class="p">|</span>
+<span class="linenos" data-linenos="2 "></span>     vb.name <span class="o">=</span> <span class="s2">&quot;ligera&quot;</span>
+<span class="linenos" data-linenos="3 "></span>     vb.linked_clone <span class="o">=</span> <span class="nb">true</span>
+<span class="linenos" data-linenos="4 "></span>   end
+</code></pre></div>
+<figure>
+  <img src="./imagenes/068/004G.gif"/>
+  <figcaption>Configuración de aprovisionamiento ligero.</figcaption>
+</figure>
 
-``` bash
-config.vm.provider "virtualbox" do |vb|
-     vb.name = "ligera"
-     vb.linked_clone = true
-   end
-``` -->
-
+<h2 id="redireccion-de-puertos">Redirección de puertos<a class="headerlink" href="#redireccion-de-puertos" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Si se necesita habilitar puertos para determinados servicios a instalar en la MV, se puede realizar una redirección de puertos. </p>
+</li>
+<li>
+<p>Por ejemplo si además de utilizar la redirección de puertos de <code>ssh</code> que utiliza Vagrant se debería añadir la siguiente línea:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>config.vm.network <span class="s2">&quot;forwarded_port&quot;</span>, guest: <span class="m">80</span>, host: <span class="m">8080</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Comprobación</p>
+<p>Para comprobarlo se instalaría un NGINX en la máquina y accederíamos al servicio por el puerto configurado.</p>
+</div>
+<h2 id="redes">Redes<a class="headerlink" href="#redes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Por defecto Vagrant realiza los pasos necesarios en la máquina virtual para que sea accesible a través de una red virtual desde el equipo anfitrión y tenga acceso a Internet, es decir le configura una red. </p>
+</li>
+<li>
+<p>Esta configuración lógicamente va a variar en función del proveedor, pero en el caso de VirtualBox se trata de una red de tipo NAT con el direccionamiento inicial 10.0.2.0/24. Las opciones de redes son:</p>
+</li>
+</ul>
+<h3 id="red-privada">Red privada<a class="headerlink" href="#red-privada" title="Permanent link">&para;</a></h3>
+<p>En algunas ocasiones aparece la necesidad de utilizar un direccionamiento IP específico en una máquina virtual o añadir una red virtual adicional, por lo que en muchos casos es adecuado añadir una red privada, tal como se explica en <a href="https://developer.hashicorp.com/vagrant/docs/networking/private_network">Private Networks</a>.</p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>config.vm.network <span class="s2">&quot;private_network&quot;</span>, ip: <span class="s2">&quot;192.168.55.10&quot;</span>
+</code></pre></div>
+<h3 id="red-publica">Red pública<a class="headerlink" href="#red-publica" title="Permanent link">&para;</a></h3>
+<p>Para vagrant una red pública es una red en modo puente (<strong>bridged network</strong>) conectada al exterior, típicamente sería poner en la misma red la máquina anfitriona y la máquina virtual. Más detalles en <a href="https://developer.hashicorp.com/vagrant/docs/networking/public_network">Public Networks</a></p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>config.vm.network  <span class="s2">&quot;public_network&quot;</span>, bridge: <span class="s2">&quot;eth0&quot;</span>
+</code></pre></div>
+<h2 id="multimaquinas">Multimáquinas<a class="headerlink" href="#multimaquinas" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Se puede extender la configuración de un escenario virtual con vagrant a aquellos casos en los que haya más de una máquina virtual y esto se hace con estructuras como la siguiente en el Vagrantfile:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Vagrant.configure<span class="o">(</span><span class="s2">&quot;2&quot;</span><span class="o">)</span> <span class="k">do</span> <span class="p">|</span>config<span class="p">|</span>
+<span class="linenos" data-linenos="2 "></span>  config.vm.define <span class="s2">&quot;Server&quot;</span> <span class="k">do</span> <span class="p">|</span>m1<span class="p">|</span>
+<span class="linenos" data-linenos="3 "></span>    m1.vm.box <span class="o">=</span> <span class="s2">&quot;Ecodev/ubuntu-server-2204&quot;</span>
+<span class="linenos" data-linenos="4 "></span>  end
+<span class="linenos" data-linenos="5 "></span>  config.vm.define <span class="s2">&quot;Client&quot;</span> <span class="k">do</span> <span class="p">|</span>m2<span class="p">|</span>
+<span class="linenos" data-linenos="6 "></span>    m2.vm.box <span class="o">=</span> <span class="s2">&quot;hashicorp/bionic64&quot;</span>
+<span class="linenos" data-linenos="7 "></span>  end
+<span class="linenos" data-linenos="8 "></span>end
+</code></pre></div>
+<ul>
+<li>Al existir más de una máquina virtual, muchas de las instrucciones que hemos visto hasta ahora deben incluir el nombre de la máquina como parámetro, por ejemplo si hiciéramos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>vagrant ssh Server
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Crea un escenario para una aplicación web en la que ubicamos en una máquina el servidor <strong>Ubuntu 22</strong> conectado a una red pública exterior y una máquina con un <strong>cliente</strong> en una máquina no accesible desde el exterior. Para que ambas máquinas estén interconectadas entre sí, crea la red privada <code>10.0.100.0/24</code> a la que estarán conectadas ambas máquinas.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Vagrant.configure<span class="o">(</span><span class="s2">&quot;2&quot;</span><span class="o">)</span> <span class="k">do</span> <span class="p">|</span>config<span class="p">|</span>
+<span class="linenos" data-linenos=" 2 "></span>     config.vm.define <span class="s2">&quot;ServerMulti1&quot;</span> <span class="k">do</span> <span class="p">|</span>nodo1<span class="p">|</span>
+<span class="linenos" data-linenos=" 3 "></span>       nodo1.vm.box <span class="o">=</span> <span class="s2">&quot;Ecodev/ubuntu-server-2204&quot;</span>
+<span class="linenos" data-linenos=" 4 "></span>       nodo1.vm.hostname <span class="o">=</span> <span class="s2">&quot;UbuntuServerMulti&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span>       nodo1.vm.network <span class="s2">&quot;public_network&quot;</span>, bridge: <span class="s2">&quot;en0&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span>       nodo1.vm.network <span class="s2">&quot;private_network&quot;</span>, ip: <span class="s2">&quot;10.0.100.101&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span>     end
+<span class="linenos" data-linenos=" 8 "></span>     config.vm.define <span class="s2">&quot;ClientMulti1&quot;</span> <span class="k">do</span> <span class="p">|</span>nodo2<span class="p">|</span>
+<span class="linenos" data-linenos=" 9 "></span>       nodo2.vm.box <span class="o">=</span> <span class="s2">&quot;hashicorp/bionic64&quot;</span>
+<span class="linenos" data-linenos="10 "></span>       nodo2.vm.hostname <span class="o">=</span> <span class="s2">&quot;ClienteMulti&quot;</span>
+<span class="linenos" data-linenos="11 "></span>       nodo2.vm.network <span class="s2">&quot;private_network&quot;</span>, ip: <span class="s2">&quot;10.0.100.102&quot;</span>
+<span class="linenos" data-linenos="12 "></span>     end
+<span class="linenos" data-linenos="13 "></span>   end
+</code></pre></div>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <ol start="681">
 <li>Monta el escenario necesario para trabajar con <code>Vagrant</code>.</li>
@@ -1529,6 +1702,9 @@ config.vm.provider "virtualbox" do |vb|
 <li>Externaliza la carpeta de boxes a un disco externo (si es posible).</li>
 <li>Crea y destruye varias MVs.</li>
 </ul>
+<ol start="682">
+<li>Genera un Vagrantfile multimáquina con un servidor web y un cliente que pueda acceder al servidor de forma privada. El servidor debe tener salida a Internet. Comprueba que tiene acceso al <code>index.html</code> del servidor web y modifícalo.</li>
+</ol>
 
 
 
