@@ -1825,7 +1825,25 @@
 <li>Crea y destruye varias MVs.</li>
 </ul>
 <ol start="682">
-<li>Genera un Vagrantfile multimáquina con un servidor web y un cliente que pueda acceder al servidor de forma privada. El servidor debe tener salida a Internet. Comprueba que tiene acceso al <code>index.html</code> del servidor web y modifícalo.</li>
+<li>
+<p>Genera un Vagrantfile multimáquina con un servidor web y un cliente que pueda acceder al servidor de forma privada. El servidor debe tener salida a Internet. Comprueba que tiene acceso al <code>index.html</code> del servidor web y modifícalo.</p>
+</li>
+<li>
+<p>Crea un entorno de desarrollo portable con Vagrant con algunas de las boxes más utilizadas del catálogo (por ejemplo ubuntu/xenial64 o centos7):</p>
+</li>
+</ol>
+<ul>
+<li>Prueba los distintos tipos de <code>synced folders</code>. Comprueba si, para tu plataforma, en cada uno de ellos funciona adecuadamente los enlaces simbólicos y la sincronización en uno y otro sentido:</li>
+<li>Shared folder de virtualbox ▹ Rsync</li>
+<li>NFS</li>
+<li>Prueba a compartir por los métodos anteriores carpetas de tu equipo en otras ubicaciones de la máquina guest.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>usa vagrant reload cada vez que cambies la configuración.</p>
+</div>
+<ol start="684">
+<li>Crea una máquina con un NGINX y un reenvío de puertos, Genera una <code>Snapshot</code> haz algún cambio en el <code>index.html</code>. Regenera la captura y comprueba que el index.html está como de inicio.</li>
 </ol>
 
 
