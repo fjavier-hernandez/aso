@@ -1073,15 +1073,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#crear-una-mv-ya-configurada" class="md-nav__link">
-    Crear una MV ya configurada
+  <a href="#configuracion-basica" class="md-nav__link">
+    Configuración básica
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuracion-basica" class="md-nav__link">
-    Configuración básica
+  <a href="#crear-una-mv-ya-configurada" class="md-nav__link">
+    Crear una MV ya configurada
   </a>
   
 </li>
@@ -1156,13 +1156,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#directorio-compartido" class="md-nav__link">
-    Directorio compartido
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#vagrantfile" class="md-nav__link">
     Vagrantfile
   </a>
@@ -1178,8 +1171,29 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#directorio-compartido" class="md-nav__link">
+    Directorio compartido
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#aprovisionamiento-ligero-thin-provisioning" class="md-nav__link">
     Aprovisionamiento ligero (thin provisioning)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redireccion-de-puertos" class="md-nav__link">
+    Redirección de puertos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anadir-disco-adicional" class="md-nav__link">
+    Añadir disco adicional
   </a>
   
 </li>
@@ -1190,8 +1204,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#redireccion-de-puertos" class="md-nav__link">
-    Redirección de puertos
+  <a href="#gestion-de-instantaneas" class="md-nav__link">
+    Gestión de instantáneas
   </a>
   
 </li>
@@ -1224,8 +1238,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multimaquinas" class="md-nav__link">
-    Multimáquinas
+  <a href="#multi-maquinas" class="md-nav__link">
+    Multi-máquinas
   </a>
   
 </li>
@@ -1423,15 +1437,6 @@
   <figcaption>Creación del proyecto de Vagrant, inicialización de MV y comprobación.</figcaption>
 </figure>
 
-<h2 id="crear-una-mv-ya-configurada">Crear una MV ya configurada<a class="headerlink" href="#crear-una-mv-ya-configurada" title="Permanent link">&para;</a></h2>
-<p>Hay <code>Boxes</code> subidas al Vagrant Cloud que no solo aportan un Sistema Operativo "limpio" sino que a parte tienen configurada alguna aplicación o servicio, para añadirlas correctamente su Vagrantfile viene especificado en el <code>git</code> que aparece en la descripción de la <code>box</code>.</p>
-<div class="admonition example">
-<p class="admonition-title">Ejemplo</p>
-<p><a href="https://app.vagrantup.com/rasmus/boxes/php7dev">rasmus/php7dev</a></p>
-</div>
-<p>Para realizar un uso adecuado de está caja se clona el repositorio que contiene el Vagrantfile configurado con las características de esta imagen:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span> git clone https://github.com/rlerdorf/php7dev.git
-</code></pre></div>
 <!-- <figure>
   <img src="./imagenes/068/003G.gif"/>
   <figcaption>Creación de una MV configurada.</figcaption>
@@ -1473,6 +1478,25 @@
 <ol start="4">
 <li>Abre VirtualBox, vaya a Preferencias y establezca la carpeta de máquina predeterminada en una ubicación en su disco duro externo (por ejemplo una nueva carpeta llamada "VMs VirtualBox").</li>
 </ol>
+<h2 id="crear-una-mv-ya-configurada">Crear una MV ya configurada<a class="headerlink" href="#crear-una-mv-ya-configurada" title="Permanent link">&para;</a></h2>
+<p>Hay <code>Boxes</code> subidas al Vagrant Cloud que no solo aportan un Sistema Operativo "limpio" sino que a parte tienen configurada alguna aplicación o servicio, para añadirlas correctamente su Vagrantfile viene especificado en el <code>git</code> que aparece en la descripción de la <code>box</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p><a href="https://app.vagrantup.com/rasmus/boxes/php7dev">rasmus/php7dev</a></p>
+</div>
+<p>Para realizar un uso adecuado de está caja se clona el repositorio que contiene el Vagrantfile configurado con las características de esta imagen:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span> git clone https://github.com/rlerdorf/php7dev.git
+</code></pre></div>
+<p>Una vez clonado aparece la carpeta descargada donde podemos apreciar los archivos de <code>Vagrantfile</code> y de configuración <code>.yml</code>, como se observa a continuación.</p>
+<figure>
+  <img src="./imagenes/068/005G.gif"/>
+  <figcaption>Vagrantfile y .yml de la Caja descargada.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Una vez realizado el Vagrant up se puede acceder al servicio de <code>PHP</code></p>
+</div>
 <h2 id="principales-comandos-vagrant">Principales comandos Vagrant<a class="headerlink" href="#principales-comandos-vagrant" title="Permanent link">&para;</a></h2>
 <p>En la <a href="https://developer.hashicorp.com/vagrant/docs/cli">DOCUMENTACIÓN OFICIAL</a> se encuentran todos los comandos de Vagrant, en los siguiente apartados se realiza un resumen de los más utilizados.</p>
 <div class="admonition warning">
@@ -1527,22 +1551,6 @@
 <li><code>vagrant push</code>                  -- ¡sí, vagrant se puede configurar para implementar código! <a href="http://docs.vagrantup.com/v2/push/index.html">deploy code</a>!</li>
 <li><code>vagrant up --provision | tee provision.log</code>  -- Ejecuta <code>vagrant up</code>, fuerza el aprovisionamiento y registra toda la salida en un archivo</li>
 </ul>
-<h2 id="directorio-compartido">Directorio compartido<a class="headerlink" href="#directorio-compartido" title="Permanent link">&para;</a></h2>
-<p>Por defecto cuando se ejecuta una MV con Vagrant se crea una carpeta compartida entre el Anfitrión y la MV. en este caso:</p>
-<figure>
-  <img src="./imagenes/068/006P.png"/>
-  <figcaption>Directorio compartido por defecto en Vagrant.</figcaption>
-</figure>
-
-<figure>
-  <img src="./imagenes/068/007P.png"/>
-  <figcaption>En la MV de Vagrant se observa el Vagrantfile.</figcaption>
-</figure>
-
-<div class="admonition note">
-<p class="admonition-title">Generar archivos</p>
-<p>Si se genera un archivo en esta carpeta se generaría también en el anfitrión.</p>
-</div>
 <h2 id="vagrantfile">Vagrantfile<a class="headerlink" href="#vagrantfile" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Consejo</p>
@@ -1586,6 +1594,49 @@
 <span class="linenos" data-linenos="2 "></span>     vb.gui <span class="o">=</span> <span class="nb">true</span>     
 <span class="linenos" data-linenos="3 "></span>   end
 </code></pre></div>
+<h3 id="directorio-compartido">Directorio compartido<a class="headerlink" href="#directorio-compartido" title="Permanent link">&para;</a></h3>
+<p>Por defecto cuando se ejecuta una MV con Vagrant se crea una carpeta compartida entre el Anfitrión y la MV. en este caso:</p>
+<figure>
+  <img src="./imagenes/068/006P.png"/>
+  <figcaption>Directorio compartido por defecto en Vagrant.</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/068/007P.png"/>
+  <figcaption>En la MV de Vagrant se observa el Vagrantfile.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Generar archivos</p>
+<p>Si se genera un archivo en esta carpeta se generaría también en el anfitrión.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Existen casos en los cuales la carpeta compartida no se sincroniza correctamente, para solucionarlo existen las siguientes alternativas:</p>
+</div>
+<ul>
+<li>Mediante <code>rsync</code>, la cual es una aplicación libre para sistemas de tipo Unix y Microsoft Windows que ofrece transmisión eficiente de datos incrementales. Para realizar la configuración Con Vagrant haríamos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>config.vm.synced_folder <span class="s2">&quot;.&quot;</span>, <span class="s2">&quot;/vagrant&quot;</span>, type: <span class="s2">&quot;rsync&quot;</span>
+</code></pre></div>
+<ul>
+<li>Y lanzar en el <code>host</code> el comando:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>vagrant rsync-auto
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La sincronización se lleva a cabo desde host a guest</p>
+</div>
+<ul>
+<li>Otras alternativas son <code>NFS</code> o <code>SMB</code> de forma bidireccional:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>config.vm.synced_folder <span class="s2">&quot;.&quot;</span>, <span class="s2">&quot;/vagrant&quot;</span>, type: <span class="s2">&quot;nfs&quot;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Se requiere un servidor NFS (o SMB) en el host =&gt; se requiere red privada</p>
+</div>
 <h3 id="aprovisionamiento-ligero-thin-provisioning">Aprovisionamiento ligero (thin provisioning)<a class="headerlink" href="#aprovisionamiento-ligero-thin-provisioning" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
@@ -1618,7 +1669,7 @@
   <figcaption>Configuración de aprovisionamiento ligero.</figcaption>
 </figure>
 
-<h2 id="redireccion-de-puertos">Redirección de puertos<a class="headerlink" href="#redireccion-de-puertos" title="Permanent link">&para;</a></h2>
+<h3 id="redireccion-de-puertos">Redirección de puertos<a class="headerlink" href="#redireccion-de-puertos" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>Si se necesita habilitar puertos para determinados servicios a instalar en la MV, se puede realizar una redirección de puertos. </p>
@@ -1633,10 +1684,81 @@
 <p class="admonition-title">Comprobación</p>
 <p>Para comprobarlo se instalaría un NGINX en la máquina y accederíamos al servicio por el puerto configurado.</p>
 </div>
+<h3 id="anadir-disco-adicional">Añadir disco adicional<a class="headerlink" href="#anadir-disco-adicional" title="Permanent link">&para;</a></h3>
+<p>Una de las configuraciones más utilizadas en los escenarios de entornos virtualizados es la adición de discos adicionales para obtener diferentes tipos de configuraciones como puede ser la redundancia de datos mediante técnicas de <code>RAID</code>.</p>
+<p>En este caso Vagrant no dispone de comandos ni configuraciones para realizarlo, por lo que se debe añadir la programación necesaria en el <code>VagrantFile</code> que actue directamente al Virtualbox.</p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Creación de una máquina virtual que tenga un disco adicional de 500 GiB. Para ello se puede utilizar el siguiente código:</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>config.vm.provider <span class="s2">&quot;virtualbox&quot;</span> <span class="k">do</span> <span class="p">|</span>vb<span class="p">|</span>
+<span class="linenos" data-linenos=" 2 "></span>     <span class="nv">file_to_disk</span> <span class="o">=</span> <span class="s1">&#39;tmp/disk.vdi&#39;</span>
+<span class="linenos" data-linenos=" 3 "></span>     unless File.exist?<span class="o">(</span>file_to_disk<span class="o">)</span>
+<span class="linenos" data-linenos=" 4 "></span>       vb.customize <span class="o">[</span><span class="s1">&#39;createhd&#39;</span>, 
+<span class="linenos" data-linenos=" 5 "></span>                     <span class="s1">&#39;--filename&#39;</span>, file_to_disk, 
+<span class="linenos" data-linenos=" 6 "></span>                     <span class="s1">&#39;--size&#39;</span>, <span class="m">500</span> * <span class="m">1024</span><span class="o">]</span>
+<span class="linenos" data-linenos=" 7 "></span>     end
+<span class="linenos" data-linenos=" 8 "></span>     vb.customize <span class="o">[</span><span class="s1">&#39;storageattach&#39;</span>, :id, 
+<span class="linenos" data-linenos=" 9 "></span>                   <span class="s1">&#39;--storagectl&#39;</span>, <span class="s1">&#39;SATAController&#39;</span>, 
+<span class="linenos" data-linenos="10 "></span>                   <span class="s1">&#39;--port&#39;</span>, <span class="m">1</span>, 
+<span class="linenos" data-linenos="11 "></span>                   <span class="s1">&#39;--device&#39;</span>, <span class="m">0</span>, 
+<span class="linenos" data-linenos="12 "></span>                   <span class="s1">&#39;--type&#39;</span>, <span class="s1">&#39;hdd&#39;</span>, 
+<span class="linenos" data-linenos="13 "></span>                   <span class="s1">&#39;--medium&#39;</span>, file_to_disk<span class="o">]</span>
+<span class="linenos" data-linenos="14 "></span>   end
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<ul>
+<li>Este tipo de configuraciones en las que se pone de forma explícita las características de la máquina virtual no son ni mucho menos generales, en el caso anterior se está poniendo de forma concreta el puerto <code>SATA</code> al que conectar el disco y el nombre del controlador <code>SATA</code>, características que pueden variar de una máquina virtual a otra. </li>
+<li>Por lo tanto Es recomendable inicialmente comprobar el nombre del controlador de <code>SATA</code> que en el caso de VirtualBox se puede hacer con el siguiente comando de VBoxManage</li>
+</ul>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>VBoxManage showvminfo NOMBRE_MV
+</code></pre></div>
+<figure>
+  <img src="./imagenes/068/005G.gif"/>
+  <figcaption>Comprobación del nombre del controlador de SATA y creación del disco adicional.</figcaption>
+</figure>
+
+<ul>
+<li>Después de levantar el Vagrant o realizar un <code>reload</code>, se comprueba la configuración:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>lsblk
+<span class="linenos" data-linenos="2 "></span>ls -hl tmp/
+</code></pre></div>
+<figure>
+  <img src="./imagenes/068/006G.gif"/>
+  <figcaption>Comprobación de la creación del disco adicional.</figcaption>
+</figure>
+
+<h2 id="gestion-de-instantaneas">Gestión de instantáneas<a class="headerlink" href="#gestion-de-instantaneas" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Para generar y recuperar instantáneas en <code>Vagrant</code> se utiliza el comando <code>vagrant snapshot</code> seguido de la acción a realizar o bien guardar o recuperar.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Partiendo de un escenario de vagrant con una MV que tenga instalada un NGINX y un reenvío de puertos. Se genera una <code>snapshot</code> para realizar algún cambio y restaurar la captura guardada.</p>
+</div>
+<ul>
+<li>Comandos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># se genera la captura.</span>
+<span class="linenos" data-linenos="2 "></span>vagrant snapshot save nginx-limpio
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># se comprueba que se ha creado.</span>
+<span class="linenos" data-linenos="5 "></span>vagrant snapshot list
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Después de realizar algún cambio se restaura.</span>
+<span class="linenos" data-linenos="8 "></span>vagrant snapshot restore nginx-limpio
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Existe un método más sencillo de realizar instantáneas, es mediante el comando <code>vagrant snapshot push</code> que va almacenando instantáneas cada vez que se invoca y se recupera la más reciente con <code>vagrant snapshot pop</code>.</p>
+</div>
 <h2 id="redes">Redes<a class="headerlink" href="#redes" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>Por defecto Vagrant realiza los pasos necesarios en la máquina virtual para que sea accesible a través de una red virtual desde el equipo anfitrión y tenga acceso a Internet, es decir le configura una red. </p>
+<p>Por defecto Vagrant realiza los pasos necesarios en la máquina virtual para que sea accesible a través de una red virtual desde el equipo anfitrión y tenga acceso a Internet, es decir le configura una red.</p>
 </li>
 <li>
 <p>Esta configuración lógicamente va a variar en función del proveedor, pero en el caso de VirtualBox se trata de una red de tipo NAT con el direccionamiento inicial 10.0.2.0/24. Las opciones de redes son:</p>
@@ -1656,7 +1778,7 @@
 </div>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>config.vm.network  <span class="s2">&quot;public_network&quot;</span>, bridge: <span class="s2">&quot;eth0&quot;</span>
 </code></pre></div>
-<h2 id="multimaquinas">Multimáquinas<a class="headerlink" href="#multimaquinas" title="Permanent link">&para;</a></h2>
+<h2 id="multi-maquinas">Multi-máquinas<a class="headerlink" href="#multi-maquinas" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Se puede extender la configuración de un escenario virtual con vagrant a aquellos casos en los que haya más de una máquina virtual y esto se hace con estructuras como la siguiente en el Vagrantfile:</li>
 </ul>
