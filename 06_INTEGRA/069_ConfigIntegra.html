@@ -1143,6 +1143,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    Actividades
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1401,15 +1408,25 @@
   <figcaption>Actualización Vagrant con Ansible.</figcaption>
 </figure>
 
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <ol start="691">
 <li>Crea un cluster de 3 máquinas con Vagrant con la siguiente configuración:</li>
 </ol>
 <ul>
-<li>Nodo1: Ecodev/ubuntu-server-2204</li>
-<li>Nodo2: hashicorp/bionic64</li>
-<li>Nodo3: generic/fedora28</li>
+<li>Nodo1: Servidor Ubuntu</li>
+<li>Nodo2: Windows 10</li>
+<li>Nodo3: Fedora</li>
 </ul>
-<p>Aprovisiona mediante scripts el servicio Samba-DC al servidor y a los clientes, comprueba que se pueden loguear.</p>
+<p>Aprovisiona mediante <code>scripts</code> el servicio Samba-DC al servidor y a los clientes, comprueba que se pueden loguear.</p>
+<ol start="692">
+<li>Crea un cluster de 3 máquinas con Vagrant con la siguiente configuración:</li>
+</ol>
+<ul>
+<li>Nodo1: Servidor Ubuntu</li>
+<li>Nodo2: Windows 10</li>
+<li>Nodo3: Fedora</li>
+</ul>
+<p>Aprovisiona mediante <code>Ansible</code> el servicio Samba-DC al servidor y a los clientes, comprueba que se pueden loguear.</p>
 <!-- 3. El siguiente es un ejemplo de configuración integrada de Vagrant con ansible, donde se despliega un clúster de balanceo de carga mediante un `round-robin` en un servidor `DNS`.
 
 Clona el siguiente repositorio y sigue las instrucciones que se incluyen en el fichero README.md:
