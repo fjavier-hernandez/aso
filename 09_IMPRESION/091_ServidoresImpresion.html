@@ -1,0 +1,1717 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/09_IMPRESION/091_ServidoresImpresion.html">
+      
+      <link rel="icon" href="../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>9.1- Servidores de Impresión - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#administracion-de-servidores-de-impresion" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9.1- Servidores de Impresión
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          1.- UD1. ShellScripting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="1.- UD1. ShellScripting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          1.- UD1. ShellScripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/ResumenUD.html" class="md-nav__link">
+        Resumen UD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/011_ShellScript_Intro.html" class="md-nav__link">
+        1.1- Introducción
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/012_ShelScript_Sintaxis.html" class="md-nav__link">
+        1.2- Sintaxis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/013_ShellScript_ControlFlujo.html" class="md-nav__link">
+        1.3- Control de flujo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/014_ShellScript_VectoresFunciones.html" class="md-nav__link">
+        1.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/015_ShellScript_RefuerzoAmpliacion.html" class="md-nav__link">
+        1.5- Refuerzo y ampliación
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_ShellScripting/016_ShellScript_PruebaEspecifica.html" class="md-nav__link">
+        1.6- Prueba Auditoria
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          2.- UD2: PowerShell
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2.- UD2: PowerShell" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          2.- UD2: PowerShell
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/021_Introduccio%CC%81nPwSh.html" class="md-nav__link">
+        2.1- Introducción
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/022_PowerShell_Sintaxis.html" class="md-nav__link">
+        2.2- Sintaxis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/023_PowerShell_ControlFlujo.html" class="md-nav__link">
+        2.3- Control de flujo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_PowerShell/024_PowerShell_VectoresFunciones.html" class="md-nav__link">
+        2.4- Vectores y Funciones
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          3.- UD3: Administración de procesos del sistema
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="3.- UD3: Administración de procesos del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          3.- UD3: Administración de procesos del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/031_Planificador.html" class="md-nav__link">
+        3.1- Introducción Procesos, Planificador
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/032_Hilos.html" class="md-nav__link">
+        3.2- Hilos, Sincronización e interrupciones, Herramientas gráficas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/033_GestionProcesosShell.html" class="md-nav__link">
+        3.3- Gestión de procesos en Shell de Linux.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/034_GestionProcesosPWSH.html" class="md-nav__link">
+        3.4- Gestión de procesos en PowerShell.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Procesos/035_ArranqueServicios.html" class="md-nav__link">
+        3.5- Arranque del sistema. Servicios. Systemd.
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          4.- Servicios de Directorio Libres: LDAP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="4.- Servicios de Directorio Libres: LDAP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          4.- Servicios de Directorio Libres: LDAP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/041_Introduccion_SDyLDAP.html" class="md-nav__link">
+        4.1- Introducción Servicios de directorio y LDAP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/042_InstalacionConfigLDAP_PR.html" class="md-nav__link">
+        4.2- Instalación y configuración de OpenLDAP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/043_LDAP_DIT.html" class="md-nav__link">
+        4.3- Modelo de Información de LDAP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/044_UsersLDAP.html" class="md-nav__link">
+        4.4- Creación y comprobación de Usuarios/Grupos OpenLDAP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/045_LDAP_EsquemaHerramientas.html" class="md-nav__link">
+        4.5- Esquema LDAP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_LDAP/046_LDAP_Graficas.html" class="md-nav__link">
+        4.6- Gestión usuarios LDAP con GUI
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          5.- Servicios de Directorio Propietarios: Active Directory
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="5.- Servicios de Directorio Propietarios: Active Directory" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          5.- Servicios de Directorio Propietarios: Active Directory
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_AD/051_ActiveDirectory.html" class="md-nav__link">
+        5.1- Introducción Active Directory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          6.- Integración de sistemas operativos en red libres y propietarios
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="6.- Integración de sistemas operativos en red libres y propietarios" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          6.- Integración de sistemas operativos en red libres y propietarios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_INTEGRA/061_ServiciosRedRecursosCompartidos.html" class="md-nav__link">
+        6.1- Introducción: Sistemas heterogéneos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_INTEGRA/062_NFS.html" class="md-nav__link">
+        6.2- NFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_INTEGRA/063_DockerIntroNextCloud.html" class="md-nav__link">
+        6.3- Docker Introducción y NextCloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_INTEGRA/064_HerramientasDocker.html" class="md-nav__link">
+        6.4- Herramientas de Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_INTEGRA/065_IntroSamba.html" class="md-nav__link">
+        6.5- Introducción Samba
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_INTEGRA/066_SambaSecUsers.html" class="md-nav__link">
+        6.6- Secciones y usuarios Samba
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_INTEGRA/067_SambaDC.html" class="md-nav__link">
+        6.7- Samba Domain Controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_INTEGRA/068_VagrantIntro.html" class="md-nav__link">
+        6.8- Despliegue de Sistemas Heterogéneos con Vagrant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_INTEGRA/069_ConfigIntegra.html" class="md-nav__link">
+        6.9- Configuración Integrada con Vagrant
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          7.- Información del sistema
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="7.- Información del sistema" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          7.- Información del sistema
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_INFORMA/071_EstructuraDirectorios.html" class="md-nav__link">
+        7.1- Estructura de directorios
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_INFORMA/072_ArchivosVirtualSWinstaladoRendimiento.html" class="md-nav__link">
+        7.2- VFS, Sw Instalado y Gestión Rendimiento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_INFORMA/073_Planificacio%CC%81nTareas.html" class="md-nav__link">
+        7.3- Planificación de Tareas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          8.- Servicios de acceso y administración remota
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="8.- Servicios de acceso y administración remota" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          8.- Servicios de acceso y administración remota
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_SSH/081_AccesoRemotoLinux.html" class="md-nav__link">
+        8.1- Acceso Remoto en modo texto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_SSH/082_EscritorioRemoto.html" class="md-nav__link">
+        8.2- Escritorio Remoto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_SSH/083_HerramientasGraficAdminRemota.html" class="md-nav__link">
+        8.3- Herramientas gráficas externas.
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          9.- Administración de Servidores de Impresión
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="9.- Administración de Servidores de Impresión" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          9.- Administración de Servidores de Impresión
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          9.1- Servidores de Impresión
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="091_ServidoresImpresion.html" class="md-nav__link md-nav__link--active">
+        9.1- Servidores de Impresión
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sistemas-de-impresion" class="md-nav__link">
+    Sistemas de Impresión
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-impresoras-para-trabajo-en-red" class="md-nav__link">
+    Tipos de impresoras para trabajo en red.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#puertos-y-protocolos-de-impresion" class="md-nav__link">
+    Puertos y protocolos de impresión
+  </a>
+  
+    <nav class="md-nav" aria-label="Puertos y protocolos de impresión">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protocolo-lpd-lpr" class="md-nav__link">
+    Protocolo LPD / LPR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocolo-ipp" class="md-nav__link">
+    Protocolo IPP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appsocket" class="md-nav__link">
+    AppSocket
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appletalk" class="md-nav__link">
+    AppleTalk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smb-cifs" class="md-nav__link">
+    SMB/ CIFS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordenes-para-la-gestion-de-impresoras-y-trabajos" class="md-nav__link">
+    Órdenes para la gestión de impresoras y trabajos
+  </a>
+  
+    <nav class="md-nav" aria-label="Órdenes para la gestión de impresoras y trabajos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    Linux
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servidores-de-impresion" class="md-nav__link">
+    Servidores de Impresión
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="092_ServidoresImpresionLinux.html" class="md-nav__link">
+        9.2- Servidor de impresión en GNU/Linux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="093_ServidorImpresionWindowsServer.html" class="md-nav__link">
+        9.3- Servidor de impresión en Windows Server
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="administracion-de-servidores-de-impresion">Administración de Servidores de Impresión<a class="headerlink" href="#administracion-de-servidores-de-impresion" title="Permanent link">&para;</a></h1>
+<details class="abstract">
+<summary>Duración y criterios de evaluación</summary>
+<p><strong>Duración estimada: 5 sesiones (12h por sesión)</strong></p>
+<hr />
+<p>Resultado de aprendizaje y Criterios de evaluación:</p>
+<ol>
+<li>Administra servidores de impresión describiendo sus funciones e integróndolos en una red.<ol>
+<li>Se ha descrito la funcionalidad de los sistemas y servidores de impresión.</li>
+<li>Se han identificado los puertos y los protocolos utilizados.</li>
+<li>Se han utilizado las herramientas para la gestión de impresoras integradas en el sistema operativo.</li>
+<li>Se ha instalado y configurado un servidor de impresión en entorno Web.</li>
+<li>Se han creado y clasificado impresoras lógicas.</li>
+<li>Se han creado grupos de impresión.</li>
+<li>Se han gestionado impresoras y colas de trabajos mediante comandos y herramientas gráficas.</li>
+<li>Se han compartido impresoras en red entre sistemas operativos diferentes.</li>
+<li>Se ha documentado la configuración del servidor de impresión y de las impresoras creadas.</li>
+</ol>
+</li>
+</ol>
+</details>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>El proceso de impresión consiste básicamente en transmitir una serie de datos textuales, gráficos, imágenes, etc. desde el ordenador que las ha procesado hasta un determinado periférico de impresión. Para establecer una comunicación con cualquier periférico hay un canal de comunicación física, es decir una interfaz electrónica que permita transmitir las señales que llevan la información. Estos canales de comunicación pueden ser puertos y buses de comunicación <strong>o bien una infraestructura de red</strong>.</p>
+<p>Uno de los <strong>dispositivos que se comparten más a menudo en una red son las impresoras</strong>; para realizarlo es necesario implementar los siguientes puntos:</p>
+<ul>
+<li>Un <strong>software que se encargue de gestionar los trabajos de impresión</strong>, organizándolos en colas, dando prioridad a algunos de ellos, poniendo portadas y haciendo que las hojas de los diferentes trabajos no se mezclen entre sí.</li>
+<li>Aquí aparece el término <strong>“Cola de Impresión"</strong> para referirse a la lista de trabajos que están a la espera de ser impresos en un dispositivo de impresión.</li>
+<li>Además en el caso de empresas "<em>medianas/grandes</em>" se crean más necesidades, las cuales son cubiertas con <strong>pools o grupos de impresoras</strong> que comparten la misma cola de impresión y un software que envía el trabajo a la primera que queda libre.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Servidor de Impresión</p>
+<p>En este último caso el "<em>SW</em>" que da solución a las necesidades de impresión en las empresas con un alto número de usuarios son los <strong>servidores de impresión</strong>. Estudiado en un sub-aparatado más adelante.</p>
+</div>
+<figure>
+  <img src="./imagenes/06/061/001.png" width="850"/>
+  <figcaption>Ejemplo Servidor de Impresión</figcaption>
+</figure>
+
+<h2 id="sistemas-de-impresion">Sistemas de Impresión<a class="headerlink" href="#sistemas-de-impresion" title="Permanent link">&para;</a></h2>
+<p>Imprimir puede parecer una tarea sencilla, pero conlleva una serie de <strong>inconvenientes y necesidades</strong> que los sistemas de impresión actuales resuelven mediante la <strong>implementación de diferentes módulo</strong>s:</p>
+<ul>
+<li>El planificador de colas de impresión ( spooler )</li>
+<li>Los filtros</li>
+<li>Los controladores de interfaz o backends</li>
+</ul>
+<ol>
+<li>El <strong>primer problema surge porque la mayoría de las impresoras no tienen memoria suficiente para cargar un documento completo</strong>. Este es uno de los motivos que hacen necesario disponer de colas de impresión y de un sistema que las gestione ( <strong>spooler</strong> ). </li>
+</ol>
+<p>El gestor de la cola monitoriza la impresora y envía el siguiente trabajo en el momento en que queda libre. La ubicación de las colas de impresión está determinada por la complejidad del sistema de impresión. Las colas pueden estar situadas:</p>
+<ul>
+<li>Ordenador cliente</li>
+<li>Servidor de impresión</li>
+<li>Un servidor proxy de archivos</li>
+</ul>
+<ol start="2">
+<li>El siguiente problema a resolver es el <strong>gran número de modelos de impresora disponibles</strong> en el mercado que utilizan secuencias de control diferentes, es decir que hablan lenguajes propios que requieren una traducción. </li>
+</ol>
+<p><strong>Los filtros son las herramientas, entre el planificador y las impresora</strong>s, que hacen traducción entre los datos de entrada y el lenguaje que entiende la Impresora.</p>
+<ol start="3">
+<li>El último paso de la cadena es el <strong>envío de datos al periférico de impresión</strong> mediante alguno de los canales e interfaces físicas que se han descrito. Cada una de estas interfaces requiere un c<strong>ontrolador de dispositivo o backend</strong> que gestiona y controla el puerto de comunicación físico (USB, paralelo, RS232 ...) o bien la <strong>conexión de red (IPP, AppSocket, etc.)</strong>. </li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title"><strong>Importante</strong></p>
+<p>El concepto modular del controlador backend permite añadir nuevos tipos de interfaces según avance la tecnología sin afectar al resto de la arquitectura.</p>
+</div>
+<h2 id="tipos-de-impresoras-para-trabajo-en-red">Tipos de impresoras para trabajo en red.<a class="headerlink" href="#tipos-de-impresoras-para-trabajo-en-red" title="Permanent link">&para;</a></h2>
+<p>Dependiendo de cómo está compartida la impresora tenemos:</p>
+<ul>
+<li><strong>Local printer</strong>: Son impresoras que en principio <strong>se usan en un ordenador en concreto</strong>, que están conectadas a uno de sus puertos. En un momento dado se decide que van a utilizarse desde más equipos de la red, y se comparte. En este caso, la gestión de los trabajos de impresión y los permisos de acceso de la impresora corren a cargo del sistema operativo del equipo al que está conectado el dispositivo.</li>
+<li><strong>Network printer</strong>: Estos dispositivos <strong>tienen su propia tarjeta de red,</strong> que puede ser tanto cableada como wireless por la que se conectan a esta de forma independiente de ningún equipo. Se les debe asignar una ip o bien la recogerán del servidor DHCP de la red.</li>
+<li><strong>Virtual printer</strong>: Para los casos en los que tenemos una o varias impresoras sin conexión a red, pero no queremos tener un equipo siempre encendido para poder aceptar las peticiones de impresión, existen unos concentradores llamados <strong>servidores de impresión</strong> , que permiten conectar la impresora a la red, y que permiten conectar varias impresoras haciendo pool de estas.</li>
+</ul>
+<figure>
+  <img src="./imagenes/06/061/002.png" width="750"/>
+  <figcaption>Ejemplo Servidor de Impresión</figcaption>
+</figure>
+
+<h2 id="puertos-y-protocolos-de-impresion">Puertos y protocolos de impresión<a class="headerlink" href="#puertos-y-protocolos-de-impresion" title="Permanent link">&para;</a></h2>
+<p>En el caso de comunicar ordenadores y periféricos mediante una red compartida también hay que tener presente la <strong>necesidad de implementar unos protocolos de comunicación adecuados</strong> para alcanzar las funcionalidades necesarias de cualquier sistema de impresión.</p>
+<p>Los principales protocolos ( puertos lógicos) de comunicación que se pueden utilizar en el ámbito de los sistemas de impresión son los siguientes:</p>
+<ul>
+<li>Protocolo LPD / LPR</li>
+<li>Protocolo IPP</li>
+<li>AppSocket</li>
+<li>AppleTalk</li>
+<li>SMB/ CIF</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Principales con sus puertos</p>
+<p>Los tres principales son: <strong>LPD</strong> ("impresora") en el puerto <code>515</code>, <strong>IPP</strong> en <code>631</code>, y PDL-flujo de datos en <code>9100</code> utilizado habitualmente por impresoras <strong>HP (Hewlett-Packard)</strong>.</p>
+</div>
+<h3 id="protocolo-lpd-lpr">Protocolo LPD / LPR<a class="headerlink" href="#protocolo-lpd-lpr" title="Permanent link">&para;</a></h3>
+<p>El Protocolo <strong>LPD / LPR</strong> ( <strong>line printer daemon / line printer remote protocolo</strong> ) es el protocolo originalmente implementado en la plataforma <strong>BDS Unix</strong>. Utiliza TCP /IP para establecer conexiones entre impresoras y ordenadores en una red. Este protocolo trabaja normalmente escuchando peticiones al puerto TCP <code>515</code> y consta de dos componentes:</p>
+<ul>
+<li><strong>Line printer remote (LPR)</strong> es el término para el <strong>proceso cliente de envío de trabajos de impresión</strong> a una impresora o cola de impresión. La estación de trabajo que envía el trabajo de impresión es el cliente LPR.</li>
+<li><strong>Line printer daemon</strong> se refiere al proceso de <strong>recepción de trabajos de impresión desde un cliente LPR</strong>. Las impresoras o servidores de impresión que reciben los trabajos de impresión se llaman servidores LPD.</li>
+</ul>
+<figure>
+  <img src="./imagenes/06/061/003.png" width="750"/>
+  <figcaption>Arquitectura LPD/LPR</figcaption>
+</figure>
+
+<p>Cuando un usuario envía un documento para imprimir, el ordenador (LPR cliente) genera un trabajo en un determinado formato, por ejemplo, <em>PostScript</em>.</p>
+<ul>
+<li>Los datos de impresión se componen de un <strong>fichero de datos</strong> con el contenido real que se quiere imprimir, y un <strong>archivo de control</strong> que incluye la descripción del archivo de datos, nombre del trabajo, propietario, número de copias a imprimir, cola de destino, etc.</li>
+<li>A continuación, <strong>el trabajo de impresión se envía a la dirección IP del servidor LPD</strong>, que lo recibe habitualmente a través del puerto TCP / IP <code>515</code>.</li>
+<li>Se pueden configurar y definir <strong>varias colas</strong> en el servidor de impresión LPD, por lo que <strong>el fichero de control del trabajo de impresión debe incluir información sobre qué cola debe ser asignada</strong>.</li>
+</ul>
+<h3 id="protocolo-ipp">Protocolo IPP<a class="headerlink" href="#protocolo-ipp" title="Permanent link">&para;</a></h3>
+<p>El protocolo de impresión por Internet (<strong>IPP o Internet printing protocolo</strong>) define extensiones del conocido protocolo <strong>HTTP</strong> ( Hyper Text transporte protocolo ) para apoyar los servicios de impresión remotos, configuración de impresoras y gestión de colas.</p>
+<p>A diferencia de otros protocolos, IPP permite control de acceso, autenticación y cifrado para dar soluciones de impresión más completas y seguras. Es el protocolo usado de forma nativa para <strong>CUPS</strong> y suele utilizar el puerto <code>631</code>.</p>
+<figure>
+  <img src="./imagenes/06/061/004.png" width="850"/>
+  <figcaption>Arquitectura IPP</figcaption>
+</figure>
+
+<p>Entre las funciones de este protocolo destacan:</p>
+<ul>
+<li>Este protocolo <strong>gestiona los trabajos que se lanzan para imprimir</strong>, el tamaño del medio, la resolución, etc.</li>
+<li>Como todos los protocolos basados en IP, puede ser usado localmente o sobre Internet para comunicarse con impresoras locales o remotas. A diferencia de otros protocolos, también soporta el <strong>control de acceso, la autenticación y el cifrado</strong>, siendo así una solución de impresión más capaz y segura que otras más antiguas.</li>
+<li>Por contra, recibe críticas por la sobrecarga del protocolo, al estar construido sobre HTTP. Esto lo convierte en un protocolo y una realización más complejos y recargados de lo necesario.</li>
+</ul>
+<h3 id="appsocket">AppSocket<a class="headerlink" href="#appsocket" title="Permanent link">&para;</a></h3>
+<p>Este protocolo está basado en el protocolo <strong>Jetdirect de HewlettPackard</strong>. Suele trabajar en el puerto <code>9100</code> y se considera muy fiable, sencillo y rápido.</p>
+<h3 id="appletalk">AppleTalk<a class="headerlink" href="#appletalk" title="Permanent link">&para;</a></h3>
+<p>Es un conjunto de protocolos de comunicación de Apple que permite, entre otras cosas, la comunicación con impresoras y servidores de impresión.</p>
+<h3 id="smb-cifs">SMB/ CIFS<a class="headerlink" href="#smb-cifs" title="Permanent link">&para;</a></h3>
+<p>El servidor de bloques de mensajes ( <strong>server message block</strong> ) y su evolución, el sistema de archivos común de internet ( common Internet file system ), son protocolos de red de la capa de aplicación del modelo OSI que permiten gestionar y compartir archivos e impresoras entre nodos de una red. </p>
+<ul>
+<li><strong>SMB</strong> utiliza el puerto TCP <code>445</code> y fue ideado por <strong>IBM</strong>, pero modificado y perfeccionado por Microsoft, que lo utiliza en sus sistemas operativos Windows. También hay implementaciones del protocolo en código libre para sistemas Linux.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title"><strong>Samba</strong></p>
+<p>Es la más popular implementación en código libre del protocolo <strong>SMB / CIFS</strong> (entre otros) y permite la compartición de archivos e impresoras en redes heterogéneas.</p>
+</div>
+<h2 id="ordenes-para-la-gestion-de-impresoras-y-trabajos">Órdenes para la gestión de impresoras y trabajos<a class="headerlink" href="#ordenes-para-la-gestion-de-impresoras-y-trabajos" title="Permanent link">&para;</a></h2>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
+<p>Debemos saber que la cola de impresión, en un equipo local, se encuentra en <code>%systemroot%\system32\spool\printers</code>. </p>
+<div class="admonition note">
+<p class="admonition-title"><strong>Nota</strong></p>
+<p>Depende de actualización de las últimas versiones</p>
+</div>
+<ul>
+<li>Tenemos, por un lado, el comando <code>lpq</code>. Si utilizamos la ayuda del comando (<code>lpq /?</code>) obtendríamos algo similar a:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">C:\Documents and Settings\Usuario&gt;lpq /?</span><span class="w"></span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">Muestra el estado de una cola lpd remota.</span><span class="w"></span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">Uso</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lpq -Sservidor -Pimpresora [-l]</span><span class="w"></span>
+<span class="linenos" data-linenos="4 "></span><span class="nt">Opciones</span><span class="p">:</span><span class="w"></span>
+<span class="linenos" data-linenos="5 "></span><span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">-S servidor    Nombre o dirección IP del host que proporciona servicio lpd.</span><span class="w"></span>
+<span class="linenos" data-linenos="6 "></span><span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">-P impresora   Nombre de la cola de impresión.</span><span class="w"></span>
+<span class="linenos" data-linenos="7 "></span><span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">-l             Salida detallada.</span><span class="w"></span>
+</code></pre></div>
+<p>Por otro lado se destaca el comando <code>net</code>; utilizado para gestionar las colas de impresión.</p>
+<ul>
+<li><code>net stop spooler</code>: parará el servicio de cola de impresión.</li>
+<li><code>net start spooler</code>: arrancará el servicio de cola impresión.</li>
+</ul>
+<p>Se puede utilizar el comando <strong>net</strong> con el parámetro <code>use</code> podríamos obteniendo una salida como la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">C:\Documents and Settings\administrador&gt;net use \\Win-qni8olz3ihl\PDFCreator</span><span class="w"></span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">Se ha completado el comando correctamente.</span><span class="w"></span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">C:\Documents and Settings\administrador&gt;net use \\Win-qni8olz3ihl\PDFCreator</span><span class="w"></span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">Nombre local</span><span class="w"></span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">Nombre remoto        \\Win-qni8olz3ihl\PDFCreator</span><span class="w"></span>
+<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">Tipo de recurso      Impresora</span><span class="w"></span>
+<span class="linenos" data-linenos="7 "></span><span class="l l-Scalar l-Scalar-Plain">Estado               Conectado</span><span class="w"></span>
+<span class="linenos" data-linenos="8 "></span><span class="l l-Scalar l-Scalar-Plain">Abiertos             0</span><span class="w"></span>
+<span class="linenos" data-linenos="9 "></span><span class="l l-Scalar l-Scalar-Plain">Nº de conexiones     1</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Aclaración</p>
+<p>El parámetro de entrada, se tiene una impresora, la aplicación <strong>PDFCreator</strong>, en el servidor <strong>Win-qni8olz3ihl</strong> compartida para todos los usuarios del dominio)</p>
+</div>
+<h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h3>
+<p>El trabajo de impresión en Linux se ha realizado históricamente usando uno de estos dos sistemas de gestión de impresión: </p>
+<ul>
+<li>el sistema de impresión de <strong>AT&amp;T (Unix System V)</strong> y el demonio de impresoras en línea (<strong>LPD)</strong> de Berkeley. </li>
+<li>Estos sistemas estuvieron diseñados en los años 70 con el único propósito de imprimir texto en impresoras de caracteres. </li>
+<li>Por este motivo han aparecido nuevas opciones con más prestaciones, como <strong>LPRng</strong> o el sistema <strong>CUPS</strong>, aunque se ha intentado siempre conservar la compatibilidad y sintaxis de las órdenes de consola originales.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title"><strong>/etc/pintcap</strong></p>
+<p>Este es el archivo de configuración del sistema de impresión <strong>lpd</strong> que contiene el registro y definición de todas las impresoras del sistema, indicando el alias, nombre del dispositivo, el directorio de la cola de trabajos, filtros, etc.</p>
+</div>
+<p>Los principales sistemas de impresión Linux:</p>
+<ul>
+<li><strong>LPD</strong>, sistema de impresión Berkeley: este es el tradicional gestor de impresión de Unix de la plataforma Unix BSD. Es controlado por el demonio de impresoras de línea ( <strong>line printer daemon</strong> ) situado en <code>/usr/sbin/lpd</code> y utiliza el protocolo <strong>LPD/LPR</strong>. Los clientes se comunican con el demonio mediante el dispositivo <code>/dev/printer</code> y utilizan el archivo de configuración <code>/etc/printcap</code> para determinar el directorio de la cola de trabajos de impresión.</li>
+<li><strong>LPRng</strong> : <strong>LPR</strong> es una implementación en código libre que mejora el sistema de impresión BDS pero manteniendo la compatibilidad, ya que también utiliza el demonio LPD. <strong>Incluye nuevas funcionalidades en el control de la cola detrabajos y las funciones de servidores de impresión en red</strong>.</li>
+<li><strong>CUPS</strong>: el sistema de impresión común de Unix es un potente y completo gestor de impresión basado en el protocolo <code>IPP</code> (Internet printing protocolo) e integrando <code>PostScript</code> como el lenguaje de definición de páginas estándar. </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA</strong></p>
+<p>La mayoría de distribuciones Linux ya incorpora CUPS como sistema de impresión por defecto.</p>
+</div>
+<p>En GNU/Linux tenemos una serie de comandos u órdenes que nos permiten interactuar con la impresora o bien con la cola de impresión. Ejemplos:</p>
+<ul>
+<li><code>lpr texto</code>: añade el documento texto a la cola de impresión por defecto. El comando <code>lp</code> hace exactamente lo mismo que el comando lpr.</li>
+<li><code>Lpq</code>: mostrará todos los trabajos que están en la cola de impresión.</li>
+<li><code>Lprm</code>: cancela todos los trabajos en la cola de impresión. Si indicamos el número de trabajo, sólo cancelará ese trabajo. Obtendremos el mismo resultado con el comando <code>cancel</code>.</li>
+<li><code>lpstat –t</code>: obtiene toda la información de las impresoras y sus estados.</li>
+<li>El comando <code>lpadmin</code> nos permitirá administrar una determinada impresora.</li>
+</ul>
+<h2 id="servidores-de-impresion">Servidores de Impresión<a class="headerlink" href="#servidores-de-impresion" title="Permanent link">&para;</a></h2>
+<p>Un <strong>servidor de impresión</strong> es un software que permite que los PCs de una red local puedan hacer uso de las impresoras de la red de una forma eficaz, ya que centraliza las tareas de impresión, facilitando una gestión de las mismas. Los objetivos de los servidores de impresión son:</p>
+<ul>
+<li>Compartir todas sus impresoras desde un único servidor centralizado, ya sean de red o no.</li>
+<li>Controlar las impresiones por usuario, grupos de trabajo, departamentos, etc.</li>
+<li>Realizar cobros por impresión  (por trabajos, páginas, etc).</li>
+<li>Implementar quotas (por trabajos, páginas, etc).</li>
+<li>Utilizar dichas impresoras desde cualquier dispositivo disponible en su red (Windows, Linux, Mac, celulares, etc)</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Pie" >
+      
+        
+        <a href="../08_SSH/083_HerramientasGraficAdminRemota.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 8.3- Herramientas gráficas externas." rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              8.3- Herramientas gráficas externas.
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="092_ServidoresImpresionLinux.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 9.2- Servidor de impresión en GNU/Linux" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              9.2- Servidor de impresión en GNU/Linux
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "navigation.indexes"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>
