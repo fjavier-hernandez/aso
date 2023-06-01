@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/074_NextCloud.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/06_PruebaEspecifica.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>074 NextCloud - Administración de Sistemas Operativos</title>
+        <title>Prueba Específica - Administración de Sistemas Operativos</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nextcloud" class="md-skip">
+        <a href="#prueba-especifica" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              074 NextCloud
+              Prueba Específica
             
           </span>
         </div>
@@ -838,12 +838,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -1028,11 +1030,59 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="06_PruebaEspecifica.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Prueba Específica
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="06_PruebaEspecifica.html" class="md-nav__link md-nav__link--active">
         Prueba Específica
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#test-duracion-30-minutos" class="md-nav__link">
+    Test (Duración 30 minutos)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-duracion-1-hora-y-20-minutos" class="md-nav__link">
+    Práctica (Duración 1 hora y 20 minutos)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1311,97 +1361,279 @@
                   
 
 
-<figure style="float: right;">
-    <img src="imagenes/07/074/001.png" width="200"/>
-</figure>
-
-<h1 id="nextcloud">NextCloud<a class="headerlink" href="#nextcloud" title="Permanent link">&para;</a></h1>
-<p><strong>Nextcloud</strong> es una serie de programas cliente-servidor que permiten la creación de servicios de alojamiento de archivos. Su funcionalidad es similar al software Dropbox, aunque Nextcloud en su totalidad de código abierto. Nextcloud permite a los usuarios crear servidores privados.</p>
-<h2 id="nextcloud-con-docker">NextCloud con Docker.<a class="headerlink" href="#nextcloud-con-docker" title="Permanent link">&para;</a></h2>
-<p>Estamos trabajando en una empresa maravillosa y tienen la necesidad de compartir recursos (carpetas, documentos, imágenes...), tanto entre las personas dentro de la empresa como con clientes fuera de ésta.</p>
-<p>Para haceros valer dentro de la empresa indicáis que podéis montar un servidor “NextCloud” en unos pocos minutos para solventar dicho problema. La empresa cuenta con un equipo Linux que hace de servidor, decidís hacer uso de docker para levantar el servicio NextCloud de una forma muy rápida y sencilla.</p>
-<p><strong>No obstante debéis cumplir con los siguientes requerimientos:</strong></p>
+<h1 id="prueba-especifica">Prueba Específica<a class="headerlink" href="#prueba-especifica" title="Permanent link">&para;</a></h1>
+<p>Esta prueba consta de dos partes:</p>
 <ul>
-<li>El servicio docker se debe levantar en la red 192.168.20.0/24.</li>
-<li>Debe tener la traducción estática del puerto 80 de la máquina anfitriona al puerto 80 del contenedor.</li>
-<li>Debe tener un volumen asociado llamado “volNextCloud”.</li>
+<li>Una primera parte con <strong>preguntas tipo test</strong>, con carácter teórico, con un peso del <strong>30%</strong> en el total de la prueba.</li>
+<li>La segunda parte consta de ejercicios prácticos basados en los realizados durante la Unidad Didáctica, con un valor del <strong>70%</strong> del total.</li>
 </ul>
-<p>Sube un fichero de prueba, comprueba si está en la carpeta volumen creada. En caso de no estar:</p>
-<ul>
-<li>Prueba a subir un fichero a la plataforma NextCloud. Acto seguido dentro del contenedor busca en que directorio se ha guardado dicho fichero.</li>
-<li>Lee la documentación sobre la imagen NextCloud que hay en Dockerhub <a href="https://hub.docker.com/_/nextcloud">Nextcloud_Docker</a>.</li>
-</ul>
-<h2 id="actividades-de-desarrollo-ud7_03">Actividades de desarrollo UD7_03<a class="headerlink" href="#actividades-de-desarrollo-ud7_03" title="Permanent link">&para;</a></h2>
-<ol start="705">
-<li>Realiza las siguientes actividades:</li>
-</ol>
-<h3 id="investiga">Investiga:<a class="headerlink" href="#investiga" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Crea el contenedor Nextcloud ¿Al crear el contenedor se ha generado automáticamente algún volumen? ¿Cuál?</li>
-<li>Dentro del sistema anfitrión (lliurex/Windows) ¿Dónde está guardado el fichero subido previamente?</li>
-<li>¿Este contenedor es persistente? ¿Qué significa que el contenedor es persistente? ¿Cómo lo has comprobado?</li>
-</ul>
-<h3 id="nextcloud-usuarios">NextCloud – Usuarios.<a class="headerlink" href="#nextcloud-usuarios" title="Permanent link">&para;</a></h3>
+<h2 id="test-duracion-30-minutos">Test (Duración 30 minutos)<a class="headerlink" href="#test-duracion-30-minutos" title="Permanent link">&para;</a></h2>
+<p><strong>Nota</strong>: dos preguntas erróneas restan una bien.</p>
 <ol>
 <li>
-<p>¿Cómo podemos ver el histórico de acciones de nuestro usuario?</p>
+<p>Los <strong>protocolos</strong> más destacables para compartir recursos en sistemas heterogéneos son:</p>
+<ol>
+<li>LDAP, kerberos, DNS y NTP</li>
+<li>LDAP, SMB, NFS y AFS</li>
+<li>SMB, CIFS, NTP y APFS </li>
+<li>OpenLDAP, Samba, NextCloud y NFS</li>
+</ol>
 </li>
 <li>
-<p>¿Cómo podemos añadir contactos para poder compartir ficheros con ellos?</p>
+<p>Los <strong>servicios</strong> más destacables para compartir recursos en sistemas heterogéneos son:</p>
+<ol>
+<li>LDAP, kerberos, DNS y NTP</li>
+<li>LDAP, SMB, NFS y AFS</li>
+<li>SMB, CIFS, NTP y APFS </li>
+<li>OpenLDAP, Samba, NextCloud y NFS</li>
+</ol>
 </li>
 <li>
-<p>¿Cómo compartes un fichero con un compañero? Indica los permisos de escritura/lectura que se le pueden poner al fichero compartido.</p>
+<p>En relación a <strong>Kerberos</strong>:</p>
+<ol>
+<li>Será la base de datos que alberga la información de los usuarios.</li>
+<li>Se encarga de la seguridad a nivel de autentificación segura de los usuarios.</li>
+<li>Permite la resolución de ese nombre de dominio al direccionamiento IP.</li>
+<li>Es el servicio que se encarga de la sincronización del reloj de cada máquina.</li>
+</ol>
 </li>
 <li>
-<p>¿Cómo puedes dejar de compartir un fichero sin eliminarlo?</p>
+<p>En relación a <strong>LDAP</strong>:</p>
+<ol>
+<li>Será la base de datos que alberga la información de los usuarios.</li>
+<li>Se encarga de la seguridad a nivel de autentificación segura de los usuarios.</li>
+<li>Permite la resolución de ese nombre de dominio al direccionamiento IP.</li>
+<li>Es el servicio que se encarga de la sincronización del reloj de cada máquina.</li>
+</ol>
 </li>
 <li>
-<p>¿Cómo puedes eliminar un fichero que has subido? Si ese fichero estaba compartido con alguien ¿qué sucede desde el punto de vista de éste último?</p>
+<p>En relación a <strong>DNS</strong>:</p>
+<ol>
+<li>Será la base de datos que alberga la información de los usuarios.</li>
+<li>Se encarga de la seguridad a nivel de autentificación segura de los usuarios.</li>
+<li>Permite la resolución de ese nombre de dominio al direccionamiento IP.</li>
+<li>Es el servicio que se encarga de la sincronización del reloj de cada máquina.</li>
+</ol>
 </li>
 <li>
-<p>¿Cómo se establece una fecha de caducidad de un fichero compartido, par que tras esa fecha, deje de ser accesible automáticamente.</p>
+<p>En relación a <strong>NTP</strong>:</p>
+<ol>
+<li>Será la base de datos que alberga la información de los usuarios.</li>
+<li>Se encarga de la seguridad a nivel de autentificación segura de los usuarios.</li>
+<li>Permite la resolución de ese nombre de dominio al direccionamiento IP.</li>
+<li>Es el servicio que se encarga de la sincronización del reloj de cada máquina.</li>
+</ol>
 </li>
 <li>
-<p>¿Cómo podemos crear un enlace para compartir un recurso con personas que no tengan usuario y sean completamente ajenas a nuestro sistema?</p>
+<p>En relación a <strong>NFS</strong>:</p>
+<ol>
+<li>Servicio para implementar la funcionalidad de trabajo por Internet cliente/servidor</li>
+<li>Permite definir los tipos de datos de manera coherente</li>
+<li>Es un protocolo de aplicación con el objetivo de ser independiente al sistema operativo instalado en la máquina.</li>
+<li>Es una capa de abstracción encima de un sistema de archivos más concreto.</li>
+</ol>
 </li>
 <li>
-<p>¿Cómo podemos marcar con una etiqueta varios ficheros y luego usar el buscador de etiquetas para que nos muestre todos los recursos con dicha etiqueta?</p>
+<p>En relación a <strong>XDR</strong>:</p>
+<ol>
+<li>Servicio para implementar la funcionalidad de trabajo por Internet cliente/servidor</li>
+<li>Permite definir los tipos de datos de manera coherente</li>
+<li>Es un protocolo de aplicación con el objetivo de ser independiente al sistema operativo instalado en la máquina.</li>
+<li>Es una capa de abstracción encima de un sistema de archivos más concreto.</li>
+</ol>
 </li>
 <li>
-<p>¿Cómo se puede realizar una búsqueda por nombre de fichero?</p>
+<p>En relación a <strong>RPC</strong>:</p>
+<ol>
+<li>Servicio para implementar la funcionalidad de trabajo por Internet cliente/servidor</li>
+<li>Permite definir los tipos de datos de manera coherente</li>
+<li>Es un protocolo de aplicación con el objetivo de ser independiente al sistema operativo instalado en la máquina.</li>
+<li>Es una capa de abstracción encima de un sistema de archivos más concreto.</li>
+</ol>
 </li>
 <li>
-<p>Muestra como desactivar las notificaciones por correo.</p>
+<p>En relación a <strong>VFS</strong>:</p>
+<ol>
+<li>Servicio para implementar la funcionalidad de trabajo por Internet cliente/servidor</li>
+<li>Permite definir los tipos de datos de manera coherente</li>
+<li>Es un protocolo de aplicación con el objetivo de ser independiente al sistema operativo instalado en la máquina.</li>
+<li>Es una capa de abstracción encima de un sistema de archivos más concreto.</li>
+</ol>
 </li>
 <li>
-<p>Una vez desactivadas dichas notificaciones inserta tu correo personal en el perfil para en caso de olvidar la contraseña el equipo pueda enviarte un correo con una nueva.</p>
+<p>Samba es un conjunto de aplicaciones para GNU/Linux que implementan el protocolo:</p>
+<ol>
+<li>NFS</li>
+<li>LDAP</li>
+<li>SMB</li>
+<li>Ninguna de las anteriores</li>
+</ol>
+</li>
+<li>
+<p>Según el código adjunto del archivo <code>/etc/samba/smb.conf</code>, ¿Qué parámetro o parámetros hay que modificar para no permitir acceso de escritura a los invitados?</p>
+<ol>
+<li>guest ok = No</li>
+<li>read only = No</li>
+<li>guest ok = No y read only = No</li>
+<li>Ninguna de las anteriores</li>
+</ol>
 </li>
 </ol>
-<h3 id="nextcloud-administracion">NextCloud – Administración.<a class="headerlink" href="#nextcloud-administracion" title="Permanent link">&para;</a></h3>
-<p>Describe gráfica y detalladamente como realizar las siguientes acciones:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p p-Indicator">[</span><span class="nv">compartidoUser1</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">comment = Carpeta compartida</span><span class="w"> </span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">path = /media/compartido/user1</span><span class="w"></span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">guest ok = Yes</span><span class="w"></span>
+<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">read only = Yes</span><span class="w"></span>
+<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">write list = @Ceos, administrador, user1 directory mask = 0755</span><span class="w"></span>
+</code></pre></div>
+<ol start="13">
+<li>
+<p>Posibles valores del parámetro <code>valid users</code> del archivo de configuración de Samba <code>/etc/samba/smb.conf</code></p>
+<ol>
+<li>nombres de usuarios separados por comas</li>
+<li>nombres de grupo precedidos por una <code>@</code></li>
+<li><code>%S</code> indica que solo el usuario cuyo nombre sea igual al de ese directorio, tiene acceso (útil para las carpetas personales de usuario)</li>
+<li>Todas las anteriores son correctas</li>
+</ol>
+</li>
+<li>
+<p>En relación a la creación de usuarios y grupos en Samba</p>
+<ol>
+<li>Solo es necesario crearlos en el propio sistema Linux</li>
+<li>Solo es necesario crearlos en el la base de datos de Samba</li>
+<li>Es necesario crearlos en el sistema y en la base de datos de Samba</li>
+<li>Todas las anteriores son correctas</li>
+</ol>
+</li>
+<li>
+<p>En relación a las secciones <code>[global]</code> y <code>[Compartida]</code>, si una misma opción se declara en la sección global y en otra sección, por ejemplo una carpeta compartida, ¿Cuál tendrá mayor peso?</p>
+<ol>
+<li>La opción declarada en <code>[global]</code>.</li>
+<li>La sección más específica, es decir, opción en <code>[Compartida]</code>.</li>
+<li>Al haber redundancia no se aplica el parámetro a ninguna.</li>
+<li>Se aplica a <code>[global]</code> si se accede como administrador y a <code>[Compartida]</code> si se accede como invitado</li>
+</ol>
+</li>
+<li>
+<p>Para permitir el acceso de varias sub-redes se debe especificar:</p>
+<ol>
+<li>hosts allow = 127.0.0.1 192.168.2.0/24 192.168.3.0/24</li>
+<li>hosts allow = 127.0.0.1; 192.168.2.0/24; 192.168.3.0/24;</li>
+<li>hosts deny = 127.0.0.1 192.168.2.0/24 192.168.3.0/24</li>
+<li>hosts deny = 127.0.0.1; 192.168.2.0/24; 192.168.3.0/24;</li>
+</ol>
+</li>
+<li>
+<p>Comando para la creación de usuarios y grupos en la base de datos de <code>Samba</code>:</p>
+<ol>
+<li>smbpasswd</li>
+<li>smbuser y smbgroup</li>
+<li>ldappasswd</li>
+<li>ldapuser y ldapgroup</li>
+</ol>
+</li>
+<li>
+<p>Para cambiar de nombre el servidor samba DC se debe editar el archivo:</p>
+<ol>
+<li>/etc/hosts</li>
+<li>/etc/hostname</li>
+<li>/etc/localhost</li>
+<li>/etc/localhostname</li>
+</ol>
+</li>
+<li>
+<p>Para configurar la resolución de nombres del servicio DNS se debe editar el archivo:</p>
+<ol>
+<li>/etc/dns.conf</li>
+<li>/etc/resolv.conf</li>
+<li>/etc/named.conf</li>
+<li>/etc/bind.conf</li>
+</ol>
+</li>
+<li>
+<p>Comando para activar el servicio <code>samba-ad-dc</code></p>
+<ol>
+<li>systemctl enable samba-ad-dc</li>
+<li>systemctl unmask samba-ad-dc</li>
+<li>Se deben realizar ambos comandos de las opciones anteriores</li>
+<li>Ninguna de las anteriores.</li>
+</ol>
+</li>
+</ol>
+<h2 id="practica-duracion-1-hora-y-20-minutos">Práctica (Duración 1 hora y 20 minutos)<a class="headerlink" href="#practica-duracion-1-hora-y-20-minutos" title="Permanent link">&para;</a></h2>
+<p>Partiendo de una pequeña empresa llamada <strong>ASOFoto S.L.</strong>, que cuenta varios equipos de escritorio y un servidor. El servidor está instalado en <code>Ubuntu Server</code> que ya cuenta con el software necesario para su configuración. Sin embargo los clientes tienen instalado <code>Windows 10</code>.</p>
+<p>En la empresa, dedicada a la venta de material fotográfico, se cuenta con setenta empleados, pero durante el proceso de instalación se crean tan sólo los usuarios que son responsables de un departamento (los indicados en la tabla siguiente):</p>
+<table>
+<thead>
+<tr>
+<th align="left">Nombre</th>
+<th align="left">Apellido</th>
+<th align="left">Inicio de sesión</th>
+<th align="left">Posición</th>
+<th align="left">Contraseña</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Eduard</td>
+<td align="left">Casavella</td>
+<td align="left">eduard.casavella</td>
+<td align="left">Gerente</td>
+<td align="left">casavella1</td>
+</tr>
+<tr>
+<td align="left">Pep</td>
+<td align="left">Terrón</td>
+<td align="left">pep.terron</td>
+<td align="left">Responsable IT</td>
+<td align="left">terron1</td>
+</tr>
+<tr>
+<td align="left">Fran</td>
+<td align="left">Delgado</td>
+<td align="left">fran.delgado</td>
+<td align="left">Administración</td>
+<td align="left">delgado1</td>
+</tr>
+<tr>
+<td align="left">Marcos</td>
+<td align="left">Sabates</td>
+<td align="left">marcos.sabates</td>
+<td align="left">Comercial</td>
+<td align="left">sabates1</td>
+</tr>
+<tr>
+<td align="left">Irene</td>
+<td align="left">Masot</td>
+<td align="left">irene.masot</td>
+<td align="left">RR HH</td>
+<td align="left">masot1</td>
+</tr>
+</tbody>
+</table>
 <ol>
 <li>
-<p>Crea un usuario administrador, que tenga espacio limitado para 300MB.</p>
+<p>Se deben crear los usuarios con todos los datos indicados en la tabla. Además, será necesario incluir estas medidas en la seguridad de las cuentas de los usuarios:</p>
+<ol>
+<li>La longitud mínima de las contraseñas debe ser doce caracteres.</li>
+<li>La contraseña caducará a los quince días desde la última vez que la modificó.</li>
+<li>Las contraseñas se almacenarán en texto plano.</li>
+<li>El sistema recordará tan solo las diez últimas contraseñas.</li>
+</ol>
 </li>
 <li>
-<p>Crea un grupo “Informática” y crea un usuario nuevo con espacio ilimitado que pertenezca a ese grupo. ¿Dicho usuario es el administrador del grupo?</p>
-</li>
-<li>
-<p>Busca como obligar que las contraseñas de los usuarios deban incluir mayúsculas y minúsculas.</p>
-</li>
-<li>
-<p>¿Cómo activarías el cifrado de la información que se intercambian cliente-servidor? ¿Qué impacto tiene sobre el servicio?</p>
-</li>
-<li>
-<p>¿Cómo puedes restringir a un usuario para que solo pueda compartir con usuarios de su grupo?</p>
-</li>
-<li>
-<p>Cambia el tema y el fondo de pantalla de tu servidor NextCloud.</p>
-</li>
-<li>
-<p>Describe que elementos podemos monitorizar desde la pantalla de Monitorización e indica para que nos puede servir esta información.</p>
+<p>Los usuarios deben ser creados para que funcionen los servicios de archivos compartidos siguientes:</p>
+<ol>
+<li>Instala y Configura <code>NFS</code> en el servidor y cliente, para generar una carpeta compartido con un archivo que se llame file1.txt. Accede desde el cliente a la carpeta y modifica el archivo.</li>
+<li>Instala y Configura <code>Samba-DC</code> en el servidor y cliente, para generar una carpeta compartido con un archivo que se llame file2.txt. Accede desde el cliente a la carpeta y modifica el archivo.</li>
+</ol>
 </li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">A entregar</p>
+<p>Adjunta los archivos de configuración y un pdf con un pequeño informe de las capturas de los pasos realizados con su explicación.</p>
+</div>
+<p><strong>Nota</strong>: utiliza las Máquinas Virtuales de <strong>Ubuntu server</strong> y <strong>Windows 10</strong> utilizadas en clase.</p>
 
 
 
@@ -1417,6 +1649,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Pie" >
+      
+        
+        <a href="060_ActividadesRefuerzo.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Actividades de refuerzo" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Actividades de refuerzo
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../07_INFORMA/071_EstructuraDirectorios.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 7.1- Estructura de directorios" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              7.1- Estructura de directorios
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

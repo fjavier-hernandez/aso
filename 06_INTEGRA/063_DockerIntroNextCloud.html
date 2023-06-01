@@ -868,6 +868,10 @@
         
           
         
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_7">
@@ -1132,51 +1136,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#actividades" class="md-nav__link">
-    Actividades
+  <a href="#actividades-tipo-practicastrabajos-aea" class="md-nav__link">
+    Actividades tipo Prácticas/trabajos (AEA)
   </a>
   
-    <nav class="md-nav" aria-label="Actividades">
+    <nav class="md-nav" aria-label="Actividades tipo Prácticas/trabajos (AEA)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enunciado" class="md-nav__link">
-    Enunciado
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#premisas" class="md-nav__link">
-    Premisas
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#investiga" class="md-nav__link">
-    Investiga
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pruebas" class="md-nav__link">
-    Pruebas
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ayuda" class="md-nav__link">
-    Ayuda
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#soluciones" class="md-nav__link">
-    Soluciones
+  <a href="#pt63-instalacion-y-configuracion-de-nextcloud-mediante-docker" class="md-nav__link">
+    PT63. Instalación y configuración de NextCloud mediante Docker
   </a>
   
 </li>
@@ -1273,6 +1242,34 @@
     <li class="md-nav__item">
       <a href="069_ConfigIntegra.html" class="md-nav__link">
         6.9- Configuración Integrada con Vagrant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="060_ActividadesRefuerzo.html" class="md-nav__link">
+        Actividades de refuerzo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_PruebaEspecifica.html" class="md-nav__link">
+        Prueba Específica
       </a>
     </li>
   
@@ -2256,36 +2253,36 @@ Las instrucciones principales que pueden utilizarse en un Dockerfile son:
 <p class="admonition-title">Nota</p>
 <p><strong>WebDAV</strong> es un grupo de trabajo del <strong>Internet Engineering Task Force (IETF)</strong>. El término significa <strong>"Autoría y versionado distribuidos por Web" (Web Distributed Authoring and Versioning)</strong>, y <strong>se refiere al protocolo</strong> (más precisamente, a la extensión del protocolo) que el grupo definió. Este protocolo proporciona funcionalidades para <strong>crear, cambiar y mover documentos en un servidor remoto</strong> (típicamente un servidor web).</p>
 </div>
-<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
-<h3 id="enunciado">Enunciado<a class="headerlink" href="#enunciado" title="Permanent link">&para;</a></h3>
+<h2 id="actividades-tipo-practicastrabajos-aea">Actividades tipo Prácticas/trabajos (AEA)<a class="headerlink" href="#actividades-tipo-practicastrabajos-aea" title="Permanent link">&para;</a></h2>
+<h3 id="pt63-instalacion-y-configuracion-de-nextcloud-mediante-docker">PT63. Instalación y configuración de NextCloud mediante Docker<a class="headerlink" href="#pt63-instalacion-y-configuracion-de-nextcloud-mediante-docker" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Estamos trabajando en una empresa que tiene la necesidad de compartir recursos (carpetas documentos, imágenes...), tanto entre las personas dentro de la empresa como con clientes fuera de ésta.</li>
 <li>Para haceros valer dentro de la empresa indicáis que podéis montar un servidor <strong>NextCloud</strong> en unos pocos minutos para solventar dicho problema.</li>
 <li>La empresa cuenta con un equipo Linux que hace de servidor, decidís hacer uso de <strong>docker</strong> para levantar el servicio NextCloud de una forma muy rápida y sencilla.</li>
 </ul>
-<h3 id="premisas">Premisas<a class="headerlink" href="#premisas" title="Permanent link">&para;</a></h3>
+<h4 id="premisas">Premisas<a class="headerlink" href="#premisas" title="Permanent link">&para;</a></h4>
 <ul>
 <li>El servicio docker se debe levantar en la red <strong>192.168.20.0/24</strong>.</li>
 <li>Debe tener la traducción estática del puerto <strong>80</strong> de la máquina anfitriona al puerto <strong>80</strong> del contenedor.</li>
 <li>Debe tener un volumen asociado llamado <strong>"volNextCloud"</strong>.</li>
 </ul>
-<h3 id="investiga">Investiga<a class="headerlink" href="#investiga" title="Permanent link">&para;</a></h3>
+<h4 id="investiga">Investiga<a class="headerlink" href="#investiga" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Crea el contenedor Nextcloud ¿Al crear el contenedor se ha generado automáticamente algún volumen? ¿Cuál?</li>
 <li>Dentro del sistema anfitrión (lliurex/Windows) ¿Dónde está guardado el fichero subido previamente?</li>
 <li>¿Este contenedor es persistente? ¿Qué significa que el contenedor es persistente? ¿Cómo lo has comprobado?</li>
 </ul>
-<h3 id="pruebas">Pruebas<a class="headerlink" href="#pruebas" title="Permanent link">&para;</a></h3>
+<h4 id="pruebas">Pruebas<a class="headerlink" href="#pruebas" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Sube un fichero de prueba, comprueba si está en la carpeta volumen creada. En caso de no estar:</li>
 <li>Prueba a subir un fichero a la plataforma NextCloud. Acto seguido dentro del contenedor busca en que directorio se ha guardado dicho fichero.</li>
 </ul>
-<h3 id="ayuda">Ayuda<a class="headerlink" href="#ayuda" title="Permanent link">&para;</a></h3>
+<h4 id="ayuda">Ayuda<a class="headerlink" href="#ayuda" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Página oficial para la Instalación en ubuntu en el siguiente enlace <a href="https://docs.docker.com/engine/install/ubuntu/">Instalación en Ubuntu Documentación</a></li>
 <li>Lee la documentación sobre la imagen NextCloud que hay en <a href="https://hub.docker.com/_/nextcloud">Dockerhub Nextcloud_Docker</a>.</li>
 </ul>
-<h3 id="soluciones">Soluciones<a class="headerlink" href="#soluciones" title="Permanent link">&para;</a></h3>
+<h4 id="soluciones">Soluciones<a class="headerlink" href="#soluciones" title="Permanent link">&para;</a></h4>
 <p><a href="NextCloudDockerSolucion.html">Solución Práctica NextCloud-Docker</a></p>
 
 
@@ -2344,7 +2341,7 @@ Las instrucciones principales que pueden utilizarse en un Dockerfile son:
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      2021-2022 Fº Javier Hernández - Licencia CC BY-NC-SA
+      2022-2023 Fº Javier Hernández - Licencia CC BY-NC-SA
     </div>
   
   

@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/074_NextCloud.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/060_ActividadesRefuerzo.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>074 NextCloud - Administración de Sistemas Operativos</title>
+        <title>Actividades de refuerzo - Administración de Sistemas Operativos</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nextcloud" class="md-skip">
+        <a href="#actividades-de-refuerzo" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              074 NextCloud
+              Actividades de refuerzo
             
           </span>
         </div>
@@ -838,12 +838,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -1014,11 +1016,66 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="060_ActividadesRefuerzo.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Actividades de refuerzo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="060_ActividadesRefuerzo.html" class="md-nav__link md-nav__link--active">
         Actividades de refuerzo
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ac65-instalacion-samba-en-ubuntu-server" class="md-nav__link">
+    AC65. Instalación Samba en Ubuntu Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pt67-creacion-de-usuarios-y-grupos-en-samba" class="md-nav__link">
+    PT67. Creación de usuarios y grupos en Samba
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pt68-integracion-de-permisos-con-samba" class="md-nav__link">
+    PT68. Integración de permisos con Samba
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1311,97 +1368,73 @@
                   
 
 
-<figure style="float: right;">
-    <img src="imagenes/07/074/001.png" width="200"/>
-</figure>
-
-<h1 id="nextcloud">NextCloud<a class="headerlink" href="#nextcloud" title="Permanent link">&para;</a></h1>
-<p><strong>Nextcloud</strong> es una serie de programas cliente-servidor que permiten la creación de servicios de alojamiento de archivos. Su funcionalidad es similar al software Dropbox, aunque Nextcloud en su totalidad de código abierto. Nextcloud permite a los usuarios crear servidores privados.</p>
-<h2 id="nextcloud-con-docker">NextCloud con Docker.<a class="headerlink" href="#nextcloud-con-docker" title="Permanent link">&para;</a></h2>
-<p>Estamos trabajando en una empresa maravillosa y tienen la necesidad de compartir recursos (carpetas, documentos, imágenes...), tanto entre las personas dentro de la empresa como con clientes fuera de ésta.</p>
-<p>Para haceros valer dentro de la empresa indicáis que podéis montar un servidor “NextCloud” en unos pocos minutos para solventar dicho problema. La empresa cuenta con un equipo Linux que hace de servidor, decidís hacer uso de docker para levantar el servicio NextCloud de una forma muy rápida y sencilla.</p>
-<p><strong>No obstante debéis cumplir con los siguientes requerimientos:</strong></p>
+<h1 id="actividades-de-refuerzo">Actividades de Refuerzo<a class="headerlink" href="#actividades-de-refuerzo" title="Permanent link">&para;</a></h1>
+<p>En esta sesión se trabajan actividades para reforzar los contenidos estudiados en esta unidad.</p>
+<h2 id="ac65-instalacion-samba-en-ubuntu-server">AC65. Instalación Samba en Ubuntu Server<a class="headerlink" href="#ac65-instalacion-samba-en-ubuntu-server" title="Permanent link">&para;</a></h2>
+<p>Instala Samba en Ubuntu Server  con los siguientes datos:</p>
 <ul>
-<li>El servicio docker se debe levantar en la red 192.168.20.0/24.</li>
-<li>Debe tener la traducción estática del puerto 80 de la máquina anfitriona al puerto 80 del contenedor.</li>
-<li>Debe tener un volumen asociado llamado “volNextCloud”.</li>
+<li>Nombre de dominio: tu nombre y primer apellido con la extensión .lan</li>
+<li>La contraseña para la cuenta administrador del dominio debe ser <strong>P4ssw0rd$</strong>, en todos los servidores que conformen el directorio.</li>
+<li>Redacta una guía detallada de los pasos que sigues para realizar esta tarea y súbela a Aules una vez finalizada.</li>
 </ul>
-<p>Sube un fichero de prueba, comprueba si está en la carpeta volumen creada. En caso de no estar:</p>
-<ul>
-<li>Prueba a subir un fichero a la plataforma NextCloud. Acto seguido dentro del contenedor busca en que directorio se ha guardado dicho fichero.</li>
-<li>Lee la documentación sobre la imagen NextCloud que hay en Dockerhub <a href="https://hub.docker.com/_/nextcloud">Nextcloud_Docker</a>.</li>
-</ul>
-<h2 id="actividades-de-desarrollo-ud7_03">Actividades de desarrollo UD7_03<a class="headerlink" href="#actividades-de-desarrollo-ud7_03" title="Permanent link">&para;</a></h2>
-<ol start="705">
-<li>Realiza las siguientes actividades:</li>
-</ol>
-<h3 id="investiga">Investiga:<a class="headerlink" href="#investiga" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Crea el contenedor Nextcloud ¿Al crear el contenedor se ha generado automáticamente algún volumen? ¿Cuál?</li>
-<li>Dentro del sistema anfitrión (lliurex/Windows) ¿Dónde está guardado el fichero subido previamente?</li>
-<li>¿Este contenedor es persistente? ¿Qué significa que el contenedor es persistente? ¿Cómo lo has comprobado?</li>
-</ul>
-<h3 id="nextcloud-usuarios">NextCloud – Usuarios.<a class="headerlink" href="#nextcloud-usuarios" title="Permanent link">&para;</a></h3>
+<h2 id="pt67-creacion-de-usuarios-y-grupos-en-samba">PT67. Creación de usuarios y grupos en Samba<a class="headerlink" href="#pt67-creacion-de-usuarios-y-grupos-en-samba" title="Permanent link">&para;</a></h2>
+<p>Utilizando la instalación de la actividad anterior. Realiza las siguientes tareas:</p>
 <ol>
+<li>Debes crear la infraestructura para una empresa ficticia (Inventa un nombre de empresa que tenga relación con el tuyo). Esta empresa posee una estructura en departamentos de esta forma: </li>
+</ol>
+<div class="admonition abstract">
+<p class="admonition-title">Premisas</p>
+<ul>
+<li>Un departamento encargado de la <strong>gerencia de la empresa</strong>.</li>
+<li>Otro se encargará de la administración de la empresa. Es normal que ante la amplitud de tareas que este departamento posee se divida en varios subdepartamentos: finanzas, nóminas y contabilidad </li>
+<li>Otra de las actividades que seguro necesitarás en tu empresa será la gestión de mercadotécnia</li>
+<li>Además, debes contar con un buen servicio técnico que realice las tareas de diseño, implementación y mantenimiento de la infraestructura informática.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">A realizar</p>
+<p><strong>Crea los usuarios correspondientes</strong> a cada uno de los departamentos descritos con dos empleados por departamento, uno de ellos será el responsable. Utiliza datos inventados para la información personal. <strong>Haz pruebas de inicio de sesión en algún cliente para comprobar que las cuentas funcionan</strong>.</p>
+</div>
+<ol start="2">
 <li>
-<p>¿Cómo podemos ver el histórico de acciones de nuestro usuario?</p>
+<p><strong>Crea un grupo</strong> por cada departamento y sub-departamento e introduce en ellos a cada uno de los usuarios que corresponda: los usuarios de gerencia en el grupo gerencia, por ejemplo.</p>
 </li>
 <li>
-<p>¿Cómo podemos añadir contactos para poder compartir ficheros con ellos?</p>
-</li>
-<li>
-<p>¿Cómo compartes un fichero con un compañero? Indica los permisos de escritura/lectura que se le pueden poner al fichero compartido.</p>
-</li>
-<li>
-<p>¿Cómo puedes dejar de compartir un fichero sin eliminarlo?</p>
-</li>
-<li>
-<p>¿Cómo puedes eliminar un fichero que has subido? Si ese fichero estaba compartido con alguien ¿qué sucede desde el punto de vista de éste último?</p>
-</li>
-<li>
-<p>¿Cómo se establece una fecha de caducidad de un fichero compartido, par que tras esa fecha, deje de ser accesible automáticamente.</p>
-</li>
-<li>
-<p>¿Cómo podemos crear un enlace para compartir un recurso con personas que no tengan usuario y sean completamente ajenas a nuestro sistema?</p>
-</li>
-<li>
-<p>¿Cómo podemos marcar con una etiqueta varios ficheros y luego usar el buscador de etiquetas para que nos muestre todos los recursos con dicha etiqueta?</p>
-</li>
-<li>
-<p>¿Cómo se puede realizar una búsqueda por nombre de fichero?</p>
-</li>
-<li>
-<p>Muestra como desactivar las notificaciones por correo.</p>
-</li>
-<li>
-<p>Una vez desactivadas dichas notificaciones inserta tu correo personal en el perfil para en caso de olvidar la contraseña el equipo pueda enviarte un correo con una nueva.</p>
+<p><strong>Políticas de seguridad</strong>: Los usuarios (mínimo uno por departamento) deben tener estas limitaciones:</p>
 </li>
 </ol>
-<h3 id="nextcloud-administracion">NextCloud – Administración.<a class="headerlink" href="#nextcloud-administracion" title="Permanent link">&para;</a></h3>
-<p>Describe gráfica y detalladamente como realizar las siguientes acciones:</p>
-<ol>
-<li>
-<p>Crea un usuario administrador, que tenga espacio limitado para 300MB.</p>
-</li>
-<li>
-<p>Crea un grupo “Informática” y crea un usuario nuevo con espacio ilimitado que pertenezca a ese grupo. ¿Dicho usuario es el administrador del grupo?</p>
-</li>
-<li>
-<p>Busca como obligar que las contraseñas de los usuarios deban incluir mayúsculas y minúsculas.</p>
-</li>
-<li>
-<p>¿Cómo activarías el cifrado de la información que se intercambian cliente-servidor? ¿Qué impacto tiene sobre el servicio?</p>
-</li>
-<li>
-<p>¿Cómo puedes restringir a un usuario para que solo pueda compartir con usuarios de su grupo?</p>
-</li>
-<li>
-<p>Cambia el tema y el fondo de pantalla de tu servidor NextCloud.</p>
-</li>
-<li>
-<p>Describe que elementos podemos monitorizar desde la pantalla de Monitorización e indica para que nos puede servir esta información.</p>
-</li>
-</ol>
+<div class="admonition abstract">
+<p class="admonition-title">Premisas</p>
+<ul>
+<li>El usuario debe cambiar su contraseña en el siguiente inicio de sesión</li>
+<li>El usuario no podrá cambiar la contraseña hasta que no transcurran 7 días desde la última vez que la modificó</li>
+<li>Cualquier usuario debe cambiar su contraseña transcurridos treinta días</li>
+<li>El sistema avisará con una semana de antelación del cambio de contraseña</li>
+</ul>
+</div>
+<p><strong>Nota</strong>: los usuarios y grupos se deben crear tanto en el sistema Linux como en el servicio Samba, ¿Por qué?</p>
+<div class="admonition warning">
+<p class="admonition-title">Para entregar</p>
+<p>Redacta un documento con los pasos que sigues para realizar estas tareas y súbelo al Aules del módulo una vez revisado.</p>
+</div>
+<h2 id="pt68-integracion-de-permisos-con-samba">PT68. Integración de permisos con Samba<a class="headerlink" href="#pt68-integracion-de-permisos-con-samba" title="Permanent link">&para;</a></h2>
+<p>Partiendo de las actividades anteriores: Instala <strong>RSAT</strong> en cliente <strong>Microsoft Windows 10</strong> y conéctalo a <strong>ServidorUbuntu</strong> para su administración remota. Ahora que se dispone de una interfaz gráfica, crea la siguiente estructura de carpetas y configura los permisos tal y como se detalla a continuación:</p>
+<div class="admonition abstract">
+<p class="admonition-title">Premisas</p>
+<ul>
+<li>Crea la carpeta gerencia, en ella tan solo los miembros del departamento Gerencia podrán acceder a este recurso</li>
+<li>En la carpeta administración existen tres subcarpetas (finanzas, nóminas y contabilidad). Los miembros del departamento de administración podrán leer en todas ellas. Los miembros de los departamentos específicos podrán, además, escribir en su propia carpeta. Por ejemplo, el departamento finanzas podrá leer y escribir en la capeta finanzas, pero el resto solo podrá leer.</li>
+<li>La carpeta <strong>TIC</strong> (servicio técnico) no estará disponible para nadie salvo para el responsable de este departamento.</li>
+<li>Los miembros de <strong>TIC</strong> podrán acceder a cualquier carpeta para realizar tareas de mantenimiento con permisos de lectura y escritura, salvo en la de TIC.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">A realizar</p>
+<ul>
+<li>Comprueba el acceso a las carpetas desde el ordenador de una compañera o compañero, logueandote desde diferentes usuarios.</li>
+<li>Redacta un documento con los pasos que sigues para la configuración ayudándote de capturas de pantalla y los comandos que empleas para ello. Contesta de forma razonada a las cuestiones que se plantean.</li>
+</ul>
+</div>
 
 
 
@@ -1417,6 +1450,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Pie" >
+      
+        
+        <a href="069_ConfigIntegra.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 6.9- Configuración Integrada con Vagrant" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              6.9- Configuración Integrada con Vagrant
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="06_PruebaEspecifica.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Prueba Específica" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Prueba Específica
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
