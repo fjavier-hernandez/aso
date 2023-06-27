@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/062_NFS.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/063_SambaSecUsers.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>6.2- NFS - Administración de Sistemas Operativos</title>
+        <title>6.3- Secciones y usuarios Samba - Administración de Sistemas Operativos</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nfs-network-file-system" class="md-skip">
+        <a href="#configuracion-de-secciones-y-usuarios-en-samba" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6.2- NFS
+              6.3- Secciones y usuarios Samba
             
           </span>
         </div>
@@ -872,6 +872,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_7">
@@ -904,6 +906,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="062_IntroSamba.html" class="md-nav__link">
+        6.2- Introducción Samba
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -916,12 +932,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          6.2- NFS
+          6.3- Secciones y usuarios Samba
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="062_NFS.html" class="md-nav__link md-nav__link--active">
-        6.2- NFS
+      <a href="063_SambaSecUsers.html" class="md-nav__link md-nav__link--active">
+        6.3- Secciones y usuarios Samba
       </a>
       
         
@@ -940,16 +956,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#caracteristicas-generales" class="md-nav__link">
-    Características Generales
+  <a href="#secciones" class="md-nav__link">
+    Secciones
   </a>
   
-    <nav class="md-nav" aria-label="Características Generales">
+    <nav class="md-nav" aria-label="Secciones">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vfs-virtual-file-system" class="md-nav__link">
-    VFS virtual file system
+  <a href="#parametros" class="md-nav__link">
+    Parámetros
   </a>
   
 </li>
@@ -960,37 +976,64 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ventajas-nfs" class="md-nav__link">
-    Ventajas NFS
+  <a href="#usuarios" class="md-nav__link">
+    Usuarios
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#desventajas-nfs" class="md-nav__link">
-    Desventajas NFS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#actividades-tipo-practicastrabajos-aea" class="md-nav__link">
-    Actividades tipo Prácticas/trabajos (AEA)
-  </a>
-  
-    <nav class="md-nav" aria-label="Actividades tipo Prácticas/trabajos (AEA)">
+    <nav class="md-nav" aria-label="Usuarios">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pt61-nfs-servidor" class="md-nav__link">
-    PT61. NFS Servidor
+  <a href="#creacion-de-un-usuario-de-samba-con-smbpasswd" class="md-nav__link">
+    Creación de un usuario de samba con smbpasswd
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#pt62-nfs-cliente" class="md-nav__link">
-    PT62. NFS Cliente
+  <a href="#eliminar-un-usuario-de-samba" class="md-nav__link">
+    Eliminar un usuario de samba
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-usuario-invitado" class="md-nav__link">
+    El usuario Invitado
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restriccion-por-usuarios" class="md-nav__link">
+    Restricción por usuarios
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autentificacion-en-samba-a-traves-de-usuarios" class="md-nav__link">
+    Autentificación en Samba a través de usuarios
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades-de-clase-aea" class="md-nav__link">
+    Actividades de clase (AEA)
+  </a>
+  
+    <nav class="md-nav" aria-label="Actividades de clase (AEA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ac63-creacion-de-secciones-y-usuarios-en-samba" class="md-nav__link">
+    AC63. Creación de secciones y usuarios en Samba.
   </a>
   
 </li>
@@ -1015,8 +1058,8 @@
   
   
     <li class="md-nav__item">
-      <a href="063_DockerIntroNextCloud.html" class="md-nav__link">
-        6.3- Docker repaso y NextCloud
+      <a href="064_SambaDC.html" class="md-nav__link">
+        6.4- Samba Domain Controller
       </a>
     </li>
   
@@ -1029,8 +1072,8 @@
   
   
     <li class="md-nav__item">
-      <a href="064_HerramientasDocker.html" class="md-nav__link">
-        6.4- Herramientas de Docker
+      <a href="065_VagrantIntro.html" class="md-nav__link">
+        6.5- Despliegue de Sistemas Heterogéneos con Vagrant
       </a>
     </li>
   
@@ -1043,8 +1086,8 @@
   
   
     <li class="md-nav__item">
-      <a href="065_IntroSamba.html" class="md-nav__link">
-        6.5- Introducción Samba
+      <a href="066_ConfigIntegra.html" class="md-nav__link">
+        6.6- Configuración Integrada con Vagrant
       </a>
     </li>
   
@@ -1057,8 +1100,8 @@
   
   
     <li class="md-nav__item">
-      <a href="066_SambaSecUsers.html" class="md-nav__link">
-        6.6- Secciones y usuarios Samba
+      <a href="067_NFS.html" class="md-nav__link">
+        6.7- NFS
       </a>
     </li>
   
@@ -1071,8 +1114,8 @@
   
   
     <li class="md-nav__item">
-      <a href="067_SambaDC.html" class="md-nav__link">
-        6.7- Samba Domain Controller
+      <a href="068_DockerIntroNextCloud.html" class="md-nav__link">
+        6.8- Docker repaso y NextCloud
       </a>
     </li>
   
@@ -1085,22 +1128,8 @@
   
   
     <li class="md-nav__item">
-      <a href="068_VagrantIntro.html" class="md-nav__link">
-        6.8- Despliegue de Sistemas Heterogéneos con Vagrant
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="069_ConfigIntegra.html" class="md-nav__link">
-        6.9- Configuración Integrada con Vagrant
+      <a href="069_HerramientasDocker.html" class="md-nav__link">
+        6.9- Herramientas de Docker
       </a>
     </li>
   
@@ -1129,6 +1158,20 @@
     <li class="md-nav__item">
       <a href="06_PruebaEspecifica.html" class="md-nav__link">
         Prueba Específica
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
       </a>
     </li>
   
@@ -1408,231 +1451,287 @@
                   
 
 
-<figure style="float: right;">
-    <img src="imagenes/07/073/001.png" width="230"/>
-</figure>
-
-<h1 id="nfs-network-file-system">NFS Network File System<a class="headerlink" href="#nfs-network-file-system" title="Permanent link">&para;</a></h1>
-<p><strong>NFS</strong> es un <strong>protocolo</strong> de nivel de aplicación, El nombre es un poco engañoso "Sistema de Archivos de Red" porque NFS <strong>no es el sistema de archivos real</strong>, sino el protocolo utilizado entre equipos heterogéneos para compartir los datos y también da nombre al servicio que implementa dicho protocolo.</p>
-<p>Fue creado por <strong>Sun Microsystems en 1985</strong> con el objetivo de ser independiente al sistema operativo instalado en la máquina, y al protocolo de transporte utilizado (TCP o UDP), esto fue posible gracias a que está implementado sobre los protocolos <strong>XDR</strong> (presentación) y <strong>ONC RPC</strong> (sesión).</p>
-<div class="admonition note">
-<p class="admonition-title">Nota:</p>
+<h1 id="configuracion-de-secciones-y-usuarios-en-samba">Configuración de Secciones y Usuarios en SAMBA<a class="headerlink" href="#configuracion-de-secciones-y-usuarios-en-samba" title="Permanent link">&para;</a></h1>
+<h2 id="secciones">Secciones<a class="headerlink" href="#secciones" title="Permanent link">&para;</a></h2>
+<p>Dentro del fichero de configuración <code>/etc/samba/smb.conf</code> encontramos diversas secciones, entre las que se destacan tres:</p>
 <ul>
-<li><strong>RPC</strong> es un servicio genérico de capa de sesión que se utiliza <strong>para implementar la funcionalidad de trabajo por Internet cliente/servidor</strong>. Amplía la noción de un programa que llama a un procedimiento local en un ordenador host en particular, a la llamada a un procedimiento en un dispositivo remoto a través de una red.</li>
-<li><strong>XDR</strong> es un lenguaje descriptivo que <strong>permite definir los tipos de datos de manera coherente</strong>. XDR reside conceptualmente en la capa de presentación; sus representaciones universales permiten intercambiar datos utilizando NFS entre ordenadores que pueden utilizar métodos internos muy diferentes para almacenar datos. </li>
-</ul>
-</div>
-<p>Las versiones del protocolo son:</p>
-<div class="admonition quote">
-<p class="admonition-title">Versiones NFS</p>
-<ul>
-<li>NFSv2 released in 1985 (ya no soportado on Ubuntu and RedHat).</li>
-<li>NFSv3 released in 1995</li>
-<li>NFSv4 released in 2003 (Desarrollado por Internet Engineering Task Force (IETF)).</li>
-<li>NFSv4.1 released in 2010</li>
-<li>NFSv4.2 released in 2016</li>
-</ul>
-</div>
-<div class="admonition note">
-<p class="admonition-title">NOTA</p>
-<p><strong>Internet Engineering Task Force</strong> ​ es una organización internacional abierta de normalización, que tiene como objetivos el contribuir a la ingeniería de Internet, actuando en diversas áreas, como transporte, enrutamiento y seguridad. Se creó en los Estados Unidos en 1986.</p>
-</div>
-<p>El orden en la Pila OSI se puede observar en la siguiente figura:</p>
-<figure>
-  <img src="./imagenes/07/073/001B.png" width="350"/>
-  <figcaption>NFS en el protocolo OSI tcp/ip.</figcaption>
-</figure>
-
-<h2 id="caracteristicas-generales">Características Generales<a class="headerlink" href="#caracteristicas-generales" title="Permanent link">&para;</a></h2>
-<p>El protocolo <strong>NFS</strong>:</p>
-<ul>
-<li>Es utilizado para <strong>sistemas de archivos distribuido</strong> en un entorno de red de computadoras de área local.</li>
-<li>Posibilita que distintos sistemas conectados a una misma red accedan a ficheros remotos como si se tratara de locales.</li>
-<li>Se utiliza en <strong>las redes de área local para crear un sistema de archivo distribuido</strong>.</li>
-<li>Su <strong>principal objetivo</strong> es que varios usuarios puedan acceder a los archivos compartidos como si fueran locales.</li>
-<li>Se <strong>centraliza</strong> por tanto el almacenamiento de la red.</li>
-<li>La mayoría de los sistemas operativos tienen un amplio soporte nativo para NFS, incluyendo <strong>Linux</strong> y <strong>macOS</strong> y las versiones más recientes de <strong>Windows</strong> también tienen soporte nativo para montar NFS.</li>
+<li><code>[global]</code>: Es la sección principal que nos permite configurar los parámetros generales del servicio. Las opciones especificadas aquí afectan a cualquier recurso compartido. </li>
 </ul>
 <div class="admonition warning">
-<p class="admonition-title"><strong>IMPORTANTE</strong></p>
-<p>Para el uso de <strong>NFS en Windows</strong> es necesario usar <strong>Windows 8</strong> Enterprise o superior o recurrir a software de terceros.</p>
+<p class="admonition-title">Advertencia</p>
+<p>A tener en cuenta, si una misma opción se declara en la sección global y en otra sección, por ejemplo una carpeta compartida con el nombre <code>ejercicio1</code>, tendrá mayor peso la de la sección más específica, es decir, la especificada en la sección llamada <code>ejercicio1</code>.</p>
 </div>
-<p>Se basa en la Arquitectura Cliente servidor y destacan los siguientes componentes:</p>
-<figure>
-  <img src="./imagenes/07/073/002.png" width="750"/>
-  <figcaption>Esquema de red NFS.</figcaption>
-</figure>
-
-<h3 id="vfs-virtual-file-system">VFS virtual file system<a class="headerlink" href="#vfs-virtual-file-system" title="Permanent link">&para;</a></h3>
-<p>Un sistema de archivos virtual o conmutador de sistema de archivos virtual es una capa de abstracción encima de un sistema de archivos más concreto. El propósito de un <strong>VFS</strong> es permitir que las aplicaciones cliente tengan acceso a diversos tipos de sistemas de archivos concretos de una manera uniforme.</p>
-<figure>
-  <img src="./imagenes/07/073/002B.png" width="550"/>
-  <figcaption>Diagrama de funcionamiento de VFS.</figcaption>
-</figure>
-
-<h2 id="ventajas-nfs">Ventajas NFS<a class="headerlink" href="#ventajas-nfs" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Al <strong>centralizar los recursos</strong> evitamos tener varias copias en diferentes nodos de la red. &#8594; Ahorrando espacio y evitando duplicidad de información.</li>
-<li>Asegura <strong>integridad de datos</strong>, al obligar a que todas las escrituras sean finalizadas antes de que otro usuario haga otras modificaciones.</li>
-<li>Permite <strong>almacenar toda la información de los perfiles de usuario</strong>, incluyendo su directorio <code>/home</code>. Por tanto un usuario podrá acceder a su partición de datos desde cualquier nodo de la red.</li>
-<li>Permite <strong>compartir dispositivos de almacenamiento externos</strong> como memorias flash o discos externos. Esto permite ahorrar costes en la compra de equipamiento al ahorrar su aprovechamiento.</li>
-<li>Características de <strong>seguridad para el control de acceso</strong>: <code>ACLS</code> o <code>KERBEROS</code>.</li>
-</ol>
-<h2 id="desventajas-nfs">Desventajas NFS<a class="headerlink" href="#desventajas-nfs" title="Permanent link">&para;</a></h2>
-<p>La mayoría de las desventajas de NFS se derivan del hecho de que fue diseñado hace décadas y para la comunicación con un solo servidor:</p>
 <ul>
-<li><strong>NFS</strong> no soporta "<strong>failover</strong>", es decir, conmutación por error. A nivel de IP a menudo ocurren interrupciones, retrasos y errores visibles para el usuario, los cales no son gestionados por NFS (para solucionarlo se utiliza "stale file handle" Control de archivo de estado).</li>
-<li><strong>NFS</strong> no tiene <strong>balanceo de carga</strong>. Como NFS fue diseñado para un solo servidor presenta una falta de equilibrio de carga en un sistema de almacenamiento, y de una gestión optima de escalabilidad horizontal.</li>
-<li><strong>NFS</strong> no realiza "<strong>checksums</strong>". Esto era un gran problema inicial debido a la alta probabilidad de "checksums" que existían en los años 90, pero actualmente es simplemente una deficiencia ya que es una herramienta de corrección desaprovechada, puesto que los dispositivos "hardware" tienen instrucciones para gestionar los "Checksum" correctamente.</li>
-<li><strong>NFS</strong> tiene una <strong>carencia en el control de permisos</strong>, por ello se combina con <strong>LDAP</strong> que se encargará de la gestión de los permisos. La carencia es debida a que <strong>NFS</strong> traspasa los ficheros a los clientes con los permisos relacionados con el UID y el GID existentes en el servidor. Es decir, que si en el servidor existe un usuario “javi” con UID 1003 y en el cliente hay un usuario “maría” con UID 1003 ambos tendrán los mismos permisos.</li>
+<li><code>[homes]</code>: Esta sección permite compartir las carpetas home de cada usuario, para que cada usuario pueda acceder a su carpeta home por la red. </li>
 </ul>
-<!-- ## Permisos en NFS.
-
-**NFS** tiene una carencia en el control de permisos, por ello se combina con **LDAP** que se encargará de la gestión de los permisos. La carencia es debida a que en UNIX cada usuario tiene un identificador llamado **UID** y cada grupo de usuarios tiene otro identificador **GID**.
-
-- NFS traspasa los ficheros a los clientes con los permisos relacionados con el UID y el GID existentes en el servidor. Es decir, que si en el servidor existe un usuario “javi” con UID 1003 y en el cliente hay un usuario “maría” con UID 1003 ambos tendrán los mismos permisos.
-Ejemplo (somebooks.es):
-
+<div class="admonition tip">
+<p class="admonition-title">consejo</p>
+<p>Se puede indicar las opciones para el <code>/home</code> de los usuarios existentes en el servidor. De tal forma que podríamos acceder a nuestro <code>/home</code> desde cualquier máquina del grupo de trabajo de la siguiente forma: <code>\\IP_SERVIDOR\usuario</code> &#8594; (file://IP_SERVIDOR/usuario)</p>
+</div>
+<ul>
+<li><code>[printers]</code>: Permite compartir impresoras en red.</li>
+</ul>
+<h3 id="parametros">Parámetros<a class="headerlink" href="#parametros" title="Permanent link">&para;</a></h3>
+<p>Puesto que editando el archivo <code>smb.conf</code> se pueden configurar más de 300 parámetros, dando lugar a miles de configuraciones, esta guía se limitará a analizar los parámetros más relevantes</p>
+<ol>
+<li>En la sección <code>[global]</code> se especifican las siguientes opciones generales:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>workgroup</strong></td>
+<td>Esta variable ha de almacenar el nombre del grupo de trabajo o dominio que usamos en nuestra red.</td>
+</tr>
+<tr>
+<td><strong>server string</strong></td>
+<td>Permite reconocer el equipo dentro del dominio. Por defecto tiene como valor el nombre del servidor.</td>
+</tr>
+<tr>
+<td><strong>hosts allow</strong></td>
+<td>Especifica desde qué direcciones IP se podrá acceder al servicio. Si se especifica  192.168. todas las direcciones que empiecen de ese modo tendrán acceso al recurso. Se puede establecer direcciones IP completas.</td>
+</tr>
+<tr>
+<td><strong>hosts deny</strong></td>
+<td>Especifica los rangos no permitidos, del mismo modo que <strong>host allow</strong>.</td>
+</tr>
+<tr>
+<td><strong>security,</strong></td>
+<td>Especifica el nivel de seguridad con el que se puede acceder.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo [global]</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>    <span class="o">[</span>global<span class="o">]</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1"># Seguridad por usuarios</span>
+<span class="linenos" data-linenos=" 3 "></span>    <span class="nv">security</span> <span class="o">=</span> user
+<span class="linenos" data-linenos=" 4 "></span>    <span class="c1"># Grupo de trabajo &#39;Aula5&#39;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="nv">workgroup</span> <span class="o">=</span> Aula5 
+<span class="linenos" data-linenos=" 6 "></span>    <span class="c1"># Las contraseñas se deberán enviar encriptadas </span>
+<span class="linenos" data-linenos=" 7 "></span>    encrypt <span class="nv">passwords</span> <span class="o">=</span> yes
+<span class="linenos" data-linenos=" 8 "></span>    <span class="c1"># Samba será servidor wins</span>
+<span class="linenos" data-linenos=" 9 "></span>    wins <span class="nv">support</span> <span class="o">=</span> yes
+<span class="linenos" data-linenos="10 "></span>    <span class="c1"># Nivel y longitud máxima del archivo de registro</span>
+<span class="linenos" data-linenos="11 "></span>    log <span class="nv">level</span> <span class="o">=</span> <span class="m">1</span> 
+<span class="linenos" data-linenos="12 "></span>    max log <span class="nv">size</span> <span class="o">=</span> <span class="m">1000</span>
+<span class="linenos" data-linenos="13 "></span>    <span class="c1"># Por defecto, lectura y escritura</span>
+<span class="linenos" data-linenos="14 "></span>    <span class="nb">read</span> <span class="nv">only</span> <span class="o">=</span> no
+<span class="linenos" data-linenos="15 "></span>    <span class="c1"># Se comparten también las impresoras</span>
+<span class="linenos" data-linenos="16 "></span>    load <span class="nv">printers</span> <span class="o">=</span> yes
+</code></pre></div>
+<ul>
+<li>Más ejemplos:</li>
+</ul>
+<p><code>hosts allow/deny</code>: Permite restringir el acceso por IP:</p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo1</p>
+<p><strong>Permitir Redes</strong><br />
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">hosts allow = 192.168.2.0/24 192.168.3.0/24</span><span class="w"></span>
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo2</p>
+<p><strong>Permitir IP específica</strong><br />
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">hosts allow = 192.168.2.5 192.168.3.100 192.168.3.200</span><span class="w"></span>
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo1</p>
+<p><strong>Permitir acceso a todos los hosts que comiencen por 192.168.</strong><br />
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">hosts allow = 192.168.</span><span class="w"></span>
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo1</p>
+<p><strong>Deniega acceso a todos los hosts que comiencen por 10.</strong><br />
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">hosts deny = 10.</span><span class="w"></span>
+</code></pre></div></p>
+</div>
+<ul>
+<li>Su funcionamiento es de arriba abajo, como las listas de acceso. Es decir, si tenemos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">hosts allow = 127.0.0.1 192.168.2.0/24 192.168.3.0/24</span><span class="w"></span>
+<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">hosts deny = 127.0.0.1 192.168.2.0/24 192.168.3.0/24</span><span class="w"></span>
+</code></pre></div>
+<p><strong>El que cuenta es el primero que coincida, por tanto sí permitiría el acceso.</strong></p>
+<ol start="2">
+<li>En la sección <code>[homes]</code> se muestra el siguiente ejemplo:</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>    <span class="o">[</span>homes<span class="o">]</span> 
+<span class="linenos" data-linenos="2 "></span>    <span class="c1"># Comentario</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="nv">comment</span> <span class="o">=</span> Carpetas home 
+<span class="linenos" data-linenos="4 "></span>    <span class="c1"># No explorables</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="nv">browsable</span> <span class="o">=</span> no 
+<span class="linenos" data-linenos="6 "></span>    <span class="c1"># Máscara de creación de archivos (rxw------)</span>
+<span class="linenos" data-linenos="7 "></span>    create <span class="nv">mask</span> <span class="o">=</span> <span class="m">0700</span> 
+<span class="linenos" data-linenos="8 "></span>    <span class="c1"># Máscara de creación de carpetas</span>
+<span class="linenos" data-linenos="9 "></span>    directory <span class="nv">mask</span> <span class="o">=</span> <span class="m">0700</span>
+</code></pre></div>
+<ol start="3">
+<li>En la sección <code>[printers]</code> se muestra el siguiente ejemplo:</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>    <span class="o">[</span>printers<span class="o">]</span> 
+<span class="linenos" data-linenos="2 "></span>    <span class="nv">path</span> <span class="o">=</span> /var/tmp 
+<span class="linenos" data-linenos="3 "></span>    <span class="nv">printable</span> <span class="o">=</span> yes
+<span class="linenos" data-linenos="4 "></span>    min print <span class="nv">space</span> <span class="o">=</span> <span class="m">2000</span>
+</code></pre></div>
+<h2 id="usuarios">Usuarios<a class="headerlink" href="#usuarios" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Para que esa administración sea posible, <strong>Samba</strong> dispone de su propia base de datos de <code>usuarios samba</code> pero como los usuarios utilizan otros recursos del servidor como carpetas e impresoras, es necesario que estén creados en el sistema Unix.</p>
+</li>
+<li>
+<p>Resumiendo, podemos decir que <strong>para poder ser usuario de samba, es necesario disponer de una cuenta de usuario en Unix y de una cuenta de usuario en samba</strong>.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Gestión usuarios</p>
+<ul>
+<li>La gestión de usuarios de samba se puede realizar de dos formas: </li>
+<li>con el comando <code>smbpasswd</code>. Con dicho comando, entre otras cosas podremos crear y eliminar usuarios, cambiar su contraseña, etc.</li>
+<li>A través de los comandos <strong>samba-tool user</strong> y <strong>samba-tool group</strong>.</li>
+</ul>
+</div>
+<ul>
+<li>Inicialmente se van a realizar con la primera opción.</li>
+</ul>
+<h3 id="creacion-de-un-usuario-de-samba-con-smbpasswd">Creación de un usuario de samba con smbpasswd<a class="headerlink" href="#creacion-de-un-usuario-de-samba-con-smbpasswd" title="Permanent link">&para;</a></h3>
+<p>Para crear un usuario de samba se puede utilizar el comando <code>smbpasswd</code>, pero antes debemos haber creado el usuario en Unix.</p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Creación del usuario pepe</span>
+<span class="linenos" data-linenos="2 "></span>sudo useradd pepe
+<span class="linenos" data-linenos="3 "></span><span class="c1"># Si se desea que pepe pueda disfrutar de los servicios samba, debemos crear a pepe como usuario de samba ejecutando el siguiente comando:</span>
+<span class="linenos" data-linenos="4 "></span>sudo smbpasswd -a pepe
+<span class="linenos" data-linenos="5 "></span><span class="c1"># Con la opción -a indicamos que añada al usuario. </span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># Acto seguido nos preguntará dos veces la contraseña que deseamos poner al usuario. Lo razonable es que sea la misma contraseña que tiene el usuario en Unix. </span>
+</code></pre></div>
+<h3 id="eliminar-un-usuario-de-samba">Eliminar un usuario de samba<a class="headerlink" href="#eliminar-un-usuario-de-samba" title="Permanent link">&para;</a></h3>
+<p>Para eliminar un usuario de samba debemos ejecutar <code>smbpasswd</code> con la opción <code>-x</code>, </p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Eliminar un usuario de samba</span>
+<span class="linenos" data-linenos="2 "></span>sudo smbpasswd -x pepe
+<span class="linenos" data-linenos="3 "></span><span class="c1"># Inmediatamente el usuario habrá desaparecido de la base de datos de &#39;usuarios samba&#39; aunque seguirá siendo un usuario de Unix.</span>
+</code></pre></div>
+<ol start="3">
+<li>Otras opciones de <code>smbpasswd</code></li>
+</ol>
+<ul>
+<li><code>-d</code>: Deshabilitar un usuario</li>
+<li><code>-e</code>: Habilitar un usuario.</li>
+<li><code>-m</code>: Indica que es una cuenta de máquina (equipo)</li>
+<li><code>-n</code>: Usuario sin password.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La última opción Necesita parámetro null passwords = yes en sección 'global' del archivo de configuración de samba</p>
+</div>
+<h3 id="el-usuario-invitado">El usuario Invitado<a class="headerlink" href="#el-usuario-invitado" title="Permanent link">&para;</a></h3>
+<p>Cuando accedemos como “<strong>invitado</strong>” (guest ok) por defecto accedemos como el usuario <code>nobody:nogroup</code>. Esto se puede modificar usando el siguiente parámetro:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>force <span class="nv">user</span> <span class="o">=</span> javi
+<span class="linenos" data-linenos="2 "></span>force <span class="nv">group</span> <span class="o">=</span> alumnos
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Opción</p>
+<p>De esta forma cuando accedamos al sistema como invitado accederemos como el usuario javi que tiene el grupo principal alumnos.</p>
+</div>
+<h3 id="restriccion-por-usuarios">Restricción por usuarios<a class="headerlink" href="#restriccion-por-usuarios" title="Permanent link">&para;</a></h3>
+<p>En caso de que no permitamos el acceso de invitados (guest ok = no) el servidor nos solicitará nuestras credenciales:</p>
 <figure>
-  <img src="./imagenes/07/073/003.png" width="850"/>
-  <figcaption>Ejemplo de problema de permisos en NFS.</figcaption>
+  <img src="./imagenes/07/072/006.png" width="450"/>
 </figure>
 
-A continuación se explican los problemas del ejemplo anterior:
-
-- **root**: Como coinciden tanto el UID como el GID el usuario root del cliente podrá actuar como usuario root del servidor NFS, al no ser que tengamos la opción de root_squash activada.
-- **usuario**: Al igual que pasa con root al tener mismo UID y GID tanto en el servidor como en el cliente.
-- **jlopez**: no tiene el mismo UID o GID en el servidor que en el cliente. No obstante en el cliente tiene un GID 1030 por lo que tendrá los permisos del grupo “**Administración**”, cuando realmente dicho usuario no pertenece a ese grupo.
-- **fgil**: El usuario fgil, el cual solo se encuentra en el cliente, tendrá los permisos del usuario aperez del servidor, ya que comparten UID. Además pertenecerá al grupo de “**Dirección**” debido a su GID. -->
-
-<!-- ## Montaje Automático de un cliente NFS.
-
-En los sistemas UNIX los volúmenes (discos duros, servidores, usb, etc) pueden montarse automáticamente al arrancar. Esto se consigue editando el fichero `/etc/fstab` (file systems table).
-
-- Fichero `/etc/fstab`:
-
-- Cada línea pertenece al montaje de un volumen y se compone de:
-
-1. **Dispositivo que se va a montar**: `“IP del servidor”:”ruta de la carpeta compartida”`
-
-!!! example "**Ejemplo:**"
-    `192.168.0.100:/home/usuarioServidor/Escritorio/compartido`
-
-2. **Punto de montaje**: Donde queremos que se monte en nuestro equipo.
-
-!!! example "**Ejemplo:**"
-    `/mnt/nfs/compartir`
-
-3. **Sistema de archivos**: Indica el sistema de archivo utilizado en el volumen. En este caso será “nfs”.
-
-4. **Opciones de montaje**, usaremos las siguientes: `auto,noatime,nolock,bg,nfsvers=3,intr,tcp,actimeo=`
-
-5. **Frecuencia de Respaldo**: Tiempo con el que se realiza copia de seguridad, si su valor es 0 no se realiza copia.
-
-6. **Orden de revisión**: Uso para la herramienta fsck para revisar errores en el volumen. Si su valor es 0 no se realiza revisión.
-
-- **Ejemplos:**
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">192.168.1.10:/home /mnt/nfs/home nfs auto,noatime,nolock,bg,nfsvers=3,intr,tcp,actimeo=1800 0 0</span><span class="w"></span>
-<span class="linenos" data-linenos="2 "></span>
-<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">192.168.1.10:/home/usuarioServidor/Escritorio/compartir /mnt/nfs/compartir nfs</span><span class="w"></span>
-<span class="linenos" data-linenos="4 "></span>
-<span class="linenos" data-linenos="5 "></span><span class="l l-Scalar l-Scalar-Plain">auto,noatime,nolock,bg,nfsvers=3,intr,tcp,actimeo=1800 0 0</span><span class="w"></span>
+<ul>
+<li>Por otra parte se puede restringir los usuarios que pueden tener acceso a un recurso:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>valid <span class="nv">users</span> <span class="o">=</span> javi pepe jorge
+<span class="linenos" data-linenos="2 "></span>invalid <span class="nv">users</span> <span class="o">=</span> root @profesores @root
 </code></pre></div>
-
-<figure>
-  <img src="./imagenes/07/073/004.png" width="850"/>
-  <figcaption>Ejemplo de problema de fstab.</figcaption>
-</figure>
-
-!!! note "**Nota:**"
-    Finalmente es necesario reiniciar la máquina.
-
-## Instalación NFS.
-
-- Servidor:
-
-1. Actualiza repositorios.
-2. Instala el paquete nfs-kernel-server.
-
-- Cliente:
-
-1. Actualiza repositorios.
-2. Instala el paquete nfs-common.
-3. Montar en una carpeta la carpeta compartida del servidor.
-
-### Configuración General NFS.
-
-- Servidor:
-
-1. Crea la carpeta compartida.
-2. Comprobar permisos en el servidor dependiendo de lo restrictivo que deba ser.
-3. Modifica la configuración de los recursos compartidos en `/etc/exports`.
-4. Actualiza los cambios:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo exportfs –a</span><span class="w"></span>
-<span class="linenos" data-linenos="2 "></span><span class="l l-Scalar l-Scalar-Plain">sudo systemctl restart nfs-kernel-server</span><span class="w"></span>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El <code>“@”</code> indica que se hace referencia a un grupo. Por tanto ningún usuario perteneciente al grupo root o de profesores puede acceder.</p>
+</div>
+<ul>
+<li>Además se pueden crear usuarios administradores.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>admin <span class="nv">users</span> <span class="o">=</span> javi
 </code></pre></div>
-
-- Cliente:
-
-- Montar en una carpeta la carpeta compartida del servidor.
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">sudo mount IPSerivdor:/RutaCarpetaCompartida /RutaDondeSeMontaEnCliente</span><span class="w"></span>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Los usuarios dentro de esta lista actuarán como <code>root</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Si un usuario está en el listado de “valid users” y en el de “invalid users” se le deniega el acceso.</p>
+</div>
+<h3 id="autentificacion-en-samba-a-traves-de-usuarios">Autentificación en Samba a través de usuarios<a class="headerlink" href="#autentificacion-en-samba-a-traves-de-usuarios" title="Permanent link">&para;</a></h3>
+<p>Para autentificarse en <code>Samba</code> a través de usuarios se deben cumplir 2 requisitos:</p>
+<ol>
+<li>El usuario debe existir en el sistema <code>/etc/passwd</code></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo useradd -s /bin/true “usuario”
 </code></pre></div>
-
-!!! example "**Ejemplos:**"
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">mount 192.168.18.4:/home/alumno/compartida /home/salva/compartida</span><span class="w"></span>
+<div class="admonition note">
+<p class="admonition-title"><strong>Nota</strong></p>
+<p>De esta forma no se crea el <code>/home</code> del usuario y no se permite el acceso al sistema si no es a través de <strong>Samba</strong>. Es decir, el usuario no se podría conectar a través de <code>ssh</code> o localmente.</p>
+</div>
+<ol start="2">
+<li>El usuario debe existir en el servicio de samba. Para listar los usuarios se utiliza el comando <code>pbedit -L</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo smbpasswd –a “usuario”
 </code></pre></div>
-
-### Fichero de Configuración NFS (/etc/exports).
-
-- Cada recurso compartido que se añada debe ir en una nueva línea.
-- Los nombres de clientes/usuarios no pueden tener espacios.
-- Entre el nombre de usuario y las opciones no hay espacio en blanco.
-- Las líneas tienen el siguiente formato:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“ruta_micarpeta” cliente1(opciones) cliente2(opciones)...clienteN(opciones)</span><span class="w"></span>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>La contraseña es recomendable que sea diferente a la usada en el sistema.</p>
+</div>
+<ul>
+<li><strong>Listar usuarios dados de alta en SAMBA:</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pdbedit -L
 </code></pre></div>
-
-!!! example "**Ejemplos:**"
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">/home *(rw,sync,no_subtree_check)</span><span class="w"></span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">/home/javi/Escritorio/SOR/COMPARTIR/ *(rw,sync,no_subtree_check)</span><span class="w"></span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">/home 192.168.0.19(rw,sync,no_subtree_check)</span><span class="w"></span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="l l-Scalar l-Scalar-Plain">/home 192.168.0.0/24(rw,sync,no_subtree_check)</span><span class="w"></span>
-</code></pre></div>
-
-#### Opciones:
-
-- **ro(read-only)**: La carpeta compartida será de sólo lectura. Es la opción predeterminada.
-- **rw (read-write)**: El usuario podrá realizar cambios en el contenido de la carpeta compartida.
-- **root_squash**: Evita que los usuarios con privilegios administrativos los mantengan, sobre la carpeta compartida, cuando se conectan remotamente. En su lugar, se les trata como un usuario `“nfsnobody”` que es un usuario con permisos mínimos. Es la opción predeterminada.
-- **no_root_squash**: Deshabilita la característica anterior.
-- **sync**: Evita responder peticiones antes de escribir los cambios pendientes en disco. De tal forma que cada cambio que recibe la escribe en disco y luego confirma que ha sido escrita correctamente. Es la opción predeterminada.
-- **async**: Deshabilita la característica anterior. Mejora el rendimiento a cambio de que exista el riesgo de corrupción en los archivos o, incluso, en todo el sistema de archivos, si se produjese una interrupción del fluido eléctrico o un bloqueo del sistema. Recibe la orden de escritura y confirma al cliente que ha sido realizada con éxito (mentira, ya que no ha sido realizada), acto seguido puede recibir X órdenes de otros clientes y a todos les hará lo mismo, finalmente realiza escribe todos los cambios a la vez. Por tanto es más rápido que el método síncrono ya que no debe realizar tantos accesos a memoria.
-- **subtree_check**: Cuando el directorio compartido es un subdirectorio de un sistema de archivos mayor, **NFS** comprueba los directorios por encima de éste para verificar sus permisos y características. Es la opción predeterminada.
-- **no_subtree_check**: Deshabilita la característica anterior, lo que hace que el envío de la lista de archivos sea más rápido, pero puede reducir la seguridad. -->
-
-<h2 id="actividades-tipo-practicastrabajos-aea">Actividades tipo Prácticas/trabajos (AEA)<a class="headerlink" href="#actividades-tipo-practicastrabajos-aea" title="Permanent link">&para;</a></h2>
-<p>En este apartado se presentan una serie de guías para la instalación, configuración y gestión de NFS en un servidor Ubuntu, cliente Ubuntu y cliente Windows. Se deben presentar las capturas y explicaciones solicitadas en cada guía.</p>
-<h3 id="pt61-nfs-servidor">PT61. NFS Servidor<a class="headerlink" href="#pt61-nfs-servidor" title="Permanent link">&para;</a></h3>
-<p><a href="NFS1.html">Instalación y configuración de NFS en servidor Ubuntu</a></p>
-<h3 id="pt62-nfs-cliente">PT62. NFS Cliente<a class="headerlink" href="#pt62-nfs-cliente" title="Permanent link">&para;</a></h3>
-<p><a href="NFS2.html">Instalación y configuración de NFS en cliente Ubuntu y Windows 10</a></p>
-<!-- 3. [Instalación y configuración de NFS en cliente Windows 10](NFS3.md) -->
-
-<!-- - [NFS parte 2](http://somebooks.es/nfs-parte-2-instalacion-en-un-cliente-ubuntu-20-04-lts/)
-- [NFS parte 3](http://somebooks.es/nfs-parte-3-instalacion-en-un-cliente-windows-10/)
-- [NFS parte 4](http://somebooks.es/nfs-parte-4-compartir-almacenamiento-en-un-servidor-ubuntu-20-04-lts/)
-- [NFS parte 5](http://somebooks.es/nfs-parte-5-acceder-a-la-carpeta-compartida-desde-un-cliente-ubuntu-20-04-lts/) -->
+<h2 id="actividades-de-clase-aea">Actividades de clase (AEA)<a class="headerlink" href="#actividades-de-clase-aea" title="Permanent link">&para;</a></h2>
+<h3 id="ac63-creacion-de-secciones-y-usuarios-en-samba">AC63. Creación de secciones y usuarios en Samba.<a class="headerlink" href="#ac63-creacion-de-secciones-y-usuarios-en-samba" title="Permanent link">&para;</a></h3>
+<h4 id="secciones-samba">Secciones SAMBA<a class="headerlink" href="#secciones-samba" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<ul>
+<li>Recuerda reiniciar el servicio de samba tras modificar el fichero smb.conf.</li>
+<li>Estate atento para eliminar las líneas comentadas, las cuales comienzan por <code>“#”</code> y <code>“;”</code></li>
+</ul>
+</div>
+<ol>
+<li>Haz que todos los <code>/homes</code> de los usuarios sean navegables, que cualquiera pueda acceder sin credenciales y que solo tengan permisos de lectura. Recuerda que también deberás tener en cuenta los permisos dentro del servidor Linux. Haz captura de la configuración realizada en <code>smb.conf</code> y del explorador de Windows accediendo a tu <code>/home</code> de Ubuntu.</li>
+<li>Cambia en el servidor, en la sección [homes], la opción read only a no. Haz una captura de los permisos de tu carpeta <code>/home</code>. Prueba a crear un fichero desde Windows. ¿Qué sucede y por qué?</li>
+<li>Indica la configuración del servicio más adecuada si quisiera permitir únicamente los equipos de la red 10.0.0.0/8  ¿Sigues teniendo acceso desde el cliente? ¿Por qué?</li>
+<li>Ahora cambia la restricción para permitir acceso únicamente a los hosts de la red en la que te encuentres.</li>
+</ol>
+<h4 id="usuarios-samba">Usuarios SAMBA<a class="headerlink" href="#usuarios-samba" title="Permanent link">&para;</a></h4>
+<ol start="5">
+<li>Prueba a crear un usuario con <code>smbpasswd</code> sin que éste exista en el sistema Linux. ¿Qué sucede? Adjunta una captura.</li>
+<li>Crea el usuario <strong>“leonardo”</strong> en el sistema linux, recuerda que dicho usuario solo debe ser capaz de acceder al sistema a través de <strong>Samba</strong>. Posteriormente créalo para <strong>Samba</strong>. Visualiza los usuarios de samba y fíjate en el <code>UID</code> asignado al usuario recién creado ¿tiene el mismo UID que en el sistema Linux (<code>/etc/passwd</code>)? Adjunta capturas de todo el proceso.</li>
+<li>Cierra la sesión actual en el servidor (exit) e intenta iniciar sesión con el usuario “leonardo” ¿Qué sucede y por qué?</li>
+<li>Edita en el servidor la sección [homes] con “force user = root”. Reinicia el servicio. Intenta crear, desde el cliente de Windows, un documento en el escritorio del <code>/home</code> compartido. ¿Te permite crearlo? ¿Por qué? ¿Qué permisos y usuario propietario tiene el fichero creado? Adjunta capturas a las explicaciones.</li>
+<li>Cambia la configuración en el servidor de la carpeta “<code>/home/usuario/ejercicio2</code>” para que no permita el acceso de invitados y solo permita al usuario <strong>“leonardo”</strong>. Muestra la configuración. Intenta acceder desde el cliente Windows con las credenciales de tu usuario ¿Qué sucede? Adjunta capturas de pantalla.</li>
+</ol>
+<!-- smb encrypt = required
+client min protocol = SMB2
+client max protocol = SMB3 -->
 
 
 
@@ -1653,7 +1752,7 @@ En los sistemas UNIX los volúmenes (discos duros, servidores, usb, etc) pueden 
     <nav class="md-footer__inner md-grid" aria-label="Pie" >
       
         
-        <a href="061_ServiciosRedRecursosCompartidos.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 6.1- Introducción: Sistemas heterogéneos" rel="prev">
+        <a href="062_IntroSamba.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 6.2- Introducción Samba" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1662,20 +1761,20 @@ En los sistemas UNIX los volúmenes (discos duros, servidores, usb, etc) pueden 
               <span class="md-footer__direction">
                 Anterior
               </span>
-              6.1- Introducción: Sistemas heterogéneos
+              6.2- Introducción Samba
             </div>
           </div>
         </a>
       
       
         
-        <a href="063_DockerIntroNextCloud.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 6.3- Docker repaso y NextCloud" rel="next">
+        <a href="064_SambaDC.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 6.4- Samba Domain Controller" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Siguiente
               </span>
-              6.3- Docker repaso y NextCloud
+              6.4- Samba Domain Controller
             </div>
           </div>
           <div class="md-footer__button md-icon">

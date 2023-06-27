@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/064_HerramientasDocker.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/066_ConfigIntegra.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>6.4- Herramientas de Docker - Administración de Sistemas Operativos</title>
+        <title>6.6- Configuración Integrada con Vagrant - Administración de Sistemas Operativos</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#herramientas-docker" class="md-skip">
+        <a href="#configuracion-integrada-de-sistemas-heterogeneos" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6.4- Herramientas de Docker
+              6.6- Configuración Integrada con Vagrant
             
           </span>
         </div>
@@ -872,6 +872,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_7">
@@ -906,8 +908,8 @@
   
   
     <li class="md-nav__item">
-      <a href="062_NFS.html" class="md-nav__link">
-        6.2- NFS
+      <a href="062_IntroSamba.html" class="md-nav__link">
+        6.2- Introducción Samba
       </a>
     </li>
   
@@ -920,8 +922,36 @@
   
   
     <li class="md-nav__item">
-      <a href="063_DockerIntroNextCloud.html" class="md-nav__link">
-        6.3- Docker repaso y NextCloud
+      <a href="063_SambaSecUsers.html" class="md-nav__link">
+        6.3- Secciones y usuarios Samba
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="064_SambaDC.html" class="md-nav__link">
+        6.4- Samba Domain Controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="065_VagrantIntro.html" class="md-nav__link">
+        6.5- Despliegue de Sistemas Heterogéneos con Vagrant
       </a>
     </li>
   
@@ -944,12 +974,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          6.4- Herramientas de Docker
+          6.6- Configuración Integrada con Vagrant
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="064_HerramientasDocker.html" class="md-nav__link md-nav__link--active">
-        6.4- Herramientas de Docker
+      <a href="066_ConfigIntegra.html" class="md-nav__link md-nav__link--active">
+        6.6- Configuración Integrada con Vagrant
       </a>
       
         
@@ -968,30 +998,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dockerfile" class="md-nav__link">
-    Dockerfile
+  <a href="#justificacion" class="md-nav__link">
+    Justificación
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker-compose" class="md-nav__link">
-    Docker-compose
+  <a href="#introduccion-ansible" class="md-nav__link">
+    Introducción Ansible
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#actividades-tipo-practicastrabajos-ap" class="md-nav__link">
-    Actividades tipo Prácticas/trabajos (AP)
-  </a>
-  
-    <nav class="md-nav" aria-label="Actividades tipo Prácticas/trabajos (AP)">
+    <nav class="md-nav" aria-label="Introducción Ansible">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pt64-nfs-mediante-docker-compose" class="md-nav__link">
-    PT64. NFS mediante Docker compose
+  <a href="#que-es-ansible" class="md-nav__link">
+    ¿Qué es Ansible?
   </a>
   
 </li>
@@ -1002,9 +1025,105 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#soluciones" class="md-nav__link">
-    Soluciones
+  <a href="#caracteristicas" class="md-nav__link">
+    Características
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    Instalación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-ansible" class="md-nav__link">
+    Arquitectura Ansible
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlador" class="md-nav__link">
+    Controlador
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    Inventory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playbooks" class="md-nav__link">
+    Playbooks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    Module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aprovisionamiento" class="md-nav__link">
+    Aprovisionamiento
+  </a>
+  
+    <nav class="md-nav" aria-label="Aprovisionamiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vagrant-con-scripts" class="md-nav__link">
+    Vagrant con Scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vagrant-con-ansible" class="md-nav__link">
+    Vagrant con Ansible
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades-de-profundizacion-ap" class="md-nav__link">
+    Actividades de profundización (AP)
+  </a>
+  
+    <nav class="md-nav" aria-label="Actividades de profundización (AP)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pr62-automatizacion-de-servicios-de-recursos-compartidos" class="md-nav__link">
+    PR62. Automatización de servicios de recursos compartidos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1023,8 +1142,8 @@
   
   
     <li class="md-nav__item">
-      <a href="065_IntroSamba.html" class="md-nav__link">
-        6.5- Introducción Samba
+      <a href="067_NFS.html" class="md-nav__link">
+        6.7- NFS
       </a>
     </li>
   
@@ -1037,8 +1156,8 @@
   
   
     <li class="md-nav__item">
-      <a href="066_SambaSecUsers.html" class="md-nav__link">
-        6.6- Secciones y usuarios Samba
+      <a href="068_DockerIntroNextCloud.html" class="md-nav__link">
+        6.8- Docker repaso y NextCloud
       </a>
     </li>
   
@@ -1051,36 +1170,8 @@
   
   
     <li class="md-nav__item">
-      <a href="067_SambaDC.html" class="md-nav__link">
-        6.7- Samba Domain Controller
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="068_VagrantIntro.html" class="md-nav__link">
-        6.8- Despliegue de Sistemas Heterogéneos con Vagrant
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="069_ConfigIntegra.html" class="md-nav__link">
-        6.9- Configuración Integrada con Vagrant
+      <a href="069_HerramientasDocker.html" class="md-nav__link">
+        6.9- Herramientas de Docker
       </a>
     </li>
   
@@ -1109,6 +1200,20 @@
     <li class="md-nav__item">
       <a href="06_PruebaEspecifica.html" class="md-nav__link">
         Prueba Específica
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_ProgramacionAula.html" class="md-nav__link">
+        Programación de Aula
       </a>
     </li>
   
@@ -1388,209 +1493,253 @@
                   
 
 
-<h1 id="herramientas-docker">HERRAMIENTAS DOCKER<a class="headerlink" href="#herramientas-docker" title="Permanent link">&para;</a></h1>
-<p>Existen dos opciones destacables en Docker para agilizar el despliegue de Imágenes y contenedores: Dockerfile y Docker-compose</p>
-<ul>
-<li><strong>Dockerfile</strong>: es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.</li>
-</ul>
-<div class="admonition summary">
-<p class="admonition-title">Summary</p>
-<p>Imágenes→ docker build → docker_file</p>
-</div>
-<ul>
-<li><strong>Docker-compose</strong>: es una herramienta que permite simplificar el uso de Docker. A partir de archivos <code>yaml</code> es mas sencillo crear contenedores, conectarlos, habilitar puertos, volúmenes, etc.</li>
-</ul>
-<div class="admonition summary">
-<p class="admonition-title">Summary</p>
-<p>Contenedores→ docker run → docker_compose.yml</p>
-</div>
-<h3 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
-<p>Las instrucciones principales que pueden utilizarse en un Dockerfile son:</p>
+<h1 id="configuracion-integrada-de-sistemas-heterogeneos">Configuración Integrada de Sistemas Heterogéneos<a class="headerlink" href="#configuracion-integrada-de-sistemas-heterogeneos" title="Permanent link">&para;</a></h1>
+<h2 id="justificacion">Justificación<a class="headerlink" href="#justificacion" title="Permanent link">&para;</a></h2>
+<p>En escenarios con un numero elevado de máquinas, por ejemplo los servidores y clientes en un IES, los cuales se cuentan como decenas de equipos, la tarea de configuración de servicios en dichos equipos se convierte en tediosa. Para solucionar este inconveniente existen <strong>herramientas de la gestión de la configuración</strong> (configuration management systems) como <code>puppet</code>, <code>chef</code> o <code>ansible</code>.</p>
+<p>El campo de las <strong>herramientas de la gestión de la configuración</strong> es muy amplio y su explicación detallada sale del ámbito de este módulo, por lo que simplemente se realiza una breve introducción al respecto. En el caso de vagrant la solución que se ha encontrado es muy razonable, ya que en lugar de desarrollar una nueva herramienta <code>Hashicorp</code> ha optado por una solución más adecuada y razonable: integrarlas todas con vagrant.</p>
+<p>En este caso se va a trabajar el "<strong>aprovisionamiento</strong>" con scripts y <code>ansible</code>.</p>
 <figure>
-    <img src="imagenes/01/InstruccionesDockefile.png" width="850"/>
+  <img src="./imagenes/069/001P.png"/>
 </figure>
 
+<h2 id="introduccion-ansible">Introducción Ansible<a class="headerlink" href="#introduccion-ansible" title="Permanent link">&para;</a></h2>
+<h3 id="que-es-ansible">¿Qué es Ansible?<a class="headerlink" href="#que-es-ansible" title="Permanent link">&para;</a></h3>
+<p><a href="https://docs.ansible.com/ansible/latest/">DOCUMENTACIÓN OFICIAL</a></p>
 <ul>
-<li>Ver también: <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles</a></li>
+<li>Tecnología de software libre que nos permite aprovisionar sistemas.</li>
+<li>Mejoras significativas respecto a utilizar Shell scripts.</li>
+<li>Amplia gama de módulos para aprovisionar servidores.</li>
+<li>Herramienta declarativa. (NGINX installed)</li>
+<li>Sin necesidad de configurar agentes. SSH</li>
 </ul>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>A continuación se muestra un ejemplo para la realización de la práctica de ampliación extraido de <a href="https://hub.docker.com/_/httpd">Apache oficial de docker</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<ul>
+<li>Con la arquitectura basada en agentes, los nodos deben instalar localmente un proceso de comunicaciones con la máquina de control. </li>
+<li>Con la arquitectura sin agentes los nodos no necesitan instalar ni ejecutar en segundo plano ningún proceso que se comunique con la máquina de control. </li>
+<li>Este tipo de arquitectura reduce la sobrecarga de la red y previene el uso de estrategias de control más agresivas por parte del servidor (como puede ser la realización de sondeos, con sus constantes operaciones de consulta).</li>
+</ul>
 </div>
-<ol>
-<li><strong>Primer paso</strong>: generar imagen con un <strong>Dockerfile</strong>.</li>
-</ol>
+<h2 id="caracteristicas">Características<a class="headerlink" href="#caracteristicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>Se crea el archivo de texto dockerfile.
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>touch dockerfile
-<span class="linenos" data-linenos="2 "></span>nano dockerfile
-</code></pre></div></p>
+<p><strong>Aprovisionamiento</strong> -&gt; Con Ansible se pueden aprovisionar las últimas plataformas en la nube, host virtualizados e hipervisores, dispositivos de red y servidores físicos.</p>
 </li>
 <li>
-<p>Ejemplo edición Dockerfile.</p>
+<p><strong>Gestión de la configuración</strong> -&gt; Establece y mantiene el rendimiento de los paquetes de software instalados y las ubicaciones y direcciones de red de los dispositivos de hardware.</p>
+</li>
+<li>
+<p><strong>Despliegue de aplicaciones</strong> -&gt; Cuando se define la aplicación con Ansible y se maneja su despliegue con Ansible Tower es posible llevar un control de todo el ciclo de vida de una aplicación. Desde desarrollo hasta producción.</p>
+</li>
+<li>
+<p><strong>Seguridad y Cumplimiento</strong> -&gt; Ansible permite definir las seguridad en los sistemas de forma sencilla. Utilizando la sintaxis de un Playbook es posible definir reglas de firewall, gestión de usuarios y grupos y políticas de seguridad personalizadas en los sistemas que se estén gestionando y además posees un gran número de módulos que ayudan en la labor.</p>
+</li>
+<li>
+<p><strong>Orquestación</strong> -&gt; Ansible se usa para orquestar los despliegues de OpenStack por ejemplo. Compañías como Rackspace, CSC, HP, Cisco e IBM confían en Ansible para mantener sus nubes OpenStack disponibles de manera simple y segura.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># syntax=docker/dockerfile:1</span>
-<span class="linenos" data-linenos="2 "></span>FROM nginx:alpine
-<span class="linenos" data-linenos="3 "></span>RUN apk update
-<span class="linenos" data-linenos="4 "></span>COPY index.html/ /usr/share/nginx/html/
-</code></pre></div>
 <div class="admonition nota">
 <p class="admonition-title">Nota</p>
-<p>Se puede probar a introducir el volumen en el docker file: <code>VOLUME /myvol1</code></p>
-</div>
 <ul>
-<li>Se crea la imagen y el contenedor.
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker build -t fcojavierhernandez/my-nginx-alpine .
-<span class="linenos" data-linenos="2 "></span>docker run -dit --name my-nginx-alpine -p <span class="m">8081</span>:80 fcojavierhernandez/my-nginx-alpine
-</code></pre></div></li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<ul>
-<li><strong>Mucho cuidado</strong> con el último punto de la instucción de build, tiene un espacio antes. Es el último argumento (y el único imprescindible) es el nombre del archivo Dockerfile que tiene que utilizar para generar la imagen. Como en este caso se encuentra en el mismo directorio y tiene el nombre predeterminado Dockerfile, se puede escribir simplemente punto (<code>.</code>).</li>
-<li>Para indicar el nombre de la imagen se debe añadir la opción <code>-t</code>. El nombre de la imagen debe seguir el patrón <code>nombre-de-usuario/nombre-de-imagen</code>. Si la imagen sólo se va a utilizar localmente, el nombre de usuario y de la imagen pueden ser cualquier palabra.</li>
+<li>OpenStack: es un proyecto de computación en la <strong>nube</strong> para proporcionar una infraestructura como servicio (IaaS). Es un software libre y de código abierto. Es decir, Cloud Computing Open Source.</li>
 </ul>
 </div>
-<ol start="2">
-<li><strong>Segundo paso</strong>: subir imagen al Docker Hub.</li>
-</ol>
-<ul>
-<li>Se debe generar una cuenta de Docker Hub con la cuenta corporativa de Office 365: <a href="https://hub.docker.com/signup">Sign Up</a></li>
-<li>Con el comando <code>docker login</code>, se realiza el acceso a la plataforma desde el terminal, introduciendo usuario y contraseña.
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker login
-</code></pre></div></li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<p>Se debe acceder con el nic no con la cuenta de correo.</p>
-</div>
-<ul>
-<li>Con el comando <code>docker push</code>, se realiza el "Upload" de la imagen.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker push fcojavierhernandez/my-nginx-alpine
-</code></pre></div>
-<ul>
-<li>Por último Se debe comprobar accediendo a la plataforma de Docker Hub.</li>
-</ul>
 <figure>
-    <img src="imagenes/01/DockerHub.png"/>
+  <img src="./imagenes/069/002P.png"/>
 </figure>
 
-<h3 id="docker-compose">Docker-compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h3>
+<h2 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p><strong>Docker-compose</strong> es otro proyecto open source que permite definir aplicaciones muilti-contenedor de una manera sencilla y declarativa.</p>
-</li>
-<li>
-<p>Es una alternativa más cómoda al uso de los comandos docker run y docker build, que resultan un tanto tediosos cuando trabajamos con aplicaciones de varios componentes.</p>
-</li>
-<li>
-<p>Se define un fichero <code>docker-compose.yml</code> que se puede observar en el ejemplo realizado en la práctica en el último apartado.</p>
-</li>
+<li>Para tener conexión a los servidores, es recomendable generar claves (pública y privada) y copiar la pública a los servidores que queremos configurar.</li>
+<li>Pasos instalación -&gt; <a href="https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-ubuntu">INSTALACIÓN</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo apt update
+<span class="linenos" data-linenos="2 "></span>sudo apt install software-properties-common
+<span class="linenos" data-linenos="3 "></span>sudo add-apt-repository --yes --update ppa:ansible/ansible
+<span class="linenos" data-linenos="4 "></span>sudo apt install ansible -y
+</code></pre></div>
+<h2 id="arquitectura-ansible">Arquitectura Ansible<a class="headerlink" href="#arquitectura-ansible" title="Permanent link">&para;</a></h2>
+<p>Hay dos tipos de máquinas necesarias en la arquitectura Ansible:</p>
+<ul>
+<li>Nodo del controlador </li>
+<li>Hosts gestionados.</li>
+</ul>
+<p>En la siguiente imagen se puede apreciar un esquema de la arquitectura de <code>Ansible</code>:</p>
+<figure>
+  <img src="./imagenes/069/003P.png"/>
+  <figcaption>Arquitectura Ansible.</figcaption>
+</figure>
+
+<ul>
+<li>Los elementos principales de la arquitectura de Ansible son:</li>
+</ul>
+<h2 id="controlador">Controlador<a class="headerlink" href="#controlador" title="Permanent link">&para;</a></h2>
+<ul>
+<li>El nodo del controlador es la máquina principal en la que se instala ansible. Todos los <code>Playbooks</code> se ejecutan desde un nodo de controlador. </li>
+<li>El nodo del controlador es el jefe de la arquitectura <code>ansible</code>.</li>
+</ul>
+<h2 id="inventory">Inventory<a class="headerlink" href="#inventory" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Todos los hosts administrados que estamos utilizando en el entorno ansible deben aparecer en un solo archivo simple, junto con las direcciones IP, ssh_password, ssh_user_name y muchos otros atributos de los hosts administrados. </li>
+<li>Ese archivo simple se conoce como Inventario en Ansible.</li>
+<li>La dirección del archivo de inventario debe darse en el archivo de configuración ansible. </li>
+<li>El inventario puede ser dinámico y estático.</li>
 </ul>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>A continuación se muestra un ejemplo para la realización de la práctica de ampliación: <a href="https://docs.docker.com/samples/wordpress/">Instalación Wordpress</a></p>
+<p class="admonition-title">Ejemplo</p>
 </div>
-<ol>
-<li><strong>Primer Paso</strong>: instalación de Docker-compose.</li>
-</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nn">---</span><span class="w"></span>
+<span class="linenos" data-linenos="2 "></span><span class="p p-Indicator">[</span><span class="nv">webservers</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="linenos" data-linenos="3 "></span><span class="l l-Scalar l-Scalar-Plain">www1.example.com</span><span class="w"></span>
+<span class="linenos" data-linenos="4 "></span><span class="l l-Scalar l-Scalar-Plain">www2.example.com</span><span class="w"></span>
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span><span class="l l-Scalar l-Scalar-Plain">[dbservers]</span><span class="w"></span>
+<span class="linenos" data-linenos="7 "></span><span class="l l-Scalar l-Scalar-Plain">db0.example.com</span><span class="w"></span>
+<span class="linenos" data-linenos="8 "></span><span class="l l-Scalar l-Scalar-Plain">db1.example.com</span><span class="w"></span>
+</code></pre></div>
+<h2 id="playbooks">Playbooks<a class="headerlink" href="#playbooks" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://docs.docker.com/compose/install/">Install Docker Compose</a></li>
+<li>Los "manuales técnicos" son archivos de texto simples escritos en el lenguaje <code>YAML</code> que consisten en una serie de ordenes de reproducción.</li>
+<li>Los Playbooks permiten realizar una serie de tareas en el orden en que se han escrito. </li>
+<li>Además en ellos se almacenan el conjunto de instrucciones que se le dan al ansible para realizar una funcionalidad en particular.</li>
+<li>Un <code>Playbook</code> define el flujo de trabajo en una arquitectura ansible.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>apt-get install docker-compose
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><code>YAML</code> significa "YAML Ain't Markup Language" es un lenguaje de serialización de datos que es un lenguaje fácil de usar y se utiliza en la escritura de archivos JSON y playbooks.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nn">---</span><span class="w"></span>
+<span class="linenos" data-linenos=" 2 "></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">webservers</span><span class="w"></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nt">serial</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"> </span><span class="c1"># update 5 machines at a time</span><span class="w"></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">roles</span><span class="p">:</span><span class="w"></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common</span><span class="w"></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">webapp</span><span class="w"></span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content_servers</span><span class="w"></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="nt">roles</span><span class="p">:</span><span class="w"></span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common</span><span class="w"></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content</span><span class="w"></span>
+</code></pre></div>
+<h2 id="module">Module<a class="headerlink" href="#module" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>Ansible</code> funciona conectándose a sus nodos y enviando scripts llamados "Módulos Ansibles" a ellos.</li>
+<li><code>Ansible</code> ejecuta estos módulos (a través de SSH por defecto) y los elimina cuando termina.</li>
+<li>La biblioteca de módulos puede residir en cualquier máquina, y no se requieren servidores, demonios o bases de datos.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En ansible, hay cientos de módulos que se utilizan para realizar una amplia gama de tareas de automatización. También podemos escribir nuestros propios módulos.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Cómo conectarse a dispositivos RouterOS con la API de RouterOS</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nn">---</span><span class="w"></span>
+<span class="linenos" data-linenos=" 2 "></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RouterOS test with API</span><span class="w"></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span><span class="w"></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="nt">vars</span><span class="p">:</span><span class="w"></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.1</span><span class="w"></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span><span class="w"></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test1234</span><span class="w"></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get &quot;ip address print&quot;</span><span class="w"></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="nt">community.routeros.api</span><span class="p">:</span><span class="w"></span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">hostname</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ip</span><span class="nv"> </span><span class="s">address&quot;</span><span class="w"></span>
+<span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="c1"># The following options configure TLS/SSL.</span><span class="w"></span>
+<span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="c1"># Depending on your setup, these options need different values:</span><span class="w"></span>
+<span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="nt">tls</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="nt">validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="linenos" data-linenos="20 "></span><span class="w">        </span><span class="nt">validate_cert_hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="linenos" data-linenos="21 "></span><span class="w">        </span><span class="c1"># If you are using your own PKI, specify the path to your CA certificate here:</span><span class="w"></span>
+<span class="linenos" data-linenos="22 "></span><span class="w">        </span><span class="c1"># ca_path: /path/to/ca-certificate.pem</span><span class="w"></span>
+<span class="linenos" data-linenos="23 "></span><span class="w">      </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">print_path</span><span class="w"></span>
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Show IP address of first interface</span><span class="w"></span>
+<span class="linenos" data-linenos="26 "></span><span class="w">      </span><span class="nt">ansible.builtin.debug</span><span class="p">:</span><span class="w"></span>
+<span class="linenos" data-linenos="27 "></span><span class="w">        </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">print_path.msg[0].address</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+</code></pre></div>
+<h2 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Los complementos aumentan la funcionalidad principal de Ansible. </li>
+<li>Mientras que los módulos se ejecutan en el sistema de destino en procesos separados (generalmente eso significa en un sistema remoto), los complementos se ejecutan en el nodo de control dentro del proceso <code>/usr/bin/ansible</code>. </li>
+<li>Los complementos ofrecen opciones y extensiones para las características principales de Ansible: transformación de datos, registro de la salida, conexión al inventario y más.</li>
+</ul>
+<h2 id="aprovisionamiento">Aprovisionamiento<a class="headerlink" href="#aprovisionamiento" title="Permanent link">&para;</a></h2>
+<p>A continuación se muestran unos breves ejemplos de aprovisionamiento de MVs con Scripts y <code>Ansible</code>.</p>
+<h3 id="vagrant-con-scripts">Vagrant con Scripts<a class="headerlink" href="#vagrant-con-scripts" title="Permanent link">&para;</a></h3>
+<p>El objetivo es realizar un entorno de <code>Vagrant</code> sencillo en el que tras arrancar una máquina se realiza una actualización de la lista de paquetes y se efectúan las actualizaciones de aquellos paquetes necesarios mediante apt-get.</p>
+<ol>
+<li>Se crea el fichero <code>actualizar.sh</code> ubicado en el mismo directorio que el Vagrantfile y con el siguiente contenido:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span>apt-get update
+<span class="linenos" data-linenos="3 "></span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive apt-get -y upgrade
 </code></pre></div>
 <ol start="2">
-<li><strong>Segundo paso</strong>: Crear directorio del proyecto y dentro el archivo <code>yaml</code>.</li>
+<li>Se crea el siguiente Vagrant file.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir my_wordpress
-<span class="linenos" data-linenos="2 "></span>touch docker-compose.yml
-<span class="linenos" data-linenos="3 "></span>nano docker-compose.yml
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<span class="linenos" data-linenos="2 "></span>  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s2">&quot;Ecodev/ubuntu-server-2204&quot;</span>
+<span class="linenos" data-linenos="3 "></span>  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span> <span class="s2">&quot;shell&quot;</span><span class="p">,</span> <span class="ss">path</span><span class="p">:</span> <span class="s2">&quot;actualizar.sh&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">end</span>
 </code></pre></div>
-<ol start="3">
-<li><strong>Tercer paso</strong>: se edita el <code>yaml</code>.</li>
+<h3 id="vagrant-con-ansible">Vagrant con Ansible<a class="headerlink" href="#vagrant-con-ansible" title="Permanent link">&para;</a></h3>
+<p>Partiendo del mismo escenario que el anterior caso, pero ahora utilizando ansible, que debe estar instalado en la máquina anfitriona.</p>
+<ol>
+<li>Se crea un fichero <code>site.yml</code> de configuración de ansible para que se realice la actualización de paquetes:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span><span class="w"></span>
-<span class="linenos" data-linenos=" 2 "></span>
-<span class="linenos" data-linenos=" 3 "></span><span class="nt">services</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">db</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:5.7</span><span class="w"></span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/mysql</span><span class="w"></span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">somewordpress</span><span class="w"></span>
-<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span><span class="w"></span>
-<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span><span class="w"></span>
-<span class="linenos" data-linenos="13 "></span><span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span><span class="w"></span>
-<span class="linenos" data-linenos="14 "></span>
-<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="nt">wordpress</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span><span class="w"></span>
-<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress:latest</span><span class="w"></span>
-<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress_data:/var/www/html</span><span class="w"></span>
-<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:80&quot;</span><span class="w"></span>
-<span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
-<span class="linenos" data-linenos="24 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos="25 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db:3306</span><span class="w"></span>
-<span class="linenos" data-linenos="26 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span><span class="w"></span>
-<span class="linenos" data-linenos="27 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span><span class="w"></span>
-<span class="linenos" data-linenos="28 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span><span class="w"></span>
-<span class="linenos" data-linenos="29 "></span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos="30 "></span><span class="w">  </span><span class="nt">db_data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
-<span class="linenos" data-linenos="31 "></span><span class="w">  </span><span class="nt">wordpress_data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nn">---</span><span class="w"></span>
+<span class="linenos" data-linenos="2 "></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actualizar</span><span class="w"></span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w"></span>
+<span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="linenos" data-linenos="5 "></span><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ensure system is updated</span><span class="w"></span>
+<span class="linenos" data-linenos="7 "></span><span class="w">      </span><span class="nt">apt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update_cache=yes upgrade=yes</span><span class="w"></span>
 </code></pre></div>
-<ol start="4">
-<li><strong>Cuarto paso</strong>: en la carpeta creada del proyecto se ejecuta el comando de <code>docker-compose up -d</code></li>
+<ol start="2">
+<li>El Vagrant file para aplicar la configuración sería:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker-compose up -d
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># -*- mode: ruby -*-</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># vi: set ft=ruby :</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<span class="linenos" data-linenos="5 "></span>  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s2">&quot;Ecodev/ubuntu-server-2204&quot;</span>
+<span class="linenos" data-linenos="6 "></span>  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span> <span class="s2">&quot;ansible&quot;</span> <span class="k">do</span> <span class="o">|</span><span class="n">ansible</span><span class="o">|</span>
+<span class="linenos" data-linenos="7 "></span>    <span class="n">ansible</span><span class="o">.</span><span class="n">playbook</span> <span class="o">=</span> <span class="s2">&quot;site.yml&quot;</span>
+<span class="linenos" data-linenos="8 "></span>  <span class="k">end</span>
+<span class="linenos" data-linenos="9 "></span><span class="k">end</span>
 </code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Comprobación</p>
-<p>Se comprueba que se ha creado el contenedor y se abre el navegador para comprobar que está disponible la instalación de wordpress.</p>
-</div>
-<h2 id="actividades-tipo-practicastrabajos-ap">Actividades tipo Prácticas/trabajos (AP)<a class="headerlink" href="#actividades-tipo-practicastrabajos-ap" title="Permanent link">&para;</a></h2>
-<h3 id="pt64-nfs-mediante-docker-compose">PT64. NFS mediante Docker compose<a class="headerlink" href="#pt64-nfs-mediante-docker-compose" title="Permanent link">&para;</a></h3>
-<p>A partir del <code>docker-compose</code> adjunto realiza un informe con los siguientes apartados:</p>
-<ul>
-<li>Crea un contenedor con el servicio de NFS. Adjunta captura con el contenedor corriendo.</li>
-<li>Monta la carpeta compartida de forma automática en un cliente. Adjunta capturas de los pasos a realizar.</li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Consejo</p>
-<p>Montar la carpeta desde el raíz del servidor a cualquier carpeta.</p>
-</div>
-<p>¿Por qué se puede montar la carpeta desde la raíz del servidor? Te puedes apoyar en las notas de la imagen de NFS para contestar. Imagen en el siguiente enlace: <a href="https://hub.docker.com/r/itsthenetwork/nfs-server-alpine">itsthenetwork/nfs-server-alpine</a></p>
-<ul>
-<li>Crea un archivo de texto de prueba, entra al contenedor o servidor y confirma que se ha creado.</li>
-<li>
-<p>¿Qué pasa si paras y destruyes el contenedor? ¿Cómo se podría solucionar?.</p>
-</li>
-<li>
-<p>NFS docker-compose:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2.1&quot;</span><span class="w"></span>
-<span class="linenos" data-linenos=" 2 "></span><span class="nt">services</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="c1"># https://hub.docker.com/r/itsthenetwork/nfs-server-alpine</span><span class="w"></span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">nfs</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">itsthenetwork/nfs-server-alpine:12</span><span class="w"></span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nfs</span><span class="w"></span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span><span class="w"></span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SHARED_DIRECTORY=/data</span><span class="w"></span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/nfs-storage:/data</span><span class="w"></span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
-<span class="linenos" data-linenos="14 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2049:2049</span><span class="w"></span>
-</code></pre></div>
-<h2 id="soluciones">Soluciones<a class="headerlink" href="#soluciones" title="Permanent link">&para;</a></h2>
-<p><a href="NFSDockerComposeSolucion.html">Solución Práctica NFS-DockerCompose</a></p>
+<figure>
+  <img src="./imagenes/069/004P.png"/>
+  <figcaption>Actualización Vagrant con Ansible.</figcaption>
+</figure>
+
+<h2 id="actividades-de-profundizacion-ap">Actividades de profundización (AP)<a class="headerlink" href="#actividades-de-profundizacion-ap" title="Permanent link">&para;</a></h2>
+<h3 id="pr62-automatizacion-de-servicios-de-recursos-compartidos">PR62. Automatización de servicios de recursos compartidos<a class="headerlink" href="#pr62-automatizacion-de-servicios-de-recursos-compartidos" title="Permanent link">&para;</a></h3>
+<p>Realiza un proyecto por grupos de 3 para realizar una exposición en clase del siguiente punto:</p>
+<ol>
+<li>Despliega un sistema homogéneo con Vagrant, al menos de 3 máquinas de distribuciones diferentes, para a continuación aprovisionar, el sistema generado, un servicio <strong>Samba-DC</strong>. Se podrá elegir entre aprovisionamiento con <strong>"scripts"</strong> o con <strong>Ansible</strong>. En la exposición se deben adjuntar las comprobaciones necesarias del correcto funcionamiento del servicio.</li>
+</ol>
+<!-- 2. Crea un cluster de 3 máquinas con Vagrant con la siguiente configuración:
+
+- Nodo1: Servidor Ubuntu
+- Nodo2: Windows 10
+- Nodo3: Fedora
+
+Aprovisiona mediante `Ansible` el servicio Samba-DC al servidor y a los clientes, comprueba que se pueden loguear. -->
+
+<!-- 3. El siguiente es un ejemplo de configuración integrada de Vagrant con ansible, donde se despliega un clúster de balanceo de carga mediante un `round-robin` en un servidor `DNS`.
+
+Clona el siguiente repositorio y sigue las instrucciones que se incluyen en el fichero README.md:
+
+https://github.com/albertomolina/ejemplo-ansible-vagrant -->
 
 
 
@@ -1611,7 +1760,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Pie" >
       
         
-        <a href="063_DockerIntroNextCloud.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 6.3- Docker repaso y NextCloud" rel="prev">
+        <a href="065_VagrantIntro.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 6.5- Despliegue de Sistemas Heterogéneos con Vagrant" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1620,20 +1769,20 @@
               <span class="md-footer__direction">
                 Anterior
               </span>
-              6.3- Docker repaso y NextCloud
+              6.5- Despliegue de Sistemas Heterogéneos con Vagrant
             </div>
           </div>
         </a>
       
       
         
-        <a href="065_IntroSamba.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 6.5- Introducción Samba" rel="next">
+        <a href="067_NFS.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 6.7- NFS" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Siguiente
               </span>
-              6.5- Introducción Samba
+              6.7- NFS
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/vagrant-cheat-sheet.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/06_INTEGRA/06_ProgramacionAula.html">
       
       <link rel="icon" href="../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Vagrant cheat sheet - Administración de Sistemas Operativos</title>
+        <title>Programación de Aula - Administración de Sistemas Operativos</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creating-a-vm" class="md-skip">
+        <a href="#programacion-de-aula" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vagrant cheat sheet
+              Programación de Aula
             
           </span>
         </div>
@@ -838,12 +838,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -1044,11 +1046,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="06_ProgramacionAula.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="06_ProgramacionAula.html" class="md-nav__link md-nav__link--active">
         Programación de Aula
       </a>
+      
     </li>
   
 
@@ -1327,64 +1339,11 @@
                   
 
 
-<p>Typing <code>vagrant</code> from the command line will display a list of all available commands.</p>
-<p>Be sure that you are in the same directory as the Vagrantfile when running these commands!</p>
-<h1 id="creating-a-vm">Creating a VM<a class="headerlink" href="#creating-a-vm" title="Permanent link">&para;</a></h1>
-<ul>
-<li><code>vagrant init</code>           -- Initialize Vagrant with a Vagrantfile and ./.vagrant directory, using no specified base image. Before you can do vagrant up, you'll need to specify a base image in the Vagrantfile.</li>
-<li><code>vagrant init &lt;boxpath&gt;</code> -- Initialize Vagrant with a specific box. To find a box, go to the <a href="https://app.vagrantup.com/boxes/search">public Vagrant box catalog</a>. When you find one you like, just replace it's name with boxpath. For example, <code>vagrant init ubuntu/trusty64</code>.</li>
-</ul>
-<h1 id="starting-a-vm">Starting a VM<a class="headerlink" href="#starting-a-vm" title="Permanent link">&para;</a></h1>
-<ul>
-<li><code>vagrant up</code>                  -- starts vagrant environment (also provisions only on the FIRST vagrant up)</li>
-<li><code>vagrant resume</code>              -- resume a suspended machine (vagrant up works just fine for this as well)</li>
-<li><code>vagrant provision</code>           -- forces reprovisioning of the vagrant machine</li>
-<li><code>vagrant reload</code>              -- restarts vagrant machine, loads new Vagrantfile configuration</li>
-<li><code>vagrant reload --provision</code>  -- restart the virtual machine and force provisioning</li>
-</ul>
-<h1 id="getting-into-a-vm">Getting into a VM<a class="headerlink" href="#getting-into-a-vm" title="Permanent link">&para;</a></h1>
-<ul>
-<li><code>vagrant ssh</code>           -- connects to machine via SSH</li>
-<li><code>vagrant ssh &lt;boxname&gt;</code> -- If you give your box a name in your Vagrantfile, you can ssh into it with boxname. Works from any directory.</li>
-</ul>
-<h1 id="stopping-a-vm">Stopping a VM<a class="headerlink" href="#stopping-a-vm" title="Permanent link">&para;</a></h1>
-<ul>
-<li><code>vagrant halt</code>        -- stops the vagrant machine</li>
-<li><code>vagrant suspend</code>     -- suspends a virtual machine (remembers state)</li>
-</ul>
-<h1 id="cleaning-up-a-vm">Cleaning Up a VM<a class="headerlink" href="#cleaning-up-a-vm" title="Permanent link">&para;</a></h1>
-<ul>
-<li><code>vagrant destroy</code>     -- stops and deletes all traces of the vagrant machine</li>
-<li><code>vagrant destroy -f</code>   -- same as above, without confirmation</li>
-</ul>
-<h1 id="boxes">Boxes<a class="headerlink" href="#boxes" title="Permanent link">&para;</a></h1>
-<ul>
-<li><code>vagrant box list</code>              -- see a list of all installed boxes on your computer</li>
-<li><code>vagrant box add &lt;name&gt; &lt;url&gt;</code>  -- download a box image to your computer</li>
-<li><code>vagrant box outdated</code>          -- check for updates vagrant box update</li>
-<li><code>vagrant box remove &lt;name&gt;</code>   -- deletes a box from the machine</li>
-<li><code>vagrant package</code>               -- packages a running virtualbox env in a reusable box</li>
-</ul>
-<h1 id="saving-progress">Saving Progress<a class="headerlink" href="#saving-progress" title="Permanent link">&para;</a></h1>
-<p>-<code>vagrant snapshot save [options] [vm-name] &lt;name&gt;</code> -- vm-name is often <code>default</code>. Allows us to save so that we can rollback at a later time</p>
-<h1 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h1>
-<ul>
-<li><code>vagrant -v</code>                    -- get the vagrant version</li>
-<li><code>vagrant status</code>                -- outputs status of the vagrant machine</li>
-<li><code>vagrant global-status</code>         -- outputs status of all vagrant machines</li>
-<li><code>vagrant global-status --prune</code> -- same as above, but prunes invalid entries</li>
-<li><code>vagrant provision --debug</code>     -- use the debug flag to increase the verbosity of the output</li>
-<li><code>vagrant push</code>                  -- yes, vagrant can be configured to <a href="http://docs.vagrantup.com/v2/push/index.html">deploy code</a>!</li>
-<li><code>vagrant up --provision | tee provision.log</code>  -- Runs <code>vagrant up</code>, forces provisioning and logs all output to a file</li>
-</ul>
-<h1 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h1>
-<ul>
-<li><a href="https://github.com/cogitatio/vagrant-hostsupdater">vagrant-hostsupdater</a> : <code>$ vagrant plugin install vagrant-hostsupdater</code> to update your <code>/etc/hosts</code> file automatically each time you start/stop your vagrant box.</li>
-</ul>
-<h1 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h1>
-<ul>
-<li>If you are using <a href="https://github.com/varying-vagrant-vagrants/vvv/">VVV</a>, you can enable xdebug by running <code>vagrant ssh</code> and then <code>xdebug_on</code> from the virtual machine's CLI.</li>
-</ul>
+<h1 id="programacion-de-aula">Programación de Aula<a class="headerlink" href="#programacion-de-aula" title="Permanent link">&para;</a></h1>
+<figure>
+    <img src="imagenes/06_pa.jpg" width="800px">
+    <caption>Programación de Aula</caption>
+</figure>
 
 
 
@@ -1400,6 +1359,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Pie" >
+      
+        
+        <a href="06_PruebaEspecifica.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Prueba Específica" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Prueba Específica
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../07_INFORMA/071_EstructuraDirectorios.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 7.1- Estructura de directorios" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              7.1- Estructura de directorios
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
