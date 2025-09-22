@@ -652,6 +652,78 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#control-de-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control de Flujo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control de Flujo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sistema-de-notacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistema de notación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sistema de notación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagramas-de-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagramas de flujo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructuras" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructuras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-alternativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras alternativas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-de-iteracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras de iteración
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#actividades" class="md-nav__link">
     <span class="md-ellipsis">
       Actividades
@@ -1016,6 +1088,78 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#control-de-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control de Flujo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control de Flujo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sistema-de-notacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistema de notación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sistema de notación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagramas-de-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagramas de flujo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructuras" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructuras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-alternativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras alternativas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-de-iteracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras de iteración
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#actividades" class="md-nav__link">
     <span class="md-ellipsis">
       Actividades
@@ -1117,6 +1261,12 @@
 <td>Variables, entrada/salida y operadores</td>
 <td>AC104, AC105, AC106</td>
 <td>CE7a, CE7b, CE7f y CE7i</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Control de flujo: condicionales y bucles</td>
+<td>AC108, AC109, AC110</td>
+<td>CE7a, CE7f, CE7i</td>
 </tr>
 </tbody>
 </table>
@@ -1908,14 +2058,336 @@
 <li>Cada usuario puede asignar una palabra fácil de recordar a uno o más comandos que, por lo general, pueden ser más complicados de recordar.</li>
 <li>Ejemplo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">alias</span><span class="w"> </span><span class="nv">listado</span><span class="o">=</span>’ls<span class="w"> </span>-lia&gt;’
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nv">listado</span><span class="o">=</span><span class="s1">&#39;ls -lia&#39;</span>
 </code></pre></div>
+<hr />
+<h2 id="control-de-flujo">Control de Flujo<a class="headerlink" href="#control-de-flujo" title="Permanent link">&para;</a></h2>
+<h3 id="sistema-de-notacion">Sistema de notación<a class="headerlink" href="#sistema-de-notacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Antes de lanzarse a escribir una sola línea de código es necesario pensar en la resolución del problema tal y como se ha indicado.</li>
+<li>La creación de una solución a un problema siguiendo un conjunto de instrucciones se denomina algoritmo.</li>
+<li>Es necesario invertir el tiempo suficiente para construir ese algoritmo ya que esa será la solución que se debe implementar en código.</li>
+<li>Existen varios sistemas de representación para describir esos algoritmos, como por ejemplo, <strong>pseudocódigo</strong> o la descripción narrada, pero en este manual se ha optado por <strong>los diagramas de flujo</strong> ya que resultan más intuitivos.</li>
+</ul>
+<h4 id="diagramas-de-flujo">Diagramas de flujo<a class="headerlink" href="#diagramas-de-flujo" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Los diagramas de flujo o flujogramas son la representación gráfica de la solución algorítmica de un problema.</li>
+<li>Para diseñarlos se emplean figuras normalizadas que representan una acción dentro del procedimiento.</li>
+<li>Cada una de estas figuras representa un paso a seguir dentro del algoritmo.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<ul>
+<li>Para su construcción se han de respetar las siguientes reglas:<ol>
+<li>Tiene un elemento de inicio en la parte superior y uno final en la parte inferior.</li>
+<li>Se escribe de arriba hacia abajo y de izquierda a derecha.</li>
+<li>Siempre se usan flechas verticales u horizontales, jamás curvas u oblicuas</li>
+<li>Se debe evitar cruce de flujos.</li>
+<li>En cada paso expresar una acción concreta.</li>
+</ol>
+</li>
+</ul>
+</div>
+<p>En la siguiente figura se puede observar <strong>simbología</strong> para diseñar diagramas de flujo.</p>
+<figure>
+  <img src="imagenes/01/SimboloDiagrama.png" width="400"/>
+  <figcaption>Simbología diagramas.</figcaption>
+</figure>
+
+<h2 id="estructuras">Estructuras<a class="headerlink" href="#estructuras" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Controlar el flujo es determinar el orden en el que se ejecutarán las instrucciones en un programa.</li>
+<li>Si no existiese las estructuras de control del flujo, todo el código se ejecutarían de forma secuencial, es decir, empezarían por la primera instrucción y se ejecutarían una a una hasta llegar a la última.</li>
+<li>Este modo de ejecución esta realizado por <strong>estructuras secuenciales</strong>. Ejemplo:</li>
+</ul>
+<figure>
+  <img src="imagenes/01/EstructuraSecuencial.png" width="200"/>
+  <figcaption>Estructura secuencial.</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>La estructura secuencial no es válida para solucionar la mayoría de los problemas que se plantean.</p>
+</div>
+<ul>
+<li>Para ello es necesario la elección de un código u otro en función de ciertas condiciones, formando otro tipo de estructuras que son conocidas como <strong>estructuras condicionales</strong>; entre las cuales podemos destacar:<ol>
+<li><strong>Estructuras Alternativas</strong>, según si se cumple la condición o no, se realizará una tarea u otra.<ul>
+<li>Ejemplo de utilización con la sentencia: <strong>if</strong>.</li>
+</ul>
+</li>
+<li><strong>Estructuras Iterativas</strong>, cuando necesario ejecutar algunas instrucciones repetidas veces.<ul>
+<li>Ejemplo de utilización con la sentencia: <strong>for</strong>.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="estructuras-alternativas">Estructuras alternativas<a class="headerlink" href="#estructuras-alternativas" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Las estructuras de selección permiten ejecutar diferentes instrucciones dependiendo del valor de una variable o expresión.</li>
+<li>También se les llama ramificaciones, estructuras de decisión o alternativas.</li>
+<li>Cuando se usan, no todas las instrucciones del programa se ejecutan, solo las especificadas para el valor de la variable durante esa ejecución.</li>
+<li>Las estructuras de selección más comunes son las que proporcionan ramificaciones dobles (<strong>if</strong>) y múltiples (<strong>elif</strong> y <strong>case</strong>).</li>
+</ul>
+<h5 id="estructura-alternativa-doble-if">Estructura alternativa doble: <strong>if</strong><a class="headerlink" href="#estructura-alternativa-doble-if" title="Permanent link">&para;</a></h5>
+<ul>
+<li>La forma general de la orden <strong>if</strong> es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>expresión<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span>realizar<span class="w"> </span>este<span class="w"> </span>código<span class="w"> </span>si<span class="w"> </span>expresión<span class="w"> </span>es<span class="w"> </span>verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">fi</span>
+</code></pre></div>
+<figure>
+  <img src="imagenes/01/Estructura_If.png" width="200"/>
+  <figcaption>Estructura alternativa simple.</figcaption>
+</figure>
+
+<ul>
+<li>Ejemplo: 
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nv">VAR</span><span class="o">=</span><span class="nv">$1</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">fi</span>
+</code></pre></div></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>El código anterior comprueba se ha pasado algún argumento ,es decir, si han pasado un parámetro. En caso afirmativo, asigna el contenido de ese parámetro a la variable VAR.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Hay que recordar siempre cerrar esta estructura para indicarle al terminal donde termina, en este caso, se cierra con la palabra reservada <strong>fi</strong>.</p>
+</div>
+<h5 id="estructura-alternativa-multiple-if-then-else">Estructura alternativa multiple if then else<a class="headerlink" href="#estructura-alternativa-multiple-if-then-else" title="Permanent link">&para;</a></h5>
+<ul>
+<li>En este caso se contempla también la posibilidad de ejecutar alguna acción si no se cumple la expresión.</li>
+<li>La forma general del <strong>if then else</strong> es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>expresión<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>expresión<span class="w"> </span>es<span class="w"> </span>verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>expresión<span class="w"> </span>es<span class="w"> </span>falsa
+<span class="linenos" data-linenos="6 "></span><span class="k">fi</span>
+</code></pre></div>
+<figure>
+  <img src="imagenes/01/Estructura_If_else.png" width="300"/>
+  <figcaption>Estructura alternativa doble.</figcaption>
+</figure>
+
+<ul>
+<li>Ejemplo: 
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span>-gt<span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es mayor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es menor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">fi</span>
+</code></pre></div></li>
+</ul>
+<h5 id="la-estructura-if-then-elif-else">La estructura if then elif else<a class="headerlink" href="#la-estructura-if-then-elif-else" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Permite una segunda evaluación para ejecutar código a través de la estructura <strong>elif</strong>.</li>
+<li>Es posible colocar tantos elif como condiciones se requiera evaluar.</li>
+<li>La forma general del <strong>if then elif else</strong> es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>exp1<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>exp1<span class="w"> </span>es<span class="w"> </span>verdadera
+<span class="linenos" data-linenos=" 4 "></span><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>exp2<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">then</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>exp1<span class="w"> </span>es<span class="w"> </span>falsa,<span class="w"> </span>pero<span class="w"> </span>es<span class="w"> </span>verdadera<span class="w"> </span>exp2
+<span class="linenos" data-linenos=" 7 "></span><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>exp3<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">then</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>exp1<span class="w"> </span>y<span class="w"> </span>exp2<span class="w"> </span>son<span class="w"> </span>falsas,<span class="w"> </span>pero<span class="w"> </span>es<span class="w"> </span>verdadera<span class="w"> </span>exp3
+<span class="linenos" data-linenos="10 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>todas<span class="w"> </span>las<span class="w"> </span>expresiones<span class="w"> </span>son<span class="w"> </span>falsas
+<span class="linenos" data-linenos="12 "></span><span class="k">fi</span>
+</code></pre></div>
+<ul>
+<li>Ejemplo: 
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span>-gt<span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es mayor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span>-eq<span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es igual que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es menor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="9 "></span><span class="k">fi</span>
+</code></pre></div></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Este ejemplo amplía el anterior comprobando si, además, los valores de a y b son iguales.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>El último caso se realiza con la sentencia <strong>else</strong>.</p>
+</div>
+<h5 id="la-estructura-case">La estructura case<a class="headerlink" href="#la-estructura-case" title="Permanent link">&para;</a></h5>
+<ul>
+<li>La estructura case permite realizar varias acciones en función del valor de una variable.</li>
+<li>La limitación que tan sólo se comprueba si es igual a ese valor.</li>
+<li>La forma general del <strong>case</strong> es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">case</span><span class="w"> </span>VARIABLE<span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span>valor1<span class="o">)</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">        </span>Se<span class="w"> </span>ejecuta<span class="w"> </span>si<span class="w"> </span>VARIABLE<span class="w"> </span>tiene<span class="w"> </span>el<span class="w"> </span>valor1
+<span class="linenos" data-linenos=" 4 "></span><span class="w">        </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span>valor2<span class="o">)</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span>Se<span class="w"> </span>ejecuta<span class="w"> </span>si<span class="w"> </span>VARIABLE<span class="w"> </span>tiene<span class="w"> </span>el<span class="w"> </span>valor2
+<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span>*<span class="o">)</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span>Se<span class="w"> </span>ejecuta<span class="w"> </span>por<span class="w"> </span>defecto
+<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="p">;;</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">esac</span>
+</code></pre></div>
+<figure>
+  <img src="imagenes/01/EstructuraAlternativaMultiple.png" width="600"/>
+  <figcaption>Estructura Alternativa Multiple.</figcaption>
+</figure>
+
+<h4 id="estructuras-de-iteracion">Estructuras de iteración<a class="headerlink" href="#estructuras-de-iteracion" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Son operaciones que se deben ejecutar un número repetido de veces para resolver un problema.</li>
+<li>El conjunto de instrucciones que se ejecuta dentro de esta estructura, se denomina ciclo, bucle o lazo.</li>
+<li><code>Iteración</code> es cada una de las pasadas o ejecuciones de todas las instrucciones contenidas en el bucle.</li>
+<li>Estas repeticiones de código van a depender de la evaluación de una condición o del valor de una variable.</li>
+<li>Es posible repetir un código hasta que se cumpla o deje de cumplir una condición pero también se posible la repetición tantas veces como indique una variable.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Hay que tener mucho cuidado a la hora de diseñar estas estructuras y no caer en el error de construir <strong>bucles infinitos</strong>, es decir, estructuras que nunca dejarán de ejecutarse ya que no tienen condición de salida o, si la tienen, ésta nunca se va a cumplir.</p>
+</div>
+<ul>
+<li>Para utilizar esta estructura en algoritmos, se usan:</li>
+</ul>
+<ol>
+<li><strong>Contador:</strong> es una variable cuyo valor se incrementa o decrementa en una cantidad constante cada vez que se produce un determinado suceso o acción. Los contadores se utilizan con la finalidad de contar sucesos o acciones internas de un bucle.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
+<p>La inicialización consiste en asignarle al contador un valor. Se situará antes y fuera del bucle.</p>
+</div>
+<ol start="2">
+<li><strong>Acumulador o Totalizador</strong> es una variable que suma sobre sí misma un conjunto de valores para de esta manera tener el total de todos ellos en una sola variable.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
+<p>La diferencia entre un contador y un acumulador es que mientras el primero va aumentando de uno en uno, el acumulador va aumentando en una cantidad variable.</p>
+</div>
+<ol start="3">
+<li><strong>Banderas</strong>, conocidas también como interruptores, switch, flags o conmutadores. Son variables que pueden tomar solamente dos valores durante la ejecución del programa, los cuales pueden ser <strong>cero o uno</strong>, o bien los valores <strong>booleanos verdadero o falso</strong>.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
+<p>Se les suele llamar interruptores porque cuando toman un valor están simulando un interruptor abierto/cerrado o encendido/apagado.</p>
+</div>
+<figure>
+  <img src="imagenes/01/EstructuraIterativa.png" width="300"/>
+  <figcaption>Estructura Iterativa.</figcaption>
+</figure>
+
+<h5 id="las-estructuras-while-y-until">Las estructuras while y until<a class="headerlink" href="#las-estructuras-while-y-until" title="Permanent link">&para;</a></h5>
+<p>Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. Funcionamiento:</p>
+<ul>
+<li>Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa.</li>
+<li>Si es verdadera entra en el bucle y ejecuta el código que contiene.</li>
+<li>Al finalizar la ejecución, al iterar, vuelve a evaluar la condición y vuelve a repetir la operación anterior.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Al construir una estructura while es preciso asegurarse que en algún momento de su ejecución la condición dejará de cumplirse y se romperá el ciclo, si no, éste será infinito, a menos que el usuario o el sistema interrumpa su ejecución.</p>
+</div>
+<ul>
+<li>
+<p><code>WHILE</code>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>expresión<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span>código<span class="w"> </span>se<span class="w"> </span>repite<span class="w"> </span>MIENTRAS<span class="w"> </span>la<span class="w"> </span>expresión<span class="w"> </span>sea<span class="w"> </span>verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>UNTIL</code>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">until</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>expresión<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span>código<span class="w"> </span>se<span class="w"> </span>repite<span class="w"> </span>HASTA<span class="w"> </span>que<span class="w"> </span>la<span class="w"> </span>expresión<span class="w"> </span>sea<span class="w"> </span>verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
+</code></pre></div></p>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>La diferencia es que un <code>until</code> se ejecuta como mínimo una vez, ya que ejecuta el código y luego comprueba, mientras que el <code>while</code> es posible que nunca se ejecute, ya que es posible que la condición de entrada nunca se cumpla.</p>
+</div>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#! /bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Escribe un número: &quot;</span><span class="w"> </span>num
+<span class="linenos" data-linenos="3 "></span><span class="nv">i</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-le<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="nb">let</span><span class="w"> </span><span class="nv">res</span><span class="o">=</span>num*i
+<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2"> x </span><span class="nv">$num</span><span class="s2"> = </span><span class="nv">$res</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="nb">let</span><span class="w"> </span><span class="nv">i</span><span class="o">=</span>i+1
+<span class="linenos" data-linenos="9 "></span><span class="k">done</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Este código imprime por pantalla la tabla de multiplicar del número que el usuario ha especificado. Las líneas contenidas entre <code>do</code> y <code>done</code> se ejecutarán mientras i sea menor o igual a diez. Al final de cada iteración el valor de i se incrementa en uno (es un contador) por lo que en diez iteraciones la condición dejará de cumplirse y el bucle se romperá.</p>
+</div>
+<h5 id="la-estructuras-for">La estructuras for<a class="headerlink" href="#la-estructuras-for" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Esta estructura permite repetir código por cada elemento de un conjunto determinado.</li>
+<li>No necesita condición de salida ya que al finalizar los elementos del conjunto acabará con su ejecución.</li>
+<li>la forma general es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span>variable<span class="w"> </span><span class="k">in</span><span class="w"> </span>conjunto
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span>estas<span class="w"> </span>líneas<span class="w"> </span>se<span class="w"> </span>repiten<span class="w"> </span>una<span class="w"> </span>vez<span class="w"> </span>por<span class="w"> </span>cada<span class="w"> </span>elemento<span class="w"> </span>del<span class="w"> </span>conjunto
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span>variable<span class="w"> </span>toma<span class="w"> </span>los<span class="w"> </span>valores<span class="w"> </span>del<span class="w"> </span>conjunto,<span class="w"> </span>uno<span class="w"> </span>en<span class="w"> </span>cada<span class="w"> </span>iteración
+<span class="linenos" data-linenos="5 "></span><span class="k">done</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo:</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#! /bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span>“Escribe<span class="w"> </span>la<span class="w"> </span>dirección<span class="w"> </span>de<span class="w"> </span>una<span class="w"> </span>carpeta:<span class="w"> </span>“<span class="w"> </span>car
+<span class="linenos" data-linenos=" 3 "></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="w"> </span><span class="nv">$car</span><span class="k">)</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">do</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">then</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>“<span class="nv">$i</span><span class="w"> </span>es<span class="w"> </span>un<span class="w"> </span>archivo<span class="w"> </span>de<span class="w"> </span>tipo<span class="w"> </span>regular”
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">then</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>“<span class="nv">$i</span><span class="w"> </span>es<span class="w"> </span>un<span class="w"> </span>archivo<span class="w"> </span>de<span class="w"> </span>tipo<span class="w"> </span>directorio”
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">else</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>“<span class="nv">$i</span><span class="w"> </span>es<span class="w"> </span>otro<span class="w"> </span>tipo<span class="w"> </span>de<span class="w"> </span>archivo<span class="w"> </span>o<span class="w"> </span>no<span class="w"> </span>existe”
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos" data-linenos="14 "></span><span class="k">done</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
+<p>Este ejemplo se van a mostrar los nombres de los ficheros que contiene un directorio y dirá si es un directorio o un fichero.</p>
+</div>
+<blockquote>
+<p>Romper un bucle de forma deliberada</p>
+</blockquote>
+<p>No sólo es posible terminar un bucle cuando se cumpla una condición o cuando se terminen los elementos de un conjunto, shell script proporciona dos formas de alterar el funcionamiento de la estructura en un bucle y romperla en función de las necesidades del programa:</p>
+<ol>
+<li><code>break</code> rompe el bucle que lo contiene y continúa la ejecución del script.</li>
+<li><code>continue</code> rompe la iteración que lo contiene, pero mantiene el bucle, que continuará con la siguiente iteración hasta que termine su ejecución.</li>
+<li><code>exit</code> detiene la ejecución del script. Este comando no es exclusivo de las estructuras iterativas, pero cobra especial sentido en este ámbito.</li>
+</ol>
 <hr />
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Formato de entrega</p>
 <p>Escribe el código de los scripts en <strong>ShellScript</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle</p>
-<p>```</p>
 </div>
 <!-- Para la entrega de las actividades, si no se pide una captura o un archivo concreto, se debe adjuntar un fichero de texto en formato Markdown con el enunciado y la solución justificada. El nombre del archivo debe contener el nombre de la actividad y el nombre del alumn@. Por ejemplo, para la actividad AC101, la alumna Laura entregará el archivo AC101Laura.md. Dentro del documento, se seguirá la siguiente estructura:
     ```markdown
@@ -1967,6 +2439,25 @@
 <p><a name="AC107"></a></p>
 <ul>
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC107</strong>. Genera un script que muestre los usuarios conectados en el sistema operativo, comprobando que son usuarios dados de alta en el mismo.</li>
+</ul>
+<p><a name="AC108"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC108</strong>. Crea un shell script que al ejecutarlo muestre por pantalla uno de estos mensajes <strong>“Buenos días”</strong>, <strong>“Buenas tardes”</strong> o <strong>“Buenas noches”</strong>, en función de la hora que sea en el sistema (de 8:00 de la mañana a 15:00 será mañana, de 15:00 a 20:00 será tarde y el resto será noche). Para obtener la hora del sistema utiliza el comando date.</li>
+</ul>
+<p><a name="AC109"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC109</strong>. Construye un programa denominado AGENDA que permita mediante un menú, el mantenimiento de un pequeño archivo lista.txt con el nombre, dirección y teléfono de varias personas. Debes incluir estas opciones al programa:<ul>
+<li><strong>Añadir</strong> (añadir un registro)</li>
+<li><strong>Buscar</strong> (buscar entradas por nombre, dirección o teléfono)</li>
+<li><strong>Listar</strong> (visualizar todo el archivo).</li>
+<li><strong>Ordenar</strong> (ordenar los registros alfabéticamente).</li>
+<li><strong>Borrar</strong> (borrar el archivo).</li>
+</ul>
+</li>
+</ul>
+<p><a name="AC110"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC110</strong>. Crea un shell script que sume los números del 1 al 1000 mediante una estructura <code>for</code>, <code>while</code> y <code>until</code>.</li>
 </ul>
 <!-- <a name="AC104"></a>
 
