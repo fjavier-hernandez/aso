@@ -1740,6 +1740,167 @@
 <li><code>continue</code> rompe la iteración que lo contiene, pero mantiene el bucle, que continuará con la siguiente iteración hasta que termine su ejecución.</li>
 <li><code>exit</code> detiene la ejecución del script. Este comando no es exclusivo de las estructuras iterativas, pero cobra especial sentido en este ámbito.</li>
 </ol>
+<h2 id="01shellscript-vectores-y-funciones">Vectores y Funciones<a class="headerlink" href="#01shellscript-vectores-y-funciones" title="Permanent link">&para;</a></h2>
+<h3 id="01shellscript-vectores-en-shell-script">Vectores en shell script<a class="headerlink" href="#01shellscript-vectores-en-shell-script" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Un vector es una estructura de datos que permite almacenar una colección de elementos.</li>
+<li>Por el hecho de tratarse de una estructura de datos es posible realizar operaciones sobre él como buscar, eliminar y agregar elementos a su estructura.</li>
+<li>Los elementos se encuentran ordenados en función de como han sido introducidos en la estructura.</li>
+<li>Para acceder a cada elemento será necesario especificar la posición que ocupan dentro de ella, teniendo presente que la numeración de los vectores comienza desde cero, no desde uno.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Un buen ejemplo de uso sería, recoger el listado de archivos que hay en una carpeta.</p>
+</div>
+<figure>
+  <img src="imagenes/01/EsquemaVector.png" width="500"/>
+  <figcaption>Esquema de un vector de doce elementos.</figcaption>
+</figure>
+
+<p>Para definir un vector disponemos de dos formas:</p>
+<ol>
+<li><strong>Implícita:</strong> hace referencia a que el vector ha sido declarado y al mismo tiempo se han inicializado sus valores.</li>
+<li><strong>Explícitamente:</strong> cuando el vector no requiere que se inicialice mientras se declara, es decir, pueden ser inicializados con posterioridad.</li>
+</ol>
+<p>Para declarar un vector hay que utilizar la siguiente estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">declare</span><span class="w"> </span>-a<span class="w"> </span><span class="nv">meses</span><span class="o">=(</span><span class="s2">&quot;enero&quot;</span><span class="w"> </span><span class="s2">&quot;febrero&quot;</span><span class="w"> </span><span class="s2">&quot;marzo&quot;</span><span class="o">)</span>
+</code></pre></div>
+<p>También es posible utilizar alguna expresión para completar un vector, como con el operador rango ...</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">declare</span><span class="w"> </span>-a<span class="w"> </span><span class="nv">letras</span><span class="o">=(</span><span class="w"> </span><span class="o">{</span>N..Z<span class="o">}</span><span class="w"> </span><span class="o">{</span>s..z<span class="o">}</span><span class="w"> </span><span class="o">)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">letras</span><span class="p">[*]</span><span class="si">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Esto creará un vector con el siguiente contenido y lo mostrará por pantalla así:</li>
+<li>N O P Q R S T U V W X Y Z s t u v w x y z</li>
+</ul>
+</div>
+<ul>
+<li>Para añadir un elemento a la estructura se debe indicar el índice o posición que ocupará el nuevo dato.</li>
+<li>Si el índice es mayor que la última posición de la estructura, se escribirá al final de la misma.</li>
+<li>Si se usa un índice que ya contiene un dato, éste será sobrescrito.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>meses<span class="o">[</span><span class="m">3</span><span class="o">]=</span><span class="s2">&quot;abril&quot;</span>
+</code></pre></div>
+<ul>
+<li>Para mostrar el contenido del vector:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">meses</span><span class="p">[*]</span><span class="si">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Mostrará: 
+enero febrero marzo abril</p>
+</div>
+<ul>
+<li>Es buena idea conocer el número de elementos que contiene un vector para poder introducir datos de forma correcta y no sobrescribir por accidente algún valor ya almacenado. Así es posible utilizar:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>${meses[*]}</code></td>
+<td>Muestra todos los valores del vector</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>${!meses[*]}</code></td>
+<td>Muestra todos los índices del vector</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>${#meses[*]}</code></td>
+<td>Devuelve el número de valores del vector</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>${#meses[0]}</code></td>
+<td>Imprime la longitud del primer dato del vector</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Para recorrer los valores que contiene esta estructura se puede utilizar un bucle <strong>for</strong></li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span>item<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">meses</span><span class="p">[*]</span><span class="si">}</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$item</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
+</code></pre></div>
+* También se puede utilizar sus índices para mostrar los datos contenidos.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span>index<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="p">!meses[*]</span><span class="si">}</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">meses</span><span class="p">[</span><span class="nv">$index</span><span class="p">]</span><span class="si">}</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
+</code></pre></div>
+<ul>
+<li>Es una estructura muy útil en la que se puede guardar cualquier tipo de información, como por ejemplo los ficheros que contiene una carpeta:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">i</span><span class="o">=</span><span class="m">0</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">for</span><span class="w"> </span>fichero<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="w"> </span>-a<span class="k">)</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span>ficheros<span class="o">[</span><span class="nv">$i</span><span class="o">]=</span><span class="nv">$fichero</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="nb">let</span><span class="w"> </span><span class="nv">i</span><span class="o">=</span>i+1<span class="p">;</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">done</span>
+</code></pre></div>
+<h3 id="01shellscript-funciones-en-shell-script">Funciones en shell script<a class="headerlink" href="#01shellscript-funciones-en-shell-script" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Una función es un conjunto de líneas de código que se distinguen a través de un identificador y que se ejecutan al invocar ese identificador.</li>
+<li>Se podría definir como un shell script dentro de un shell script.</li>
+<li>Sirve para organizarlo en unidades lógicas más pequeñas de manera que sea más fácil mantenerlo.</li>
+<li>Las funciones aceptan parámetros, de idéntica manera que los shell script, por lo que su uso también es muy intuitivo.</li>
+<li>La estructura de una función queda definida de la siguiente manera:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">function</span><span class="w"> </span>nombre_función<span class="o">(){</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span>código<span class="w"> </span>que<span class="w"> </span>se<span class="w"> </span>ejecutará<span class="w"> </span>al<span class="w"> </span>llamar<span class="w"> </span>a<span class="w"> </span>la<span class="w"> </span>función
+<span class="linenos" data-linenos="3 "></span><span class="o">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li><code>source</code></li>
+<li>Para incluir el código de un fichero en otro tan sólo será necesario utilizar la palabra source seguida de la ruta de ese fichero. * * También es posible usar el punto para poder cargarlo:</li>
+<li><code>source funciones.sh</code> o <code>./funciones.sh</code></li>
+</ul>
+</div>
+<ul>
+<li>Las funciones suelen declararse al inicio del documento y luego utilizadas a lo largo del programa.</li>
+<li>
+<p>Uno de los objetivos es optimizar el código, mediante el "aprovechamiento" de código. Cuando un conjunto de líneas de código se repiten, es posible agruparlas bajo un nombre y utilizar ese nombre en lugar de repetir este código.</p>
+</li>
+<li>
+<p>Ejemplo:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">##! /bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">function</span><span class="w"> </span>imprimir_tabla<span class="o">(){</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>“Tabla<span class="w"> </span>del<span class="w"> </span>número<span class="w"> </span><span class="nv">$1</span>”
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">do</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="nb">let</span><span class="w"> </span><span class="nv">res</span><span class="o">=</span><span class="nv">$1</span>*i
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>“<span class="nv">$i</span><span class="w"> </span>x<span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$res</span>”
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">done</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="10 "></span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span>“Escribe<span class="w"> </span>un<span class="w"> </span>número:<span class="w"> </span>“<span class="w"> </span>num
+<span class="linenos" data-linenos="11 "></span>imprimir_tabla<span class="w"> </span><span class="nv">$num</span>
+<span class="linenos" data-linenos="12 "></span>imprimir_tabla<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+<ul>
+<li>En este ejemplo se ha construido una función para imprimir la tabla de multiplicar de un número pasado como parámetro.</li>
+<li>En la siguiente línea le pedimos al programa que imprima la tabla del número cinco.</li>
+<li>No se ha necesitado escribir el código que imprime la su tabla de multiplicar de nuevo, ya que con invocar el nombre de la función el programa ya sabe que código debe ejecutar.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>Nótese que el valor de <code>$1</code> no se pasa como parámetro del shell script, si no como parámetro a la función imprimir_tabla tras haberlo preguntado al usuario.</li>
+<li>Hay que tener en cuenta que las variables que se declaran dentro de una función existen únicamente dentro de ella. Si es preciso utilizar una variable fuera de una función se puede usar <code>return</code>, que devuelve un valor fuera de ella, o usar la palabra reservada <code>GLOBAL</code></li>
+<li>Es preferible utilizar el primer método para que devuelva un valor que será recogido en otra variable fuera de la función que lo originó.</li>
+</ul>
+</div>
 <hr />
 <h2 id="01shellscript-actividades">Actividades<a class="headerlink" href="#01shellscript-actividades" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
@@ -1815,6 +1976,43 @@
 <p><a name="AC110"></a></p>
 <ul>
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC110</strong>. Crea un shell script que sume los números del 1 al 1000 mediante una estructura <code>for</code>, <code>while</code> y <code>until</code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Escribe el código de los scripts en <strong>ShellScript</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
+</div>
+<p>112<a name="AC111"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC111</strong>. Realiza un script utilizando funciones que permita crear un informe de las <strong>IP libres</strong> en la red en la que se encuentra el equipo. Debe contener las siguientes opciones:<ol>
+<li>El informe contendrá un <strong>listado de todas las IP de la red</strong> a la que pertenece el equipo indicando si está libe o no (usa el comando ping).</li>
+<li>En el informe debe aparecer el <strong>tipo de red</strong> (rango CIDR) en el que está inmerso el ordenador con el <strong>nombre de la red</strong>, su <strong>broadcast</strong> y su <strong>máscara de subred</strong>. Esta información la podéis obtener desde el comando ifconfig.</li>
+</ol>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Para facilitar los cálculos asumimos que el equipo donde se ejecuta el script se encuentra en una única red, es decir, solo posee una tarjeta de red.</p>
+</div>
+<p><a name="AC112"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC112</strong>. Crea un script que rellene un <strong>vector</strong> con cien valores aleatorios y muestre en pantalla en una sola línea los valores generados.</li>
+</ul>
+<p><a name="AC113"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC113</strong>. Genera un script que rellene un <strong>vector</strong> con diez números pedidos al usuario y que los muestre por pantalla de la siguiente forma:<ol>
+<li>en orden inverso a como han sido introducidos los valores</li>
+<li>los valores ordenados de menor a mayor en una sola línea</li>
+<li>los valores ordenados de mayor a menor en una sola línea</li>
+<li>la suma total de sus valores</li>
+<li>cantidad de valores pares que contiene el vector</li>
+<li>la suma total de números impares</li>
+<li>la media aritmética de los valores que contiene el vector</li>
+</ol>
+</li>
+</ul>
+<p><a name="AC114"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC114</strong>. Crea un script que muestre las opciones del ejercicio anterior con select. El usuario introducirá los valores del <strong>vector</strong> al iniciar el script. Cuando termine aparecerá el menú de selección (deberás añadir la opción para salir del script). Además deberás crear una <strong>función</strong> para cada opción del menú y llamarla en cada una de las opciones del select.</li>
 </ul>
 <!-- <a name="AC104"></a>
 
