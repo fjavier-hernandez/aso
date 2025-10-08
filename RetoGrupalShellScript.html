@@ -1,0 +1,1308 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Reto grupal de ShellScript para ASO">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/RetoGrupalShellScript.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Reto Grupal - Sistema de Gestión de Servidores - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Reto Grupal - Sistema de Gestión de Servidores - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="Reto grupal de ShellScript para ASO" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RetoGrupalShellScript.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/RetoGrupalShellScript.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Reto Grupal - Sistema de Gestión de Servidores - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="Reto grupal de ShellScript para ASO" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RetoGrupalShellScript.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reto-grupal-sistema-de-gestion-de-servidores-30-puntos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reto Grupal - Sistema de Gestión de Servidores
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descripcion-del-reto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descripción del Reto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos del Sistema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requisitos del Sistema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-estructura-del-proyecto-5-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Estructura del Proyecto (5 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-menu-principal-interactivo-5-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Menú Principal Interactivo (5 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-gestion-de-servidores-8-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Gestión de Servidores (8 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-sistema-de-monitoreo-6-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Sistema de Monitoreo (6 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-sistema-de-copias-de-seguridad-4-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Sistema de Copias de Seguridad (4 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-gestion-de-logs-2-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Gestión de Logs (2 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de Evaluación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcionalidades-adicionales-puntos-extra" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcionalidades Adicionales (Puntos Extra)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de Uso
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulacion-de-servidores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simulación de Servidores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulación de Servidores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcion-1-servidores-simulados-con-nc-netcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opción 1: Servidores Simulados con nc (netcat)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-2-servidores-simulados-con-shellscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opción 2: Servidores Simulados con ShellScript
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-3-usar-ips-publicas-conocidas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opción 3: Usar IPs Públicas Conocidas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-4-servidores-locales-simulados-solo-shellscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opción 4: Servidores Locales Simulados (Solo ShellScript)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-5-simulacion-avanzada-con-shellscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opción 5: Simulación Avanzada con ShellScript
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archivo-de-ejemplo-servidorestxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivo de Ejemplo: servidores.txt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-de-inicio-rapido-iniciar_simuladoressh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Script de Inicio Rápido: iniciar_simuladores.sh
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notas-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notas Importantes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enlaces-relacionados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enlaces Relacionados
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="reto-grupal-sistema-de-gestion-de-servidores-30-puntos">RETO GRUPAL - Sistema de Gestión de Servidores (30 puntos)<a class="headerlink" href="#reto-grupal-sistema-de-gestion-de-servidores-30-puntos" title="Permanent link">&para;</a></h1>
+<p><a name="RETO_GRUPAL"></a></p>
+<div class="admonition challenge">
+<p class="admonition-title">RETO GRUPAL: Sistema de Gestión de Servidores</p>
+<p><strong>Valoración:</strong> 30 puntos<br />
+<strong>Modalidad:</strong> Trabajo en grupos de 3-4 personas<br />
+<strong>Tiempo estimado:</strong> 4 sesiones (8 horas)<br />
+<strong>Fecha límite:</strong> Sesión 8 (Presentación y evaluación)</p>
+</div>
+<h3 id="descripcion-del-reto">Descripción del Reto<a class="headerlink" href="#descripcion-del-reto" title="Permanent link">&para;</a></h3>
+<p>Debéis crear un <strong>Sistema de Gestión de Servidores</strong> completo en ShellScript que permita a un administrador de sistemas gestionar múltiples servidores de forma automatizada. El sistema debe integrar todos los conceptos aprendidos durante la unidad.</p>
+<h3 id="requisitos-del-sistema">Requisitos del Sistema<a class="headerlink" href="#requisitos-del-sistema" title="Permanent link">&para;</a></h3>
+<h4 id="1-estructura-del-proyecto-5-puntos">1. <strong>Estructura del Proyecto</strong> (5 puntos)<a class="headerlink" href="#1-estructura-del-proyecto-5-puntos" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Crear un directorio principal <code>sistema_gestion_servidores/</code></li>
+<li>
+<p>Organizar el código en módulos separados:</p>
+</li>
+<li>
+<p><code>menu_principal.sh</code> - Menú principal del sistema</p>
+</li>
+<li><code>funciones_servidor.sh</code> - Funciones para gestión de servidores</li>
+<li><code>monitoreo.sh</code> - Scripts de monitoreo</li>
+<li><code>backup.sh</code> - Sistema de copias de seguridad</li>
+<li><code>logs.sh</code> - Gestión de logs</li>
+<li><code>configuracion.conf</code> - Archivo de configuración</li>
+</ul>
+<h4 id="2-menu-principal-interactivo-5-puntos">2. <strong>Menú Principal Interactivo</strong> (5 puntos)<a class="headerlink" href="#2-menu-principal-interactivo-5-puntos" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Implementar un menú con <code>select</code> que incluya:</p>
+</li>
+<li>
+<p>Gestión de servidores</p>
+</li>
+<li>Monitoreo del sistema</li>
+<li>Copias de seguridad</li>
+<li>Gestión de logs</li>
+<li>Configuración</li>
+<li>Salir</li>
+<li>Cada opción debe llamar a funciones específicas</li>
+<li>Validación de entrada del usuario</li>
+</ul>
+<h4 id="3-gestion-de-servidores-8-puntos">3. <strong>Gestión de Servidores</strong> (8 puntos)<a class="headerlink" href="#3-gestion-de-servidores-8-puntos" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Archivo de configuración</strong> (<code>servidores.txt</code>) con formato:
+  <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nombre_servidor#ip#puerto#estado#descripcion
+</code></pre></div></li>
+<li><strong>Funciones requeridas:</strong></li>
+<li><code>añadir_servidor()</code> - Añadir nuevo servidor</li>
+<li><code>listar_servidores()</code> - Mostrar todos los servidores</li>
+<li><code>buscar_servidor()</code> - Buscar por nombre, IP o estado</li>
+<li><code>modificar_servidor()</code> - Editar información de servidor</li>
+<li><code>eliminar_servidor()</code> - Borrar servidor</li>
+<li><code>ordenar_servidores()</code> - Ordenar alfabéticamente</li>
+</ul>
+<h4 id="4-sistema-de-monitoreo-6-puntos">4. <strong>Sistema de Monitoreo</strong> (6 puntos)<a class="headerlink" href="#4-sistema-de-monitoreo-6-puntos" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Función <code>monitorear_servidores()</code>:</strong></li>
+<li>Leer lista de servidores desde archivo</li>
+<li>Usar <code>ping</code> para verificar conectividad</li>
+<li>Generar informe de estado (activo/inactivo)</li>
+<li>Guardar resultados en <code>estado_servidores.log</code></li>
+<li><strong>Función <code>estadisticas_sistema()</code>:</strong></li>
+<li>Mostrar información del sistema local</li>
+<li>Contar servidores activos/inactivos</li>
+<li>Calcular porcentaje de disponibilidad</li>
+</ul>
+<h4 id="5-sistema-de-copias-de-seguridad-4-puntos">5. <strong>Sistema de Copias de Seguridad</strong> (4 puntos)<a class="headerlink" href="#5-sistema-de-copias-de-seguridad-4-puntos" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Función <code>crear_backup()</code>:</strong></li>
+<li>Crear directorio de backup con fecha</li>
+<li>Copiar archivos de configuración</li>
+<li>Comprimir en archivo <code>.tar.gz</code></li>
+<li>Generar log de backup</li>
+<li><strong>Función <code>restaurar_backup()</code>:</strong></li>
+<li>Listar backups disponibles</li>
+<li>Permitir selección y restauración</li>
+</ul>
+<h4 id="6-gestion-de-logs-2-puntos">6. <strong>Gestión de Logs</strong> (2 puntos)<a class="headerlink" href="#6-gestion-de-logs-2-puntos" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Función <code>ver_logs()</code>:</strong></li>
+<li>Mostrar logs del sistema</li>
+<li>Filtrar por fecha o tipo</li>
+<li>Contar líneas de error</li>
+<li><strong>Función <code>limpiar_logs()</code>:</strong></li>
+<li>Archivar logs antiguos</li>
+<li>Limpiar logs vacíos</li>
+</ul>
+<h3 id="criterios-de-evaluacion">Criterios de Evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Puntos</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Funcionalidad</strong></td>
+<td>15</td>
+<td>El sistema funciona correctamente y cumple todos los requisitos</td>
+</tr>
+<tr>
+<td><strong>Estructura del código</strong></td>
+<td>5</td>
+<td>Código bien organizado, comentado y modular</td>
+</tr>
+<tr>
+<td><strong>Uso de conceptos</strong></td>
+<td>5</td>
+<td>Aplicación correcta de variables, bucles, funciones, vectores</td>
+</tr>
+<tr>
+<td><strong>Documentación</strong></td>
+<td>3</td>
+<td>README.md con instrucciones de uso</td>
+</tr>
+<tr>
+<td><strong>Creatividad</strong></td>
+<td>2</td>
+<td>Funcionalidades adicionales o mejoras innovadoras</td>
+</tr>
+</tbody>
+</table>
+<h3 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Código fuente completo</strong> en directorio <code>sistema_gestion_servidores/</code></li>
+<li><strong>README.md</strong> con:</li>
+</ol>
+<ul>
+<li>Descripción del proyecto</li>
+<li>Instrucciones de instalación y uso</li>
+<li>Explicación de cada módulo</li>
+<li>Capturas de pantalla del funcionamiento
+3. <strong>Demo en clase</strong> (5 minutos por grupo)</li>
+</ul>
+<h3 id="funcionalidades-adicionales-puntos-extra">Funcionalidades Adicionales (Puntos Extra)<a class="headerlink" href="#funcionalidades-adicionales-puntos-extra" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>+2 puntos:</strong> Implementar autenticación de usuarios</li>
+<li><strong>+2 puntos:</strong> Crear gráficos ASCII con estadísticas</li>
+<li><strong>+2 puntos:</strong> Notificaciones por email cuando un servidor falla</li>
+<li><strong>+1 punto:</strong> Interfaz con colores usando <code>tput</code></li>
+<li><strong>+1 punto:</strong> Sistema de alertas sonoras</li>
+</ul>
+<h3 id="ejemplo-de-uso">Ejemplo de Uso<a class="headerlink" href="#ejemplo-de-uso" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Ejecutar el sistema</span>
+<span class="linenos" data-linenos=" 2 "></span>./menu_principal.sh
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Menú principal:</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># 1) Gestión de servidores</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1"># 2) Monitoreo del sistema  </span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># 3) Copias de seguridad</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 4) Gestión de logs</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># 5) Configuración</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># 6) Salir</span>
+</code></pre></div>
+<h3 id="simulacion-de-servidores">Simulación de Servidores<a class="headerlink" href="#simulacion-de-servidores" title="Permanent link">&para;</a></h3>
+<p>Para probar el sistema sin necesidad de servidores reales, podéis usar las siguientes técnicas:</p>
+<h4 id="opcion-1-servidores-simulados-con-nc-netcat">Opción 1: Servidores Simulados con nc (netcat)<a class="headerlink" href="#opcion-1-servidores-simulados-con-nc-netcat" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Simular servidor web en puerto 8080</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># nc = netcat, herramienta para leer y escribir datos a través de la red</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1"># -l = modo &quot;listen&quot; (escuchar), convierte nc en un servidor</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># 8080 = puerto donde escuchará el servidor (puerto común para servidores web)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># &amp; = ejecuta el comando en segundo plano (background)</span>
+<span class="linenos" data-linenos=" 6 "></span>nc<span class="w"> </span>-l<span class="w"> </span><span class="m">8080</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Simular servidor SSH en puerto 2222</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># SSH normalmente usa puerto 22, aquí usamos 2222 para evitar conflictos</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Este comando crea un &quot;servidor&quot; que escucha en el puerto 2222</span>
+<span class="linenos" data-linenos="11 "></span>nc<span class="w"> </span>-l<span class="w"> </span><span class="m">2222</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1"># Simular servidor de base de datos en puerto 3306</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1"># Puerto 3306 es el puerto estándar para MySQL</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1"># nc escuchará conexiones entrantes en este puerto</span>
+<span class="linenos" data-linenos="16 "></span>nc<span class="w"> </span>-l<span class="w"> </span><span class="m">3306</span><span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<h4 id="opcion-2-servidores-simulados-con-shellscript">Opción 2: Servidores Simulados con ShellScript<a class="headerlink" href="#opcion-2-servidores-simulados-con-shellscript" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Crear script simulador_shell.sh</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1"># Shebang: indica que el script debe ejecutarse con bash</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Simular servidor HTTP simple con netcat</span>
+<span class="linenos" data-linenos=" 6 "></span>simular_servidor_web<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="c1"># function = define una función llamada simular_servidor_web</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código de la función</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Iniciando servidor web simulado en puerto 8080...&quot;</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="c1"># echo = muestra un mensaje informativo por pantalla</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="c1"># while true = bucle infinito que se ejecuta continuamente</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="c1"># do = inicio del bloque de código del bucle</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;HTTP/1.1 200 OK\r\n\r\nServidor Web Simulado - </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-l<span class="w"> </span><span class="m">8080</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="c1"># echo -e = activa la interpretación de caracteres de escape (\r\n)</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="c1"># &quot;HTTP/1.1 200 OK&quot; = respuesta HTTP válida (protocolo web)</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">        </span><span class="c1"># \r\n = retorno de carro y nueva línea (formato HTTP)</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">        </span><span class="c1"># \r\n\r\n = separa cabeceras del cuerpo de la respuesta</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">        </span><span class="c1"># &quot;Servidor Web Simulado - $(date)&quot; = mensaje personalizado con fecha actual</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">        </span><span class="c1"># $(date) = sustitución de comando que ejecuta date y usa su salida</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">        </span><span class="c1"># | = tubería que envía la salida de echo a nc</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">        </span><span class="c1"># nc -l 8080 = netcat en modo servidor escuchando en puerto 8080</span>
+<span class="linenos" data-linenos="26 "></span>
+<span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="k">done</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="c1"># done = fin del bloque de código del bucle</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="c1"># &amp; = ejecuta el bucle completo en segundo plano</span>
+<span class="linenos" data-linenos="30 "></span>
+<span class="linenos" data-linenos="31 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="32 "></span><span class="c1"># } = fin del bloque de código de la función</span>
+<span class="linenos" data-linenos="33 "></span>
+<span class="linenos" data-linenos="34 "></span><span class="c1"># Simular servidor SSH</span>
+<span class="linenos" data-linenos="35 "></span>simular_servidor_ssh<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="36 "></span><span class="w">    </span><span class="c1"># function = define una función llamada simular_servidor_ssh</span>
+<span class="linenos" data-linenos="37 "></span>
+<span class="linenos" data-linenos="38 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Iniciando servidor SSH simulado en puerto 2222...&quot;</span>
+<span class="linenos" data-linenos="39 "></span><span class="w">    </span><span class="c1"># Mensaje informativo para el usuario</span>
+<span class="linenos" data-linenos="40 "></span>
+<span class="linenos" data-linenos="41 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos="42 "></span><span class="w">        </span><span class="c1"># Bucle infinito para mantener el servidor activo</span>
+<span class="linenos" data-linenos="43 "></span>
+<span class="linenos" data-linenos="44 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SSH-2.0-OpenSSH_7.4 Simulado&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-l<span class="w"> </span><span class="m">2222</span>
+<span class="linenos" data-linenos="45 "></span><span class="w">        </span><span class="c1"># &quot;SSH-2.0-OpenSSH_7.4&quot; = banner típico de un servidor SSH real</span>
+<span class="linenos" data-linenos="46 "></span><span class="w">        </span><span class="c1"># &quot;Simulado&quot; = indica que es una simulación</span>
+<span class="linenos" data-linenos="47 "></span><span class="w">        </span><span class="c1"># nc -l 2222 = escucha en puerto 2222 (evita conflicto con puerto 22)</span>
+<span class="linenos" data-linenos="48 "></span>
+<span class="linenos" data-linenos="49 "></span><span class="w">    </span><span class="k">done</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos="50 "></span><span class="w">    </span><span class="c1"># Ejecuta el bucle en segundo plano</span>
+<span class="linenos" data-linenos="51 "></span>
+<span class="linenos" data-linenos="52 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="53 "></span>
+<span class="linenos" data-linenos="54 "></span><span class="c1"># Simular servidor de base de datos</span>
+<span class="linenos" data-linenos="55 "></span>simular_servidor_db<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="56 "></span><span class="w">    </span><span class="c1"># function = define una función llamada simular_servidor_db</span>
+<span class="linenos" data-linenos="57 "></span>
+<span class="linenos" data-linenos="58 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Iniciando servidor MySQL simulado en puerto 3306...&quot;</span>
+<span class="linenos" data-linenos="59 "></span><span class="w">    </span><span class="c1"># Mensaje informativo</span>
+<span class="linenos" data-linenos="60 "></span>
+<span class="linenos" data-linenos="61 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos="62 "></span><span class="w">        </span><span class="c1"># Bucle infinito para mantener el servidor activo</span>
+<span class="linenos" data-linenos="63 "></span>
+<span class="linenos" data-linenos="64 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;MySQL Simulado - Puerto 3306&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-l<span class="w"> </span><span class="m">3306</span>
+<span class="linenos" data-linenos="65 "></span><span class="w">        </span><span class="c1"># &quot;MySQL Simulado&quot; = mensaje que simula respuesta de MySQL</span>
+<span class="linenos" data-linenos="66 "></span><span class="w">        </span><span class="c1"># &quot;Puerto 3306&quot; = indica el puerto estándar de MySQL</span>
+<span class="linenos" data-linenos="67 "></span><span class="w">        </span><span class="c1"># nc -l 3306 = escucha en puerto 3306</span>
+<span class="linenos" data-linenos="68 "></span>
+<span class="linenos" data-linenos="69 "></span><span class="w">    </span><span class="k">done</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos="70 "></span><span class="w">    </span><span class="c1"># Ejecuta el bucle en segundo plano</span>
+<span class="linenos" data-linenos="71 "></span>
+<span class="linenos" data-linenos="72 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="73 "></span>
+<span class="linenos" data-linenos="74 "></span><span class="c1"># Ejecutar simuladores</span>
+<span class="linenos" data-linenos="75 "></span>simular_servidor_web
+<span class="linenos" data-linenos="76 "></span><span class="c1"># Llama a la función que simula el servidor web</span>
+<span class="linenos" data-linenos="77 "></span><span class="c1"># Se ejecuta en segundo plano gracias al &amp; dentro de la función</span>
+<span class="linenos" data-linenos="78 "></span>
+<span class="linenos" data-linenos="79 "></span>simular_servidor_ssh
+<span class="linenos" data-linenos="80 "></span><span class="c1"># Llama a la función que simula el servidor SSH</span>
+<span class="linenos" data-linenos="81 "></span><span class="c1"># Se ejecuta en segundo plano</span>
+<span class="linenos" data-linenos="82 "></span>
+<span class="linenos" data-linenos="83 "></span>simular_servidor_db
+<span class="linenos" data-linenos="84 "></span><span class="c1"># Llama a la función que simula el servidor de base de datos</span>
+<span class="linenos" data-linenos="85 "></span><span class="c1"># Se ejecuta en segundo plano</span>
+<span class="linenos" data-linenos="86 "></span>
+<span class="linenos" data-linenos="87 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidores simulados iniciados. Usa &#39;pkill -f nc&#39; para detenerlos.&quot;</span>
+<span class="linenos" data-linenos="88 "></span><span class="c1"># Mensaje final con instrucciones para detener los servidores</span>
+<span class="linenos" data-linenos="89 "></span><span class="c1"># pkill -f nc = mata todos los procesos que contengan &quot;nc&quot; en su línea de comandos</span>
+</code></pre></div>
+<h4 id="opcion-3-usar-ips-publicas-conocidas">Opción 3: Usar IPs Públicas Conocidas<a class="headerlink" href="#opcion-3-usar-ips-publicas-conocidas" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Google DNS:</strong> 8.8.8.8 (puerto 53)</li>
+<li><strong>Cloudflare DNS:</strong> 1.1.1.1 (puerto 53)</li>
+<li><strong>OpenDNS:</strong> 208.67.222.222 (puerto 53)</li>
+<li><strong>Servidores web públicos:</strong> 93.184.216.34 (puerto 80)</li>
+</ul>
+<h4 id="opcion-4-servidores-locales-simulados-solo-shellscript">Opción 4: Servidores Locales Simulados (Solo ShellScript)<a class="headerlink" href="#opcion-4-servidores-locales-simulados-solo-shellscript" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="  1 "></span><span class="c1"># Crear script simulador_servidores.sh</span>
+<span class="linenos" data-linenos="  2 "></span><span class="c1">#!/bin/bash</span>
+<span class="linenos" data-linenos="  3 "></span><span class="c1"># Shebang: indica que el script debe ejecutarse con bash</span>
+<span class="linenos" data-linenos="  4 "></span>
+<span class="linenos" data-linenos="  5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Iniciando servidores simulados con ShellScript...&quot;</span>
+<span class="linenos" data-linenos="  6 "></span><span class="c1"># echo = muestra un mensaje informativo por pantalla</span>
+<span class="linenos" data-linenos="  7 "></span>
+<span class="linenos" data-linenos="  8 "></span><span class="c1"># Función para simular servidor web</span>
+<span class="linenos" data-linenos="  9 "></span>simular_web<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 10 "></span><span class="w">    </span><span class="c1"># function = define una función llamada simular_web</span>
+<span class="linenos" data-linenos=" 11 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código de la función</span>
+<span class="linenos" data-linenos=" 12 "></span>
+<span class="linenos" data-linenos=" 13 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidor web iniciado en puerto 8080&quot;</span>
+<span class="linenos" data-linenos=" 14 "></span><span class="w">    </span><span class="c1"># Mensaje informativo para el usuario</span>
+<span class="linenos" data-linenos=" 15 "></span>
+<span class="linenos" data-linenos=" 16 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos=" 17 "></span><span class="w">        </span><span class="c1"># while true = bucle infinito que se ejecuta continuamente</span>
+<span class="linenos" data-linenos=" 18 "></span><span class="w">        </span><span class="c1"># do = inicio del bloque de código del bucle</span>
+<span class="linenos" data-linenos=" 19 "></span>
+<span class="linenos" data-linenos=" 20 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n&lt;html&gt;&lt;body&gt;&lt;h1&gt;Servidor Web Simulado&lt;/h1&gt;&lt;p&gt;Fecha: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-l<span class="w"> </span><span class="m">8080</span>
+<span class="linenos" data-linenos=" 21 "></span><span class="w">        </span><span class="c1"># echo -e = activa la interpretación de caracteres de escape (\r\n)</span>
+<span class="linenos" data-linenos=" 22 "></span><span class="w">        </span><span class="c1"># &quot;HTTP/1.1 200 OK&quot; = respuesta HTTP válida (protocolo web)</span>
+<span class="linenos" data-linenos=" 23 "></span><span class="w">        </span><span class="c1"># \r\n = retorno de carro y nueva línea (formato HTTP)</span>
+<span class="linenos" data-linenos=" 24 "></span><span class="w">        </span><span class="c1"># &quot;Content-Type: text/html&quot; = cabecera HTTP que indica tipo de contenido</span>
+<span class="linenos" data-linenos=" 25 "></span><span class="w">        </span><span class="c1"># \r\n\r\n = separa cabeceras del cuerpo de la respuesta</span>
+<span class="linenos" data-linenos=" 26 "></span><span class="w">        </span><span class="c1"># &quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Servidor Web Simulado&lt;/h1&gt;&lt;p&gt;Fecha: $(date)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot; = página HTML completa</span>
+<span class="linenos" data-linenos=" 27 "></span><span class="w">        </span><span class="c1"># $(date) = sustitución de comando que ejecuta date y usa su salida</span>
+<span class="linenos" data-linenos=" 28 "></span><span class="w">        </span><span class="c1"># | = tubería que envía la salida de echo a nc</span>
+<span class="linenos" data-linenos=" 29 "></span><span class="w">        </span><span class="c1"># nc -l 8080 = netcat en modo servidor escuchando en puerto 8080</span>
+<span class="linenos" data-linenos=" 30 "></span>
+<span class="linenos" data-linenos=" 31 "></span><span class="w">    </span><span class="k">done</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos=" 32 "></span><span class="w">    </span><span class="c1"># done = fin del bloque de código del bucle</span>
+<span class="linenos" data-linenos=" 33 "></span><span class="w">    </span><span class="c1"># &amp; = ejecuta el bucle completo en segundo plano</span>
+<span class="linenos" data-linenos=" 34 "></span>
+<span class="linenos" data-linenos=" 35 "></span><span class="o">}</span>
+<span class="linenos" data-linenos=" 36 "></span>
+<span class="linenos" data-linenos=" 37 "></span><span class="c1"># Función para simular servidor SSH</span>
+<span class="linenos" data-linenos=" 38 "></span>simular_ssh<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 39 "></span><span class="w">    </span><span class="c1"># function = define una función llamada simular_ssh</span>
+<span class="linenos" data-linenos=" 40 "></span>
+<span class="linenos" data-linenos=" 41 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidor SSH simulado en puerto 2222&quot;</span>
+<span class="linenos" data-linenos=" 42 "></span><span class="w">    </span><span class="c1"># Mensaje informativo para el usuario</span>
+<span class="linenos" data-linenos=" 43 "></span>
+<span class="linenos" data-linenos=" 44 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos=" 45 "></span><span class="w">        </span><span class="c1"># Bucle infinito para mantener el servidor activo</span>
+<span class="linenos" data-linenos=" 46 "></span>
+<span class="linenos" data-linenos=" 47 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SSH-2.0-OpenSSH_7.4 Simulado&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-l<span class="w"> </span><span class="m">2222</span>
+<span class="linenos" data-linenos=" 48 "></span><span class="w">        </span><span class="c1"># &quot;SSH-2.0-OpenSSH_7.4&quot; = banner típico de un servidor SSH real</span>
+<span class="linenos" data-linenos=" 49 "></span><span class="w">        </span><span class="c1"># &quot;Simulado&quot; = indica que es una simulación</span>
+<span class="linenos" data-linenos=" 50 "></span><span class="w">        </span><span class="c1"># nc -l 2222 = escucha en puerto 2222 (evita conflicto con puerto 22)</span>
+<span class="linenos" data-linenos=" 51 "></span>
+<span class="linenos" data-linenos=" 52 "></span><span class="w">    </span><span class="k">done</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos=" 53 "></span><span class="w">    </span><span class="c1"># Ejecuta el bucle en segundo plano</span>
+<span class="linenos" data-linenos=" 54 "></span>
+<span class="linenos" data-linenos=" 55 "></span><span class="o">}</span>
+<span class="linenos" data-linenos=" 56 "></span>
+<span class="linenos" data-linenos=" 57 "></span><span class="c1"># Función para simular servidor de base de datos</span>
+<span class="linenos" data-linenos=" 58 "></span>simular_mysql<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 59 "></span><span class="w">    </span><span class="c1"># function = define una función llamada simular_mysql</span>
+<span class="linenos" data-linenos=" 60 "></span>
+<span class="linenos" data-linenos=" 61 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidor MySQL simulado en puerto 3306&quot;</span>
+<span class="linenos" data-linenos=" 62 "></span><span class="w">    </span><span class="c1"># Mensaje informativo para el usuario</span>
+<span class="linenos" data-linenos=" 63 "></span>
+<span class="linenos" data-linenos=" 64 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos=" 65 "></span><span class="w">        </span><span class="c1"># Bucle infinito para mantener el servidor activo</span>
+<span class="linenos" data-linenos=" 66 "></span>
+<span class="linenos" data-linenos=" 67 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;MySQL Simulado - Puerto 3306&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-l<span class="w"> </span><span class="m">3306</span>
+<span class="linenos" data-linenos=" 68 "></span><span class="w">        </span><span class="c1"># &quot;MySQL Simulado&quot; = mensaje que simula respuesta de MySQL</span>
+<span class="linenos" data-linenos=" 69 "></span><span class="w">        </span><span class="c1"># &quot;Puerto 3306&quot; = indica el puerto estándar de MySQL</span>
+<span class="linenos" data-linenos=" 70 "></span><span class="w">        </span><span class="c1"># nc -l 3306 = escucha en puerto 3306</span>
+<span class="linenos" data-linenos=" 71 "></span>
+<span class="linenos" data-linenos=" 72 "></span><span class="w">    </span><span class="k">done</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos=" 73 "></span><span class="w">    </span><span class="c1"># Ejecuta el bucle en segundo plano</span>
+<span class="linenos" data-linenos=" 74 "></span>
+<span class="linenos" data-linenos=" 75 "></span><span class="o">}</span>
+<span class="linenos" data-linenos=" 76 "></span>
+<span class="linenos" data-linenos=" 77 "></span><span class="c1"># Función para simular servidor FTP</span>
+<span class="linenos" data-linenos=" 78 "></span>simular_ftp<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 79 "></span><span class="w">    </span><span class="c1"># function = define una función llamada simular_ftp</span>
+<span class="linenos" data-linenos=" 80 "></span>
+<span class="linenos" data-linenos=" 81 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidor FTP simulado en puerto 21&quot;</span>
+<span class="linenos" data-linenos=" 82 "></span><span class="w">    </span><span class="c1"># Mensaje informativo para el usuario</span>
+<span class="linenos" data-linenos=" 83 "></span>
+<span class="linenos" data-linenos=" 84 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos=" 85 "></span><span class="w">        </span><span class="c1"># Bucle infinito para mantener el servidor activo</span>
+<span class="linenos" data-linenos=" 86 "></span>
+<span class="linenos" data-linenos=" 87 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;220 FTP Server Simulado&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-l<span class="w"> </span><span class="m">21</span>
+<span class="linenos" data-linenos=" 88 "></span><span class="w">        </span><span class="c1"># &quot;220&quot; = código de respuesta FTP que indica &quot;servicio listo&quot;</span>
+<span class="linenos" data-linenos=" 89 "></span><span class="w">        </span><span class="c1"># &quot;FTP Server Simulado&quot; = mensaje que simula respuesta de servidor FTP</span>
+<span class="linenos" data-linenos=" 90 "></span><span class="w">        </span><span class="c1"># nc -l 21 = escucha en puerto 21 (puerto estándar de FTP)</span>
+<span class="linenos" data-linenos=" 91 "></span>
+<span class="linenos" data-linenos=" 92 "></span><span class="w">    </span><span class="k">done</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos=" 93 "></span><span class="w">    </span><span class="c1"># Ejecuta el bucle en segundo plano</span>
+<span class="linenos" data-linenos=" 94 "></span>
+<span class="linenos" data-linenos=" 95 "></span><span class="o">}</span>
+<span class="linenos" data-linenos=" 96 "></span>
+<span class="linenos" data-linenos=" 97 "></span><span class="c1"># Ejecutar todos los simuladores</span>
+<span class="linenos" data-linenos=" 98 "></span>simular_web
+<span class="linenos" data-linenos=" 99 "></span><span class="c1"># Llama a la función que simula el servidor web</span>
+<span class="linenos" data-linenos="100 "></span><span class="c1"># Se ejecuta en segundo plano gracias al &amp; dentro de la función</span>
+<span class="linenos" data-linenos="101 "></span>
+<span class="linenos" data-linenos="102 "></span>simular_ssh
+<span class="linenos" data-linenos="103 "></span><span class="c1"># Llama a la función que simula el servidor SSH</span>
+<span class="linenos" data-linenos="104 "></span><span class="c1"># Se ejecuta en segundo plano</span>
+<span class="linenos" data-linenos="105 "></span>
+<span class="linenos" data-linenos="106 "></span>simular_mysql
+<span class="linenos" data-linenos="107 "></span><span class="c1"># Llama a la función que simula el servidor de base de datos</span>
+<span class="linenos" data-linenos="108 "></span><span class="c1"># Se ejecuta en segundo plano</span>
+<span class="linenos" data-linenos="109 "></span>
+<span class="linenos" data-linenos="110 "></span>simular_ftp
+<span class="linenos" data-linenos="111 "></span><span class="c1"># Llama a la función que simula el servidor FTP</span>
+<span class="linenos" data-linenos="112 "></span><span class="c1"># Se ejecuta en segundo plano</span>
+<span class="linenos" data-linenos="113 "></span>
+<span class="linenos" data-linenos="114 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidores simulados iniciados. Usa &#39;pkill -f nc&#39; para detenerlos.&quot;</span>
+<span class="linenos" data-linenos="115 "></span><span class="c1"># Mensaje final con instrucciones para detener los servidores</span>
+<span class="linenos" data-linenos="116 "></span><span class="c1"># pkill -f nc = mata todos los procesos que contengan &quot;nc&quot; en su línea de comandos</span>
+</code></pre></div>
+<h4 id="opcion-5-simulacion-avanzada-con-shellscript">Opción 5: Simulación Avanzada con ShellScript<a class="headerlink" href="#opcion-5-simulacion-avanzada-con-shellscript" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Crear script simulador_avanzado.sh</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1"># Shebang: indica que el script debe ejecutarse con bash</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Función para simular servidor con respuesta personalizada</span>
+<span class="linenos" data-linenos=" 6 "></span>simular_servidor_personalizado<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="c1"># function = define una función llamada simular_servidor_personalizado</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código de la función</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">puerto</span><span class="o">=</span><span class="nv">$1</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="c1"># local = declara una variable local dentro de la función</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="c1"># puerto = nombre de la variable que contendrá el puerto</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="c1"># $1 = primer parámetro pasado a la función</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">nombre</span><span class="o">=</span><span class="nv">$2</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="c1"># local = declara una variable local dentro de la función</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="c1"># nombre = nombre de la variable que contendrá el nombre del servidor</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="c1"># $2 = segundo parámetro pasado a la función</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">respuesta</span><span class="o">=</span><span class="nv">$3</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="c1"># local = declara una variable local dentro de la función</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="c1"># respuesta = nombre de la variable que contendrá la respuesta del servidor</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="c1"># $3 = tercer parámetro pasado a la función</span>
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Iniciando </span><span class="nv">$nombre</span><span class="s2"> en puerto </span><span class="nv">$puerto</span><span class="s2">...&quot;</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="c1"># echo = muestra un mensaje informativo por pantalla</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="c1"># $nombre = expande la variable nombre</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="c1"># $puerto = expande la variable puerto</span>
+<span class="linenos" data-linenos="29 "></span>
+<span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos="31 "></span><span class="w">        </span><span class="c1"># while true = bucle infinito que se ejecuta continuamente</span>
+<span class="linenos" data-linenos="32 "></span><span class="w">        </span><span class="c1"># do = inicio del bloque de código del bucle</span>
+<span class="linenos" data-linenos="33 "></span>
+<span class="linenos" data-linenos="34 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$respuesta</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-l<span class="w"> </span><span class="nv">$puerto</span>
+<span class="linenos" data-linenos="35 "></span><span class="w">        </span><span class="c1"># echo = muestra la respuesta del servidor</span>
+<span class="linenos" data-linenos="36 "></span><span class="w">        </span><span class="c1"># &quot;$respuesta&quot; = expande la variable respuesta (entre comillas para preservar espacios)</span>
+<span class="linenos" data-linenos="37 "></span><span class="w">        </span><span class="c1"># | = tubería que envía la salida de echo a nc</span>
+<span class="linenos" data-linenos="38 "></span><span class="w">        </span><span class="c1"># nc -l = netcat en modo servidor (listen)</span>
+<span class="linenos" data-linenos="39 "></span><span class="w">        </span><span class="c1"># $puerto = expande la variable puerto</span>
+<span class="linenos" data-linenos="40 "></span>
+<span class="linenos" data-linenos="41 "></span><span class="w">    </span><span class="k">done</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos="42 "></span><span class="w">    </span><span class="c1"># done = fin del bloque de código del bucle</span>
+<span class="linenos" data-linenos="43 "></span><span class="w">    </span><span class="c1"># &amp; = ejecuta el bucle completo en segundo plano</span>
+<span class="linenos" data-linenos="44 "></span>
+<span class="linenos" data-linenos="45 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="46 "></span>
+<span class="linenos" data-linenos="47 "></span><span class="c1"># Simular diferentes tipos de servidores</span>
+<span class="linenos" data-linenos="48 "></span>simular_servidor_personalizado<span class="w"> </span><span class="m">8080</span><span class="w"> </span><span class="s2">&quot;Servidor Web&quot;</span><span class="w"> </span><span class="s2">&quot;HTTP/1.1 200 OK\r\n\r\nServidor Web Simulado&quot;</span>
+<span class="linenos" data-linenos="49 "></span><span class="c1"># Llama a la función con parámetros:</span>
+<span class="linenos" data-linenos="50 "></span><span class="c1"># 8080 = puerto del servidor web</span>
+<span class="linenos" data-linenos="51 "></span><span class="c1"># &quot;Servidor Web&quot; = nombre descriptivo del servidor</span>
+<span class="linenos" data-linenos="52 "></span><span class="c1"># &quot;HTTP/1.1 200 OK\r\n\r\nServidor Web Simulado&quot; = respuesta HTTP válida</span>
+<span class="linenos" data-linenos="53 "></span>
+<span class="linenos" data-linenos="54 "></span>simular_servidor_personalizado<span class="w"> </span><span class="m">2222</span><span class="w"> </span><span class="s2">&quot;Servidor SSH&quot;</span><span class="w"> </span><span class="s2">&quot;SSH-2.0-OpenSSH_7.4 Simulado&quot;</span>
+<span class="linenos" data-linenos="55 "></span><span class="c1"># Llama a la función con parámetros:</span>
+<span class="linenos" data-linenos="56 "></span><span class="c1"># 2222 = puerto del servidor SSH (evita conflicto con puerto 22)</span>
+<span class="linenos" data-linenos="57 "></span><span class="c1"># &quot;Servidor SSH&quot; = nombre descriptivo del servidor</span>
+<span class="linenos" data-linenos="58 "></span><span class="c1"># &quot;SSH-2.0-OpenSSH_7.4 Simulado&quot; = banner típico de servidor SSH</span>
+<span class="linenos" data-linenos="59 "></span>
+<span class="linenos" data-linenos="60 "></span>simular_servidor_personalizado<span class="w"> </span><span class="m">3306</span><span class="w"> </span><span class="s2">&quot;Servidor MySQL&quot;</span><span class="w"> </span><span class="s2">&quot;MySQL Simulado - Puerto 3306&quot;</span>
+<span class="linenos" data-linenos="61 "></span><span class="c1"># Llama a la función con parámetros:</span>
+<span class="linenos" data-linenos="62 "></span><span class="c1"># 3306 = puerto estándar de MySQL</span>
+<span class="linenos" data-linenos="63 "></span><span class="c1"># &quot;Servidor MySQL&quot; = nombre descriptivo del servidor</span>
+<span class="linenos" data-linenos="64 "></span><span class="c1"># &quot;MySQL Simulado - Puerto 3306&quot; = respuesta que simula MySQL</span>
+<span class="linenos" data-linenos="65 "></span>
+<span class="linenos" data-linenos="66 "></span>simular_servidor_personalizado<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="s2">&quot;Servidor FTP&quot;</span><span class="w"> </span><span class="s2">&quot;220 FTP Server Simulado&quot;</span>
+<span class="linenos" data-linenos="67 "></span><span class="c1"># Llama a la función con parámetros:</span>
+<span class="linenos" data-linenos="68 "></span><span class="c1"># 21 = puerto estándar de FTP</span>
+<span class="linenos" data-linenos="69 "></span><span class="c1"># &quot;Servidor FTP&quot; = nombre descriptivo del servidor</span>
+<span class="linenos" data-linenos="70 "></span><span class="c1"># &quot;220 FTP Server Simulado&quot; = código de respuesta FTP válido</span>
+<span class="linenos" data-linenos="71 "></span>
+<span class="linenos" data-linenos="72 "></span>simular_servidor_personalizado<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="s2">&quot;Servidor SMTP&quot;</span><span class="w"> </span><span class="s2">&quot;220 SMTP Server Simulado&quot;</span>
+<span class="linenos" data-linenos="73 "></span><span class="c1"># Llama a la función con parámetros:</span>
+<span class="linenos" data-linenos="74 "></span><span class="c1"># 25 = puerto estándar de SMTP (correo electrónico)</span>
+<span class="linenos" data-linenos="75 "></span><span class="c1"># &quot;Servidor SMTP&quot; = nombre descriptivo del servidor</span>
+<span class="linenos" data-linenos="76 "></span><span class="c1"># &quot;220 SMTP Server Simulado&quot; = código de respuesta SMTP válido</span>
+<span class="linenos" data-linenos="77 "></span>
+<span class="linenos" data-linenos="78 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidores simulados iniciados. Usa &#39;pkill -f nc&#39; para detenerlos.&quot;</span>
+<span class="linenos" data-linenos="79 "></span><span class="c1"># Mensaje final con instrucciones para detener los servidores</span>
+<span class="linenos" data-linenos="80 "></span><span class="c1"># pkill -f nc = mata todos los procesos que contengan &quot;nc&quot; en su línea de comandos</span>
+</code></pre></div>
+<h4 id="archivo-de-ejemplo-servidorestxt">Archivo de Ejemplo: servidores.txt<a class="headerlink" href="#archivo-de-ejemplo-servidorestxt" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>servidor_web#127.0.0.1#8080#activo#Servidor web local simulado
+<span class="linenos" data-linenos=" 2 "></span>servidor_ssh#127.0.0.1#2222#activo#Servidor SSH simulado
+<span class="linenos" data-linenos=" 3 "></span>servidor_db#127.0.0.1#3306#activo#Base de datos MySQL simulado
+<span class="linenos" data-linenos=" 4 "></span>servidor_ftp#127.0.0.1#21#activo#Servidor FTP simulado
+<span class="linenos" data-linenos=" 5 "></span>servidor_smtp#127.0.0.1#25#activo#Servidor SMTP simulado
+<span class="linenos" data-linenos=" 6 "></span>google_dns#8.8.8.8#53#activo#Servidor DNS de Google
+<span class="linenos" data-linenos=" 7 "></span>cloudflare#1.1.1.1#53#activo#Servidor DNS Cloudflare
+<span class="linenos" data-linenos=" 8 "></span>opendns#208.67.222.222#53#activo#Servidor DNS OpenDNS
+<span class="linenos" data-linenos=" 9 "></span>servidor_web_publico#93.184.216.34#80#activo#Servidor web público
+<span class="linenos" data-linenos="10 "></span>servidor_inactivo#192.168.1.100#80#inactivo#Servidor de prueba
+</code></pre></div>
+<h4 id="script-de-inicio-rapido-iniciar_simuladoressh">Script de Inicio Rápido: iniciar_simuladores.sh<a class="headerlink" href="#script-de-inicio-rapido-iniciar_simuladoressh" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="  1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="  2 "></span><span class="c1"># Shebang: indica que el script debe ejecutarse con bash</span>
+<span class="linenos" data-linenos="  3 "></span><span class="c1"># Script para iniciar todos los servidores simulados</span>
+<span class="linenos" data-linenos="  4 "></span>
+<span class="linenos" data-linenos="  5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="  6 "></span><span class="c1"># echo = muestra una línea de separación visual</span>
+<span class="linenos" data-linenos="  7 "></span><span class="c1"># ========================================== = caracteres de igual para crear línea</span>
+<span class="linenos" data-linenos="  8 "></span>
+<span class="linenos" data-linenos="  9 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;INICIANDO SERVIDORES SIMULADOS&quot;</span>
+<span class="linenos" data-linenos=" 10 "></span><span class="c1"># echo = muestra el título del script</span>
+<span class="linenos" data-linenos=" 11 "></span><span class="c1"># INICIANDO SERVIDORES SIMULADOS = texto en mayúsculas para destacar</span>
+<span class="linenos" data-linenos=" 12 "></span>
+<span class="linenos" data-linenos=" 13 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 14 "></span><span class="c1"># echo = muestra otra línea de separación visual</span>
+<span class="linenos" data-linenos=" 15 "></span>
+<span class="linenos" data-linenos=" 16 "></span><span class="c1"># Función para simular servidor con respuesta personalizada</span>
+<span class="linenos" data-linenos=" 17 "></span>simular_servidor<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 18 "></span><span class="w">    </span><span class="c1"># function = define una función llamada simular_servidor</span>
+<span class="linenos" data-linenos=" 19 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código de la función</span>
+<span class="linenos" data-linenos=" 20 "></span>
+<span class="linenos" data-linenos=" 21 "></span><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">puerto</span><span class="o">=</span><span class="nv">$1</span>
+<span class="linenos" data-linenos=" 22 "></span><span class="w">    </span><span class="c1"># local = declara una variable local dentro de la función</span>
+<span class="linenos" data-linenos=" 23 "></span><span class="w">    </span><span class="c1"># puerto = nombre de la variable que contendrá el puerto</span>
+<span class="linenos" data-linenos=" 24 "></span><span class="w">    </span><span class="c1"># $1 = primer parámetro pasado a la función</span>
+<span class="linenos" data-linenos=" 25 "></span>
+<span class="linenos" data-linenos=" 26 "></span><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">nombre</span><span class="o">=</span><span class="nv">$2</span>
+<span class="linenos" data-linenos=" 27 "></span><span class="w">    </span><span class="c1"># local = declara una variable local dentro de la función</span>
+<span class="linenos" data-linenos=" 28 "></span><span class="w">    </span><span class="c1"># nombre = nombre de la variable que contendrá el nombre del servidor</span>
+<span class="linenos" data-linenos=" 29 "></span><span class="w">    </span><span class="c1"># $2 = segundo parámetro pasado a la función</span>
+<span class="linenos" data-linenos=" 30 "></span>
+<span class="linenos" data-linenos=" 31 "></span><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">respuesta</span><span class="o">=</span><span class="nv">$3</span>
+<span class="linenos" data-linenos=" 32 "></span><span class="w">    </span><span class="c1"># local = declara una variable local dentro de la función</span>
+<span class="linenos" data-linenos=" 33 "></span><span class="w">    </span><span class="c1"># respuesta = nombre de la variable que contendrá la respuesta del servidor</span>
+<span class="linenos" data-linenos=" 34 "></span><span class="w">    </span><span class="c1"># $3 = tercer parámetro pasado a la función</span>
+<span class="linenos" data-linenos=" 35 "></span>
+<span class="linenos" data-linenos=" 36 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Iniciando </span><span class="nv">$nombre</span><span class="s2"> en puerto </span><span class="nv">$puerto</span><span class="s2">...&quot;</span>
+<span class="linenos" data-linenos=" 37 "></span><span class="w">    </span><span class="c1"># echo = muestra un mensaje informativo por pantalla</span>
+<span class="linenos" data-linenos=" 38 "></span><span class="w">    </span><span class="c1"># $nombre = expande la variable nombre</span>
+<span class="linenos" data-linenos=" 39 "></span><span class="w">    </span><span class="c1"># $puerto = expande la variable puerto</span>
+<span class="linenos" data-linenos=" 40 "></span>
+<span class="linenos" data-linenos=" 41 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos=" 42 "></span><span class="w">        </span><span class="c1"># while true = bucle infinito que se ejecuta continuamente</span>
+<span class="linenos" data-linenos=" 43 "></span><span class="w">        </span><span class="c1"># do = inicio del bloque de código del bucle</span>
+<span class="linenos" data-linenos=" 44 "></span>
+<span class="linenos" data-linenos=" 45 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$respuesta</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-l<span class="w"> </span><span class="nv">$puerto</span>
+<span class="linenos" data-linenos=" 46 "></span><span class="w">        </span><span class="c1"># echo = muestra la respuesta del servidor</span>
+<span class="linenos" data-linenos=" 47 "></span><span class="w">        </span><span class="c1"># &quot;$respuesta&quot; = expande la variable respuesta (entre comillas para preservar espacios)</span>
+<span class="linenos" data-linenos=" 48 "></span><span class="w">        </span><span class="c1"># | = tubería que envía la salida de echo a nc</span>
+<span class="linenos" data-linenos=" 49 "></span><span class="w">        </span><span class="c1"># nc -l = netcat en modo servidor (listen)</span>
+<span class="linenos" data-linenos=" 50 "></span><span class="w">        </span><span class="c1"># $puerto = expande la variable puerto</span>
+<span class="linenos" data-linenos=" 51 "></span>
+<span class="linenos" data-linenos=" 52 "></span><span class="w">    </span><span class="k">done</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos=" 53 "></span><span class="w">    </span><span class="c1"># done = fin del bloque de código del bucle</span>
+<span class="linenos" data-linenos=" 54 "></span><span class="w">    </span><span class="c1"># &amp; = ejecuta el bucle completo en segundo plano</span>
+<span class="linenos" data-linenos=" 55 "></span>
+<span class="linenos" data-linenos=" 56 "></span><span class="o">}</span>
+<span class="linenos" data-linenos=" 57 "></span>
+<span class="linenos" data-linenos=" 58 "></span><span class="c1"># Simular diferentes tipos de servidores</span>
+<span class="linenos" data-linenos=" 59 "></span>simular_servidor<span class="w"> </span><span class="m">8080</span><span class="w"> </span><span class="s2">&quot;Servidor Web&quot;</span><span class="w"> </span><span class="s2">&quot;HTTP/1.1 200 OK\r\n\r\nServidor Web Simulado&quot;</span>
+<span class="linenos" data-linenos=" 60 "></span><span class="c1"># Llama a la función con parámetros:</span>
+<span class="linenos" data-linenos=" 61 "></span><span class="c1"># 8080 = puerto del servidor web</span>
+<span class="linenos" data-linenos=" 62 "></span><span class="c1"># &quot;Servidor Web&quot; = nombre descriptivo del servidor</span>
+<span class="linenos" data-linenos=" 63 "></span><span class="c1"># &quot;HTTP/1.1 200 OK\r\n\r\nServidor Web Simulado&quot; = respuesta HTTP válida</span>
+<span class="linenos" data-linenos=" 64 "></span>
+<span class="linenos" data-linenos=" 65 "></span>simular_servidor<span class="w"> </span><span class="m">2222</span><span class="w"> </span><span class="s2">&quot;Servidor SSH&quot;</span><span class="w"> </span><span class="s2">&quot;SSH-2.0-OpenSSH_7.4 Simulado&quot;</span>
+<span class="linenos" data-linenos=" 66 "></span><span class="c1"># Llama a la función con parámetros:</span>
+<span class="linenos" data-linenos=" 67 "></span><span class="c1"># 2222 = puerto del servidor SSH (evita conflicto con puerto 22)</span>
+<span class="linenos" data-linenos=" 68 "></span><span class="c1"># &quot;Servidor SSH&quot; = nombre descriptivo del servidor</span>
+<span class="linenos" data-linenos=" 69 "></span><span class="c1"># &quot;SSH-2.0-OpenSSH_7.4 Simulado&quot; = banner típico de servidor SSH</span>
+<span class="linenos" data-linenos=" 70 "></span>
+<span class="linenos" data-linenos=" 71 "></span>simular_servidor<span class="w"> </span><span class="m">3306</span><span class="w"> </span><span class="s2">&quot;Servidor MySQL&quot;</span><span class="w"> </span><span class="s2">&quot;MySQL Simulado - Puerto 3306&quot;</span>
+<span class="linenos" data-linenos=" 72 "></span><span class="c1"># Llama a la función con parámetros:</span>
+<span class="linenos" data-linenos=" 73 "></span><span class="c1"># 3306 = puerto estándar de MySQL</span>
+<span class="linenos" data-linenos=" 74 "></span><span class="c1"># &quot;Servidor MySQL&quot; = nombre descriptivo del servidor</span>
+<span class="linenos" data-linenos=" 75 "></span><span class="c1"># &quot;MySQL Simulado - Puerto 3306&quot; = respuesta que simula MySQL</span>
+<span class="linenos" data-linenos=" 76 "></span>
+<span class="linenos" data-linenos=" 77 "></span>simular_servidor<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="s2">&quot;Servidor FTP&quot;</span><span class="w"> </span><span class="s2">&quot;220 FTP Server Simulado&quot;</span>
+<span class="linenos" data-linenos=" 78 "></span><span class="c1"># Llama a la función con parámetros:</span>
+<span class="linenos" data-linenos=" 79 "></span><span class="c1"># 21 = puerto estándar de FTP</span>
+<span class="linenos" data-linenos=" 80 "></span><span class="c1"># &quot;Servidor FTP&quot; = nombre descriptivo del servidor</span>
+<span class="linenos" data-linenos=" 81 "></span><span class="c1"># &quot;220 FTP Server Simulado&quot; = código de respuesta FTP válido</span>
+<span class="linenos" data-linenos=" 82 "></span>
+<span class="linenos" data-linenos=" 83 "></span>simular_servidor<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="s2">&quot;Servidor SMTP&quot;</span><span class="w"> </span><span class="s2">&quot;220 SMTP Server Simulado&quot;</span>
+<span class="linenos" data-linenos=" 84 "></span><span class="c1"># Llama a la función con parámetros:</span>
+<span class="linenos" data-linenos=" 85 "></span><span class="c1"># 25 = puerto estándar de SMTP (correo electrónico)</span>
+<span class="linenos" data-linenos=" 86 "></span><span class="c1"># &quot;Servidor SMTP&quot; = nombre descriptivo del servidor</span>
+<span class="linenos" data-linenos=" 87 "></span><span class="c1"># &quot;220 SMTP Server Simulado&quot; = código de respuesta SMTP válido</span>
+<span class="linenos" data-linenos=" 88 "></span>
+<span class="linenos" data-linenos=" 89 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 90 "></span><span class="c1"># echo = muestra una línea de separación visual</span>
+<span class="linenos" data-linenos=" 91 "></span>
+<span class="linenos" data-linenos=" 92 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidores simulados iniciados.&quot;</span>
+<span class="linenos" data-linenos=" 93 "></span><span class="c1"># echo = muestra mensaje de confirmación</span>
+<span class="linenos" data-linenos=" 94 "></span><span class="c1"># Servidores simulados iniciados. = texto informativo</span>
+<span class="linenos" data-linenos=" 95 "></span>
+<span class="linenos" data-linenos=" 96 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Para detenerlos: pkill -f nc&quot;</span>
+<span class="linenos" data-linenos=" 97 "></span><span class="c1"># echo = muestra instrucciones para detener los servidores</span>
+<span class="linenos" data-linenos=" 98 "></span><span class="c1"># Para detenerlos: pkill -f nc = comando para matar procesos nc</span>
+<span class="linenos" data-linenos=" 99 "></span>
+<span class="linenos" data-linenos="100 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="101 "></span><span class="c1"># echo = muestra otra línea de separación visual</span>
+</code></pre></div>
+<h3 id="notas-importantes">Notas Importantes<a class="headerlink" href="#notas-importantes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Trabajo colaborativo:</strong> Cada miembro del grupo debe trabajar en módulos diferentes</li>
+<li><strong>Pruebas:</strong> Probar todas las funcionalidades antes de la entrega</li>
+<li><strong>Backup:</strong> Mantener copias de seguridad del trabajo realizado</li>
+<li><strong>Simulación:</strong> Usar las técnicas anteriores para probar el sistema sin servidores reales
+  <!-- - **Control de versiones:** Usar Git para gestionar el código (opcional pero recomendado) -->
+</li>
+</ul>
+<hr />
+<h2 id="enlaces-relacionados">Enlaces Relacionados<a class="headerlink" href="#enlaces-relacionados" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="01ShellScript.html">Volver a ShellScript</a></li>
+</ul>
+<!-- - [Examen de ShellScript](ExamenShellScript.md) -->
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

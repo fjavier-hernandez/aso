@@ -1,0 +1,895 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Examen de evaluación de ShellScript para ASO">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/ExamenShellScript.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Examen ShellScript - ASO - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Examen ShellScript - ASO - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="Examen de evaluación de ShellScript para ASO" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/ExamenShellScript.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/ExamenShellScript.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Examen ShellScript - ASO - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="Examen de evaluación de ShellScript para ASO" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/ExamenShellScript.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#examen-shellscript-aso" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Examen ShellScript - ASO
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instrucciones-generales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instrucciones Generales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instrucciones Generales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recursos-permitidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos Permitidos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-script-basico-8-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1: Script Básico (8 puntos)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-gestion-de-parametros-10-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2: Gestión de Parámetros (10 puntos)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-estructuras-condicionales-12-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 3: Estructuras Condicionales (12 puntos)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-4-bucles-y-arrays-15-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 4: Bucles y Arrays (15 puntos)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-5-gestion-de-archivos-10-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 5: Gestión de Archivos (10 puntos)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-6-script-de-monitoreo-5-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 6: Script de Monitoreo (5 puntos)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de Evaluación General
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Criterios de Evaluación General">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcionalidad-40-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcionalidad (40 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calidad-del-codigo-15-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calidad del Código (15 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-5-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación (5 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instrucciones-de-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instrucciones de Entrega
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-de-estructura-de-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de Estructura de Entrega
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notas-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notas Importantes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="examen-shellscript-aso">Examen ShellScript - ASO<a class="headerlink" href="#examen-shellscript-aso" title="Permanent link">&para;</a></h1>
+<p><strong>Curso:</strong> Administración de Sistemas Operativos<br />
+<strong>Módulo:</strong> ShellScript<br />
+<strong>Duración:</strong> 2 horas<br />
+<strong>Puntuación total:</strong> 60 puntos  </p>
+<!-- **Fecha:** _______________ -->
+
+<hr />
+<h2 id="instrucciones-generales">Instrucciones Generales<a class="headerlink" href="#instrucciones-generales" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Tiempo:</strong> 2 horas (120 minutos)</li>
+<li><strong>Puntuación:</strong> 60 puntos total</li>
+<li><strong>Formato:</strong> Resolver los ejercicios creando scripts en ShellScript</li>
+<li><strong>Entrega:</strong> Crear un directorio <code>examen_[nombre]_[apellidos]</code> con todos los scripts</li>
+<li><strong>Nomenclatura:</strong> Los scripts deben llamarse <code>ejercicio1.sh</code>, <code>ejercicio2.sh</code>, etc.</li>
+<li><strong>Documentación:</strong> Cada script debe incluir comentarios explicativos</li>
+<li><strong>Pruebas:</strong> Verificar que todos los scripts funcionan correctamente</li>
+</ul>
+<h3 id="recursos-permitidos">Recursos Permitidos<a class="headerlink" href="#recursos-permitidos" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Recursos Permitidos</p>
+<p>Durante el examen <strong>SOLO</strong> se permite utilizar:</p>
+<ul>
+<li><strong>Apuntes del tema</strong> <a href="01ShellScript.html">ShellScript</a></li>
+<li><strong>Aules</strong> (plataforma educativa)</li>
+<li><strong>Terminal de bash de LliureX</strong> (para probar los scripts)</li>
+</ul>
+<p><strong>NO se permite:</strong></p>
+<ul>
+<li>Internet (excepto para acceder a Aules)</li>
+<li>Documentación externa</li>
+<li>Ayuda de compañeros</li>
+<li>Dispositivos móviles</li>
+<li>Cualquier otro recurso no autorizado</li>
+</ul>
+</div>
+<hr />
+<h2 id="ejercicio-1-script-basico-8-puntos">Ejercicio 1: Script Básico (8 puntos)<a class="headerlink" href="#ejercicio-1-script-basico-8-puntos" title="Permanent link">&para;</a></h2>
+<p>Crea un script llamado <code>ejercicio1.sh</code> que:</p>
+<ol>
+<li><strong>Muestre un mensaje de bienvenida</strong> con el nombre del usuario actual</li>
+<li><strong>Muestre la fecha y hora actual</strong> del sistema</li>
+<li><strong>Muestre información del sistema</strong> (nombre del host, sistema operativo)</li>
+<li><strong>Cuente el número de archivos</strong> en el directorio actual</li>
+<li><strong>Muestre el espacio libre</strong> en disco</li>
+</ol>
+<p><strong>Criterios de evaluación:</strong></p>
+<ul>
+<li>Uso correcto de variables (2 puntos)</li>
+<li>Comandos del sistema (2 puntos)</li>
+<li>Salida formateada (2 puntos)</li>
+<li>Comentarios y estructura (2 puntos)</li>
+</ul>
+<hr />
+<h2 id="ejercicio-2-gestion-de-parametros-10-puntos">Ejercicio 2: Gestión de Parámetros (10 puntos)<a class="headerlink" href="#ejercicio-2-gestion-de-parametros-10-puntos" title="Permanent link">&para;</a></h2>
+<p>Crea un script llamado <code>ejercicio2.sh</code> que:</p>
+<ol>
+<li><strong>Reciba exactamente 3 parámetros</strong> por línea de comandos</li>
+<li><strong>Valide que se hayan pasado los 3 parámetros</strong> (si no, mostrar error y salir)</li>
+<li><strong>Muestre información sobre los parámetros:</strong></li>
+</ol>
+<ul>
+<li>Número total de parámetros</li>
+<li>Nombre del script</li>
+<li>Los 3 parámetros introducidos</li>
+<li>Los parámetros en orden inverso</li>
+</ul>
+<ol start="4">
+<li><strong>Realice operaciones matemáticas</strong> con los parámetros (asumiendo que son números):</li>
+</ol>
+<ul>
+<li>Suma de los 3 números</li>
+<li>Producto de los 3 números</li>
+<li>Media aritmética</li>
+</ul>
+<p><strong>Ejemplo de uso:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>./ejercicio2.sh<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">15</span>
+</code></pre></div></p>
+<p><strong>Criterios de evaluación:</strong></p>
+<ul>
+<li>Validación de parámetros (3 puntos)</li>
+<li>Uso de variables especiales (2 puntos)</li>
+<li>Operaciones aritméticas (3 puntos)</li>
+<li>Manejo de errores (2 puntos)</li>
+</ul>
+<hr />
+<h2 id="ejercicio-3-estructuras-condicionales-12-puntos">Ejercicio 3: Estructuras Condicionales (12 puntos)<a class="headerlink" href="#ejercicio-3-estructuras-condicionales-12-puntos" title="Permanent link">&para;</a></h2>
+<p>Crea un script llamado <code>ejercicio3.sh</code> que implemente un <strong>sistema de calificaciones</strong>:</p>
+<ol>
+<li><strong>Pida al usuario</strong> que introduzca una nota (número entero del 0 al 10)</li>
+<li><strong>Valide la entrada</strong> (debe ser un número entre 0 y 10)</li>
+<li><strong>Use una estructura <code>case</code></strong> para mostrar la calificación según la nota:</li>
+</ol>
+<ul>
+<li>0-4: "SUSPENSO"</li>
+<li>5: "SUFICIENTE"</li>
+<li>6: "BIEN"</li>
+<li>7-8: "NOTABLE"</li>
+<li>9-10: "SOBRESALIENTE"</li>
+</ul>
+<ol start="4">
+<li><strong>Añada funcionalidad extra:</strong></li>
+</ol>
+<ul>
+<li>Si la nota es 10, mostrar "¡FELICITACIONES!"</li>
+<li>Si la nota es menor que 5, mostrar "Necesitas estudiar más"</li>
+<li>Mostrar el porcentaje correspondiente a la nota</li>
+</ul>
+<p><strong>Criterios de evaluación:</strong></p>
+<ul>
+<li>Estructura case correcta (4 puntos)</li>
+<li>Validación de entrada (3 puntos)</li>
+<li>Funcionalidades adicionales (3 puntos)</li>
+<li>Interfaz de usuario (2 puntos)</li>
+</ul>
+<hr />
+<h2 id="ejercicio-4-bucles-y-arrays-15-puntos">Ejercicio 4: Bucles y Arrays (15 puntos)<a class="headerlink" href="#ejercicio-4-bucles-y-arrays-15-puntos" title="Permanent link">&para;</a></h2>
+<p>Crea un script llamado <code>ejercicio4.sh</code> que:</p>
+<ol>
+<li><strong>Cree un array</strong> con los nombres de 5 ciudades</li>
+<li><strong>Use un bucle <code>for</code></strong> para mostrar todas las ciudades</li>
+<li><strong>Implemente un menú</strong> con las siguientes opciones:</li>
+</ol>
+<ul>
+<li>Mostrar ciudades en orden normal</li>
+<li>Mostrar ciudades en orden inverso</li>
+<li>Mostrar ciudades ordenadas alfabéticamente</li>
+<li>Buscar una ciudad específica</li>
+<li>Mostrar estadísticas (número total, primera, última)</li>
+<li>Salir</li>
+</ul>
+<ol start="4">
+<li><strong>Use <code>select</code></strong> para el menú interactivo</li>
+<li><strong>Implemente todas las opciones</strong> usando funciones</li>
+</ol>
+<p><strong>Criterios de evaluación:</strong></p>
+<ul>
+<li>Creación y uso de arrays (4 puntos)</li>
+<li>Implementación del menú con select (4 puntos)</li>
+<li>Funciones para cada opción (4 puntos)</li>
+<li>Búsqueda y ordenación (3 puntos)</li>
+</ul>
+<hr />
+<h2 id="ejercicio-5-gestion-de-archivos-10-puntos">Ejercicio 5: Gestión de Archivos (10 puntos)<a class="headerlink" href="#ejercicio-5-gestion-de-archivos-10-puntos" title="Permanent link">&para;</a></h2>
+<p>Crea un script llamado <code>ejercicio5.sh</code> que:</p>
+<ol>
+<li><strong>Cree un archivo de texto</strong> llamado <code>datos.txt</code> con información de usuarios</li>
+<li><strong>Formato del archivo:</strong> <code>nombre#edad#ciudad#telefono</code></li>
+<li><strong>Implemente las siguientes funciones:</strong></li>
+</ol>
+<ul>
+<li><code>añadir_usuario()</code>: Añadir nuevo usuario</li>
+<li><code>listar_usuarios()</code>: Mostrar todos los usuarios</li>
+<li><code>buscar_usuario()</code>: Buscar por nombre</li>
+<li><code>usuarios_por_ciudad()</code>: Mostrar usuarios de una ciudad</li>
+<li><code>estadisticas()</code>: Mostrar estadísticas (total usuarios, edad media)</li>
+</ul>
+<ol start="4">
+<li><strong>Use un menú</strong> para acceder a las funciones</li>
+<li><strong>Valide las entradas</strong> del usuario</li>
+</ol>
+<p><strong>Ejemplo de datos:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Juan#25#Madrid#123456789
+<span class="linenos" data-linenos="2 "></span>María#30#Barcelona#987654321
+<span class="linenos" data-linenos="3 "></span>Pedro#22#Valencia#555666777
+</code></pre></div></p>
+<p><strong>Criterios de evaluación:</strong></p>
+<ul>
+<li>Gestión de archivos (3 puntos)</li>
+<li>Funciones implementadas (4 puntos)</li>
+<li>Validación de datos (2 puntos)</li>
+<li>Interfaz de usuario (1 punto)</li>
+</ul>
+<hr />
+<h2 id="ejercicio-6-script-de-monitoreo-5-puntos">Ejercicio 6: Script de Monitoreo (5 puntos)<a class="headerlink" href="#ejercicio-6-script-de-monitoreo-5-puntos" title="Permanent link">&para;</a></h2>
+<p>Crea un script llamado <code>ejercicio6.sh</code> que:</p>
+<ol>
+<li><strong>Monitoree el estado</strong> de 3 servicios simulados (usando las IPs: 8.8.8.8, 1.1.1.1, 127.0.0.1)</li>
+<li><strong>Use <code>ping</code></strong> para verificar la conectividad</li>
+<li><strong>Genere un informe</strong> con:</li>
+</ol>
+<ul>
+<li>Estado de cada servicio (activo/inactivo)</li>
+<li>Tiempo de respuesta</li>
+<li>Porcentaje de disponibilidad</li>
+</ul>
+<ol start="4">
+<li><strong>Guarde el informe</strong> en un archivo <code>informe_$(date +%Y%m%d_%H%M%S).log</code></li>
+<li><strong>Muestre un resumen</strong> por pantalla</li>
+</ol>
+<p><strong>Criterios de evaluación:</strong></p>
+<ul>
+<li>Comando ping y redirecciones (2 puntos)</li>
+<li>Generación de informe (2 puntos)</li>
+<li>Formato de salida (1 punto)</li>
+</ul>
+<hr />
+<h2 id="criterios-de-evaluacion-general">Criterios de Evaluación General<a class="headerlink" href="#criterios-de-evaluacion-general" title="Permanent link">&para;</a></h2>
+<h3 id="funcionalidad-40-puntos">Funcionalidad (40 puntos)<a class="headerlink" href="#funcionalidad-40-puntos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Ejercicio 1:</strong> 8 puntos</li>
+<li><strong>Ejercicio 2:</strong> 10 puntos  </li>
+<li><strong>Ejercicio 3:</strong> 12 puntos</li>
+<li><strong>Ejercicio 4:</strong> 15 puntos</li>
+<li><strong>Ejercicio 5:</strong> 10 puntos</li>
+<li><strong>Ejercicio 6:</strong> 5 puntos</li>
+</ul>
+<h3 id="calidad-del-codigo-15-puntos">Calidad del Código (15 puntos)<a class="headerlink" href="#calidad-del-codigo-15-puntos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Comentarios:</strong> 5 puntos</li>
+<li><strong>Estructura y organización:</strong> 5 puntos</li>
+<li><strong>Buenas prácticas:</strong> 5 puntos</li>
+</ul>
+<h3 id="documentacion-5-puntos">Documentación (5 puntos)<a class="headerlink" href="#documentacion-5-puntos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>README.md</strong> con instrucciones de uso</li>
+<li><strong>Explicación de cada script</strong></li>
+<li><strong>Ejemplos de ejecución</strong></li>
+</ul>
+<hr />
+<h2 id="instrucciones-de-entrega">Instrucciones de Entrega<a class="headerlink" href="#instrucciones-de-entrega" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Crear directorio:</strong> <code>examen_[nombre]_[apellidos]</code></li>
+<li><strong>Incluir todos los scripts</strong> con nombres correctos</li>
+<li><strong>Añadir archivo README.md</strong> con:
+   - Descripción de cada ejercicio
+   - Instrucciones de ejecución
+   - Capturas de pantalla (opcional)</li>
+<li><strong>Comprimir en ZIP</strong> el directorio completo</li>
+<li><strong>Subir al Moodle</strong> antes del tiempo límite</li>
+</ol>
+<hr />
+<h2 id="ejemplo-de-estructura-de-entrega">Ejemplo de Estructura de Entrega<a class="headerlink" href="#ejemplo-de-estructura-de-entrega" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>examen_juan_garcia/
+<span class="linenos" data-linenos="2 "></span>├── ejercicio1.sh
+<span class="linenos" data-linenos="3 "></span>├── ejercicio2.sh
+<span class="linenos" data-linenos="4 "></span>├── ejercicio3.sh
+<span class="linenos" data-linenos="5 "></span>├── ejercicio4.sh
+<span class="linenos" data-linenos="6 "></span>├── ejercicio5.sh
+<span class="linenos" data-linenos="7 "></span>├── ejercicio6.sh
+<span class="linenos" data-linenos="8 "></span>├── README.md
+<span class="linenos" data-linenos="9 "></span>└── datos.txt (generado por ejercicio5.sh)
+</code></pre></div>
+<hr />
+<h2 id="notas-importantes">Notas Importantes<a class="headerlink" href="#notas-importantes" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Recursos:</strong> Recuerda que solo puedes usar los apuntes, Aules y el terminal de LliureX</li>
+<li><strong>Tiempo:</strong> Gestiona bien el tiempo, cada ejercicio tiene diferente dificultad</li>
+<li><strong>Pruebas:</strong> Verifica que todos los scripts funcionan antes de entregar</li>
+<li><strong>Comentarios:</strong> Incluye comentarios explicativos en cada script</li>
+<li><strong>Validación:</strong> Implementa validaciones de entrada donde sea necesario</li>
+<li><strong>Errores:</strong> Maneja posibles errores de forma adecuada</li>
+<li><strong>Integridad:</strong> El uso de recursos no autorizados supondrá la anulación del examen</li>
+</ul>
+<hr />
+<p><strong>¡Buena suerte!</strong></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>
