@@ -784,6 +784,66 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#llamada-a-scripts-externos-como-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llamada a Scripts Externos como Funciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Llamada a Scripts Externos como Funciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodo-1-usando-source-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      Método 1: Usando source o .
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodo-2-ejecutando-scripts-como-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Método 2: Ejecutando Scripts como Comandos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-practico-sistema-modular" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo Práctico: Sistema Modular
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-la-modularizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas de la Modularización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consideraciones-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consideraciones Importantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1283,6 +1343,66 @@
       Funciones en shell script
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llamada-a-scripts-externos-como-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llamada a Scripts Externos como Funciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Llamada a Scripts Externos como Funciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodo-1-usando-source-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      Método 1: Usando source o .
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodo-2-ejecutando-scripts-como-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Método 2: Ejecutando Scripts como Comandos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-practico-sistema-modular" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo Práctico: Sistema Modular
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-la-modularizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas de la Modularización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consideraciones-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consideraciones Importantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2690,22 +2810,8 @@ enero febrero marzo abril</p>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span>código<span class="w"> </span>que<span class="w"> </span>se<span class="w"> </span>ejecutará<span class="w"> </span>al<span class="w"> </span>llamar<span class="w"> </span>a<span class="w"> </span>la<span class="w"> </span>función
 <span class="linenos" data-linenos="3 "></span><span class="o">}</span>
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
 <ul>
-<li><code>source</code></li>
-<li>Para incluir el código de un fichero en otro tan sólo será necesario utilizar la palabra source seguida de la ruta de ese fichero. * * También es posible usar el punto para poder cargarlo:</li>
-<li><code>source funciones.sh</code> o <code>./funciones.sh</code></li>
-</ul>
-</div>
-<ul>
-<li>Las funciones suelen declararse al inicio del documento y luego utilizadas a lo largo del programa.</li>
-<li>
-<p>Uno de los objetivos es optimizar el código, mediante el "aprovechamiento" de código. Cuando un conjunto de líneas de código se repiten, es posible agruparlas bajo un nombre y utilizar ese nombre en lugar de repetir este código.</p>
-</li>
-<li>
-<p>Ejemplo:</p>
-</li>
+<li>Ejemplo:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">##! /bin/bash</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">function</span><span class="w"> </span>imprimir_tabla<span class="o">(){</span>
@@ -2733,6 +2839,172 @@ enero febrero marzo abril</p>
 <li>Es preferible utilizar el primer método para que devuelva un valor que será recogido en otra variable fuera de la función que lo originó.</li>
 </ul>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li><code>source</code></li>
+<li>Para incluir el código de un fichero en otro tan sólo será necesario utilizar la palabra source seguida de la ruta de ese fichero. * * También es posible usar el punto para poder cargarlo:</li>
+<li><code>source funciones.sh</code> o <code>./funciones.sh</code></li>
+</ul>
+</div>
+<h3 id="llamada-a-scripts-externos-como-funciones">Llamada a Scripts Externos como Funciones<a class="headerlink" href="#llamada-a-scripts-externos-como-funciones" title="Permanent link">&para;</a></h3>
+<ul>
+<li>En ocasiones es útil <strong>modularizar</strong> un script principal dividiéndolo en varios archivos <code>.sh</code> que actúen como funciones especializadas.</li>
+<li>Esto permite <strong>organizar mejor el código</strong> y <strong>reutilizar</strong> scripts en diferentes proyectos.</li>
+</ul>
+<h4 id="metodo-1-usando-source-o">Método 1: Usando <code>source</code> o <code>.</code><a class="headerlink" href="#metodo-1-usando-source-o" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>source</code></strong> ejecuta el script en el contexto actual del shell, permitiendo compartir variables.</li>
+<li><strong><code>.</code></strong> es equivalente a <code>source</code> pero más corto.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># script_principal.sh</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Cargar funciones desde archivos externos</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nb">source</span><span class="w"> </span>./funciones_servidor.sh
+<span class="linenos" data-linenos=" 6 "></span><span class="nb">source</span><span class="w"> </span>./monitoreo.sh
+<span class="linenos" data-linenos=" 7 "></span><span class="nb">source</span><span class="w"> </span>./backup.sh
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># Ahora podemos usar las funciones definidas en esos archivos</span>
+<span class="linenos" data-linenos="10 "></span>menu_principal<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== MENÚ PRINCIPAL ===&quot;</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Gestión de servidores&quot;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Monitoreo&quot;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Backup&quot;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>gestionar_servidores<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>monitorear_sistema<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">        </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>crear_backup<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="k">esac</span>
+<span class="linenos" data-linenos="22 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="c1"># Ejecutar menú principal</span>
+<span class="linenos" data-linenos="25 "></span>menu_principal
+</code></pre></div>
+<h4 id="metodo-2-ejecutando-scripts-como-comandos">Método 2: Ejecutando Scripts como Comandos<a class="headerlink" href="#metodo-2-ejecutando-scripts-como-comandos" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Los scripts se ejecutan como <strong>subprocesos independientes</strong>.</li>
+<li>No comparten variables con el script principal.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># script_principal.sh</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>menu_principal<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== MENÚ PRINCIPAL ===&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Gestión de servidores&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Monitoreo&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Backup&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>./funciones_servidor.sh<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>./monitoreo.sh<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>./backup.sh<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">esac</span>
+<span class="linenos" data-linenos="16 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span><span class="c1"># Ejecutar menú principal</span>
+<span class="linenos" data-linenos="19 "></span>menu_principal
+</code></pre></div>
+<h4 id="ejemplo-practico-sistema-modular">Ejemplo Práctico: Sistema Modular<a class="headerlink" href="#ejemplo-practico-sistema-modular" title="Permanent link">&para;</a></h4>
+<p><strong>Estructura de archivos:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sistema_gestion/
+<span class="linenos" data-linenos="2 "></span>├── menu_principal.sh
+<span class="linenos" data-linenos="3 "></span>├── funciones_servidor.sh
+<span class="linenos" data-linenos="4 "></span>├── monitoreo.sh
+<span class="linenos" data-linenos="5 "></span>├── backup.sh
+<span class="linenos" data-linenos="6 "></span>└── configuracion.conf
+</code></pre></div></p>
+<p><strong>menu_principal.sh:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># Cargar configuración</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nb">source</span><span class="w"> </span>./configuracion.conf
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Cargar módulos</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nb">source</span><span class="w"> </span>./funciones_servidor.sh
+<span class="linenos" data-linenos=" 7 "></span><span class="nb">source</span><span class="w"> </span>./monitoreo.sh
+<span class="linenos" data-linenos=" 8 "></span><span class="nb">source</span><span class="w"> </span>./backup.sh
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Función principal</span>
+<span class="linenos" data-linenos="11 "></span>main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span>clear
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== SISTEMA DE GESTIÓN ===&quot;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Gestión de servidores&quot;</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Monitoreo del sistema&quot;</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Copias de seguridad&quot;</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;4) Salir&quot;</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">            </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>gestionar_servidores<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">            </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>monitorear_sistema<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">            </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>crear_backup<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">            </span><span class="m">4</span><span class="o">)</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">            </span>*<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Opción inválida&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">        </span><span class="k">esac</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="k">done</span>
+<span class="linenos" data-linenos="29 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="30 "></span>
+<span class="linenos" data-linenos="31 "></span><span class="c1"># Ejecutar programa principal</span>
+<span class="linenos" data-linenos="32 "></span>main
+</code></pre></div></p>
+<p><strong>funciones_servidor.sh:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># Módulo de gestión de servidores</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>gestionar_servidores<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== GESTIÓN DE SERVIDORES ===&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Listar servidores&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Añadir servidor&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Buscar servidor&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>listar_servidores<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>añadir_servidor<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>buscar_servidor<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">esac</span>
+<span class="linenos" data-linenos="16 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span>listar_servidores<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Listando servidores...&quot;</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="c1"># Código para listar servidores</span>
+<span class="linenos" data-linenos="21 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="22 "></span>
+<span class="linenos" data-linenos="23 "></span>añadir_servidor<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Añadiendo servidor...&quot;</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">    </span><span class="c1"># Código para añadir servidor</span>
+<span class="linenos" data-linenos="26 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span>buscar_servidor<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Buscando servidor...&quot;</span>
+<span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="c1"># Código para buscar servidor</span>
+<span class="linenos" data-linenos="31 "></span><span class="o">}</span>
+</code></pre></div></p>
+<h4 id="ventajas-de-la-modularizacion">Ventajas de la Modularización<a class="headerlink" href="#ventajas-de-la-modularizacion" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Organización:</strong> Código más limpio y organizado</li>
+<li><strong>Reutilización:</strong> Scripts pueden usarse en otros proyectos</li>
+<li><strong>Mantenimiento:</strong> Fácil modificar módulos específicos</li>
+<li><strong>Colaboración:</strong> Diferentes personas pueden trabajar en módulos diferentes</li>
+<li><strong>Debugging:</strong> Más fácil localizar y corregir errores</li>
+</ul>
+<h4 id="consideraciones-importantes">Consideraciones Importantes<a class="headerlink" href="#consideraciones-importantes" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Permisos:</strong> Asegurar que los scripts tengan permisos de ejecución (<code>chmod +x</code>)</li>
+<li><strong>Rutas:</strong> Usar rutas relativas o absolutas correctas</li>
+<li><strong>Variables:</strong> Con <code>source</code> se comparten variables, con ejecución directa no</li>
+<li>
+<p><strong>Dependencias:</strong> Verificar que todos los módulos necesarios estén disponibles</p>
+</li>
+<li>
+<p>Las funciones suelen declararse al inicio del documento y luego utilizadas a lo largo del programa.</p>
+</li>
+<li>Uno de los objetivos es optimizar el código, mediante el "aprovechamiento" de código. Cuando un conjunto de líneas de código se repiten, es posible agruparlas bajo un nombre y utilizar ese nombre en lugar de repetir este código.</li>
+</ul>
 <hr />
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
