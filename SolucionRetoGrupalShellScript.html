@@ -1,0 +1,1621 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Propuesta de solución completa con comentarios detallados línea por línea">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/SolucionRetoGrupalShellScript.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Solución del Reto Grupal - Sistema de Gestión de Servidores - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Solución del Reto Grupal - Sistema de Gestión de Servidores - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="Propuesta de solución completa con comentarios detallados línea por línea" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/SolucionRetoGrupalShellScript.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/SolucionRetoGrupalShellScript.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Solución del Reto Grupal - Sistema de Gestión de Servidores - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="Propuesta de solución completa con comentarios detallados línea por línea" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/SolucionRetoGrupalShellScript.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#solucion-del-reto-grupal-sistema-de-gestion-de-servidores" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Solución del Reto Grupal - Sistema de Gestión de Servidores
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archivo-principal-menu_principalsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivo Principal: menu_principal.sh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-de-gestion-de-servidores-funciones_servidorsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Módulo de Gestión de Servidores: funciones_servidor.sh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-de-monitoreo-monitoreosh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Módulo de Monitoreo: monitoreo.sh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-de-backup-backupsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Módulo de Backup: backup.sh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archivo-de-configuracion-configuracionconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivo de Configuración: configuracion.conf
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archivo-de-servidores-de-ejemplo-servidorestxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivo de Servidores de Ejemplo: servidores.txt
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script-de-inicio-iniciar_sistemash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Script de Inicio: iniciar_sistema.sh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristicas-de-la-solucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características de la Solución
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Características de la Solución">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcionalidades-implementadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcionalidades Implementadas:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnicas-de-shellscript-utilizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Técnicas de ShellScript Utilizadas:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comentarios-detallados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comentarios Detallados:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="solucion-del-reto-grupal-sistema-de-gestion-de-servidores">Solución del Reto Grupal: Sistema de Gestión de Servidores<a class="headerlink" href="#solucion-del-reto-grupal-sistema-de-gestion-de-servidores" title="Permanent link">&para;</a></h1>
+<p>Esta propuesta de solución incluye todos los elementos requeridos en el reto grupal, con comentarios detallados para facilitar la comprensión del código.</p>
+<h2 id="estructura-del-proyecto">Estructura del Proyecto<a class="headerlink" href="#estructura-del-proyecto" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>sistema_gestion_servidores/
+<span class="linenos" data-linenos=" 2 "></span>├── menu_principal.sh
+<span class="linenos" data-linenos=" 3 "></span>├── funciones_servidor.sh
+<span class="linenos" data-linenos=" 4 "></span>├── monitoreo.sh
+<span class="linenos" data-linenos=" 5 "></span>├── backup.sh
+<span class="linenos" data-linenos=" 6 "></span>├── configuracion.conf
+<span class="linenos" data-linenos=" 7 "></span>├── servidores.txt
+<span class="linenos" data-linenos=" 8 "></span>├── logs/
+<span class="linenos" data-linenos=" 9 "></span>│   ├── sistema.log
+<span class="linenos" data-linenos="10 "></span>│   └── errores.log
+<span class="linenos" data-linenos="11 "></span>└── backups/
+<span class="linenos" data-linenos="12 "></span>    └── backup_servidores_YYYYMMDD.tar.gz
+</code></pre></div>
+<h2 id="archivo-principal-menu_principalsh">Archivo Principal: menu_principal.sh<a class="headerlink" href="#archivo-principal-menu_principalsh" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="  1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="  2 "></span><span class="c1"># Shebang: indica que el script debe ejecutarse con bash</span>
+<span class="linenos" data-linenos="  3 "></span>
+<span class="linenos" data-linenos="  4 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="  5 "></span><span class="c1"># Sistema de Gestión de Servidores</span>
+<span class="linenos" data-linenos="  6 "></span><span class="c1"># Reto Grupal ShellScript</span>
+<span class="linenos" data-linenos="  7 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="  8 "></span>
+<span class="linenos" data-linenos="  9 "></span><span class="c1"># Cargar configuración del sistema</span>
+<span class="linenos" data-linenos=" 10 "></span><span class="nb">source</span><span class="w"> </span>configuracion.conf
+<span class="linenos" data-linenos=" 11 "></span><span class="c1"># source = ejecuta el archivo en el contexto actual del shell</span>
+<span class="linenos" data-linenos=" 12 "></span><span class="c1"># configuracion.conf = archivo que contiene variables de configuración</span>
+<span class="linenos" data-linenos=" 13 "></span>
+<span class="linenos" data-linenos=" 14 "></span><span class="c1"># Cargar módulos del sistema</span>
+<span class="linenos" data-linenos=" 15 "></span><span class="nb">source</span><span class="w"> </span>funciones_servidor.sh
+<span class="linenos" data-linenos=" 16 "></span><span class="c1"># source = carga las funciones de gestión de servidores</span>
+<span class="linenos" data-linenos=" 17 "></span><span class="nb">source</span><span class="w"> </span>monitoreo.sh
+<span class="linenos" data-linenos=" 18 "></span><span class="c1"># source = carga las funciones de monitoreo</span>
+<span class="linenos" data-linenos=" 19 "></span><span class="nb">source</span><span class="w"> </span>backup.sh
+<span class="linenos" data-linenos=" 20 "></span><span class="c1"># source = carga las funciones de backup</span>
+<span class="linenos" data-linenos=" 21 "></span>
+<span class="linenos" data-linenos=" 22 "></span><span class="c1"># Función principal del programa</span>
+<span class="linenos" data-linenos=" 23 "></span>main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 24 "></span><span class="w">    </span><span class="c1"># function = define una función llamada main</span>
+<span class="linenos" data-linenos=" 25 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código de la función</span>
+<span class="linenos" data-linenos=" 26 "></span>
+<span class="linenos" data-linenos=" 27 "></span><span class="w">    </span><span class="c1"># Bucle principal del programa</span>
+<span class="linenos" data-linenos=" 28 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos=" 29 "></span><span class="w">        </span><span class="c1"># while true = bucle infinito que se ejecuta continuamente</span>
+<span class="linenos" data-linenos=" 30 "></span><span class="w">        </span><span class="c1"># do = inicio del bloque de código del bucle</span>
+<span class="linenos" data-linenos=" 31 "></span>
+<span class="linenos" data-linenos=" 32 "></span><span class="w">        </span><span class="c1"># Limpiar pantalla para mejor presentación</span>
+<span class="linenos" data-linenos=" 33 "></span><span class="w">        </span>clear
+<span class="linenos" data-linenos=" 34 "></span><span class="w">        </span><span class="c1"># clear = comando que limpia la pantalla del terminal</span>
+<span class="linenos" data-linenos=" 35 "></span>
+<span class="linenos" data-linenos=" 36 "></span><span class="w">        </span><span class="c1"># Mostrar encabezado del sistema</span>
+<span class="linenos" data-linenos=" 37 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 38 "></span><span class="w">        </span><span class="c1"># echo = muestra texto por pantalla</span>
+<span class="linenos" data-linenos=" 39 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    SISTEMA DE GESTIÓN DE SERVIDORES&quot;</span>
+<span class="linenos" data-linenos=" 40 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 41 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos=" 42 "></span>
+<span class="linenos" data-linenos=" 43 "></span><span class="w">        </span><span class="c1"># Mostrar opciones del menú principal</span>
+<span class="linenos" data-linenos=" 44 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Gestión de servidores&quot;</span>
+<span class="linenos" data-linenos=" 45 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Monitoreo del sistema&quot;</span>
+<span class="linenos" data-linenos=" 46 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Copias de seguridad&quot;</span>
+<span class="linenos" data-linenos=" 47 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;4) Configuración del sistema&quot;</span>
+<span class="linenos" data-linenos=" 48 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;5) Salir&quot;</span>
+<span class="linenos" data-linenos=" 49 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos=" 50 "></span>
+<span class="linenos" data-linenos=" 51 "></span><span class="w">        </span><span class="c1"># Solicitar opción al usuario</span>
+<span class="linenos" data-linenos=" 52 "></span><span class="w">        </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona una opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos=" 53 "></span><span class="w">        </span><span class="c1"># read -p = lee entrada del usuario mostrando un mensaje previo</span>
+<span class="linenos" data-linenos=" 54 "></span><span class="w">        </span><span class="c1"># opcion = variable donde se almacena la entrada del usuario</span>
+<span class="linenos" data-linenos=" 55 "></span>
+<span class="linenos" data-linenos=" 56 "></span><span class="w">        </span><span class="c1"># Evaluar la opción seleccionada</span>
+<span class="linenos" data-linenos=" 57 "></span><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos=" 58 "></span><span class="w">            </span><span class="c1"># case = estructura de control para múltiples opciones</span>
+<span class="linenos" data-linenos=" 59 "></span><span class="w">            </span><span class="c1"># $opcion = variable que contiene la opción seleccionada</span>
+<span class="linenos" data-linenos=" 60 "></span><span class="w">            </span><span class="c1"># in = inicio de las opciones posibles</span>
+<span class="linenos" data-linenos=" 61 "></span>
+<span class="linenos" data-linenos=" 62 "></span><span class="w">            </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>gestionar_servidores<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 63 "></span><span class="w">            </span><span class="c1"># 1) = si la opción es 1</span>
+<span class="linenos" data-linenos=" 64 "></span><span class="w">            </span><span class="c1"># gestionar_servidores = llama a la función correspondiente</span>
+<span class="linenos" data-linenos=" 65 "></span><span class="w">            </span><span class="c1"># ;; = fin de esta opción</span>
+<span class="linenos" data-linenos=" 66 "></span>
+<span class="linenos" data-linenos=" 67 "></span><span class="w">            </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>monitorear_sistema<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 68 "></span><span class="w">            </span><span class="c1"># 2) = si la opción es 2</span>
+<span class="linenos" data-linenos=" 69 "></span><span class="w">            </span><span class="c1"># monitorear_sistema = llama a la función correspondiente</span>
+<span class="linenos" data-linenos=" 70 "></span>
+<span class="linenos" data-linenos=" 71 "></span><span class="w">            </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>gestionar_backups<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 72 "></span><span class="w">            </span><span class="c1"># 3) = si la opción es 3</span>
+<span class="linenos" data-linenos=" 73 "></span><span class="w">            </span><span class="c1"># gestionar_backups = llama a la función correspondiente</span>
+<span class="linenos" data-linenos=" 74 "></span>
+<span class="linenos" data-linenos=" 75 "></span><span class="w">            </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>configurar_sistema<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 76 "></span><span class="w">            </span><span class="c1"># 4) = si la opción es 4</span>
+<span class="linenos" data-linenos=" 77 "></span><span class="w">            </span><span class="c1"># configurar_sistema = llama a la función correspondiente</span>
+<span class="linenos" data-linenos=" 78 "></span>
+<span class="linenos" data-linenos=" 79 "></span><span class="w">            </span><span class="m">5</span><span class="o">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 80 "></span><span class="w">                </span><span class="c1"># 5) = si la opción es 5</span>
+<span class="linenos" data-linenos=" 81 "></span><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Saliendo del sistema...&quot;</span>
+<span class="linenos" data-linenos=" 82 "></span><span class="w">                </span><span class="c1"># echo = muestra mensaje de despedida</span>
+<span class="linenos" data-linenos=" 83 "></span><span class="w">                </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<span class="linenos" data-linenos=" 84 "></span><span class="w">                </span><span class="c1"># exit 0 = termina el programa con código de éxito</span>
+<span class="linenos" data-linenos=" 85 "></span><span class="w">                </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 86 "></span><span class="w">                </span><span class="c1"># ;; = fin de esta opción</span>
+<span class="linenos" data-linenos=" 87 "></span>
+<span class="linenos" data-linenos=" 88 "></span><span class="w">            </span>*<span class="o">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 89 "></span><span class="w">                </span><span class="c1"># *) = opción por defecto (cualquier otra opción)</span>
+<span class="linenos" data-linenos=" 90 "></span><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Opción inválida. Inténtalo de nuevo.&quot;</span>
+<span class="linenos" data-linenos=" 91 "></span><span class="w">                </span><span class="c1"># echo = muestra mensaje de error</span>
+<span class="linenos" data-linenos=" 92 "></span><span class="w">                </span>sleep<span class="w"> </span><span class="m">2</span>
+<span class="linenos" data-linenos=" 93 "></span><span class="w">                </span><span class="c1"># sleep 2 = pausa la ejecución por 2 segundos</span>
+<span class="linenos" data-linenos=" 94 "></span><span class="w">                </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 95 "></span><span class="w">                </span><span class="c1"># ;; = fin de esta opción</span>
+<span class="linenos" data-linenos=" 96 "></span><span class="w">        </span><span class="k">esac</span>
+<span class="linenos" data-linenos=" 97 "></span><span class="w">        </span><span class="c1"># esac = fin de la estructura case</span>
+<span class="linenos" data-linenos=" 98 "></span>
+<span class="linenos" data-linenos=" 99 "></span><span class="w">    </span><span class="k">done</span>
+<span class="linenos" data-linenos="100 "></span><span class="w">    </span><span class="c1"># done = fin del bucle while</span>
+<span class="linenos" data-linenos="101 "></span>
+<span class="linenos" data-linenos="102 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="103 "></span><span class="c1"># } = fin de la función main</span>
+<span class="linenos" data-linenos="104 "></span>
+<span class="linenos" data-linenos="105 "></span><span class="c1"># Ejecutar función principal</span>
+<span class="linenos" data-linenos="106 "></span>main
+<span class="linenos" data-linenos="107 "></span><span class="c1"># main = llama a la función principal para iniciar el programa</span>
+</code></pre></div>
+<h2 id="modulo-de-gestion-de-servidores-funciones_servidorsh">Módulo de Gestión de Servidores: funciones_servidor.sh<a class="headerlink" href="#modulo-de-gestion-de-servidores-funciones_servidorsh" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="  1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="  2 "></span><span class="c1"># Shebang: indica que el script debe ejecutarse con bash</span>
+<span class="linenos" data-linenos="  3 "></span>
+<span class="linenos" data-linenos="  4 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="  5 "></span><span class="c1"># Módulo de Gestión de Servidores</span>
+<span class="linenos" data-linenos="  6 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="  7 "></span>
+<span class="linenos" data-linenos="  8 "></span><span class="c1"># Función para gestionar servidores</span>
+<span class="linenos" data-linenos="  9 "></span>gestionar_servidores<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 10 "></span><span class="w">    </span><span class="c1"># function = define una función llamada gestionar_servidores</span>
+<span class="linenos" data-linenos=" 11 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código de la función</span>
+<span class="linenos" data-linenos=" 12 "></span>
+<span class="linenos" data-linenos=" 13 "></span><span class="w">    </span><span class="c1"># Bucle del menú de gestión de servidores</span>
+<span class="linenos" data-linenos=" 14 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos=" 15 "></span><span class="w">        </span><span class="c1"># while true = bucle infinito</span>
+<span class="linenos" data-linenos=" 16 "></span><span class="w">        </span><span class="c1"># do = inicio del bloque de código del bucle</span>
+<span class="linenos" data-linenos=" 17 "></span>
+<span class="linenos" data-linenos=" 18 "></span><span class="w">        </span><span class="c1"># Limpiar pantalla</span>
+<span class="linenos" data-linenos=" 19 "></span><span class="w">        </span>clear
+<span class="linenos" data-linenos=" 20 "></span><span class="w">        </span><span class="c1"># clear = limpia la pantalla</span>
+<span class="linenos" data-linenos=" 21 "></span>
+<span class="linenos" data-linenos=" 22 "></span><span class="w">        </span><span class="c1"># Mostrar encabezado del módulo</span>
+<span class="linenos" data-linenos=" 23 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 24 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    GESTIÓN DE SERVIDORES&quot;</span>
+<span class="linenos" data-linenos=" 25 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 26 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos=" 27 "></span>
+<span class="linenos" data-linenos=" 28 "></span><span class="w">        </span><span class="c1"># Mostrar opciones del menú</span>
+<span class="linenos" data-linenos=" 29 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Listar servidores&quot;</span>
+<span class="linenos" data-linenos=" 30 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Añadir servidor&quot;</span>
+<span class="linenos" data-linenos=" 31 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Buscar servidor&quot;</span>
+<span class="linenos" data-linenos=" 32 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;4) Modificar servidor&quot;</span>
+<span class="linenos" data-linenos=" 33 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;5) Eliminar servidor&quot;</span>
+<span class="linenos" data-linenos=" 34 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;6) Volver al menú principal&quot;</span>
+<span class="linenos" data-linenos=" 35 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos=" 36 "></span>
+<span class="linenos" data-linenos=" 37 "></span><span class="w">        </span><span class="c1"># Solicitar opción al usuario</span>
+<span class="linenos" data-linenos=" 38 "></span><span class="w">        </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona una opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos=" 39 "></span><span class="w">        </span><span class="c1"># read -p = lee entrada del usuario</span>
+<span class="linenos" data-linenos=" 40 "></span><span class="w">        </span><span class="c1"># opcion = variable para almacenar la opción</span>
+<span class="linenos" data-linenos=" 41 "></span>
+<span class="linenos" data-linenos=" 42 "></span><span class="w">        </span><span class="c1"># Evaluar opción seleccionada</span>
+<span class="linenos" data-linenos=" 43 "></span><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos=" 44 "></span><span class="w">            </span><span class="c1"># case = estructura de control múltiple</span>
+<span class="linenos" data-linenos=" 45 "></span><span class="w">            </span><span class="c1"># $opcion = variable con la opción</span>
+<span class="linenos" data-linenos=" 46 "></span>
+<span class="linenos" data-linenos=" 47 "></span><span class="w">            </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>listar_servidores<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 48 "></span><span class="w">            </span><span class="c1"># 1) = si opción es 1</span>
+<span class="linenos" data-linenos=" 49 "></span><span class="w">            </span><span class="c1"># listar_servidores = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 50 "></span>
+<span class="linenos" data-linenos=" 51 "></span><span class="w">            </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>añadir_servidor<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 52 "></span><span class="w">            </span><span class="c1"># 2) = si opción es 2</span>
+<span class="linenos" data-linenos=" 53 "></span><span class="w">            </span><span class="c1"># añadir_servidor = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 54 "></span>
+<span class="linenos" data-linenos=" 55 "></span><span class="w">            </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>buscar_servidor<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 56 "></span><span class="w">            </span><span class="c1"># 3) = si opción es 3</span>
+<span class="linenos" data-linenos=" 57 "></span><span class="w">            </span><span class="c1"># buscar_servidor = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 58 "></span>
+<span class="linenos" data-linenos=" 59 "></span><span class="w">            </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>modificar_servidor<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 60 "></span><span class="w">            </span><span class="c1"># 4) = si opción es 4</span>
+<span class="linenos" data-linenos=" 61 "></span><span class="w">            </span><span class="c1"># modificar_servidor = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 62 "></span>
+<span class="linenos" data-linenos=" 63 "></span><span class="w">            </span><span class="m">5</span><span class="o">)</span><span class="w"> </span>eliminar_servidor<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 64 "></span><span class="w">            </span><span class="c1"># 5) = si opción es 5</span>
+<span class="linenos" data-linenos=" 65 "></span><span class="w">            </span><span class="c1"># eliminar_servidor = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 66 "></span>
+<span class="linenos" data-linenos=" 67 "></span><span class="w">            </span><span class="m">6</span><span class="o">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 68 "></span><span class="w">                </span><span class="c1"># 6) = si opción es 6</span>
+<span class="linenos" data-linenos=" 69 "></span><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Volviendo al menú principal...&quot;</span>
+<span class="linenos" data-linenos=" 70 "></span><span class="w">                </span><span class="c1"># echo = muestra mensaje</span>
+<span class="linenos" data-linenos=" 71 "></span><span class="w">                </span><span class="k">break</span>
+<span class="linenos" data-linenos=" 72 "></span><span class="w">                </span><span class="c1"># break = sale del bucle while</span>
+<span class="linenos" data-linenos=" 73 "></span><span class="w">                </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 74 "></span><span class="w">                </span><span class="c1"># ;; = fin de esta opción</span>
+<span class="linenos" data-linenos=" 75 "></span>
+<span class="linenos" data-linenos=" 76 "></span><span class="w">            </span>*<span class="o">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 77 "></span><span class="w">                </span><span class="c1"># *) = opción por defecto</span>
+<span class="linenos" data-linenos=" 78 "></span><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Opción inválida. Inténtalo de nuevo.&quot;</span>
+<span class="linenos" data-linenos=" 79 "></span><span class="w">                </span><span class="c1"># echo = muestra mensaje de error</span>
+<span class="linenos" data-linenos=" 80 "></span><span class="w">                </span>sleep<span class="w"> </span><span class="m">2</span>
+<span class="linenos" data-linenos=" 81 "></span><span class="w">                </span><span class="c1"># sleep 2 = pausa por 2 segundos</span>
+<span class="linenos" data-linenos=" 82 "></span><span class="w">                </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 83 "></span><span class="w">                </span><span class="c1"># ;; = fin de esta opción</span>
+<span class="linenos" data-linenos=" 84 "></span><span class="w">        </span><span class="k">esac</span>
+<span class="linenos" data-linenos=" 85 "></span><span class="w">        </span><span class="c1"># esac = fin de la estructura case</span>
+<span class="linenos" data-linenos=" 86 "></span>
+<span class="linenos" data-linenos=" 87 "></span><span class="w">    </span><span class="k">done</span>
+<span class="linenos" data-linenos=" 88 "></span><span class="w">    </span><span class="c1"># done = fin del bucle while</span>
+<span class="linenos" data-linenos=" 89 "></span>
+<span class="linenos" data-linenos=" 90 "></span><span class="o">}</span>
+<span class="linenos" data-linenos=" 91 "></span><span class="c1"># } = fin de la función gestionar_servidores</span>
+<span class="linenos" data-linenos=" 92 "></span>
+<span class="linenos" data-linenos=" 93 "></span><span class="c1"># Función para listar servidores</span>
+<span class="linenos" data-linenos=" 94 "></span>listar_servidores<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 95 "></span><span class="w">    </span><span class="c1"># function = define función listar_servidores</span>
+<span class="linenos" data-linenos=" 96 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código</span>
+<span class="linenos" data-linenos=" 97 "></span>
+<span class="linenos" data-linenos=" 98 "></span><span class="w">    </span><span class="c1"># Verificar si existe el archivo de servidores</span>
+<span class="linenos" data-linenos=" 99 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;servidores.txt&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="100 "></span><span class="w">        </span><span class="c1"># if = estructura condicional</span>
+<span class="linenos" data-linenos="101 "></span><span class="w">        </span><span class="c1"># [ -f &quot;servidores.txt&quot; ] = verifica si el archivo existe y es regular</span>
+<span class="linenos" data-linenos="102 "></span><span class="w">        </span><span class="c1"># then = inicio del bloque si la condición es verdadera</span>
+<span class="linenos" data-linenos="103 "></span>
+<span class="linenos" data-linenos="104 "></span><span class="w">        </span><span class="c1"># Mostrar encabezado</span>
+<span class="linenos" data-linenos="105 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="106 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    LISTADO DE SERVIDORES&quot;</span>
+<span class="linenos" data-linenos="107 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="108 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="109 "></span>
+<span class="linenos" data-linenos="110 "></span><span class="w">        </span><span class="c1"># Mostrar contenido del archivo con numeración</span>
+<span class="linenos" data-linenos="111 "></span><span class="w">        </span>cat<span class="w"> </span>-n<span class="w"> </span>servidores.txt
+<span class="linenos" data-linenos="112 "></span><span class="w">        </span><span class="c1"># cat -n = muestra el contenido del archivo con números de línea</span>
+<span class="linenos" data-linenos="113 "></span><span class="w">        </span><span class="c1"># servidores.txt = archivo que contiene la información de servidores</span>
+<span class="linenos" data-linenos="114 "></span>
+<span class="linenos" data-linenos="115 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="116 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Total de servidores: </span><span class="k">$(</span>wc<span class="w"> </span>-l<span class="w"> </span>&lt;<span class="w"> </span>servidores.txt<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="117 "></span><span class="w">        </span><span class="c1"># echo = muestra texto</span>
+<span class="linenos" data-linenos="118 "></span><span class="w">        </span><span class="c1"># $(wc -l &lt; servidores.txt) = sustitución de comando que cuenta las líneas del archivo</span>
+<span class="linenos" data-linenos="119 "></span><span class="w">        </span><span class="c1"># wc -l = cuenta líneas</span>
+<span class="linenos" data-linenos="120 "></span><span class="w">        </span><span class="c1"># &lt; servidores.txt = redirecciona el archivo como entrada</span>
+<span class="linenos" data-linenos="121 "></span>
+<span class="linenos" data-linenos="122 "></span><span class="w">    </span><span class="k">else</span>
+<span class="linenos" data-linenos="123 "></span><span class="w">        </span><span class="c1"># else = bloque que se ejecuta si la condición es falsa</span>
+<span class="linenos" data-linenos="124 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No se encontró el archivo de servidores.&quot;</span>
+<span class="linenos" data-linenos="125 "></span><span class="w">        </span><span class="c1"># echo = muestra mensaje de error</span>
+<span class="linenos" data-linenos="126 "></span>
+<span class="linenos" data-linenos="127 "></span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos" data-linenos="128 "></span><span class="w">    </span><span class="c1"># fi = fin de la estructura condicional if</span>
+<span class="linenos" data-linenos="129 "></span>
+<span class="linenos" data-linenos="130 "></span><span class="w">    </span><span class="c1"># Pausar para que el usuario pueda leer</span>
+<span class="linenos" data-linenos="131 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Presiona Enter para continuar...&quot;</span>
+<span class="linenos" data-linenos="132 "></span><span class="w">    </span><span class="c1"># read -p = pausa hasta que el usuario presione Enter</span>
+<span class="linenos" data-linenos="133 "></span>
+<span class="linenos" data-linenos="134 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="135 "></span><span class="c1"># } = fin de la función listar_servidores</span>
+<span class="linenos" data-linenos="136 "></span>
+<span class="linenos" data-linenos="137 "></span><span class="c1"># Función para añadir servidor</span>
+<span class="linenos" data-linenos="138 "></span>añadir_servidor<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="139 "></span><span class="w">    </span><span class="c1"># function = define función añadir_servidor</span>
+<span class="linenos" data-linenos="140 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código</span>
+<span class="linenos" data-linenos="141 "></span>
+<span class="linenos" data-linenos="142 "></span><span class="w">    </span><span class="c1"># Mostrar encabezado</span>
+<span class="linenos" data-linenos="143 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="144 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    AÑADIR NUEVO SERVIDOR&quot;</span>
+<span class="linenos" data-linenos="145 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="146 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="147 "></span>
+<span class="linenos" data-linenos="148 "></span><span class="w">    </span><span class="c1"># Solicitar datos del servidor</span>
+<span class="linenos" data-linenos="149 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Nombre del servidor: &quot;</span><span class="w"> </span>nombre
+<span class="linenos" data-linenos="150 "></span><span class="w">    </span><span class="c1"># read -p = lee entrada del usuario con mensaje previo</span>
+<span class="linenos" data-linenos="151 "></span><span class="w">    </span><span class="c1"># nombre = variable para almacenar el nombre</span>
+<span class="linenos" data-linenos="152 "></span>
+<span class="linenos" data-linenos="153 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Dirección IP: &quot;</span><span class="w"> </span>ip
+<span class="linenos" data-linenos="154 "></span><span class="w">    </span><span class="c1"># read -p = lee entrada del usuario</span>
+<span class="linenos" data-linenos="155 "></span><span class="w">    </span><span class="c1"># ip = variable para almacenar la IP</span>
+<span class="linenos" data-linenos="156 "></span>
+<span class="linenos" data-linenos="157 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Puerto: &quot;</span><span class="w"> </span>puerto
+<span class="linenos" data-linenos="158 "></span><span class="w">    </span><span class="c1"># read -p = lee entrada del usuario</span>
+<span class="linenos" data-linenos="159 "></span><span class="w">    </span><span class="c1"># puerto = variable para almacenar el puerto</span>
+<span class="linenos" data-linenos="160 "></span>
+<span class="linenos" data-linenos="161 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Servicio: &quot;</span><span class="w"> </span>servicio
+<span class="linenos" data-linenos="162 "></span><span class="w">    </span><span class="c1"># read -p = lee entrada del usuario</span>
+<span class="linenos" data-linenos="163 "></span><span class="w">    </span><span class="c1"># servicio = variable para almacenar el servicio</span>
+<span class="linenos" data-linenos="164 "></span>
+<span class="linenos" data-linenos="165 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Descripción: &quot;</span><span class="w"> </span>descripcion
+<span class="linenos" data-linenos="166 "></span><span class="w">    </span><span class="c1"># read -p = lee entrada del usuario</span>
+<span class="linenos" data-linenos="167 "></span><span class="w">    </span><span class="c1"># descripcion = variable para almacenar la descripción</span>
+<span class="linenos" data-linenos="168 "></span>
+<span class="linenos" data-linenos="169 "></span><span class="w">    </span><span class="c1"># Validar que se hayan introducido todos los datos</span>
+<span class="linenos" data-linenos="170 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$nombre</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ip</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$puerto</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$servicio</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="171 "></span><span class="w">        </span><span class="c1"># if = estructura condicional</span>
+<span class="linenos" data-linenos="172 "></span><span class="w">        </span><span class="c1"># [ -n &quot;$nombre&quot; ] = verifica si la variable nombre no está vacía</span>
+<span class="linenos" data-linenos="173 "></span><span class="w">        </span><span class="c1"># &amp;&amp; = operador lógico AND (todas las condiciones deben ser verdaderas)</span>
+<span class="linenos" data-linenos="174 "></span><span class="w">        </span><span class="c1"># then = inicio del bloque si la condición es verdadera</span>
+<span class="linenos" data-linenos="175 "></span>
+<span class="linenos" data-linenos="176 "></span><span class="w">        </span><span class="c1"># Crear línea con los datos del servidor</span>
+<span class="linenos" data-linenos="177 "></span><span class="w">        </span><span class="nv">linea</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$nombre</span><span class="s2">|</span><span class="nv">$ip</span><span class="s2">|</span><span class="nv">$puerto</span><span class="s2">|</span><span class="nv">$servicio</span><span class="s2">|</span><span class="nv">$descripcion</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="178 "></span><span class="w">        </span><span class="c1"># linea = variable que contiene todos los datos separados por |</span>
+<span class="linenos" data-linenos="179 "></span><span class="w">        </span><span class="c1"># $nombre = contenido de la variable nombre</span>
+<span class="linenos" data-linenos="180 "></span><span class="w">        </span><span class="c1"># | = separador entre campos</span>
+<span class="linenos" data-linenos="181 "></span>
+<span class="linenos" data-linenos="182 "></span><span class="w">        </span><span class="c1"># Añadir línea al archivo</span>
+<span class="linenos" data-linenos="183 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$linea</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>servidores.txt
+<span class="linenos" data-linenos="184 "></span><span class="w">        </span><span class="c1"># echo &quot;$linea&quot; = muestra el contenido de la variable linea</span>
+<span class="linenos" data-linenos="185 "></span><span class="w">        </span><span class="c1"># &gt;&gt; = redirecciona la salida añadiendo al final del archivo</span>
+<span class="linenos" data-linenos="186 "></span><span class="w">        </span><span class="c1"># servidores.txt = archivo donde se guarda la información</span>
+<span class="linenos" data-linenos="187 "></span>
+<span class="linenos" data-linenos="188 "></span><span class="w">        </span><span class="c1"># Mostrar mensaje de confirmación</span>
+<span class="linenos" data-linenos="189 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="190 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidor &#39;</span><span class="nv">$nombre</span><span class="s2">&#39; añadido correctamente.&quot;</span>
+<span class="linenos" data-linenos="191 "></span><span class="w">        </span><span class="c1"># echo = muestra mensaje de éxito</span>
+<span class="linenos" data-linenos="192 "></span>
+<span class="linenos" data-linenos="193 "></span><span class="w">        </span><span class="c1"># Registrar en log</span>
+<span class="linenos" data-linenos="194 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">: Servidor &#39;</span><span class="nv">$nombre</span><span class="s2">&#39; añadido&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>logs/sistema.log
+<span class="linenos" data-linenos="195 "></span><span class="w">        </span><span class="c1"># echo = muestra mensaje</span>
+<span class="linenos" data-linenos="196 "></span><span class="w">        </span><span class="c1"># $(date) = sustitución de comando que obtiene la fecha y hora actual</span>
+<span class="linenos" data-linenos="197 "></span><span class="w">        </span><span class="c1"># &gt;&gt; logs/sistema.log = añade el mensaje al archivo de log</span>
+<span class="linenos" data-linenos="198 "></span>
+<span class="linenos" data-linenos="199 "></span><span class="w">    </span><span class="k">else</span>
+<span class="linenos" data-linenos="200 "></span><span class="w">        </span><span class="c1"># else = bloque si la condición es falsa</span>
+<span class="linenos" data-linenos="201 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: Debes introducir todos los campos obligatorios.&quot;</span>
+<span class="linenos" data-linenos="202 "></span><span class="w">        </span><span class="c1"># echo = muestra mensaje de error</span>
+<span class="linenos" data-linenos="203 "></span>
+<span class="linenos" data-linenos="204 "></span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos" data-linenos="205 "></span><span class="w">    </span><span class="c1"># fi = fin de la estructura condicional</span>
+<span class="linenos" data-linenos="206 "></span>
+<span class="linenos" data-linenos="207 "></span><span class="w">    </span><span class="c1"># Pausar para que el usuario pueda leer</span>
+<span class="linenos" data-linenos="208 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Presiona Enter para continuar...&quot;</span>
+<span class="linenos" data-linenos="209 "></span><span class="w">    </span><span class="c1"># read -p = pausa hasta Enter</span>
+<span class="linenos" data-linenos="210 "></span>
+<span class="linenos" data-linenos="211 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="212 "></span><span class="c1"># } = fin de la función añadir_servidor</span>
+<span class="linenos" data-linenos="213 "></span>
+<span class="linenos" data-linenos="214 "></span><span class="c1"># Función para buscar servidor</span>
+<span class="linenos" data-linenos="215 "></span>buscar_servidor<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="216 "></span><span class="w">    </span><span class="c1"># function = define función buscar_servidor</span>
+<span class="linenos" data-linenos="217 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código</span>
+<span class="linenos" data-linenos="218 "></span>
+<span class="linenos" data-linenos="219 "></span><span class="w">    </span><span class="c1"># Mostrar encabezado</span>
+<span class="linenos" data-linenos="220 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="221 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    BUSCAR SERVIDOR&quot;</span>
+<span class="linenos" data-linenos="222 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="223 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="224 "></span>
+<span class="linenos" data-linenos="225 "></span><span class="w">    </span><span class="c1"># Solicitar término de búsqueda</span>
+<span class="linenos" data-linenos="226 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce el término de búsqueda: &quot;</span><span class="w"> </span>termino
+<span class="linenos" data-linenos="227 "></span><span class="w">    </span><span class="c1"># read -p = lee entrada del usuario</span>
+<span class="linenos" data-linenos="228 "></span><span class="w">    </span><span class="c1"># termino = variable para almacenar el término de búsqueda</span>
+<span class="linenos" data-linenos="229 "></span>
+<span class="linenos" data-linenos="230 "></span><span class="w">    </span><span class="c1"># Verificar si existe el archivo</span>
+<span class="linenos" data-linenos="231 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;servidores.txt&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="232 "></span><span class="w">        </span><span class="c1"># if = estructura condicional</span>
+<span class="linenos" data-linenos="233 "></span><span class="w">        </span><span class="c1"># [ -f &quot;servidores.txt&quot; ] = verifica si el archivo existe</span>
+<span class="linenos" data-linenos="234 "></span>
+<span class="linenos" data-linenos="235 "></span><span class="w">        </span><span class="c1"># Buscar en el archivo</span>
+<span class="linenos" data-linenos="236 "></span><span class="w">        </span><span class="nv">resultado</span><span class="o">=</span><span class="k">$(</span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$termino</span><span class="s2">&quot;</span><span class="w"> </span>servidores.txt<span class="k">)</span>
+<span class="linenos" data-linenos="237 "></span><span class="w">        </span><span class="c1"># resultado = variable para almacenar el resultado</span>
+<span class="linenos" data-linenos="238 "></span><span class="w">        </span><span class="c1"># $(grep -i &quot;$termino&quot; servidores.txt) = sustitución de comando</span>
+<span class="linenos" data-linenos="239 "></span><span class="w">        </span><span class="c1"># grep -i = busca texto sin distinguir mayúsculas/minúsculas</span>
+<span class="linenos" data-linenos="240 "></span><span class="w">        </span><span class="c1"># &quot;$termino&quot; = término a buscar</span>
+<span class="linenos" data-linenos="241 "></span><span class="w">        </span><span class="c1"># servidores.txt = archivo donde buscar</span>
+<span class="linenos" data-linenos="242 "></span>
+<span class="linenos" data-linenos="243 "></span><span class="w">        </span><span class="c1"># Verificar si se encontraron resultados</span>
+<span class="linenos" data-linenos="244 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$resultado</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="245 "></span><span class="w">            </span><span class="c1"># if = estructura condicional</span>
+<span class="linenos" data-linenos="246 "></span><span class="w">            </span><span class="c1"># [ -n &quot;$resultado&quot; ] = verifica si la variable no está vacía</span>
+<span class="linenos" data-linenos="247 "></span>
+<span class="linenos" data-linenos="248 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="249 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Resultados encontrados:&quot;</span>
+<span class="linenos" data-linenos="250 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;======================&quot;</span>
+<span class="linenos" data-linenos="251 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$resultado</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="252 "></span><span class="w">            </span><span class="c1"># echo = muestra los resultados</span>
+<span class="linenos" data-linenos="253 "></span>
+<span class="linenos" data-linenos="254 "></span><span class="w">        </span><span class="k">else</span>
+<span class="linenos" data-linenos="255 "></span><span class="w">            </span><span class="c1"># else = bloque si no se encontraron resultados</span>
+<span class="linenos" data-linenos="256 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="257 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No se encontraron servidores con el término &#39;</span><span class="nv">$termino</span><span class="s2">&#39;&quot;</span>
+<span class="linenos" data-linenos="258 "></span><span class="w">            </span><span class="c1"># echo = muestra mensaje de no encontrado</span>
+<span class="linenos" data-linenos="259 "></span>
+<span class="linenos" data-linenos="260 "></span><span class="w">        </span><span class="k">fi</span>
+<span class="linenos" data-linenos="261 "></span><span class="w">        </span><span class="c1"># fi = fin de la estructura condicional</span>
+<span class="linenos" data-linenos="262 "></span>
+<span class="linenos" data-linenos="263 "></span><span class="w">    </span><span class="k">else</span>
+<span class="linenos" data-linenos="264 "></span><span class="w">        </span><span class="c1"># else = bloque si el archivo no existe</span>
+<span class="linenos" data-linenos="265 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No se encontró el archivo de servidores.&quot;</span>
+<span class="linenos" data-linenos="266 "></span><span class="w">        </span><span class="c1"># echo = muestra mensaje de error</span>
+<span class="linenos" data-linenos="267 "></span>
+<span class="linenos" data-linenos="268 "></span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos" data-linenos="269 "></span><span class="w">    </span><span class="c1"># fi = fin de la estructura condicional</span>
+<span class="linenos" data-linenos="270 "></span>
+<span class="linenos" data-linenos="271 "></span><span class="w">    </span><span class="c1"># Pausar para que el usuario pueda leer</span>
+<span class="linenos" data-linenos="272 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Presiona Enter para continuar...&quot;</span>
+<span class="linenos" data-linenos="273 "></span><span class="w">    </span><span class="c1"># read -p = pausa hasta Enter</span>
+<span class="linenos" data-linenos="274 "></span>
+<span class="linenos" data-linenos="275 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="276 "></span><span class="c1"># } = fin de la función buscar_servidor</span>
+</code></pre></div>
+<h2 id="modulo-de-monitoreo-monitoreosh">Módulo de Monitoreo: monitoreo.sh<a class="headerlink" href="#modulo-de-monitoreo-monitoreosh" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="  1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="  2 "></span><span class="c1"># Shebang: indica que el script debe ejecutarse con bash</span>
+<span class="linenos" data-linenos="  3 "></span>
+<span class="linenos" data-linenos="  4 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="  5 "></span><span class="c1"># Módulo de Monitoreo del Sistema</span>
+<span class="linenos" data-linenos="  6 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="  7 "></span>
+<span class="linenos" data-linenos="  8 "></span><span class="c1"># Función para monitorear el sistema</span>
+<span class="linenos" data-linenos="  9 "></span>monitorear_sistema<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 10 "></span><span class="w">    </span><span class="c1"># function = define función monitorear_sistema</span>
+<span class="linenos" data-linenos=" 11 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código</span>
+<span class="linenos" data-linenos=" 12 "></span>
+<span class="linenos" data-linenos=" 13 "></span><span class="w">    </span><span class="c1"># Bucle del menú de monitoreo</span>
+<span class="linenos" data-linenos=" 14 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos=" 15 "></span><span class="w">        </span><span class="c1"># while true = bucle infinito</span>
+<span class="linenos" data-linenos=" 16 "></span><span class="w">        </span><span class="c1"># do = inicio del bloque de código</span>
+<span class="linenos" data-linenos=" 17 "></span>
+<span class="linenos" data-linenos=" 18 "></span><span class="w">        </span><span class="c1"># Limpiar pantalla</span>
+<span class="linenos" data-linenos=" 19 "></span><span class="w">        </span>clear
+<span class="linenos" data-linenos=" 20 "></span><span class="w">        </span><span class="c1"># clear = limpia la pantalla</span>
+<span class="linenos" data-linenos=" 21 "></span>
+<span class="linenos" data-linenos=" 22 "></span><span class="w">        </span><span class="c1"># Mostrar encabezado</span>
+<span class="linenos" data-linenos=" 23 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 24 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    MONITOREO DEL SISTEMA&quot;</span>
+<span class="linenos" data-linenos=" 25 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 26 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos=" 27 "></span>
+<span class="linenos" data-linenos=" 28 "></span><span class="w">        </span><span class="c1"># Mostrar opciones</span>
+<span class="linenos" data-linenos=" 29 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Estado de servidores&quot;</span>
+<span class="linenos" data-linenos=" 30 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Uso de recursos del sistema&quot;</span>
+<span class="linenos" data-linenos=" 31 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Logs del sistema&quot;</span>
+<span class="linenos" data-linenos=" 32 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;4) Volver al menú principal&quot;</span>
+<span class="linenos" data-linenos=" 33 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos=" 34 "></span>
+<span class="linenos" data-linenos=" 35 "></span><span class="w">        </span><span class="c1"># Solicitar opción</span>
+<span class="linenos" data-linenos=" 36 "></span><span class="w">        </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona una opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos=" 37 "></span><span class="w">        </span><span class="c1"># read -p = lee entrada del usuario</span>
+<span class="linenos" data-linenos=" 38 "></span><span class="w">        </span><span class="c1"># opcion = variable para almacenar la opción</span>
+<span class="linenos" data-linenos=" 39 "></span>
+<span class="linenos" data-linenos=" 40 "></span><span class="w">        </span><span class="c1"># Evaluar opción</span>
+<span class="linenos" data-linenos=" 41 "></span><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos=" 42 "></span><span class="w">            </span><span class="c1"># case = estructura de control múltiple</span>
+<span class="linenos" data-linenos=" 43 "></span><span class="w">            </span><span class="c1"># $opcion = variable con la opción</span>
+<span class="linenos" data-linenos=" 44 "></span>
+<span class="linenos" data-linenos=" 45 "></span><span class="w">            </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>estado_servidores<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 46 "></span><span class="w">            </span><span class="c1"># 1) = si opción es 1</span>
+<span class="linenos" data-linenos=" 47 "></span><span class="w">            </span><span class="c1"># estado_servidores = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 48 "></span>
+<span class="linenos" data-linenos=" 49 "></span><span class="w">            </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>uso_recursos<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 50 "></span><span class="w">            </span><span class="c1"># 2) = si opción es 2</span>
+<span class="linenos" data-linenos=" 51 "></span><span class="w">            </span><span class="c1"># uso_recursos = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 52 "></span>
+<span class="linenos" data-linenos=" 53 "></span><span class="w">            </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>ver_logs<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 54 "></span><span class="w">            </span><span class="c1"># 3) = si opción es 3</span>
+<span class="linenos" data-linenos=" 55 "></span><span class="w">            </span><span class="c1"># ver_logs = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 56 "></span>
+<span class="linenos" data-linenos=" 57 "></span><span class="w">            </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 58 "></span><span class="w">                </span><span class="c1"># 4) = si opción es 4</span>
+<span class="linenos" data-linenos=" 59 "></span><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Volviendo al menú principal...&quot;</span>
+<span class="linenos" data-linenos=" 60 "></span><span class="w">                </span><span class="c1"># echo = muestra mensaje</span>
+<span class="linenos" data-linenos=" 61 "></span><span class="w">                </span><span class="k">break</span>
+<span class="linenos" data-linenos=" 62 "></span><span class="w">                </span><span class="c1"># break = sale del bucle while</span>
+<span class="linenos" data-linenos=" 63 "></span><span class="w">                </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 64 "></span><span class="w">                </span><span class="c1"># ;; = fin de esta opción</span>
+<span class="linenos" data-linenos=" 65 "></span>
+<span class="linenos" data-linenos=" 66 "></span><span class="w">            </span>*<span class="o">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 67 "></span><span class="w">                </span><span class="c1"># *) = opción por defecto</span>
+<span class="linenos" data-linenos=" 68 "></span><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Opción inválida. Inténtalo de nuevo.&quot;</span>
+<span class="linenos" data-linenos=" 69 "></span><span class="w">                </span><span class="c1"># echo = muestra mensaje de error</span>
+<span class="linenos" data-linenos=" 70 "></span><span class="w">                </span>sleep<span class="w"> </span><span class="m">2</span>
+<span class="linenos" data-linenos=" 71 "></span><span class="w">                </span><span class="c1"># sleep 2 = pausa por 2 segundos</span>
+<span class="linenos" data-linenos=" 72 "></span><span class="w">                </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 73 "></span><span class="w">                </span><span class="c1"># ;; = fin de esta opción</span>
+<span class="linenos" data-linenos=" 74 "></span><span class="w">        </span><span class="k">esac</span>
+<span class="linenos" data-linenos=" 75 "></span><span class="w">        </span><span class="c1"># esac = fin de la estructura case</span>
+<span class="linenos" data-linenos=" 76 "></span>
+<span class="linenos" data-linenos=" 77 "></span><span class="w">    </span><span class="k">done</span>
+<span class="linenos" data-linenos=" 78 "></span><span class="w">    </span><span class="c1"># done = fin del bucle while</span>
+<span class="linenos" data-linenos=" 79 "></span>
+<span class="linenos" data-linenos=" 80 "></span><span class="o">}</span>
+<span class="linenos" data-linenos=" 81 "></span><span class="c1"># } = fin de la función monitorear_sistema</span>
+<span class="linenos" data-linenos=" 82 "></span>
+<span class="linenos" data-linenos=" 83 "></span><span class="c1"># Función para verificar estado de servidores</span>
+<span class="linenos" data-linenos=" 84 "></span>estado_servidores<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 85 "></span><span class="w">    </span><span class="c1"># function = define función estado_servidores</span>
+<span class="linenos" data-linenos=" 86 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código</span>
+<span class="linenos" data-linenos=" 87 "></span>
+<span class="linenos" data-linenos=" 88 "></span><span class="w">    </span><span class="c1"># Mostrar encabezado</span>
+<span class="linenos" data-linenos=" 89 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 90 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    ESTADO DE SERVIDORES&quot;</span>
+<span class="linenos" data-linenos=" 91 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 92 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos=" 93 "></span>
+<span class="linenos" data-linenos=" 94 "></span><span class="w">    </span><span class="c1"># Verificar si existe el archivo de servidores</span>
+<span class="linenos" data-linenos=" 95 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;servidores.txt&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos=" 96 "></span><span class="w">        </span><span class="c1"># if = estructura condicional</span>
+<span class="linenos" data-linenos=" 97 "></span><span class="w">        </span><span class="c1"># [ -f &quot;servidores.txt&quot; ] = verifica si el archivo existe</span>
+<span class="linenos" data-linenos=" 98 "></span>
+<span class="linenos" data-linenos=" 99 "></span><span class="w">        </span><span class="c1"># Leer archivo línea por línea</span>
+<span class="linenos" data-linenos="100 "></span><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="nv">IFS</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>nombre<span class="w"> </span>ip<span class="w"> </span>puerto<span class="w"> </span>servicio<span class="w"> </span>descripcion<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos="101 "></span><span class="w">            </span><span class="c1"># while = bucle que se ejecuta mientras haya líneas que leer</span>
+<span class="linenos" data-linenos="102 "></span><span class="w">            </span><span class="c1"># IFS=&#39;|&#39; = define el separador de campos como |</span>
+<span class="linenos" data-linenos="103 "></span><span class="w">            </span><span class="c1"># read -r = lee una línea del archivo</span>
+<span class="linenos" data-linenos="104 "></span><span class="w">            </span><span class="c1"># nombre ip puerto servicio descripcion = variables donde se almacenan los campos</span>
+<span class="linenos" data-linenos="105 "></span>
+<span class="linenos" data-linenos="106 "></span><span class="w">            </span><span class="c1"># Mostrar información del servidor</span>
+<span class="linenos" data-linenos="107 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidor: </span><span class="nv">$nombre</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="108 "></span><span class="w">            </span><span class="c1"># echo = muestra el nombre del servidor</span>
+<span class="linenos" data-linenos="109 "></span><span class="w">            </span><span class="c1"># $nombre = contenido de la variable nombre</span>
+<span class="linenos" data-linenos="110 "></span>
+<span class="linenos" data-linenos="111 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;IP: </span><span class="nv">$ip</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="112 "></span><span class="w">            </span><span class="c1"># echo = muestra la IP</span>
+<span class="linenos" data-linenos="113 "></span><span class="w">            </span><span class="c1"># $ip = contenido de la variable ip</span>
+<span class="linenos" data-linenos="114 "></span>
+<span class="linenos" data-linenos="115 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Puerto: </span><span class="nv">$puerto</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="116 "></span><span class="w">            </span><span class="c1"># echo = muestra el puerto</span>
+<span class="linenos" data-linenos="117 "></span><span class="w">            </span><span class="c1"># $puerto = contenido de la variable puerto</span>
+<span class="linenos" data-linenos="118 "></span>
+<span class="linenos" data-linenos="119 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servicio: </span><span class="nv">$servicio</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="120 "></span><span class="w">            </span><span class="c1"># echo = muestra el servicio</span>
+<span class="linenos" data-linenos="121 "></span><span class="w">            </span><span class="c1"># $servicio = contenido de la variable servicio</span>
+<span class="linenos" data-linenos="122 "></span>
+<span class="linenos" data-linenos="123 "></span><span class="w">            </span><span class="c1"># Verificar conectividad con ping</span>
+<span class="linenos" data-linenos="124 "></span><span class="w">            </span><span class="k">if</span><span class="w"> </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-W<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ip</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="125 "></span><span class="w">                </span><span class="c1"># if = estructura condicional</span>
+<span class="linenos" data-linenos="126 "></span><span class="w">                </span><span class="c1"># ping -c 1 = envía 1 paquete de ping</span>
+<span class="linenos" data-linenos="127 "></span><span class="w">                </span><span class="c1"># -W 1 = tiempo de espera de 1 segundo</span>
+<span class="linenos" data-linenos="128 "></span><span class="w">                </span><span class="c1"># &quot;$ip&quot; = dirección IP a verificar</span>
+<span class="linenos" data-linenos="129 "></span><span class="w">                </span><span class="c1"># &gt; /dev/null = redirecciona la salida estándar a /dev/null (descarta)</span>
+<span class="linenos" data-linenos="130 "></span><span class="w">                </span><span class="c1"># 2&gt;&amp;1 = redirecciona la salida de error a la salida estándar</span>
+<span class="linenos" data-linenos="131 "></span>
+<span class="linenos" data-linenos="132 "></span><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Estado: CONECTADO&quot;</span>
+<span class="linenos" data-linenos="133 "></span><span class="w">                </span><span class="c1"># echo = muestra estado conectado</span>
+<span class="linenos" data-linenos="134 "></span>
+<span class="linenos" data-linenos="135 "></span><span class="w">            </span><span class="k">else</span>
+<span class="linenos" data-linenos="136 "></span><span class="w">                </span><span class="c1"># else = bloque si el ping falla</span>
+<span class="linenos" data-linenos="137 "></span><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Estado: DESCONECTADO&quot;</span>
+<span class="linenos" data-linenos="138 "></span><span class="w">                </span><span class="c1"># echo = muestra estado desconectado</span>
+<span class="linenos" data-linenos="139 "></span>
+<span class="linenos" data-linenos="140 "></span><span class="w">            </span><span class="k">fi</span>
+<span class="linenos" data-linenos="141 "></span><span class="w">            </span><span class="c1"># fi = fin de la estructura condicional</span>
+<span class="linenos" data-linenos="142 "></span>
+<span class="linenos" data-linenos="143 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;----------------------------------------&quot;</span>
+<span class="linenos" data-linenos="144 "></span><span class="w">            </span><span class="c1"># echo = muestra línea separadora</span>
+<span class="linenos" data-linenos="145 "></span>
+<span class="linenos" data-linenos="146 "></span><span class="w">        </span><span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span>servidores.txt
+<span class="linenos" data-linenos="147 "></span><span class="w">        </span><span class="c1"># done = fin del bucle while</span>
+<span class="linenos" data-linenos="148 "></span><span class="w">        </span><span class="c1"># &lt; servidores.txt = redirecciona el archivo como entrada del bucle</span>
+<span class="linenos" data-linenos="149 "></span>
+<span class="linenos" data-linenos="150 "></span><span class="w">    </span><span class="k">else</span>
+<span class="linenos" data-linenos="151 "></span><span class="w">        </span><span class="c1"># else = bloque si el archivo no existe</span>
+<span class="linenos" data-linenos="152 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No se encontró el archivo de servidores.&quot;</span>
+<span class="linenos" data-linenos="153 "></span><span class="w">        </span><span class="c1"># echo = muestra mensaje de error</span>
+<span class="linenos" data-linenos="154 "></span>
+<span class="linenos" data-linenos="155 "></span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos" data-linenos="156 "></span><span class="w">    </span><span class="c1"># fi = fin de la estructura condicional</span>
+<span class="linenos" data-linenos="157 "></span>
+<span class="linenos" data-linenos="158 "></span><span class="w">    </span><span class="c1"># Pausar para que el usuario pueda leer</span>
+<span class="linenos" data-linenos="159 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Presiona Enter para continuar...&quot;</span>
+<span class="linenos" data-linenos="160 "></span><span class="w">    </span><span class="c1"># read -p = pausa hasta Enter</span>
+<span class="linenos" data-linenos="161 "></span>
+<span class="linenos" data-linenos="162 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="163 "></span><span class="c1"># } = fin de la función estado_servidores</span>
+<span class="linenos" data-linenos="164 "></span>
+<span class="linenos" data-linenos="165 "></span><span class="c1"># Función para mostrar uso de recursos</span>
+<span class="linenos" data-linenos="166 "></span>uso_recursos<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="167 "></span><span class="w">    </span><span class="c1"># function = define función uso_recursos</span>
+<span class="linenos" data-linenos="168 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código</span>
+<span class="linenos" data-linenos="169 "></span>
+<span class="linenos" data-linenos="170 "></span><span class="w">    </span><span class="c1"># Mostrar encabezado</span>
+<span class="linenos" data-linenos="171 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="172 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    USO DE RECURSOS DEL SISTEMA&quot;</span>
+<span class="linenos" data-linenos="173 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="174 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="175 "></span>
+<span class="linenos" data-linenos="176 "></span><span class="w">    </span><span class="c1"># Mostrar información de memoria</span>
+<span class="linenos" data-linenos="177 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;MEMORIA:&quot;</span>
+<span class="linenos" data-linenos="178 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;--------&quot;</span>
+<span class="linenos" data-linenos="179 "></span><span class="w">    </span>free<span class="w"> </span>-h
+<span class="linenos" data-linenos="180 "></span><span class="w">    </span><span class="c1"># free -h = muestra información de memoria en formato legible</span>
+<span class="linenos" data-linenos="181 "></span><span class="w">    </span><span class="c1"># -h = formato human-readable (KB, MB, GB)</span>
+<span class="linenos" data-linenos="182 "></span>
+<span class="linenos" data-linenos="183 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="184 "></span><span class="w">    </span><span class="c1"># echo = línea en blanco</span>
+<span class="linenos" data-linenos="185 "></span>
+<span class="linenos" data-linenos="186 "></span><span class="w">    </span><span class="c1"># Mostrar información de disco</span>
+<span class="linenos" data-linenos="187 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;DISCO:&quot;</span>
+<span class="linenos" data-linenos="188 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;------&quot;</span>
+<span class="linenos" data-linenos="189 "></span><span class="w">    </span>df<span class="w"> </span>-h
+<span class="linenos" data-linenos="190 "></span><span class="w">    </span><span class="c1"># df -h = muestra información de espacio en disco</span>
+<span class="linenos" data-linenos="191 "></span><span class="w">    </span><span class="c1"># -h = formato human-readable</span>
+<span class="linenos" data-linenos="192 "></span>
+<span class="linenos" data-linenos="193 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="194 "></span><span class="w">    </span><span class="c1"># echo = línea en blanco</span>
+<span class="linenos" data-linenos="195 "></span>
+<span class="linenos" data-linenos="196 "></span><span class="w">    </span><span class="c1"># Mostrar información de CPU</span>
+<span class="linenos" data-linenos="197 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CPU:&quot;</span>
+<span class="linenos" data-linenos="198 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;----&quot;</span>
+<span class="linenos" data-linenos="199 "></span><span class="w">    </span>top<span class="w"> </span>-bn1<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+<span class="linenos" data-linenos="200 "></span><span class="w">    </span><span class="c1"># top -bn1 = ejecuta top en modo batch una vez</span>
+<span class="linenos" data-linenos="201 "></span><span class="w">    </span><span class="c1"># | = tubería que envía la salida de top a head</span>
+<span class="linenos" data-linenos="202 "></span><span class="w">    </span><span class="c1"># head -5 = muestra las primeras 5 líneas</span>
+<span class="linenos" data-linenos="203 "></span>
+<span class="linenos" data-linenos="204 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="205 "></span><span class="w">    </span><span class="c1"># echo = línea en blanco</span>
+<span class="linenos" data-linenos="206 "></span>
+<span class="linenos" data-linenos="207 "></span><span class="w">    </span><span class="c1"># Mostrar procesos más consumidores de CPU</span>
+<span class="linenos" data-linenos="208 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;PROCESOS CON MAYOR USO DE CPU:&quot;</span>
+<span class="linenos" data-linenos="209 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;-------------------------------&quot;</span>
+<span class="linenos" data-linenos="210 "></span><span class="w">    </span>ps<span class="w"> </span>aux<span class="w"> </span>--sort<span class="o">=</span>-%cpu<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-10
+<span class="linenos" data-linenos="211 "></span><span class="w">    </span><span class="c1"># ps aux = muestra todos los procesos</span>
+<span class="linenos" data-linenos="212 "></span><span class="w">    </span><span class="c1"># --sort=-%cpu = ordena por uso de CPU descendente</span>
+<span class="linenos" data-linenos="213 "></span><span class="w">    </span><span class="c1"># | = tubería</span>
+<span class="linenos" data-linenos="214 "></span><span class="w">    </span><span class="c1"># head -10 = muestra los primeros 10</span>
+<span class="linenos" data-linenos="215 "></span>
+<span class="linenos" data-linenos="216 "></span><span class="w">    </span><span class="c1"># Pausar para que el usuario pueda leer</span>
+<span class="linenos" data-linenos="217 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Presiona Enter para continuar...&quot;</span>
+<span class="linenos" data-linenos="218 "></span><span class="w">    </span><span class="c1"># read -p = pausa hasta Enter</span>
+<span class="linenos" data-linenos="219 "></span>
+<span class="linenos" data-linenos="220 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="221 "></span><span class="c1"># } = fin de la función uso_recursos</span>
+</code></pre></div>
+<h2 id="modulo-de-backup-backupsh">Módulo de Backup: backup.sh<a class="headerlink" href="#modulo-de-backup-backupsh" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="  1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="  2 "></span><span class="c1"># Shebang: indica que el script debe ejecutarse con bash</span>
+<span class="linenos" data-linenos="  3 "></span>
+<span class="linenos" data-linenos="  4 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="  5 "></span><span class="c1"># Módulo de Copias de Seguridad</span>
+<span class="linenos" data-linenos="  6 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="  7 "></span>
+<span class="linenos" data-linenos="  8 "></span><span class="c1"># Función para gestionar backups</span>
+<span class="linenos" data-linenos="  9 "></span>gestionar_backups<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 10 "></span><span class="w">    </span><span class="c1"># function = define función gestionar_backups</span>
+<span class="linenos" data-linenos=" 11 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código</span>
+<span class="linenos" data-linenos=" 12 "></span>
+<span class="linenos" data-linenos=" 13 "></span><span class="w">    </span><span class="c1"># Bucle del menú de backups</span>
+<span class="linenos" data-linenos=" 14 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos=" 15 "></span><span class="w">        </span><span class="c1"># while true = bucle infinito</span>
+<span class="linenos" data-linenos=" 16 "></span><span class="w">        </span><span class="c1"># do = inicio del bloque de código</span>
+<span class="linenos" data-linenos=" 17 "></span>
+<span class="linenos" data-linenos=" 18 "></span><span class="w">        </span><span class="c1"># Limpiar pantalla</span>
+<span class="linenos" data-linenos=" 19 "></span><span class="w">        </span>clear
+<span class="linenos" data-linenos=" 20 "></span><span class="w">        </span><span class="c1"># clear = limpia la pantalla</span>
+<span class="linenos" data-linenos=" 21 "></span>
+<span class="linenos" data-linenos=" 22 "></span><span class="w">        </span><span class="c1"># Mostrar encabezado</span>
+<span class="linenos" data-linenos=" 23 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 24 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    GESTIÓN DE COPIAS DE SEGURIDAD&quot;</span>
+<span class="linenos" data-linenos=" 25 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 26 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos=" 27 "></span>
+<span class="linenos" data-linenos=" 28 "></span><span class="w">        </span><span class="c1"># Mostrar opciones</span>
+<span class="linenos" data-linenos=" 29 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Crear backup completo&quot;</span>
+<span class="linenos" data-linenos=" 30 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Restaurar backup&quot;</span>
+<span class="linenos" data-linenos=" 31 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Listar backups disponibles&quot;</span>
+<span class="linenos" data-linenos=" 32 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;4) Eliminar backup&quot;</span>
+<span class="linenos" data-linenos=" 33 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;5) Volver al menú principal&quot;</span>
+<span class="linenos" data-linenos=" 34 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos=" 35 "></span>
+<span class="linenos" data-linenos=" 36 "></span><span class="w">        </span><span class="c1"># Solicitar opción</span>
+<span class="linenos" data-linenos=" 37 "></span><span class="w">        </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona una opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos=" 38 "></span><span class="w">        </span><span class="c1"># read -p = lee entrada del usuario</span>
+<span class="linenos" data-linenos=" 39 "></span><span class="w">        </span><span class="c1"># opcion = variable para almacenar la opción</span>
+<span class="linenos" data-linenos=" 40 "></span>
+<span class="linenos" data-linenos=" 41 "></span><span class="w">        </span><span class="c1"># Evaluar opción</span>
+<span class="linenos" data-linenos=" 42 "></span><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos=" 43 "></span><span class="w">            </span><span class="c1"># case = estructura de control múltiple</span>
+<span class="linenos" data-linenos=" 44 "></span><span class="w">            </span><span class="c1"># $opcion = variable con la opción</span>
+<span class="linenos" data-linenos=" 45 "></span>
+<span class="linenos" data-linenos=" 46 "></span><span class="w">            </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>crear_backup<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 47 "></span><span class="w">            </span><span class="c1"># 1) = si opción es 1</span>
+<span class="linenos" data-linenos=" 48 "></span><span class="w">            </span><span class="c1"># crear_backup = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 49 "></span>
+<span class="linenos" data-linenos=" 50 "></span><span class="w">            </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>restaurar_backup<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 51 "></span><span class="w">            </span><span class="c1"># 2) = si opción es 2</span>
+<span class="linenos" data-linenos=" 52 "></span><span class="w">            </span><span class="c1"># restaurar_backup = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 53 "></span>
+<span class="linenos" data-linenos=" 54 "></span><span class="w">            </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>listar_backups<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 55 "></span><span class="w">            </span><span class="c1"># 3) = si opción es 3</span>
+<span class="linenos" data-linenos=" 56 "></span><span class="w">            </span><span class="c1"># listar_backups = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 57 "></span>
+<span class="linenos" data-linenos=" 58 "></span><span class="w">            </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>eliminar_backup<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 59 "></span><span class="w">            </span><span class="c1"># 4) = si opción es 4</span>
+<span class="linenos" data-linenos=" 60 "></span><span class="w">            </span><span class="c1"># eliminar_backup = llama a función correspondiente</span>
+<span class="linenos" data-linenos=" 61 "></span>
+<span class="linenos" data-linenos=" 62 "></span><span class="w">            </span><span class="m">5</span><span class="o">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 63 "></span><span class="w">                </span><span class="c1"># 5) = si opción es 5</span>
+<span class="linenos" data-linenos=" 64 "></span><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Volviendo al menú principal...&quot;</span>
+<span class="linenos" data-linenos=" 65 "></span><span class="w">                </span><span class="c1"># echo = muestra mensaje</span>
+<span class="linenos" data-linenos=" 66 "></span><span class="w">                </span><span class="k">break</span>
+<span class="linenos" data-linenos=" 67 "></span><span class="w">                </span><span class="c1"># break = sale del bucle while</span>
+<span class="linenos" data-linenos=" 68 "></span><span class="w">                </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 69 "></span><span class="w">                </span><span class="c1"># ;; = fin de esta opción</span>
+<span class="linenos" data-linenos=" 70 "></span>
+<span class="linenos" data-linenos=" 71 "></span><span class="w">            </span>*<span class="o">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 72 "></span><span class="w">                </span><span class="c1"># *) = opción por defecto</span>
+<span class="linenos" data-linenos=" 73 "></span><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Opción inválida. Inténtalo de nuevo.&quot;</span>
+<span class="linenos" data-linenos=" 74 "></span><span class="w">                </span><span class="c1"># echo = muestra mensaje de error</span>
+<span class="linenos" data-linenos=" 75 "></span><span class="w">                </span>sleep<span class="w"> </span><span class="m">2</span>
+<span class="linenos" data-linenos=" 76 "></span><span class="w">                </span><span class="c1"># sleep 2 = pausa por 2 segundos</span>
+<span class="linenos" data-linenos=" 77 "></span><span class="w">                </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 78 "></span><span class="w">                </span><span class="c1"># ;; = fin de esta opción</span>
+<span class="linenos" data-linenos=" 79 "></span><span class="w">        </span><span class="k">esac</span>
+<span class="linenos" data-linenos=" 80 "></span><span class="w">        </span><span class="c1"># esac = fin de la estructura case</span>
+<span class="linenos" data-linenos=" 81 "></span>
+<span class="linenos" data-linenos=" 82 "></span><span class="w">    </span><span class="k">done</span>
+<span class="linenos" data-linenos=" 83 "></span><span class="w">    </span><span class="c1"># done = fin del bucle while</span>
+<span class="linenos" data-linenos=" 84 "></span>
+<span class="linenos" data-linenos=" 85 "></span><span class="o">}</span>
+<span class="linenos" data-linenos=" 86 "></span><span class="c1"># } = fin de la función gestionar_backups</span>
+<span class="linenos" data-linenos=" 87 "></span>
+<span class="linenos" data-linenos=" 88 "></span><span class="c1"># Función para crear backup</span>
+<span class="linenos" data-linenos=" 89 "></span>crear_backup<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 90 "></span><span class="w">    </span><span class="c1"># function = define función crear_backup</span>
+<span class="linenos" data-linenos=" 91 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código</span>
+<span class="linenos" data-linenos=" 92 "></span>
+<span class="linenos" data-linenos=" 93 "></span><span class="w">    </span><span class="c1"># Mostrar encabezado</span>
+<span class="linenos" data-linenos=" 94 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 95 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    CREAR COPIA DE SEGURIDAD&quot;</span>
+<span class="linenos" data-linenos=" 96 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 97 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos=" 98 "></span>
+<span class="linenos" data-linenos=" 99 "></span><span class="w">    </span><span class="c1"># Obtener fecha actual para el nombre del backup</span>
+<span class="linenos" data-linenos="100 "></span><span class="w">    </span><span class="nv">fecha</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span>
+<span class="linenos" data-linenos="101 "></span><span class="w">    </span><span class="c1"># fecha = variable para almacenar la fecha</span>
+<span class="linenos" data-linenos="102 "></span><span class="w">    </span><span class="c1"># $(date +%Y%m%d_%H%M%S) = sustitución de comando</span>
+<span class="linenos" data-linenos="103 "></span><span class="w">    </span><span class="c1"># date = comando para obtener fecha y hora</span>
+<span class="linenos" data-linenos="104 "></span><span class="w">    </span><span class="c1"># +%Y%m%d_%H%M%S = formato de fecha (YYYYMMDD_HHMMSS)</span>
+<span class="linenos" data-linenos="105 "></span>
+<span class="linenos" data-linenos="106 "></span><span class="w">    </span><span class="c1"># Crear directorio de backups si no existe</span>
+<span class="linenos" data-linenos="107 "></span><span class="w">    </span>mkdir<span class="w"> </span>-p<span class="w"> </span>backups
+<span class="linenos" data-linenos="108 "></span><span class="w">    </span><span class="c1"># mkdir -p = crea directorio y padres si no existen</span>
+<span class="linenos" data-linenos="109 "></span><span class="w">    </span><span class="c1"># backups = nombre del directorio</span>
+<span class="linenos" data-linenos="110 "></span>
+<span class="linenos" data-linenos="111 "></span><span class="w">    </span><span class="c1"># Crear archivo de backup</span>
+<span class="linenos" data-linenos="112 "></span><span class="w">    </span><span class="nv">nombre_backup</span><span class="o">=</span><span class="s2">&quot;backup_servidores_</span><span class="nv">$fecha</span><span class="s2">.tar.gz&quot;</span>
+<span class="linenos" data-linenos="113 "></span><span class="w">    </span><span class="c1"># nombre_backup = variable con el nombre del archivo de backup</span>
+<span class="linenos" data-linenos="114 "></span><span class="w">    </span><span class="c1"># backup_servidores_ = prefijo del nombre</span>
+<span class="linenos" data-linenos="115 "></span><span class="w">    </span><span class="c1"># $fecha = fecha actual</span>
+<span class="linenos" data-linenos="116 "></span><span class="w">    </span><span class="c1"># .tar.gz = extensión del archivo comprimido</span>
+<span class="linenos" data-linenos="117 "></span>
+<span class="linenos" data-linenos="118 "></span><span class="w">    </span><span class="c1"># Comprimir archivos importantes</span>
+<span class="linenos" data-linenos="119 "></span><span class="w">    </span>tar<span class="w"> </span>-czf<span class="w"> </span><span class="s2">&quot;backups/</span><span class="nv">$nombre_backup</span><span class="s2">&quot;</span><span class="w"> </span>servidores.txt<span class="w"> </span>configuracion.conf<span class="w"> </span>logs/<span class="w"> </span><span class="m">2</span>&gt;/dev/null
+<span class="linenos" data-linenos="120 "></span><span class="w">    </span><span class="c1"># tar -czf = crea archivo comprimido</span>
+<span class="linenos" data-linenos="121 "></span><span class="w">    </span><span class="c1"># -c = crear archivo</span>
+<span class="linenos" data-linenos="122 "></span><span class="w">    </span><span class="c1"># -z = comprimir con gzip</span>
+<span class="linenos" data-linenos="123 "></span><span class="w">    </span><span class="c1"># -f = especificar nombre del archivo</span>
+<span class="linenos" data-linenos="124 "></span><span class="w">    </span><span class="c1"># &quot;backups/$nombre_backup&quot; = ruta y nombre del archivo de backup</span>
+<span class="linenos" data-linenos="125 "></span><span class="w">    </span><span class="c1"># servidores.txt = archivo a incluir</span>
+<span class="linenos" data-linenos="126 "></span><span class="w">    </span><span class="c1"># configuracion.conf = archivo a incluir</span>
+<span class="linenos" data-linenos="127 "></span><span class="w">    </span><span class="c1"># logs/ = directorio a incluir</span>
+<span class="linenos" data-linenos="128 "></span><span class="w">    </span><span class="c1"># 2&gt;/dev/null = descarta mensajes de error</span>
+<span class="linenos" data-linenos="129 "></span>
+<span class="linenos" data-linenos="130 "></span><span class="w">    </span><span class="c1"># Verificar si el backup se creó correctamente</span>
+<span class="linenos" data-linenos="131 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;backups/</span><span class="nv">$nombre_backup</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="132 "></span><span class="w">        </span><span class="c1"># if = estructura condicional</span>
+<span class="linenos" data-linenos="133 "></span><span class="w">        </span><span class="c1"># [ -f &quot;backups/$nombre_backup&quot; ] = verifica si el archivo existe</span>
+<span class="linenos" data-linenos="134 "></span>
+<span class="linenos" data-linenos="135 "></span><span class="w">        </span><span class="c1"># Mostrar mensaje de éxito</span>
+<span class="linenos" data-linenos="136 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backup creado exitosamente: </span><span class="nv">$nombre_backup</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="137 "></span><span class="w">        </span><span class="c1"># echo = muestra mensaje de éxito</span>
+<span class="linenos" data-linenos="138 "></span><span class="w">        </span><span class="c1"># $nombre_backup = nombre del archivo creado</span>
+<span class="linenos" data-linenos="139 "></span>
+<span class="linenos" data-linenos="140 "></span><span class="w">        </span><span class="c1"># Mostrar tamaño del archivo</span>
+<span class="linenos" data-linenos="141 "></span><span class="w">        </span><span class="nv">tamaño</span><span class="o">=</span><span class="k">$(</span>du<span class="w"> </span>-h<span class="w"> </span><span class="s2">&quot;backups/</span><span class="nv">$nombre_backup</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1<span class="k">)</span>
+<span class="linenos" data-linenos="142 "></span><span class="w">        </span><span class="c1"># tamaño = variable para almacenar el tamaño</span>
+<span class="linenos" data-linenos="143 "></span><span class="w">        </span><span class="c1"># $(du -h &quot;backups/$nombre_backup&quot; | cut -f1) = sustitución de comando</span>
+<span class="linenos" data-linenos="144 "></span><span class="w">        </span><span class="c1"># du -h = muestra tamaño en formato legible</span>
+<span class="linenos" data-linenos="145 "></span><span class="w">        </span><span class="c1"># | = tubería</span>
+<span class="linenos" data-linenos="146 "></span><span class="w">        </span><span class="c1"># cut -f1 = corta la primera columna</span>
+<span class="linenos" data-linenos="147 "></span>
+<span class="linenos" data-linenos="148 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Tamaño del backup: </span><span class="nv">$tamaño</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="149 "></span><span class="w">        </span><span class="c1"># echo = muestra el tamaño</span>
+<span class="linenos" data-linenos="150 "></span>
+<span class="linenos" data-linenos="151 "></span><span class="w">        </span><span class="c1"># Registrar en log</span>
+<span class="linenos" data-linenos="152 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">: Backup creado - </span><span class="nv">$nombre_backup</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>logs/sistema.log
+<span class="linenos" data-linenos="153 "></span><span class="w">        </span><span class="c1"># echo = muestra mensaje</span>
+<span class="linenos" data-linenos="154 "></span><span class="w">        </span><span class="c1"># $(date) = fecha y hora actual</span>
+<span class="linenos" data-linenos="155 "></span><span class="w">        </span><span class="c1"># &gt;&gt; logs/sistema.log = añade al archivo de log</span>
+<span class="linenos" data-linenos="156 "></span>
+<span class="linenos" data-linenos="157 "></span><span class="w">    </span><span class="k">else</span>
+<span class="linenos" data-linenos="158 "></span><span class="w">        </span><span class="c1"># else = bloque si el backup no se creó</span>
+<span class="linenos" data-linenos="159 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error al crear el backup.&quot;</span>
+<span class="linenos" data-linenos="160 "></span><span class="w">        </span><span class="c1"># echo = muestra mensaje de error</span>
+<span class="linenos" data-linenos="161 "></span>
+<span class="linenos" data-linenos="162 "></span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos" data-linenos="163 "></span><span class="w">    </span><span class="c1"># fi = fin de la estructura condicional</span>
+<span class="linenos" data-linenos="164 "></span>
+<span class="linenos" data-linenos="165 "></span><span class="w">    </span><span class="c1"># Pausar para que el usuario pueda leer</span>
+<span class="linenos" data-linenos="166 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Presiona Enter para continuar...&quot;</span>
+<span class="linenos" data-linenos="167 "></span><span class="w">    </span><span class="c1"># read -p = pausa hasta Enter</span>
+<span class="linenos" data-linenos="168 "></span>
+<span class="linenos" data-linenos="169 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="170 "></span><span class="c1"># } = fin de la función crear_backup</span>
+<span class="linenos" data-linenos="171 "></span>
+<span class="linenos" data-linenos="172 "></span><span class="c1"># Función para listar backups</span>
+<span class="linenos" data-linenos="173 "></span>listar_backups<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="174 "></span><span class="w">    </span><span class="c1"># function = define función listar_backups</span>
+<span class="linenos" data-linenos="175 "></span><span class="w">    </span><span class="c1"># { = inicio del bloque de código</span>
+<span class="linenos" data-linenos="176 "></span>
+<span class="linenos" data-linenos="177 "></span><span class="w">    </span><span class="c1"># Mostrar encabezado</span>
+<span class="linenos" data-linenos="178 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="179 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    BACKUPS DISPONIBLES&quot;</span>
+<span class="linenos" data-linenos="180 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="181 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="182 "></span>
+<span class="linenos" data-linenos="183 "></span><span class="w">    </span><span class="c1"># Verificar si existe el directorio de backups</span>
+<span class="linenos" data-linenos="184 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;backups&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="185 "></span><span class="w">        </span><span class="c1"># if = estructura condicional</span>
+<span class="linenos" data-linenos="186 "></span><span class="w">        </span><span class="c1"># [ -d &quot;backups&quot; ] = verifica si el directorio existe</span>
+<span class="linenos" data-linenos="187 "></span>
+<span class="linenos" data-linenos="188 "></span><span class="w">        </span><span class="c1"># Listar archivos de backup</span>
+<span class="linenos" data-linenos="189 "></span><span class="w">        </span>ls<span class="w"> </span>-la<span class="w"> </span>backups/
+<span class="linenos" data-linenos="190 "></span><span class="w">        </span><span class="c1"># ls -la = lista archivos con detalles</span>
+<span class="linenos" data-linenos="191 "></span><span class="w">        </span><span class="c1"># backups/ = directorio a listar</span>
+<span class="linenos" data-linenos="192 "></span>
+<span class="linenos" data-linenos="193 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="194 "></span><span class="w">        </span><span class="c1"># echo = línea en blanco</span>
+<span class="linenos" data-linenos="195 "></span>
+<span class="linenos" data-linenos="196 "></span><span class="w">        </span><span class="c1"># Mostrar número total de backups</span>
+<span class="linenos" data-linenos="197 "></span><span class="w">        </span><span class="nv">total</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span>backups/<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span>
+<span class="linenos" data-linenos="198 "></span><span class="w">        </span><span class="c1"># total = variable para almacenar el total</span>
+<span class="linenos" data-linenos="199 "></span><span class="w">        </span><span class="c1"># $(ls backups/ | wc -l) = sustitución de comando</span>
+<span class="linenos" data-linenos="200 "></span><span class="w">        </span><span class="c1"># ls backups/ = lista archivos del directorio</span>
+<span class="linenos" data-linenos="201 "></span><span class="w">        </span><span class="c1"># | = tubería</span>
+<span class="linenos" data-linenos="202 "></span><span class="w">        </span><span class="c1"># wc -l = cuenta líneas</span>
+<span class="linenos" data-linenos="203 "></span>
+<span class="linenos" data-linenos="204 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Total de backups: </span><span class="nv">$total</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="205 "></span><span class="w">        </span><span class="c1"># echo = muestra el total</span>
+<span class="linenos" data-linenos="206 "></span><span class="w">        </span><span class="c1"># $total = contenido de la variable total</span>
+<span class="linenos" data-linenos="207 "></span>
+<span class="linenos" data-linenos="208 "></span><span class="w">    </span><span class="k">else</span>
+<span class="linenos" data-linenos="209 "></span><span class="w">        </span><span class="c1"># else = bloque si el directorio no existe</span>
+<span class="linenos" data-linenos="210 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No se encontró el directorio de backups.&quot;</span>
+<span class="linenos" data-linenos="211 "></span><span class="w">        </span><span class="c1"># echo = muestra mensaje de error</span>
+<span class="linenos" data-linenos="212 "></span>
+<span class="linenos" data-linenos="213 "></span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos" data-linenos="214 "></span><span class="w">    </span><span class="c1"># fi = fin de la estructura condicional</span>
+<span class="linenos" data-linenos="215 "></span>
+<span class="linenos" data-linenos="216 "></span><span class="w">    </span><span class="c1"># Pausar para que el usuario pueda leer</span>
+<span class="linenos" data-linenos="217 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Presiona Enter para continuar...&quot;</span>
+<span class="linenos" data-linenos="218 "></span><span class="w">    </span><span class="c1"># read -p = pausa hasta Enter</span>
+<span class="linenos" data-linenos="219 "></span>
+<span class="linenos" data-linenos="220 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="221 "></span><span class="c1"># } = fin de la función listar_backups</span>
+</code></pre></div>
+<h2 id="archivo-de-configuracion-configuracionconf">Archivo de Configuración: configuracion.conf<a class="headerlink" href="#archivo-de-configuracion-configuracionconf" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># Archivo de Configuración del Sistema</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Configuración general del sistema</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nv">SISTEMA_NOMBRE</span><span class="o">=</span><span class="s2">&quot;Sistema de Gestión de Servidores&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># SISTEMA_NOMBRE = variable con el nombre del sistema</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nv">SISTEMA_VERSION</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># SISTEMA_VERSION = variable con la versión del sistema</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="c1"># Configuración de logs</span>
+<span class="linenos" data-linenos="13 "></span><span class="nv">LOG_DIR</span><span class="o">=</span><span class="s2">&quot;logs&quot;</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1"># LOG_DIR = variable con el directorio de logs</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="nv">LOG_SISTEMA</span><span class="o">=</span><span class="s2">&quot;sistema.log&quot;</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1"># LOG_SISTEMA = variable con el nombre del archivo de log del sistema</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="nv">LOG_ERRORES</span><span class="o">=</span><span class="s2">&quot;errores.log&quot;</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1"># LOG_ERRORES = variable con el nombre del archivo de log de errores</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="c1"># Configuración de backups</span>
+<span class="linenos" data-linenos="23 "></span><span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&quot;backups&quot;</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1"># BACKUP_DIR = variable con el directorio de backups</span>
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span><span class="nv">BACKUP_PREFIX</span><span class="o">=</span><span class="s2">&quot;backup_servidores&quot;</span>
+<span class="linenos" data-linenos="27 "></span><span class="c1"># BACKUP_PREFIX = variable con el prefijo de los backups</span>
+<span class="linenos" data-linenos="28 "></span>
+<span class="linenos" data-linenos="29 "></span><span class="c1"># Configuración de servidores</span>
+<span class="linenos" data-linenos="30 "></span><span class="nv">SERVIDORES_FILE</span><span class="o">=</span><span class="s2">&quot;servidores.txt&quot;</span>
+<span class="linenos" data-linenos="31 "></span><span class="c1"># SERVIDORES_FILE = variable con el nombre del archivo de servidores</span>
+<span class="linenos" data-linenos="32 "></span>
+<span class="linenos" data-linenos="33 "></span><span class="c1"># Configuración de red</span>
+<span class="linenos" data-linenos="34 "></span><span class="nv">PING_TIMEOUT</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos" data-linenos="35 "></span><span class="c1"># PING_TIMEOUT = variable con el tiempo de espera para ping</span>
+<span class="linenos" data-linenos="36 "></span>
+<span class="linenos" data-linenos="37 "></span><span class="nv">PING_COUNT</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos" data-linenos="38 "></span><span class="c1"># PING_COUNT = variable con el número de paquetes de ping</span>
+<span class="linenos" data-linenos="39 "></span>
+<span class="linenos" data-linenos="40 "></span><span class="c1"># Configuración de interfaz</span>
+<span class="linenos" data-linenos="41 "></span><span class="nv">MENU_PAUSE</span><span class="o">=</span><span class="m">2</span>
+<span class="linenos" data-linenos="42 "></span><span class="c1"># MENU_PAUSE = variable con el tiempo de pausa en el menú</span>
+</code></pre></div>
+<h2 id="archivo-de-servidores-de-ejemplo-servidorestxt">Archivo de Servidores de Ejemplo: servidores.txt<a class="headerlink" href="#archivo-de-servidores-de-ejemplo-servidorestxt" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>servidor-web-01|192.168.1.10|80|HTTP|Servidor web principal
+<span class="linenos" data-linenos="2 "></span>servidor-web-02|192.168.1.11|80|HTTP|Servidor web secundario
+<span class="linenos" data-linenos="3 "></span>servidor-db-01|192.168.1.20|3306|MySQL|Base de datos principal
+<span class="linenos" data-linenos="4 "></span>servidor-db-02|192.168.1.21|3306|MySQL|Base de datos secundaria
+<span class="linenos" data-linenos="5 "></span>servidor-ssh-01|192.168.1.30|22|SSH|Servidor SSH principal
+<span class="linenos" data-linenos="6 "></span>servidor-ftp-01|192.168.1.40|21|FTP|Servidor FTP principal
+<span class="linenos" data-linenos="7 "></span>servidor-smtp-01|192.168.1.50|25|SMTP|Servidor de correo
+<span class="linenos" data-linenos="8 "></span>servidor-dns-01|192.168.1.60|53|DNS|Servidor DNS principal
+</code></pre></div>
+<h2 id="script-de-inicio-iniciar_sistemash">Script de Inicio: iniciar_sistema.sh<a class="headerlink" href="#script-de-inicio-iniciar_sistemash" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># Shebang: indica que el script debe ejecutarse con bash</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Script de Inicio del Sistema</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Verificar que el script se ejecute desde el directorio correcto</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;menu_principal.sh&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="c1"># if = estructura condicional</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="c1"># [ ! -f &quot;menu_principal.sh&quot; ] = verifica si el archivo NO existe</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="c1"># ! = operador de negación</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: Este script debe ejecutarse desde el directorio del sistema.&quot;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="c1"># echo = muestra mensaje de error</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="c1"># exit 1 = termina el programa con código de error</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="k">fi</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1"># fi = fin de la estructura condicional</span>
+<span class="linenos" data-linenos="22 "></span>
+<span class="linenos" data-linenos="23 "></span><span class="c1"># Crear directorios necesarios si no existen</span>
+<span class="linenos" data-linenos="24 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span>logs
+<span class="linenos" data-linenos="25 "></span><span class="c1"># mkdir -p = crea directorio y padres si no existen</span>
+<span class="linenos" data-linenos="26 "></span><span class="c1"># logs = nombre del directorio</span>
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span>backups
+<span class="linenos" data-linenos="29 "></span><span class="c1"># mkdir -p = crea directorio y padres si no existen</span>
+<span class="linenos" data-linenos="30 "></span><span class="c1"># backups = nombre del directorio</span>
+<span class="linenos" data-linenos="31 "></span>
+<span class="linenos" data-linenos="32 "></span><span class="c1"># Verificar permisos de ejecución</span>
+<span class="linenos" data-linenos="33 "></span>chmod<span class="w"> </span>+x<span class="w"> </span>menu_principal.sh
+<span class="linenos" data-linenos="34 "></span><span class="c1"># chmod +x = añade permisos de ejecución</span>
+<span class="linenos" data-linenos="35 "></span><span class="c1"># menu_principal.sh = archivo al que añadir permisos</span>
+<span class="linenos" data-linenos="36 "></span>
+<span class="linenos" data-linenos="37 "></span>chmod<span class="w"> </span>+x<span class="w"> </span>funciones_servidor.sh
+<span class="linenos" data-linenos="38 "></span><span class="c1"># chmod +x = añade permisos de ejecución</span>
+<span class="linenos" data-linenos="39 "></span><span class="c1"># funciones_servidor.sh = archivo al que añadir permisos</span>
+<span class="linenos" data-linenos="40 "></span>
+<span class="linenos" data-linenos="41 "></span>chmod<span class="w"> </span>+p<span class="w"> </span>monitoreo.sh
+<span class="linenos" data-linenos="42 "></span><span class="c1"># chmod +x = añade permisos de ejecución</span>
+<span class="linenos" data-linenos="43 "></span><span class="c1"># monitoreo.sh = archivo al que añadir permisos</span>
+<span class="linenos" data-linenos="44 "></span>
+<span class="linenos" data-linenos="45 "></span>chmod<span class="w"> </span>+x<span class="w"> </span>backup.sh
+<span class="linenos" data-linenos="46 "></span><span class="c1"># chmod +x = añade permisos de ejecución</span>
+<span class="linenos" data-linenos="47 "></span><span class="c1"># backup.sh = archivo al que añadir permisos</span>
+<span class="linenos" data-linenos="48 "></span>
+<span class="linenos" data-linenos="49 "></span><span class="c1"># Mostrar mensaje de bienvenida</span>
+<span class="linenos" data-linenos="50 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="51 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    SISTEMA DE GESTIÓN DE SERVIDORES&quot;</span>
+<span class="linenos" data-linenos="52 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    Versión 1.0&quot;</span>
+<span class="linenos" data-linenos="53 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos="54 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="55 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Iniciando sistema...&quot;</span>
+<span class="linenos" data-linenos="56 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="57 "></span>
+<span class="linenos" data-linenos="58 "></span><span class="c1"># Ejecutar el sistema principal</span>
+<span class="linenos" data-linenos="59 "></span>./menu_principal.sh
+<span class="linenos" data-linenos="60 "></span><span class="c1"># ./menu_principal.sh = ejecuta el script principal</span>
+<span class="linenos" data-linenos="61 "></span><span class="c1"># ./ = indica que el archivo está en el directorio actual</span>
+</code></pre></div>
+<h2 id="caracteristicas-de-la-solucion">Características de la Solución<a class="headerlink" href="#caracteristicas-de-la-solucion" title="Permanent link">&para;</a></h2>
+<h3 id="funcionalidades-implementadas"><strong>Funcionalidades Implementadas:</strong><a class="headerlink" href="#funcionalidades-implementadas" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Gestión de Servidores:</strong>
+   - Listar servidores
+   - Añadir servidor
+   - Buscar servidor
+   - Modificar servidor
+   - Eliminar servidor</p>
+</li>
+<li>
+<p><strong>Monitoreo del Sistema:</strong>
+   - Estado de servidores (ping)
+   - Uso de recursos (memoria, disco, CPU)
+   - Visualización de logs</p>
+</li>
+<li>
+<p><strong>Copias de Seguridad:</strong>
+   - Crear backup completo
+   - Restaurar backup
+   - Listar backups disponibles
+   - Eliminar backup</p>
+</li>
+<li>
+<p><strong>Configuración:</strong>
+   - Archivo de configuración centralizado
+   - Variables de entorno
+   - Configuración de logs y backups</p>
+</li>
+</ol>
+<h3 id="tecnicas-de-shellscript-utilizadas"><strong>Técnicas de ShellScript Utilizadas:</strong><a class="headerlink" href="#tecnicas-de-shellscript-utilizadas" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Estructuras de control:</strong> <code>if</code>, <code>case</code>, <code>while</code>, <code>for</code></li>
+<li><strong>Funciones:</strong> Definición y llamada de funciones</li>
+<li><strong>Variables:</strong> Locales y globales</li>
+<li><strong>Parámetros:</strong> <code>$1</code>, <code>$2</code>, <code>$#</code>, <code>$*</code></li>
+<li><strong>Redirecciones:</strong> <code>&gt;</code>, <code>&gt;&gt;</code>, <code>2&gt;</code>, <code>|</code></li>
+<li><strong>Comandos del sistema:</strong> <code>ping</code>, <code>ps</code>, <code>df</code>, <code>free</code>, <code>tar</code>, <code>grep</code></li>
+<li><strong>Archivos:</strong> Lectura, escritura, verificación de existencia</li>
+<li><strong>Modularización:</strong> Scripts separados por funcionalidad</li>
+</ul>
+<h3 id="comentarios-detallados"><strong>Comentarios Detallados:</strong><a class="headerlink" href="#comentarios-detallados" title="Permanent link">&para;</a></h3>
+<p>Cada línea de código está comentada explicando:
+- <strong>Qué hace</strong> la línea
+- <strong>Por qué</strong> se usa esa sintaxis
+- <strong>Cómo funciona</strong> el comando o estructura
+- <strong>Qué variables</strong> se utilizan y para qué</p>
+<p>Esta solución proporciona una base completa para el reto grupal, mostrando cómo implementar un sistema modular y bien documentado usando las técnicas de ShellScript aprendidas durante la unidad.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

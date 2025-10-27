@@ -1,0 +1,1174 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Soluciones de referencia para el examen de ShellScript">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/SolucionExamenShellScript.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Soluciones - Examen ShellScript - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Soluciones - Examen ShellScript - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="Soluciones de referencia para el examen de ShellScript" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/SolucionExamenShellScript.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/SolucionExamenShellScript.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Soluciones - Examen ShellScript - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="Soluciones de referencia para el examen de ShellScript" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/SolucionExamenShellScript.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#soluciones-del-examen-shellscript-aso" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Soluciones - Examen ShellScript
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-correccion-de-codigo-10-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1: Corrección de Código (10 puntos)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 1: Corrección de Código (10 puntos)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errores-identificados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errores Identificados:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codigo-corregido" class="md-nav__link">
+    <span class="md-ellipsis">
+      Código Corregido:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explicaciones:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-completar-codigo-12-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2: Completar Código (12 puntos)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 2: Completar Código (12 puntos)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#codigo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Código Completo:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-trazar-ejecucion-8-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 3: Trazar Ejecución (8 puntos)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 3: Trazar Ejecución (8 puntos)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabla-completada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabla Completada:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicacion-del-trazado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explicación del Trazado:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-4-debug-y-explicar-10-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 4: Debug y Explicar (10 puntos)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 4: Debug y Explicar (10 puntos)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#respuestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Respuestas:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-5-implementar-funcion-10-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 5: Implementar Función (10 puntos)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 5: Implementar Función (10 puntos)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcion-buscar_servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Función buscar_servidor():
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explicación:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-6-analizar-sistema-de-backups-10-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 6: Analizar Sistema de Backups (10 puntos)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 6: Analizar Sistema de Backups (10 puntos)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#respuestas-teoricas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Respuestas Teóricas:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcion-restaurar_backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Función restaurar_backup():
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicacion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explicación:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-correccion-sugeridos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de Corrección Sugeridos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Criterios de Corrección Sugeridos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-10-pts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1 (10 pts)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-12-pts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2 (12 pts)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-8-pts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 3 (8 pts)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4-10-pts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 4 (10 pts)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5-10-pts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 5 (10 pts)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6-10-pts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 6 (10 pts)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notas-para-el-corrector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notas para el Corrector
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notas para el Corrector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diferencias-aceptables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diferencias Aceptables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errores-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errores Comunes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puntuacion-adicional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Puntuación Adicional
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="soluciones-del-examen-shellscript-aso">Soluciones del Examen ShellScript - ASO<a class="headerlink" href="#soluciones-del-examen-shellscript-aso" title="Permanent link">&para;</a></h1>
+<p>Este documento contiene las soluciones de referencia para el examen de ShellScript.</p>
+<hr />
+<h2 id="ejercicio-1-correccion-de-codigo-10-puntos">Ejercicio 1: Corrección de Código (10 puntos)<a class="headerlink" href="#ejercicio-1-correccion-de-codigo-10-puntos" title="Permanent link">&para;</a></h2>
+<h3 id="errores-identificados">Errores Identificados:<a class="headerlink" href="#errores-identificados" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Línea #</th>
+<th>Error</th>
+<th>Corrección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td><strong>Falta espacio</strong> en <code>if [$#</code></td>
+<td>Debe ser <code>if [ $# -eq 0 ]</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Sin código de salida</strong> en <code>exit</code></td>
+<td>Debe ser <code>exit 1</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Falta comillas</strong> en variable de grep</td>
+<td>Debe ser <code>"$nombre_usuario"</code></td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Falta prueba adecuada</strong> en <code>if [$resultado]</code></td>
+<td>Debe ser <code>if [ -n "$resultado" ]</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total: 4 errores principales</strong></p>
+<h3 id="codigo-corregido">Código Corregido:<a class="headerlink" href="#codigo-corregido" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1"># Script para gestionar usuarios</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="nv">nombre_usuario</span><span class="o">=</span><span class="nv">$1</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Debe proporcionar un nombre de usuario&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">fi</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span>buscar_usuario<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="nv">resultado</span><span class="o">=</span><span class="k">$(</span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$nombre_usuario</span><span class="s2">&quot;</span><span class="w"> </span>/etc/passwd<span class="k">)</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$resultado</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario encontrado: </span><span class="nv">$resultado</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">else</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario no encontrado&quot;</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos" data-linenos="20 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="c1"># Función principal</span>
+<span class="linenos" data-linenos="23 "></span>buscar_usuario
+</code></pre></div>
+<h3 id="explicaciones">Explicaciones:<a class="headerlink" href="#explicaciones" title="Permanent link">&para;</a></h3>
+<p><strong>Línea 4 - Error de sintaxis:</strong></p>
+<ul>
+<li><code>if [$# -eq 0]</code> ❌ - Falta espacio después de <code>[</code></li>
+<li><code>if [ $# -eq 0 ]</code> ✅ - Espacio requerido en condiciones bash</li>
+<li>En bash, los corchetes <code>[ ]</code> son un comando que requiere espacios alrededor</li>
+</ul>
+<p><strong>Línea 6 - Sin código de salida:</strong></p>
+<ul>
+<li><code>exit</code> ❌ - No indica si fue error o éxito</li>
+<li><code>exit 1</code> ✅ - Indica que salió con error (código de salida 1)</li>
+<li>La convención es usar <code>exit 0</code> para éxito y <code>exit 1</code> (o mayor) para error</li>
+</ul>
+<p><strong>Línea 10 - Variable sin comillas:</strong></p>
+<ul>
+<li><code>grep -i $nombre_usuario</code> ❌ - Si el nombre tiene espacios, fallará</li>
+<li><code>grep -i "$nombre_usuario"</code> ✅ - Las comillas protegen el valor</li>
+<li>Siempre usa comillas en variables para evitar problemas con espacios especiales</li>
+</ul>
+<p><strong>Línea 11 - Condición incorrecta:</strong></p>
+<ul>
+<li><code>if [$resultado]</code> ❌ - No es una prueba válida</li>
+<li><code>if [ -n "$resultado" ]</code> ✅ - <code>-n</code> prueba si la variable NO está vacía</li>
+<li>Forma correcta de verificar si grep encontró algo</li>
+</ul>
+<hr />
+<h2 id="ejercicio-2-completar-codigo-12-puntos">Ejercicio 2: Completar Código (12 puntos)<a class="headerlink" href="#ejercicio-2-completar-codigo-12-puntos" title="Permanent link">&para;</a></h2>
+<h3 id="codigo-completo">Código Completo:<a class="headerlink" href="#codigo-completo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1"># Declarar array de ciudades</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="nb">declare</span><span class="w"> </span>-a<span class="w"> </span><span class="nv">ciudades</span><span class="o">=(</span><span class="w"> </span><span class="s2">&quot;Madrid&quot;</span><span class="w"> </span><span class="o">)</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1"># Función para mostrar menú</span>
+<span class="linenos" data-linenos=" 7 "></span>mostrar_menu<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Añadir ciudad&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Listar ciudades&quot;</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Buscar ciudad&quot;</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;4) Salir&quot;</span>
+<span class="linenos" data-linenos="12 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="c1"># Función para añadir ciudad</span>
+<span class="linenos" data-linenos="15 "></span>añadir_ciudad<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce el nombre de la ciudad: &quot;</span><span class="w"> </span>nueva_ciudad
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span>ciudades<span class="o">[</span><span class="si">${#</span><span class="nv">ciudades</span><span class="p">[@]</span><span class="si">}</span><span class="o">]=</span><span class="s2">&quot;</span><span class="nv">$nueva_ciudad</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ciudad añadida correctamente&quot;</span>
+<span class="linenos" data-linenos="19 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="c1"># Función para listar ciudades</span>
+<span class="linenos" data-linenos="22 "></span>listar_ciudades<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Listado de ciudades:&quot;</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">0</span>..<span class="k">$((</span><span class="si">${#</span><span class="nv">ciudades</span><span class="p">[@]</span><span class="si">}</span><span class="o">-</span><span class="m">1</span><span class="k">))</span><span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">) ciudad </span><span class="si">${</span><span class="nv">ciudades</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="k">done</span>
+<span class="linenos" data-linenos="27 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="28 "></span>
+<span class="linenos" data-linenos="29 "></span><span class="c1"># Función para buscar ciudad</span>
+<span class="linenos" data-linenos="30 "></span>buscar_ciudad<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce el término de búsqueda: &quot;</span><span class="w"> </span>termino
+<span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span>ciudad<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ciudades</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos="33 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ciudad</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>*<span class="s2">&quot;</span><span class="nv">$termino</span><span class="s2">&quot;</span>*<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="34 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ciudad encontrada: </span><span class="nv">$ciudad</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="35 "></span><span class="w">        </span><span class="k">fi</span>
+<span class="linenos" data-linenos="36 "></span><span class="w">    </span><span class="k">done</span>
+<span class="linenos" data-linenos="37 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="38 "></span>
+<span class="linenos" data-linenos="39 "></span><span class="c1"># Menú principal</span>
+<span class="linenos" data-linenos="40 "></span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos="41 "></span><span class="w">    </span>clear
+<span class="linenos" data-linenos="42 "></span><span class="w">    </span>mostrar_menu
+<span class="linenos" data-linenos="43 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona una opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos="44 "></span>
+<span class="linenos" data-linenos="45 "></span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos="46 "></span><span class="w">        </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>añadir_ciudad<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="47 "></span><span class="w">        </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>listar_ciudades<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="48 "></span><span class="w">        </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>buscar_ciudad<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="49 "></span><span class="w">        </span><span class="m">4</span><span class="o">)</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="50 "></span><span class="w">        </span>*<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Opción inválida&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="51 "></span><span class="w">    </span><span class="k">esac</span>
+<span class="linenos" data-linenos="52 "></span><span class="k">done</span>
+</code></pre></div>
+<hr />
+<h2 id="ejercicio-3-trazar-ejecucion-8-puntos">Ejercicio 3: Trazar Ejecución (8 puntos)<a class="headerlink" href="#ejercicio-3-trazar-ejecucion-8-puntos" title="Permanent link">&para;</a></h2>
+<h3 id="tabla-completada">Tabla Completada:<a class="headerlink" href="#tabla-completada" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Línea</th>
+<th>Valor de <code>i</code></th>
+<th>Valor de <code>${ciudades[$i]}</code></th>
+<th>Salida del <code>case</code></th>
+<th>Total ciudades</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>0</td>
+<td>Madrid</td>
+<td>Capital de España</td>
+<td>3</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1</td>
+<td>Barcelona</td>
+<td>Capital de Cataluña</td>
+<td>3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>Valencia</td>
+<td>Otra ciudad</td>
+<td>3</td>
+</tr>
+<tr>
+<td>13</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="explicacion-del-trazado">Explicación del Trazado:<a class="headerlink" href="#explicacion-del-trazado" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Iteración 0</strong>: <code>ciudades[0]</code> = "Madrid" → caso "Madrid" → "Capital de España"</li>
+<li><strong>Iteración 1</strong>: <code>ciudades[1]</code> = "Barcelona" → caso "Barcelona" → "Capital de Cataluña"</li>
+<li><strong>Iteración 2</strong>: <code>ciudades[2]</code> = "Valencia" → caso por defecto <code>*)</code> → "Otra ciudad"</li>
+<li><strong>Final</strong>: <code>${#ciudades[@]}</code> devuelve el número de elementos del array (3)</li>
+</ol>
+<hr />
+<h2 id="ejercicio-4-debug-y-explicar-10-puntos">Ejercicio 4: Debug y Explicar (10 puntos)<a class="headerlink" href="#ejercicio-4-debug-y-explicar-10-puntos" title="Permanent link">&para;</a></h2>
+<h3 id="respuestas">Respuestas:<a class="headerlink" href="#respuestas" title="Permanent link">&para;</a></h3>
+<p><strong>1. ¿Qué hace <code>clear</code> y por qué se usa aquí?</strong>
+- <code>clear</code> limpia la pantalla del terminal
+- Se usa para limpiar la pantalla cada vez que se muestra el menú, manteniendo una interfaz limpia y legible</p>
+<p><strong>2. Explica la diferencia entre <code>$opcion</code> y <code>"$opcion"</code> en el case</strong>
+- <code>$opcion</code> expande la variable sin protección de espacios (si hay espacios, se interpretan como argumentos separados)
+- <code>"$opcion"</code> protege el valor completo de la variable entre comillas
+- En el <code>case</code>, ambos funcionan igual para valores simples, pero <code>"$opcion"</code> es más seguro</p>
+<p><strong>3. ¿Qué hace el operador <code>-f</code> en la línea <code>[ -f "servidores.txt" ]</code>?</strong>
+- <code>-f</code> verifica si el archivo existe y es un archivo regular (no directorio)
+- Retorna verdadero si <code>servidores.txt</code> existe y es un archivo
+- Retorna falso si no existe, es un directorio, o hay algún problema de permisos</p>
+<p><strong>4. Explica qué hace <code>wc -l &lt; servidores.txt</code> y por qué se usa <code>&lt;</code> en lugar de <code>|</code></strong>
+- <code>wc -l</code> cuenta las líneas de un archivo
+- <code>&lt;</code> redirecciona el archivo como entrada al comando
+- <code>|</code> enlazaría con otro comando mediante tubería
+- Se usa <code>&lt;</code> porque queremos pasar el archivo directamente, no el resultado de otro comando
+- <code>cat servidores.txt | wc -l</code> haría lo mismo, pero <code>&lt;</code> es más eficiente (no necesita spawn de un proceso extra)</p>
+<p><strong>5. ¿Para qué sirve <code>read -p</code> al final de la función?</strong>
+- <code>read -p</code> pausa la ejecución del script esperando que el usuario presione Enter
+- Permite al usuario leer la información antes de continuar
+- Mejora la experiencia de usuario dando tiempo para leer el resultado</p>
+<hr />
+<h2 id="ejercicio-5-implementar-funcion-10-puntos">Ejercicio 5: Implementar Función (10 puntos)<a class="headerlink" href="#ejercicio-5-implementar-funcion-10-puntos" title="Permanent link">&para;</a></h2>
+<h3 id="funcion-buscar_servidor">Función <code>buscar_servidor()</code>:<a class="headerlink" href="#funcion-buscar_servidor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">function</span><span class="w"> </span>buscar_servidor<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    BUSCAR SERVIDOR&quot;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;==========================================&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce el término de búsqueda: &quot;</span><span class="w"> </span>termino
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;servidores.txt&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="nv">resultado</span><span class="o">=</span><span class="k">$(</span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$termino</span><span class="s2">&quot;</span><span class="w"> </span>servidores.txt<span class="k">)</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$resultado</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Resultados encontrados:&quot;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;======================&quot;</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$resultado</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span><span class="w">            </span><span class="c1"># Contar resultados</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">            </span><span class="nv">total</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$resultado</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Total de resultados encontrados: </span><span class="nv">$total</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">        </span><span class="k">else</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No se encontraron servidores con el término &#39;</span><span class="nv">$termino</span><span class="s2">&#39;&quot;</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">        </span><span class="k">fi</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="k">else</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No se encontró el archivo de servidores.&quot;</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos" data-linenos="29 "></span>
+<span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Presiona Enter para continuar...&quot;</span>
+<span class="linenos" data-linenos="31 "></span><span class="o">}</span>
+</code></pre></div>
+<h3 id="explicacion">Explicación:<a class="headerlink" href="#explicacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Validación del archivo con <code>[ -f ]</code></li>
+<li>Búsqueda case-insensitive con <code>grep -i</code></li>
+<li>Verificación de resultados con <code>[ -n ]</code></li>
+<li>Conteo de resultados con <code>wc -l</code></li>
+<li>Mensajes informativos para el usuario</li>
+<li>Pausa al final para lectura</li>
+</ul>
+<hr />
+<h2 id="ejercicio-6-analizar-sistema-de-backups-10-puntos">Ejercicio 6: Analizar Sistema de Backups (10 puntos)<a class="headerlink" href="#ejercicio-6-analizar-sistema-de-backups-10-puntos" title="Permanent link">&para;</a></h2>
+<h3 id="respuestas-teoricas">Respuestas Teóricas:<a class="headerlink" href="#respuestas-teoricas" title="Permanent link">&para;</a></h3>
+<p><strong>1. ¿Qué formato de fecha genera <code>date +%Y%m%d_%H%M%S</code>?</strong>
+- Formato: <code>YYYYMMDD_HHMMSS</code>
+- Ejemplo: <code>20241222_143055</code> (22 de diciembre de 2024, 14:30:55)</p>
+<p><strong>2. ¿Qué hace <code>-czf</code> en el comando <code>tar</code>?</strong>
+- <code>-c</code>: Crea un nuevo archivo
+- <code>-z</code>: Comprime con gzip
+- <code>-f</code>: Especifica el nombre del archivo</p>
+<p><strong>3. ¿Para qué sirve <code>2&gt;/dev/null</code>?</strong>
+- Redirecciona la salida de error (stderr) a <code>/dev/null</code>
+- Oculta los mensajes de error del comando
+- <code>/dev/null</code> es un "agujero negro" que descarta todo lo que recibe</p>
+<p><strong>4. ¿Qué hace <code>cut -f1</code> en <code>du -h "backups/$nombre_backup" | cut -f1</code>?</strong>
+- <code>cut -f1</code> extrae el primer campo (columna) de la salida
+- <code>du -h</code> muestra dos columnas: tamaño y ruta
+- <code>cut -f1</code> extrae solo la columna del tamaño (primera columna)
+- Resultado: solo el tamaño en formato legible (ej: "1.2M")</p>
+<p><strong>5. Explica la diferencia entre <code>&gt;&gt;</code> y <code>&gt;</code>:</strong>
+- <code>&gt;&gt;</code>: Añade al final del archivo (append), no sobrescribe el contenido existente
+- <code>&gt;</code>: Sobrescribe el archivo completo, eliminando todo el contenido previo</p>
+<h3 id="funcion-restaurar_backup">Función <code>restaurar_backup()</code>:<a class="headerlink" href="#funcion-restaurar_backup" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">function</span><span class="w"> </span>restaurar_backup<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backups disponibles:&quot;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span>ls<span class="w"> </span>-la<span class="w"> </span>backups/
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Nombre del backup: &quot;</span><span class="w"> </span>backup_restaurar
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;backups/</span><span class="nv">$backup_restaurar</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span>tar<span class="w"> </span>-xzf<span class="w"> </span>backups/<span class="nv">$backup_restaurar</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backup restaurado&quot;</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">else</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backup no encontrado&quot;</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos" data-linenos="13 "></span><span class="o">}</span>
+</code></pre></div>
+<h3 id="explicacion_1">Explicación:<a class="headerlink" href="#explicacion_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Lista los backups disponibles con <code>ls -la</code></li>
+<li>Solicita el nombre del backup a restaurar</li>
+<li>Valida que el archivo existe con <code>[ -f ]</code></li>
+<li>Extrae con <code>tar -xzf</code> (x=extraer, z=gzip, f=archivo)</li>
+<li>Muestra mensaje de confirmación o error</li>
+</ul>
+<hr />
+<h2 id="criterios-de-correccion-sugeridos">Criterios de Corrección Sugeridos<a class="headerlink" href="#criterios-de-correccion-sugeridos" title="Permanent link">&para;</a></h2>
+<h3 id="ejercicio-1-10-pts">Ejercicio 1 (10 pts)<a class="headerlink" href="#ejercicio-1-10-pts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Lista de 10 errores correctos: 5 puntos</li>
+<li>Código corregido sin errores: 3 puntos</li>
+<li>Explicaciones claras: 2 puntos</li>
+</ul>
+<h3 id="ejercicio-2-12-pts">Ejercicio 2 (12 pts)<a class="headerlink" href="#ejercicio-2-12-pts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Sintaxis correcta: 4 puntos</li>
+<li>Arrays y bucles: 3 puntos</li>
+<li>Estructuras de control: 3 puntos</li>
+<li>Funcionalidad completa: 2 puntos</li>
+</ul>
+<h3 id="ejercicio-3-8-pts">Ejercicio 3 (8 pts)<a class="headerlink" href="#ejercicio-3-8-pts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Valores de array correctos: 4 puntos</li>
+<li>Comprensión del case: 2 puntos</li>
+<li>Resultado final correcto: 2 puntos</li>
+</ul>
+<h3 id="ejercicio-4-10-pts">Ejercicio 4 (10 pts)<a class="headerlink" href="#ejercicio-4-10-pts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>5 respuestas técnicas correctas: 6 puntos (1.2 pt cada una)</li>
+<li>Comprensión conceptual: 4 puntos</li>
+</ul>
+<h3 id="ejercicio-5-10-pts">Ejercicio 5 (10 pts)<a class="headerlink" href="#ejercicio-5-10-pts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Estructura correcta de función: 2 puntos</li>
+<li>Búsqueda con grep funcional: 2 puntos</li>
+<li>Manejo de resultados: 3 puntos</li>
+<li>Validaciones adecuadas: 3 puntos</li>
+</ul>
+<h3 id="ejercicio-6-10-pts">Ejercicio 6 (10 pts)<a class="headerlink" href="#ejercicio-6-10-pts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>5 respuestas teóricas: 4 puntos</li>
+<li>Función <code>restaurar_backup</code> correcta: 6 puntos</li>
+</ul>
+<hr />
+<h2 id="notas-para-el-corrector">Notas para el Corrector<a class="headerlink" href="#notas-para-el-corrector" title="Permanent link">&para;</a></h2>
+<h3 id="diferencias-aceptables">Diferencias Aceptables<a class="headerlink" href="#diferencias-aceptables" title="Permanent link">&para;</a></h3>
+<p>Algunas variantes de código son aceptables:</p>
+<ul>
+<li><code>read -p</code> vs <code>read -r -p</code> (ambos válidos)</li>
+<li><code>grep -i</code> vs <code>grep</code> (con o sin case-insensitive)</li>
+<li>Uso de <code>echo ""</code> vs simplemente <code>echo</code> para espacio en blanco</li>
+<li>Variantes en nombres de variables (siempre que sean consistentes)</li>
+</ul>
+<h3 id="errores-comunes">Errores Comunes<a class="headerlink" href="#errores-comunes" title="Permanent link">&para;</a></h3>
+<p>Errores típicos a penalizar:</p>
+<ul>
+<li>Falta de comillas en variables</li>
+<li>Espacios incorrectos en condiciones <code>[</code></li>
+<li>Confusión entre <code>return</code> y <code>exit</code></li>
+<li>Redirecciones incorrectas (<code>&gt;</code> vs <code>&gt;&gt;</code>)</li>
+<li>Sintaxis incorrecta de arrays</li>
+<li>Falta de validaciones de archivos</li>
+</ul>
+<h3 id="puntuacion-adicional">Puntuación Adicional<a class="headerlink" href="#puntuacion-adicional" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Buena estructura</strong>: +1 punto si el código está bien organizado</li>
+<li><strong>Comentarios útiles</strong>: +1 punto si hay comentarios claros</li>
+<li><strong>Manejo de errores robusto</strong>: +1 punto si incluye validaciones extra</li>
+</ul>
+<hr />
+<p><strong>Fin del documento de soluciones</strong></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>
