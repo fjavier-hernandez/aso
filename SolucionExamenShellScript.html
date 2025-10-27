@@ -856,10 +856,10 @@
 - Retorna falso si no existe, es un directorio, o hay algún problema de permisos</p>
 <p><strong>4. Explica qué hace <code>wc -l &lt; servidores.txt</code> y por qué se usa <code>&lt;</code> en lugar de <code>|</code></strong>
 - <code>wc -l</code> cuenta las líneas de un archivo
-- <code>&lt;</code> redirecciona el archivo como entrada al comando
-- <code>|</code> enlazaría con otro comando mediante tubería
-- Se usa <code>&lt;</code> porque queremos pasar el archivo directamente, no el resultado de otro comando
-- <code>cat servidores.txt | wc -l</code> haría lo mismo, pero <code>&lt;</code> es más eficiente (no necesita spawn de un proceso extra)</p>
+- <code>&lt;</code> redirecciona el archivo como entrada al comando <code>wc</code>
+- Se usa <code>&lt;</code> para pasar el archivo directamente como entrada
+- Funcionalmente es similar a <code>cat servidores.txt | wc -l</code> pero más directo
+- <code>&lt;</code> es más eficiente porque conecta directamente el archivo con el comando, sin necesidad de leer el archivo primero con <code>cat</code> y luego pasarlo por tubería</p>
 <p><strong>5. ¿Para qué sirve <code>read -p</code> al final de la función?</strong>
 - <code>read -p</code> pausa la ejecución del script esperando que el usuario presione Enter
 - Permite al usuario leer la información antes de continuar
