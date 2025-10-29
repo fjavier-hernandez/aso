@@ -274,6 +274,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -311,6 +331,15 @@
   <a href="#01shellscript" class="md-nav__link">
     <span class="md-ellipsis">
       1.- ShellScripting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.- PowerShell
     </span>
   </a>
   
@@ -2240,7 +2269,878 @@ enero febrero marzo abril</p>
 <hr />
 <!-- <a name="AC104"></a>
 
-* :simple-readdotcv: **AC104**. (RA.7 // CE7b // 1-3p) Depura los ejercicios anteriores utilizando los argumentos `-x` y `-v`. --></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+* :simple-readdotcv: **AC104**. (RA.7 // CE7b // 1-3p) Depura los ejercicios anteriores utilizando los argumentos `-x` y `-v`. --></section><section class="print-page" id="02powershell" heading-number="3"><h1 id="02powershell-powershell">PowerShell<a class="headerlink" href="#02powershell-powershell" title="Permanent link">&para;</a></h1>
+<p>PowerShell es una interfaz de línea de comandos (CLI) y lenguaje de scripting desarrollado por Microsoft para automatizar tareas y administrar sistemas operativos Windows. Surgió ante las carencias que presenta el antiguo terminal basado en MS-DOS, ofreciendo una sintaxis moderna, orientada a objetos y potente para administradores de sistemas.</p>
+<p>Estos scripts se ejecutan mediante el intérprete de PowerShell, permitiendo realizar desde la manipulación de archivos hasta la ejecución automática de programas complejos y administración de servicios del sistema operativo.</p>
+<h2 id="02powershell-propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#02powershell-propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>En esta unidad vamos a continuar trabajando el <strong>RA7 de ASO</strong>:</p>
+<blockquote>
+<p><strong>RA7.</strong> <em>Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.</em></p>
+</blockquote>
+<h3 id="02powershell-criterios-de-evaluacion-ra7">Criterios de evaluación (RA7)<a class="headerlink" href="#02powershell-criterios-de-evaluacion-ra7" title="Permanent link">&para;</a></h3>
+<p>A lo largo de la unidad se trabajarán y evidenciarán los siguientes criterios:</p>
+<ul>
+<li><strong>CE7a</strong>: Se han utilizado y combinado las estructuras del lenguaje para crear guiones.  </li>
+<li><strong>CE7b</strong>: Se han utilizado herramientas para depurar errores sintácticos y de ejecución.  </li>
+<li><strong>CE7c</strong>: Se han interpretado guiones de configuración del sistema operativo.  </li>
+<li><strong>CE7d</strong>: Se han realizado cambios y adaptaciones de guiones del sistema.  </li>
+<li><strong>CE7e</strong>: Se han creado y probado guiones de administración de servicios.  </li>
+<li><strong>CE7f</strong>: Se han creado y probado guiones de automatización de tareas.  </li>
+<li><strong>CE7g</strong>: Se han implantado guiones en <strong>sistemas propietarios</strong>.  </li>
+<li><strong>CE7h</strong>: Se han consultado y utilizado librerías de funciones.  </li>
+<li><strong>CE7i</strong>: Se han documentado los guiones creados.</li>
+</ul>
+<h2 id="02powershell-contenidos">Contenidos<a class="headerlink" href="#02powershell-contenidos" title="Permanent link">&para;</a></h2>
+<p><strong>Bloque 1 — Fundamentos de PowerShell (Sesión 1–2)</strong>
+- ¿Qué es PowerShell? Historia y características.<br />
+- PowerShell ISE (Integrated Scripting Environment).<br />
+- Creación y ejecución de scripts: extensión <code>.ps1</code>.<br />
+- Comentarios y depuración de scripts.</p>
+<p><strong>Bloque 2 — Elementos del lenguaje (Sesión 2–3)</strong>
+- Parámetros y argumentos (array <code>$args[]</code>).<br />
+- Variables: tipado implícito y explícito.<br />
+- Entrada/salida con <code>Write-Host</code> y <code>Read-Host</code>.<br />
+- Operadores: aritméticos, lógicos, de comparación y tipo.</p>
+<p><strong>Bloque 3 — Control de flujo (Sesión 3–4)</strong>
+- Estructuras condicionales: <code>if</code>, <code>elseif</code>, <code>else</code>, <code>switch</code>.<br />
+- Bucles: <code>while</code>, <code>do-while</code>, <code>for</code>, <code>foreach</code>.<br />
+- Opciones avanzadas de <code>switch</code>: <code>-wildcard</code>, <code>-regex</code>, <code>-casesensitive</code>.</p>
+<p><strong>Bloque 4 — Estructuras y modularización (Sesión 4–5)</strong>
+- Vectores (arrays) y operaciones con ellos.<br />
+- Funciones, parámetros tipados y retorno.<br />
+- Organización del código y módulos.</p>
+<div class="admonition question">
+<p class="admonition-title">Actividades iniciales</p>
+<ol>
+<li>Genera un Script que muestre los <strong>procesos del sistema</strong> ordenados por el <strong>id</strong>.</li>
+<li>Muestra los servicios cuyo nombre empiece por la letra <code>n</code>, utilizando la creación de un script.</li>
+<li>Crea un script que si no se le pasa ningún argumento nos lo diga.</li>
+</ol>
+</div>
+<h3 id="02powershell-programacion-de-aula-8h">Programación de Aula (8h)<a class="headerlink" href="#02powershell-programacion-de-aula-8h" title="Permanent link">&para;</a></h3>
+<p>Esta unidad se imparte en la primera evaluación, con una duración estimada de 6 sesiones lectivas:</p>
+<h4 id="02powershell-sesiones-1-3-contenidos-fundamentales">Sesiones 1-3: Contenidos Fundamentales<a class="headerlink" href="#02powershell-sesiones-1-3-contenidos-fundamentales" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Introducción PowerShell, Creación Primer Script, Comentarios y depuración</td>
+<td>AC201-AC202</td>
+<td>CE7a, CE7b, CE7g y CE7i</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Sintaxis, Argumentos, variables, interacción con usuario y operadores</td>
+<td>AC203-AC205</td>
+<td>CE7a, CE7b, CE7f y CE7i</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Control de flujo: condicionales y bucles</td>
+<td>AC206, AC207, AC208</td>
+<td>CE7a, CE7f, CE7i</td>
+</tr>
+</tbody>
+</table>
+<h4 id="02powershell-sesiones-4-5-contenidos-avanzados">Sesiones 4-5: Contenidos Avanzados<a class="headerlink" href="#02powershell-sesiones-4-5-contenidos-avanzados" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>Vectores y funciones</td>
+<td>AC209-AC210</td>
+<td>CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h, CE7i</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Actividades de ampliación</td>
+<td>AC211-AC212</td>
+<td>CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h, CE7i</td>
+</tr>
+</tbody>
+</table>
+<h4 id="02powershell-sesiones-6-evaluacion-y-cierre">Sesiones 6: Evaluación y Cierre<a class="headerlink" href="#02powershell-sesiones-6-evaluacion-y-cierre" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>Evaluación y actividades de ampliación</td>
+<td>AC212-AC213</td>
+<td>CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h, CE7i</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="02powershell-introduccion">Introducción<a class="headerlink" href="#02powershell-introduccion" title="Permanent link">&para;</a></h2>
+<p>Los sistemas operativos basados en Microsoft Windows cuentan con la herramienta <strong>PowerShell</strong>, que surgió ante las carencias que presenta el viejo terminal basado en <strong>MS-DOS</strong>.</p>
+<p><strong>PowerShell</strong> es una interfaz de consola (CLI) con posibilidad de escritura y unión de comandos por medio de instrucciones (scripts). Esta interfaz de consola está diseñada para su uso por parte de <strong>administradores de sistemas</strong>, con el propósito de automatizar tareas o realizarlas de forma más controlada.</p>
+<p>En abril de 2006 Microsoft lanzó una nueva interfaz CLI, con una sintaxis moderna que comparte similitudes con el lenguaje Perl.
+- <strong>Perl</strong> es un lenguaje de programación diseñado por Larry Wall en 1987. Perl toma características del lenguaje C, del lenguaje interpretado bourne shell, AWK, sed, Lisp y, en un grado inferior, de muchos otros lenguajes de programación.</p>
+<p>Se trata de una interfaz gratuita, y que antes de Microsoft <strong>Windows 7</strong> no se incluía con el sistema operativo. En la actualidad, está incluida en todos los sistemas operativos de Microsoft, aunque requiere la presencia de <code>.NET</code> framework del que hereda sus características orientadas a objetos.</p>
+<p>En agosto de 2016, Microsoft publicó su código en GitHub para que pueda portarse a otros sistemas como GNU/Linux y MAC OSX.</p>
+<p>Los comandos incluidos en PowerShell reciben el nombre de <strong>cmdlets (command-let)</strong> y posee conjuntos específicos para trabajar con <em>Active Directory, Exchange</em>, entre otros roles de servidor.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>cmdlets</strong> Existen cientos de cmdlets en la <em>versión 5.1</em> de PowerShell. Es posible consultar la ayuda de cada uno de ellos en la página oficial de Microsoft.</p>
+</div>
+<p>Otra ventaja de PowerShell es que se dispone de la mayoría de comandos que del CLI tradicional de Microsoft. De ese modo, es posible ejecutar el comando <code>dir</code> en lugar del <code>Get-ChildItem</code>, cmdlet que realiza la misma tarea. En realidad lo que está usando es un alias del segundo para lanzar el primero.</p>
+<p>Dispone de autocompletado de comandos y parámetros que facilitará las tareas de creación de scripts. Basta con comenzar a escribir un cmdlet y pulsar la tecla Tab. </p>
+<p>Si utilizamos <strong>PowerShell ISE</strong> al escribir aparecerá una ventana con todos los cmdlets que coincidan con el texto escrito, incluso puede aparecer un recuadro con ayuda sobre su sintaxis. Para aceptar la sugerencia se pulsa la tecla Intro.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Los nombres de todos los cmdlets están formados por un verbo, un guión y un nombre en singular. Habitualmente, se escribe con mayúsculas la primera letra de cada palabra, pero no se trata más que de una norma de estilo, porque <strong>PowerShell no distingue entre mayúsculas y minúsculas.</strong></p>
+</div>
+<h2 id="02powershell-primer-script">Primer Script<a class="headerlink" href="#02powershell-primer-script" title="Permanent link">&para;</a></h2>
+<p>Al igual que ocurre en GNU/Linux un script de PowerShell no es más que un archivo de texto plano que contiene una secuencia de comando y de <strong>cmdlets</strong> para realizar una tarea. La diferencia con ellos es que aquí será necesario dotarlos de una extensión; <code>ps1</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Hola!. Esto es mi primer script en PowerShell&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Y esto es una segunda línea&quot;</span>
+</code></pre></div>
+</div>
+<p>A continuación, se guarda el script desde el menú <code>Acción → Guardar Como…</code> asignándole un nombre.</p>
+<p>Para ejecutarlo tan sólo es necesario escribir su nombre en el terminal de PowerShell anteponiendo un punto y una barra.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">./</span><span class="n">Script</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+</div>
+<p>Aunque también es posible ejecutar el script desde la <strong>herramienta gráfica</strong> pulsando la tecla <code>F5</code>, ejecutar una parte de él con <code>F8</code> o detener la ejecución con <code>Ctrl+Intro</code>.</p>
+<h2 id="02powershell-powershell-ise">PowerShell ISE<a class="headerlink" href="#02powershell-powershell-ise" title="Permanent link">&para;</a></h2>
+<p>PowerShell viene acompañado de una <strong>herramienta gráfica</strong> que facilita la administración de todos los scripts. Se denomina Microsoft <strong>PowerShell ISE (Integrated Scripting Environment)</strong>, y se accede a través de: <code>Administrador del servidor → Herramientas → Windows PowerShell ISE</code>.</p>
+<p>El uso de esta herramienta gráfica va a facilitar la creación de los scripts de forma significativa. Es práctico comenzar con esta ayuda ya que la sintaxis de los cmdlets, aunque sea lógica y sencilla, también lo es amplia y desconocida.</p>
+<figure>
+  <img src="imagenes/02/InterfazPowerShell.png" width="800"/>
+  <figcaption>Interfaz de la herramienta Windows PowerShell ISE</figcaption>
+</figure>
+
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Uno de los aspectos más interesantes que posee esta aplicación es la barra de información que muestra un listado de todos los <strong>cmdlets</strong> de esta herramienta. Permite filtrarlos por función y consultar la ayuda de cada uno de ellos.</li>
+<li>También posee un formulario destinado a generar el código de un <strong>cmdlet</strong> de forma automática.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>Creación de un comando que realice una copia de seguridad de los scripts de trabajo en una memoria externa. Es necesario el uso de Copy-Item para ello, pero no se conoce su sintaxis.</li>
+<li>Si escribimos este <strong>cmdlet</strong> en el recuadro <code>Nombre</code> y se pulsa sobre <code>Mostrar Ayuda</code>, aparecerá un formulario con sus opciones. Tras completar las necesarias y pulsando el botón <code>Insertar</code> situado en la parte inferior, el código completo será escrito la parte destinada al terminal.</li>
+</ul>
+</div>
+<figure>
+  <img src="imagenes/02/PS_ISE_EJEM.png" width="800"/>
+  <figcaption>Creación automática de scripts en Windows PowerShell ISE.</figcaption>
+</figure>
+
+<h2 id="02powershell-comentarios">Comentarios<a class="headerlink" href="#02powershell-comentarios" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Los comentarios en <strong>PowerShell</strong> se realizan precediendo a la línea con el carácter <code>#</code> si se trata de una sola línea y <code>&lt;#</code> y <code>#&gt;</code> si es multilínea.</p>
+</div>
+<h2 id="02powershell-depuracion">Depuración<a class="headerlink" href="#02powershell-depuracion" title="Permanent link">&para;</a></h2>
+<p>La depuración es el proceso de examinar un script mientras se ejecuta para identificar y corregir errores en las instrucciones del script. El depurador de PowerShell puede ayudarle a examinar e identificar errores e ineficiencias en los scripts, funciones, comandos, configuraciones o expresiones de PowerShell Desired State Configuration (DSC).</p>
+<p>El depurador de PowerShell incluye el siguiente conjunto de cmdlets:</p>
+<ul>
+<li><strong>Set-PSBreakpoint</strong>: establece puntos de interrupción en líneas, variables y comandos.</li>
+<li><strong>Get-PSBreakpoint</strong>: obtiene puntos de interrupción en la sesión actual.</li>
+<li><strong>Disable-PSBreakpoint</strong>: desactiva los puntos de interrupción en la sesión actual.</li>
+<li><strong>Enable-PSBreakpoint</strong>: vuelve a habilitar los puntos de interrupción en la sesión actual.</li>
+<li><strong>Remove-PSBreakpoint</strong>: elimina puntos de interrupción de la sesión actual.</li>
+<li><strong>Get-PSCallStack</strong>: muestra la pila de llamadas actual.</li>
+</ul>
+<hr />
+<h2 id="02powershell-sintaxis">Sintaxis<a class="headerlink" href="#02powershell-sintaxis" title="Permanent link">&para;</a></h2>
+<h3 id="02powershell-parametros-en-powershell">Parámetros en PowerShell<a class="headerlink" href="#02powershell-parametros-en-powershell" title="Permanent link">&para;</a></h3>
+<p>A diferencia de GNU/Linux, los parámetros que reciba el script en PowerShell se reciben en el array <strong>args</strong>. Cada posición del array <code>args[]</code> guarda los parámetros introducidos al script en el orden indicado. Por lo tanto para acceder a los parámetros introducidos se debe acceder al valor de la posición que se desee.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">[string]</span><span class="nv">$param1</span><span class="p">=</span> <span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Hola!. Esto es mi primer script en PowerShell&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Y esto es una segunda línea&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;El primer parámetro introducido es $param1&quot;</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>El script anterior esperará un parámetro de tipo <code>string</code> que será contenido en la variable $param1.</li>
+<li>En la cuarta línea mostrará el contenido de la variable por pantalla.</li>
+</ul>
+</div>
+<p>Para poder ejecutar este script, será necesario acompañarlo de un parámetro del siguiente modo.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">./</span><span class="n">Script</span><span class="p">.</span><span class="n">ps1</span> <span class="s2">&quot;Fº Javier Hernández Illán&quot;</span>
+</code></pre></div>
+<p>Para entender por completo el ejemplo anterior, será necesario ver como PowerShell maneja las <strong>variables</strong>.</p>
+<h3 id="02powershell-variables">Variables<a class="headerlink" href="#02powershell-variables" title="Permanent link">&para;</a></h3>
+<p>Para definir una variable en PowerShell sólo tenemos que nombrarla utilizando para ello cualquier combinación de caracteres, ya sean números, letras o símbolos. Es posible utilizar espacios en el nombre, aunque en este caso el nombre debe ir rodeado por símbolos de llaves <strong>{}</strong>.</p>
+<p>Al contrario que ocurre en shellscript, PowerShell es <strong>fuertemente tipado</strong>, lo que significa que las variables no son tratadas como cadenas de texto, sino que hay que especificar el tipo de dato que se guardará en ella.</p>
+<p>Para definir variables es posible utilizar el método <strong>explícito</strong> (además con <strong>New-Variable</strong> y sus opciones), pero también se puede utilizar el método <strong>implícito</strong> anteponiendo el símbolo <strong>$</strong> delante del nombre.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Get-Variable</strong> En cualquier momento puedes obtener una lista completa de las variables que se hayan definido hasta ese momento. Para lograrlo, basta con utilizar Get-Variable.</p>
+</div>
+<h3 id="02powershell-tipado-implicito">Tipado Implícito<a class="headerlink" href="#02powershell-tipado-implicito" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[string]</code></td>
+<td>Cadena de caracteres Unicode</td>
+</tr>
+<tr>
+<td><code>[char]</code></td>
+<td>Un sólo carácter Unicode de 16 bits</td>
+</tr>
+<tr>
+<td><code>[byte]</code></td>
+<td>Un sólo carácter Unicode de 8 bits</td>
+</tr>
+<tr>
+<td><code>[int]</code></td>
+<td>Entero con signo de 32 bits</td>
+</tr>
+<tr>
+<td><code>[float]</code></td>
+<td>Número con coma flotante de 32 bits</td>
+</tr>
+<tr>
+<td><code>[double]</code></td>
+<td>Número con coma flotante de 64 bits</td>
+</tr>
+<tr>
+<td><code>[datetime]</code></td>
+<td>Fecha y Hora</td>
+</tr>
+<tr>
+<td><code>[bool]</code></td>
+<td>Valor lógico booleano</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$numero</span> <span class="p">=</span> <span class="n">9</span><span class="p">.</span><span class="n">99</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$Final_2021</span> <span class="p">=</span> <span class="n">30</span>
+<span class="linenos" data-linenos="3 "></span><span class="p">${</span><span class="nb">Mi </span><span class="n">variable</span><span class="p">}</span> <span class="p">=</span> <span class="s2">&quot;Contiene espacios en el nombre&quot;</span>
+</code></pre></div>
+</div>
+<p>En la forma implícita el shell establece el tipo de dato de la variable en función del dato que se le asigne en su creación. En el ejemplo anterior <code>$numero</code> es de forma automática de tipo <code>[double]</code>, ya que al crearla se ha inicializado con un número con decimales. Por contra la variable <code>$Final_2021</code> es de tipo <code>[int]</code> ya que se ha guardado un número entero en ella.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li><strong>GetType</strong> Para poder obtener el tipo de dato  de una variable hay que usar el método <code>GetType().Name</code> sobre cualquier variable:</li>
+<li><code>Write-Host $numero.GetType().Name</code></li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul>
+<li>Una variable cuya definición de tipo se ha realizado de forma implícita, podrá cambiar el tipo de dato almacenado durante la ejecución del programa sin experimentar ningún tipo de error. </li>
+<li>Esta práctica aunque cómoda <strong>no es muy recomendable</strong>.</li>
+</ul>
+</div>
+<h3 id="02powershell-tipado-explicito">Tipado Explícito<a class="headerlink" href="#02powershell-tipado-explicito" title="Permanent link">&para;</a></h3>
+<p>Es buena idea tomar el control del tipado de las variables y asignarlo en función de las necesidades del programa. De esta forma se ahorrarán futuras conversiones de datos y posibles pérdidas de información. Para ello se usa la forma explícita de crear variables y junto con su creación se define el tipo de dato que va a contener.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">[float]</span> <span class="nv">$numero</span> <span class="p">=</span> <span class="n">9</span><span class="p">.</span><span class="n">99</span>
+<span class="linenos" data-linenos="2 "></span><span class="no">[int]</span> <span class="nv">$Final_2021</span> <span class="p">=</span> <span class="n">30</span>
+<span class="linenos" data-linenos="3 "></span><span class="no">[string]</span> <span class="p">${</span><span class="nb">Mi </span><span class="n">variable</span><span class="p">}</span> <span class="p">=</span> <span class="s2">&quot;Contiene espacios en el nombre&quot;</span>
+</code></pre></div>
+</div>
+<p>Al contrario que en el caso anterior, cuando el dato asignado no coincida con el tipo esperado, pueden ocurrir dos cosas:</p>
+<ol>
+<li>Se modifiquen las características del dato para amoldarse al tipo de variable, lo que puede traducirse en la pérdida de datos y un mal funcionamiento del script,</li>
+<li>Se produzca un error si esa conversión no es posible y se detenga el script.</li>
+</ol>
+<h2 id="02powershell-interaccion-con-el-usuario">Interacción con el usuario<a class="headerlink" href="#02powershell-interaccion-con-el-usuario" title="Permanent link">&para;</a></h2>
+<p>PowerShell posee dos cmdlets para realizar estas tareas:</p>
+<ol>
+<li>El primero de ellos es <strong>Write-Host</strong> y tiene un comportamiento similar al <strong>echo</strong> en GNU/Linux.</li>
+<li>El segundo comando para interactuar con el usuario es <strong>Read-Host</strong> el cual permite imprimir un mensaje por el terminal y recoger aquello que el usuario ha escrito. Funciona de forma muy parecida al comando <strong>read</strong> en el terminal de GNU/Linux.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">[string]</span> <span class="nv">$marine</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;¿Cuál es el nombre del marine de Doom?&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;No se sabe, pero lo has intentado con $marine&quot;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Este script detendrá su ejecución en la línea donde aparece <strong>Read-Host</strong>, esperará a que el usuario conteste a la pregunta y seguirá con la ejecución, del mismo modo que ocurre con shellscript.</p>
+</div>
+<h2 id="02powershell-operadores">Operadores<a class="headerlink" href="#02powershell-operadores" title="Permanent link">&para;</a></h2>
+<h3 id="02powershell-aritmeticos">Aritméticos<a class="headerlink" href="#02powershell-aritmeticos" title="Permanent link">&para;</a></h3>
+<p>Las operaciones aritméticas en PowerShell son más intuitivas que en shellscript. Son las mismas que en el caso anterior: <code>+</code>, <code>-</code>, <code>*</code> , <code>/</code> y <code>%</code>. Su uso es más sencillo puesto que es el propio terminal en que realiza los cálculos aritméticos y no a través de un comando.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="no">[int]</span> <span class="nv">$a</span><span class="p">=</span><span class="n">10</span>
+<span class="linenos" data-linenos="2 "></span><span class="no">[float]</span> <span class="nv">$b</span><span class="p">=</span><span class="n">20</span>
+<span class="linenos" data-linenos="3 "></span><span class="no">[int]</span> <span class="nv">$res</span><span class="p">=</span><span class="nv">$a</span><span class="p">+</span><span class="nv">$b</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">Write-Host</span> <span class="nv">$res</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Write-Host</span> <span class="nv">$a</span><span class="p">+</span><span class="nv">$b</span>
+<span class="linenos" data-linenos="6 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;$a x $b = &quot;</span> <span class="p">(</span><span class="nv">$a</span><span class="p">*</span><span class="nv">$b</span><span class="p">)</span>
+</code></pre></div>
+<p>También se dispone de expansores de terminal como en GNU/Linux.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nótese que en la última línea aparece directamente el producto <strong>$a*$b</strong> ya que al rodear la operación con paréntesis, se convierte en un expansor, realiza la operación en su interior y envía el resultado fuera.</p>
+</div>
+<p>Existen variantes que simplifican el uso de algunos operadores.</p>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Uso</th>
+<th>Equivalencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+=</code></td>
+<td>$contador += 5</td>
+<td>$contador = $contador+5</td>
+</tr>
+<tr>
+<td><code>-=</code></td>
+<td>$contador -= 5</td>
+<td>$contador = $contador-5</td>
+</tr>
+<tr>
+<td><code>*=</code></td>
+<td>$contador *= 5</td>
+<td>$contador = $contador*5</td>
+</tr>
+<tr>
+<td><code>/=</code></td>
+<td>$contador /= 5</td>
+<td>$contador = $contador/5</td>
+</tr>
+</tbody>
+</table>
+<p>Además de estos operadores existen dos específicos para el incremento (<code>++</code>) y decremento (<code>--</code>) de una unidad, ideal para el uso de variables como contadores.</p>
+<h3 id="02powershell-logicos">Lógicos<a class="headerlink" href="#02powershell-logicos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-and</code></td>
+<td>Devuelve verdadero si las dos expresiones son verdaderas.</td>
+</tr>
+<tr>
+<td><code>-or</code></td>
+<td>Devuelve verdadero si una de las dos expresiones o las dos son verdaderas.</td>
+</tr>
+<tr>
+<td><code>-xor</code></td>
+<td>Devuelve verdadero si tan sólo una de las expresiones es verdadera.</td>
+</tr>
+<tr>
+<td><code>-not o !</code></td>
+<td>Devuelve verdadero cuando la expresión da el valor falso.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Write-Host</span> <span class="p">((</span><span class="n">6</span> <span class="o">-ge</span> <span class="n">4</span><span class="p">)</span> <span class="o">-and</span> <span class="p">(</span><span class="n">7</span> <span class="o">-le</span> <span class="n">7</span><span class="p">))</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="p">((</span><span class="n">10</span> <span class="o">-gt</span> <span class="n">1</span><span class="p">)</span> <span class="o">-or</span> <span class="p">(</span><span class="n">2</span> <span class="o">-lt</span> <span class="n">2</span><span class="p">))</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">Write-Host</span> <span class="p">((</span><span class="n">1</span> <span class="o">-gt</span> <span class="n">0</span><span class="p">)</span> <span class="n">-xor</span> <span class="p">(</span><span class="n">4</span> <span class="o">-le</span> <span class="n">1</span><span class="p">))</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">Write-Host</span> <span class="p">(</span> <span class="o">-not</span> <span class="p">(</span><span class="n">12</span> <span class="o">-lt</span> <span class="n">10</span><span class="p">))</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Write-Host</span> <span class="p">(!(</span><span class="n">12</span> <span class="o">-lt</span> <span class="n">10</span><span class="p">))</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>En el ejemplo anterior si se ejecuta el script en un terminal PowerShell, todos los resultados serán verdaderos.</p>
+</div>
+<p>Como en todos los lenguajes de programación fuertemente tipados, existen operadores lógicos para comprobar el tipo de dato de una variable, que resultan muy útiles para la interacción con los usuarios.</p>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Acción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-is</code></td>
+<td>Devuelve verdadero si es del tipo indicado.</td>
+<td><code>"Javi" -is [string]</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-isnot</code></td>
+<td>Devuelve falso si es del tipo indicado.</td>
+<td><code>"Javi" -isnot [string]</code> es falso</td>
+</tr>
+<tr>
+<td><code>-as</code></td>
+<td>Convierte tipos de datos compatibles.</td>
+<td><code>$valor = 19.90</code>; <code>Write-Host ($valor -as [int])</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="02powershell-comparacion">Comparación<a class="headerlink" href="#02powershell-comparacion" title="Permanent link">&para;</a></h3>
+<p>Los operadores de comparación devuelven tan sólo un valor booleano que puede tener dos valores; <strong>verdadero o falso</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Acción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-eq</code></td>
+<td>Comprueba si son iguales.</td>
+<td><code>5 -eq 3</code> es falso</td>
+</tr>
+<tr>
+<td><code>-ieq</code></td>
+<td>Iguales. En cadenas no es casesensitive.</td>
+<td><code>"Javi" -ieq "javi"</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-ceq</code></td>
+<td>Iguales. En cadenas es casesensitive.</td>
+<td><code>"Javi" -ceq "javi"</code> es falso</td>
+</tr>
+<tr>
+<td><code>-ne</code></td>
+<td>Verifica si son diferentes.</td>
+<td><code>5 -ne 3</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-lt</code></td>
+<td>Coteja si la izquierda es menor que derecha.</td>
+<td><code>5 -lt 3</code> es falso</td>
+</tr>
+<tr>
+<td><code>-le</code></td>
+<td>Constata si la izquierda es menor o igual que derecha.</td>
+<td><code>5 -le 3</code> es falso</td>
+</tr>
+<tr>
+<td><code>-gt</code></td>
+<td>Examina si la izquierda en mayor que la derecha.</td>
+<td><code>5 -gt 3</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-ge</code></td>
+<td>Revisa si la izquierda en mayor o igual que la derecha.</td>
+<td><code>5 -ge 3</code> es verdadero</td>
+</tr>
+</tbody>
+</table>
+<p><strong>PowerShell</strong> añade operadores de comparación que aportan un nivel de complejidad mayor.</p>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Acción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-like</code></td>
+<td>Evalúa un patrón "es como".</td>
+<td><code>"Perro" -like "Pe*"</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-notlike</code></td>
+<td>Evalúa un patrón "no es como".</td>
+<td><code>"Perro" -notlike "Pe*"</code> es falso</td>
+</tr>
+<tr>
+<td><code>-contains</code></td>
+<td>Contiene un valor.</td>
+<td><code>1,2,3 -contains 2</code> es verdadero</td>
+</tr>
+<tr>
+<td><code>-notcontains</code></td>
+<td>No contiene un valor.</td>
+<td><code>1,2,3 -notcontains 2</code>es falso</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="02powershell-control-del-flujo-en-powershell">Control del flujo en PowerShell<a class="headerlink" href="#02powershell-control-del-flujo-en-powershell" title="Permanent link">&para;</a></h2>
+<p>En esta parte se indicará tan sólo la sintaxis de las estructuras alternativas e iterativas, ya que los conceptos teóricos ya se han abordado en el apartado de Shellscript.</p>
+<h3 id="02powershell-estructuras-alternativas">Estructuras alternativas<a class="headerlink" href="#02powershell-estructuras-alternativas" title="Permanent link">&para;</a></h3>
+<h4 id="02powershell-alternativa-simple">Alternativa Simple<a class="headerlink" href="#02powershell-alternativa-simple" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>    <span class="k">if</span> <span class="p">(</span> <span class="n">condición</span> <span class="p">){</span>
+<span class="linenos" data-linenos="2 "></span>        <span class="n">ejecutar</span> <span class="n">este</span> <span class="n">código</span> <span class="nb">si </span><span class="n">la</span> <span class="n">condición</span> <span class="n">es</span> <span class="n">verdadera</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="p">}</span>
+</code></pre></div>
+<h4 id="02powershell-alternativa-doble">Alternativa doble<a class="headerlink" href="#02powershell-alternativa-doble" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>    <span class="k">if</span> <span class="p">(</span> <span class="n">condición</span> <span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span>        <span class="n">ejecutar</span> <span class="n">este</span> <span class="n">código</span> <span class="nb">si </span><span class="n">la</span> <span class="n">condición</span> <span class="n">es</span> <span class="n">verdadera</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="linenos" data-linenos="4 "></span>        <span class="n">ejecutar</span> <span class="n">este</span> <span class="n">código</span> <span class="nb">si </span><span class="n">la</span> <span class="n">condición</span> <span class="n">es</span> <span class="n">falsa</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="p">}</span>
+</code></pre></div>
+<h4 id="02powershell-alternativa-multiple">Alternativa múltiple<a class="headerlink" href="#02powershell-alternativa-multiple" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>    <span class="k">if</span> <span class="p">(</span> <span class="n">condición1</span> <span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span>        <span class="n">ejecutar</span> <span class="n">este</span> <span class="n">código</span> <span class="nb">si </span><span class="n">la</span> <span class="n">condición1</span> <span class="n">es</span> <span class="n">verdadera</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span> <span class="n">condición2</span> <span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="4 "></span>        <span class="n">ejecutar</span> <span class="n">este</span> <span class="n">código</span> <span class="nb">si </span><span class="n">la</span> <span class="n">condición2</span> <span class="n">es</span> <span class="n">verdadera</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="linenos" data-linenos="6 "></span>        <span class="n">ejecutar</span> <span class="n">este</span> <span class="n">código</span> <span class="nb">si </span><span class="n">todas</span> <span class="n">las</span> <span class="n">condiciones</span> <span class="n">son</span> <span class="n">falsas</span>
+<span class="linenos" data-linenos="7 "></span>    <span class="p">}</span>
+</code></pre></div>
+<h3 id="02powershell-el-equivalente-a-case-en-gnulinux">El equivalente a case en GNU/Linux<a class="headerlink" href="#02powershell-el-equivalente-a-case-en-gnulinux" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>    <span class="k">switch</span> <span class="p">(</span><span class="nv">$valor</span><span class="p">){</span>
+<span class="linenos" data-linenos="2 "></span>        <span class="n">opción1</span> <span class="p">{</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="nb">si </span><span class="n">opción1</span> <span class="n">coincide</span> <span class="n">con</span> <span class="nv">$valor</span> <span class="p">}</span>
+<span class="linenos" data-linenos="3 "></span>        <span class="n">opción2</span> <span class="p">{</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="nb">si </span><span class="n">opción2</span> <span class="n">coincide</span> <span class="n">con</span> <span class="nv">$valor</span> <span class="p">}</span>
+<span class="linenos" data-linenos="4 "></span>        <span class="n">opciónN</span> <span class="p">{</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="nb">si </span><span class="n">opciónN</span> <span class="n">coincide</span> <span class="n">con</span> <span class="nv">$valor</span> <span class="p">}</span>
+<span class="linenos" data-linenos="5 "></span>        <span class="k">default</span> <span class="p">{</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="nb">si </span><span class="n">ninguna</span> <span class="n">de</span> <span class="n">las</span> <span class="n">opciones</span> <span class="n">coincide</span> <span class="p">}</span>
+<span class="linenos" data-linenos="6 "></span>    <span class="p">}</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>    <span class="nv">$saludo</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Escribe un saludo&quot;</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="k">switch</span> <span class="p">(</span><span class="nv">$saludo</span><span class="p">){</span>
+<span class="linenos" data-linenos=" 3 "></span>        <span class="s2">&quot;Buenos días&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Saludaste en Castellano&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos=" 4 "></span>        <span class="s2">&quot;Bon dia&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Saludaste en Catalán&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos=" 5 "></span>        <span class="s2">&quot;Bo dias&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Saludaste en Gallego&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos=" 6 "></span>        <span class="s2">&quot;Egun on&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Saludaste en Euskera&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos=" 7 "></span>        <span class="s2">&quot;Good morning&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Saludaste en Inglés&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos=" 8 "></span>        <span class="s2">&quot;Bonjour&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Saludaste en Francés&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos=" 9 "></span>        <span class="s2">&quot;Buon Giorno&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Saludaste en Italiano&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos="10 "></span>        <span class="s2">&quot;Bom día&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Saludaste en Portugués&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos="11 "></span>        <span class="s2">&quot;Guten Tag&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Saludaste en Alemán&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos="12 "></span>        <span class="p">{</span><span class="nv">$_</span> <span class="o">-is</span> <span class="no">[string]</span><span class="p">}</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;La variable que has pasado es una cadena&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos="13 "></span>        <span class="k">default</span> <span class="p">{</span> <span class="s2">&quot;Eso no parece un saludo&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos="14 "></span>    <span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Existe la posibilidad de colocar operadores lógicos como opciones de un <code>switch</code>, si estos operadores lógicos devuelven un valor verdadero, se ejecutará esa parte del código, si se evalúa a falso, no realizará esa parte del código. </li>
+<li>El carácter $_ hace referencia a la variable $saludo, de ese modo es posible realizar operaciones lógicas con el valor pasado.</li>
+</ul>
+</div>
+<p>Además de todo esto, <code>switch</code> posee una serie de opciones que no están presentes en GNU/Linux, aunque es posible realizarlas de otra manera.</p>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-wildcard</code></td>
+<td>Sólo aplicable a <code>[string]</code>. Indica si cumple un patrón determinado.</td>
+</tr>
+<tr>
+<td><code>-exact</code></td>
+<td>Sólo aplicable a <code>[string]</code>. Debe coincidir exactamente con alguno de los patrones.</td>
+</tr>
+<tr>
+<td><code>-casesensitive</code></td>
+<td>Sólo aplicable a <code>[string]</code>. Debe coincidir en mayúsculas y minúsculas.</td>
+</tr>
+<tr>
+<td><code>-file</code></td>
+<td>La entrada es un archivo. Se evaluará cada línea del archivo.</td>
+</tr>
+<tr>
+<td><code>-regex</code></td>
+<td>Sólo aplicable a <code>[string]</code>. Permite usar expresiones regulares en la comparación.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><code>-regex</code>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$target</span> <span class="p">=</span> <span class="s1">&#39;https://bing.com&#39;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">switch</span> <span class="o">-Regex</span> <span class="p">(</span><span class="nv">$target</span><span class="p">){</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="s1">&#39;^ftp\://.*$&#39;</span> <span class="p">{</span> <span class="s2">&quot;$_ is an ftp address&quot;</span><span class="p">;</span> <span class="k">Break</span> <span class="p">}</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="s1">&#39;^\w+@\w+\.com|edu|org$&#39;</span> <span class="p">{</span> <span class="s2">&quot;$_ is an email address&quot;</span><span class="p">;</span> <span class="k">Break</span> <span class="p">}</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="s1">&#39;^(http[s]?)\://.*$&#39;</span> <span class="p">{</span> <span class="s2">&quot;$_ is a web address that uses </span><span class="p">$(</span><span class="nv">$matches</span><span class="p">[</span><span class="n">1</span><span class="p">])</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">Break</span> <span class="p">}</span>
+<span class="linenos" data-linenos="6 "></span><span class="p">}</span>
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><code>-wildcard</code>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">switch</span> <span class="o">-wildcard</span> <span class="p">(</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Escribe un número de teléfono&quot;</span> <span class="p">){</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="s2">&quot;8*&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Es un teléfono fijo: $_&quot;</span><span class="p">;</span> <span class="k">break</span> <span class="p">}</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="s2">&quot;9*&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Es un teléfono fijo: $_&quot;</span><span class="p">;</span> <span class="k">break</span> <span class="p">}</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="s2">&quot;6*&quot;</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Es un teléfono móvil: $_&quot;</span><span class="p">;</span> <span class="k">break</span> <span class="p">}</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="k">default</span> <span class="p">{</span> <span class="s2">&quot;$_ no parece un teléfono&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos="6 "></span><span class="p">}</span>
+</code></pre></div></p>
+</div>
+<ul>
+<li>El comando break que aparece al final de cada opción indica que si encuentra una coincidencia no siga buscando más y rompa el switch, ahorrándose así el resto de comprobaciones.</li>
+</ul>
+<h3 id="02powershell-estructuras-iterativas">Estructuras iterativas<a class="headerlink" href="#02powershell-estructuras-iterativas" title="Permanent link">&para;</a></h3>
+<h4 id="02powershell-while">while<a class="headerlink" href="#02powershell-while" title="Permanent link">&para;</a></h4>
+<p>A diferencia de lo que ocurría en GNU/Linux, en PowerShell existen diferencias entre las estructuras <strong>while, do while</strong> y <strong>do until</strong>. En este caso, la única de las tres que evaluará la condición al inicio del bloque de código será la primera. El resto comprueba la condición al final del bloque ejecutando como mínimo una vez el código que contiene.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">while</span> <span class="p">(</span> <span class="n">condición</span> <span class="p">){</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">mientras</span> <span class="n">condición</span> <span class="n">sea</span> <span class="n">verdadera</span>
+<span class="linenos" data-linenos="3 "></span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">do</span> <span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">mientras</span> <span class="n">condición</span> <span class="n">sea</span> <span class="n">verdadera</span>
+<span class="linenos" data-linenos="3 "></span><span class="p">}</span> <span class="k">while</span> <span class="p">(</span> <span class="n">condición</span> <span class="p">)</span>
+</code></pre></div>
+<p>Existe una variante de esta estructura que se crea sustituyendo el <strong>while por un until</strong>. Esto cambia el sentido de la condición y es este caso el bloque se repite hasta que la condición se cumpla. Esta estructura no es muy utilizada, pero siempre es bueno contar con herramientas extra.</p>
+<h4 id="02powershell-for">for<a class="headerlink" href="#02powershell-for" title="Permanent link">&para;</a></h4>
+<p>También la estructura <code>for</code> es sensiblemente diferente que en shellscript. Esta estructura en PowerShell tiene más que ver con los lenguajes de programación y se utiliza cuando el programador sabe el número de iteraciones que hay que realizar para solucionar un problema.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span> <span class="p">(</span> <span class="n">inicialización</span><span class="p">;</span> <span class="n">condición</span><span class="p">;</span> <span class="n">incremento</span> <span class="p">){</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">mientras</span> <span class="n">condición</span> <span class="n">sea</span> <span class="n">verdadera</span>
+<span class="linenos" data-linenos="3 "></span><span class="p">}</span>
+</code></pre></div>
+<p>Por ejemplo, la creación de la tabla de multiplicar de un número especificado por el usuario. Para resolver este problema sí se conoce el número de iteraciones necesarias, concretamente diez.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$numero</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Dame un número&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Esta es la tabla del $numero&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">for</span> <span class="p">(</span> <span class="nv">$i</span><span class="p">=</span><span class="n">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">-lt</span> <span class="n">11</span><span class="p">;</span> <span class="nv">$i</span><span class="p">++){</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="nb">Write-Host</span> <span class="s2">&quot; $i x $numero = &quot;</span><span class="p">(</span><span class="nv">$i</span><span class="p">*</span><span class="nv">$numero</span><span class="p">)</span>
+<span class="linenos" data-linenos="5 "></span><span class="p">}</span>
+</code></pre></div>
+</div>
+<h4 id="02powershell-foreach">foreach<a class="headerlink" href="#02powershell-foreach" title="Permanent link">&para;</a></h4>
+<p>La estructura <code>foreach</code> en PowerShell es el equivalente a for en shellscript. Está pensada para recorrer un conjunto de valores y ejecutar el bloque de código una vez por cada elemento del conjunto.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">foreach</span> <span class="p">(</span> <span class="n">elemento</span> <span class="k">in</span> <span class="n">conjunto</span> <span class="p">){</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">por</span> <span class="n">cada</span> <span class="n">elemento</span> <span class="nb">del </span><span class="n">conjunto</span>
+<span class="linenos" data-linenos="3 "></span><span class="p">}</span>
+</code></pre></div>
+<p>Al igual que ocurre en GNU/Linux, el conjunto puede serlo de cualquier tipo de objetos, incluso los ficheros de una carpeta. En el siguiente ejemplo se buscan los ficheros que en su nombre contengan la cadena de texto que el usuario ha especificado:</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$ruta</span> <span class="p">=</span> <span class="s2">&quot;C:\Users\Administrador\Desktop&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$busca</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Escribe el texto a buscar&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">foreach</span> <span class="p">(</span><span class="nv">$archivo</span> <span class="k">in</span> <span class="nb">Get-ChildItem</span> <span class="nv">$ruta</span><span class="p">){</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="k">if</span> <span class="p">(</span><span class="nv">$archivo</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="n">IndexOf</span><span class="p">(</span><span class="nv">$busca</span><span class="p">)</span> <span class="o">-ge</span> <span class="n">0</span><span class="p">){</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="nb">Write-Host</span> <span class="nv">$archivo</span><span class="p">.</span><span class="n">Name</span>
+<span class="linenos" data-linenos="6 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="7 "></span><span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Las opciones que ofrece PowerShell en cuanto a estructuras de control parece una oferta más completa que la de shellscript, aunque para las tareas que se van a realizar en este módulo, ambos sistemas poseen herramientas suficientes.</p>
+</div>
+<hr />
+<h2 id="02powershell-vectores-y-funciones">Vectores y Funciones<a class="headerlink" href="#02powershell-vectores-y-funciones" title="Permanent link">&para;</a></h2>
+<h3 id="02powershell-vectores">Vectores<a class="headerlink" href="#02powershell-vectores" title="Permanent link">&para;</a></h3>
+<p>PowerShell considera como un vector a toda colección de objetos, sea cual sea su tipo. Los elementos que lo conforman pueden estar separados por comas, estar expresados por el operador de rango <code>..</code> o ser el resultado de alguna expresión que devuelva una colección, como así lo hacen muchos cmdlets.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$Vacia</span> <span class="p">=</span> <span class="p">@()</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$Enteros</span> <span class="p">=</span> <span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">,</span><span class="n">4</span><span class="p">,</span><span class="n">5</span>
+<span class="linenos" data-linenos="3 "></span><span class="nv">$Texto</span> <span class="p">=</span> <span class="s2">&quot;Lunes&quot;</span><span class="p">,</span><span class="s2">&quot;Martes&quot;</span><span class="p">,</span><span class="s2">&quot;Miércoles&quot;</span><span class="p">,</span> <span class="s2">&quot;Jueves&quot;</span><span class="p">,</span><span class="s2">&quot;Viernes&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="nv">$EnterosRango</span> <span class="p">=</span> <span class="n">1</span><span class="p">..</span><span class="n">10</span>
+</code></pre></div>
+</div>
+<p>De esta forma se han definido cuatro vectores; el segundo contendrá enteros y el tercero cadenas de caracteres. La última línea asigna los valores desde el 1 al 10 utilizando el operador rango <code>..</code> .</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>El operador de <strong>rango</strong> representa una secuencia de enteros, con los límites superior e inferior separados por dos puntos decimales. Permite expresar el rango en orden ascendente o descendente, así como también que los límites inferior o superior sean establecidos por medio de variables que contengan enteros.</p>
+</div>
+<p>Un vector también puede definirse como el resultado de una expresión.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$EnterosFor</span> <span class="p">=</span> <span class="p">@(</span><span class="k">For</span><span class="p">(</span><span class="nv">$i</span><span class="p">=</span><span class="n">1</span><span class="p">;</span><span class="nv">$i</span> <span class="o">-lt</span> <span class="n">5</span><span class="p">;</span><span class="nv">$i</span><span class="p">++){</span><span class="nv">$i</span><span class="p">})</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$Comando</span> <span class="p">=</span> <span class="nb">Get-Process</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">ProcessName</span>
+</code></pre></div>
+</div>
+<p>En la primera línea <code>$EnterosFor</code> será completado a través del resultado de una estructura iterativa, mientras que la segunda contendrá el resultado del cmdlet indicado. Además de todas estas formas de declaración, también se puede realizar a través del cmdlet <code>New-Variable</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">Enteros</span> <span class="n">-Value</span> <span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">,</span><span class="n">4</span><span class="p">,</span><span class="n">5</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">Texto</span> <span class="n">-Value</span> <span class="s2">&quot;Lunes&quot;</span><span class="p">,</span><span class="s2">&quot;Martes&quot;</span><span class="p">,</span><span class="s2">&quot;Miércoles&quot;</span><span class="p">,</span><span class="s2">&quot;Jueves&quot;</span><span class="p">,</span><span class="s2">&quot;Viernes&quot;</span> <span class="err">–</span><span class="n">Force</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">EnterosRango</span> <span class="n">-Value</span> <span class="p">(</span><span class="n">1</span><span class="p">..</span><span class="n">5</span><span class="p">)</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">EnterosFor</span> <span class="n">-value</span> <span class="p">(.</span> <span class="p">{</span><span class="k">For</span><span class="p">(</span><span class="nv">$i</span><span class="p">=</span><span class="n">1</span><span class="p">;</span><span class="nv">$i</span> <span class="o">-lt</span> <span class="n">5</span><span class="p">;</span><span class="nv">$i</span><span class="p">++){</span><span class="nv">$i</span><span class="p">}})</span> <span class="n">-Force</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>El atributo <code>-Force</code> sobrescribe la variable si esta ya existe, de ese modo no saltará ningún error a la hora de definir estas variables.</p>
+</div>
+<p>Para obtener el número de elementos de un vector se utiliza el método Length, si se aplica a un elemento del vector, devolverá el tamaño de este elemento, no del vector completo.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$Texto</span><span class="p">.</span><span class="n">Length</span> <span class="c"># mostrará 5 por pantalla</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$Texto</span><span class="p">[</span><span class="n">2</span><span class="p">].</span><span class="n">Length</span> <span class="c"># mostrará 9, las letras de &quot;Miércoles&quot;</span>
+</code></pre></div>
+</div>
+<p>Para añadir elementos al final de un vector se utiliza el operador <code>+=</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$Enteros</span> <span class="p">+=</span> <span class="n">6</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$Texto</span> <span class="p">+=</span> <span class="s2">&quot;Sábado&quot;</span><span class="p">,</span> <span class="s2">&quot;Domingo&quot;</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La primera línea añade el entero 6 al vector <code>$Enteros</code>, mientras que en la segunda se añaden los elementos "Sábado" y "Domingo" al vector <code>$Texto</code>.</p>
+</div>
+<p>Para eliminar un elemento de un vector PowerShell no ofrece un sistema parecido al de añadir valores, sino que tendrá que reescribirse el vector de nuevo sin los valores no deseados.</p>
+<h3 id="02powershell-funciones">Funciones<a class="headerlink" href="#02powershell-funciones" title="Permanent link">&para;</a></h3>
+<p>También en PowerShell es posible utilizar funciones a través de la siguiente estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">Function</span> <span class="p">&lt;</span><span class="n">NOMBRE</span><span class="p">&gt;</span> <span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="k">Param</span> <span class="p">(&lt;</span><span class="n">Parametro</span><span class="p">&gt;,&lt;</span><span class="n">Parametro</span><span class="p">&gt;,...)</span>
+<span class="linenos" data-linenos="3 "></span>        <span class="n">Comandos</span> <span class="n">PowerShell</span>
+<span class="linenos" data-linenos="4 "></span><span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>El paso de parámetros a una función se realiza de idéntica forma que en shell script. <strong>La principal diferencia</strong> entre las funciones usadas en shell script es que ahora es preferible <strong>declarar y tipar</strong> antes de iniciar con el código de la función.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">Function</span> <span class="nb">Get-Sumar</span> <span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="k">param</span> <span class="p">(</span><span class="no">[integer]</span> <span class="nv">$a</span><span class="p">,</span> <span class="no">[integer]</span> <span class="nv">$b</span><span class="p">)</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="nv">$sumar</span> <span class="p">=</span> <span class="nv">$a</span> <span class="p">+</span> <span class="nv">$b</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="nb">Write-Host</span> <span class="s2">&quot;La suma es $sumar&quot;</span>
+<span class="linenos" data-linenos="5 "></span><span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Si se ejecuta la siguiente instrucción: <code>Get-Sumar 2 8</code> La salida del terminal será <code>La suma es 10</code>.</p>
+</div>
+<p>Si se necesita que las funciones estén disponibles durante la sesión del usuario o si es necesario enlazarlas desde otro script, se deberá utilizar la notación de punto, del mismo modo que ocurría en shell script.</p>
+<hr />
+<h2 id="02powershell-actividades">Actividades<a class="headerlink" href="#02powershell-actividades" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Formato de entrega</p>
+<p>Escribe el código de los scripts en <strong>PowerShell</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.ps1, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
+</div>
+<p><a name="AC201"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC201</strong>. (RA.7 // CE7a, CE7b, CE7g y CE7i // 1-3p) Genera un Script que muestre los <strong>procesos del sistema</strong> ordenados por el <strong>id</strong>.</li>
+</ul>
+<p><a name="AC202"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC202</strong>. (RA.7 // CE7a, CE7b, CE7g y CE7i // 1-3p) Muestra los servicios cuyo nombre empiece por la letra <code>n</code>, utilizando la creación de un script.</li>
+</ul>
+<p><a name="AC203"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC203</strong>. (RA.7 // CE7a, CE7b, CE7f y CE7i // 1-3p) Crea un script que se le introduzca dos números como argumentos y los muestre por pantalla.</li>
+</ul>
+<p><a name="AC204"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC204</strong>. (RA.7 // CE7a, CE7b, CE7f y CE7i // 1-3p) Diseña un script en PowerShell que pida al usuario dos números, los guarde en dos variables y los muestre por pantalla.</li>
+</ul>
+<p><a name="AC205"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC205</strong>. (RA.7 // CE7a, CE7b, CE7f y CE7i // 1-3p) Crea un script PowerShell que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.<ul>
+<li>a%b</li>
+<li>a/c</li>
+<li>2 * b + 3 * (a-c)</li>
+<li>a * (b/c)</li>
+<li>(a*c)%b</li>
+</ul>
+</li>
+</ul>
+<p><a name="AC206"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC206</strong>. (RA.7 // CE7a, CE7f y CE7i // 1-3p) Crea un script que si no se le pasa ningún argumento nos lo diga.</li>
+</ul>
+<p><a name="AC207"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC207</strong>. (RA.7 // CE7a, CE7f y CE7i // 1-3p) Crea un script PowerShell que al ejecutarlo muestre por pantalla uno de estos mensajes <strong>"Buenos días"</strong>, <strong>"Buenas tardes"</strong> o <strong>"Buenas noches"</strong>, en función de la hora que sea en el sistema (de 8:00 de la mañana a 15:00 será mañana, de 15:00 a 20:00 será tarde y el resto será noche). Usa el <code>cmdlet Get-Date</code>.</li>
+</ul>
+<p><a name="AC208"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC208</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7f y CE7i // 1-3p) Construye tres script PowerShell utilizando estructuras iterativas:<ol>
+<li>el primero <strong>ej208A.ps1</strong>, que imprima la <strong>tabla de multiplicar</strong> de un número preguntado al usuario. Este número debe ser entero positivo.</li>
+<li>el segundo <strong>ej208B.ps1</strong>, que pida un número e indique si se trata de un número par y si es número primo.</li>
+<li>el tercero <strong>ej208C.ps1</strong>, que muestre las diez primeras tablas de multiplicar por pantalla. Hay un tiempo de espera de un segundo entre ellas. Utiliza las estructuras <strong>while, do while, for y foreach y el cmdlet Start-Sleep.</strong></li>
+</ol>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Utiliza en la generación de los scripts los <strong>cmdlets</strong> de depuración si así lo consideras al haber encontrado problemas en la ejecución.</p>
+</div>
+<p><a name="AC209"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC209</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7f, CE7h y CE7i // 1-3p) Diseña un script PowerShell que lea un vector con 365 temperaturas y calcule la media y cuantos días han estado por encima y cuantos por debajo de ella. Rellena el vector con valores aleatorios entre -5 y 35, para ello usa Get-Random.</li>
+</ul>
+<p><a name="AC210"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC210</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h y CE7i // 1-3p) Crea un script PowerShell para que haga una <strong>copias de seguridad</strong> de todos los archivos del directorio de trabajo del usuario actual. Deberá realizar las siguientes acciones:<ul>
+<li><strong>comprobará</strong> si el archivo ya existe en la copia de seguridad, si es así comprobará cual de los dos es más reciente y que tamaño tienen. Si es más reciente o posee un tamaño mayor, lo copiará. En cualquier otro caso, no lo copia.</li>
+<li>llevará un <strong>registro</strong> de todos los archivos copiados cada vez que se ejecute mediante un archivo de bitácora. Guarda este fichero el directorio que contiene el script.</li>
+</ul>
+</li>
+</ul>
+<p>Crea una <strong>función</strong> para cada tarea realizada en este script.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Utiliza en la generación de los scripts los <strong>cmdlets</strong> de depuración si así lo consideras al haber encontrado problemas en la ejecución.</p>
+</div>
+<p><a name="AC211"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC211</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h y CE7i // 1-3p) Crea un script PowerShell que rellene un vector con diez números de <strong>forma aleatoria</strong> y que los <strong>muestre</strong> por pantalla de la siguiente forma:<ul>
+<li>en <strong>orden inverso</strong> a como han sido introducidos los valores.</li>
+<li>los valores ordenados de <strong>menor a mayor</strong> en una sola línea.</li>
+<li>los valores ordenados de <strong>mayor a menor</strong> en una sola línea la suma total de sus valores.</li>
+<li>cantidad de valores pares que contiene el vector.</li>
+<li>la <strong>suma total</strong> de números impares.</li>
+<li>la <strong>media aritmética</strong> de los valores que contiene el vector.</li>
+</ul>
+</li>
+</ul>
+<p><a name="AC212"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC212</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h y CE7i // 1-3p) Diseña un script PowerShell que muestre un menú al usuario con cuatro operaciones disponibles: <strong>Crear directorio, Eliminar directorio, Mostrar directorio, Informe de directorio, Copia de directorio y Salir</strong>. Una vez elegida una opción correcta, el programa debe <strong>solicitar un nombre de directorio</strong> y hacer la operación seleccionada. Tras esto debe mostrar un mensaje con el resultado de la operación. Crea una función para cada una de estas opciones.<ul>
+<li>Si se elige la opción <strong>Informe de directorio</strong>, mostrará por pantalla el número de ficheros que contiene, cuantos son carpetas, cuantos directorios y el tamaño total de ellos. Si la carpeta no existe, mostrará un error.</li>
+<li>Si elige la opción <strong>Copia de directorio</strong>, preguntará la carpeta de destino y mostrará fichero a fichero la copia.</li>
+</ul>
+</li>
+</ul>
+<p><a name="AC213"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC213</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h y CE7i // 1-3p) Realiza un script PowerShell que permita crear un informe de las IP libres en la red en la que se encuentra el equipo. Debe contener las siguientes opciones:<ul>
+<li><strong>el informe contendrá</strong> un listado de todas las IP de la red a la que pertenece el equipo indicando si está libre o no (usa el comando ping).</li>
+<li>en el informe debe aparecer el <strong>tipo de red</strong> (A, B o C) en el que está inmerso el ordenador con el <strong>nombre de la red, su broadcast y su máscara de subred.</strong></li>
+</ul>
+</li>
+</ul>
+<hr /></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
                 .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3 ;  counter-increment: counter-index-2 }
@@ -2255,6 +3155,14 @@ enero febrero marzo abril</p>
             
                 .print-site-enumerate-headings #01shellscript h3:before { content: '2.' counter(counter-01shellscript-2) '.' counter(counter-01shellscript-3) ' ' }
                 .print-site-enumerate-headings #01shellscript h3 {  counter-increment: counter-01shellscript-3 }
+            
+.print-site-enumerate-headings #02powershell > h1:before { content: '3 ' }
+
+                .print-site-enumerate-headings #02powershell h2:before { content: '3.' counter(counter-02powershell-2) ' ' }
+                .print-site-enumerate-headings #02powershell h2 {  counter-reset: counter-02powershell-3 ;  counter-increment: counter-02powershell-2 }
+            
+                .print-site-enumerate-headings #02powershell h3:before { content: '3.' counter(counter-02powershell-2) '.' counter(counter-02powershell-3) ' ' }
+                .print-site-enumerate-headings #02powershell h3 {  counter-increment: counter-02powershell-3 }
             </style>
 
 
