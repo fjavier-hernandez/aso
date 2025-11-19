@@ -2,50 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/index.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/01ShellScript.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/02PowerShell.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/ActiveDirectory_Configuracion.html</loc>
+         <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/ExamenShellScript.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/ProgramacionAula.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/RAsASO.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/RetoGrupalPowerShell.html</loc>
+         <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/RetoGrupalShellScript.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/Rubrica_Evaluacion_RetoPowerShell.html</loc>
+         <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/Rubrica_Evaluacion_RetoShell.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/SolucionExamenShellScript.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/SolucionRetoGrupalShellScript.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/planning.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/tags.html</loc>
-         <lastmod>2025-11-17</lastmod>
+         <lastmod>2025-11-19</lastmod>
     </url>
 </urlset>
