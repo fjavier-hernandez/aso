@@ -1,0 +1,1648 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Reto grupal para crear un sistema completo de gestión de servidores usando ShellScript">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/RetoGrupalShellScript.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Reto Grupal - Sistema de Gestión de Servidores - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Reto Grupal - Sistema de Gestión de Servidores - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="Reto grupal para crear un sistema completo de gestión de servidores usando ShellScript" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RetoGrupalShellScript.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/RetoGrupalShellScript.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Reto Grupal - Sistema de Gestión de Servidores - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="Reto grupal para crear un sistema completo de gestión de servidores usando ShellScript" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RetoGrupalShellScript.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reto-grupal-sistema-de-gestion-de-servidores" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reto Grupal - Sistema de Gestión de Servidores
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo-del-reto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo del Reto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos del Sistema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requisitos del Sistema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcionalidades-obligatorias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcionalidades Obligatorias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Funcionalidades Obligatorias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-menu-principal-interactivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Menú Principal Interactivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-gestion-de-servidores" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Gestión de Servidores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-monitoreo-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Monitoreo del Sistema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-sistema-de-copias-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Sistema de Copias de Seguridad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-gestion-de-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Gestión de Logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-configuracion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Configuración del Sistema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-servidores-simulados-opcional-pero-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Servidores Simulados (Opcional pero Recomendado)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura del Proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura del Proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descripcion-de-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descripción de Archivos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Descripción de Archivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#menu_principalsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      menu_principal.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones_servidorsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      funciones_servidor.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoreosh" class="md-nav__link">
+    <span class="md-ellipsis">
+      monitoreo.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backupsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      backup.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracionconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      configuracion.conf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servidores_simuladossh-opcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      servidores_simulados.sh (Opcional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iniciar_simuladoressh-opcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      iniciar_simuladores.sh (Opcional)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tecnicas-shellscript-requeridas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Técnicas ShellScript Requeridas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Técnicas ShellScript Requeridas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-de-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras de Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-y-modularizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones y Modularización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-y-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables y Parámetros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecciones-y-tuberias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirecciones y Tuberías
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comandos-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comandos del Sistema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-de-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestión de Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnicas-avanzadas-para-servidores-simulados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Técnicas Avanzadas (Para Servidores Simulados)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formato-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formato de Datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Formato de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivo-servidorestxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivo servidores.txt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archivo-de-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivo de Logs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servidores-simulados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servidores Simulados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servidores Simulados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descripcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descripción
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcionalidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcionalidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tecnica-here-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Técnica: Here Documents
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnica-ejecucion-en-segundo-plano" class="md-nav__link">
+    <span class="md-ellipsis">
+      Técnica: Ejecución en Segundo Plano
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnica-verificacion-de-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Técnica: Verificación de Estado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de Uso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejemplo de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iniciar-servidores-simulados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iniciar Servidores Simulados:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificar-servidores-activos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificar Servidores Activos:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probar-conectividad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probar Conectividad:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detener-servidores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detener Servidores:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integracion-con-el-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integración con el Sistema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archivos-temporales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos Temporales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de Evaluación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Criterios de Evaluación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#puntos-extra-hasta-8-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Puntos Extra (Hasta +8 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instrucciones-de-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instrucciones de Entrega
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instrucciones de Entrega">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-de-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de Entrega
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenido-del-readmemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenido del README.md
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requisitos-tecnicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos Técnicos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-de-funcionamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de Funcionamiento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejemplo de Funcionamiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#menu-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Menú Principal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-de-servidores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestión de Servidores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consejos-y-recomendaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consejos y Recomendaciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Consejos y Recomendaciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planificación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buenas Prácticas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Depuración
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-y-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos y Referencias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fechas-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fechas Importantes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="reto-grupal-sistema-de-gestion-de-servidores">RETO GRUPAL: Sistema de Gestión de Servidores<a class="headerlink" href="#reto-grupal-sistema-de-gestion-de-servidores" title="Permanent link">&para;</a></h1>
+<p><strong>Módulo:</strong> Administración de Sistemas Operativos (ASO)<br />
+<strong>Unidad:</strong> ShellScript<br />
+<strong>Modalidad:</strong> Trabajo en grupo (2 personas)<br />
+<strong>Puntuación:</strong> 30 puntos (sobre 100)<br />
+<strong>Criterios evaluados:</strong> CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h y CE7i</p>
+<hr />
+<h2 id="objetivo-del-reto">Objetivo del Reto<a class="headerlink" href="#objetivo-del-reto" title="Permanent link">&para;</a></h2>
+<p>Crear un <strong>sistema completo de gestión de servidores</strong> que integre todos los conceptos aprendidos durante la unidad de ShellScript. El sistema debe permitir gestionar servidores, monitorear su estado, realizar copias de seguridad y mantener logs del sistema.</p>
+<p>Este reto te permitirá demostrar tu dominio de:</p>
+<ul>
+<li>Estructuras de control (if, case, while, for)</li>
+<li>Funciones y modularización</li>
+<li>Variables y parámetros</li>
+<li>Redirecciones y tuberías</li>
+<li>Comandos del sistema operativo</li>
+<li>Gestión de archivos y directorios</li>
+</ul>
+<hr />
+<h2 id="requisitos-del-sistema">Requisitos del Sistema<a class="headerlink" href="#requisitos-del-sistema" title="Permanent link">&para;</a></h2>
+<h3 id="funcionalidades-obligatorias">Funcionalidades Obligatorias<a class="headerlink" href="#funcionalidades-obligatorias" title="Permanent link">&para;</a></h3>
+<p>El sistema debe incluir las siguientes funcionalidades organizadas en módulos:</p>
+<h4 id="1-menu-principal-interactivo">1. <strong>Menú Principal Interactivo</strong><a class="headerlink" href="#1-menu-principal-interactivo" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Menú con opciones numeradas</li>
+<li>Navegación entre módulos</li>
+<li>Opción de salida del sistema</li>
+<li>Interfaz clara y amigable</li>
+</ul>
+<h4 id="2-gestion-de-servidores">2. <strong>Gestión de Servidores</strong><a class="headerlink" href="#2-gestion-de-servidores" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Listar</strong> servidores: Mostrar todos los servidores registrados</li>
+<li><strong>Añadir</strong> servidor: Registrar nuevos servidores con sus datos</li>
+<li><strong>Buscar</strong> servidor: Buscar servidores por nombre, IP, servicio, etc.</li>
+<li><strong>Modificar</strong> servidor: Editar información de servidores existentes</li>
+<li><strong>Eliminar</strong> servidor: Eliminar servidores del sistema</li>
+</ul>
+<p><strong>Datos de cada servidor:</strong></p>
+<ul>
+<li>Nombre del servidor</li>
+<li>Dirección IP</li>
+<li>Puerto</li>
+<li>Servicio (HTTP, SSH, MySQL, FTP, SMTP, DNS, etc.)</li>
+<li>Descripción (opcional)</li>
+</ul>
+<h4 id="3-monitoreo-del-sistema">3. <strong>Monitoreo del Sistema</strong><a class="headerlink" href="#3-monitoreo-del-sistema" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Estado de servidores</strong>: Verificar conectividad usando <code>ping</code></li>
+<li><strong>Uso de recursos</strong>: Mostrar información de:</li>
+<li>Memoria (comando <code>free</code>)</li>
+<li>Disco (comando <code>df</code>)</li>
+<li>CPU (comando <code>top</code> o <code>ps</code>)</li>
+<li><strong>Visualización de logs</strong>: Mostrar logs del sistema</li>
+</ul>
+<h4 id="4-sistema-de-copias-de-seguridad">4. <strong>Sistema de Copias de Seguridad</strong><a class="headerlink" href="#4-sistema-de-copias-de-seguridad" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Crear backup</strong>: Generar copias de seguridad comprimidas (<code>.tar.gz</code>)</li>
+<li><strong>Restaurar backup</strong>: Restaurar datos desde un backup</li>
+<li><strong>Listar backups</strong>: Mostrar backups disponibles</li>
+<li><strong>Eliminar backup</strong>: Eliminar backups antiguos</li>
+</ul>
+<h4 id="5-gestion-de-logs">5. <strong>Gestión de Logs</strong><a class="headerlink" href="#5-gestion-de-logs" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Registrar acciones del sistema en archivos de log</li>
+<li>Diferentes tipos de logs (sistema, errores)</li>
+<li>Formato con fecha y hora de cada acción</li>
+</ul>
+<h4 id="6-configuracion-del-sistema">6. <strong>Configuración del Sistema</strong><a class="headerlink" href="#6-configuracion-del-sistema" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Archivo de configuración centralizado</li>
+<li>Variables de entorno configurables</li>
+<li>Configuración de rutas y directorios</li>
+</ul>
+<h4 id="7-servidores-simulados-opcional-pero-recomendado">7. <strong>Servidores Simulados (Opcional pero Recomendado)</strong><a class="headerlink" href="#7-servidores-simulados-opcional-pero-recomendado" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Simulación de servidores para pruebas sin necesidad de servidores reales</li>
+<li>Simulación de diferentes tipos de servidores (HTTP, SSH, MySQL, FTP, SMTP, DNS)</li>
+<li>Scripts temporales con here documents</li>
+<li>Ejecución en segundo plano con gestión de PIDs</li>
+<li>Verificación de conectividad automática</li>
+</ul>
+<p><strong>Servidores simulados disponibles:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Servidor</th>
+<th>Puerto</th>
+<th>Protocolo</th>
+<th>Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web</td>
+<td>8080</td>
+<td>HTTP</td>
+<td><code>HTTP/1.1 200 OK\r\n\r\nServidor Web Simulado</code></td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>2222</td>
+<td>SSH</td>
+<td><code>SSH-2.0-OpenSSH_7.4 Simulado</code></td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>3306</td>
+<td>MySQL</td>
+<td><code>MySQL Simulado - Puerto 3306</code></td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>21</td>
+<td>FTP</td>
+<td><code>220 FTP Server Simulado</code></td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>25</td>
+<td>SMTP</td>
+<td><code>220 SMTP Server Simulado</code></td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>53</td>
+<td>DNS</td>
+<td><code>DNS Server Simulado</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="estructura-del-proyecto">Estructura del Proyecto<a class="headerlink" href="#estructura-del-proyecto" title="Permanent link">&para;</a></h2>
+<p>El proyecto debe estar organizado de forma modular con la siguiente estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>sistema_gestion_servidores/
+<span class="linenos" data-linenos=" 2 "></span>├── menu_principal.sh          # Script principal del sistema
+<span class="linenos" data-linenos=" 3 "></span>├── funciones_servidor.sh       # Módulo de gestión de servidores
+<span class="linenos" data-linenos=" 4 "></span>├── monitoreo.sh               # Módulo de monitoreo del sistema
+<span class="linenos" data-linenos=" 5 "></span>├── backup.sh                  # Módulo de copias de seguridad
+<span class="linenos" data-linenos=" 6 "></span>├── configuracion.conf         # Archivo de configuración
+<span class="linenos" data-linenos=" 7 "></span>├── servidores.txt             # Base de datos de servidores (formato texto)
+<span class="linenos" data-linenos=" 8 "></span>├── servidores_simulados.sh    # Script para simular servidores (opcional)
+<span class="linenos" data-linenos=" 9 "></span>├── iniciar_simuladores.sh     # Script de inicio rápido de simuladores (opcional)
+<span class="linenos" data-linenos="10 "></span>├── logs/                      # Directorio de logs
+<span class="linenos" data-linenos="11 "></span>│   ├── sistema.log
+<span class="linenos" data-linenos="12 "></span>│   └── errores.log
+<span class="linenos" data-linenos="13 "></span>└── backups/                   # Directorio de backups
+<span class="linenos" data-linenos="14 "></span>    └── backup_servidores_YYYYMMDD.tar.gz
+</code></pre></div>
+<h3 id="descripcion-de-archivos">Descripción de Archivos<a class="headerlink" href="#descripcion-de-archivos" title="Permanent link">&para;</a></h3>
+<h4 id="menu_principalsh"><code>menu_principal.sh</code><a class="headerlink" href="#menu_principalsh" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Script principal que inicia el sistema</li>
+<li>Carga los módulos necesarios usando <code>source</code></li>
+<li>Implementa el menú principal</li>
+<li>Gestiona la navegación entre módulos</li>
+</ul>
+<h4 id="funciones_servidorsh"><code>funciones_servidor.sh</code><a class="headerlink" href="#funciones_servidorsh" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Funciones para gestión CRUD de servidores</li>
+<li>Lectura y escritura en <code>servidores.txt</code></li>
+<li>Validación de datos</li>
+<li>Formato de datos: <code>nombre|ip|puerto|servicio|descripcion</code></li>
+</ul>
+<h4 id="monitoreosh"><code>monitoreo.sh</code><a class="headerlink" href="#monitoreosh" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Funciones de monitoreo de servidores</li>
+<li>Verificación de conectividad con <code>ping</code></li>
+<li>Obtención de información del sistema</li>
+<li>Visualización de logs</li>
+</ul>
+<h4 id="backupsh"><code>backup.sh</code><a class="headerlink" href="#backupsh" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Funciones para crear, restaurar, listar y eliminar backups</li>
+<li>Uso de <code>tar</code> y <code>gzip</code> para compresión</li>
+<li>Gestión del directorio de backups</li>
+</ul>
+<h4 id="configuracionconf"><code>configuracion.conf</code><a class="headerlink" href="#configuracionconf" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Variables de configuración del sistema</li>
+<li>Rutas de directorios</li>
+<li>Configuraciones de logs y backups</li>
+<li>Parámetros del sistema</li>
+</ul>
+<h4 id="servidores_simuladossh-opcional"><code>servidores_simulados.sh</code> (Opcional)<a class="headerlink" href="#servidores_simuladossh-opcional" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Script para simular diferentes tipos de servidores</li>
+<li>Verificación de dependencias (netcat)</li>
+<li>Creación de scripts temporales con here documents</li>
+<li>Ejecución en segundo plano con gestión de PIDs</li>
+<li>Verificación de estado de servidores</li>
+</ul>
+<h4 id="iniciar_simuladoressh-opcional"><code>iniciar_simuladores.sh</code> (Opcional)<a class="headerlink" href="#iniciar_simuladoressh-opcional" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Script de inicio rápido de servidores simulados</li>
+<li>Función genérica para simular cualquier servidor</li>
+<li>Inicio de múltiples servidores simultáneamente</li>
+</ul>
+<hr />
+<h2 id="tecnicas-shellscript-requeridas">Técnicas ShellScript Requeridas<a class="headerlink" href="#tecnicas-shellscript-requeridas" title="Permanent link">&para;</a></h2>
+<p>El sistema debe demostrar el uso de:</p>
+<h3 id="estructuras-de-control">Estructuras de Control<a class="headerlink" href="#estructuras-de-control" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>if</code>, <code>elif</code>, <code>else</code> para condiciones</li>
+<li><code>case</code> para menús y opciones múltiples</li>
+<li><code>while</code> para bucles y menús interactivos</li>
+<li><code>for</code> para recorrer listas y arrays</li>
+</ul>
+<h3 id="funciones-y-modularizacion">Funciones y Modularización<a class="headerlink" href="#funciones-y-modularizacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Definición de funciones con <code>function nombre() {}</code></li>
+<li>Uso de <code>source</code> o <code>.</code> para cargar módulos</li>
+<li>Parámetros de funciones (<code>$1</code>, <code>$2</code>, etc.)</li>
+<li>Retorno de valores con <code>return</code></li>
+</ul>
+<h3 id="variables-y-parametros">Variables y Parámetros<a class="headerlink" href="#variables-y-parametros" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Variables locales y globales</li>
+<li>Parámetros del script (<code>$0</code>, <code>$1</code>, <code>$#</code>, <code>$*</code>)</li>
+<li>Variables de entorno</li>
+<li>Arrays/vectores para almacenar datos</li>
+</ul>
+<h3 id="redirecciones-y-tuberias">Redirecciones y Tuberías<a class="headerlink" href="#redirecciones-y-tuberias" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Redirección de salida (<code>&gt;</code>, <code>&gt;&gt;</code>)</li>
+<li>Redirección de errores (<code>2&gt;</code>)</li>
+<li>Tuberías (<code>|</code>) para conectar comandos</li>
+<li>Redirección de entrada (<code>&lt;</code>)</li>
+</ul>
+<h3 id="comandos-del-sistema">Comandos del Sistema<a class="headerlink" href="#comandos-del-sistema" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ping</code> para verificar conectividad</li>
+<li><code>ps</code>, <code>top</code> para información de procesos</li>
+<li><code>df</code>, <code>free</code> para recursos del sistema</li>
+<li><code>tar</code>, <code>gzip</code> para backups</li>
+<li><code>grep</code> para búsquedas</li>
+<li><code>date</code> para fechas y horas</li>
+</ul>
+<h3 id="gestion-de-archivos">Gestión de Archivos<a class="headerlink" href="#gestion-de-archivos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Lectura de archivos (<code>cat</code>, <code>read</code>)</li>
+<li>Escritura en archivos (<code>echo &gt;&gt;</code>)</li>
+<li>Verificación de existencia (<code>[ -f ]</code>, <code>[ -d ]</code>)</li>
+<li>Creación de directorios (<code>mkdir -p</code>)</li>
+</ul>
+<h3 id="tecnicas-avanzadas-para-servidores-simulados">Técnicas Avanzadas (Para Servidores Simulados)<a class="headerlink" href="#tecnicas-avanzadas-para-servidores-simulados" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Here Documents:</strong> <code>&lt;&lt; EOF</code> para crear scripts temporales</li>
+<li><strong>Ejecución en segundo plano:</strong> <code>&amp;</code> y variable <code>$!</code> para PIDs</li>
+<li><strong>Comandos de red:</strong> <code>netcat</code> (nc) para simulación de servidores</li>
+<li><strong>Gestión de procesos:</strong> <code>pkill</code>, <code>ps</code> para control de procesos</li>
+<li><strong>Verificación de estado:</strong> <code>netstat</code> y <code>grep</code> para monitoreo de puertos</li>
+<li><strong>Scripts temporales:</strong> Creación dinámica de archivos ejecutables</li>
+</ul>
+<hr />
+<h2 id="formato-de-datos">Formato de Datos<a class="headerlink" href="#formato-de-datos" title="Permanent link">&para;</a></h2>
+<h3 id="archivo-servidorestxt">Archivo <code>servidores.txt</code><a class="headerlink" href="#archivo-servidorestxt" title="Permanent link">&para;</a></h3>
+<p>Cada línea representa un servidor con el siguiente formato:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nombre_servidor|direccion_ip|puerto|servicio|descripcion
+</code></pre></div>
+<p><strong>Ejemplo:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>servidor-web-01|192.168.1.10|80|HTTP|Servidor web principal
+<span class="linenos" data-linenos="2 "></span>servidor-db-01|192.168.1.20|3306|MySQL|Base de datos principal
+<span class="linenos" data-linenos="3 "></span>servidor-ssh-01|192.168.1.30|22|SSH|Servidor SSH principal
+</code></pre></div></p>
+<h3 id="archivo-de-logs">Archivo de Logs<a class="headerlink" href="#archivo-de-logs" title="Permanent link">&para;</a></h3>
+<p>Formato de cada entrada en los logs:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>YYYY-MM-DD HH:MM:SS: Mensaje de la acción
+</code></pre></div>
+<p><strong>Ejemplo:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>2024-10-15 14:30:25: Servidor &#39;servidor-web-01&#39; añadido
+<span class="linenos" data-linenos="2 "></span>2024-10-15 14:35:10: Backup creado - backup_servidores_20241015_143510.tar.gz
+</code></pre></div></p>
+<hr />
+<h2 id="servidores-simulados">Servidores Simulados<a class="headerlink" href="#servidores-simulados" title="Permanent link">&para;</a></h2>
+<h3 id="descripcion">Descripción<a class="headerlink" href="#descripcion" title="Permanent link">&para;</a></h3>
+<p>La funcionalidad de <strong>servidores simulados</strong> permite probar el sistema de gestión sin necesidad de servidores reales. Esta característica es <strong>opcional pero altamente recomendada</strong> ya que facilita las pruebas del sistema y demuestra el uso de técnicas avanzadas de ShellScript.</p>
+<h3 id="funcionalidad">Funcionalidad<a class="headerlink" href="#funcionalidad" title="Permanent link">&para;</a></h3>
+<p>Los servidores simulados permiten:</p>
+<ul>
+<li>Simular diferentes tipos de servidores (HTTP, SSH, MySQL, FTP, SMTP, DNS)</li>
+<li>Probar el sistema de monitoreo con servidores locales</li>
+<li>Verificar la conectividad sin depender de servidores externos</li>
+<li>Demostrar el uso de técnicas avanzadas de ShellScript</li>
+</ul>
+<h3 id="implementacion">Implementación<a class="headerlink" href="#implementacion" title="Permanent link">&para;</a></h3>
+<h4 id="tecnica-here-documents">Técnica: Here Documents<a class="headerlink" href="#tecnica-here-documents" title="Permanent link">&para;</a></h4>
+<p>Los servidores simulados se crean usando <strong>here documents</strong> para generar scripts temporales:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>cat<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;/tmp/servidor_</span><span class="si">${</span><span class="nv">puerto</span><span class="si">}</span><span class="s2">.sh&quot;</span><span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<span class="linenos" data-linenos="2 "></span><span class="s">#!/bin/bash</span>
+<span class="linenos" data-linenos="3 "></span><span class="s">while true; do</span>
+<span class="linenos" data-linenos="4 "></span><span class="s">    echo &quot;$respuesta&quot; | nc -l $puerto</span>
+<span class="linenos" data-linenos="5 "></span><span class="s">    sleep 0.1</span>
+<span class="linenos" data-linenos="6 "></span><span class="s">done</span>
+<span class="linenos" data-linenos="7 "></span><span class="s">EOF</span>
+</code></pre></div>
+<h4 id="tecnica-ejecucion-en-segundo-plano">Técnica: Ejecución en Segundo Plano<a class="headerlink" href="#tecnica-ejecucion-en-segundo-plano" title="Permanent link">&para;</a></h4>
+<p>Los servidores se ejecutan en segundo plano usando <code>&amp;</code> y se guarda el PID:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="s2">&quot;/tmp/servidor_</span><span class="si">${</span><span class="nv">puerto</span><span class="si">}</span><span class="s2">.sh&quot;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidor iniciado (PID: </span><span class="nv">$!</span><span class="s2">)&quot;</span>
+</code></pre></div>
+<h4 id="tecnica-verificacion-de-estado">Técnica: Verificación de Estado<a class="headerlink" href="#tecnica-verificacion-de-estado" title="Permanent link">&para;</a></h4>
+<p>Se puede verificar si un servidor está activo usando <code>netstat</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span>netstat<span class="w"> </span>-an<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;:</span><span class="si">${</span><span class="nv">puerto</span><span class="si">}</span><span class="s2">.*LISTEN&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidor ACTIVO&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Servidor INACTIVO&quot;</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">fi</span>
+</code></pre></div>
+<h3 id="requisitos">Requisitos<a class="headerlink" href="#requisitos" title="Permanent link">&para;</a></h3>
+<p>Para usar servidores simulados necesitas:</p>
+<ul>
+<li><strong>netcat (nc):</strong> Herramienta para simulación de servidores</li>
+<li>macOS: <code>brew install netcat</code></li>
+<li>Ubuntu/Debian: <code>apt-get install netcat</code></li>
+<li>CentOS/RHEL: <code>yum install nc</code></li>
+<li><strong>Puertos disponibles:</strong> 8080, 2222, 3306, 21, 25, 53</li>
+<li><strong>Permisos:</strong> Acceso de escritura en <code>/tmp/</code> para scripts temporales</li>
+</ul>
+<h3 id="ejemplo-de-uso">Ejemplo de Uso<a class="headerlink" href="#ejemplo-de-uso" title="Permanent link">&para;</a></h3>
+<h4 id="iniciar-servidores-simulados">Iniciar Servidores Simulados:<a class="headerlink" href="#iniciar-servidores-simulados" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Opción 1: Script básico</span>
+<span class="linenos" data-linenos="2 "></span>./iniciar_simuladores.sh
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Opción 2: Script mejorado</span>
+<span class="linenos" data-linenos="5 "></span>./servidores_simulados.sh
+</code></pre></div>
+<h4 id="verificar-servidores-activos">Verificar Servidores Activos:<a class="headerlink" href="#verificar-servidores-activos" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>netstat<span class="w"> </span>-an<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LISTEN<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;(8080|2222|3306|21|25|53)&quot;</span>
+</code></pre></div>
+<h4 id="probar-conectividad">Probar Conectividad:<a class="headerlink" href="#probar-conectividad" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-w<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="m">8080</span>
+</code></pre></div>
+<h4 id="detener-servidores">Detener Servidores:<a class="headerlink" href="#detener-servidores" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pkill<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;nc -l&quot;</span>
+</code></pre></div>
+<h3 id="integracion-con-el-sistema">Integración con el Sistema<a class="headerlink" href="#integracion-con-el-sistema" title="Permanent link">&para;</a></h3>
+<p>Los servidores simulados pueden añadirse al archivo <code>servidores.txt</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>servidor-web-simulado|127.0.0.1|8080|HTTP|Servidor web local simulado
+<span class="linenos" data-linenos="2 "></span>servidor-ssh-simulado|127.0.0.1|2222|SSH|Servidor SSH simulado
+<span class="linenos" data-linenos="3 "></span>servidor-mysql-simulado|127.0.0.1|3306|MySQL|Base de datos MySQL simulado
+<span class="linenos" data-linenos="4 "></span>servidor-ftp-simulado|127.0.0.1|21|FTP|Servidor FTP simulado
+<span class="linenos" data-linenos="5 "></span>servidor-smtp-simulado|127.0.0.1|25|SMTP|Servidor SMTP simulado
+<span class="linenos" data-linenos="6 "></span>servidor-dns-simulado|127.0.0.1|53|DNS|Servidor DNS simulado
+</code></pre></div>
+<h3 id="archivos-temporales">Archivos Temporales<a class="headerlink" href="#archivos-temporales" title="Permanent link">&para;</a></h3>
+<p>Durante la ejecución se crean scripts temporales en <code>/tmp/</code>:</p>
+<ul>
+<li><code>/tmp/servidor_8080.sh</code> - Servidor web</li>
+<li><code>/tmp/servidor_2222.sh</code> - Servidor SSH</li>
+<li><code>/tmp/servidor_3306.sh</code> - Servidor MySQL</li>
+<li><code>/tmp/servidor_21.sh</code> - Servidor FTP</li>
+<li><code>/tmp/servidor_25.sh</code> - Servidor SMTP</li>
+<li><code>/tmp/servidor_53.sh</code> - Servidor DNS</li>
+</ul>
+<p>Estos archivos se pueden limpiar manualmente o al detener los servidores.</p>
+<hr />
+<h2 id="criterios-de-evaluacion">Criterios de Evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h2>
+<p>El proyecto será evaluado según los siguientes criterios (ver <a href="Rubrica_Evaluacion_RetoShell.html">Rúbrica de Evaluación</a> para más detalles):</p>
+<ol>
+<li><strong>Funcionalidad (15 puntos)</strong></li>
+</ol>
+<ul>
+<li>Sistema completamente funcional</li>
+<li>Todas las funcionalidades requeridas implementadas</li>
+<li>Sin errores de ejecución</li>
+<li>Manejo correcto de errores</li>
+</ul>
+<ol start="2">
+<li><strong>Estructura del Código (5 puntos)</strong></li>
+</ol>
+<ul>
+<li>Código organizado y modular</li>
+<li>Comentarios detallados en cada línea</li>
+<li>Separación clara de responsabilidades</li>
+<li>Nombres descriptivos</li>
+</ul>
+<ol start="3">
+<li><strong>Uso de Conceptos ShellScript (5 puntos)</strong></li>
+</ol>
+<ul>
+<li>Uso correcto de todas las técnicas aprendidas</li>
+<li>Variables, bucles, funciones bien implementadas</li>
+<li>Manejo de parámetros y redirecciones</li>
+<li>Integración de comandos del sistema</li>
+</ul>
+<ol start="4">
+<li><strong>Documentación (3 puntos)</strong></li>
+</ol>
+<ul>
+<li>README.md completo y profesional</li>
+<li>Instrucciones claras de instalación y uso</li>
+<li>Documentación de cada módulo</li>
+<li>Capturas de pantalla</li>
+</ul>
+<ol start="5">
+<li><strong>Creatividad e Innovación (2 puntos)</strong></li>
+</ol>
+<ul>
+<li>Funcionalidades adicionales innovadoras</li>
+<li>Mejoras creativas al sistema</li>
+<li>Interfaz mejorada</li>
+<li>Características únicas</li>
+</ul>
+<h3 id="puntos-extra-hasta-8-puntos">Puntos Extra (Hasta +8 puntos)<a class="headerlink" href="#puntos-extra-hasta-8-puntos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Autenticación de usuarios</strong> (+2 puntos)</li>
+<li><strong>Gráficos ASCII con estadísticas</strong> (+2 puntos)</li>
+<li><strong>Notificaciones por email</strong> (+2 puntos)</li>
+<li><strong>Interfaz con colores</strong> (+1 punto)</li>
+<li><strong>Sistema de alertas sonoras</strong> (+1 punto)</li>
+</ul>
+<hr />
+<h2 id="instrucciones-de-entrega">Instrucciones de Entrega<a class="headerlink" href="#instrucciones-de-entrega" title="Permanent link">&para;</a></h2>
+<h3 id="estructura-de-entrega">Estructura de Entrega<a class="headerlink" href="#estructura-de-entrega" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Crear directorio</strong> con el nombre: <code>reto_grupal_[nombre1]_[nombre2]</code></li>
+<li><strong>Incluir todos los archivos</strong> del proyecto:</li>
+</ol>
+<ul>
+<li>Scripts <code>.sh</code> con permisos de ejecución</li>
+<li>Archivo de configuración <code>.conf</code></li>
+<li>README.md con documentación completa</li>
+<li>Capturas de pantalla del sistema funcionando
+3. <strong>Comprimir en ZIP</strong> el directorio completo
+4. <strong>Subir al Moodle</strong> antes de la fecha límite</li>
+</ul>
+<h3 id="contenido-del-readmemd">Contenido del README.md<a class="headerlink" href="#contenido-del-readmemd" title="Permanent link">&para;</a></h3>
+<p>El README.md debe incluir:</p>
+<ul>
+<li><strong>Descripción del proyecto</strong>: Qué hace el sistema</li>
+<li><strong>Instrucciones de instalación</strong>: Cómo configurar el sistema</li>
+<li><strong>Guía de uso</strong>: Cómo usar cada funcionalidad</li>
+<li><strong>Estructura del proyecto</strong>: Explicación de cada archivo</li>
+<li><strong>Capturas de pantalla</strong>: Imágenes del sistema funcionando</li>
+<li><strong>Autores</strong>: Nombres de los miembros del grupo</li>
+<li><strong>Fecha</strong>: Fecha de entrega</li>
+</ul>
+<h3 id="requisitos-tecnicos">Requisitos Técnicos<a class="headerlink" href="#requisitos-tecnicos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Todos los scripts deben tener el shebang <code>#!/bin/bash</code></li>
+<li>Todos los scripts deben tener permisos de ejecución (<code>chmod +x</code>)</li>
+<li>El código debe estar completamente comentado</li>
+<li>El sistema debe funcionar sin errores</li>
+<li>Debe incluir manejo de errores básico</li>
+</ul>
+<hr />
+<h2 id="ejemplo-de-funcionamiento">Ejemplo de Funcionamiento<a class="headerlink" href="#ejemplo-de-funcionamiento" title="Permanent link">&para;</a></h2>
+<h3 id="menu-principal">Menú Principal<a class="headerlink" href="#menu-principal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>==========================================
+<span class="linenos" data-linenos=" 2 "></span>    SISTEMA DE GESTIÓN DE SERVIDORES
+<span class="linenos" data-linenos=" 3 "></span>==========================================
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span>1) Gestión de servidores
+<span class="linenos" data-linenos=" 6 "></span>2) Monitoreo del sistema
+<span class="linenos" data-linenos=" 7 "></span>3) Copias de seguridad
+<span class="linenos" data-linenos=" 8 "></span>4) Configuración del sistema
+<span class="linenos" data-linenos=" 9 "></span>5) Salir
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span>Selecciona una opción: 
+</code></pre></div>
+<h3 id="gestion-de-servidores">Gestión de Servidores<a class="headerlink" href="#gestion-de-servidores" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>==========================================
+<span class="linenos" data-linenos=" 2 "></span>    GESTIÓN DE SERVIDORES
+<span class="linenos" data-linenos=" 3 "></span>==========================================
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span>1) Listar servidores
+<span class="linenos" data-linenos=" 6 "></span>2) Añadir servidor
+<span class="linenos" data-linenos=" 7 "></span>3) Buscar servidor
+<span class="linenos" data-linenos=" 8 "></span>4) Modificar servidor
+<span class="linenos" data-linenos=" 9 "></span>5) Eliminar servidor
+<span class="linenos" data-linenos="10 "></span>6) Volver al menú principal
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span>Selecciona una opción: 
+</code></pre></div>
+<hr />
+<h2 id="consejos-y-recomendaciones">Consejos y Recomendaciones<a class="headerlink" href="#consejos-y-recomendaciones" title="Permanent link">&para;</a></h2>
+<h3 id="planificacion">Planificación<a class="headerlink" href="#planificacion" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Dividir el trabajo</strong> entre los miembros del grupo</li>
+<li><strong>Crear primero la estructura</strong> básica del proyecto</li>
+<li><strong>Implementar funcionalidad por funcionalidad</strong></li>
+<li><strong>Probar cada módulo</strong> antes de integrarlo</li>
+<li><strong>Documentar mientras se desarrolla</strong></li>
+</ol>
+<h3 id="buenas-practicas">Buenas Prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Usar nombres descriptivos para variables y funciones</li>
+<li>Comentar cada línea de código importante</li>
+<li>Validar entradas del usuario</li>
+<li>Manejar errores de forma adecuada</li>
+<li>Mantener el código organizado y limpio</li>
+</ul>
+<h3 id="depuracion">Depuración<a class="headerlink" href="#depuracion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Usar <code>bash -x script.sh</code> para depurar</li>
+<li>Usar <code>set -x</code> y <code>set +x</code> dentro del código</li>
+<li>Probar cada función individualmente</li>
+<li>Verificar permisos de archivos y directorios</li>
+</ul>
+<hr />
+<h2 id="recursos-y-referencias">Recursos y Referencias<a class="headerlink" href="#recursos-y-referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="01ShellScript.html">Documentación del tema ShellScript</a></li>
+<li><a href="SolucionRetoGrupalShellScript.html">Solución detallada del reto</a></li>
+<li><a href="Rubrica_Evaluacion_RetoShell.html">Rúbrica de evaluación</a></li>
+</ul>
+<hr />
+<h2 id="fechas-importantes">Fechas Importantes<a class="headerlink" href="#fechas-importantes" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Fecha de inicio:</strong> Sesión 5</li>
+<li><strong>Fecha de entrega:</strong> Sesión 8</li>
+<li><strong>Presentación:</strong> Sesión 8</li>
+</ul>
+<hr />
+<div class="admonition success">
+<p class="admonition-title">¡Éxito en el reto!</p>
+<p>Este reto te permitirá demostrar todos los conocimientos adquiridos durante la unidad de ShellScript. ¡Trabaja en equipo, planifica bien y documenta todo!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

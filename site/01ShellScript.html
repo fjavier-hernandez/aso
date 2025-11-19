@@ -1,0 +1,3351 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Realización de scripts mediante Shell.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/01ShellScript.html">
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="02PowerShell.html">
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Introducción - Introducción a Shellscripting - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Introducción - Introducción a Shellscripting - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="Realización de scripts mediante Shell." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/01ShellScript.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/01ShellScript.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Introducción - Introducción a Shellscripting - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="Realización de scripts mediante Shell." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/01ShellScript.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#shellscripting" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introducción - Introducción a Shellscripting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="01ShellScript.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propuesta-didactica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion-ra7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación (RA7)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenidos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programacion-de-aula-8h" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación de Aula (8h)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Programación de Aula (8h)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sesiones-1-3-contenidos-fundamentales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesiones 1-3: Contenidos Fundamentales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesiones-4-5-contenidos-avanzados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesiones 4-5: Contenidos Avanzados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesiones-6-8-reto-grupal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesiones 6-8: Reto Grupal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formato-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formato comandos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principales-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principales comandos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-script-en-gnulinux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell Script en GNU/Linux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell Script en GNU/Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura general
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacion-shell-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creación Shell scripts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-primer-shellscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      El primer Shellscript
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comentarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comentarios
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Depuración
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sintaxis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sintaxis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sintaxis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argumentos-o-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Argumentos o Parámetros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables de entorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entrada-y-salida-del-shell-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrada y salida del Shell Script
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entrada y salida del Shell Script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      echo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      read
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadores-en-shell-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadores en shell script
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadores en shell script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aritmeticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aritméticos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relacionales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lógicos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expr" class="md-nav__link">
+    <span class="md-ellipsis">
+      expr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#let" class="md-nav__link">
+    <span class="md-ellipsis">
+      let
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expansores" class="md-nav__link">
+    <span class="md-ellipsis">
+      expansores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirecciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuberias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuberías
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alias" class="md-nav__link">
+    <span class="md-ellipsis">
+      alias
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-de-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control de Flujo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control de Flujo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sistema-de-notacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistema de notación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sistema de notación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagramas-de-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagramas de flujo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructuras" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructuras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-alternativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras alternativas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-de-iteracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras de iteración
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectores-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vectores y Funciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vectores y Funciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vectores-en-shell-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vectores en shell script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-en-shell-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones en shell script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llamada-a-scripts-externos-como-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llamada a Scripts Externos como Funciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Llamada a Scripts Externos como Funciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodo-1-usando-source-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      Método 1: Usando source o .
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodo-2-ejecutando-scripts-como-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Método 2: Ejecutando Scripts como Comandos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-practico-sistema-modular" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo Práctico: Sistema Modular
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-la-modularizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas de la Modularización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consideraciones-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consideraciones Importantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propuesta-didactica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion-ra7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación (RA7)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenidos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programacion-de-aula-8h" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación de Aula (8h)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Programación de Aula (8h)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sesiones-1-3-contenidos-fundamentales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesiones 1-3: Contenidos Fundamentales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesiones-4-5-contenidos-avanzados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesiones 4-5: Contenidos Avanzados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesiones-6-8-reto-grupal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesiones 6-8: Reto Grupal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formato-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formato comandos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principales-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principales comandos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-script-en-gnulinux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell Script en GNU/Linux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell Script en GNU/Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura general
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacion-shell-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creación Shell scripts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-primer-shellscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      El primer Shellscript
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comentarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comentarios
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Depuración
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sintaxis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sintaxis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sintaxis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argumentos-o-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Argumentos o Parámetros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables de entorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entrada-y-salida-del-shell-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrada y salida del Shell Script
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entrada y salida del Shell Script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      echo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      read
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadores-en-shell-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadores en shell script
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadores en shell script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aritmeticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aritméticos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relacionales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lógicos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expr" class="md-nav__link">
+    <span class="md-ellipsis">
+      expr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#let" class="md-nav__link">
+    <span class="md-ellipsis">
+      let
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expansores" class="md-nav__link">
+    <span class="md-ellipsis">
+      expansores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirecciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuberias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuberías
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alias" class="md-nav__link">
+    <span class="md-ellipsis">
+      alias
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-de-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control de Flujo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control de Flujo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sistema-de-notacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistema de notación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sistema de notación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagramas-de-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagramas de flujo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructuras" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructuras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-alternativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras alternativas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructuras-de-iteracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras de iteración
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectores-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vectores y Funciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vectores y Funciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vectores-en-shell-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vectores en shell script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-en-shell-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones en shell script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llamada-a-scripts-externos-como-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llamada a Scripts Externos como Funciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Llamada a Scripts Externos como Funciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodo-1-usando-source-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      Método 1: Usando source o .
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodo-2-ejecutando-scripts-como-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Método 2: Ejecutando Scripts como Comandos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-practico-sistema-modular" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo Práctico: Sistema Modular
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-la-modularizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas de la Modularización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consideraciones-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consideraciones Importantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="shellscripting">Shellscripting<a class="headerlink" href="#shellscripting" title="Permanent link">&para;</a></h1>
+<p>El shell scripting es una técnica que permite crear scripts —archivos de texto con instrucciones— para automatizar tareas y procesos repetitivos mediante un intérprete de comandos, como Bash. Es especialmente útil en sistemas operativos basados en Unix y Linux, donde facilita la administración del sistema, la ejecución de rutinas y la integración de herramientas. </p>
+<p>Estos scripts no se compilan, sino que se ejecutan línea por línea por el shell, permitiendo realizar desde la manipulación de archivos hasta la ejecución automática de programas complejos. </p>
+<h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>En esta unidad vamos a comenzar a trabajar el <strong>RA7 de ASO</strong>:</p>
+<blockquote>
+<p><strong>RA7.</strong> <em>Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.</em></p>
+</blockquote>
+<h3 id="criterios-de-evaluacion-ra7">Criterios de evaluación (RA7)<a class="headerlink" href="#criterios-de-evaluacion-ra7" title="Permanent link">&para;</a></h3>
+<p>A lo largo de la unidad se trabajarán y evidenciarán los siguientes criterios:</p>
+<ul>
+<li><strong>CE7a</strong>: Se han utilizado y combinado las estructuras del lenguaje para crear guiones.  </li>
+<li><strong>CE7b</strong>: Se han utilizado herramientas para depurar errores sintácticos y de ejecución.  </li>
+<li><strong>CE7c</strong>: Se han interpretado guiones de configuración del sistema operativo.  </li>
+<li><strong>CE7d</strong>: Se han realizado cambios y adaptaciones de guiones del sistema.  </li>
+<li><strong>CE7e</strong>: Se han creado y probado guiones de administración de servicios.  </li>
+<li><strong>CE7f</strong>: Se han creado y probado guiones de automatización de tareas.  </li>
+<li><strong>CE7g</strong>: Se han implantado guiones en <strong>sistemas libres</strong>.  </li>
+<li><strong>CE7h</strong>: Se han consultado y utilizado librerías de funciones.  </li>
+<li><strong>CE7i</strong>: Se han documentado los guiones creados.</li>
+</ul>
+<h2 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h2>
+<p><strong>Bloque 1 — Fundamentos del Shell (Sesión 1–2)</strong>
+- ¿Qué es un shell? CLI vs GUI.<br />
+- Formato general de órdenes en GNU/Linux.<br />
+- Comandos básicos de terminal.<br />
+- Creación y ejecución de scripts: permisos y <code>$PATH</code>.<br />
+- Comentarios y buenas prácticas.</p>
+<p><strong>Bloque 2 — Elementos del lenguaje (Sesión 2–3)</strong>
+- Variables y parámetros (<code>$0</code>, <code>$1</code>, <code>$#</code>, <code>$*</code>, <code>$?</code>).<br />
+- Entrada/salida con <code>echo</code> y <code>read</code>.<br />
+- Operadores: aritméticos, relacionales y lógicos.<br />
+- Cálculo con <code>let</code> y expansión aritmética <code>$(( ))</code>.</p>
+<p><strong>Bloque 3 — Control de flujo (Sesión 3–4)</strong>
+- Estructuras condicionales: <code>if</code>, <code>elif</code>, <code>else</code>, <code>case</code>.<br />
+- Bucles: <code>for</code>, <code>while</code>, <code>until</code>.<br />
+- <code>break</code>, <code>continue</code>, <code>exit</code>.</p>
+<p><strong>Bloque 4 — Estructuras y modularización (Sesión 4–5)</strong>
+- Vectores (arrays) y recorrido.<br />
+- Funciones, parámetros y retorno.<br />
+- <code>source</code> y organización del código.</p>
+<div class="admonition question">
+<p class="admonition-title">Actividades iniciales</p>
+<ol>
+<li>Introduce el comando para mostrar tu ubicación actual en el sistema.</li>
+<li>Introduce el comando para listar los archivos y directorios en tu ubicación actual.</li>
+<li>Introduce el comando para crear un archivo vacío llamado <code>prueba.txt</code> en tu ubicación actual.</li>
+<li>Introduce el comando para cambiar al directorio raíz del sistema.</li>
+<li>Introduce el comando para crear un directorio llamado <code>nuevo_directorio</code> en tu ubicación actual.</li>
+<li>Introduce el comando para eliminar el directorio <code>nuevo_directorio</code> que creaste anteriormente.</li>
+<li>Introduce el comando para mostrar el contenido del archivo <code>/etc/passwd</code>.</li>
+<li>Introduce el comando para contar las líneas de un archivo llamado <code>prueba.txt</code>.</li>
+<li>Introduce el comando para buscar la palabra <code>"root"</code> en el archivo <code>/etc/passwd</code>.</li>
+</ol>
+</div>
+<h3 id="programacion-de-aula-8h">Programación de Aula (8h)<a class="headerlink" href="#programacion-de-aula-8h" title="Permanent link">&para;</a></h3>
+<p>Esta unidad se imparte en la primera evaluación, con una duración estimada de 8 sesiones lectivas, durante la última quincena de septiembre:</p>
+<h4 id="sesiones-1-3-contenidos-fundamentales">Sesiones 1-3: Contenidos Fundamentales<a class="headerlink" href="#sesiones-1-3-contenidos-fundamentales" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Presentación de la UD y objetivos de sesión</td>
+<td>Cuestionario inicial, AC101-AC103</td>
+<td>CE7a, CE7b, CE7g y CE7i</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Variables, entrada/salida y operadores</td>
+<td>AC104, AC105, AC106</td>
+<td>CE7a, CE7b, CE7f y CE7i</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Control de flujo: condicionales y bucles</td>
+<td>AC108, AC109, AC110</td>
+<td>CE7a, CE7f, CE7i</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sesiones-4-5-contenidos-avanzados">Sesiones 4-5: Contenidos Avanzados<a class="headerlink" href="#sesiones-4-5-contenidos-avanzados" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>Vectores y funciones</td>
+<td>AC111-AC114</td>
+<td>CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h, CE7i</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Reto grupal - Desarrollo</td>
+<td>RETO GRUPAL (Sesión 1)</td>
+<td>CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h, CE7i</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sesiones-6-8-reto-grupal">Sesiones 6-8: Reto Grupal<a class="headerlink" href="#sesiones-6-8-reto-grupal" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>Reto grupal - Desarrollo</td>
+<td>RETO GRUPAL (Sesión 2)</td>
+<td>CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h, CE7i</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Reto grupal - Finalización</td>
+<td>RETO GRUPAL (Sesión 3)</td>
+<td>CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h, CE7i</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Presentación y evaluación</td>
+<td>DEMO GRUPAL, Evaluación</td>
+<td>CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h, CE7i</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>Para administrar sistemas operativos es crucial manejar y dominar las interfaces (terminales) disponibles que nos permiten gestionarlos. Entre dichas interfaces destacan los siguientes tipos:</p>
+<ul>
+<li>De líneas  de texto (<strong>CLI</strong>, Command-Line Interface, interfaz de línea de comandos),</li>
+<li>Gráficos/ventanas (<strong>GUI</strong>, Graphical User Interface, interfaz gráfica de usuario),</li>
+<li>De lenguaje natural (<strong>NUI</strong>, Natural User Interface, interfaz natural de usuario, ejemplo SIRI en IOS).</li>
+</ul>
+<p>Este tema se centra en Sistemas basados en código libre del tipo UNIX, debido a su amplio despliegue en empresas para implementar servicios, más en concreto de distribuciones <strong>Linux/GNU</strong>.</p>
+<p>El CLI de las distribuciones de <strong>Linux/GNU</strong> es conocido como Shell o terminal, con esta interfaz es posible crear cualquier comando que el usuario necesite, incluso para las tareas más específicas, <strong>debido a estar directamente conectado al Kernel a diferencia de las aplicaciones como se puede observar en la siguiente figura</strong>.</p>
+<figure>
+  <img src="imagenes/01/EstructuraLinux.png" width="475"/>
+  <figcaption>Estructura de Linux</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>NOTA</strong></p>
+<ul>
+<li>Por lo tanto, es buena práctica que el administrador del sistemas tenga conocimientos en el manejo y gestión del terminal Shell, <strong>así como en la programación de scripts</strong>.</li>
+</ul>
+</div>
+<h2 id="shell">Shell<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h2>
+<ul>
+<li>En informática, el <strong>shell o intérprete de comandos</strong>, es el programa informático que permite a los usuarios interactuar con el sistema, procesando las órdenes que se le indican; además provee una interfaz de usuario para acceder a los servicios del sistema operativo.</li>
+<li>Los comandos ejecutables desde el shell pueden clasificarse en <strong>internos</strong> (corresponden en realidad a órdenes interpretadas por el propio shell) y <strong>externos</strong> (corresponden a ficheros ejecutables externos al shell, conocidos como guiones o scripts).</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title"><strong>IMPORTANTE:</strong></p>
+<ul>
+<li>Linux dispone de varios Shell diferentes <em>csh</em>, <em>bash</em>, <em>sh</em>, <em>ksh</em>, <em>zsh</em>, etc... A destacar:</li>
+<li><strong>sh (Bourne Shell)</strong>: este shell fue usado desde las primeras versiones de Unix (Unix Versión 7). Recibe ese nombre por su desarrollador, <em>Stephen Bourne</em>, de los Laboratorios <em>Bell de AT&amp;T</em>.</li>
+<li><strong>bash</strong>: fue desarrollado para ser un superconjunto de la funcionalidad del Bourne Shell, siendo el intérprete de comandos asignado por defecto a los usuarios en las distribuciones de Linux, por lo que es el shell empleado en la mayoría de las consolas de comandos de Linux. Se caracteriza por una gran funcionalidad adicional a la del Bourne Shell.</li>
+<li>Para intentar homogeneizar esta diversidad de shells, el <strong>IEEE</strong> definió un estándar de «intérprete de comandos» bajo la especificación <strong>POSIX 1003.2</strong> (también recogida como <strong>ISO 9945.2</strong>). La creación de dicho estándar se basó en la sintaxis que presentaban múltiples shells de la familia Bourne shell.</li>
+<li><strong>bash</strong> respeta completamente el estándar POSIX, sobre el que añade un número considerable de extensiones (estructura select, arrays, mayor número de operadores,…). En este tema utilizaremos el Shell de <strong>bash</strong>.</li>
+</ul>
+</div>
+<h3 id="formato-comandos">Formato comandos<a class="headerlink" href="#formato-comandos" title="Permanent link">&para;</a></h3>
+<p>En general, el formato de las órdenes de GNU/Linux es el siguiente:</p>
+<ul>
+<li><strong>Comando</strong>, que indica la acción que se va a ejecutar.</li>
+<li><strong>Modificadores</strong>, que cambian el comportamiento estándar del comando para adaptarlo a las necesidades.</li>
+<li><strong>Argumentos</strong>, elementos necesarios para realizar la acción del comando.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>Un dato a tener en cuenta cuando se trabaja con un terminal, es que GNU/Linux distingue entre mayúsculas y minúsculas, es decir, la ejecución de comandos en el CLI de Linux es <strong>CASE SENSITIVE</strong>.</li>
+</ul>
+</div>
+<h3 id="principales-comandos">Principales comandos<a class="headerlink" href="#principales-comandos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ls</code></td>
+<td>muestra el contenido de una carpeta</td>
+<td><code>uname</code></td>
+<td>muestra información del sistema</td>
+</tr>
+<tr>
+<td><code>df</code></td>
+<td>muestra estado del disco</td>
+<td><code>cd</code></td>
+<td>cambiar de directorio</td>
+</tr>
+<tr>
+<td><code>fsck</code></td>
+<td>comprueba integridad de discos</td>
+<td><code>mkdir</code></td>
+<td>crear directorios</td>
+</tr>
+<tr>
+<td><code>mount</code></td>
+<td>monta particiones y volúmenes</td>
+<td><code>shutdown</code></td>
+<td>apaga el equipo (<em>restart</em> o <em>reboot</em>)</td>
+</tr>
+<tr>
+<td><code>unmount</code></td>
+<td>desmonta particiones y volúmenes</td>
+<td><code>clear</code></td>
+<td>limpia la pantalla</td>
+</tr>
+<tr>
+<td><code>fdisk</code></td>
+<td>administra particiones</td>
+<td><code>date/cal</code></td>
+<td>muestra hora/calendario del sistema</td>
+</tr>
+<tr>
+<td><code>echo</code></td>
+<td>imprime por pantalla</td>
+<td><code>who</code></td>
+<td>muestra quien está conectado</td>
+</tr>
+</tbody>
+</table>
+<h2 id="shell-script-en-gnulinux">Shell Script en GNU/Linux<a class="headerlink" href="#shell-script-en-gnulinux" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Un Shell script (guion) es un archivo de texto que contiene una serie de comandos que, ordenados de forma específica, realizan la tarea para la que fueron diseñados, es decir, es un programa escrito de comandos Shell para ser ejecutados de forma secuencial.</li>
+<li>De esta forma se pueden automatizar tareas repetitivas ahorrando tiempo al administrador.</li>
+<li>Un programa escrito en shell se denomina shellscript, programa shell o simplemente un shell.</li>
+</ul>
+<h3 id="estructura-general">Estructura general<a class="headerlink" href="#estructura-general" title="Permanent link">&para;</a></h3>
+<ul>
+<li>En su forma más básica, un shell-script puede ser un simple fichero de texto que contenga uno o varios comandos.</li>
+<li>Para ayudar a la identificación del contenido a partir del nombre del archivo, es habitual que los shell scripts tengan la extensión «.sh»,</li>
+<li>Se seguirá este criterio pero hay que tener en cuenta que es informativo y opcional.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">#Este es mi primer script</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span>Hola<span class="w"> </span>Mundo
+<span class="linenos" data-linenos="6 "></span><span class="c1">#Esto es un comentario, soy muy útil.</span>
+</code></pre></div>
+<h3 id="creacion-shell-scripts">Creación Shell scripts<a class="headerlink" href="#creacion-shell-scripts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Para crear un script utilizaremos cualquiera de los editores de texto plano como <em>vi</em>, <em>vim</em> , <em>nano</em>.</li>
+<li>Después de crear el archivo hay que dotarlo de permisos de lectura y ejecución. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>chmod<span class="w"> </span><span class="nv">ugo</span><span class="o">=</span>rx<span class="w"> </span>script.sh
+</code></pre></div>
+<ul>
+<li>
+<p>Para ejecutar el archivo: (ubicados en la carpeta que contiene el archivo), se pueden utilizar el siguiente archivo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>./script.sh
+</code></pre></div>
+</li>
+<li>
+<p>Además se puede utilizar otro método que consiste en definir la carpeta dentro de la variable de entorno <strong>PATH</strong> (editando el fichero <strong>.bashrc</strong>.) Una vez realizado ya se podría ejecutar directamente el fichero con el nombre del script.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir<span class="w"> </span>/home/administrador/scripts
+<span class="linenos" data-linenos="2 "></span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/administrador/scripts
+<span class="linenos" data-linenos="3 "></span><span class="nb">export</span><span class="w"> </span>PATH
+</code></pre></div>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title"><strong>NOTA</strong></p>
+<ul>
+<li>La primera forma ejecutará el contenido del shell script en un subshell o hilo del terminal original. El programa se ejecuta hasta que se terminan las órdenes del archivo, se recibe una señal de finalización, se encuentra un error sintáctico o se llega a una orden <strong>exit</strong>. Cuando el programa termina, el subshell muere y el terminal original toma el control del sistema. </li>
+<li>Esto no ocurre si se usa la opción de <strong>PATH</strong>, la cual ejecuta el contenido del shell script en el mismo terminal donde fue invocado.</li>
+</ul>
+</div>
+<h3 id="el-primer-shellscript">El primer Shellscript<a class="headerlink" href="#el-primer-shellscript" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Crea un ejemplo llamado <em>listar.sh</em>, se aconseja ejecutar los siguientes comandos de forma secuencial.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">cd</span><span class="w"> </span>~
+<span class="linenos" data-linenos="2 "></span>mkdir<span class="w"> </span>scripts
+<span class="linenos" data-linenos="3 "></span><span class="nb">cd</span><span class="w"> </span>scripts
+<span class="linenos" data-linenos="4 "></span>touch<span class="w"> </span>listar.sh
+<span class="linenos" data-linenos="5 "></span>nano<span class="w"> </span>listar.sh
+</code></pre></div>
+<ul>
+<li>Genera, guarda y prueba el siguiente código.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#! /bin/bash</span>
+<span class="linenos" data-linenos="2 "></span>clear
+<span class="linenos" data-linenos="3 "></span>ls<span class="w"> </span>-la
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span>“Listado<span class="w"> </span>realizado<span class="w"> </span>el<span class="w"> </span>“<span class="k">$(</span>date<span class="k">)</span>
+</code></pre></div>
+<h3 id="comentarios">Comentarios<a class="headerlink" href="#comentarios" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Para realizar un comentario se usa el carácter <strong>#</strong></li>
+<li>Cuando el terminal encuentra una línea que comienza con este carácter, ignora todo lo que existe desde él hasta el final de línea.</li>
+<li>A esta regla existe una excepción:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="w">    </span><span class="c1">#!/bin/bash</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Es el "Shebang" Indica el terminal que será utilizado por el shell script, no un comentario.</li>
+<li>Esta línea debe ser la primera del fichero que, aún siendo opcional, indica el tipo de lenguaje en el que ha sido escrito el programa.</li>
+<li>Si la versión de GNU/Linux dispone de el terminal especificado en esta línea, ejecutará el código con él, si no es así, utilizará el que por defecto tenga asignado el usuario que lo ejecuta.</li>
+</ul>
+</div>
+<h2 id="depuracion">Depuración<a class="headerlink" href="#depuracion" title="Permanent link">&para;</a></h2>
+<p>Esta tarea no es sencilla en ShellScripting, aun así se recomienda los siguientes métodos de depuración, apoyados en los siguientes argumentos a la hora de ejecutar el script:</p>
+<ul>
+<li><code>-x</code> &#8594; Expande cada orden simple, e imprime por pantalla la orden con sus argumentos, y a continuación su salida.</li>
+<li><code>-v</code> &#8594; Imprime en pantalla cada elemento completo del script (estructura de control, …) y a continuación su salida.</li>
+</ul>
+<p>Además en el propio Script se pueden utilizar los siguientes comandos:</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>set -x</code> <code>set –xv</code></td>
+<td>Activa las trazas/verbose. Se debe ubicar justo antes del trozo del script que se desea depurar.</td>
+</tr>
+<tr>
+<td><code>set +x</code> <code>set +xv</code></td>
+<td>Desactiva las trazas/verbose. Ubicarlo justo después del trozo del script que se desea depurar.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sintaxis">Sintaxis<a class="headerlink" href="#sintaxis" title="Permanent link">&para;</a></h2>
+<h3 id="argumentos-o-parametros">Argumentos o Parámetros<a class="headerlink" href="#argumentos-o-parametros" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Son especificaciones que se le hacen al programa al momento de llamarlo.</li>
+<li>Introducen un valor, cadena o variable dentro del script.</li>
+<li>Utilización de parámetros:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Símbolo</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$1</code></td>
+<td>representa el 1º parámetro pasado al script</td>
+</tr>
+<tr>
+<td><code>$2</code></td>
+<td>representa el 2º parámetro</td>
+</tr>
+<tr>
+<td><code>$3</code></td>
+<td>representa el 3º parámetro (podemos usar hasta $9)</td>
+</tr>
+<tr>
+<td><code>$*</code></td>
+<td>representa todos los parámetros separados por espacio</td>
+</tr>
+<tr>
+<td><code>$#</code></td>
+<td>representa el número de parámetros que se han pasado</td>
+</tr>
+<tr>
+<td><code>$0</code></td>
+<td>representa el parámetro 0, es decir, el nombre del script o el nombre de la función</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span>‘El<span class="w"> </span>primer<span class="w"> </span>parámetro<span class="w"> </span>que<span class="w"> </span>se<span class="w"> </span>ha<span class="w"> </span>pasado<span class="w"> </span>es<span class="w"> </span>‘<span class="w"> </span><span class="nv">$1</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span>‘El<span class="w"> </span>tercer<span class="w"> </span>parámetro<span class="w"> </span>que<span class="w"> </span>se<span class="w"> </span>ha<span class="w"> </span>pasado<span class="w"> </span>es<span class="w"> </span>‘<span class="w"> </span><span class="nv">$3</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span>‘El<span class="w"> </span>conjunto<span class="w"> </span>de<span class="w"> </span>todos<span class="w"> </span>los<span class="w"> </span>parámetros<span class="w"> </span>:<span class="w"> </span>‘<span class="w"> </span><span class="nv">$*</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span>‘Me<span class="w"> </span>has<span class="w"> </span>pasado<span class="w"> </span>un<span class="w"> </span>total<span class="w"> </span>de<span class="w"> </span>‘<span class="w"> </span><span class="nv">$#</span><span class="w"> </span>‘<span class="w"> </span>parámetros’”
+<span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span>‘El<span class="w"> </span>parámetro<span class="w"> </span><span class="m">0</span><span class="w"> </span>es<span class="w"> </span>:<span class="w"> </span>‘<span class="w"> </span><span class="nv">$0</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">#Fin del script</span>
+</code></pre></div>
+<ul>
+<li>Si por ejemplo se enviasen los siguientes parámetros:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>./script.sh<span class="w">  </span>Caballo<span class="w">  </span>Perro<span class="w">  </span><span class="m">675</span><span class="w"> </span>Nueva
+</code></pre></div>
+<ul>
+<li>Se obtendría la siguiente salida:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>El<span class="w"> </span>primer<span class="w"> </span>parámetro<span class="w"> </span>que<span class="w"> </span>se<span class="w"> </span>ha<span class="w"> </span>pasado<span class="w"> </span>es<span class="w"> </span>Caballo
+<span class="linenos" data-linenos="2 "></span>El<span class="w"> </span>tercer<span class="w"> </span>parámetro<span class="w"> </span>que<span class="w"> </span>se<span class="w"> </span>ha<span class="w"> </span>pasado<span class="w"> </span>es<span class="w"> </span><span class="m">675</span>
+<span class="linenos" data-linenos="3 "></span>El<span class="w"> </span>conjunto<span class="w"> </span>de<span class="w"> </span>todos<span class="w"> </span>los<span class="w"> </span>parámetros<span class="w"> </span>:<span class="w"> </span>Caballo<span class="w"> </span>Perro<span class="w"> </span><span class="m">675</span><span class="w"> </span>Nueva
+<span class="linenos" data-linenos="4 "></span>Me<span class="w"> </span>has<span class="w"> </span>pasado<span class="w"> </span>un<span class="w"> </span>total<span class="w"> </span>de<span class="w"> </span><span class="m">4</span><span class="w"> </span>parámetros
+<span class="linenos" data-linenos="5 "></span>El<span class="w"> </span>parámetro<span class="w"> </span><span class="m">0</span><span class="w"> </span>es<span class="w"> </span>:<span class="w"> </span>./script.sh
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Argumento especial <code>$?</code></li>
+<li>Contiene el valor que devuelve la ejecución de un comando. </li>
+<li>Puede tener dos valores: <strong>cero</strong> si se ha <strong>ejecutado bien</strong> y se interpreta como verdadero, o <strong>distinto de cero</strong> si se ha <strong>ejecutado mal</strong> y se interpreta como falso.<ul>
+<li><code>0</code>  -&gt; Si el último comando se ejecutó con éxito</li>
+<li><code>!0</code> -&gt; Si el último comando no de ejecutó con éxito</li>
+</ul>
+</li>
+</ul>
+</div>
+<h3 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Es un parámetro que cambia su valor durante la ejecución del programa.</li>
+<li>Se da un nombre para identificarla y recuperarla, antecedido por el carácter <code>$</code>.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>En shellscript <strong>no se declaran y no importa el tipo</strong>.</li>
+<li>El nombre de la variable puede estar compuesto por <strong>letras y números</strong> y por el carácter subrayado “<code>_</code>”.</li>
+</ul>
+</div>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#! /bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">#Este es mi segundo script</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos="5 "></span><span class="nv">MIVARIABLE</span><span class="o">=</span>‘Administración<span class="w"> </span>de<span class="w"> </span>Sistemas<span class="w"> </span>Operativos<span class="w"> </span>ASO’
+<span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$MIVARIABLE</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>Deben empezar por <strong>letra</strong> o “<code>_</code>”</li>
+<li>En ningún caso pueden empezar por un número, ya que esa nomenclatura está reservada a los parámetros.</li>
+<li>El contenido de estas variables será siempre tomado como si fuesen cadenas alfanuméricas, es decir, serán tratadas como cadenas de texto. Por lo tanto se necesitan operandos o comandos específicos para realizar operaciones con valores numéricos de las variables. Explicado en el apartado de <strong>Operadores Aritméticos</strong>.</li>
+</ul>
+</div>
+<h3 id="variables-de-entorno">Variables de entorno<a class="headerlink" href="#variables-de-entorno" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Cada terminal durante su ejecución tiene acceso a dos ámbitos de memoria:<ol>
+<li><strong>Datos Locales</strong> Una variable declarada en un terminal solo será accesible desde el terminal en el que declara.</li>
+<li><strong>Datos Global</strong> Engloban a todos los terminales que se estén ejecutando. Son las denominadas <strong>Variables de Entorno</strong>.</li>
+</ol>
+</li>
+</ul>
+<p>Ejemplo de principales variables de entorno:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$BASH</code></td>
+<td>Ruta del programa Bash</td>
+</tr>
+<tr>
+<td><code>$HOME</code></td>
+<td>Ruta completa del home del usuario</td>
+</tr>
+<tr>
+<td><code>$PATH</code></td>
+<td>Lista los directorios de donde se buscan los programas</td>
+</tr>
+<tr>
+<td><code>$RANDOM</code></td>
+<td>Devuelve un valor numérico aleatorio</td>
+</tr>
+</tbody>
+</table>
+<h3 id="entrada-y-salida-del-shell-script">Entrada y salida del Shell Script<a class="headerlink" href="#entrada-y-salida-del-shell-script" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Para poder interactuar con un programa de terminal es necesario disponer de un mecanismo de entrada de datos.</li>
+<li>Para dinamizar el resultado de los shell scripts y un dispositivo de salida que mantenga informado al usuario en todo momento de los que está ocurriendo.</li>
+<li>Para la entrada de datos se utiliza el comando <strong>read</strong> y para la salida el comando <strong>echo</strong>.</li>
+</ul>
+<h4 id="echo">echo<a class="headerlink" href="#echo" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Su tarea es la de mostrar información con mensajes de texto lanzados por pantalla</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Modificador</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-e</code></td>
+<td>para usar las opciones hay que utilizar este modificador</td>
+</tr>
+<tr>
+<td><code>\c</code></td>
+<td>Sirve para eliminar el salto de línea natural del comando <strong>echo</strong>.</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>nueva línea.</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>tabulador horizontal.</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>tabulador vertical.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Si se antepone el símbolo del dólar delante de una variable, mostrará su contenido.</li>
+<li>Si es necesario mostrar frases con espacios, debe situarse entre comillas.</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>La orden echo permite expandir variables siempre que se usen las comillas dobles.</li>
+</ul>
+</div>
+<ul>
+<li>Ejemplo:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">NOMBRE</span><span class="o">=</span>Javi
+<span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span>“hola<span class="w"> </span><span class="nv">$NOMBRE</span>”
+</code></pre></div></li>
+<li>El texto mostrado por pantalla será: <strong>hola javi</strong></li>
+</ul>
+<h4 id="read">read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Esta herramienta asigna el texto que el usuario ha escrito en el terminal a una o más variables.</li>
+<li>Lo que hace <strong>read</strong> es detener la ejecución del shell script y pasa el testigo al usuario.</li>
+<li>
+<p>Hasta que éste no introduzca los datos, la ejecución del programa no avanzará.</p>
+</li>
+<li>
+<p>Ejemplo:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span>“Introduce<span class="w"> </span>tu<span class="w"> </span>nombre:<span class="w"> </span>”
+<span class="linenos" data-linenos="3 "></span><span class="nb">read</span><span class="w"> </span>NOMBRE
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span>“Hola<span class="w"> </span><span class="nv">$NOMBRE</span>”
+</code></pre></div></p>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Cuando se utiliza read con varios nombres de variables, el primer campo tecleado por el usuario se asigna a la primera variable, el segundo campo a la segunda y así sucesivamente</p>
+</div>
+<ul>
+<li>Ejemplo:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span>“Introduce<span class="w"> </span>tres<span class="w"> </span>números<span class="w"> </span><span class="o">(</span>separados<span class="w"> </span>por<span class="w"> </span>un<span class="w"> </span>espacio<span class="o">)</span>:<span class="w"> </span>”<span class="w"> </span>num1<span class="w"> </span>num2<span class="w"> </span>num3
+<span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span>“Los<span class="w"> </span>número<span class="w"> </span>introducidos<span class="w"> </span>son<span class="w"> </span><span class="nv">$num1</span>,<span class="w"> </span><span class="nv">$num2</span><span class="w"> </span>y<span class="w"> </span><span class="nv">$num3</span>”
+</code></pre></div></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>En este ejemplo se ha usado el modificador <strong>-p</strong> el cual permite imprimir un mensaje antes de la recogida de los datos, prescindiendo de primer comando <strong>echo</strong> del ejemplo anterior.</p>
+</div>
+<h3 id="operadores-en-shell-script">Operadores en shell script<a class="headerlink" href="#operadores-en-shell-script" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Todas las variables creadas en un terminal se tratan como cadenas de texto, incluso si su contenido es solo numérico.</li>
+<li>Este es el motivo por el cual si lanzamos el siguiente código, no se obtendrá el resultado esperado:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">var1</span><span class="o">=</span><span class="m">15</span>
+<span class="linenos" data-linenos="3 "></span><span class="nv">var2</span><span class="o">=</span><span class="m">5</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span>“<span class="nv">$var1</span>+<span class="nv">$var2</span>”
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>La salida de este programa no será un número <strong>20</strong>, sino la cadena de caracteres <strong>15+5</strong>. </li>
+<li>Esto es así porque la suma de cadenas de texto, son esas cadenas de texto unidas de forma consecutiva.</li>
+</ul>
+</div>
+<ul>
+<li>Existen tres tipos de operadores según el trabajo que realicen: <strong>aritméticos, relacionales</strong> y <strong>lógicos</strong></li>
+</ul>
+<h4 id="aritmeticos">Aritméticos<a class="headerlink" href="#aritmeticos" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Los operadores aritméticos realizan operaciones matemáticas, como sumas o restas con operandos.</li>
+<li>"Manipulan" datos numéricos, tanto enteros como reales.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Símbolo</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>+</code></td>
+<td>suma</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-</code></td>
+<td>resta</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>*</code></td>
+<td>multiplicación</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>/</code></td>
+<td>división</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%</code></td>
+<td>modulo (resto)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>=</code></td>
+<td>asignación</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">#Esto es mi tercer script</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">#*********************************</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nv">NUMERO</span><span class="o">=</span><span class="m">4</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nb">let</span><span class="w"> </span><span class="nv">SUMA</span><span class="o">=</span>NUMERO+3
+<span class="linenos" data-linenos=" 8 "></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$SUMA</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nv">NUMERO</span><span class="o">=</span><span class="m">5</span>
+<span class="linenos" data-linenos="10 "></span><span class="nb">let</span><span class="w"> </span><span class="nv">SUMA</span><span class="o">=</span>NUMERO+5
+<span class="linenos" data-linenos="11 "></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$SUMA</span>
+<span class="linenos" data-linenos="12 "></span><span class="nv">NUMERO</span><span class="o">=</span><span class="m">10</span>
+<span class="linenos" data-linenos="13 "></span><span class="nb">let</span><span class="w"> </span><span class="nv">SUMA</span><span class="o">=</span>NUMERO-10
+</code></pre></div>
+<h4 id="relacionales">Relacionales<a class="headerlink" href="#relacionales" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Este tipo de operadores tan sólo devuelven dos posibles valores; <strong>verdadero o falso</strong>.</li>
+<li>
+<p>Existen subtipos según se comparen cadenas o números.</p>
+<p><strong>1.</strong> <strong>Operadores relacionales para números</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operador</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>-eq</code></td>
+<td>Comprueba si dos números son iguales.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-ne</code></td>
+<td>Detecta si dos números son diferentes.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-gt</code></td>
+<td>Revisa si la izquierda es mayor que derecha.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-lt</code></td>
+<td>Verifica si la izquierda es menor que derecha.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-ge</code></td>
+<td>Coteja si la izquierda es mayor o igual que derecha.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-le</code></td>
+<td>Constata si la izquierda es menor o igual que derecha.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2.</strong> <strong>Operadores relacionales para cadenas de texto o de cuerda</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operador</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>-z</code></td>
+<td>Comprueba si la longitud de la cadena es cero.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-n</code></td>
+<td>Evalúa si la longitud de la cadena no es cero.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>=</code></td>
+<td>Verifica si las cadenas son iguales.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>!=</code></td>
+<td>Coteja si las cadenas son diferentes.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>cadena</code></td>
+<td>Revisa si la cadena es nula.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.</strong> <strong>Operadores relacionales para archivos y directorios</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operador</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>-a</code></td>
+<td>Comprueba si existe el archivo.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-r</code></td>
+<td>Evalúa si el archivo esta vacío.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-w</code></td>
+<td>Confirma si existe el archivo y tiene permisos de escritura.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-x</code></td>
+<td>Constata si existe el archivo y tiene permisos de ejecución.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-f</code></td>
+<td>Escruta si existe y es un archivo de tipo regular.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-d</code></td>
+<td>Escruta si existe y es un archivo de tipo directorio.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-h</code></td>
+<td>Coteja si existe y es un enlace.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-s</code></td>
+<td>Revisa si existe el archivo y su tamaño es mayor a cero.</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h4 id="logicos">Lógicos<a class="headerlink" href="#logicos" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Se utilizan para evaluar condiciones, no elementos.</li>
+<li>Comprueba el resultado de dos operandos y devuelve verdadero o falso en función del valor que arrojen los operandos.</li>
+<li>Los tipos son:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operador</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>&amp;&amp;</code></td>
+<td><code>AND</code>, devuelve verdadero si todas condiciones que evalúa son verdaderas. Se puede representar: <code>-a</code> o <code>&amp;&amp;</code>.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>||</code></td>
+<td><code>OR</code>, da como resultado verdadero si alguna de las condiciones que evalúa es verdadera. Se representar: <code>-o</code> o <code>||</code>.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>!</code></td>
+<td><code>negación</code>, invierte el significado del operando. de verdadero a falso, y viceversa. Con <code>!</code> o <code>not</code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Para realizar cálculos aritméticos es necesario utilizar expresiones como <strong>expr</strong>, <strong>let</strong> o los <strong>expansores</strong>.</p>
+</div>
+<h4 id="expr">expr<a class="headerlink" href="#expr" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Este comando toma los argumentos dados como expresiones numéricas, los evalúa e imprime el resultado.</li>
+<li>Cada término de la expresión debe ir separado por espacios en blanco.</li>
+<li>Soporta diferentes operaciones: sumar, restar, multiplicar y dividir enteros utilizando los <strong>operadores aritméticos</strong> para el cálculo del módulo.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul>
+<li><strong>MEJOR NO UTILIZAR</strong> </li>
+<li>Desafortunadamente, <strong>expr</strong> es difícil de utilizar debido a las colisiones entre su sintaxis y la propia terminal.</li>
+<li>Puesto que <code>*</code> es el símbolo comodín, deberá ir precedido por una barra invertida para que el terminal lo interprete literalmente como un asterisco.</li>
+<li>Además, es muy incómodo de trabajar ya que los espacios entre los elementos de una expresión son críticos.</li>
+</ul>
+</div>
+<ul>
+<li>Ejemplo:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">var</span><span class="o">=</span><span class="m">5</span>
+<span class="linenos" data-linenos="3 "></span><span class="nv">resultado</span><span class="o">=</span><span class="sb">`</span>expr<span class="w"> </span><span class="nv">$1</span><span class="w"> </span>+<span class="w"> </span><span class="nv">$var</span><span class="w"> </span>+<span class="w"> </span><span class="m">1</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$resultado</span><span class="sb">`</span>
+</code></pre></div></li>
+</ul>
+<h4 id="let">let<a class="headerlink" href="#let" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Facilita la sintaxis de estas operaciones aritméticas reduciéndolas a la mínima expresión.</li>
+<li>No es necesario incluir el símbolo del dólar que precede a las variables.</li>
+<li>
+<p>Se configura como un comando más cómodo de ejecutar.</p>
+</li>
+<li>
+<p>Ejemplo:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">var</span><span class="o">=</span><span class="m">5</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">let</span><span class="w"> </span><span class="nv">resultado</span><span class="o">=</span><span class="nv">$1</span>+var+1
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$resultado</span>
+</code></pre></div></p>
+</li>
+</ul>
+<h4 id="expansores">expansores<a class="headerlink" href="#expansores" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Para las operaciones aritméticas se utilizan los dobles paréntesis.</li>
+<li>
+<p>Realizan la operación contenida dentro de ellos lanzando la ejecución fuera de ellos una vez resuelta.</p>
+</li>
+<li>
+<p>Ejemplo:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">var</span><span class="o">=</span><span class="m">5</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="nv">$1</span><span class="o">+</span><span class="nv">$var</span><span class="o">+</span><span class="m">1</span><span class="k">))</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="nv">$1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">$var</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="k">))</span>
+</code></pre></div></p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Consejo de uso</strong>, ya que es mucho más intuitivo que las anteriores expresiones.</p>
+</div>
+<h3 id="redirecciones">Redirecciones<a class="headerlink" href="#redirecciones" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Una <strong>redirección</strong> consiste en trasladar la información de un fichero de dispositivo a otro.</li>
+<li>
+<p>Para ello se utilizan los siguientes símbolos:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Símbolo</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>&lt;</code></td>
+<td>redirecciona la entrada desde el fichero <strong>stdin</strong> (entrada estándar)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&gt;</code></td>
+<td>envía la salida de <strong>stdout</strong> (salida estándar) a un fichero especificado</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&gt;&gt;</code></td>
+<td>añade la salida de <strong>stdout</strong> (salida estándar) a un fichero especificado</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>2&gt;</code></td>
+<td>envía la salida de <strong>stderr</strong> (error estándar) a un fichero especificado</td>
+</tr>
+<tr>
+<td style="text-align: center;">* Ejemplo:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sh<span class="w"> </span>script.sh<span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>El objetivo de la expresión anterior puede ser utilizada en la administración de sistemas para descartar el error estándar de un proceso, de esta forma no aparecerán los mensajes de error por el terminal; <strong>es muy utilizado</strong>.</p>
+</div>
+<h3 id="tuberias">Tuberías<a class="headerlink" href="#tuberias" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Forma práctica de <strong>redireccionar la salida estándar de un programa</strong> hacia la entrada estándar de otro.</li>
+<li>Esto se logra usando el símbolo <code>|</code> (pipeline). Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>cat<span class="w"> </span>archivo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>El comando anterior utiliza tuberías para redireccionar la salida estándar del comando cat y pasarla como entrada estándar del comando wc para contar las líneas y palabras de un archivo.</p>
+</div>
+<h3 id="alias">alias<a class="headerlink" href="#alias" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Alias es un comando que se ejecuta desde un terminal que permite configurar vínculos entre varios comandos.</li>
+<li>Cada usuario puede asignar una palabra fácil de recordar a uno o más comandos que, por lo general, pueden ser más complicados de recordar.</li>
+<li>Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nv">listado</span><span class="o">=</span><span class="s1">&#39;ls -lia&#39;</span>
+</code></pre></div>
+<hr />
+<h2 id="control-de-flujo">Control de Flujo<a class="headerlink" href="#control-de-flujo" title="Permanent link">&para;</a></h2>
+<h3 id="sistema-de-notacion">Sistema de notación<a class="headerlink" href="#sistema-de-notacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Antes de lanzarse a escribir una sola línea de código es necesario pensar en la resolución del problema tal y como se ha indicado.</li>
+<li>La creación de una solución a un problema siguiendo un conjunto de instrucciones se denomina algoritmo.</li>
+<li>Es necesario invertir el tiempo suficiente para construir ese algoritmo ya que esa será la solución que se debe implementar en código.</li>
+<li>Existen varios sistemas de representación para describir esos algoritmos, como por ejemplo, <strong>pseudocódigo</strong> o la descripción narrada, pero en este manual se ha optado por <strong>los diagramas de flujo</strong> ya que resultan más intuitivos.</li>
+</ul>
+<h4 id="diagramas-de-flujo">Diagramas de flujo<a class="headerlink" href="#diagramas-de-flujo" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Los diagramas de flujo o flujogramas son la representación gráfica de la solución algorítmica de un problema.</li>
+<li>Para diseñarlos se emplean figuras normalizadas que representan una acción dentro del procedimiento.</li>
+<li>Cada una de estas figuras representa un paso a seguir dentro del algoritmo.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<ul>
+<li>Para su construcción se han de respetar las siguientes reglas:<ol>
+<li>Tiene un elemento de inicio en la parte superior y uno final en la parte inferior.</li>
+<li>Se escribe de arriba hacia abajo y de izquierda a derecha.</li>
+<li>Siempre se usan flechas verticales u horizontales, jamás curvas u oblicuas</li>
+<li>Se debe evitar cruce de flujos.</li>
+<li>En cada paso expresar una acción concreta.</li>
+</ol>
+</li>
+</ul>
+</div>
+<p>En la siguiente figura se puede observar <strong>simbología</strong> para diseñar diagramas de flujo.</p>
+<figure>
+  <img src="imagenes/01/SimboloDiagrama.png" width="400"/>
+  <figcaption>Simbología diagramas.</figcaption>
+</figure>
+
+<h2 id="estructuras">Estructuras<a class="headerlink" href="#estructuras" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Controlar el flujo es determinar el orden en el que se ejecutarán las instrucciones en un programa.</li>
+<li>Si no existiese las estructuras de control del flujo, todo el código se ejecutarían de forma secuencial, es decir, empezarían por la primera instrucción y se ejecutarían una a una hasta llegar a la última.</li>
+<li>Este modo de ejecución esta realizado por <strong>estructuras secuenciales</strong>. Ejemplo:</li>
+</ul>
+<figure>
+  <img src="imagenes/01/EstructuraSecuencial.png" width="200"/>
+  <figcaption>Estructura secuencial.</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>La estructura secuencial no es válida para solucionar la mayoría de los problemas que se plantean.</p>
+</div>
+<ul>
+<li>Para ello es necesario la elección de un código u otro en función de ciertas condiciones, formando otro tipo de estructuras que son conocidas como <strong>estructuras condicionales</strong>; entre las cuales podemos destacar:<ol>
+<li><strong>Estructuras Alternativas</strong>, según si se cumple la condición o no, se realizará una tarea u otra.<ul>
+<li>Ejemplo de utilización con la sentencia: <strong>if</strong>.</li>
+</ul>
+</li>
+<li><strong>Estructuras Iterativas</strong>, cuando necesario ejecutar algunas instrucciones repetidas veces.<ul>
+<li>Ejemplo de utilización con la sentencia: <strong>for</strong>.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="estructuras-alternativas">Estructuras alternativas<a class="headerlink" href="#estructuras-alternativas" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Las estructuras de selección permiten ejecutar diferentes instrucciones dependiendo del valor de una variable o expresión.</li>
+<li>También se les llama ramificaciones, estructuras de decisión o alternativas.</li>
+<li>Cuando se usan, no todas las instrucciones del programa se ejecutan, solo las especificadas para el valor de la variable durante esa ejecución.</li>
+<li>Las estructuras de selección más comunes son las que proporcionan ramificaciones dobles (<strong>if</strong>) y múltiples (<strong>elif</strong> y <strong>case</strong>).</li>
+</ul>
+<h5 id="estructura-alternativa-doble-if">Estructura alternativa doble: <strong>if</strong><a class="headerlink" href="#estructura-alternativa-doble-if" title="Permanent link">&para;</a></h5>
+<ul>
+<li>La forma general de la orden <strong>if</strong> es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>expresión<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span>realizar<span class="w"> </span>este<span class="w"> </span>código<span class="w"> </span>si<span class="w"> </span>expresión<span class="w"> </span>es<span class="w"> </span>verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">fi</span>
+</code></pre></div>
+<figure>
+  <img src="imagenes/01/Estructura_If.png" width="200"/>
+  <figcaption>Estructura alternativa simple.</figcaption>
+</figure>
+
+<ul>
+<li>Ejemplo: 
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nv">VAR</span><span class="o">=</span><span class="nv">$1</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">fi</span>
+</code></pre></div></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>El código anterior comprueba se ha pasado algún argumento ,es decir, si han pasado un parámetro. En caso afirmativo, asigna el contenido de ese parámetro a la variable VAR.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Hay que recordar siempre cerrar esta estructura para indicarle al terminal donde termina, en este caso, se cierra con la palabra reservada <strong>fi</strong>.</p>
+</div>
+<h5 id="estructura-alternativa-multiple-if-then-else">Estructura alternativa multiple if then else<a class="headerlink" href="#estructura-alternativa-multiple-if-then-else" title="Permanent link">&para;</a></h5>
+<ul>
+<li>En este caso se contempla también la posibilidad de ejecutar alguna acción si no se cumple la expresión.</li>
+<li>La forma general del <strong>if then else</strong> es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>expresión<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>expresión<span class="w"> </span>es<span class="w"> </span>verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>expresión<span class="w"> </span>es<span class="w"> </span>falsa
+<span class="linenos" data-linenos="6 "></span><span class="k">fi</span>
+</code></pre></div>
+<figure>
+  <img src="imagenes/01/Estructura_If_else.png" width="300"/>
+  <figcaption>Estructura alternativa doble.</figcaption>
+</figure>
+
+<ul>
+<li>Ejemplo: 
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span>-gt<span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es mayor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es menor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">fi</span>
+</code></pre></div></li>
+</ul>
+<h5 id="la-estructura-if-then-elif-else">La estructura if then elif else<a class="headerlink" href="#la-estructura-if-then-elif-else" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Permite una segunda evaluación para ejecutar código a través de la estructura <strong>elif</strong>.</li>
+<li>Es posible colocar tantos elif como condiciones se requiera evaluar.</li>
+<li>La forma general del <strong>if then elif else</strong> es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>exp1<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>exp1<span class="w"> </span>es<span class="w"> </span>verdadera
+<span class="linenos" data-linenos=" 4 "></span><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>exp2<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">then</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>exp1<span class="w"> </span>es<span class="w"> </span>falsa,<span class="w"> </span>pero<span class="w"> </span>es<span class="w"> </span>verdadera<span class="w"> </span>exp2
+<span class="linenos" data-linenos=" 7 "></span><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>exp3<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">then</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>exp1<span class="w"> </span>y<span class="w"> </span>exp2<span class="w"> </span>son<span class="w"> </span>falsas,<span class="w"> </span>pero<span class="w"> </span>es<span class="w"> </span>verdadera<span class="w"> </span>exp3
+<span class="linenos" data-linenos="10 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span>realizar<span class="w"> </span>si<span class="w"> </span>todas<span class="w"> </span>las<span class="w"> </span>expresiones<span class="w"> </span>son<span class="w"> </span>falsas
+<span class="linenos" data-linenos="12 "></span><span class="k">fi</span>
+</code></pre></div>
+<ul>
+<li>Ejemplo: 
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span>-gt<span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es mayor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span>-eq<span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">then</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es igual que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> es menor que </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="9 "></span><span class="k">fi</span>
+</code></pre></div></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Este ejemplo amplía el anterior comprobando si, además, los valores de a y b son iguales.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>El último caso se realiza con la sentencia <strong>else</strong>.</p>
+</div>
+<h5 id="la-estructura-case">La estructura case<a class="headerlink" href="#la-estructura-case" title="Permanent link">&para;</a></h5>
+<ul>
+<li>La estructura case permite realizar varias acciones en función del valor de una variable.</li>
+<li>La limitación que tan sólo se comprueba si es igual a ese valor.</li>
+<li>La forma general del <strong>case</strong> es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">case</span><span class="w"> </span>VARIABLE<span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span>valor1<span class="o">)</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">        </span>Se<span class="w"> </span>ejecuta<span class="w"> </span>si<span class="w"> </span>VARIABLE<span class="w"> </span>tiene<span class="w"> </span>el<span class="w"> </span>valor1
+<span class="linenos" data-linenos=" 4 "></span><span class="w">        </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span>valor2<span class="o">)</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span>Se<span class="w"> </span>ejecuta<span class="w"> </span>si<span class="w"> </span>VARIABLE<span class="w"> </span>tiene<span class="w"> </span>el<span class="w"> </span>valor2
+<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="p">;;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span>*<span class="o">)</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span>Se<span class="w"> </span>ejecuta<span class="w"> </span>por<span class="w"> </span>defecto
+<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="p">;;</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">esac</span>
+</code></pre></div>
+<figure>
+  <img src="imagenes/01/EstructuraAlternativaMultiple.png" width="600"/>
+  <figcaption>Estructura Alternativa Multiple.</figcaption>
+</figure>
+
+<h4 id="estructuras-de-iteracion">Estructuras de iteración<a class="headerlink" href="#estructuras-de-iteracion" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Son operaciones que se deben ejecutar un número repetido de veces para resolver un problema.</li>
+<li>El conjunto de instrucciones que se ejecuta dentro de esta estructura, se denomina ciclo, bucle o lazo.</li>
+<li><code>Iteración</code> es cada una de las pasadas o ejecuciones de todas las instrucciones contenidas en el bucle.</li>
+<li>Estas repeticiones de código van a depender de la evaluación de una condición o del valor de una variable.</li>
+<li>Es posible repetir un código hasta que se cumpla o deje de cumplir una condición pero también se posible la repetición tantas veces como indique una variable.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Hay que tener mucho cuidado a la hora de diseñar estas estructuras y no caer en el error de construir <strong>bucles infinitos</strong>, es decir, estructuras que nunca dejarán de ejecutarse ya que no tienen condición de salida o, si la tienen, ésta nunca se va a cumplir.</p>
+</div>
+<ul>
+<li>Para utilizar esta estructura en algoritmos, se usan:</li>
+</ul>
+<ol>
+<li><strong>Contador:</strong> es una variable cuyo valor se incrementa o decrementa en una cantidad constante cada vez que se produce un determinado suceso o acción. Los contadores se utilizan con la finalidad de contar sucesos o acciones internas de un bucle.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
+<p>La inicialización consiste en asignarle al contador un valor. Se situará antes y fuera del bucle.</p>
+</div>
+<ol start="2">
+<li><strong>Acumulador o Totalizador</strong> es una variable que suma sobre sí misma un conjunto de valores para de esta manera tener el total de todos ellos en una sola variable.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
+<p>La diferencia entre un contador y un acumulador es que mientras el primero va aumentando de uno en uno, el acumulador va aumentando en una cantidad variable.</p>
+</div>
+<ol start="3">
+<li><strong>Banderas</strong>, conocidas también como interruptores, switch, flags o conmutadores. Son variables que pueden tomar solamente dos valores durante la ejecución del programa, los cuales pueden ser <strong>cero o uno</strong>, o bien los valores <strong>booleanos verdadero o falso</strong>.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
+<p>Se les suele llamar interruptores porque cuando toman un valor están simulando un interruptor abierto/cerrado o encendido/apagado.</p>
+</div>
+<figure>
+  <img src="imagenes/01/EstructuraIterativa.png" width="300"/>
+  <figcaption>Estructura Iterativa.</figcaption>
+</figure>
+
+<h5 id="las-estructuras-while-y-until">Las estructuras while y until<a class="headerlink" href="#las-estructuras-while-y-until" title="Permanent link">&para;</a></h5>
+<p>Estas estructuras van a repetir el código que contienen mientras la expresión evaluada sea verdadera. Funcionamiento:</p>
+<ul>
+<li>Evalúa la condición, si es falsa, no realiza ninguna acción y continua con el siguiente código del programa.</li>
+<li>Si es verdadera entra en el bucle y ejecuta el código que contiene.</li>
+<li>Al finalizar la ejecución, al iterar, vuelve a evaluar la condición y vuelve a repetir la operación anterior.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Al construir una estructura while es preciso asegurarse que en algún momento de su ejecución la condición dejará de cumplirse y se romperá el ciclo, si no, éste será infinito, a menos que el usuario o el sistema interrumpa su ejecución.</p>
+</div>
+<ul>
+<li>
+<p><code>WHILE</code>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>expresión<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span>código<span class="w"> </span>se<span class="w"> </span>repite<span class="w"> </span>MIENTRAS<span class="w"> </span>la<span class="w"> </span>expresión<span class="w"> </span>sea<span class="w"> </span>verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>UNTIL</code>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">until</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>expresión<span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span>código<span class="w"> </span>se<span class="w"> </span>repite<span class="w"> </span>HASTA<span class="w"> </span>que<span class="w"> </span>la<span class="w"> </span>expresión<span class="w"> </span>sea<span class="w"> </span>verdadera
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
+</code></pre></div></p>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>La diferencia es que un <code>until</code> se ejecuta como mínimo una vez, ya que ejecuta el código y luego comprueba, mientras que el <code>while</code> es posible que nunca se ejecute, ya que es posible que la condición de entrada nunca se cumpla.</p>
+</div>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#! /bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Escribe un número: &quot;</span><span class="w"> </span>num
+<span class="linenos" data-linenos="3 "></span><span class="nv">i</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-le<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="nb">let</span><span class="w"> </span><span class="nv">res</span><span class="o">=</span>num*i
+<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2"> x </span><span class="nv">$num</span><span class="s2"> = </span><span class="nv">$res</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="nb">let</span><span class="w"> </span><span class="nv">i</span><span class="o">=</span>i+1
+<span class="linenos" data-linenos="9 "></span><span class="k">done</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Este código imprime por pantalla la tabla de multiplicar del número que el usuario ha especificado. Las líneas contenidas entre <code>do</code> y <code>done</code> se ejecutarán mientras i sea menor o igual a diez. Al final de cada iteración el valor de i se incrementa en uno (es un contador) por lo que en diez iteraciones la condición dejará de cumplirse y el bucle se romperá.</p>
+</div>
+<h5 id="la-estructuras-for">La estructuras for<a class="headerlink" href="#la-estructuras-for" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Esta estructura permite repetir código por cada elemento de un conjunto determinado.</li>
+<li>No necesita condición de salida ya que al finalizar los elementos del conjunto acabará con su ejecución.</li>
+<li>la forma general es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span>variable<span class="w"> </span><span class="k">in</span><span class="w"> </span>conjunto
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span>estas<span class="w"> </span>líneas<span class="w"> </span>se<span class="w"> </span>repiten<span class="w"> </span>una<span class="w"> </span>vez<span class="w"> </span>por<span class="w"> </span>cada<span class="w"> </span>elemento<span class="w"> </span>del<span class="w"> </span>conjunto
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span>variable<span class="w"> </span>toma<span class="w"> </span>los<span class="w"> </span>valores<span class="w"> </span>del<span class="w"> </span>conjunto,<span class="w"> </span>uno<span class="w"> </span>en<span class="w"> </span>cada<span class="w"> </span>iteración
+<span class="linenos" data-linenos="5 "></span><span class="k">done</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo:</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#! /bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span>“Escribe<span class="w"> </span>la<span class="w"> </span>dirección<span class="w"> </span>de<span class="w"> </span>una<span class="w"> </span>carpeta:<span class="w"> </span>“<span class="w"> </span>car
+<span class="linenos" data-linenos=" 3 "></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="w"> </span><span class="nv">$car</span><span class="k">)</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">do</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">then</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>“<span class="nv">$i</span><span class="w"> </span>es<span class="w"> </span>un<span class="w"> </span>archivo<span class="w"> </span>de<span class="w"> </span>tipo<span class="w"> </span>regular”
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="o">]</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">then</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>“<span class="nv">$i</span><span class="w"> </span>es<span class="w"> </span>un<span class="w"> </span>archivo<span class="w"> </span>de<span class="w"> </span>tipo<span class="w"> </span>directorio”
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">else</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>“<span class="nv">$i</span><span class="w"> </span>es<span class="w"> </span>otro<span class="w"> </span>tipo<span class="w"> </span>de<span class="w"> </span>archivo<span class="w"> </span>o<span class="w"> </span>no<span class="w"> </span>existe”
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos" data-linenos="14 "></span><span class="k">done</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
+<p>Este ejemplo se van a mostrar los nombres de los ficheros que contiene un directorio y dirá si es un directorio o un fichero.</p>
+</div>
+<blockquote>
+<p>Romper un bucle de forma deliberada</p>
+</blockquote>
+<p>No sólo es posible terminar un bucle cuando se cumpla una condición o cuando se terminen los elementos de un conjunto, shell script proporciona dos formas de alterar el funcionamiento de la estructura en un bucle y romperla en función de las necesidades del programa:</p>
+<ol>
+<li><code>break</code> rompe el bucle que lo contiene y continúa la ejecución del script.</li>
+<li><code>continue</code> rompe la iteración que lo contiene, pero mantiene el bucle, que continuará con la siguiente iteración hasta que termine su ejecución.</li>
+<li><code>exit</code> detiene la ejecución del script. Este comando no es exclusivo de las estructuras iterativas, pero cobra especial sentido en este ámbito.</li>
+</ol>
+<h2 id="vectores-y-funciones">Vectores y Funciones<a class="headerlink" href="#vectores-y-funciones" title="Permanent link">&para;</a></h2>
+<h3 id="vectores-en-shell-script">Vectores en shell script<a class="headerlink" href="#vectores-en-shell-script" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Un vector es una estructura de datos que permite almacenar una colección de elementos.</li>
+<li>Por el hecho de tratarse de una estructura de datos es posible realizar operaciones sobre él como buscar, eliminar y agregar elementos a su estructura.</li>
+<li>Los elementos se encuentran ordenados en función de como han sido introducidos en la estructura.</li>
+<li>Para acceder a cada elemento será necesario especificar la posición que ocupan dentro de ella, teniendo presente que la numeración de los vectores comienza desde cero, no desde uno.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Un buen ejemplo de uso sería, recoger el listado de archivos que hay en una carpeta.</p>
+</div>
+<figure>
+  <img src="imagenes/01/EsquemaVector.png" width="500"/>
+  <figcaption>Esquema de un vector de doce elementos.</figcaption>
+</figure>
+
+<p>Para definir un vector disponemos de dos formas:</p>
+<ol>
+<li><strong>Implícita:</strong> hace referencia a que el vector ha sido declarado y al mismo tiempo se han inicializado sus valores.</li>
+<li><strong>Explícitamente:</strong> cuando el vector no requiere que se inicialice mientras se declara, es decir, pueden ser inicializados con posterioridad.</li>
+</ol>
+<p>Para declarar un vector hay que utilizar la siguiente estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">declare</span><span class="w"> </span>-a<span class="w"> </span><span class="nv">meses</span><span class="o">=(</span><span class="s2">&quot;enero&quot;</span><span class="w"> </span><span class="s2">&quot;febrero&quot;</span><span class="w"> </span><span class="s2">&quot;marzo&quot;</span><span class="o">)</span>
+</code></pre></div>
+<p>También es posible utilizar alguna expresión para completar un vector, como con el operador rango ...</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">declare</span><span class="w"> </span>-a<span class="w"> </span><span class="nv">letras</span><span class="o">=(</span><span class="w"> </span><span class="o">{</span>N..Z<span class="o">}</span><span class="w"> </span><span class="o">{</span>s..z<span class="o">}</span><span class="w"> </span><span class="o">)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">letras</span><span class="p">[*]</span><span class="si">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Esto creará un vector con el siguiente contenido y lo mostrará por pantalla así:</li>
+<li>N O P Q R S T U V W X Y Z s t u v w x y z</li>
+</ul>
+</div>
+<ul>
+<li>Para añadir un elemento a la estructura se debe indicar el índice o posición que ocupará el nuevo dato.</li>
+<li>Si el índice es mayor que la última posición de la estructura, se escribirá al final de la misma.</li>
+<li>Si se usa un índice que ya contiene un dato, éste será sobrescrito.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>meses<span class="o">[</span><span class="m">3</span><span class="o">]=</span><span class="s2">&quot;abril&quot;</span>
+</code></pre></div>
+<ul>
+<li>Para mostrar el contenido del vector:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">meses</span><span class="p">[*]</span><span class="si">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Mostrará: 
+enero febrero marzo abril</p>
+</div>
+<ul>
+<li>Es buena idea conocer el número de elementos que contiene un vector para poder introducir datos de forma correcta y no sobrescribir por accidente algún valor ya almacenado. Así es posible utilizar:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>${meses[*]}</code></td>
+<td>Muestra todos los valores del vector</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>${!meses[*]}</code></td>
+<td>Muestra todos los índices del vector</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>${#meses[*]}</code></td>
+<td>Devuelve el número de valores del vector</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>${#meses[0]}</code></td>
+<td>Imprime la longitud del primer dato del vector</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Para recorrer los valores que contiene esta estructura se puede utilizar un bucle <strong>for</strong></li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span>item<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">meses</span><span class="p">[*]</span><span class="si">}</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$item</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
+</code></pre></div>
+* También se puede utilizar sus índices para mostrar los datos contenidos.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span>index<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="p">!meses[*]</span><span class="si">}</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">meses</span><span class="p">[</span><span class="nv">$index</span><span class="p">]</span><span class="si">}</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">done</span>
+</code></pre></div>
+<ul>
+<li>Es una estructura muy útil en la que se puede guardar cualquier tipo de información, como por ejemplo los ficheros que contiene una carpeta:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">i</span><span class="o">=</span><span class="m">0</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">for</span><span class="w"> </span>fichero<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="w"> </span>-a<span class="k">)</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">do</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span>ficheros<span class="o">[</span><span class="nv">$i</span><span class="o">]=</span><span class="nv">$fichero</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="nb">let</span><span class="w"> </span><span class="nv">i</span><span class="o">=</span>i+1<span class="p">;</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">done</span>
+</code></pre></div>
+<h3 id="funciones-en-shell-script">Funciones en shell script<a class="headerlink" href="#funciones-en-shell-script" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Una función es un conjunto de líneas de código que se distinguen a través de un identificador y que se ejecutan al invocar ese identificador.</li>
+<li>Se podría definir como un shell script dentro de un shell script.</li>
+<li>Sirve para organizarlo en unidades lógicas más pequeñas de manera que sea más fácil mantenerlo.</li>
+<li>Las funciones aceptan parámetros, de idéntica manera que los shell script, por lo que su uso también es muy intuitivo.</li>
+<li>La estructura de una función queda definida de la siguiente manera:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">function</span><span class="w"> </span>nombre_función<span class="o">(){</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span>código<span class="w"> </span>que<span class="w"> </span>se<span class="w"> </span>ejecutará<span class="w"> </span>al<span class="w"> </span>llamar<span class="w"> </span>a<span class="w"> </span>la<span class="w"> </span>función
+<span class="linenos" data-linenos="3 "></span><span class="o">}</span>
+</code></pre></div>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">##! /bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">function</span><span class="w"> </span>imprimir_tabla<span class="o">(){</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>“Tabla<span class="w"> </span>del<span class="w"> </span>número<span class="w"> </span><span class="nv">$1</span>”
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">do</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="nb">let</span><span class="w"> </span><span class="nv">res</span><span class="o">=</span><span class="nv">$1</span>*i
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>“<span class="nv">$i</span><span class="w"> </span>x<span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$res</span>”
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">done</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="10 "></span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span>“Escribe<span class="w"> </span>un<span class="w"> </span>número:<span class="w"> </span>“<span class="w"> </span>num
+<span class="linenos" data-linenos="11 "></span>imprimir_tabla<span class="w"> </span><span class="nv">$num</span>
+<span class="linenos" data-linenos="12 "></span>imprimir_tabla<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+<ul>
+<li>En este ejemplo se ha construido una función para imprimir la tabla de multiplicar de un número pasado como parámetro.</li>
+<li>En la siguiente línea le pedimos al programa que imprima la tabla del número cinco.</li>
+<li>No se ha necesitado escribir el código que imprime la su tabla de multiplicar de nuevo, ya que con invocar el nombre de la función el programa ya sabe que código debe ejecutar.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>Nótese que el valor de <code>$1</code> no se pasa como parámetro del shell script, si no como parámetro a la función imprimir_tabla tras haberlo preguntado al usuario.</li>
+<li>Hay que tener en cuenta que las variables que se declaran dentro de una función existen únicamente dentro de ella. Si es preciso utilizar una variable fuera de una función se puede usar <code>return</code>, que devuelve un valor fuera de ella, o usar la palabra reservada <code>GLOBAL</code></li>
+<li>Es preferible utilizar el primer método para que devuelva un valor que será recogido en otra variable fuera de la función que lo originó.</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li><code>source</code></li>
+<li>Para incluir el código de un fichero en otro tan sólo será necesario utilizar la palabra source seguida de la ruta de ese fichero. * </li>
+<li>También es posible usar el punto para poder cargarlo:</li>
+<li><code>source funciones.sh</code> o <code>./funciones.sh</code></li>
+</ul>
+</div>
+<h3 id="llamada-a-scripts-externos-como-funciones">Llamada a Scripts Externos como Funciones<a class="headerlink" href="#llamada-a-scripts-externos-como-funciones" title="Permanent link">&para;</a></h3>
+<ul>
+<li>En ocasiones es útil <strong>modularizar</strong> un script principal dividiéndolo en varios archivos <code>.sh</code> que actúen como funciones especializadas.</li>
+<li>Esto permite <strong>organizar mejor el código</strong> y <strong>reutilizar</strong> scripts en diferentes proyectos.</li>
+</ul>
+<h4 id="metodo-1-usando-source-o">Método 1: Usando <code>source</code> o <code>.</code><a class="headerlink" href="#metodo-1-usando-source-o" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>source</code></strong> ejecuta el script en el contexto actual del shell, permitiendo compartir variables.</li>
+<li><strong><code>.</code></strong> es equivalente a <code>source</code> pero más corto.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># script_principal.sh</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Cargar funciones desde archivos externos</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nb">source</span><span class="w"> </span>funciones_servidor.sh
+<span class="linenos" data-linenos=" 6 "></span><span class="nb">source</span><span class="w"> </span>monitoreo.sh
+<span class="linenos" data-linenos=" 7 "></span><span class="nb">source</span><span class="w"> </span>backup.sh
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># Ahora podemos usar las funciones definidas en esos archivos</span>
+<span class="linenos" data-linenos="10 "></span>menu_principal<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== MENÚ PRINCIPAL ===&quot;</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Gestión de servidores&quot;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Monitoreo&quot;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Backup&quot;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>gestionar_servidores<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>monitorear_sistema<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">        </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>crear_backup<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="k">esac</span>
+<span class="linenos" data-linenos="22 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="c1"># Ejecutar menú principal</span>
+<span class="linenos" data-linenos="25 "></span>menu_principal
+</code></pre></div>
+<h4 id="metodo-2-ejecutando-scripts-como-comandos">Método 2: Ejecutando Scripts como Comandos<a class="headerlink" href="#metodo-2-ejecutando-scripts-como-comandos" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Los scripts se ejecutan como <strong>subprocesos independientes</strong>.</li>
+<li>No comparten variables con el script principal.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># script_principal.sh</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>menu_principal<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== MENÚ PRINCIPAL ===&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Gestión de servidores&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Monitoreo&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Backup&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>./funciones_servidor.sh<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>./monitoreo.sh<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>./backup.sh<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">esac</span>
+<span class="linenos" data-linenos="16 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span><span class="c1"># Ejecutar menú principal</span>
+<span class="linenos" data-linenos="19 "></span>menu_principal
+</code></pre></div>
+<h4 id="ejemplo-practico-sistema-modular">Ejemplo Práctico: Sistema Modular<a class="headerlink" href="#ejemplo-practico-sistema-modular" title="Permanent link">&para;</a></h4>
+<p><strong>Estructura de archivos:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sistema_gestion/
+<span class="linenos" data-linenos="2 "></span>├── menu_principal.sh
+<span class="linenos" data-linenos="3 "></span>├── funciones_servidor.sh
+<span class="linenos" data-linenos="4 "></span>├── monitoreo.sh
+<span class="linenos" data-linenos="5 "></span>├── backup.sh
+<span class="linenos" data-linenos="6 "></span>└── configuracion.conf
+</code></pre></div></p>
+<p><strong>menu_principal.sh:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># Cargar configuración</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nb">source</span><span class="w"> </span>./configuracion.conf
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Cargar módulos</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nb">source</span><span class="w"> </span>./funciones_servidor.sh
+<span class="linenos" data-linenos=" 7 "></span><span class="nb">source</span><span class="w"> </span>./monitoreo.sh
+<span class="linenos" data-linenos=" 8 "></span><span class="nb">source</span><span class="w"> </span>./backup.sh
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Función principal</span>
+<span class="linenos" data-linenos="11 "></span>main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span>clear
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== SISTEMA DE GESTIÓN ===&quot;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Gestión de servidores&quot;</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Monitoreo del sistema&quot;</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Copias de seguridad&quot;</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;4) Salir&quot;</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">            </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>gestionar_servidores<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">            </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>monitorear_sistema<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">            </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>crear_backup<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">            </span><span class="m">4</span><span class="o">)</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">            </span>*<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Opción inválida&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">        </span><span class="k">esac</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="k">done</span>
+<span class="linenos" data-linenos="29 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="30 "></span>
+<span class="linenos" data-linenos="31 "></span><span class="c1"># Ejecutar programa principal</span>
+<span class="linenos" data-linenos="32 "></span>main
+</code></pre></div></p>
+<p><strong>funciones_servidor.sh:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># Módulo de gestión de servidores</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>gestionar_servidores<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== GESTIÓN DE SERVIDORES ===&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1) Listar servidores&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2) Añadir servidor&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3) Buscar servidor&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona opción: &quot;</span><span class="w"> </span>opcion
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>listar_servidores<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>añadir_servidor<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>buscar_servidor<span class="w"> </span><span class="p">;;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">esac</span>
+<span class="linenos" data-linenos="16 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span>listar_servidores<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Listando servidores...&quot;</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="c1"># Código para listar servidores</span>
+<span class="linenos" data-linenos="21 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="22 "></span>
+<span class="linenos" data-linenos="23 "></span>añadir_servidor<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Añadiendo servidor...&quot;</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">    </span><span class="c1"># Código para añadir servidor</span>
+<span class="linenos" data-linenos="26 "></span><span class="o">}</span>
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span>buscar_servidor<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Buscando servidor...&quot;</span>
+<span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="c1"># Código para buscar servidor</span>
+<span class="linenos" data-linenos="31 "></span><span class="o">}</span>
+</code></pre></div></p>
+<h4 id="ventajas-de-la-modularizacion">Ventajas de la Modularización<a class="headerlink" href="#ventajas-de-la-modularizacion" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Organización:</strong> Código más limpio y organizado</li>
+<li><strong>Reutilización:</strong> Scripts pueden usarse en otros proyectos</li>
+<li><strong>Mantenimiento:</strong> Fácil modificar módulos específicos</li>
+<li><strong>Colaboración:</strong> Diferentes personas pueden trabajar en módulos diferentes</li>
+<li><strong>Debugging:</strong> Más fácil localizar y corregir errores</li>
+</ul>
+<h4 id="consideraciones-importantes">Consideraciones Importantes<a class="headerlink" href="#consideraciones-importantes" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Permisos:</strong> Asegurar que los scripts tengan permisos de ejecución (<code>chmod +x</code>)</li>
+<li><strong>Rutas:</strong> Usar rutas relativas o absolutas correctas</li>
+<li><strong>Variables:</strong> Con <code>source</code> se comparten variables, con ejecución directa no</li>
+<li>
+<p><strong>Dependencias:</strong> Verificar que todos los módulos necesarios estén disponibles</p>
+</li>
+<li>
+<p>Las funciones suelen declararse al inicio del documento y luego utilizadas a lo largo del programa.</p>
+</li>
+<li>Uno de los objetivos es optimizar el código, mediante el "aprovechamiento" de código. Cuando un conjunto de líneas de código se repiten, es posible agruparlas bajo un nombre y utilizar ese nombre en lugar de repetir este código.</li>
+</ul>
+<hr />
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Formato de entrega</p>
+<p>Escribe el código de los scripts en <strong>ShellScript</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle</p>
+</div>
+<!-- Para la entrega de las actividades, si no se pide una captura o un archivo concreto, se debe adjuntar un fichero de texto en formato Markdown con el enunciado y la solución justificada. El nombre del archivo debe contener el nombre de la actividad y el nombre del alumn@. Por ejemplo, para la actividad AC101, la alumna Laura entregará el archivo AC101Laura.md. Dentro del documento, se seguirá la siguiente estructura:
+    ```markdown
+    AC101Laura.md
+
+    # AC101
+
+    Laura García Sánchez
+
+    ## Enunciado
+
+    Aquí copio el enunciado de la actividad.
+
+    ## Solución
+
+    Aquí escribo la solución de la actividad. -->
+
+<p><a name="AC101"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC101</strong>. (RA.7 // CE7a, CE7b, CE7g y CE7i // 1-3p) Crea un shell script que muestre por pantalla el mensaje “<strong>¡Hola Mundo!</strong>”.</li>
+</ul>
+<p><a name="AC102"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC102</strong>. (RA.7 // CE7a, CE7b, CE7g y CE7i // 1-3p) Realiza un script que guarde en un fichero el listado de archivos y directorios de la carpeta <em>etc</em>, a posteriori que imprima por pantalla dicho listado.</li>
+</ul>
+<p><a name="AC103"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC103</strong>. (RA.7 // CE7a, CE7b, CE7g y CE7i // 1-3p) Modifica el script anterior para que además muestre por pantalla el número de líneas del archivo y el número de palabras.</li>
+</ul>
+<p><a name="AC104"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC104</strong>. (RA.7 // CE7a, CE7b, CE7f y CE7i // 1-3p) Crea un shell script que muestre por pantalla el resultado de de las siguientes operaciones. Debes tener en cuenta que a, b y c son variables enteras que son preguntadas al usuario al iniciar el script.<ul>
+<li>a%b</li>
+<li>a/c</li>
+<li>2 * b + 3 * (a-c)</li>
+<li>a * (b/c)</li>
+<li>(a*c)%b</li>
+</ul>
+</li>
+</ul>
+<p><a name="AC105"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC105</strong>. (RA.7 // CE7a, CE7b, CE7f y CE7i // 1-3p) Realiza un script que muestre por pantalla los parámetros introducidos separados por espacio, el número de parámetros que se han pasado, y  el nombre del script.</li>
+</ul>
+<p><a name="AC106"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC106</strong>. (RA.7 // CE7a, CE7b, CE7f y CE7i // 1-3p) Diseña un script en Shell que pida al usuario dos números, los guarde en dos variables y los muestre por pantalla.</li>
+</ul>
+<p><a name="AC107"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC107</strong>. (RA.7 // CE7a, CE7b, CE7e, CE7f y CE7i // 1-3p) Genera un script que muestre los usuarios conectados en el sistema operativo, comprobando que son usuarios dados de alta en el mismo.</li>
+</ul>
+<p><a name="AC108"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC108</strong>. (RA.7 // CE7a, CE7f y CE7i // 1-3p) Crea un shell script que al ejecutarlo muestre por pantalla uno de estos mensajes <strong>"Buenos días"</strong>, <strong>"Buenas tardes"</strong> o <strong>"Buenas noches"</strong>, en función de la hora que sea en el sistema (de 8:00 de la mañana a 15:00 será mañana, de 15:00 a 20:00 será tarde y el resto será noche). Para obtener la hora del sistema utiliza el comando date.</li>
+</ul>
+<p><a name="AC109"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC109</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7f y CE7i // 1-3p) Construye un programa denominado AGENDA que permita mediante un menú, el mantenimiento de un pequeño archivo lista.txt con el nombre, dirección y teléfono de varias personas. Debes incluir estas opciones al programa:<ul>
+<li><strong>Añadir</strong> (añadir un registro)</li>
+<li><strong>Buscar</strong> (buscar entradas por nombre, dirección o teléfono)</li>
+<li><strong>Listar</strong> (visualizar todo el archivo).</li>
+<li><strong>Ordenar</strong> (ordenar los registros alfabéticamente).</li>
+<li><strong>Borrar</strong> (borrar el archivo).</li>
+</ul>
+</li>
+</ul>
+<p><a name="AC110"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC110</strong>. (RA.7 // CE7a, CE7f y CE7i // 1-3p) Crea un shell script que sume los números del 1 al 1000 mediante una estructura <code>for</code>, <code>while</code> y <code>until</code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Escribe el código de los scripts en <strong>ShellScript</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
+</div>
+<p><a name="AC111"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC111</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h y CE7i // 1-3p) Realiza un script utilizando funciones que permita crear un informe de las <strong>IP libres</strong> en la red en la que se encuentra el equipo. Debe contener las siguientes opciones:<ol>
+<li>El informe contendrá un <strong>listado de todas las IP de la red</strong> a la que pertenece el equipo indicando si está libre o no (usa el comando ping).</li>
+<li>En el informe debe aparecer el <strong>tipo de red</strong> (rango CIDR) en el que está inmerso el ordenador con el <strong>nombre de la red</strong>, su <strong>broadcast</strong> y su <strong>máscara de subred</strong>. Esta información la podéis obtener desde el comando ifconfig.</li>
+</ol>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Para facilitar los cálculos asumimos que el equipo donde se ejecuta el script se encuentra en una única red, es decir, solo posee una tarjeta de red.</p>
+</div>
+<p><a name="AC112"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC112</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7f, CE7h y CE7i // 1-3p) Crea un script que rellene un <strong>vector</strong> con cien valores aleatorios y muestre en pantalla en una sola línea los valores generados.</li>
+</ul>
+<p><a name="AC113"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC113</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7f, CE7h y CE7i // 1-3p) Genera un script que rellene un <strong>vector</strong> con diez números pedidos al usuario y que los muestre por pantalla de la siguiente forma:<ol>
+<li>en orden inverso a como han sido introducidos los valores</li>
+<li>los valores ordenados de menor a mayor en una sola línea</li>
+<li>los valores ordenados de mayor a menor en una sola línea</li>
+<li>la suma total de sus valores</li>
+<li>cantidad de valores pares que contiene el vector</li>
+<li>la suma total de números impares</li>
+<li>la media aritmética de los valores que contiene el vector</li>
+</ol>
+</li>
+</ul>
+<p><a name="AC114"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC114</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7f, CE7h y CE7i // 1-3p) Crea un script que muestre las opciones del ejercicio anterior con select. El usuario introducirá los valores del <strong>vector</strong> al iniciar el script. Cuando termine aparecerá el menú de selección (deberás añadir la opción para salir del script). Además deberás crear una <strong>función</strong> para cada opción del menú y llamarla en cada una de las opciones del select.</li>
+</ul>
+<p><a name="RETO_GRUPAL"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>RG115</strong>. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h y CE7i // 30p). Trabajo en grupos de 2 personas para crear un sistema completo de gestión de servidores que integre todos los conceptos aprendidos durante la unidad.<ul>
+<li><strong><a href="RetoGrupalShellScript.html">RETO GRUPAL: Sistema de Gestión de Servidores</a></strong>.  </li>
+<li><a href="SolucionRetoGrupalShellScript.html">Consulta aquí la solución detallada del reto grupal</a></li>
+</ul>
+</li>
+<li><img alt="📋" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:" /> <strong>Rúbrica de Evaluación:</strong> Consulta los criterios de evaluación detallados en la <a href="Rubrica_Evaluacion_RetoShell.html">Rúbrica de Evaluación del Reto ShellScript</a>.</li>
+</ul>
+<p><a name="EXAMEN"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg></span> <strong><a href="ExamenShellScript.html">EXAMEN: ShellScript (60 puntos)</a></strong>. Examen de evaluación completa que cubre todos los contenidos del tema de ShellScript.</li>
+</ul>
+<hr />
+<!-- <a name="AC104"></a>
+
+* :simple-readdotcv: **AC104**. (RA.7 // CE7b // 1-3p) Depura los ejercicios anteriores utilizando los argumentos `-x` y `-v`. -->
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Inicio">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Inicio
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="02PowerShell.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 2.- PowerShell">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                2.- PowerShell
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

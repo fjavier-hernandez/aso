@@ -84,3 +84,55 @@
 | `10.2`| Órdenes para la gestión de impresoras y trabajos. | Desarrollo I | 2h |
 | `10.3` | Servidor de impresión en GNU/Linux, `CUPS`. | Desarrollo II | 2h |
 | `10.4` | Administración de los Servicios de Impresión en Windows Server. | Desarrollo II | 2h |
+
+
+<!-- * La duración del módulo es de **120 horas lectivas**, a razón de **6 horas semanales**, y se desarrolla a lo largo de los **dos primeros trimestres del curso**.
+* Se ha planificado basándose en **3 sesiones lectivas por semana**, con **2 horas de duración cada una de ellas**. -->
+
+<!-- ## Unidades didácticas / Temporalización
+
+A continuación se muestran las unidades didácticas y una estimación temporal de cada una de ellas, repartidas en cada evaluación con una duración aproximada de **30 sesiones por evaluación**.
+
+### Primera evaluación
+
+1. **ShellScripting. (6 sesiones, 12 horas)**
+    * ShellScripting, creación scripts, variables, parámetros, operadores.
+    * ShellScripting, Re-direcciones, tuberías.
+    * Control de flujo en Shell, vectores.
+2. **PowerShell. (6 sesiones, 12 horas)**
+    * PowerShell, creación scripts, variables, parámetros, operadores.
+    * PowerShell, Control de flujo, y vectores.
+    <!-- * Docker. -->
+<!-- 3. **Administración de Procesos del Sistema. (6 sesiones, 12 horas)**
+    * Procesos. Tipos. Estados. Estructura. Transiciones, Hilos.
+    * Planificador, Tipos de algoritmos de planificación, Sincronización e interrupciones entre procesos.
+    * Gestión de procesos, demonios/servicios con Shell y Powershell.
+4. **Servicios de Directorio Libres: LDAP. (6 sesiones, 12 horas)**
+    * Servicios Directorio, LDAP, Autentificación usuarios (PAM, NSS).
+    * LDAP, modelo información, Esquema.
+    * LDAP, Configuración, herramientas de gestión.
+5. **Servicios de Directorio Propietarios: Active Directory (6 sesiones, 12 horas).**
+    * Active Directory, configuración básica Windows Server.
+    * Active Directory, Instalación AD, Creación estructura empresa.
+    * AD, Permisos, directivas de grupo, perfiles y relaciones de confianza.
+### Segunda evaluación
+
+6. **Integración de Sistemas Libre: NFS (6 sesiones, 12 horas).**
+    * Escenarios heterogéneos, Protocolos para redes heterogéneas, servicios de recursos compartidos.
+    * NFS, Instalación, Permisos, Montaje automático de un cliente NFS, configuración de ficheros.
+    * NextCloud, Instalación, configuración de ficheros y permisos de usuario.
+7. **Integración de Sistemas Propietarios: SAMBA (6 sesiones, 12 horas).**
+    * SAMBA, fichero configuración, Creación directorio compartido, Integración de permisos.
+    * SAMBA, Administración de servicios con RSAT, perfiles de usuario y carpetas personales, cuotas.
+8. **Información del sistema operativo (6 sesiones, 12 horas).**
+    * Estructura directorios. Búsqueda de información del sistema. Rendimiento. Estadísticas.
+    * Planificación de Tareas, Programador de tareas, `crontab`.
+    * Servicio Monitorización, Nagios, PRTG, OpenNMS.
+9. **Servicios de acceso y administración remota (6 sesiones, 12 horas).** 
+    * Acceso remoto en modo texto `SSH`. Tunelización.
+    * Escritorio Remoto:  RDP y xRDP. Acceso remoto de equipos en el AD con PWSH.
+    * Herramientas gráficas externas, TeamViewer, AnyDesk y Apache Guacamole.
+10. **Administración de Servidores de Impresión (6 sesiones, 12 horas).**
+    * Sistemas de Impresión, Puertos y protocolos de impresión.
+    * Servidor de impresión en GNU/Linux, `CUPS`. Órdenes para la gestión de impresoras y trabajos.
+    * Administración de los Servicios de Impresión en Windows Server.

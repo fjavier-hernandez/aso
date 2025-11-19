@@ -33,6 +33,29 @@
    --md-footer-bg-color:                hsla(232, 15%, 12%, 0.87); 
    --md-footer-bg-color--dark:          hsla(232, 15%, 10%, 1); 
   }
-  
+
+@media only screen and (min-width: 76.25em) {
+  .md-main__inner {
+    max-width: none;
+  }
+  .md-sidebar--primary {
+    left: 0;
+  }
+  .md-sidebar--secondary {
+    right: 0;
+    margin-left: 0;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.md-header {
+  max-width: none;
+  width: 100%;
+}
+.md-header__inner {
+  max-width: none;
+}
+
 
   
