@@ -1,0 +1,1587 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/PracticaSSHtunnelingDocker.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Práctica: Configuración de túnel SSH con Docker - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Práctica: Configuración de túnel SSH con Docker - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaSSHtunnelingDocker.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/PracticaSSHtunnelingDocker.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Práctica: Configuración de túnel SSH con Docker - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaSSHtunnelingDocker.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-configuracion-de-tunel-ssh-con-docker" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Práctica: Configuración de túnel SSH con Docker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03AccesoRemoto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.- Servicios de acceso remoto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos previos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#escenario-de-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escenario de red
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-util" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Por qué es útil?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-0-preparar-la-maquina-virtual-vps-simulado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 0: Preparar la máquina virtual (VPS simulado)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-configurar-el-servidor-ssh-en-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Configurar el servidor SSH en Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 1: Configurar el servidor SSH en Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-del-servidor-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del servidor SSH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generar-claves-ssh-en-tu-maquina-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generar claves SSH en tu máquina host
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurar-variables-de-entorno-en-la-maquina-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurar variables de entorno en la máquina virtual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iniciar-el-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iniciar el contenedor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-configurar-el-cliente-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Configurar el cliente SSH
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-configurar-el-firewall-en-la-maquina-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Configurar el firewall en la máquina virtual
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 3: Configurar el firewall en la máquina virtual">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificar-el-estado-del-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificar el estado del firewall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-a-activar-y-configurar-ufw-recomendado-para-practica-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opción A: Activar y configurar UFW (Recomendado para práctica completa)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-b-dejar-el-firewall-desactivado-para-pruebas-rapidas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opción B: Dejar el firewall desactivado (Para pruebas rápidas)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewalld-centosrhel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewalld (CentOS/RHEL)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-crear-el-tunel-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Crear el túnel SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 4: Crear el túnel SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port-forwarding-remoto-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      Port-forwarding remoto (-R)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiples-tuneles-con-port-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Múltiples túneles con Port-forwarding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mantener-el-tunel-activo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mantener el túnel activo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-verificar-el-tunel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5: Verificar el túnel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 5: Verificar el túnel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-practico-exponer-un-servicio-web-desde-tu-maquina-host-a-traves-del-tunel-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo práctico: Exponer un servicio web desde tu máquina host a través del túnel SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejemplo práctico: Exponer un servicio web desde tu máquina host a través del túnel SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crea-un-servicio-web-simple-en-tu-maquina-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Crea un servicio web simple en tu máquina host
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verifica-que-el-servicio-funciona-localmente-en-tu-maquina-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Verifica que el servicio funciona localmente en tu máquina host
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-crea-el-tunel-ssh-desde-tu-maquina-host-a-la-mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Crea el túnel SSH desde tu máquina host a la MV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-accede-al-servicio-desde-otra-maquina-en-la-red-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Accede al servicio desde otra máquina en la red local
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-verifica-el-flujo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Verifica el flujo completo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-6-configurar-multiples-servicios-opcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 6: Configurar múltiples servicios (Opcional)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="practica-configuracion-de-tunel-ssh-con-docker">Práctica: Configuración de túnel SSH con Docker<a class="headerlink" href="#practica-configuracion-de-tunel-ssh-con-docker" title="Permanent link">&para;</a></h1>
+<h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
+<p>Durante esta práctica pondrás en marcha un <strong>túnel SSH</strong> empleando un contenedor Docker como herramienta principal, con el objetivo de exponer de manera segura servicios locales a través de la red local por medio de una máquina virtual que simula un servidor VPS.</p>
+<p>Al finalizar esta práctica serás capaz de:</p>
+<ul>
+<li>Comprender el concepto de <strong>SSH Tunneling</strong> y <strong>Port Forwarding</strong>.</li>
+<li>Configurar una máquina virtual como servidor intermediario (simulando un VPS).</li>
+<li>Configurar un servidor SSH en Docker para permitir túneles.</li>
+<li>Implementar un túnel SSH usando <strong>Docker</strong> y <strong>docker-compose</strong>.</li>
+<li>Redirigir puertos locales hacia servicios remotos de forma segura.</li>
+<li>Exponer servicios de desarrollo local a través de la red local.</li>
+</ul>
+<!-- ## Criterios de evaluación
+
+Esta práctica trabaja los siguientes criterios del **RA4**:
+
+- **CE4a**: Se han descrito métodos de acceso y administración remota de sistemas.
+- **CE4c**: Se han utilizado herramientas de administración remota suministradas por el propio sistema operativo.
+- **CE4d**: Se han instalado servicios de acceso y administración remota.
+- **CE4e**: Se han utilizado comandos y herramientas gráficas para gestionar los servicios de acceso y administración remota.
+- **CE4h**: Se han utilizado mecanismos de encriptación de la información transferida.
+- **CE4i**: Se han documentado los procesos y servicios del sistema administrados de forma remota. -->
+
+<h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
+<p>Antes de comenzar, asegúrate de tener:</p>
+<ul>
+<li><strong>Máquina virtual (MV) con Ubuntu 24.04</strong> o similar, configurada en tu red local. Esta MV actuará como "VPS simulado".</li>
+<li>Docker y Docker Compose instalados en la máquina virtual.</li>
+<li>Acceso SSH a la máquina virtual desde tu máquina host.</li>
+<li>Claves SSH configuradas en tu máquina local (<code>~/.ssh/</code>).</li>
+<li>Ambas máquinas (host y MV) deben estar en la misma red local.</li>
+<li>Un servicio local en tu máquina host que quieras exponer (por ejemplo, un servidor web en el puerto 3000).</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">¿Dónde va el servicio web?</p>
+<p>Para simular correctamente un escenario real con VPS:</p>
+<ul>
+<li><strong>El servicio web va en tu máquina host</strong> (Windows, Linux o macOS) = Simula tu máquina de desarrollo local</li>
+<li><strong>La MV actúa como VPS</strong> = Simula el servidor remoto con IP accesible</li>
+<li><strong>El contenedor Docker</strong> = Solo proporciona el servidor SSH, NO debe tener el servicio web</li>
+</ul>
+<p><strong>Flujo real simulado:</strong>
+1. Desarrollas un servicio web en tu máquina host (puerto 3000)
+2. Creas un túnel SSH desde tu máquina host hacia la MV (VPS simulado)
+3. El túnel redirige el tráfico: <code>IP_MV:1081</code> → <code>máquina_host:3000</code>
+4. Cualquiera puede acceder a tu servicio local a través de la IP de la MV</p>
+<p>Esto simula exactamente lo que harías con un VPS real: exponer un servicio local de desarrollo a través de un servidor remoto.</p>
+</div>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>En un entorno de producción real, la mayoría de las conexiones de internet domésticas están detrás de CGNAT (Carrier-Grade NAT) y no son accesibles directamente desde internet. Esto se hace para ahorrar direcciones IPv4, que tienen un rango limitado.</p>
+<p>En esta práctica, simularemos este escenario utilizando una <strong>máquina virtual (MV)</strong> que actuará como un servidor VPS en nuestra red local. Aunque no tendremos acceso desde Internet real, podremos experimentar y comprender cómo funcionan los túneles SSH en un entorno controlado.</p>
+<h3 id="escenario-de-red">Escenario de red<a class="headerlink" href="#escenario-de-red" title="Permanent link">&para;</a></h3>
+<p>El siguiente diagrama muestra la arquitectura de red de esta práctica:</p>
+<pre class="mermaid"><code>graph TB
+    subgraph "Máquina Host (Desarrollo Local)"
+        Host[Equipo Local&lt;br/&gt;Windows/Linux/macOS&lt;br/&gt;Servicio Web: puerto 3000]
+    end
+
+    subgraph "Red Local"
+        Router[Router/Red Local&lt;br/&gt;192.168.x.x]
+    end
+
+    subgraph "Máquina Virtual (VPS Simulado)"
+        MV[MV Ubuntu 24.04&lt;br/&gt;IP: 192.168.x.x&lt;br/&gt;Puerto 1081 expuesto]
+        subgraph "Contenedor Docker"
+            Docker[Contenedor SSH&lt;br/&gt;Puerto 1080:2222&lt;br/&gt;Puerto 1081:1081]
+        end
+    end
+
+    subgraph "Cliente en Red Local"
+        Cliente[Otro Equipo/Dispositivo&lt;br/&gt;Accede vía IP_MV:1081]
+    end
+
+    Host --&gt;|1. Túnel SSH&lt;br/&gt;ssh -R 0.0.0.0:1081:localhost:3000| Docker
+    Docker --&gt;|2. Redirige tráfico| Host
+    MV --&gt;|3. Expone puerto 1081| Router
+    Cliente --&gt;|4. HTTP Request&lt;br/&gt;http://IP_MV:1081| MV
+    MV --&gt;|5. Redirige a través del túnel| Host
+
+    style Host fill:#e1f5ff
+    style MV fill:#fff4e1
+    style Docker fill:#ffe1f5
+    style Cliente fill:#e1ffe1</code></pre>
+<p><strong>Explicación del flujo:</strong></p>
+<ol>
+<li>
+<p><strong>Máquina Host (Desarrollo Local)</strong>: Tu equipo donde desarrollas y ejecutas el servicio web (puerto 3000). Puede ser Windows, Linux o macOS.</p>
+</li>
+<li>
+<p><strong>Túnel SSH</strong>: Se establece desde tu máquina host hacia el contenedor SSH en la MV usando <code>ssh -R 0.0.0.0:1081:localhost:3000</code>. Este túnel cifra y redirige el tráfico.</p>
+</li>
+<li>
+<p><strong>Máquina Virtual (VPS Simulado)</strong>: Actúa como servidor intermediario con IP accesible en la red local. Contiene el contenedor Docker con el servidor SSH.</p>
+</li>
+<li>
+<p><strong>Contenedor Docker</strong>: Proporciona el servidor SSH que permite establecer el túnel. Expone el puerto 1081 que redirige el tráfico hacia el servicio local.</p>
+</li>
+<li>
+<p><strong>Cliente en Red Local</strong>: Cualquier dispositivo en la red local puede acceder al servicio usando <code>http://IP_MV:1081</code>, y el tráfico se redirige de forma segura a través del túnel SSH hacia tu máquina host.</p>
+</li>
+</ol>
+<p><strong>Resultado</strong>: Tu servicio local (solo accesible desde tu máquina) se expone de forma segura a través de la MV, simulando exactamente cómo funcionaría con un VPS real en Internet.</p>
+<p>Aunque existen servicios como <strong>localtunnel</strong> o <strong>ngrok</strong> para este propósito, estos servicios suelen tener limitaciones en sus planes gratuitos. Configurar nuestro propio túnel SSH nos permite tener una solución personalizada siempre disponible y entender cómo funciona internamente.</p>
+<h3 id="por-que-es-util">¿Por qué es útil?<a class="headerlink" href="#por-que-es-util" title="Permanent link">&para;</a></h3>
+<p>Esta configuración es útil cuando necesitas:</p>
+<ul>
+<li>Comprender cómo funcionan los túneles SSH y el port-forwarding en la práctica.</li>
+<li>Simular un escenario real de acceso remoto a servicios locales.</li>
+<li>Compartir tu proyecto local con otros en la misma red o proporcionar acceso a través de un servidor intermediario.</li>
+<li>Realizar pruebas de conectividad y redirección de puertos.</li>
+<li>Hacer demos para presentaciones o reuniones de equipo dentro de la red local.</li>
+<li>Probar el frontend en diferentes dispositivos dentro de la red local (móvil, diferentes resoluciones, OS, navegador).</li>
+<li>Realizar depuración remota o programación en pareja.</li>
+</ul>
+<!-- ### Tunelización SSH
+
+Como se explica en la teoría (ver sección **Tunelización** del tema), el **SSH Tunneling** es una técnica que nos permitirá navegar por la web de forma segura, estableciendo un túnel SSH contra un servidor SSH remoto.
+
+El **Port-forwarding** es un mecanismo de SSH para tunelizar puertos desde una máquina cliente a un servidor o de forma inversa. Toma los datos que el cliente envía en un extremo del túnel y los reenvía por el canal seguro. En el otro extremo donde se recogen los datos y se envían al servicio de destino.
+
+<figure>
+  <img src="imagenes/05/051/006.png" width="950"/>
+  <figcaption>Esquema SSH-Tunnel (ver teoría para más detalles)</figcaption>
+</figure>
+
+En esta práctica:
+
+- Configuraremos una máquina virtual (MV) que simulará un servidor VPS en nuestra red local.
+- Estableceremos un túnel SSH desde nuestra máquina local (cliente) hacia la máquina virtual.
+- Utilizaremos **Port-forwarding** para redirigir el tráfico desde un puerto remoto (por ejemplo, 1081) en la MV hacia un puerto local (por ejemplo, 3000) en nuestra máquina de desarrollo.
+- El tráfico viajará de forma segura a través del canal cifrado SSH, incluso dentro de la red local. -->
+
+<h2 id="paso-0-preparar-la-maquina-virtual-vps-simulado">Paso 0: Preparar la máquina virtual (VPS simulado)<a class="headerlink" href="#paso-0-preparar-la-maquina-virtual-vps-simulado" title="Permanent link">&para;</a></h2>
+<p>Antes de comenzar, necesitas tener una máquina virtual configurada que actuará como tu "VPS simulado":</p>
+<ol>
+<li>
+<p><strong>Crea una máquina virtual</strong> con Ubuntu 24.04 (o similar) en tu hipervisor preferido (VirtualBox, VMware, Hyper-V, etc.).</p>
+</li>
+<li>
+<p><strong>Configura la red</strong> de la MV en modo "Adaptador puente" o "NAT" según tu configuración, asegurándote de que pueda comunicarse con tu máquina host.</p>
+</li>
+<li>
+<p><strong>Instala Docker y Docker Compose</strong> en la máquina virtual:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Actualizar el sistema</span>
+<span class="linenos" data-linenos=" 2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Instalar Docker</span>
+<span class="linenos" data-linenos=" 5 "></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://get.docker.com<span class="w"> </span>-o<span class="w"> </span>get-docker.sh
+<span class="linenos" data-linenos=" 6 "></span>sudo<span class="w"> </span>sh<span class="w"> </span>get-docker.sh
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Añadir tu usuario al grupo docker</span>
+<span class="linenos" data-linenos=" 9 "></span>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># Instalar Docker Compose</span>
+<span class="linenos" data-linenos="12 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>docker-compose<span class="w"> </span>-y
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="c1"># Reiniciar la sesión o ejecutar:</span>
+<span class="linenos" data-linenos="15 "></span>newgrp<span class="w"> </span>docker
+</code></pre></div>
+<ol start="4">
+<li><strong>Verifica la instalación</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>--version
+<span class="linenos" data-linenos="2 "></span>docker-compose<span class="w"> </span>--version
+</code></pre></div>
+<ol start="5">
+<li><strong>Obtén la IP de la máquina virtual</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ip<span class="w"> </span>addr<span class="w"> </span>show
+<span class="linenos" data-linenos="2 "></span><span class="c1"># o</span>
+<span class="linenos" data-linenos="3 "></span>hostname<span class="w"> </span>-I
+</code></pre></div>
+<p>Anota esta IP, la necesitarás más adelante. Por ejemplo: <code>192.168.1.100</code></p>
+<ol start="6">
+<li><strong>Asegúrate de que puedes conectarte por SSH</strong> desde tu máquina host a la MV:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Desde tu máquina host, prueba la conexión</span>
+<span class="linenos" data-linenos="2 "></span>ssh<span class="w"> </span>usuario@IP_MV
+</code></pre></div>
+<h2 id="paso-1-configurar-el-servidor-ssh-en-docker">Paso 1: Configurar el servidor SSH en Docker<a class="headerlink" href="#paso-1-configurar-el-servidor-ssh-en-docker" title="Permanent link">&para;</a></h2>
+<p>Ya utilizamos SSH para acceder a nuestra máquina virtual, pero preferimos mantener esa configuración intacta. Por lo tanto, ejecutaremos un servidor SSH separado dentro de un contenedor Docker específicamente para túneles.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Todos los siguientes pasos se realizan <strong>en la máquina virtual</strong>, no en tu máquina host.</p>
+</div>
+<h3 id="configuracion-del-servidor-ssh">Configuración del servidor SSH<a class="headerlink" href="#configuracion-del-servidor-ssh" title="Permanent link">&para;</a></h3>
+<p>Utilizaremos la imagen <code>linuxserver/openssh-server</code> de Linuxserver.io, una organización que mantiene imágenes Docker muy estables para todo tipo de propósitos.</p>
+<p>Por defecto, el servidor SSH no permite túneles, por lo que necesitamos habilitar el reenvío de puertos TCP. Utilizaremos el mod <code>openssh-server-ssh-tunnel</code> que habilita el tunneling en la imagen <code>linuxserver/openssh-server</code>.</p>
+<p>Crea un directorio para la configuración:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ssh-tunnel
+<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span>~/ssh-tunnel
+</code></pre></div>
+<p>Crea el archivo <code>docker-compose.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.8&#39;</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nt">services</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">openssh-server</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linuxserver/openssh-server</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openssh-server</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openssh-server</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nt">expose</span><span class="p">:</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1081</span><span class="w">  </span><span class="c1"># Puerto remoto donde se escuchará el servicio tunelado</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1080:2222</span><span class="w">  </span><span class="c1"># Puerto 1080 (host) -&gt; 2222 (contenedor SSH)</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1081:1081</span><span class="w">  </span><span class="c1"># Puerto 1081 (host) -&gt; 1081 (contenedor) para el servicio tunelado</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">      </span><span class="c1"># Mod esencial: habilita el tunneling SSH en la imagen</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOCKER_MODS=linuxserver/mods:openssh-server-ssh-tunnel</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SHELL_NOLOGIN=false</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">      </span><span class="c1"># Ajusta PUID y PGID según tu usuario en la MV (ejecuta: id -u y id -g)</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PUID=1000</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PGID=1000</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TZ=Europe/Madrid</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="c1"># Clave pública SSH desde el archivo .env (permite autenticación sin contraseña)</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PUBLIC_KEY=${PUBLIC_KEY}</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SUDO_ACCESS=true</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">USER_NAME=usuario</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PASSWORD_ACCESS=false</span><span class="w">  </span><span class="c1"># Solo permite acceso con claves SSH</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./config:/config</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="linenos" data-linenos="30 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="linenos" data-linenos="31 "></span>
+<span class="linenos" data-linenos="32 "></span><span class="nt">networks</span><span class="p">:</span>
+<span class="linenos" data-linenos="33 "></span><span class="w">  </span><span class="nt">default</span><span class="p">:</span>
+<span class="linenos" data-linenos="34 "></span><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">¿Qué son los Docker Mods?</p>
+<p>Los <strong>Docker Mods</strong> son paquetes de modificación que se descargan y se aplican antes de que el contenedor arranque, para añadir o cambiar funcionalidades sin tener que forkar la imagen.<br />
+Forkar (del inglés <em>to fork</em>) significa crear una copia independiente de un proyecto o repositorio para modificarlo sin afectar al original.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Configurar permisos de usuario en Docker (PUID y PGID)</p>
+<p>Cuando usas Docker con volúmenes, es importante que los archivos generados dentro del contenedor tengan el mismo propietario (<strong>user</strong> y <strong>grupo</strong>) que tu usuario real de la máquina anfitriona (en este caso, la MV).<br />
+- <strong>PUID</strong> (<em>Personal/User ID</em>) corresponde al identificador numérico de tu usuario. Puedes verlo ejecutando <code>id -u</code> en la terminal.<br />
+- <strong>PGID</strong> (<em>Personal/Group ID</em>) corresponde al identificador numérico de tu grupo principal. Puedes verlo con <code>id -g</code>.</p>
+<p>Por ejemplo, en la mayoría de las instalaciones Linux, el primer usuario tendrá habitualmente:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>id -u   # muestra 1000
+<span class="linenos" data-linenos="2 "></span>id -g   # muestra 1000
+</code></pre></div></p>
+<p>Al especificar estos valores en el <code>docker-compose.yml</code>:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PUID=1000</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PGID=1000</span>
+</code></pre></div>
+<strong>Ventaja:</strong> Así, los archivos creados o modificados en los volúmenes montados del contenedor pertenecerán a tu usuario en la MV, evitando problemas de permisos y facilitando la gestión de los archivos compartidos entre el sistema anfitrión y el contenedor Docker.</p>
+</div>
+<h3 id="generar-claves-ssh-en-tu-maquina-host">Generar claves SSH en tu máquina host<a class="headerlink" href="#generar-claves-ssh-en-tu-maquina-host" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Las claves SSH se generan en tu <strong>máquina host</strong> (no en la MV), ya que serás tú quien te conectes al contenedor SSH.</p>
+</div>
+<p>En tu máquina host, genera un par de claves SSH:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;ssh-tunnel@mv&quot;</span><span class="w"> </span>-f<span class="w"> </span>~/.ssh/ssh_tunnel_id_ed25519
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">¿Hace falta poner una frase obligatoria (passphrase) al generar las claves?</p>
+<p>No hay frase “obligatoria”. Esa pregunta aparece para proteger tu clave privada con una <strong>passphrase</strong>.</p>
+<p><strong>Opciones:</strong></p>
+<ul>
+<li><strong>Sin passphrase:</strong> pulsa <code>Enter</code> dos veces cuando te lo pida. Es más cómodo para prácticas y automatizaciones, pero menos seguro.</li>
+<li><strong>Con passphrase:</strong> si pones una, la clave quedará cifrada y pedirá la contraseña cada vez que la uses, lo que aumenta la seguridad (no recomendado en este caso práctico por comodidad).</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">¿Por qué ed25519?</p>
+<p>Utilizamos <strong>ed25519</strong> en lugar de otros algoritmos como RSA por las siguientes razones:</p>
+<ul>
+<li><strong>Seguridad:</strong> ed25519 ofrece un nivel de seguridad equivalente a RSA de 3072 bits, pero con claves mucho más pequeñas (256 bits vs. 2048-4096 bits de RSA).</li>
+<li><strong>Rendimiento:</strong> Las operaciones criptográficas con ed25519 son más rápidas que con RSA, especialmente en la generación de claves y la firma de mensajes.</li>
+<li><strong>Tamaño:</strong> Las claves ed25519 son más pequeñas, lo que facilita su manejo y transferencia.</li>
+<li><strong>Recomendación actual:</strong> ed25519 es el algoritmo recomendado por la mayoría de autoridades de seguridad criptográfica desde 2014.</li>
+<li><strong>Compatibilidad:</strong> Está soportado por OpenSSH desde la versión 6.5 (2014) y es compatible con la mayoría de sistemas modernos.</li>
+</ul>
+<p><strong>Alternativas:</strong> Si necesitas compatibilidad con sistemas más antiguos, puedes usar RSA con <code>-t rsa -b 4096</code>, aunque ed25519 es la opción preferida en la mayoría de casos.</p>
+</div>
+<p>Esto creará dos archivos en tu máquina host:</p>
+<ul>
+<li><code>~/.ssh/ssh_tunnel_id_ed25519</code> (clave privada - se queda en tu máquina)</li>
+<li><code>~/.ssh/ssh_tunnel_id_ed25519.pub</code> (clave pública - se copiará a la MV)</li>
+</ul>
+<h3 id="configurar-variables-de-entorno-en-la-maquina-virtual">Configurar variables de entorno en la máquina virtual<a class="headerlink" href="#configurar-variables-de-entorno-en-la-maquina-virtual" title="Permanent link">&para;</a></h3>
+<p>Ahora, en la <strong>máquina virtual</strong>, crea un archivo <code>.env</code> en el directorio <code>~/ssh-tunnel</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># En la MV, crea el archivo .env</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span>~/ssh-tunnel
+<span class="linenos" data-linenos="3 "></span>nano<span class="w"> </span>.env
+</code></pre></div>
+<p>Copia el contenido de tu clave pública (desde tu máquina host) al archivo <code>.env</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Clave pública SSH (copia el contenido de ~/.ssh/ssh_tunnel_id_ed25519.pub desde tu máquina host)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">PUBLIC_KEY</span><span class="o">=</span><span class="s2">&quot;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI...&quot;</span>
+</code></pre></div>
+<p><strong>Cómo obtener la clave pública desde tu máquina host:</strong></p>
+<p>En tu máquina host, ejecuta:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>cat<span class="w"> </span>~/.ssh/ssh_tunnel_id_ed25519.pub
+</code></pre></div>
+<p>Copia toda la línea (desde <code>ssh-ed25519</code> hasta el final) y pégala en el archivo <code>.env</code> de la MV entre comillas.</p>
+<h3 id="iniciar-el-contenedor">Iniciar el contenedor<a class="headerlink" href="#iniciar-el-contenedor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<p>Verifica que el contenedor esté ejecutándose:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker-compose<span class="w"> </span>ps
+<span class="linenos" data-linenos="2 "></span>docker-compose<span class="w"> </span>logs<span class="w"> </span>openssh-server
+</code></pre></div>
+<h2 id="paso-2-configurar-el-cliente-ssh">Paso 2: Configurar el cliente SSH<a class="headerlink" href="#paso-2-configurar-el-cliente-ssh" title="Permanent link">&para;</a></h2>
+<p>En tu <strong>máquina host</strong>, configura el cliente SSH para conectarse al contenedor en la máquina virtual. Edita el archivo <code>~/.ssh/config</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Túnel SSH a través del contenedor Docker en la máquina virtual</span>
+<span class="linenos" data-linenos="2 "></span>Host<span class="w"> </span>mv-tunnel
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span>HostName<span class="w"> </span>IP_MV<span class="w">  </span><span class="c1"># Reemplaza con la IP de tu máquina virtual (ej: 192.168.1.100)</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/ssh_tunnel_id_ed25519
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span>User<span class="w"> </span>usuario<span class="w">  </span><span class="c1"># El mismo USER_NAME del docker-compose.yml</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">    </span>Port<span class="w"> </span><span class="m">1080</span><span class="w">  </span><span class="c1"># El puerto mapeado en el contenedor</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">    </span>ServerAliveInterval<span class="w"> </span><span class="m">60</span><span class="w">     </span><span class="c1"># Intervalo en segundos para enviar mensajes de keep-alive al servidor</span>
+<span class="linenos" data-linenos="8 "></span><span class="w">    </span>ServerAliveCountMax<span class="w"> </span><span class="m">3</span><span class="w">      </span><span class="c1"># Número máximo de intentos de keep-alive antes de cerrar la conexión</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">IMPORTANTE</p>
+<p>Reemplaza <code>IP_MV</code> por la IP real de tu máquina virtual en la red local (la que obtuviste en el Paso 0).</p>
+<p>Por ejemplo, si tu MV tiene la IP <code>192.168.1.100</code>, deberás poner:<br />
+<code>HostName 192.168.1.100</code></p>
+</div>
+<h2 id="paso-3-configurar-el-firewall-en-la-maquina-virtual">Paso 3: Configurar el firewall en la máquina virtual<a class="headerlink" href="#paso-3-configurar-el-firewall-en-la-maquina-virtual" title="Permanent link">&para;</a></h2>
+<p>Necesitas configurar el firewall de tu máquina virtual para permitir conexiones SSH al contenedor desde tu máquina host.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Estos comandos se ejecutan <strong>en la máquina virtual</strong>, no en tu máquina host.</p>
+</div>
+<h3 id="verificar-el-estado-del-firewall">Verificar el estado del firewall<a class="headerlink" href="#verificar-el-estado-del-firewall" title="Permanent link">&para;</a></h3>
+<p>Primero, comprueba si el firewall está activo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># En la MV</span>
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>ufw<span class="w"> </span>status
+</code></pre></div>
+<p>Si aparece <code>Status: inactive</code>, el firewall está desactivado.</p>
+<h3 id="opcion-a-activar-y-configurar-ufw-recomendado-para-practica-completa">Opción A: Activar y configurar UFW (Recomendado para práctica completa)<a class="headerlink" href="#opcion-a-activar-y-configurar-ufw-recomendado-para-practica-completa" title="Permanent link">&para;</a></h3>
+<p>Si quieres una práctica completa que incluya la configuración del firewall:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># En la MV</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1"># IMPORTANTE: Primero permite SSH para no quedarte sin acceso</span>
+<span class="linenos" data-linenos=" 4 "></span>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22</span>/tcp
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1"># Permite el puerto del contenedor SSH</span>
+<span class="linenos" data-linenos=" 7 "></span>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">1080</span>/tcp
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># Activa el firewall</span>
+<span class="linenos" data-linenos="10 "></span>sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="c1"># Verifica la configuración</span>
+<span class="linenos" data-linenos="13 "></span>sudo<span class="w"> </span>ufw<span class="w"> </span>status
+</code></pre></div>
+<p>Deberías ver algo como:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Status: active
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span>To                         Action      From
+<span class="linenos" data-linenos="4 "></span>--                         ------      ----
+<span class="linenos" data-linenos="5 "></span>22/tcp                     ALLOW       Anywhere
+<span class="linenos" data-linenos="6 "></span>1080/tcp                   ALLOW       Anywhere
+</code></pre></div>
+<h3 id="opcion-b-dejar-el-firewall-desactivado-para-pruebas-rapidas">Opción B: Dejar el firewall desactivado (Para pruebas rápidas)<a class="headerlink" href="#opcion-b-dejar-el-firewall-desactivado-para-pruebas-rapidas" title="Permanent link">&para;</a></h3>
+<p>Si estás en una red local controlada y solo quieres probar el túnel SSH sin complicaciones adicionales, puedes dejar el firewall desactivado. <strong>El túnel funcionará igual</strong> ya que no hay nada bloqueando el puerto 1080.</p>
+<p>En este caso, simplemente continúa con el Paso 4.</p>
+<h3 id="firewalld-centosrhel">Firewalld (CentOS/RHEL)<a class="headerlink" href="#firewalld-centosrhel" title="Permanent link">&para;</a></h3>
+<p>Si usas CentOS/RHEL en lugar de Ubuntu:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># En la MV</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># Verifica el estado</span>
+<span class="linenos" data-linenos=" 3 "></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--state
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Permite SSH (si no está ya permitido)</span>
+<span class="linenos" data-linenos=" 6 "></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--add-service<span class="o">=</span>ssh
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Permite el puerto 1080</span>
+<span class="linenos" data-linenos=" 9 "></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--add-port<span class="o">=</span><span class="m">1080</span>/tcp
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># Recarga la configuración</span>
+<span class="linenos" data-linenos="12 "></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="c1"># Verifica</span>
+<span class="linenos" data-linenos="15 "></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--list-ports
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p>Si decides activar el firewall, <strong>siempre permite el puerto 22 (SSH) primero</strong> para no perder el acceso a la máquina virtual.</p>
+</div>
+<h2 id="paso-4-crear-el-tunel-ssh">Paso 4: Crear el túnel SSH<a class="headerlink" href="#paso-4-crear-el-tunel-ssh" title="Permanent link">&para;</a></h2>
+<p>Una vez configurado todo, puedes crear el túnel desde tu <strong>máquina host</strong> utilizando <strong>Port-forwarding</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Importante</p>
+<p>Estos comandos se ejecutan <strong>en tu máquina host</strong>, no en la MV.</p>
+</div>
+<h3 id="port-forwarding-remoto-r">Port-forwarding remoto (-R)<a class="headerlink" href="#port-forwarding-remoto-r" title="Permanent link">&para;</a></h3>
+<p>El <strong>Port-forwarding</strong> es un mecanismo de SSH para tunelizar puertos desde una máquina cliente a un servidor o de forma inversa. En este caso, utilizaremos el reenvío de puerto remoto (<code>-R</code>) para exponer un servicio local (en tu máquina host) a través de la máquina virtual.</p>
+<p>Para exponer un servicio local (por ejemplo, en el puerto 3000 de tu máquina host) a través del puerto remoto 1081 en la MV:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Desde tu máquina host</span>
+<span class="linenos" data-linenos="2 "></span>ssh<span class="w"> </span>-R<span class="w"> </span>*:1081:localhost:3000<span class="w"> </span>usuario@IP_MV
+</code></pre></div>
+<p>O usando el host configurado en <code>~/.ssh/config</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Desde tu máquina host</span>
+<span class="linenos" data-linenos="2 "></span>ssh<span class="w"> </span>-R<span class="w"> </span>*:1081:localhost:3000<span class="w"> </span>mv-tunnel
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Problema con shells que interpretan el asterisco</p>
+<p>Algunos shells como <strong>zsh</strong> (macOS) o <strong>fish</strong> interpretan el asterisco <code>*</code> como un patrón de archivos, lo que puede causar el error <code>no matches found: *:1081:localhost:3000</code>.</p>
+<p><strong>Solución:</strong> Escapa el asterisco con una barra invertida, usa comillas, o especifica la interfaz explícitamente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Opción 1: Escapar el asterisco</span>
+<span class="linenos" data-linenos="2 "></span>ssh<span class="w"> </span>-R<span class="w"> </span><span class="se">\*</span>:1081:localhost:3000<span class="w"> </span>mv-tunnel
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Opción 2: Usar comillas (recomendado)</span>
+<span class="linenos" data-linenos="5 "></span>ssh<span class="w"> </span>-R<span class="w"> </span><span class="s1">&#39;*:1081:localhost:3000&#39;</span><span class="w"> </span>mv-tunnel
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Opción 3: Especificar la interfaz explícitamente (0.0.0.0) - FUNCIONA EN TODOS LOS SHELLS</span>
+<span class="linenos" data-linenos="8 "></span>ssh<span class="w"> </span>-R<span class="w"> </span><span class="m">0</span>.0.0.0:1081:localhost:3000<span class="w"> </span>mv-tunnel
+</code></pre></div>
+<p>La <strong>Opción 3</strong> es equivalente a usar <code>*</code> y funciona en todos los shells (bash, zsh, fish, PowerShell, etc.) sin necesidad de escapar.</p>
+</div>
+<blockquote>
+<p><strong>Explicación del comando según la teoría:</strong></p>
+</blockquote>
+<ul>
+<li><code>ssh</code>: Comando SSH para establecer la conexión</li>
+<li><code>-R</code>: Remote port forwarding (reenvío de puerto remoto)</li>
+<li><code>*:1081</code>: Puerto remoto en el servidor donde se escuchará (el <code>*</code> permite escuchar en todas las interfaces)</li>
+<li><code>localhost:3000</code>: Servicio local que queremos exponer (puerto local y hostname local)</li>
+<li><code>usuario@hostname</code> o <code>vps-tunnel</code>: Usuario y hostname del servidor SSH remoto</li>
+</ul>
+<p><strong>Formato general según la teoría:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ssh -L local-puerto:remote-hostname:remote-puerto username@hostname
+</code></pre></div></p>
+<p>En nuestro caso, como usamos <code>-R</code> (reenvío remoto), el formato es:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ssh -R remote-puerto:local-hostname:local-puerto username@hostname
+</code></pre></div></p>
+<p>El <strong>Port-forwarding</strong> consiste en tomar el tráfico de red que llega a un puerto, encapsularlo a través de un túnel cifrado SSH y reenviarlo de forma segura hacia otro destino, normalmente saltándose posibles firewalls o restricciones de red. </p>
+<p>En el contexto de esta práctica, usamos la opción <code>-R</code> (reenvío de puerto remoto), que permite que los usuarios de la máquina virtual (simulando un VPS remoto) puedan acceder a servicios que sólo están disponibles localmente en tu máquina host. Con <code>-R</code>, el puerto especificado (por ejemplo, <code>1081</code>) queda abierto en la MV, y todo lo que llegue a ese puerto se reencamina a través del túnel SSH hacia el puerto correspondiente (por ejemplo, <code>3000</code>) en tu máquina local, donde realmente corre el servicio.</p>
+<p>Esto contrasta con la opción <code>-L</code> (reenvío de puerto local), que funciona en sentido inverso: expone en tu equipo local un puerto que se conecta a un servicio remoto a través del túnel SSH. En nuestro caso, lo que queremos es que alguien que se conecte a la MV (VPS simulado) pueda acceder, a través de la IP de la MV y del puerto designado, al servicio que sólo está disponible en tu host local. Por eso <strong>elegimos <code>-R</code></strong>, porque queremos exponer el servicio local de tu ordenador a través de la máquina virtual, y no al revés.</p>
+<p>En resumen:</p>
+<ul>
+<li>Usamos <code>-R</code> para hacer accesible un servicio local (de tu máquina host) desde la MV a través del túnel.</li>
+<li>Si usáramos <code>-L</code>, el servicio tendría que estar en la MV y se expondría en tu máquina local, que no es lo que buscamos en esta práctica.</li>
+</ul>
+<h3 id="multiples-tuneles-con-port-forwarding">Múltiples túneles con Port-forwarding<a class="headerlink" href="#multiples-tuneles-con-port-forwarding" title="Permanent link">&para;</a></h3>
+<p>Puedes crear múltiples túneles en una sola conexión SSH, cada uno utilizando <strong>Port-forwarding</strong> independiente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Desde tu máquina host</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># Nota: En algunos shells (zsh, fish), usa comillas o 0.0.0.0 en lugar de *</span>
+<span class="linenos" data-linenos="3 "></span>ssh<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">  </span>-R<span class="w"> </span><span class="s1">&#39;*:1081:localhost:3000&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">  </span>-R<span class="w"> </span><span class="s1">&#39;*:1082:localhost:5000&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">  </span>-R<span class="w"> </span><span class="s1">&#39;*:1083:localhost:8080&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">  </span>mv-tunnel
+</code></pre></div>
+<p>O usando <code>0.0.0.0</code> (funciona en todos los shells):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Desde tu máquina host</span>
+<span class="linenos" data-linenos="2 "></span>ssh<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span>-R<span class="w"> </span><span class="m">0</span>.0.0.0:1081:localhost:3000<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">  </span>-R<span class="w"> </span><span class="m">0</span>.0.0.0:1082:localhost:5000<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">  </span>-R<span class="w"> </span><span class="m">0</span>.0.0.0:1083:localhost:8080<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">  </span>mv-tunnel
+</code></pre></div>
+<p>Cada opción <code>-R</code> establece un túnel independiente que utiliza <strong>Port-forwarding</strong> para redirigir el tráfico desde el puerto remoto (en la MV) hacia el puerto local correspondiente (en tu máquina host).</p>
+<p><strong>Nota:</strong> Asegúrate de que estos puertos estén expuestos en el <code>docker-compose.yml</code> de la máquina virtual.</p>
+<h3 id="mantener-el-tunel-activo">Mantener el túnel activo<a class="headerlink" href="#mantener-el-tunel-activo" title="Permanent link">&para;</a></h3>
+<p>Para mantener el túnel SSH activo de forma persistente, puedes usar <code>autossh</code>, que automáticamente reconecta si la conexión se pierde:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># En tu máquina host, instalar autossh (si no está instalado)</span>
+<span class="linenos" data-linenos=" 2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>autossh<span class="w">  </span><span class="c1"># Ubuntu/Debian</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1"># o</span>
+<span class="linenos" data-linenos=" 4 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>autossh<span class="w">  </span><span class="c1"># CentOS/RHEL</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1"># Crear túnel persistente con Port-forwarding</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Nota: En algunos shells (zsh, fish), usa comillas o 0.0.0.0 en lugar de *</span>
+<span class="linenos" data-linenos=" 8 "></span>autossh<span class="w"> </span>-M<span class="w"> </span><span class="m">20000</span><span class="w"> </span>-R<span class="w"> </span><span class="s1">&#39;*:1081:localhost:3000&#39;</span><span class="w"> </span>mv-tunnel
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># o</span>
+<span class="linenos" data-linenos="10 "></span>autossh<span class="w"> </span>-M<span class="w"> </span><span class="m">20000</span><span class="w"> </span>-R<span class="w"> </span><span class="m">0</span>.0.0.0:1081:localhost:3000<span class="w"> </span>mv-tunnel
+</code></pre></div>
+<p>El parámetro <code>-M 20000</code> especifica un puerto de monitoreo que <code>autossh</code> usa para verificar que la conexión SSH sigue activa. Si la conexión se cae, <code>autossh</code> la restablece automáticamente, manteniendo el <strong>Port-forwarding</strong> activo.</p>
+<h2 id="paso-5-verificar-el-tunel">Paso 5: Verificar el túnel<a class="headerlink" href="#paso-5-verificar-el-tunel" title="Permanent link">&para;</a></h2>
+<p>Una vez establecido el túnel, puedes verificar que funciona:</p>
+<ol>
+<li><strong>Desde la máquina virtual</strong>, verifica que el puerto está escuchando:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># En la MV</span>
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>netstat<span class="w"> </span>-tlnp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">1081</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># o</span>
+<span class="linenos" data-linenos="4 "></span>sudo<span class="w"> </span>ss<span class="w"> </span>-tlnp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">1081</span>
+</code></pre></div>
+<p>Deberías ver que el puerto 1081 está en estado LISTEN.</p>
+<ol start="2">
+<li><strong>Desde otra máquina en la red local</strong> (puede ser otra MV, otro equipo, o incluso desde la propia MV), intenta acceder al servicio:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Desde cualquier máquina en la red local</span>
+<span class="linenos" data-linenos="2 "></span>curl<span class="w"> </span>http://IP_MV:1081
+</code></pre></div>
+<p>Si tu servicio local (en tu máquina host) es un servidor web, deberías poder acceder a él desde cualquier máquina en tu red local usando <code>http://IP_MV:1081</code>, donde <code>IP_MV</code> es la IP de tu máquina virtual.</p>
+<hr />
+<h3 id="ejemplo-practico-exponer-un-servicio-web-desde-tu-maquina-host-a-traves-del-tunel-ssh">Ejemplo práctico: Exponer un servicio web desde tu máquina host a través del túnel SSH<a class="headerlink" href="#ejemplo-practico-exponer-un-servicio-web-desde-tu-maquina-host-a-traves-del-tunel-ssh" title="Permanent link">&para;</a></h3>
+<p>A continuación se describen los pasos para crear un servidor web <strong>en tu máquina host</strong> (no en la MV), y exponerlo a través del túnel SSH, para que sea accesible desde otras máquinas de la red local mediante la máquina virtual.</p>
+<div class="admonition tip">
+<p class="admonition-title">Simulación del escenario real</p>
+<p>En un escenario real:</p>
+<ul>
+<li>Desarrollas en tu máquina local (Windows, Linux o macOS)</li>
+<li>Tienes un VPS con IP pública</li>
+<li>Quieres exponer tu servicio local a través del VPS</li>
+</ul>
+<p>En esta práctica:</p>
+<ul>
+<li><strong>Máquina host</strong> = Tu máquina de desarrollo local (cualquier SO)</li>
+<li><strong>MV</strong> = Simula el VPS (con IP accesible en tu red local)</li>
+<li><strong>Servicio web</strong> = Debe estar en tu máquina host (NO en la MV), y se accederá a través del túnel establecido desde la MV</li>
+</ul>
+</div>
+<h4 id="1-crea-un-servicio-web-simple-en-tu-maquina-host">1. Crea un servicio web simple en tu máquina host<a class="headerlink" href="#1-crea-un-servicio-web-simple-en-tu-maquina-host" title="Permanent link">&para;</a></h4>
+<p>En tu máquina host (Windows, Linux o macOS), crea un servidor web simple en el puerto 3000:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Opción A: Con Python (si tienes Python instalado)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span>~
+<span class="linenos" data-linenos="3 "></span>mkdir<span class="w"> </span>test-web
+<span class="linenos" data-linenos="4 "></span><span class="nb">cd</span><span class="w"> </span>test-web
+<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Servicio web desde mi máquina host&lt;/h1&gt;&lt;p&gt;Accesible a través del túnel SSH&lt;/p&gt;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>index.html
+<span class="linenos" data-linenos="6 "></span>python3<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">3000</span>
+</code></pre></div>
+<p>O si prefieres usar Node.js:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Opción B: Con Node.js (si tienes Node.js instalado)</span>
+<span class="linenos" data-linenos="2 "></span>npx<span class="w"> </span>http-server<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>
+</code></pre></div>
+<p>O crea un servidor más personalizado:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Opción C: Servidor Python con contenido personalizado</span>
+<span class="linenos" data-linenos=" 2 "></span>cat<span class="w"> </span>&gt;<span class="w"> </span>server.py<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="s">from http.server import HTTPServer, SimpleHTTPRequestHandler</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="s">class MyHandler(SimpleHTTPRequestHandler):</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="s">    def do_GET(self):</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="s">        self.send_response(200)</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="s">        self.send_header(&#39;Content-type&#39;, &#39;text/html&#39;)</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="s">        self.end_headers()</span>
+<span class="linenos" data-linenos="10 "></span><span class="s">        self.wfile.write(b&#39;&lt;h1&gt;Servicio web desde mi máquina host&lt;/h1&gt;&#39;)</span>
+<span class="linenos" data-linenos="11 "></span><span class="s">        self.wfile.write(b&#39;&lt;p&gt;Este servicio esta corriendo en localhost:3000 de mi máquina host&lt;/p&gt;&#39;)</span>
+<span class="linenos" data-linenos="12 "></span><span class="s">        self.wfile.write(b&#39;&lt;p&gt;Pero es accesible a traves de la MV en http://IP_MV:1081&lt;/p&gt;&#39;)</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="s">httpd = HTTPServer((&#39;localhost&#39;, 3000), MyHandler)</span>
+<span class="linenos" data-linenos="15 "></span><span class="s">print(&quot;Servidor corriendo en http://localhost:3000&quot;)</span>
+<span class="linenos" data-linenos="16 "></span><span class="s">httpd.serve_forever()</span>
+<span class="linenos" data-linenos="17 "></span><span class="s">EOF</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span>python3<span class="w"> </span>server.py
+</code></pre></div>
+<h4 id="2-verifica-que-el-servicio-funciona-localmente-en-tu-maquina-host">2. Verifica que el servicio funciona localmente en tu máquina host<a class="headerlink" href="#2-verifica-que-el-servicio-funciona-localmente-en-tu-maquina-host" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># En otra terminal de tu máquina host</span>
+<span class="linenos" data-linenos="2 "></span>curl<span class="w"> </span>http://localhost:3000
+<span class="linenos" data-linenos="3 "></span><span class="c1"># o en Windows PowerShell:</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Invoke-WebRequest http://localhost:3000</span>
+</code></pre></div>
+<p>Deberías ver el contenido HTML del servidor.</p>
+<h4 id="3-crea-el-tunel-ssh-desde-tu-maquina-host-a-la-mv">3. Crea el túnel SSH desde tu máquina host a la MV<a class="headerlink" href="#3-crea-el-tunel-ssh-desde-tu-maquina-host-a-la-mv" title="Permanent link">&para;</a></h4>
+<p>Desde tu máquina host, mantén el servidor web corriendo y en otra terminal ejecuta:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Usa 0.0.0.0 para compatibilidad con todos los shells (bash, zsh, PowerShell, etc.)</span>
+<span class="linenos" data-linenos="2 "></span>ssh<span class="w"> </span>-R<span class="w"> </span><span class="m">0</span>.0.0.0:1081:localhost:3000<span class="w"> </span>mv-tunnel
+</code></pre></div>
+<blockquote>
+<p><strong>Explicación:</strong></p>
+</blockquote>
+<ul>
+<li>Esto expone el puerto 3000 de tu máquina host (donde está el servicio web) a través del puerto 1081 de la MV</li>
+<li>El tráfico se redirige: <code>IP_MV:1081</code> → <code>máquina_host:3000</code></li>
+<li>Puedes mantener el túnel activo usando <code>autossh</code> si lo deseas, como se explicó anteriormente</li>
+</ul>
+<h4 id="4-accede-al-servicio-desde-otra-maquina-en-la-red-local">4. Accede al servicio desde otra máquina en la red local<a class="headerlink" href="#4-accede-al-servicio-desde-otra-maquina-en-la-red-local" title="Permanent link">&para;</a></h4>
+<p>Desde cualquier máquina en tu red local (puede ser otra MV, otro equipo, o incluso desde la propia MV), puedes acceder al servicio usando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>curl<span class="w"> </span>http://IP_MV:1081
+</code></pre></div>
+<p>O abre <code>http://IP_MV:1081</code> en un navegador.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El contenido que verás al acceder a <code>http://IP_MV:1081</code> corresponde al servidor web que se está ejecutando en <strong>tu máquina host</strong> (puerto 3000), pero es accesible a través de la dirección IP de la MV gracias al túnel SSH. Esta técnica reproduce el comportamiento típico de exponer un servicio local a Internet usando un VPS remoto.</p>
+</div>
+<h4 id="5-verifica-el-flujo-completo">5. Verifica el flujo completo<a class="headerlink" href="#5-verifica-el-flujo-completo" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Servicio local en máquina host</strong>: <code>http://localhost:3000</code> → Solo accesible desde tu máquina host</li>
+<li><strong>Túnel SSH activo</strong>: Redirige el tráfico desde <code>IP_MV:1081</code> → <code>máquina_host:3000</code></li>
+<li><strong>Acceso remoto</strong>: <code>http://IP_MV:1081</code> → Accesible desde cualquier máquina en tu red local</li>
+</ol>
+<p>Esto simula que tu servicio de desarrollo local es accesible públicamente a través del VPS.</p>
+<div class="admonition warning">
+<p class="admonition-title">Solución de problemas: El puerto 1081 no responde</p>
+<p>Si <code>curl http://IP_MV:1081</code> falla, verifica:</p>
+<ol>
+<li><strong>Puerto 1081 mapeado en docker-compose.yml</strong>: Debe tener <code>- 1081:1081</code> en la sección <code>ports:</code>. Si falta, añádelo y ejecuta <code>docker-compose restart</code>.</li>
+<li><strong>Túnel SSH activo</strong>: Verifica con <code>sudo ss -tlnp | grep 1081</code> en la MV. Si no aparece, reconecta el túnel desde tu máquina host.</li>
+<li><strong>Firewall</strong>: Si UFW está activo, permite el puerto: <code>sudo ufw allow 1081/tcp</code>.</li>
+<li><strong>Servicio web corriendo</strong>: Verifica en tu máquina host con <code>curl http://localhost:3000</code>.</li>
+</ol>
+</div>
+<hr />
+<div class="admonition tip">
+<p class="admonition-title">Recuerda</p>
+<ul>
+<li>Cambia <code>IP_MV</code> por la IP real de tu máquina virtual.</li>
+<li>Puedes exponer otros servicios adaptando los puertos del túnel según lo necesites.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo práctico de acceso</p>
+<p>Si tu MV tiene la IP <code>192.168.1.100</code> y tu servicio local está en el puerto 3000, tras crear el túnel podrás acceder desde cualquier máquina de la red local con:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>curl<span class="w"> </span>http://192.168.1.100:1081
+</code></pre></div>
+<p>Esto redirige el tráfico a través del túnel SSH hacia tu servicio local en el puerto 3000.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>curl<span class="w"> </span>http://192.168.1.100:1081
+</code></pre></div>
+<p>Esto redirigirá el tráfico a través del túnel SSH hacia tu servicio local en el puerto 3000.</p>
+<h2 id="paso-6-configurar-multiples-servicios-opcional">Paso 6: Configurar múltiples servicios (Opcional)<a class="headerlink" href="#paso-6-configurar-multiples-servicios-opcional" title="Permanent link">&para;</a></h2>
+<p>Si necesitas exponer múltiples servicios, modifica el <code>docker-compose.yml</code> para exponer más puertos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">services</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nt">openssh-server</span><span class="p">:</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="c1"># ... otras configuraciones ...</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="nt">expose</span><span class="p">:</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1081</span><span class="w">  </span><span class="c1"># túnel 1</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1082</span><span class="w">  </span><span class="c1"># túnel 2</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1083</span><span class="w">  </span><span class="c1"># túnel 3</span>
+<span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="c1"># ... resto de la configuración ...</span>
+</code></pre></div>
+<p>Luego crea los túneles correspondientes:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ssh<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span>-R<span class="w"> </span>*:1081:localhost:3000<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span>-R<span class="w"> </span>*:1082:localhost:5000<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">  </span>-R<span class="w"> </span>*:1083:localhost:8080<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">  </span>vps-tunnel
+</code></pre></div>
+<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Preparación del entorno:</strong></li>
+</ol>
+<ul>
+<li>Crea y configura una máquina virtual con Ubuntu 24.04.</li>
+<li>Instala Docker y Docker Compose en la máquina virtual.</li>
+<li>Verifica la conectividad de red entre tu máquina host y la MV.</li>
+<li>Obtén y anota la IP de la máquina virtual.</li>
+</ul>
+<ol start="2">
+<li><strong>Configuración del servidor SSH en Docker:</strong></li>
+</ol>
+<ul>
+<li>En la máquina virtual, configura el servidor SSH en Docker siguiendo el Paso 1.</li>
+<li>Genera las claves SSH en tu máquina host.</li>
+<li>Configura las variables de entorno en la MV con tu clave pública.</li>
+<li>Verifica que el contenedor se inicia correctamente.</li>
+</ul>
+<ol start="3">
+<li><strong>Configuración del cliente:</strong></li>
+</ol>
+<ul>
+<li>Configura el cliente SSH en tu máquina host.</li>
+<li>Abre los puertos necesarios en el firewall de la máquina virtual.</li>
+<li>Verifica que puedes conectarte al contenedor SSH desde tu máquina host.</li>
+</ul>
+<ol start="4">
+<li><strong>Creación del túnel con Port-forwarding:</strong></li>
+</ol>
+<ul>
+<li>Crea un túnel SSH utilizando <strong>Port-forwarding</strong> que exponga un servicio local (puede ser un servidor web simple en tu máquina host).</li>
+<li>Explica cómo el <strong>Port-forwarding</strong> toma los datos del cliente y los reenvía por el canal seguro.</li>
+<li>Verifica que el túnel funciona correctamente y que los datos se transmiten de forma segura.</li>
+</ul>
+<ol start="5">
+<li><strong>Documentación:</strong></li>
+</ol>
+<ul>
+<li>Crea un documento que explique:<ul>
+<li>La arquitectura del túnel SSH y cómo funciona el <strong>Port-forwarding</strong>.</li>
+<li>Cómo el <strong>Port-forwarding</strong> tuneliza puertos desde la máquina cliente (host) al servidor (MV).</li>
+<li>Cómo los datos se envían por el canal seguro SSH.</li>
+<li>Los pasos realizados para la configuración, indicando claramente qué se hace en cada máquina.</li>
+<li>Capturas de pantalla que demuestren el funcionamiento.</li>
+<li>Problemas encontrados y soluciones aplicadas.</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li><strong>Pruebas:</strong></li>
+</ol>
+<ul>
+<li>Accede al servicio expuesto desde otra máquina en la red local (puede ser otra MV o la misma MV).</li>
+<li>Verifica que el túnel se mantiene activo.</li>
+<li>Prueba la creación de múltiples túneles simultáneos.</li>
+</ul>
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<p>Para la entrega de esta práctica, deberás proporcionar:</p>
+<ol>
+<li><strong>Documentación:</strong></li>
+</ol>
+<ul>
+<li>Documento en Markdown con:<ul>
+<li>Descripción de la arquitectura implementada.</li>
+<li>Pasos seguidos para la configuración.</li>
+<li>Capturas de pantalla del proceso.</li>
+<li>Comandos utilizados y su explicación.</li>
+<li>Verificación del funcionamiento.</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>Evidencias:</strong></li>
+</ol>
+<ul>
+<li>Las capturas de pantalla deben mostrar:<ul>
+<li>El contenedor Docker en ejecución.</li>
+<li>La conexión SSH establecida.</li>
+<li>El acceso al servicio desde otra máquina.</li>
+<li>Los logs del contenedor SSH.</li>
+</ul>
+</li>
+</ul>
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://iximiuz.com/en/posts/ssh-tunnels">Tutorial de túneles SSH locales y remotos</a></li>
+<li><a href="https://github.com/linuxserver/docker-openssh-server">Repositorio linuxserver/docker-openssh-server</a></li>
+<li><a href="https://github.com/linuxserver/docker-mods/tree/openssh-server-ssh-tunnel">Mod openssh-server-ssh-tunnel</a></li>
+<li><a href="https://nemanjamitic.com/blog/2025-04-20-ssh-tunnel-docker">Artículo: Expose local dev server with SSH tunnel and Docker</a></li>
+</ul>
+<!-- ## Notas adicionales
+
+- **Entorno educativo:** Esta práctica está adaptada para funcionar en una red local usando una máquina virtual como VPS simulado. En un entorno de producción real, el VPS tendría una IP pública accesible desde Internet.
+
+- **Seguridad:** Aunque estamos en una red local, asegúrate de mantener actualizado el contenedor Docker y el sistema operativo de la máquina virtual. En un entorno real, esto es crítico.
+
+- **Rendimiento:** Los túneles SSH son adecuados para uso temporal. Para túneles permanentes, considera usar herramientas especializadas como [rathole](https://github.com/rapiz1/rathole) o [frp](https://github.com/fatedier/frp).
+
+- **Alternativas:** Si necesitas HTTPS y URLs amigables, puedes combinar esta solución con un proxy inverso como Traefik o Nginx.
+
+- **Red local:** Recuerda que en esta práctica solo funcionará dentro de tu red local. Para acceso desde Internet real, necesitarías un VPS con IP pública.
+
+---
+
+!!! tip "Consejo"
+    Esta práctica te permite comprender cómo funcionan los túneles SSH y el port-forwarding en un entorno controlado. Los conceptos aprendidos aquí son directamente aplicables a escenarios reales con VPS en Internet. -->
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

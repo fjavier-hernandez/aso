@@ -1,0 +1,1993 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Instalación, configuración y uso de servicios de acceso y administración remota.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/03AccesoRemoto.html">
+      
+      
+        <link rel="prev" href="02PowerShell.html">
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Acceso Remoto - Instalación, configuración y uso de servicios de acceso y administración remota - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Acceso Remoto - Instalación, configuración y uso de servicios de acceso y administración remota - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="Instalación, configuración y uso de servicios de acceso y administración remota." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/03AccesoRemoto.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/03AccesoRemoto.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Acceso Remoto - Instalación, configuración y uso de servicios de acceso y administración remota - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="Instalación, configuración y uso de servicios de acceso y administración remota." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/03AccesoRemoto.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#acceso-remoto" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Acceso Remoto - Instalación, configuración y uso de servicios de acceso y administración remota
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3.- Servicios de acceso remoto
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="03AccesoRemoto.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    3.- Servicios de acceso remoto
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propuesta-didactica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion-ra4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación (RA4)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenidos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programacion-de-aula-5-sesiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación de Aula (5 sesiones)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Programación de Aula (5 sesiones)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sesiones-1-3-acceso-remoto-en-modo-texto-y-tuneles-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesiones 1-3: Acceso remoto en modo texto y túneles SSH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesiones-4-5-escritorio-remoto-en-windows-server-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesiones 4-5: Escritorio remoto en Windows Server (AWS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminales-en-modo-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terminales en modo texto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Terminales en modo texto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcionamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcionamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#establecimiento-de-conexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Establecimiento de conexión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autentificacion-del-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autentificación del cliente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunelizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tunelización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clientes-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clientes SSH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenSSH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcionalidades-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcionalidades adicionales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escritorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escritorio remoto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Escritorio remoto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#escritorio-remoto-en-ubuntu-2404-con-xrdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escritorio remoto en Ubuntu 24.04 con xRDP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escritorio-remoto-en-windows-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escritorio remoto en Windows 11
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Escritorio remoto en Windows 11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anadir-los-usuarios-autorizados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Añadir los usuarios autorizados
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activacion-del-escritorio-remoto-por-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activación del Escritorio Remoto por PowerShell
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Activación del Escritorio Remoto por PowerShell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#habilitar-el-escritorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Habilitar el Escritorio Remoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permitir-usuarios-al-escritorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permitir usuarios al Escritorio Remoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificar-el-estado-del-escritorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificar el estado del Escritorio Remoto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herramientas-graficas-externas-para-la-administracion-remota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas gráficas externas para la administración remota
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Herramientas gráficas externas para la administración remota">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#realvnc" class="md-nav__link">
+    <span class="md-ellipsis">
+      RealVNC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teamviewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      TeamViewer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anydesk" class="md-nav__link">
+    <span class="md-ellipsis">
+      AnyDesk
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-guacamole" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Guacamole
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propuesta-didactica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion-ra4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación (RA4)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenidos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programacion-de-aula-5-sesiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación de Aula (5 sesiones)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Programación de Aula (5 sesiones)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sesiones-1-3-acceso-remoto-en-modo-texto-y-tuneles-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesiones 1-3: Acceso remoto en modo texto y túneles SSH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesiones-4-5-escritorio-remoto-en-windows-server-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesiones 4-5: Escritorio remoto en Windows Server (AWS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminales-en-modo-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terminales en modo texto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Terminales en modo texto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcionamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcionamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#establecimiento-de-conexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Establecimiento de conexión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autentificacion-del-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autentificación del cliente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunelizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tunelización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clientes-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clientes SSH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenSSH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcionalidades-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcionalidades adicionales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escritorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escritorio remoto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Escritorio remoto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#escritorio-remoto-en-ubuntu-2404-con-xrdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escritorio remoto en Ubuntu 24.04 con xRDP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escritorio-remoto-en-windows-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escritorio remoto en Windows 11
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Escritorio remoto en Windows 11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anadir-los-usuarios-autorizados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Añadir los usuarios autorizados
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activacion-del-escritorio-remoto-por-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activación del Escritorio Remoto por PowerShell
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Activación del Escritorio Remoto por PowerShell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#habilitar-el-escritorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Habilitar el Escritorio Remoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permitir-usuarios-al-escritorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permitir usuarios al Escritorio Remoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificar-el-estado-del-escritorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificar el estado del Escritorio Remoto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herramientas-graficas-externas-para-la-administracion-remota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas gráficas externas para la administración remota
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Herramientas gráficas externas para la administración remota">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#realvnc" class="md-nav__link">
+    <span class="md-ellipsis">
+      RealVNC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teamviewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      TeamViewer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anydesk" class="md-nav__link">
+    <span class="md-ellipsis">
+      AnyDesk
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-guacamole" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Guacamole
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="acceso-remoto">Acceso Remoto<a class="headerlink" href="#acceso-remoto" title="Permanent link">&para;</a></h1>
+<p>La administración remota de sistemas operativos es fundamental en entornos empresariales y de infraestructura, permitiendo gestionar servidores y equipos desde cualquier ubicación de forma segura y eficiente. En esta unidad aprenderemos a instalar, configurar y utilizar diferentes servicios y herramientas que permiten el acceso y administración remota de sistemas, tanto en modo texto como gráfico.</p>
+<h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>En esta unidad vamos a trabajar el <strong>RA4 de ASO</strong>:</p>
+<blockquote>
+<p><strong>RA4.</strong> <em>Administra de forma remota el sistema operativo en red valorando su importancia y aplicando criterios de seguridad.</em></p>
+</blockquote>
+<h3 id="criterios-de-evaluacion-ra4">Criterios de evaluación (RA4)<a class="headerlink" href="#criterios-de-evaluacion-ra4" title="Permanent link">&para;</a></h3>
+<p>A lo largo de la unidad se trabajarán y evidenciarán los siguientes criterios:</p>
+<ul>
+<li><strong>CE4a</strong>: Se han descrito métodos de acceso y administración remota de sistemas.  </li>
+<li><strong>CE4b</strong>: Se ha diferenciado entre los servicios orientados a sesión y los no orientados a sesión.  </li>
+<li><strong>CE4c</strong>: Se han utilizado herramientas de administración remota suministradas por el propio sistema operativo.  </li>
+<li><strong>CE4d</strong>: Se han instalado servicios de acceso y administración remota.  </li>
+<li><strong>CE4e</strong>: Se han utilizado comandos y herramientas gráficas para gestionar los servicios de acceso y administración remota.  </li>
+<li><strong>CE4f</strong>: Se han creado cuentas de usuario para el acceso remoto.  </li>
+<li><strong>CE4g</strong>: Se han realizado pruebas de acceso y administración remota entre sistemas heterogéneos.  </li>
+<li><strong>CE4h</strong>: Se han utilizado mecanismos de encriptación de la información transferida.  </li>
+<li><strong>CE4i</strong>: Se han documentado los procesos y servicios del sistema administrados de forma remota.</li>
+</ul>
+<h2 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h2>
+<p><strong>Bloque 1 — Acceso remoto en modo texto (Sesión 1–2)</strong>
+- Introducción a los servicios de acceso remoto.<br />
+- Terminales en modo texto: Telnet, Rlogin, SSH.<br />
+- Protocolo SSH: características, funcionamiento y establecimiento de conexión.<br />
+- Autenticación: usuario/contraseña y claves públicas/privadas.<br />
+- Tunelización y port-forwarding.<br />
+- OpenSSH: instalación y configuración.<br />
+- Clientes SSH: gráficos y consola.<br />
+- Funcionalidades adicionales: SCP y SFTP.</p>
+<p><strong>Bloque 2 — Escritorio remoto (Sesión 2–3)</strong>
+- Protocolos de escritorio remoto: RDP y VNC.<br />
+- Configuración de xRDP en Ubuntu 24.04.<br />
+- Configuración de RDP en Windows 11.<br />
+- RemoteApp: características y casos de uso.</p>
+<p><strong>Bloque 3 — Herramientas gráficas externas (Sesión 3–4)</strong>
+- RealVNC: instalación y configuración.<br />
+- TeamViewer: características y uso.<br />
+- AnyDesk: acceso remoto multiplataforma.<br />
+- Apache Guacamole: puerta de enlace sin cliente.</p>
+<div class="admonition question">
+<p class="admonition-title">Actividades iniciales</p>
+<ol>
+<li>¿Qué diferencia existe entre Telnet y SSH en cuanto a seguridad?</li>
+<li>¿Qué puerto utiliza por defecto el protocolo SSH?</li>
+<li>Explica brevemente qué es la tunelización SSH.</li>
+<li>¿Qué protocolos se utilizan para escritorio remoto?</li>
+<li>Nombra al menos tres herramientas gráficas para administración remota.</li>
+<li>¿Qué ventajas ofrece la autenticación por claves públicas/privadas frente a usuario/contraseña?</li>
+<li>¿Qué es RemoteApp y cuándo es útil su implementación?</li>
+<li>Explica la diferencia entre SCP y SFTP.</li>
+</ol>
+</div>
+<h3 id="programacion-de-aula-5-sesiones">Programación de Aula (5 sesiones)<a class="headerlink" href="#programacion-de-aula-5-sesiones" title="Permanent link">&para;</a></h3>
+<p>Esta unidad se imparte con una duración estimada de 5 sesiones lectivas:</p>
+<h4 id="sesiones-1-3-acceso-remoto-en-modo-texto-y-tuneles-ssh">Sesiones 1-3: Acceso remoto en modo texto y túneles SSH<a class="headerlink" href="#sesiones-1-3-acceso-remoto-en-modo-texto-y-tuneles-ssh" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Teoría:</strong> Introducción a servicios de acceso remoto. Terminales en modo texto: Telnet, Rlogin, SSH. Protocolo SSH: características, funcionamiento y establecimiento de conexión.</td>
+<td>Explicación teórica</td>
+<td>CE4a, CE4b, CE4c, CE4h</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Teoría:</strong> Autenticación SSH: usuario/contraseña y claves públicas/privadas. Tunelización y port-forwarding. OpenSSH: instalación y configuración. Clientes SSH y funcionalidades adicionales (SCP y SFTP).</td>
+<td>Explicación teórica</td>
+<td>CE4a, CE4c, CE4d, CE4e, CE4h</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Práctica:</strong> Configuración de túneles SSH con Docker. Implementación y documentación de la práctica PR301.</td>
+<td><a href="PracticaSSHtunnelingDocker.html">PR301</a></td>
+<td>CE4a, CE4c, CE4d, CE4e, CE4h, CE4i</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sesiones-4-5-escritorio-remoto-en-windows-server-aws">Sesiones 4-5: Escritorio remoto en Windows Server (AWS)<a class="headerlink" href="#sesiones-4-5-escritorio-remoto-en-windows-server-aws" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td><strong>Práctica:</strong> Creación de instancia Windows Server en AWS. Configuración de acceso remoto (RDP). Configuración inicial y conexión.</td>
+<td><a href="#">PR302</a></td>
+<td>CE4a, CE4d, CE4e, CE4f, CE4g, CE4i</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Práctica:</strong> Administración remota de Windows Server vía RDP. Configuración avanzada y documentación de la práctica PR302.</td>
+<td><a href="#">PR302</a> (continuación)</td>
+<td>CE4a, CE4c, CE4d, CE4e, CE4f, CE4g, CE4i</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>En la mayoría de los casos, los servidores y máquinas que necesitamos gestionar no comparten el mismo espacio físico. Como por ejemplo servidores que estén ubicados en:</p>
+<ul>
+<li>Diferentes departamentos de una empresa</li>
+<li>Centros de proceso de Datos (CPD) generales</li>
+<li>Computación en la nube</li>
+</ul>
+<p>Para poder acceder a ellos existen servicios, métodos y herramientas, que se detallan a continuación.</p>
+<h2 id="terminales-en-modo-texto">Terminales en modo texto<a class="headerlink" href="#terminales-en-modo-texto" title="Permanent link">&para;</a></h2>
+<p>Una de las formas de administrar de forma remota es instalar un servidor que permita el acceso en forma de terminal de texto. Estos programas permiten acceder al equipo vía red utilizando un nombre de usuario y contraseña como si estuviésemos accediendo de forma local al mismo. Entre los diferentes servicios de este tipo destacan:</p>
+<ul>
+<li>
+<p><strong>Telnet:</strong> basado en el protocolo del mismo nombre. Este protocolo utiliza por defecto el puerto 23. <strong>El problema de este es que la información viaja por la red sin cifrar</strong>, con la correspondiente falta de seguridad.</p>
+</li>
+<li>
+<p><strong>Rlogin (Remote Login):</strong> es una aplicación TCP/IP que comienza una sesión de terminal remoto sobre el anfitrión especificado como host. El anfitrión remoto debe hacer funcionar un servicio de Rlogind (o demonio) para que el Rlogin conecte con el anfitrión. Utiliza un mecanismo estándar de autorización de los Rhosts.</p>
+</li>
+<li>
+<p><strong>SSH (Secure Shell):</strong> Este protocolo permite poder acceder a otro ordenador a través de una red para ejecutar comandos en esa máquina, controlarla de manera remota e intercambiar archivos entre ambas. Ofrece una autenticación muy potente y comunicaciones seguras en canales no protegidos.</p>
+</li>
+</ul>
+<p>A continuación se entra más en detalle en este último.</p>
+<h3 id="ssh">SSH<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h3>
+<h4 id="caracteristicas-principales">Características principales<a class="headerlink" href="#caracteristicas-principales" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Utiliza el <strong>puerto 22</strong> TCP para el establecimiento de las conexiones.</li>
+<li>Una vez establecida la conexión podremos ejecutar las órdenes como si se tratara de una terminal local.</li>
+<li>Está implementado para la mayoría de sistemas operativos existentes; Windows, linux, OSX,...</li>
+<li>Proporciona mecanismo para asegurar la <strong>autenticación, integridad y confidencialidad de la información</strong>.<ul>
+<li><strong>Autenticación:</strong> Después de la primera conexión, el cliente puede conocer que se está conectando al mismo servidor en futuras sesiones: conexiones de confianza.</li>
+<li><strong>Confidencialidad</strong>: Todos los datos que se envían y se reciben durante la conexión son cifrados.</li>
+<li><strong>Integridad:</strong> Proporciona mecanismos para asegurar que la información enviada no es manipulada por un tercero</li>
+</ul>
+</li>
+</ul>
+<p>Además destaca por:</p>
+<ul>
+<li>Permitir copiar datos de forma segura (tanto archivos sueltos como simular sesiones FTP cifradas).</li>
+<li>Gestionar claves <strong>RSA</strong> para no escribir contraseñas al conectar a los dispositivos. </li>
+<li>Pasar los datos de cualquier otra aplicación por un canal seguro tunelizado.  </li>
+<li>Basado en arquitectura <strong>cliente-servidor</strong></li>
+</ul>
+<figure>
+  <img src="imagenes/05/051/001.png" width="950"/>
+  <figcaption>SSH Cliente-Servidor</figcaption>
+</figure>
+
+<h4 id="funcionamiento">Funcionamiento<a class="headerlink" href="#funcionamiento" title="Permanent link">&para;</a></h4>
+<p>Se basa en la <strong>Criptografía</strong> (Técnica utilizada para convertir un texto claro en otro cuyo contenido es igual al anterior pero solo puede ser decodificado por personas autorizadas.) SSH utiliza varios algoritmos de encriptación y autenticación.</p>
+<ul>
+<li>Para establecer la conexión con la máquina remota utiliza algoritmos de <strong>encriptación asimétrica</strong>.</li>
+<li>Para la transferencia de datos utiliza algoritmos de <strong>encriptación simétrica</strong>, que son más rápidos.</li>
+</ul>
+<p><strong>1. Encriptación simétrica</strong></p>
+<p>Los algoritmos de criptografía simétrica son los que utilizan la misma clave tanto para el proceso de cifrado como para el descifrado del mensaje. Los más utilizados: <strong>DES, 3DES, AES, IDEA y Blowfish</strong></p>
+<figure>
+  <img src="imagenes/05/051/002.png" width="950"/>
+  <figcaption>Esquema Encriptación Simétrica</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Problema: Intercambio de claves.</strong></p>
+</div>
+<p><strong>2. Encriptación Asimétrica</strong></p>
+<p>Utiliza dos claves matemáticamente relacionadas de manera que lo que ciframos con una (<strong>clave pública</strong>) sólo puede descifrarse con la segunda (<strong>clave privada</strong>).</p>
+<ul>
+<li>Algunos algoritmos representativos son: <strong>RSA</strong>, y <strong>DSA</strong></li>
+</ul>
+<figure>
+  <img src="imagenes/05/051/003.png" width="950"/>
+  <figcaption>Esquema Encriptación Asimétrica</figcaption>
+</figure>
+
+<h4 id="establecimiento-de-conexion">Establecimiento de conexión<a class="headerlink" href="#establecimiento-de-conexion" title="Permanent link">&para;</a></h4>
+<ol>
+<li>El cliente abre una conexión <strong>TCP</strong> en el <strong>puerto 22</strong> del servidor.</li>
+<li>Cliente y servidor negocian qué <strong>versión SSH</strong> van a utilizar y determinan el algoritmo de <strong>criptografía simétrica</strong> a utilizar.</li>
+<li>El <strong>servidor envía</strong> su <strong>clave pública</strong> al cliente:<ul>
+<li>Si es la primera vez la guardará para futuras conexiones.</li>
+<li>En caso contrario la compara con la que ya tenía guardadas para la IP de conexión (Autenticación del servidor) </li>
+</ul>
+</li>
+<li>El cliente <strong>genera una clave de sesión aleatoria mediante el algoritmo seleccionado</strong> en el primer paso y la <strong>envía al servidor cifrando con la clave pública</strong> del mismo.</li>
+<li>El resto de comunicaciones se hará utilizando esta clave compartida y será indescifrable.</li>
+<li>A partir de aquí se llevará a cabo la <strong>autenticación del usuario</strong> y la transmisión de información/órdenes a ejecutar en la máquina remota</li>
+</ol>
+<figure>
+  <img src="imagenes/05/051/004.png" width="950"/>
+  <figcaption>Esquema del establecimiento de conexión</figcaption>
+</figure>
+
+<h4 id="autentificacion-del-cliente">Autentificación del cliente<a class="headerlink" href="#autentificacion-del-cliente" title="Permanent link">&para;</a></h4>
+<p>Puede llevarse a cabo de <strong>2 formas</strong>: </p>
+<ol>
+<li><strong>Usuario y contraseña</strong>: Aunque las credenciales van cifradas, es menos seguro ya que es más propenso a ataques de fuerza bruta.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">CONSEJO</p>
+<p>Tendremos que utilizar sistemas de detección de intrusos como <strong><a href="https://es.wikipedia.org/wiki/Fail2ban">fail2ban</a></strong>, esta aplicación busca en los registros (logs) de los programas que se especifiquen las reglas que el usuario decida para poder aplicar una penalización. La penalización puede ser bloquear la aplicación que ha fallado en un determinado puerto, bloquearla para todos los puertos, etc. Las penalizaciones, así como las reglas, son definidas por el usuario.</p>
+</div>
+<ol start="2">
+<li>
+<p><strong>Clave pública/privada</strong>: </p>
+<ul>
+<li>Cuando el cliente se conecta al servidor, le informa de <strong>la clave pública que va a utilizar</strong>.</li>
+<li>Si el servidor la tiene en <strong>su almacén de claves autorizadas (authorized_keys)</strong>, enviará un mensaje aleatorio cifrado con la clave pública que, si el cliente es capaz de descifrar, quedará autenticado.</li>
+<li>El <strong>cliente decodificará el mensaje</strong> con la clave privada y lo enviará al servidor decodificado.</li>
+</ul>
+</li>
+</ol>
+<figure>
+  <img src="imagenes/05/051/005.png" width="950"/>
+  <figcaption>Esquema Autentificación Clave pública/privada</figcaption>
+</figure>
+
+<blockquote>
+<p><strong>Recursos de apoyo</strong></p>
+</blockquote>
+<figure style="width: 100%; margin: 0; padding: 0;">
+  <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe src="https://www.youtube.com/embed/uiZaTHQTfPE" title="SSH: Pairs de Claves - Seguridad y Autenticación (2021)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+  </div>
+  <figcaption>Video tutorial: SSH - Pares de claves, Seguridad y Autenticación</figcaption>
+</figure>
+
+<h4 id="tunelizacion">Tunelización<a class="headerlink" href="#tunelizacion" title="Permanent link">&para;</a></h4>
+<p>El <strong>SSH Tunneling</strong> permite crear un canal cifrado punto a punto para transportar tráfico entre dos extremos, incluso a través de redes no confiables. Se apoya en el <strong>Port-forwarding</strong>, que toma los datos en un extremo del túnel y los reenvía de forma segura al otro:</p>
+<ul>
+<li><strong>Port-forwarding local (-L)</strong>: expone en la máquina cliente un puerto que llega a un servicio remoto.  </li>
+<li>Ej.: <code>ssh -L 8080:servidor_remoto:80 usuario@servidor_remoto</code></li>
+<li><strong>Port-forwarding remoto (-R)</strong>: expone en el servidor un puerto que llega a un servicio local del cliente.  </li>
+<li>Ej.: <code>ssh -R 0.0.0.0:1081:localhost:3000 usuario@servidor</code></li>
+<li><strong>Port-forwarding dinámico (-D)</strong>: crea un proxy SOCKS para redirigir tráfico de forma flexible.  </li>
+<li>Ej.: <code>ssh -D 1080 usuario@servidor</code></li>
+</ul>
+<!-- En la práctica **PR301** usamos **-R** para que un servicio local (puerto 3000 del host) sea accesible a través del puerto 1081 en la máquina virtual que simula el VPS. Usar `0.0.0.0` en lugar de `*` evita problemas de interpretación del asterisco en shells como zsh o fish y expone el puerto en todas las interfaces del servidor. -->
+
+<figure>
+  <img src="imagenes/05/051/006.png" width="950"/>
+  <figcaption>Esquema SSH-Tunnel</figcaption>
+</figure>
+
+<div class="admonition example">
+<p class="admonition-title">Ejemplos</p>
+<ul>
+<li>Reenvío local: <code>ssh -L 8080:servidor_remoto:80 usuario@servidor_remoto</code></li>
+<li>Reenvío remoto (PR301): <code>ssh -R 0.0.0.0:1081:localhost:3000 mv-tunnel</code></li>
+<li>Proxy SOCKS: <code>ssh -D 1080 usuario@servidor</code></li>
+</ul>
+</div>
+<figure>
+  <img src="https://iximiuz.com/ssh-tunnels/ssh-tunnels.png" width="900"/>
+  <figcaption>Visualización: Tipos de túneles SSH – fuente: iximiuz.com</figcaption>
+</figure>
+
+<blockquote>
+<p><strong>Recursos de apoyo</strong></p>
+</blockquote>
+<figure style="width: 100%; margin: 0; padding: 0;">
+  <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe src="https://www.youtube.com/embed/AtuAdk4MwWw" title="SSH Tunneling Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+  </div>
+  <figcaption>Video tutorial: SSH Tunneling Explained - NetworkChuck (2021)</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title">Otros recursos recomendados</p>
+<ul>
+<li><strong>NetworkChuck - SSH Tunneling Explained</strong>: Explicación clara y profesional de los conceptos de SSH tunneling con ejemplos prácticos de port forwarding local y remoto.</li>
+<li><strong>LearnLinuxTV - SSH Port Forwarding</strong>: Tutorial detallado sobre port forwarding con casos de uso reales.</li>
+<li><strong>Corey Schafer - SSH Tutorial</strong>: Guía completa sobre SSH incluyendo tunneling, port forwarding y mejores prácticas de seguridad.</li>
+</ul>
+</div>
+<h4 id="clientes-ssh">Clientes SSH<a class="headerlink" href="#clientes-ssh" title="Permanent link">&para;</a></h4>
+<p>Podemos clasificarlos en: clientes gráficos y de consola.</p>
+<p><strong>1. Gráficos</strong></p>
+<ul>
+<li>Putty → El más utilizado</li>
+</ul>
+<figure>
+  <img src="imagenes/05/051/007.png" width="650"/>
+  <figcaption>Ejemplo Putty</figcaption>
+</figure>
+
+<p><strong>2. Terminal/Consola</strong></p>
+<ul>
+<li>CMD</li>
+<li>Los sistemas operativos <strong>LIKE-UNIX</strong> disponen de un cliente ssh en modo consola pre-instalado</li>
+</ul>
+<figure>
+  <img src="imagenes/05/051/008.png" width="950"/>
+  <figcaption>Ejemplo ssh preinstalado</figcaption>
+</figure>
+
+<div class="admonition example">
+<p class="admonition-title">Ejemplos comandos de uso cliente consola</p>
+<ul>
+<li>Conexión a una máquina remota: <code>ssh usuario@ejemplo.servidor.es</code></li>
+<li>Ejecutar una orden sin conectarse: <code>ssh ejemplo.servidor.es comando</code>  <code>ssh serdis.dis.ulpgc.es ls ./</code></li>
+</ul>
+</div>
+<h4 id="openssh">OpenSSH<a class="headerlink" href="#openssh" title="Permanent link">&para;</a></h4>
+<p><strong>OpenSSH</strong> es un conjunto de aplicaciones que permiten realizar comunicaciones cifradas a través de una red, usando el protocolo SSH. </p>
+<ul>
+<li>Fue creado como una alternativa libre y abierta al programa Secure Shell, que es software propietario. </li>
+<li>Se trata de un proyecto de <strong>código abierto y licencia libre</strong> para su utilización para cualquier propósito.</li>
+<li>Es compatible con los protocolos <strong>SSH1</strong> (No seguro) y <strong>SSH2</strong>.</li>
+<li>Está disponible para plataformas <strong>Gnu/linux</strong> y <strong>Windows</strong>, así como <strong>Unix</strong>, <strong>Mac</strong>, <strong>Solaris</strong> o <strong>AIX</strong></li>
+</ul>
+<figure>
+  <img src="imagenes/05/051/009.png" width="950"/>
+  <figcaption>Logo OpenSSH</figcaption>
+</figure>
+
+<h4 id="funcionalidades-adicionales">Funcionalidades adicionales<a class="headerlink" href="#funcionalidades-adicionales" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Permite la copia de archivos de la máquina local a la máquina remota o a la inversa mediante securecopy (SCP).</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ejemplos</p>
+<ul>
+<li>Transferir un archivo local a un sistema remoto: <code>scp archivo_local usuario@servidor: / archivo_remoto</code></li>
+<li>Transferir un archivo remoto a un sistema local: <code>scp usuario@servidor:/archivo_remoto /archivo_local</code>  </li>
+<li>Especificar múltiples archivos: <code>scp /dir_local/* usuario@servidor:/dir_remoto/</code></li>
+</ul>
+</div>
+<ul>
+<li>Incluye soporte completo para <strong>SFTP (SSHftp)</strong>: Sin embargo, se trata de un protocolo totalmente diferente a FTP, y está disponible a partir de la versión 2.5.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ejemplos</p>
+<ul>
+<li><code>sftp usuario1@servidor.dominio.es</code></li>
+<li>A continuación se ejecutarían comandos como: <strong>put, get, rm, ls, lpwd, ...</strong></li>
+</ul>
+</div>
+<h2 id="escritorio-remoto">Escritorio remoto<a class="headerlink" href="#escritorio-remoto" title="Permanent link">&para;</a></h2>
+<p>Se habla de escritorio remoto cuando un usuario se conecta a un equipo desde otro utilizando la red y además se conecta al entorno gráfico de este. Se suele utilizar para realizar administración remota del equipo. </p>
+<p>La mayoría de los sistemas operativos tienen incorporada alguna utilidad para la conexión en entorno gráfico de forma remota. En algunos casos, el usuario desde el equipo local controla el equipo remoto y el usuario de este puede ver lo que se está haciendo en él.</p>
+<p>Para esto se utilizan diferentes protocolos. Para cualquiera de ellos tendremos dos partes:</p>
+<ul>
+<li>La parte del servidor que se instalará en el equipo a controlar remotamente.</li>
+<li>La parte cliente, que se instala en el equipo local desde el que se quiere acceder al equipo remoto.</li>
+</ul>
+<p>Los protocolos que pueden usarse son:</p>
+<ul>
+<li><strong>RDP</strong>: protocolo de acceso a escritorio remoto (Remote Desktop Protocol). Se utiliza principalmente en Windows, aunque puede instalarse en Linux si la máquina que tiene este sistema operativo debe ser accedido por medio de escritorio remoto desde un equipo Windows.</li>
+<li><strong>VNC</strong>: (Virtual Network Computer): Se utiliza en distintas plataformas para proveer de un escritorio remoto a cualquier equipo.</li>
+</ul>
+<h3 id="escritorio-remoto-en-ubuntu-2404-con-xrdp">Escritorio remoto en Ubuntu 24.04 con xRDP<a class="headerlink" href="#escritorio-remoto-en-ubuntu-2404-con-xrdp" title="Permanent link">&para;</a></h3>
+<p><strong>xRDP</strong> es una implementación gratuita y de código abierto del servidor Microsoft RDP que permite que los sistemas operativos distintos de Microsoft Windows proporcionen una experiencia de escritorio remoto totalmente funcional y compatible con RDP.</p>
+<p>En Ubuntu 24.04, el proceso de instalación y configuración es similar a versiones anteriores, pero con algunas mejoras en la compatibilidad y estabilidad.</p>
+<ul>
+<li>Para instalar xRDP utilizaremos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xrdp<span class="w"> </span>-y
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Se añade el argumento <code>-y</code> para contestar automáticamente de manera afirmativa a cualquier pregunta que se nos haga durante la instalación. Es recomendable ejecutar <code>apt update</code> antes de instalar para asegurar que tenemos los paquetes más recientes.</p>
+</div>
+<ul>
+<li>Automáticamente se habrá iniciado el servicio, para comprobarlo se puede ejecutar el siguiente comando:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>xrdp
+</code></pre></div>
+<figure>
+  <img src="imagenes/05/052/001.png" width="950"/>
+  <figcaption>xRDP en ejecución</figcaption>
+</figure>
+
+<ul>
+<li>Cuando se instala xrdp, se crea también en el sistema una nueva cuenta de usuario llamada, precisamente, <code>xrdp</code>. Además, se crea un certificado SSL, en el archivo <code>ssl-cert-snakeoil.key</code>, dentro de la carpeta <code>/etc/ssl/private/</code>.</li>
+</ul>
+<p>A continuación, se debe añadir el usuario <code>xrdp</code> al grupo <code>ssl-cert</code> para lograr que el usuario pueda leer el certificado. Lo haremos con la siguiente orden:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>adduser<span class="w"> </span>xrdp<span class="w"> </span>ssl-cert
+</code></pre></div>
+<figure>
+  <img src="imagenes/05/052/002.png" width="950"/>
+  <figcaption>usuario xrdp al grupo ssl-cert</figcaption>
+</figure>
+
+<ul>
+<li>Un problema frecuente en Ubuntu 24.04 al usar el escritorio remoto desde otro equipo que no sea Ubuntu es encontrar la pantalla en negro o problemas con el entorno gráfico.</li>
+</ul>
+<p>Para resolverlo, debemos editar el archivo <code>/etc/xrdp/startwm.sh</code>. Primero, hacemos una copia de seguridad:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/xrdp/startwm.sh<span class="w"> </span>/etc/xrdp/startwm.sh.backup
+</code></pre></div>
+<p>Luego editamos el archivo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/xrdp/startwm.sh
+</code></pre></div>
+<figure>
+  <img src="imagenes/05/052/003.png" width="950"/>
+  <figcaption>edición /etc/xrdp/startwm.sh I</figcaption>
+</figure>
+
+<ul>
+<li>Hacia el final del archivo, antes de las líneas que ejecutan el gestor de ventanas, añadimos las siguientes líneas:</li>
+</ul>
+<figure>
+  <img src="imagenes/05/052/004.png" width="950"/>
+  <figcaption>edición /etc/xrdp/startwm.sh II</figcaption>
+</figure>
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">unset</span><span class="w"> </span>DBUS_SESSION_BUS_ADDRESS
+<span class="linenos" data-linenos="2 "></span><span class="nb">unset</span><span class="w"> </span>XDG_RUNTIME_DIR
+</code></pre></div>
+<figure>
+  <img src="imagenes/05/052/005.png" width="950"/>
+  <figcaption>edición /etc/xrdp/startwm.sh III</figcaption>
+</figure>
+
+<ul>
+<li>Después de guardar los cambios, reiniciamos el servicio xRDP:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>xrdp
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title"><strong>CONSEJO:</strong></p>
+<p>En Ubuntu 24.04, si utilizas el entorno de escritorio Wayland (por defecto en algunas instalaciones), es posible que necesites cambiar a X11 para que xRDP funcione correctamente. Puedes verificar tu sesión con <code>echo $XDG_SESSION_TYPE</code> y cambiar a X11 si es necesario.</p>
+</div>
+<h3 id="escritorio-remoto-en-windows-11">Escritorio remoto en Windows 11<a class="headerlink" href="#escritorio-remoto-en-windows-11" title="Permanent link">&para;</a></h3>
+<p>Para configurar el Escritorio Remoto en Windows 11 se deben realizar los siguientes pasos:</p>
+<ol>
+<li>Abrir la aplicación <strong>Configuración</strong> de Windows 11. Puedes hacerlo de varias formas:</li>
+</ol>
+<ul>
+<li>Presionar <code>Windows + I</code> (atajo de teclado)</li>
+<li>Hacer clic derecho en el botón <strong>Inicio</strong> y seleccionar <strong>Configuración</strong></li>
+<li>Buscar "Configuración" en el menú Inicio</li>
+</ul>
+<ol start="2">
+<li>En la ventana de Configuración, navegar a <strong>Sistema</strong> → <strong>Escritorio remoto</strong> (en el panel izquierdo).</li>
+</ol>
+<figure>
+  <img src="imagenes/05/052/006.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 11 I</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Se debe tener en cuenta que el escritorio remoto no está disponible en la versión Home de Windows 11, por lo que se necesita, como mínimo, una versión Pro, Enterprise o Education.</p>
+</div>
+<ol start="3">
+<li>En el panel derecho, encontrarás la opción <strong>Escritorio remoto</strong>. Activa el interruptor para habilitar el escritorio remoto.</li>
+</ol>
+<figure>
+  <img src="imagenes/05/052/007.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 11 II</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA:</strong></p>
+<p>Al activarlo, aparecerá información indicando que podrás acceder al escritorio de este equipo desde otro dispositivo, independientemente del sistema operativo que utilice. Windows 11 también mostrará el nombre del equipo y la dirección IP para facilitar la conexión.</p>
+</div>
+<ol start="4">
+<li>Como se trata de una situación potencialmente peligrosa desde el punto de vista de seguridad, el sistema puede mostrar una advertencia. Se debe confirmar la configuración si aparece algún mensaje de seguridad.</li>
+</ol>
+<figure>
+  <img src="imagenes/05/052/008.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 11 III</figcaption>
+</figure>
+
+<h4 id="anadir-los-usuarios-autorizados">Añadir los usuarios autorizados<a class="headerlink" href="#anadir-los-usuarios-autorizados" title="Permanent link">&para;</a></h4>
+<p>Una vez habilitado el escritorio remoto, más abajo en la misma ventana existe la opción para elegir, entre los usuarios definidos en el sistema, aquellos que podrán hacer uso del escritorio remoto.</p>
+<ul>
+<li>Haz clic en el botón <strong>Seleccionar usuarios que pueden tener acceso remoto a este equipo</strong>.</li>
+</ul>
+<figure>
+  <img src="imagenes/05/052/009.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 11 IV</figcaption>
+</figure>
+
+<ul>
+<li>Esto abrirá una nueva ventana con los usuarios que están habilitados en ese momento (como se acaba de activar, aún no hay ninguno). Aquí se puede añadir o quitar usuarios de la lista haciendo clic en <strong>Agregar...</strong> o <strong>Quitar</strong>.</li>
+</ul>
+<figure>
+  <img src="imagenes/05/052/010.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 11 V</figcaption>
+</figure>
+
+<ul>
+<li>Al hacer clic en <strong>Agregar...</strong>, se abrirá una nueva ventana que nos permitirá elegir el usuario o usuarios que necesitemos. Puedes escribir el nombre del usuario o buscar usuarios en el sistema.</li>
+</ul>
+<figure>
+  <img src="imagenes/05/052/011.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 11 VI</figcaption>
+</figure>
+
+<ul>
+<li>Si el sistema encuentra varios objetos que contienen el texto que se ha escrito, aparecerá una nueva ventana para elegir el que nos interese. Si solo hubiese existido un objeto, se saltaría este paso.</li>
+</ul>
+<figure>
+  <img src="imagenes/05/052/012.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 11 VII</figcaption>
+</figure>
+
+<ul>
+<li>Una vez seleccionado, se volverá a la ventana anterior, donde verás que se ha reconocido correctamente el usuario (se muestra el nombre completo de la cuenta, incluyendo el nombre del equipo en formato NetBIOS).</li>
+</ul>
+<figure>
+  <img src="imagenes/05/052/013.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 11 VIII</figcaption>
+</figure>
+
+<ul>
+<li>Al cerrar la ventana de selección de usuarios, volverás a la ventana anterior, donde ahora se observa que la cuenta de usuario ya aparece en la lista de usuarios autorizados.</li>
+</ul>
+<p>Como es lógico, se puede repetir el proceso tantas veces como necesitemos para añadir más usuarios.</p>
+<figure>
+  <img src="imagenes/05/052/014.png" width="950"/>
+  <figcaption>Configuración Escritorio Remoto Windows 11 IX</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>CONSEJO:</strong></p>
+<p>En Windows 11, también puedes acceder a la configuración del escritorio remoto mediante el Panel de Control clásico: <code>Panel de Control</code> → <code>Sistema</code> → <code>Configuración avanzada del sistema</code> → pestaña <code>Remoto</code>. Sin embargo, el método a través de la aplicación Configuración es el recomendado en Windows 11.</p>
+</div>
+<h2 id="activacion-del-escritorio-remoto-por-powershell">Activación del Escritorio Remoto por PowerShell<a class="headerlink" href="#activacion-del-escritorio-remoto-por-powershell" title="Permanent link">&para;</a></h2>
+<p>Además de activar el Escritorio Remoto desde la interfaz gráfica, es posible habilitar esta característica y configurar permisos a través de comandos de PowerShell. Esto resulta útil para administradores o para automatizar despliegues en varios equipos.</p>
+<h3 id="habilitar-el-escritorio-remoto">Habilitar el Escritorio Remoto<a class="headerlink" href="#habilitar-el-escritorio-remoto" title="Permanent link">&para;</a></h3>
+<p>Para habilitar el escritorio remoto desde PowerShell (ejecutar como <strong>Administrador</strong>):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Habilitar Escritorio Remoto</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="s2">&quot;HKLM:\System\CurrentControlSet\Control\Terminal Server&quot;</span> <span class="n">-Name</span> <span class="s2">&quot;fDenyTSConnections&quot;</span> <span class="n">-Value</span> <span class="n">0</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># (Opcional) Permitir el tráfico de Escritorio Remoto en el firewall de Windows</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Enable-NetFirewallRule</span> <span class="n">-DisplayGroup</span> <span class="s2">&quot;Remote Desktop&quot;</span>
+</code></pre></div>
+<h3 id="permitir-usuarios-al-escritorio-remoto">Permitir usuarios al Escritorio Remoto<a class="headerlink" href="#permitir-usuarios-al-escritorio-remoto" title="Permanent link">&para;</a></h3>
+<p>Por defecto, solo los miembros del grupo <strong>Administradores</strong> pueden conectarse por Escritorio Remoto. Para añadir un usuario concreto (por ejemplo, <code>usuario1</code>) al grupo apropiado:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Añadir usuario1 al grupo de usuarios de escritorio remoto</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Add-LocalGroupMember</span> <span class="n">-Group</span> <span class="s2">&quot;Remote Desktop Users&quot;</span> <span class="n">-Member</span> <span class="s2">&quot;usuario1&quot;</span>
+</code></pre></div>
+<p>Cambia <code>"usuario1"</code> por el nombre de la cuenta que desees autorizar.</p>
+<h3 id="verificar-el-estado-del-escritorio-remoto">Verificar el estado del Escritorio Remoto<a class="headerlink" href="#verificar-el-estado-del-escritorio-remoto" title="Permanent link">&para;</a></h3>
+<p>Para comprobar si el Escritorio Remoto está habilitado:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Devuelve 0 si está habilitado, 1 si está deshabilitado</span>
+<span class="linenos" data-linenos="2 "></span><span class="p">(</span><span class="nb">Get-ItemProperty</span> <span class="n">-Path</span> <span class="s2">&quot;HKLM:\System\CurrentControlSet\Control\Terminal Server&quot;</span><span class="p">).</span><span class="n">fDenyTSConnections</span>
+</code></pre></div>
+<p>Si deseas desactivar el Escritorio Remoto, ejecuta:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="s2">&quot;HKLM:\System\CurrentControlSet\Control\Terminal Server&quot;</span> <span class="n">-Name</span> <span class="s2">&quot;fDenyTSConnections&quot;</span> <span class="n">-Value</span> <span class="n">1</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Recuerda</p>
+<p>Si la máquina está en una red no confiable o pública, <strong>asegúrate de reforzar la seguridad</strong>:
+- Usa contraseñas fuertes.
+- Cambia el puerto por defecto si es necesario.
+- Limita el acceso en el firewall únicamente a IPs autorizadas.</p>
+</div>
+<p>De este modo, podrás gestionar de forma remota la activación y configuración del Escritorio Remoto en sistemas Windows utilizando comandos automatizables.</p>
+<!-- ### RemoteApp
+
+**RemoteApp** permite que los programas a los que se obtiene acceso de forma remota mediante **Servicios de Escritorio remoto** aparezcan **como si se ejecutaran en el equipo local del usuario final**. Estos programas se conocen como `Programas RemoteApp`. Características:
+
+- En lugar de presentarse al usuario en el escritorio del servidor de Host de sesión de Escritorio remoto, el Programa **RemoteApp** se integra en el escritorio del cliente.
+- El Programa **RemoteApp** se ejecuta en su propia ventana ajustable, se puede arrastrar de un monitor a otro y dispone de una entrada propia en la barra de tareas.
+- Si un usuario ejecuta más de un Programa **RemoteApp** en el mismo servidor de Host de sesión de Escritorio remoto, el programa **RemoteApp** compartirá la misma sesión de Servicios de Escritorio remoto.
+
+**RemoteApp** puede reducir la complejidad y la carga administrativa en muchas situaciones, incluidas las siguientes:
+
+1. Sucursales donde puede haber un soporte local de IT limitado y un ancho de banda de red limitado. 
+2. Situaciones en las que los usuarios necesitan obtener acceso a programas de forma remota. 
+3. Implementación de programas de línea de negocios (LOB), especialmente programas LOB personalizados. 
+4. Entornos como los espacios de trabajo "hot desk" o "hoteling", en los que los usuarios no tienen equipos asignados. 
+5. Implementación de múltiples versiones de un programa, especialmente si la instalación de varias versiones localmente puede ocasionar conflictos. -->
+
+<h2 id="herramientas-graficas-externas-para-la-administracion-remota">Herramientas gráficas externas para la administración remota<a class="headerlink" href="#herramientas-graficas-externas-para-la-administracion-remota" title="Permanent link">&para;</a></h2>
+<h3 id="realvnc">RealVNC<a class="headerlink" href="#realvnc" title="Permanent link">&para;</a></h3>
+<figure style="float: right;">
+    <img src="imagenes/05/053/002.png" width="300"/>
+</figure>
+
+<p>Uno de los productos que está diseñado para todas las plataformas más importantes es Real VNC.</p>
+<ul>
+<li><strong>VNC</strong>: Virtual Network Computing (Computación Virtual en Red). </li>
+<li><strong>VNC es un programa de software libre</strong> basado en una estructura cliente-servidor que permite observar las acciones del ordenador servidor remotamente a través de un ordenador cliente.</li>
+<li>Como su nombre indica, se basa en este protocolo.</li>
+<li>Podemos encontrar más aplicaciones que utilicen <strong>VNC</strong> para control remoto, pero esta es una de las más utilizada. </li>
+<li>Hay desde una versión gratuita hasta una de empresa. Esta última incorpora más seguridad, y más utilidades, como por ejemplo, la transferencia de archivos.</li>
+</ul>
+<figure>
+  <img src="imagenes/05/053/001.png" width="650"/>
+  <figcaption>RealVNC viewer</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>DESCARGA</strong></p>
+<p><a href="https://www.realvnc.com/es/connect/download/vnc/">Descarga RealVNC</a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><strong>RealVNC en Linux</strong></p>
+<p><a href="https://help.realvnc.com/hc/en-us/articles/360003474572-How-do-I-get-started-with-VNC-Connect-on-Linux-#setting-up-your-account-0-0">Guía RealVNC en Linux</a></p>
+</div>
+<h3 id="teamviewer">TeamViewer<a class="headerlink" href="#teamviewer" title="Permanent link">&para;</a></h3>
+<p><strong>TeamViewer</strong> es un software para el acceso remoto, así como para el control y el soporte en remoto de ordenadores y otros dispositivos finales.</p>
+<ul>
+<li>La plataforma fue lanzada al público en <strong>2005</strong></li>
+<li>Su catálogo de servicios se ha ido ampliando de forma continua.</li>
+<li>La última innovación ha sido la integración de <strong>TeamViewer</strong> Meeting.</li>
+<li><strong>TeamViewer</strong> no exige registrarse y es gratuito si se utiliza con fines no comerciales, lo cual ha ayudado a una mayor difusión del software.</li>
+<li><strong>TeamViewer</strong> es el producto principal de la empresa homónima con sede en <strong>Göppingen, Alemania</strong>.</li>
+</ul>
+<figure>
+  <img src="imagenes/05/053/003.png" width="850"/>
+  <figcaption>TeamViewer APP</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>DESCARGA</strong></p>
+<p><a href="https://www.teamviewer.com/es/descarga/linux/">Descarga <strong>TeamViewer</strong></a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><strong>TeamViewer en Linux</strong></p>
+<p><a href="https://community.teamviewer.com/English/kb/articles/45-install-teamviewer-on-ubuntu">Guía instalación TeamViewer en Linux</a></p>
+</div>
+<h3 id="anydesk">AnyDesk<a class="headerlink" href="#anydesk" title="Permanent link">&para;</a></h3>
+<figure style="float: right;">
+    <img src="imagenes/05/053/005.png" width="300"/>
+</figure>
+
+<p><strong>AnyDesk</strong> es un programa de software de escritorio remoto desarrollado por <strong>AnyDesk Software GmbH en Stuttgart</strong>, Alemania.</p>
+<ul>
+<li>Provee acceso remoto bidireccional entre computadoras personales y está disponible para todos los sistemas operativos comunes.</li>
+<li>El software ha estado en desarrollo activo desde 2012.</li>
+<li>Esta herramienta permite el acceso remoto bidireccional de los usuarios a través de sus computadores.</li>
+<li><strong>AnyDesk</strong> es un software multiplataforma, es decir, puede manejarse desde diferentes sistemas: Windows, Linux, OS X, Android entre otros.</li>
+</ul>
+<figure>
+  <img src="imagenes/05/053/004.png" width="850"/>
+  <figcaption>Ejemplo Anydesk APP</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>DESCARGA</strong></p>
+<p><a href="https://anydesk.com/es/downloads/linux">Descarga <strong>AnyDesk</strong></a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><strong>AnyDesk en Linux</strong></p>
+<p><a href="https://ubunlog.com/anydesk-escritorio-remoto-ubuntu-20-04/?utm_source=feedburner&amp;utm_medium=%24%7Bfeed%2C+email%7D&amp;utm_campaign=Feed%3A+%24%7BUbunlog%7D+%28%24%7BUbunlog%7D%29">Guía instalación AnyDesk en Linux</a> (Nota: La guía es para Ubuntu 20.04, pero el proceso es similar en Ubuntu 24.04)</p>
+</div>
+<h3 id="apache-guacamole">Apache Guacamole<a class="headerlink" href="#apache-guacamole" title="Permanent link">&para;</a></h3>
+<figure style="float: right;">
+    <img src="imagenes/05/053/007.png" width="250"/>
+</figure>
+
+<p><strong>Apache Guacamole</strong> es una puerta de enlace de escritorio remoto multiplataforma de código abierto y gratuita mantenida por <strong>Apache Software Foundation</strong>. </p>
+<ul>
+<li>Permite a un usuario tomar el control de una computadora remota o máquina virtual a través de un navegador web.</li>
+<li>Apache Guacamole es una puerta de enlace de escritorio remoto <strong>sin cliente</strong>. Lo llamamos sin cliente porque no se requieren complementos ni aplicación cliente.</li>
+<li>Admite protocolos estándar como VNC, RDP y SSH.</li>
+<li>Gracias a HTML5, una vez que Guacamole está instalado en un servidor, todo lo que necesita para acceder a sus escritorios es un navegador web.</li>
+</ul>
+<figure>
+  <img src="imagenes/05/053/006.png" width="850"/>
+  <figcaption>Arquitectura Apache Guacamole</figcaption>
+</figure>
+
+<!-- !!! note "**MUY INTERESANTE PARA PROYECTO FINAL**"
+    Se puede plantear el despliegue de esta tecnología usando docker, ldap, proxy inverso, ... -->
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>DESCARGA</strong></p>
+<p><a href="https://guacamole.apache.org/releases/">Descarga <strong>Apache Guacamole</strong></a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><strong>Guía Apache Guacamole</strong></p>
+<p><a href="https://guacamole.apache.org/doc/gug/">Manuales y guía de despliegues con <strong>Apache Guacamole</strong></a> </p>
+</div>
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<hr />
+<p><a name="PR301"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>PR301. Práctica: Túneles SSH con Docker</strong>. (RA.4 // CE4a, CE4c, CE4d, CE4e, CE4h y CE4i // 1-10p). </li>
+</ul>
+<p>En esta práctica aprenderás a configurar un <strong>túnel SSH</strong> utilizando un contenedor Docker especializado. El objetivo es exponer servicios locales (por ejemplo, un servidor web o backend en tu máquina) de forma segura a través de la red local, usando SSH y una máquina virtual que simula un servidor VPS. </p>
+<div class="admonition note">
+<p class="admonition-title">Entorno educativo</p>
+<p>Esta práctica se ha diseñado específicamente para su utilización en entornos educativos donde no se cuenta con un VPS real que disponga de una IP pública.</p>
+</div>
+<blockquote>
+<p><strong>Resumen de tareas</strong></p>
+</blockquote>
+<ul>
+<li><strong>Prepara una máquina virtual</strong> con Ubuntu 24.04 que actuará como VPS simulado en tu red local.</li>
+<li><strong>Configura un servidor SSH en Docker</strong> sobre la máquina virtual siguiendo las instrucciones detalladas.</li>
+<li><strong>Genera las claves SSH</strong> en tu máquina host y configura el acceso al contenedor.</li>
+<li><strong>Configura el cliente SSH</strong> en tu equipo para crear un túnel seguro a la máquina virtual.</li>
+<li><strong>Crea túneles con port-forwarding</strong> (<code>ssh -R ...</code>) para exponer uno o varios servicios locales.</li>
+<li><strong>Verifica la conectividad</strong> accediendo a los servicios desde otras máquinas en la red local.</li>
+<li><strong>Documenta el proceso</strong>, mostrando la arquitectura, pasos realizados (indicando qué se hace en cada máquina), comandos utilizados y capturas de pantalla de la funcionalidad.</li>
+</ul>
+<blockquote>
+<p><strong>Criterios de evaluación</strong></p>
+</blockquote>
+<ul>
+<li>Configuración correcta de la máquina virtual y del contenedor Docker.</li>
+<li>Configuración correcta y segura del servidor SSH en Docker.</li>
+<li>Funcionamiento de los túneles SSH y exposición de servicios a través de la red local.</li>
+<li>Explicación clara del funcionamiento del port-forwarding y cómo tuneliza los puertos.</li>
+<li>Documentación completa de la arquitectura y pasos seguidos con evidencias, indicando claramente qué se ejecuta en cada máquina (host vs. MV).</li>
+</ul>
+<blockquote>
+<p>Consulta el enunciado completo y detallado aquí:<br />
+<a href="PracticaSSHtunnelingDocker.html">Práctica: Configuración de túnel SSH con Docker</a></p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Entorno educativo: VPS simulado con máquina virtual</p>
+<p>En esta práctica utilizaremos una <strong>máquina virtual (MV)</strong> que simula un <strong>VPS</strong> (<em>Virtual Private Server</em>). Un VPS real es una máquina virtual con recursos propios (CPU, RAM, disco, sistema operativo y acceso root), que funciona de forma aislada y gestionable en un servidor físico compartido, accesible desde Internet con una IP pública. En nuestro caso, la MV actúa como VPS simulado dentro de nuestra red local, permitiéndonos experimentar y comprender los conceptos de túneles SSH y port-forwarding sin necesidad de un VPS real. Los conceptos aprendidos son directamente aplicables a escenarios reales con VPS en Internet.</p>
+</div>
+<hr />
+<!-- 801. [Práctica Configuración Servidor SSH](Practica11_configuración_servidor_openssh.md)
+
+1.   Instala y configura xRDP en Ubuntu 24.04, comprueba que puedes acceder por escritorio remoto al Ubuntu desde Windows 11, haz una guía de configuración con los pasos para poder acceder y captura que demuestre que se ha accedido.
+
+2.   Instala y configura RDP en Windows 11, comprueba que puedes acceder por escritorio remoto del mismo desde Ubuntu, haz una guía de configuración con los pasos para poder acceder y captura que demuestre que se ha accedido.
+
+3.   [Instalación de Servidor de Aplicaciones RemoteApp](./Practicas/Practica12_RemoteAppTS.md) -->
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="02PowerShell.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 2.- PowerShell">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                2.- PowerShell
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>
