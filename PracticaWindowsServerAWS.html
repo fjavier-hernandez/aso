@@ -1,0 +1,1438 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/PracticaWindowsServerAWS.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Práctica: Acceso remoto a Windows Server en AWS Academy - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Práctica: Acceso remoto a Windows Server en AWS Academy - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaWindowsServerAWS.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/PracticaWindowsServerAWS.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Práctica: Acceso remoto a Windows Server en AWS Academy - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaWindowsServerAWS.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-acceso-remoto-a-windows-server-en-aws-academy" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Práctica: Acceso remoto a Windows Server en AWS Academy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03AccesoRemoto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.- Servicios de acceso remoto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos previos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-el-cloud-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es el Cloud Computing?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-academy" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Academy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escritorio-remoto-rdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escritorio Remoto (RDP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-0-acceso-a-aws-academy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 0: Acceso a AWS Academy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 0: Acceso a AWS Academy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-registro-en-aws-academy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Registro en AWS Academy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-acceso-al-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Acceso al laboratorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-iniciar-el-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Iniciar el laboratorio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-crear-una-instancia-de-windows-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Crear una instancia de Windows Server
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 1: Crear una instancia de Windows Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-acceder-a-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Acceder a EC2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lanzar-una-instancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Lanzar una instancia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configurar-la-instancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configurar la instancia
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configurar la instancia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-nombre-de-la-instancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Nombre de la instancia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-seleccionar-la-ami-imagen" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Seleccionar la AMI (Imagen)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-tipo-de-instancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Tipo de instancia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-par-de-claves" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Par de claves
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-configuracion-de-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5. Configuración de red
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-grupo-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6. Grupo de seguridad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7. Almacenamiento
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-lanzar-la-instancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Lanzar la instancia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-obtener-la-contrasena-de-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Obtener la contraseña de Windows
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2: Obtener la contraseña de Windows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-esperar-a-que-la-instancia-este-en-ejecucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Esperar a que la instancia esté en ejecución
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-obtener-la-contrasena-del-administrador" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Obtener la contraseña del administrador
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-conectar-mediante-rdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Conectar mediante RDP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 3: Conectar mediante RDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-obtener-la-ip-publica" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Obtener la IP pública
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-conectar-desde-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Conectar desde Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-conectar-desde-macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Conectar desde macOS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-conectar-desde-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Conectar desde Linux
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-verificar-el-acceso-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Verificar el acceso remoto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 4: Verificar el acceso remoto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificaciones-basicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificaciones básicas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-detener-y-terminar-instancias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5: Detener y terminar instancias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 5: Detener y terminar instancias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detener-una-instancia-para-ahorrar-creditos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detener una instancia (para ahorrar créditos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminar-una-instancia-eliminar-permanentemente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terminar una instancia (eliminar permanentemente)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="practica-acceso-remoto-a-windows-server-en-aws-academy">Práctica: Acceso remoto a Windows Server en AWS Academy<a class="headerlink" href="#practica-acceso-remoto-a-windows-server-en-aws-academy" title="Permanent link">&para;</a></h1>
+<h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
+<p>Durante esta práctica aprenderás a crear y configurar una instancia de <strong>Windows Server</strong> en <strong>AWS Academy</strong> y acceder a ella mediante <strong>Escritorio Remoto (RDP)</strong>. El objetivo es familiarizarte con la computación en la nube, la creación de máquinas virtuales en AWS y la configuración de acceso remoto mediante RDP.</p>
+<p>Al finalizar esta práctica serás capaz de:</p>
+<ul>
+<li>Comprender los conceptos básicos de <strong>computación en la nube</strong> y los tipos de servicios (IaaS, PaaS, SaaS).</li>
+<li>Utilizar <strong>AWS Academy</strong> para crear y gestionar instancias de Windows Server.</li>
+<li>Configurar una instancia de <strong>Windows Server 2025</strong> en AWS EC2.</li>
+<li>Configurar <strong>grupos de seguridad</strong> para permitir el acceso RDP.</li>
+<li>Acceder remotamente a Windows Server mediante <strong>RDP (Remote Desktop Protocol)</strong>.</li>
+<li>Documentar el proceso completo de configuración y acceso remoto.</li>
+</ul>
+<h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
+<p>Antes de comenzar, asegúrate de tener:</p>
+<ul>
+<li><strong>Acceso a AWS Academy</strong> a través de Canvas o la plataforma educativa proporcionada por tu centro.</li>
+<li><strong>Cuenta de estudiante</strong> activa en AWS Academy Learner Lab.</li>
+<li><strong>Cliente RDP</strong> instalado en tu máquina local:</li>
+<li><strong>Windows</strong>: Escritorio Remoto (incluido por defecto)</li>
+<li><strong>macOS</strong>: Microsoft Remote Desktop (descarga desde App Store)</li>
+<li><strong>Linux</strong>: Remmina, Vinagre o <code>rdesktop</code></li>
+<li><strong>Navegador web</strong> actualizado (Chrome, Firefox, Edge, Safari).</li>
+<li><strong>Conexión a Internet</strong> estable.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota importante</p>
+<p>AWS Academy Learner Lab proporciona créditos limitados y tiempo de uso restringido. Asegúrate de <strong>detener las instancias</strong> cuando no las uses para no consumir créditos innecesariamente.</p>
+</div>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<h3 id="que-es-el-cloud-computing">¿Qué es el Cloud Computing?<a class="headerlink" href="#que-es-el-cloud-computing" title="Permanent link">&para;</a></h3>
+<p>El <strong>Cloud Computing</strong> (computación en la nube) se define como la entrega de servicios, plataformas, aplicaciones y otros procesos a través de Internet mediante un modelo de <strong>pago por uso</strong>.</p>
+<p><strong>Beneficios de la informática en la nube:</strong></p>
+<ul>
+<li><strong>Agilidad</strong>: Permite implementar recursos rápidamente.</li>
+<li><strong>Elasticidad</strong>: Escala recursos según la demanda.</li>
+<li><strong>Ahorro de costos</strong>: Solo pagas por lo que usas.</li>
+<li><strong>Implementación global</strong>: Despliega aplicaciones a nivel mundial en minutos.</li>
+</ul>
+<p><strong>Tipos de informática en la nube:</strong></p>
+<ul>
+<li><strong>IaaS (Infrastructure as a Service)</strong>: Infraestructura como servicio (ej: EC2, máquinas virtuales).</li>
+<li><strong>PaaS (Platform as a Service)</strong>: Plataforma como servicio (ej: servicios de desarrollo).</li>
+<li><strong>SaaS (Software as a Service)</strong>: Software como servicio (ej: aplicaciones web).</li>
+</ul>
+<h3 id="aws-academy">AWS Academy<a class="headerlink" href="#aws-academy" title="Permanent link">&para;</a></h3>
+<p><strong>AWS Academy</strong> es una plataforma educativa que proporciona acceso a recursos de AWS para estudiantes y educadores. A través de <strong>AWS Academy Learner Lab</strong>, los estudiantes pueden crear y gestionar recursos de AWS en un entorno controlado y con créditos educativos.</p>
+<p>En esta práctica utilizaremos AWS Academy para crear una instancia de Windows Server 2025 y acceder a ella mediante RDP.</p>
+<h3 id="escritorio-remoto-rdp">Escritorio Remoto (RDP)<a class="headerlink" href="#escritorio-remoto-rdp" title="Permanent link">&para;</a></h3>
+<p><strong>RDP (Remote Desktop Protocol)</strong> es un protocolo propietario desarrollado por Microsoft que permite el acceso remoto a escritorios y aplicaciones en sistemas Windows. Utiliza el <strong>puerto 3389</strong> por defecto y proporciona una experiencia de escritorio remoto completa.</p>
+<h2 id="paso-0-acceso-a-aws-academy">Paso 0: Acceso a AWS Academy<a class="headerlink" href="#paso-0-acceso-a-aws-academy" title="Permanent link">&para;</a></h2>
+<h3 id="1-registro-en-aws-academy">1. Registro en AWS Academy<a class="headerlink" href="#1-registro-en-aws-academy" title="Permanent link">&para;</a></h3>
+<p>Si has recibido una invitación por correo electrónico para participar en una clase de AWS Academy:</p>
+<ol>
+<li><strong>Abre el correo electrónico</strong> de invitación de AWS Academy.</li>
+<li><strong>Haz clic en el enlace</strong> para registrarte en Canvas (si no tienes cuenta) o inicia sesión si ya tienes una.</li>
+<li><strong>Completa el registro</strong> proporcionando:</li>
+</ol>
+<ul>
+<li>Login (nombre de usuario)</li>
+<li>Password (contraseña)</li>
+<li>Time Zone (zona horaria, por ejemplo: Madrid +01:00/+02:00)</li>
+</ul>
+<figure>
+  <img src="imagenes/05/054/001_registro_canvas.png" width="950"/>
+  <figcaption>Registro en Canvas para AWS Academy</figcaption>
+</figure>
+
+<h3 id="2-acceso-al-laboratorio">2. Acceso al laboratorio<a class="headerlink" href="#2-acceso-al-laboratorio" title="Permanent link">&para;</a></h3>
+<p>Una vez registrado:</p>
+<ol>
+<li><strong>Accede a Canvas</strong> y entra en el curso "AWS Academy Learner Lab".</li>
+<li><strong>Navega a Contenidos</strong> y busca el módulo "Lanzamiento del Laboratorio para el alumnado de AWS Academy".</li>
+<li><strong>Haz clic en "Lanzamiento del Laboratorio"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/05/054/002_contenidos_lab.png" width="950"/>
+  <figcaption>Acceso al laboratorio desde Canvas</figcaption>
+</figure>
+
+<h3 id="3-iniciar-el-laboratorio">3. Iniciar el laboratorio<a class="headerlink" href="#3-iniciar-el-laboratorio" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Acepta las condiciones</strong> del laboratorio si aparece algún aviso.</li>
+<li><strong>Haz clic en "Start Lab"</strong> para iniciar el laboratorio.</li>
+<li><strong>Espera a que el estado cambie a verde</strong> (normalmente tarda 1-2 minutos).</li>
+<li><strong>Haz clic en "AWS"</strong> para acceder a la consola de AWS.</li>
+</ol>
+<figure>
+  <img src="imagenes/05/054/003_start_lab.png" width="950"/>
+  <figcaption>Inicio del laboratorio AWS Academy</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p>El laboratorio tiene un tiempo limitado (normalmente 4 horas). Cuando termine, deberás iniciarlo de nuevo. Los recursos creados se eliminarán automáticamente al finalizar el laboratorio.</p>
+</div>
+<h2 id="paso-1-crear-una-instancia-de-windows-server">Paso 1: Crear una instancia de Windows Server<a class="headerlink" href="#paso-1-crear-una-instancia-de-windows-server" title="Permanent link">&para;</a></h2>
+<h3 id="1-acceder-a-ec2">1. Acceder a EC2<a class="headerlink" href="#1-acceder-a-ec2" title="Permanent link">&para;</a></h3>
+<p>Una vez en la consola de AWS:</p>
+<ol>
+<li><strong>Busca "EC2"</strong> en la barra de búsqueda de servicios.</li>
+<li><strong>Haz clic en "EC2"</strong> para acceder al servicio de Elastic Compute Cloud.</li>
+</ol>
+<figure>
+  <img src="imagenes/05/054/004_buscar_ec2.png" width="950"/>
+  <figcaption>Búsqueda del servicio EC2 en AWS</figcaption>
+</figure>
+
+<h3 id="2-lanzar-una-instancia">2. Lanzar una instancia<a class="headerlink" href="#2-lanzar-una-instancia" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En el panel de EC2, <strong>haz clic en "Instancias"</strong> en el menú lateral.</li>
+<li><strong>Haz clic en "Lanzar instancia"</strong> (Launch instance).</li>
+</ol>
+<figure>
+  <img src="imagenes/05/054/005_lanzar_instancia.png" width="950"/>
+  <figcaption>Lanzar instancia en el servicio EC2 en AWS</figcaption>
+</figure>
+
+<h3 id="3-configurar-la-instancia">3. Configurar la instancia<a class="headerlink" href="#3-configurar-la-instancia" title="Permanent link">&para;</a></h3>
+<p>Sigue estos pasos para configurar la instancia:</p>
+<h4 id="31-nombre-de-la-instancia">3.1. Nombre de la instancia<a class="headerlink" href="#31-nombre-de-la-instancia" title="Permanent link">&para;</a></h4>
+<ol>
+<li>En el campo <strong>"Nombre"</strong>, introduce un nombre descriptivo, por ejemplo: <code>Servidor Windows 2025</code>.</li>
+</ol>
+<h4 id="32-seleccionar-la-ami-imagen">3.2. Seleccionar la AMI (Imagen)<a class="headerlink" href="#32-seleccionar-la-ami-imagen" title="Permanent link">&para;</a></h4>
+<ol>
+<li>En <strong>"Imagen de aplicación y sistema operativo (AMI)"</strong>, busca y selecciona <strong>"Windows Server 2025 Base"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/05/054/006_nombre_instancia.png" width="950"/>
+  <figcaption>Nombre de la instancia y Selección del OS</figcaption>
+</figure>
+
+<h4 id="33-tipo-de-instancia">3.3. Tipo de instancia<a class="headerlink" href="#33-tipo-de-instancia" title="Permanent link">&para;</a></h4>
+<ol>
+<li>En <strong>"Tipo de instancia"</strong>, selecciona <strong>t3.large</strong>:</li>
+</ol>
+<ul>
+<li><strong>2 vCPU</strong></li>
+<li><strong>8 GiB de memoria RAM</strong></li>
+<li>Adecuado para prácticas y pruebas</li>
+</ul>
+<!-- 
+<figure>
+  <img src="imagenes/05/054/005_lanzar_instancia.png" width="950"/>
+  <figcaption>Lanzamiento de una nueva instancia EC2</figcaption>
+</figure> -->
+
+<div class="admonition note">
+<p class="admonition-title">Nota sobre tipos de instancia</p>
+<ul>
+<li><strong>t3.micro</strong>: 1 vCPU, 1 GiB RAM - Gratis en plan gratuito, pero puede ser lento para Windows Server.</li>
+<li><strong>t3.small</strong>: 1 vCPU, 2 GiB RAM - Mínimo recomendado para Windows Server.</li>
+<li><strong>t3.medium</strong>: 2 vCPU, 4 GiB RAM - Adecuado para pruebas básicas.</li>
+<li><strong>t3.large</strong>: 2 vCPU, 8 GiB RAM - Recomendado para prácticas (el que usaremos).</li>
+</ul>
+</div>
+<h4 id="34-par-de-claves">3.4. Par de claves<a class="headerlink" href="#34-par-de-claves" title="Permanent link">&para;</a></h4>
+<ol>
+<li>En <strong>"Par de claves (inicio de sesión)"</strong>, selecciona un par de claves existente o crea uno nuevo.</li>
+<li>Si usas la clave por defecto <strong>"vockey"</strong>, puedes utilizarla.</li>
+<li>Si prefieres crear una nueva:</li>
+</ol>
+<ul>
+<li><strong>Haz clic en "Crear un nuevo par de claves"</strong></li>
+<li>Introduce un nombre (ej: <code>estudiante2</code>)</li>
+<li><strong>Descarga la clave privada</strong> (.pem) y guárdala en un lugar seguro</li>
+</ul>
+<figure>
+  <img src="imagenes/05/054/009_par_claves.png" width="950"/>
+  <figcaption>Configuración del par de claves SSH</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Importante para Windows</p>
+<p>Para instancias de Windows, el par de claves se utiliza para <strong>descifrar la contraseña del administrador</strong>. Necesitarás la clave privada (.pem) para obtener la contraseña inicial de Windows.</p>
+</div>
+<h4 id="35-configuracion-de-red">3.5. Configuración de red<a class="headerlink" href="#35-configuracion-de-red" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Haz clic en "Editar"</strong> en la sección "Configuraciones de red".</li>
+<li>En <strong>"Subred"</strong>, selecciona una subred disponible (por ejemplo, la primera de la lista).</li>
+<li>Asegúrate de que <strong>"Asignar dirección IP pública"</strong> esté habilitado.</li>
+</ol>
+<h4 id="36-grupo-de-seguridad">3.6. Grupo de seguridad<a class="headerlink" href="#36-grupo-de-seguridad" title="Permanent link">&para;</a></h4>
+<ol>
+<li>En <strong>"Grupo de seguridad"</strong>, crea un nuevo grupo de seguridad:</li>
+</ol>
+<ul>
+<li><strong>Nombre</strong>: <code>SeguridadServidor</code> (o el que prefieras)</li>
+<li><strong>Descripción</strong>: "Grupo de seguridad para servidor Windows con RDP"</li>
+</ul>
+<ol start="2">
+<li><strong>Añade reglas de entrada</strong>:</li>
+</ol>
+<ul>
+<li><strong>RDP (3389)</strong>: Permite el acceso desde tu IP o desde cualquier lugar (0.0.0.0/0) para pruebas.</li>
+<li><strong>Permitir tráfico desde la red privada</strong>: Añade una regla que permita el acceso entrante desde el rango de IPs de tu red privada (por ejemplo, <code>10.0.0.0/16</code> o el bloque CIDR que utiliza tu VPC/AWS).</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Mejores prácticas de seguridad</p>
+<p>En producción, <strong>nunca</strong> deberías permitir RDP desde <code>0.0.0.0/0</code> (cualquier IP). En su lugar:</p>
+<ul>
+<li>Permite RDP solo desde tu IP específica.</li>
+<li>O utiliza una VPN o bastion host.</li>
+<li>Para prácticas educativas, puedes usar <code>0.0.0.0/0</code> temporalmente.</li>
+</ul>
+</div>
+<figure>
+  <img src="imagenes/05/054/010_configuracion_red.png" width="950"/>
+  <figcaption>Configuración de red, subred y grupo de seguridad.</figcaption>
+</figure>
+
+<h4 id="37-almacenamiento">3.7. Almacenamiento<a class="headerlink" href="#37-almacenamiento" title="Permanent link">&para;</a></h4>
+<ol>
+<li>En <strong>"Configurar Almacenamiento"</strong>, configura:</li>
+</ol>
+<ul>
+<li><strong>Tamaño</strong>: 40 GiB (mínimo recomendado para Windows Server)</li>
+<li><strong>Tipo de volumen</strong>: gp3 (SSD de propósito general)</li>
+</ul>
+<figure>
+  <img src="imagenes/05/054/012_almacenamiento.png" width="950"/>
+  <figcaption>Configuración del grupo de seguridad</figcaption>
+</figure>
+
+<h3 id="4-lanzar-la-instancia">4. Lanzar la instancia<a class="headerlink" href="#4-lanzar-la-instancia" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Revisa la configuración</strong> en el resumen a la derecha.</li>
+<li><strong>Haz clic en "Lanzar instancia"</strong> (Launch instance).</li>
+</ol>
+<figure>
+  <img src="imagenes/05/054/012_Lanzamiento.png" width="950"/>
+  <figcaption>Configuración de Lanzamiento</figcaption>
+</figure>
+
+<ol start="3">
+<li>Verás un mensaje de confirmación: <strong>"El lanzamiento de la instancia se inició correctamente"</strong>.</li>
+<li><strong>Haz clic en "Ver todas las instancias"</strong> para ver el estado de tu instancia.</li>
+</ol>
+<figure>
+  <img src="imagenes/05/054/012_Comprobacion.png" width="950"/>
+  <figcaption>Comprobación del estado de la instancia tras el lanzamiento</figcaption>
+</figure>
+
+<h2 id="paso-2-obtener-la-contrasena-de-windows">Paso 2: Obtener la contraseña de Windows<a class="headerlink" href="#paso-2-obtener-la-contrasena-de-windows" title="Permanent link">&para;</a></h2>
+<h3 id="1-esperar-a-que-la-instancia-este-en-ejecucion">1. Esperar a que la instancia esté en ejecución<a class="headerlink" href="#1-esperar-a-que-la-instancia-este-en-ejecucion" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En la lista de instancias, espera a que el <strong>"Estado de la instancia"</strong> cambie a <strong>"En ejecución"</strong> (Running).</li>
+<li>Esto puede tardar 2-5 minutos.</li>
+</ol>
+<figure>
+  <img src="imagenes/05/054/014_instancia_lanzada.png" width="950"/>
+  <figcaption>Vista del panel de instancias en AWS EC2 mostrando una instancia de Windows Server lanzada y corriendo. </figcaption>
+</figure>
+
+<h3 id="2-obtener-la-contrasena-del-administrador">2. Obtener la contraseña del administrador<a class="headerlink" href="#2-obtener-la-contrasena-del-administrador" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Selecciona la instancia</strong> haciendo clic en la casilla de verificación.</li>
+<li><strong>Haz clic en "Conectar"</strong> (Connect) en la parte superior.</li>
+<li>En la pestaña <strong>"RDP client"</strong>, verás las instrucciones para obtener la contraseña.</li>
+<li><strong>Haz clic en "Obtener contraseña"</strong> (Get password).</li>
+<li><strong>Sube el archivo de clave privada</strong> (.pem) que descargaste al crear el par de claves.</li>
+<li><strong>Haz clic en "Descifrar contraseña"</strong> (Decrypt password).</li>
+<li><strong>Copia la contraseña</strong> y guárdala en un lugar seguro. También anota el <strong>nombre de usuario</strong> (normalmente <code>Administrator</code>).</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p>La contraseña solo se muestra una vez. Si la pierdes, tendrás que crear una nueva instancia o restablecer la contraseña.</p>
+</div>
+<figure>
+  <img src="imagenes/05/054/016_conectar_instancia.png" width="950"/>
+  <figcaption>Opciones de conexión a la instancia</figcaption>
+</figure>
+
+<!-- <figure>
+  <img src="imagenes/05/054/017_obtener_contraseña.png" width="950"/>
+  <figcaption>Obtención de la contraseña del administrador</figcaption>
+</figure> -->
+
+<h2 id="paso-3-conectar-mediante-rdp">Paso 3: Conectar mediante RDP<a class="headerlink" href="#paso-3-conectar-mediante-rdp" title="Permanent link">&para;</a></h2>
+<h3 id="1-obtener-la-ip-publica">1. Obtener la IP pública<a class="headerlink" href="#1-obtener-la-ip-publica" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En la lista de instancias, <strong>selecciona tu instancia</strong>.</li>
+<li>En la pestaña <strong>"Detalles"</strong>, busca <strong>"Dirección IPv4 pública"</strong>.</li>
+<li><strong>Copia esta dirección IP</strong> (por ejemplo: <code>54.123.45.67</code>).</li>
+</ol>
+<!-- <figure>
+  <img src="imagenes/05/054/018_ip_publica.png" width="950"/>
+  <figcaption>Obtención de la dirección IP pública</figcaption>
+</figure> -->
+
+<h3 id="2-conectar-desde-windows">2. Conectar desde Windows<a class="headerlink" href="#2-conectar-desde-windows" title="Permanent link">&para;</a></h3>
+<p>Si estás en un equipo <strong>Windows</strong>:</p>
+<ol>
+<li><strong>Abre "Escritorio Remoto"</strong>:</li>
+</ol>
+<ul>
+<li>Presiona <code>Windows + R</code></li>
+<li>Escribe <code>mstsc</code> y presiona Enter</li>
+<li>O busca "Escritorio Remoto" en el menú Inicio</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>Introduce la IP pública</strong> de la instancia.</p>
+</li>
+<li>
+<p><strong>Haz clic en "Conectar"</strong>.</p>
+</li>
+<li>
+<p>Cuando se solicite:</p>
+</li>
+</ol>
+<ul>
+<li><strong>Usuario</strong>: <code>Administrator</code></li>
+<li><strong>Contraseña</strong>: La contraseña que obtuviste en el Paso 2</li>
+</ul>
+<ol start="5">
+<li><strong>Acepta la advertencia</strong> de certificado si aparece.</li>
+</ol>
+<!-- <figure>
+  <img src="imagenes/05/054/019_rdp_windows.png" width="950"/>
+  <figcaption>Conexión RDP desde Windows</figcaption>
+</figure> -->
+
+<h3 id="3-conectar-desde-macos">3. Conectar desde macOS<a class="headerlink" href="#3-conectar-desde-macos" title="Permanent link">&para;</a></h3>
+<p>Si estás en un equipo <strong>macOS</strong>:</p>
+<ol>
+<li>
+<p><strong>Descarga Microsoft Remote Desktop</strong> desde la App Store (gratis).</p>
+</li>
+<li>
+<p><strong>Abre Microsoft Remote Desktop</strong>.</p>
+</li>
+<li>
+<p><strong>Haz clic en "Add PC"</strong> o el botón "+".</p>
+</li>
+<li>
+<p><strong>Configura la conexión</strong>:</p>
+</li>
+</ol>
+<ul>
+<li><strong>PC name</strong>: La IP pública de la instancia</li>
+<li><strong>User account</strong>: <code>Administrator</code></li>
+<li><strong>Password</strong>: La contraseña obtenida</li>
+</ul>
+<ol start="5">
+<li><strong>Haz doble clic</strong> en la conexión para conectarte.</li>
+</ol>
+<!-- <figure>
+  <img src="imagenes/05/054/020_rdp_macos.png" width="950"/>
+  <figcaption>Conexión RDP desde macOS con Microsoft Remote Desktop</figcaption>
+</figure> -->
+
+<h3 id="4-conectar-desde-linux">4. Conectar desde Linux<a class="headerlink" href="#4-conectar-desde-linux" title="Permanent link">&para;</a></h3>
+<p>Si estás en un equipo <strong>Linux</strong>:</p>
+<p><strong>Opción A: Usando Remmina (GUI)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Instalar Remmina</span>
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>remmina<span class="w"> </span>remmina-plugin-rdp<span class="w"> </span>-y
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># Abrir Remmina</span>
+<span class="linenos" data-linenos="6 "></span>remmina
+</code></pre></div>
+<ol>
+<li><strong>Haz clic en el botón "+"</strong> para crear una nueva conexión.</li>
+<li><strong>Configura</strong>:</li>
+</ol>
+<ul>
+<li><strong>Protocol</strong>: RDP</li>
+<li><strong>Server</strong>: IP pública de la instancia</li>
+<li><strong>Username</strong>: <code>Administrator</code></li>
+<li><strong>Password</strong>: La contraseña obtenida
+3. <strong>Guarda y conecta</strong>.</li>
+</ul>
+<p><strong>Opción B: Usando rdesktop (línea de comandos)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Instalar rdesktop</span>
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>rdesktop<span class="w"> </span>-y
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Conectar</span>
+<span class="linenos" data-linenos="5 "></span>rdesktop<span class="w"> </span>-u<span class="w"> </span>Administrator<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;TU_CONTRASEÑA&#39;</span><span class="w"> </span>IP_PUBLICA
+</code></pre></div>
+<h2 id="paso-4-verificar-el-acceso-remoto">Paso 4: Verificar el acceso remoto<a class="headerlink" href="#paso-4-verificar-el-acceso-remoto" title="Permanent link">&para;</a></h2>
+<p>Una vez conectado mediante RDP, deberías ver el escritorio de Windows Server 2025.</p>
+<h3 id="verificaciones-basicas">Verificaciones básicas<a class="headerlink" href="#verificaciones-basicas" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Verifica que estás conectado</strong>:</li>
+</ol>
+<ul>
+<li>Deberías ver el escritorio de Windows Server 2025.</li>
+<li>El usuario debería ser <code>Administrator</code>.</li>
+</ul>
+<ol start="2">
+<li><strong>Verifica la conectividad de red</strong>:</li>
+</ol>
+<ul>
+<li>Abre el <strong>Símbolo del sistema</strong> (CMD) o <strong>PowerShell</strong>.</li>
+<li>Ejecuta <code>ipconfig</code> para ver la configuración de red.</li>
+<li>Ejecuta <code>ping 8.8.8.8</code> para verificar conectividad a Internet.</li>
+</ul>
+<!-- <figure>
+  <img src="imagenes/05/054/021_escritorio_windows.png" width="950"/>
+  <figcaption>Escritorio de Windows Server 2025 accesible mediante RDP</figcaption>
+</figure> -->
+
+<ol start="3">
+<li><strong>Verifica el acceso remoto</strong>:
+   - Abre <strong>"Configuración"</strong> → <strong>"Sistema"</strong> → <strong>"Escritorio remoto"</strong>.
+   - Verifica que el escritorio remoto esté habilitado.</li>
+</ol>
+<h2 id="paso-5-detener-y-terminar-instancias">Paso 5: Detener y terminar instancias<a class="headerlink" href="#paso-5-detener-y-terminar-instancias" title="Permanent link">&para;</a></h2>
+<h3 id="detener-una-instancia-para-ahorrar-creditos">Detener una instancia (para ahorrar créditos)<a class="headerlink" href="#detener-una-instancia-para-ahorrar-creditos" title="Permanent link">&para;</a></h3>
+<p>Cuando no uses la instancia, puedes <strong>detenerla</strong> (no eliminarla):</p>
+<ol>
+<li><strong>Selecciona la instancia</strong> en la consola de EC2.</li>
+<li><strong>Haz clic en "Detener instancia"</strong> (Stop instance).</li>
+<li>La instancia se detendrá pero <strong>no se eliminará</strong>.</li>
+<li>Puedes <strong>reiniciarla</strong> más tarde con "Iniciar instancia" (Start instance).</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota importante</p>
+<ul>
+<li><strong>Detener</strong> una instancia: No consume créditos de computación, pero sí de Lanzamiento (EBS).</li>
+<li><strong>Terminar</strong> una instancia: Elimina la instancia y todos sus datos. No se puede recuperar.</li>
+</ul>
+</div>
+<h3 id="terminar-una-instancia-eliminar-permanentemente">Terminar una instancia (eliminar permanentemente)<a class="headerlink" href="#terminar-una-instancia-eliminar-permanentemente" title="Permanent link">&para;</a></h3>
+<p>Si quieres <strong>eliminar permanentemente</strong> la instancia:</p>
+<ol>
+<li><strong>Selecciona la instancia</strong>.</li>
+<li><strong>Haz clic en "Terminar instancia"</strong> (Terminate instance).</li>
+<li><strong>Confirma</strong> la eliminación.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Al terminar una instancia, <strong>se eliminan todos los datos</strong> y <strong>no se puede recuperar</strong>. Asegúrate de haber guardado todo lo importante antes de terminar.</p>
+</div>
+<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Configuración de AWS Academy:</strong></li>
+</ol>
+<ul>
+<li>Accede a AWS Academy a través de Canvas.</li>
+<li>Inicia el laboratorio AWS Academy Learner Lab.</li>
+<li>Familiarízate con la consola de AWS.</li>
+</ul>
+<ol start="2">
+<li><strong>Creación de instancia Windows Server:</strong></li>
+</ol>
+<ul>
+<li>Crea una instancia de Windows Server 2025 en EC2.</li>
+<li>Configura el tipo de instancia, Lanzamiento y red.</li>
+<li>Crea y configura un grupo de seguridad que permita RDP.</li>
+</ul>
+<ol start="3">
+<li><strong>Configuración de acceso remoto:</strong></li>
+</ol>
+<ul>
+<li>Obtén la contraseña del administrador usando la clave privada.</li>
+<li>Configura el cliente RDP en tu máquina local.</li>
+<li>Conecta mediante RDP a la instancia de Windows Server.</li>
+</ul>
+<ol start="4">
+<li><strong>Verificación del acceso:</strong></li>
+</ol>
+<ul>
+<li>Verifica que puedes acceder al escritorio de Windows Server.</li>
+<li>Comprueba la conectividad de red.</li>
+<li>Verifica que el escritorio remoto está habilitado.</li>
+</ul>
+<ol start="5">
+<li><strong>Documentación:</strong></li>
+</ol>
+<ul>
+<li>Crea un documento que explique:<ul>
+<li>El proceso de creación de instancias en AWS EC2.</li>
+<li>La configuración de grupos de seguridad y acceso RDP.</li>
+<li>Los pasos realizados para la configuración.</li>
+<li>Capturas de pantalla que demuestren el funcionamiento.</li>
+<li>Problemas encontrados y soluciones aplicadas.</li>
+</ul>
+</li>
+</ul>
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<p>Para la entrega de esta práctica, deberás proporcionar:</p>
+<ol>
+<li><strong>Documentación:</strong></li>
+</ol>
+<ul>
+<li>Documento en Markdown con:<ul>
+<li>Pasos seguidos para la configuración de AWS Academy.</li>
+<li>Proceso de creación de la instancia Windows Server.</li>
+<li>Configuración de grupos de seguridad y acceso RDP.</li>
+<li>Capturas de pantalla del proceso completo.</li>
+<li>Comandos utilizados y su explicación.</li>
+<li>Verificación del funcionamiento del acceso remoto.</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>Evidencias:</strong></li>
+</ol>
+<ul>
+<li>Las capturas de pantalla deben mostrar:<ul>
+<li>Acceso a AWS Academy y inicio del laboratorio.</li>
+<li>Creación de la instancia Windows Server en EC2.</li>
+<li>Configuración del grupo de seguridad.</li>
+<li>Obtención de la contraseña del administrador.</li>
+<li>Conexión RDP exitosa al escritorio de Windows Server.</li>
+<li>Verificación del acceso remoto y conectividad.</li>
+</ul>
+</li>
+</ul>
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/ec2/">Documentación oficial de AWS EC2</a></li>
+<li><a href="https://awsacademy.instructure.com/">Guía de AWS Academy</a></li>
+<li><a href="https://docs.microsoft.com/windows-server/">Documentación de Windows Server</a></li>
+<li><a href="https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients">Guía de Remote Desktop Protocol (RDP)</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

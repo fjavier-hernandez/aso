@@ -3903,6 +3903,50 @@ enero febrero marzo abril</p>
 <p>En esta práctica utilizaremos una <strong>máquina virtual (MV)</strong> que simula un <strong>VPS</strong> (<em>Virtual Private Server</em>). Un VPS real es una máquina virtual con recursos propios (CPU, RAM, disco, sistema operativo y acceso root), que funciona de forma aislada y gestionable en un servidor físico compartido, accesible desde Internet con una IP pública. En nuestro caso, la MV actúa como VPS simulado dentro de nuestra red local, permitiéndonos experimentar y comprender los conceptos de túneles SSH y port-forwarding sin necesidad de un VPS real. Los conceptos aprendidos son directamente aplicables a escenarios reales con VPS en Internet.</p>
 </div>
 <hr />
+<p><a name="PR302"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>PR302. Práctica: Acceso remoto a Windows Server en AWS Academy</strong>. (RA.4 // CE4a, CE4c, CE4d, CE4e, CE4f, CE4g y CE4i // 1-10p). </li>
+</ul>
+<p>En esta práctica aprenderás a crear y configurar una instancia de <strong>Windows Server</strong> en <strong>AWS Academy</strong> y acceder a ella mediante <strong>Escritorio Remoto (RDP)</strong>. El objetivo es familiarizarte con la computación en la nube, la creación de máquinas virtuales en AWS y la configuración de acceso remoto mediante RDP.</p>
+<div class="admonition note">
+<p class="admonition-title">Entorno educativo</p>
+<p>Esta práctica utiliza <strong>AWS Academy Learner Lab</strong>, una plataforma educativa que proporciona acceso a recursos de AWS con créditos limitados para estudiantes. Los recursos creados se eliminan automáticamente al finalizar el laboratorio.</p>
+</div>
+<blockquote>
+<p><strong>Resumen de tareas</strong></p>
+</blockquote>
+<ul>
+<li><strong>Accede a AWS Academy</strong> a través de Canvas e inicia el laboratorio AWS Academy Learner Lab.</li>
+<li><strong>Crea una instancia de Windows Server 2022</strong> en AWS EC2 con la configuración adecuada.</li>
+<li><strong>Configura grupos de seguridad</strong> para permitir el acceso RDP desde tu máquina local.</li>
+<li><strong>Obtén la contraseña del administrador</strong> usando la clave privada SSH.</li>
+<li><strong>Conecta mediante RDP</strong> a la instancia de Windows Server desde tu máquina local.</li>
+<li><strong>Verifica el acceso remoto</strong> y la conectividad de red en Windows Server.</li>
+<li><strong>Documenta el proceso</strong>, mostrando los conceptos de computación en la nube, pasos realizados, comandos utilizados y capturas de pantalla de la funcionalidad.</li>
+<li><strong>(Opcional)</strong> Configura Active Directory Domain Services y une un cliente al dominio.</li>
+</ul>
+<blockquote>
+<p><strong>Criterios de evaluación</strong></p>
+</blockquote>
+<ul>
+<li>Configuración correcta de AWS Academy y acceso al laboratorio.</li>
+<li>Creación correcta de la instancia Windows Server 2022 en EC2.</li>
+<li>Configuración adecuada de grupos de seguridad para permitir RDP.</li>
+<li>Conexión exitosa mediante RDP a la instancia de Windows Server.</li>
+<li>Verificación del acceso remoto y conectividad de red.</li>
+<li>Explicación clara de los conceptos de computación en la nube (IaaS, PaaS, SaaS).</li>
+<li>Documentación completa de la arquitectura y pasos seguidos con evidencias.</li>
+<li>(Opcional) Configuración de Active Directory y unión de cliente al dominio.</li>
+</ul>
+<blockquote>
+<p>Consulta el enunciado completo y detallado aquí:<br />
+<a href="#practicawindowsserveraws">Práctica: Acceso remoto a Windows Server en AWS Academy</a></p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Entorno educativo: AWS Academy Learner Lab</p>
+<p><strong>AWS Academy Learner Lab</strong> proporciona un entorno controlado con créditos educativos limitados para que los estudiantes experimenten con servicios de AWS. El laboratorio tiene un tiempo limitado (normalmente 4 horas) y los recursos se eliminan automáticamente al finalizar. Es importante <strong>detener las instancias</strong> cuando no se usen para no consumir créditos innecesariamente. Los conceptos aprendidos son directamente aplicables a escenarios reales con AWS en producción.</p>
+</div>
+<hr />
 <!-- 801. [Práctica Configuración Servidor SSH](Practica11_configuración_servidor_openssh.md)
 
 1.   Instala y configura xRDP en Ubuntu 24.04, comprueba que puedes acceder por escritorio remoto al Ubuntu desde Windows 11, haz una guía de configuración con los pasos para poder acceder y captura que demuestre que se ha accedido.
