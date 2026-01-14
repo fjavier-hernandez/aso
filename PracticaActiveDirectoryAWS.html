@@ -334,6 +334,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04ActiveDirectory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Servicios de Directorio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -373,6 +393,24 @@
   <a href="#requisitos-previos" class="md-nav__link">
     <span class="md-ellipsis">
       Requisitos previos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
     </span>
   </a>
   
@@ -431,9 +469,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#crear-una-instancia-cliente-si-es-necesario" class="md-nav__link">
+  <a href="#crear-una-instancia-cliente" class="md-nav__link">
     <span class="md-ellipsis">
-      Crear una instancia cliente (si es necesario)
+      Crear una instancia cliente
     </span>
   </a>
   
@@ -679,24 +717,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tareas-a-realizar" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tareas a realizar
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entregables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Entregables
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referencias
@@ -725,7 +745,7 @@
 <p>Durante esta práctica aprenderás a configurar <strong>Active Directory Domain Services (AD DS)</strong> en una instancia de <strong>Windows Server</strong> en <strong>AWS Academy</strong> y unir clientes al dominio. Esta práctica complementa la PR302 y te permitirá trabajar con servicios de directorio propietarios en un entorno cloud.</p>
 <p>Al finalizar esta práctica serás capaz de:</p>
 <ul>
-<li>Configurar <strong>Active Directory Domain Services</strong> en Windows Server 2022 en AWS.</li>
+<li>Configurar <strong>Active Directory Domain Services</strong> en Windows Server 2025 en AWS.</li>
 <li>Configurar <strong>DHCP en AWS</strong> para soportar el dominio de Active Directory.</li>
 <li>Configurar <strong>grupos de seguridad</strong> para permitir los servicios necesarios de Active Directory.</li>
 <li>Promover un servidor a <strong>controlador de dominio</strong>.</li>
@@ -736,7 +756,7 @@
 <h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
 <p>Antes de comenzar, asegúrate de tener completada la <strong>PR302</strong> o tener:</p>
 <ul>
-<li><strong>Una instancia de Windows Server 2022</strong> funcionando en AWS EC2 y accesible mediante RDP.</li>
+<li><strong>Una instancia de Windows Server 2025</strong> funcionando en AWS EC2 y accesible mediante RDP.</li>
 <li><strong>Una segunda instancia</strong> de Windows Server o Windows 10/11 como cliente.</li>
 <li><strong>Acceso RDP</strong> a ambas instancias.</li>
 <li><strong>Conocimiento básico</strong> de Active Directory y conceptos de dominio.</li>
@@ -746,6 +766,104 @@
 <p class="admonition-title">Nota importante</p>
 <p>Esta práctica requiere dos instancias de Windows Server (o una de servidor y una de cliente). Asegúrate de tener suficientes créditos en AWS Academy Learner Lab.</p>
 </div>
+<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Preparación del entorno</strong>:</li>
+</ol>
+<ul>
+<li>Asegúrate de tener completada la PR302 o tener dos instancias de Windows funcionando.</li>
+<li>Anota las IPs privadas de ambas instancias.</li>
+</ul>
+<ol start="2">
+<li><strong>Configuración de DHCP en AWS</strong>:</li>
+</ol>
+<ul>
+<li>Crea un conjunto de opciones de DHCP con el nombre de dominio y servidor DNS.</li>
+<li>Asocia el conjunto de opciones a la VPC.</li>
+<li>Reinicia las instancias para aplicar los cambios.</li>
+</ul>
+<ol start="3">
+<li><strong>Configuración del grupo de seguridad</strong>:</li>
+</ol>
+<ul>
+<li>Añade las reglas necesarias para Active Directory (DNS, LDAP, Kerberos, SMB, RPC, etc.).</li>
+<li>Verifica que todas las reglas están correctamente configuradas.</li>
+</ul>
+<ol start="4">
+<li>
+<p><strong>Instalación de Active Directory</strong>:
+   - Instala el rol Active Directory Domain Services.
+   - Promueve el servidor a controlador de dominio.
+   - Verifica que el dominio se creó correctamente.</p>
+</li>
+<li>
+<p><strong>Unión del cliente al dominio</strong>:</p>
+</li>
+</ol>
+<ul>
+<li>Verifica la conectividad y resolución DNS desde el cliente.</li>
+<li>Une el cliente al dominio.</li>
+<li>Verifica que el cliente aparece en el dominio.</li>
+</ul>
+<ol start="6">
+<li><strong>Configuración de acceso remoto</strong>:</li>
+</ol>
+<ul>
+<li>Configura el escritorio remoto para usuarios del dominio.</li>
+<li>Conecta usando credenciales del dominio.</li>
+<li>Verifica que el acceso funciona correctamente.</li>
+</ul>
+<ol start="7">
+<li><strong>Documentación</strong>:</li>
+</ol>
+<ul>
+<li>Crea un documento que explique:<ul>
+<li>Los conceptos de Active Directory Domain Services.</li>
+<li>El proceso de configuración de DHCP en AWS.</li>
+<li>La configuración de grupos de seguridad para Active Directory.</li>
+<li>Los pasos realizados para la instalación y configuración.</li>
+<li>Capturas de pantalla que demuestren el funcionamiento.</li>
+<li>Problemas encontrados y soluciones aplicadas.</li>
+</ul>
+</li>
+</ul>
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<p>Para la entrega de esta práctica, deberás proporcionar:</p>
+<ol>
+<li><strong>Documentación</strong>:</li>
+</ol>
+<ul>
+<li>Documento en Markdown con:<ul>
+<li>Descripción de Active Directory Domain Services.</li>
+<li>Proceso de configuración de DHCP en AWS para el dominio.</li>
+<li>Configuración de grupos de seguridad para Active Directory.</li>
+<li>Pasos seguidos para la instalación de AD DS.</li>
+<li>Proceso de promoción a controlador de dominio.</li>
+<li>Pasos para unir un cliente al dominio.</li>
+<li>Configuración de acceso remoto para usuarios del dominio.</li>
+<li>Capturas de pantalla del proceso completo.</li>
+<li>Comandos utilizados y su explicación.</li>
+<li>Verificación del funcionamiento del dominio.</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>Evidencias</strong>:</li>
+</ol>
+<ul>
+<li>Las capturas de pantalla deben mostrar:<ul>
+<li>Configuración de DHCP en AWS.</li>
+<li>Asociación del conjunto de opciones DHCP a la VPC.</li>
+<li>Configuración del grupo de seguridad con los puertos de Active Directory.</li>
+<li>Instalación de Active Directory Domain Services.</li>
+<li>Promoción a controlador de dominio.</li>
+<li>Cliente unido al dominio.</li>
+<li>Configuración de escritorio remoto para usuarios del dominio.</li>
+<li>Conexión RDP usando credenciales del dominio.</li>
+<li>Verificación del dominio con comandos de PowerShell.</li>
+</ul>
+</li>
+</ul>
 <h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
 <h3 id="que-es-active-directory-domain-services">¿Qué es Active Directory Domain Services?<a class="headerlink" href="#que-es-active-directory-domain-services" title="Permanent link">&para;</a></h3>
 <p><strong>Active Directory Domain Services (AD DS)</strong> es el servicio de directorio de Microsoft que proporciona autenticación y autorización centralizadas para usuarios y equipos en una red Windows. AD DS permite:</p>
@@ -763,27 +881,37 @@
 <li>Practicar la configuración de dominios en un entorno realista.</li>
 <li>Preparar para escenarios de migración o híbridos (on-premises y cloud).</li>
 </ul>
+<blockquote>
+<p><strong>Recursos de apoyo</strong></p>
+</blockquote>
+<figure style="width: 100%; margin: 0; padding: 0;">
+  <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe src="https://www.youtube.com/embed/DJQ1f84_GcI" title="Configuración de Active Directory" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+  </div>
+  <figcaption>Video tutorial: Configuración de Active Directory</figcaption>
+</figure>
+
 <h2 id="paso-0-preparar-las-instancias">Paso 0: Preparar las instancias<a class="headerlink" href="#paso-0-preparar-las-instancias" title="Permanent link">&para;</a></h2>
 <h3 id="requisito-previo-completar-pr302">Requisito previo: Completar PR302<a class="headerlink" href="#requisito-previo-completar-pr302" title="Permanent link">&para;</a></h3>
 <p>Esta práctica asume que ya has completado la <strong>PR302: Acceso remoto a Windows Server en AWS Academy</strong> y tienes:</p>
 <ol>
-<li><strong>Instancia del servidor</strong>: Windows Server 2022 funcionando y accesible mediante RDP.</li>
+<li><strong>Instancia del servidor</strong>: Windows Server 2025 funcionando y accesible mediante RDP.</li>
 <li><strong>IP privada del servidor</strong>: Anota la IP privada de la instancia del servidor (ej: <code>172.31.49.71</code>).</li>
 </ol>
-<h3 id="crear-una-instancia-cliente-si-es-necesario">Crear una instancia cliente (si es necesario)<a class="headerlink" href="#crear-una-instancia-cliente-si-es-necesario" title="Permanent link">&para;</a></h3>
+<h3 id="crear-una-instancia-cliente">Crear una instancia cliente<a class="headerlink" href="#crear-una-instancia-cliente" title="Permanent link">&para;</a></h3>
 <p>Si no tienes una segunda instancia, crea una siguiendo los pasos de la PR302:</p>
 <ol>
-<li>
-<p><strong>Crea una nueva instancia</strong> en EC2 con:
-   - <strong>AMI</strong>: Windows Server 2022 Base (o Windows 10/11 si está disponible)
-   - <strong>Tipo</strong>: t2.medium o superior
-   - <strong>Misma VPC y subred</strong> que el servidor
-   - <strong>Grupo de seguridad</strong>: Permite RDP (3389)
-   - <strong>Clave</strong>: La misma que usaste para el servidor</p>
-</li>
-<li>
-<p><strong>Conecta mediante RDP</strong> a la instancia cliente y anota su IP privada.</p>
-</li>
+<li><strong>Crea una nueva instancia</strong> en EC2 con:</li>
+</ol>
+<ul>
+<li><strong>AMI</strong>: Windows Server 2025 Base (o Windows 10/11 si está disponible)</li>
+<li><strong>Tipo</strong>: t2.medium o superior</li>
+<li><strong>Misma VPC y subred</strong> que el servidor</li>
+<li><strong>Grupo de seguridad</strong>: Permite RDP (3389)</li>
+<li><strong>Clave</strong>: La misma que usaste para el servidor</li>
+</ul>
+<ol start="2">
+<li><strong>Conecta mediante RDP</strong> a la instancia cliente y anota su IP privada.</li>
 </ol>
 <h2 id="paso-1-configurar-el-nombre-del-equipo-servidor">Paso 1: Configurar el nombre del equipo servidor<a class="headerlink" href="#paso-1-configurar-el-nombre-del-equipo-servidor" title="Permanent link">&para;</a></h2>
 <p>Antes de instalar Active Directory, debemos configurar un nombre apropiado para el servidor:</p>
@@ -796,10 +924,12 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>El nombre del equipo debe cumplir con las convenciones de nomenclatura de Windows:
-- Máximo 15 caracteres
-- Solo letras, números e hyphens
-- No puede contener espacios ni caracteres especiales</p>
+<p>El nombre del equipo debe cumplir con las convenciones de nomenclatura de Windows:</p>
+<ul>
+<li>Máximo 15 caracteres</li>
+<li>Solo letras, números e hyphens</li>
+<li>No puede contener espacios ni caracteres especiales</li>
+</ul>
 </div>
 <h2 id="paso-2-configurar-dhcp-en-aws">Paso 2: Configurar DHCP en AWS<a class="headerlink" href="#paso-2-configurar-dhcp-en-aws" title="Permanent link">&para;</a></h2>
 <p>Para que los clientes puedan unirse al dominio y resolver nombres correctamente, necesitamos configurar DHCP en AWS para que proporcione la información del dominio y el servidor DNS.</p>
@@ -822,19 +952,23 @@
 </figure>
 
 <ol start="5">
-<li><strong>Configura los siguientes parámetros</strong>:
-   - <strong>Nombre del conjunto de opciones de DHCP</strong>: <code>DHCP_AD</code> (o el que prefieras)
-   - <strong>Nombre de dominio</strong>: Introduce el nombre de dominio que usarás (ej: <code>empresa.local</code>, <code>miempresa.com</code>)
-   - <strong>Servidores de nombres de dominio</strong>: Introduce la <strong>IP privada</strong> de tu servidor (ej: <code>172.31.49.71</code>)</li>
+<li><strong>Configura los siguientes parámetros</strong>:</li>
 </ol>
+<ul>
+<li><strong>Nombre del conjunto de opciones de DHCP</strong>: <code>DHCP_AD</code> (o el que prefieras)</li>
+<li><strong>Nombre de dominio</strong>: Introduce el nombre de dominio que usarás (ej: <code>empresa.local</code>, <code>miempresa.com</code>)</li>
+<li><strong>Servidores de nombres de dominio</strong>: Introduce la <strong>IP privada</strong> de tu servidor (ej: <code>172.31.49.71</code>)</li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title">Convenciones de nombres de dominio</p>
-<p>Puedes usar:
-- <strong>Dominios locales</strong>: <code>.local</code> (ej: <code>empresa.local</code>) - Recomendado para prácticas
-- <strong>Dominios públicos</strong>: <code>.com</code>, <code>.net</code>, etc. (ej: <code>miempresa.com</code>) - Solo si no tienes conflicto con dominios reales
-- <strong>Evita usar</strong>: Dominios que ya existen en Internet (ej: <code>google.com</code>, <code>microsoft.com</code>)</p>
+<p>Puedes usar:</p>
+<ul>
+<li><strong>Dominios locales</strong>: <code>.local</code> (ej: <code>empresa.local</code>) - Recomendado para prácticas</li>
+<li><strong>Dominios públicos</strong>: <code>.com</code>, <code>.net</code>, etc. (ej: <code>miempresa.com</code>) - Solo si no tienes conflicto con dominios reales</li>
+<li><strong>Evita usar</strong>: Dominios que ya existen en Internet (ej: <code>google.com</code>, <code>microsoft.com</code>)</li>
+</ul>
 </div>
-<ol start="6">
+<ol>
 <li><strong>Haz clic en "Crear conjunto de opciones de DHCP"</strong>.</li>
 </ol>
 <h3 id="3-asociar-el-conjunto-de-opciones-a-la-vpc">3. Asociar el conjunto de opciones a la VPC<a class="headerlink" href="#3-asociar-el-conjunto-de-opciones-a-la-vpc" title="Permanent link">&para;</a></h3>
@@ -853,14 +987,14 @@
 <h3 id="4-reiniciar-las-instancias">4. Reiniciar las instancias<a class="headerlink" href="#4-reiniciar-las-instancias" title="Permanent link">&para;</a></h3>
 <p>Para que los cambios de DHCP surtan efecto:</p>
 <ol>
-<li>
-<p><strong>Reinicia ambas instancias</strong> (servidor y cliente):
-   - En EC2, selecciona cada instancia
-   - <strong>Acciones</strong> → <strong>Estado de la instancia</strong> → <strong>Reiniciar</strong></p>
-</li>
-<li>
-<p><strong>Espera</strong> a que ambas instancias vuelvan al estado "En ejecución".</p>
-</li>
+<li><strong>Reinicia ambas instancias</strong> (servidor y cliente):</li>
+</ol>
+<ul>
+<li>En EC2, selecciona cada instancia</li>
+<li><strong>Acciones</strong> → <strong>Estado de la instancia</strong> → <strong>Reiniciar</strong></li>
+</ul>
+<ol start="2">
+<li><strong>Espera</strong> a que ambas instancias vuelvan al estado "En ejecución".</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota importante</p>
@@ -1100,11 +1234,13 @@
 <h3 id="1-preparar-el-cliente">1. Preparar el cliente<a class="headerlink" href="#1-preparar-el-cliente" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Conecta mediante RDP</strong> a la instancia cliente.</li>
-<li><strong>Verifica la conectividad</strong>:
-   - Abre el <strong>Símbolo del sistema</strong> (CMD) o <strong>PowerShell</strong>.
-   - Ejecuta <code>ping &lt;IP_SERVIDOR&gt;</code> para verificar que puede alcanzar el servidor.
-   - Ejecuta <code>nslookup &lt;DOMINIO&gt;</code> (ej: <code>nslookup empresa.local</code>) para verificar la resolución DNS.</li>
+<li><strong>Verifica la conectividad</strong>:</li>
 </ol>
+<ul>
+<li>Abre el <strong>Símbolo del sistema</strong> (CMD) o <strong>PowerShell</strong>.</li>
+<li>Ejecuta <code>ping &lt;IP_SERVIDOR&gt;</code> para verificar que puede alcanzar el servidor.</li>
+<li>Ejecuta <code>nslookup &lt;DOMINIO&gt;</code> (ej: <code>nslookup empresa.local</code>) para verificar la resolución DNS.</li>
+</ul>
 <h3 id="2-unir-el-cliente-al-dominio">2. Unir el cliente al dominio<a class="headerlink" href="#2-unir-el-cliente-al-dominio" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Abre "Configuración"</strong> → <strong>"Sistema"</strong> → <strong>"Acerca de"</strong>.</li>
@@ -1112,13 +1248,15 @@
 <li>Selecciona <strong>"Dominio"</strong>.</li>
 <li><strong>Introduce el nombre del dominio</strong> (ej: <code>empresa.local</code>).</li>
 <li><strong>Haz clic en "Aceptar"</strong>.</li>
-<li>Se solicitarán <strong>credenciales de administrador del dominio</strong>:
-   - <strong>Usuario</strong>: <code>Administrator</code> (o <code>DOMINIO\Administrator</code>)
-   - <strong>Contraseña</strong>: La contraseña del administrador del dominio</li>
-<li><strong>Haz clic en "Aceptar"</strong>.</li>
-<li>Verás un mensaje de bienvenida al dominio.</li>
-<li><strong>Reinicia</strong> el equipo cuando se solicite.</li>
+<li>Se solicitarán <strong>credenciales de administrador del dominio</strong>:</li>
 </ol>
+<ul>
+<li><strong>Usuario</strong>: <code>Administrator</code> (o <code>DOMINIO\Administrator</code>)</li>
+<li><strong>Contraseña</strong>: La contraseña del administrador del dominio
+7. <strong>Haz clic en "Aceptar"</strong>.
+8. Verás un mensaje de bienvenida al dominio.
+9.  <strong>Reinicia</strong> el equipo cuando se solicite.</li>
+</ul>
 <figure>
   <img src="imagenes/05/054/025_cliente_dominio.png" width="950"/>
   <figcaption>Cliente unido al dominio de Active Directory</figcaption>
@@ -1127,34 +1265,46 @@
 <h3 id="3-verificar-la-union-al-dominio">3. Verificar la unión al dominio<a class="headerlink" href="#3-verificar-la-union-al-dominio" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Vuelve a conectar mediante RDP</strong> al cliente después del reinicio.</li>
-<li><strong>Verifica el dominio</strong>:
-   - Abre <strong>"Configuración"</strong> → <strong>"Sistema"</strong> → <strong>"Acerca de"</strong>.
-   - Deberías ver <strong>"Dominio"</strong> seguido del nombre de tu dominio.</li>
-<li><strong>Prueba el inicio de sesión con credenciales del dominio</strong>:
-   - Cierra sesión.
-   - En la pantalla de inicio de sesión, haz clic en <strong>"Otra cuenta"</strong>.
-   - Introduce: <code>DOMINIO\Administrator</code> (ej: <code>EMPRESA\Administrator</code>).
-   - Introduce la contraseña del administrador del dominio.</li>
+<li><strong>Verifica el dominio</strong>:</li>
 </ol>
+<ul>
+<li>Abre <strong>"Configuración"</strong> → <strong>"Sistema"</strong> → <strong>"Acerca de"</strong>.</li>
+<li>
+<p>Deberías ver <strong>"Dominio"</strong> seguido del nombre de tu dominio.
+3. <strong>Prueba el inicio de sesión con credenciales del dominio</strong>:</p>
+</li>
+<li>
+<p>Cierra sesión.</p>
+</li>
+<li>En la pantalla de inicio de sesión, haz clic en <strong>"Otra cuenta"</strong>.</li>
+<li>Introduce: <code>DOMINIO\Administrator</code> (ej: <code>EMPRESA\Administrator</code>).</li>
+<li>Introduce la contraseña del administrador del dominio.</li>
+</ul>
 <h2 id="paso-6-configurar-acceso-remoto-para-usuarios-del-dominio">Paso 6: Configurar acceso remoto para usuarios del dominio<a class="headerlink" href="#paso-6-configurar-acceso-remoto-para-usuarios-del-dominio" title="Permanent link">&para;</a></h2>
 <p>Para permitir que usuarios del dominio accedan mediante RDP a los equipos del dominio:</p>
 <h3 id="1-configurar-escritorio-remoto-en-el-servidor-o-cliente">1. Configurar escritorio remoto en el servidor o cliente<a class="headerlink" href="#1-configurar-escritorio-remoto-en-el-servidor-o-cliente" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Conecta mediante RDP</strong> al servidor o cliente usando credenciales del dominio.</li>
-<li><strong>Abre "Configuración avanzada del sistema"</strong>:
-   - Presiona <code>Windows + R</code>
-   - Escribe <code>sysdm.cpl</code> y presiona Enter
-   - O ve a <strong>"Panel de control"</strong> → <strong>"Sistema"</strong> → <strong>"Configuración avanzada del sistema"</strong></li>
-<li>Ve a la pestaña <strong>"Remoto"</strong>.</li>
-<li>En <strong>"Escritorio remoto"</strong>, selecciona <strong>"Permitir conexiones remotas a este equipo"</strong>.</li>
-<li><strong>Haz clic en "Seleccionar usuarios"</strong> (Select Users).</li>
-<li><strong>Haz clic en "Agregar"</strong> (Add).</li>
-<li>En el campo de texto, introduce:
-   - <strong>"Domain Users"</strong> para permitir a todos los usuarios del dominio
-   - O un usuario específico (ej: <code>DOMINIO\usuario</code>)</li>
-<li><strong>Haz clic en "Comprobar nombres"</strong> para verificar que se reconoce.</li>
-<li><strong>Haz clic en "Aceptar"</strong> en todas las ventanas.</li>
+<li><strong>Abre "Configuración avanzada del sistema"</strong>:</li>
 </ol>
+<ul>
+<li>Presiona <code>Windows + R</code></li>
+<li>Escribe <code>sysdm.cpl</code> y presiona Enter</li>
+<li>
+<p>O ve a <strong>"Panel de control"</strong> → <strong>"Sistema"</strong> → <strong>"Configuración avanzada del sistema"</strong>
+3. Ve a la pestaña <strong>"Remoto"</strong>.
+4. En <strong>"Escritorio remoto"</strong>, selecciona <strong>"Permitir conexiones remotas a este equipo"</strong>.
+5. <strong>Haz clic en "Seleccionar usuarios"</strong> (Select Users).
+6. <strong>Haz clic en "Agregar"</strong> (Add).
+7. En el campo de texto, introduce:</p>
+</li>
+<li>
+<p><strong>"Domain Users"</strong> para permitir a todos los usuarios del dominio</p>
+</li>
+<li>O un usuario específico (ej: <code>DOMINIO\usuario</code>)
+8. <strong>Haz clic en "Comprobar nombres"</strong> para verificar que se reconoce.
+9.  <strong>Haz clic en "Aceptar"</strong> en todas las ventanas.</li>
+</ul>
 <figure>
   <img src="imagenes/05/054/026_escritorio_remoto_dominio.png" width="950"/>
   <figcaption>Configuración de escritorio remoto para usuarios del dominio</figcaption>
@@ -1165,133 +1315,50 @@
 <li><strong>Desde otro equipo</strong> (o desde tu máquina local), abre el cliente RDP.</li>
 <li><strong>Introduce la IP pública</strong> del servidor o cliente.</li>
 <li>En la pantalla de autenticación, <strong>haz clic en "Más opciones"</strong> o <strong>"Usar otra cuenta"</strong>.</li>
-<li><strong>Introduce las credenciales</strong> en formato:
-   - <strong>Usuario</strong>: <code>DOMINIO\Usuario</code> (ej: <code>EMPRESA\Administrator</code>)
-   - <strong>Contraseña</strong>: La contraseña del usuario del dominio</li>
+<li><strong>Introduce las credenciales</strong> en formato:</li>
 </ol>
+<ul>
+<li><strong>Usuario</strong>: <code>DOMINIO\Usuario</code> (ej: <code>EMPRESA\Administrator</code>)</li>
+<li><strong>Contraseña</strong>: La contraseña del usuario del dominio</li>
+</ul>
 <figure>
   <img src="imagenes/05/054/027_rdp_dominio.png" width="950"/>
   <figcaption>Conexión RDP usando credenciales del dominio</figcaption>
 </figure>
 
-<ol start="5">
+<ol>
 <li><strong>Acepta la advertencia</strong> de certificado si aparece.</li>
 <li>Deberías conectarte exitosamente usando las credenciales del dominio.</li>
 </ol>
 <h2 id="paso-7-verificar-la-configuracion">Paso 7: Verificar la configuración<a class="headerlink" href="#paso-7-verificar-la-configuracion" title="Permanent link">&para;</a></h2>
 <h3 id="verificaciones-basicas">Verificaciones básicas<a class="headerlink" href="#verificaciones-basicas" title="Permanent link">&para;</a></h3>
 <ol>
-<li>
-<p><strong>Verifica el dominio en el servidor</strong>:
-   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># En PowerShell del servidor</span>
+<li><strong>Verifica el dominio en el servidor</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># En PowerShell del servidor</span>
 <span class="linenos" data-linenos="2 "></span><span class="nb">Get-ADDomain</span>
 <span class="linenos" data-linenos="3 "></span><span class="nb">Get-ADForest</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Verifica la resolución DNS</strong>:
-   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Desde el cliente</span>
+</code></pre></div>
+<ol start="2">
+<li><strong>Verifica la resolución DNS</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Desde el cliente</span>
 <span class="linenos" data-linenos="2 "></span><span class="n">nslookup</span> <span class="n">empresa</span><span class="p">.</span><span class="n">local</span>
 <span class="linenos" data-linenos="3 "></span><span class="nb">Resolve-DnsName</span> <span class="n">empresa</span><span class="p">.</span><span class="n">local</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Verifica la conectividad con el controlador de dominio</strong>:
-   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Desde el cliente</span>
+</code></pre></div>
+<ol start="3">
+<li><strong>Verifica la conectividad con el controlador de dominio</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Desde el cliente</span>
 <span class="linenos" data-linenos="2 "></span><span class="nb">Test-ComputerSecureChannel</span> <span class="n">-Credential</span> <span class="p">(</span><span class="nb">Get-Credential</span><span class="p">)</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Lista los equipos del dominio</strong>:
-   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Desde el servidor o cliente (con credenciales de dominio)</span>
+</code></pre></div>
+<ol start="4">
+<li><strong>Lista los equipos del dominio</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Desde el servidor o cliente (con credenciales de dominio)</span>
 <span class="linenos" data-linenos="2 "></span><span class="nb">Get-ADComputer</span> <span class="n">-Filter</span> <span class="p">*</span>
-</code></pre></div></p>
-</li>
-</ol>
-<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p><strong>Preparación del entorno</strong>:
-   - Asegúrate de tener completada la PR302 o tener dos instancias de Windows funcionando.
-   - Anota las IPs privadas de ambas instancias.</p>
-</li>
-<li>
-<p><strong>Configuración de DHCP en AWS</strong>:
-   - Crea un conjunto de opciones de DHCP con el nombre de dominio y servidor DNS.
-   - Asocia el conjunto de opciones a la VPC.
-   - Reinicia las instancias para aplicar los cambios.</p>
-</li>
-<li>
-<p><strong>Configuración del grupo de seguridad</strong>:
-   - Añade las reglas necesarias para Active Directory (DNS, LDAP, Kerberos, SMB, RPC, etc.).
-   - Verifica que todas las reglas están correctamente configuradas.</p>
-</li>
-<li>
-<p><strong>Instalación de Active Directory</strong>:
-   - Instala el rol Active Directory Domain Services.
-   - Promueve el servidor a controlador de dominio.
-   - Verifica que el dominio se creó correctamente.</p>
-</li>
-<li>
-<p><strong>Unión del cliente al dominio</strong>:
-   - Verifica la conectividad y resolución DNS desde el cliente.
-   - Une el cliente al dominio.
-   - Verifica que el cliente aparece en el dominio.</p>
-</li>
-<li>
-<p><strong>Configuración de acceso remoto</strong>:
-   - Configura el escritorio remoto para usuarios del dominio.
-   - Conecta usando credenciales del dominio.
-   - Verifica que el acceso funciona correctamente.</p>
-</li>
-<li>
-<p><strong>Documentación</strong>:
-   - Crea un documento que explique:</p>
-<ul>
-<li>Los conceptos de Active Directory Domain Services.</li>
-<li>El proceso de configuración de DHCP en AWS.</li>
-<li>La configuración de grupos de seguridad para Active Directory.</li>
-<li>Los pasos realizados para la instalación y configuración.</li>
-<li>Capturas de pantalla que demuestren el funcionamiento.</li>
-<li>Problemas encontrados y soluciones aplicadas.</li>
-</ul>
-</li>
-</ol>
-<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
-<p>Para la entrega de esta práctica, deberás proporcionar:</p>
-<ol>
-<li>
-<p><strong>Documentación</strong>:
-   - Documento en Markdown con:</p>
-<ul>
-<li>Descripción de Active Directory Domain Services.</li>
-<li>Proceso de configuración de DHCP en AWS para el dominio.</li>
-<li>Configuración de grupos de seguridad para Active Directory.</li>
-<li>Pasos seguidos para la instalación de AD DS.</li>
-<li>Proceso de promoción a controlador de dominio.</li>
-<li>Pasos para unir un cliente al dominio.</li>
-<li>Configuración de acceso remoto para usuarios del dominio.</li>
-<li>Capturas de pantalla del proceso completo.</li>
-<li>Comandos utilizados y su explicación.</li>
-<li>Verificación del funcionamiento del dominio.</li>
-</ul>
-</li>
-<li>
-<p><strong>Evidencias</strong>:
-   - Las capturas de pantalla deben mostrar:</p>
-<ul>
-<li>Configuración de DHCP en AWS.</li>
-<li>Asociación del conjunto de opciones DHCP a la VPC.</li>
-<li>Configuración del grupo de seguridad con los puertos de Active Directory.</li>
-<li>Instalación de Active Directory Domain Services.</li>
-<li>Promoción a controlador de dominio.</li>
-<li>Cliente unido al dominio.</li>
-<li>Configuración de escritorio remoto para usuarios del dominio.</li>
-<li>Conexión RDP usando credenciales del dominio.</li>
-<li>Verificación del dominio con comandos de PowerShell.</li>
-</ul>
-</li>
-</ol>
+</code></pre></div>
+<hr />
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview">Documentación oficial de Active Directory Domain Services</a></li>

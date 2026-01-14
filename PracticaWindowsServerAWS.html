@@ -334,6 +334,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04ActiveDirectory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Servicios de Directorio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -373,6 +393,24 @@
   <a href="#requisitos-previos" class="md-nav__link">
     <span class="md-ellipsis">
       Requisitos previos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
     </span>
   </a>
   
@@ -724,24 +762,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tareas-a-realizar" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tareas a realizar
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entregables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Entregables
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referencias
@@ -793,6 +813,81 @@
 <p class="admonition-title">Nota importante</p>
 <p>AWS Academy Learner Lab proporciona créditos limitados y tiempo de uso restringido. Asegúrate de <strong>detener las instancias</strong> cuando no las uses para no consumir créditos innecesariamente.</p>
 </div>
+<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Configuración de AWS Academy:</strong></li>
+</ol>
+<ul>
+<li>Accede a AWS Academy a través de Canvas.</li>
+<li>Inicia el laboratorio AWS Academy Learner Lab.</li>
+</ul>
+<ol start="2">
+<li><strong>Creación de instancia Windows Server:</strong></li>
+</ol>
+<ul>
+<li>Crea una instancia de Windows Server 2025 en EC2.</li>
+<li>Configura el tipo de instancia, Lanzamiento y red.</li>
+<li>Crea y configura un grupo de seguridad que permita RDP.</li>
+</ul>
+<ol start="3">
+<li><strong>Configuración de acceso remoto:</strong></li>
+</ol>
+<ul>
+<li>Obtén la contraseña del administrador usando la clave privada.</li>
+<li>Configura el cliente RDP en tu máquina local.</li>
+<li>Conecta mediante RDP a la instancia de Windows Server.</li>
+</ul>
+<ol start="4">
+<li><strong>Verificación del acceso:</strong></li>
+</ol>
+<ul>
+<li>Verifica que puedes acceder al escritorio de Windows Server.</li>
+<li>Comprueba la conectividad de red.</li>
+<li>Verifica que el escritorio remoto está habilitado.</li>
+</ul>
+<ol start="5">
+<li><strong>Documentación:</strong></li>
+</ol>
+<ul>
+<li>Crea un documento que explique:<ul>
+<li>El proceso de creación de instancias en AWS EC2.</li>
+<li>La configuración de grupos de seguridad y acceso RDP.</li>
+<li>Los pasos realizados para la configuración.</li>
+<li>Capturas de pantalla que demuestren el funcionamiento.</li>
+<li>Problemas encontrados y soluciones aplicadas.</li>
+</ul>
+</li>
+</ul>
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<p>Para la entrega de esta práctica, deberás proporcionar:</p>
+<ol>
+<li><strong>Documentación:</strong></li>
+</ol>
+<ul>
+<li>Documento en Markdown con:<ul>
+<li>Pasos seguidos para la configuración de AWS Academy.</li>
+<li>Proceso de creación de la instancia Windows Server.</li>
+<li>Configuración de grupos de seguridad y acceso RDP.</li>
+<li>Capturas de pantalla del proceso completo.</li>
+<li>Comandos utilizados y su explicación.</li>
+<li>Verificación del funcionamiento del acceso remoto.</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>Evidencias:</strong></li>
+</ol>
+<ul>
+<li>Las capturas de pantalla deben mostrar:<ul>
+<li>Acceso a AWS Academy y inicio del laboratorio.</li>
+<li>Creación de la instancia Windows Server en EC2.</li>
+<li>Configuración del grupo de seguridad.</li>
+<li>Obtención de la contraseña del administrador.</li>
+<li>Conexión RDP exitosa al escritorio de Windows Server.</li>
+<li>Verificación del acceso remoto y conectividad.</li>
+</ul>
+</li>
+</ul>
 <h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
 <h3 id="que-es-el-cloud-computing">¿Qué es el Cloud Computing?<a class="headerlink" href="#que-es-el-cloud-computing" title="Permanent link">&para;</a></h3>
 <p>El <strong>Cloud Computing</strong> (computación en la nube) se define como la entrega de servicios, plataformas, aplicaciones y otros procesos a través de Internet mediante un modelo de <strong>pago por uso</strong>.</p>
@@ -1200,82 +1295,7 @@
 <p class="admonition-title">Advertencia</p>
 <p>Al terminar una instancia, <strong>se eliminan todos los datos</strong> y <strong>no se puede recuperar</strong>. Asegúrate de haber guardado todo lo importante antes de terminar.</p>
 </div>
-<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Configuración de AWS Academy:</strong></li>
-</ol>
-<ul>
-<li>Accede a AWS Academy a través de Canvas.</li>
-<li>Inicia el laboratorio AWS Academy Learner Lab.</li>
-<li>Familiarízate con la consola de AWS.</li>
-</ul>
-<ol start="2">
-<li><strong>Creación de instancia Windows Server:</strong></li>
-</ol>
-<ul>
-<li>Crea una instancia de Windows Server 2025 en EC2.</li>
-<li>Configura el tipo de instancia, Lanzamiento y red.</li>
-<li>Crea y configura un grupo de seguridad que permita RDP.</li>
-</ul>
-<ol start="3">
-<li><strong>Configuración de acceso remoto:</strong></li>
-</ol>
-<ul>
-<li>Obtén la contraseña del administrador usando la clave privada.</li>
-<li>Configura el cliente RDP en tu máquina local.</li>
-<li>Conecta mediante RDP a la instancia de Windows Server.</li>
-</ul>
-<ol start="4">
-<li><strong>Verificación del acceso:</strong></li>
-</ol>
-<ul>
-<li>Verifica que puedes acceder al escritorio de Windows Server.</li>
-<li>Comprueba la conectividad de red.</li>
-<li>Verifica que el escritorio remoto está habilitado.</li>
-</ul>
-<ol start="5">
-<li><strong>Documentación:</strong></li>
-</ol>
-<ul>
-<li>Crea un documento que explique:<ul>
-<li>El proceso de creación de instancias en AWS EC2.</li>
-<li>La configuración de grupos de seguridad y acceso RDP.</li>
-<li>Los pasos realizados para la configuración.</li>
-<li>Capturas de pantalla que demuestren el funcionamiento.</li>
-<li>Problemas encontrados y soluciones aplicadas.</li>
-</ul>
-</li>
-</ul>
-<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
-<p>Para la entrega de esta práctica, deberás proporcionar:</p>
-<ol>
-<li><strong>Documentación:</strong></li>
-</ol>
-<ul>
-<li>Documento en Markdown con:<ul>
-<li>Pasos seguidos para la configuración de AWS Academy.</li>
-<li>Proceso de creación de la instancia Windows Server.</li>
-<li>Configuración de grupos de seguridad y acceso RDP.</li>
-<li>Capturas de pantalla del proceso completo.</li>
-<li>Comandos utilizados y su explicación.</li>
-<li>Verificación del funcionamiento del acceso remoto.</li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li><strong>Evidencias:</strong></li>
-</ol>
-<ul>
-<li>Las capturas de pantalla deben mostrar:<ul>
-<li>Acceso a AWS Academy y inicio del laboratorio.</li>
-<li>Creación de la instancia Windows Server en EC2.</li>
-<li>Configuración del grupo de seguridad.</li>
-<li>Obtención de la contraseña del administrador.</li>
-<li>Conexión RDP exitosa al escritorio de Windows Server.</li>
-<li>Verificación del acceso remoto y conectividad.</li>
-</ul>
-</li>
-</ul>
+<hr />
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.aws.amazon.com/ec2/">Documentación oficial de AWS EC2</a></li>

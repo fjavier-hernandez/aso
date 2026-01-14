@@ -314,6 +314,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04ActiveDirectory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Servicios de Directorio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -369,6 +389,15 @@
   <a href="#03accesoremoto" class="md-nav__link">
     <span class="md-ellipsis">
       3.- Servicios de acceso remoto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04activedirectory" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.- Servicios de Directorio
     </span>
   </a>
   
@@ -3953,7 +3982,394 @@ enero febrero marzo abril</p>
 
 2.   Instala y configura RDP en Windows 11, comprueba que puedes acceder por escritorio remoto del mismo desde Ubuntu, haz una guía de configuración con los pasos para poder acceder y captura que demuestre que se ha accedido.
 
-3.   [Instalación de Servidor de Aplicaciones RemoteApp](./Practicas/Practica12_RemoteAppTS.md) --></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+3.   [Instalación de Servidor de Aplicaciones RemoteApp](./Practicas/Practica12_RemoteAppTS.md) --></section><section class="print-page" id="04activedirectory" heading-number="5"><h1 id="04activedirectory-servicio-de-directorio">Servicio de Directorio<a class="headerlink" href="#04activedirectory-servicio-de-directorio" title="Permanent link">&para;</a></h1>
+<p>Un <strong>servicio de directorio</strong> es un software que centraliza y organiza la información de recursos, usuarios y dispositivos en una red, facilitando su gestión, búsqueda y control.</p>
+<h2 id="04activedirectory-propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#04activedirectory-propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>En esta unidad vamos a trabajar el <strong>RA3 de ASO</strong>:</p>
+<blockquote>
+<p><strong>RA3.</strong> <em>Administra servicios de directorio, identificando su estructura y aplicando criterios de seguridad.</em></p>
+</blockquote>
+<h3 id="04activedirectory-criterios-de-evaluacion-ra3">Criterios de evaluación (RA3)<a class="headerlink" href="#04activedirectory-criterios-de-evaluacion-ra3" title="Permanent link">&para;</a></h3>
+<p>A lo largo de la unidad se trabajarán y evidenciarán los siguientes criterios:</p>
+<ul>
+<li><strong>CE3a</strong>: Se han descrito los servicios de directorio y su estructura jerárquica.  </li>
+<li><strong>CE3b</strong>: Se ha diferenciado entre los servicios de directorio propietarios y libres.  </li>
+<li><strong>CE3c</strong>: Se han instalado servicios de directorio en sistemas propietarios.  </li>
+<li><strong>CE3d</strong>: Se han configurado dominios y unidades organizativas.  </li>
+<li><strong>CE3e</strong>: Se han creado y gestionado usuarios, grupos y equipos en el directorio.  </li>
+<li><strong>CE3f</strong>: Se han aplicado políticas de grupo para gestionar configuraciones.  </li>
+<li><strong>CE3g</strong>: Se han unido equipos cliente al dominio.  </li>
+<li><strong>CE3h</strong>: Se han documentado los procesos y configuraciones realizadas.</li>
+</ul>
+<h2 id="04activedirectory-contenidos">Contenidos<a class="headerlink" href="#04activedirectory-contenidos" title="Permanent link">&para;</a></h2>
+<p><strong>Bloque 1 — Introducción a Active Directory (Sesión 1–2)</strong></p>
+<ul>
+<li>¿Qué es un servicio de directorio?  </li>
+<li>Active Directory Domain Services: características y arquitectura.  </li>
+<li>Estructura física y lógica de Active Directory.  </li>
+<li>Objetos del directorio: usuarios, grupos, equipos, dominios, unidades organizativas.  </li>
+<li>Arquitectura cliente-servidor en Active Directory.</li>
+</ul>
+<p><strong>Bloque 2 — Instalación y configuración (Sesión 2–3)</strong></p>
+<ul>
+<li>Instalación de Active Directory Domain Services.  </li>
+<li>Promoción a controlador de dominio.  </li>
+<li>Configuración de dominios y bosques.  </li>
+<li>Configuración de DNS para Active Directory.  </li>
+<li>Niveles funcionales de dominio y bosque.</li>
+</ul>
+<p><strong>Bloque 3 — Administración del directorio (Sesión 3–4)</strong></p>
+<ul>
+<li>Creación y gestión de usuarios.  </li>
+<li>Creación y gestión de grupos.  </li>
+<li>Creación y gestión de unidades organizativas.  </li>
+<li>Unión de equipos cliente al dominio.  </li>
+<li>Herramientas de administración: Usuarios y Equipos de Active Directory, PowerShell.</li>
+</ul>
+<p><strong>Bloque 4 — Políticas y seguridad (Sesión 4–5)</strong></p>
+<ul>
+<li>Políticas de grupo (Group Policy).  </li>
+<li>Configuración de políticas de seguridad.  </li>
+<li>Gestión de permisos y accesos.  </li>
+<li>Autenticación y autorización en Active Directory.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Actividades iniciales</p>
+<ol>
+<li>¿Qué es un servicio de directorio y cuál es su función principal?</li>
+<li>¿Qué diferencia existe entre un grupo de trabajo y un dominio?</li>
+<li>Explica qué es un controlador de dominio.</li>
+<li>¿Qué es una unidad organizativa y para qué se utiliza?</li>
+<li>¿Qué protocolos utiliza Active Directory para la autenticación?</li>
+<li>Nombra al menos tres objetos que se pueden crear en Active Directory.</li>
+<li>¿Qué es un bosque en Active Directory?</li>
+<li>Explica la diferencia entre nivel funcional de dominio y nivel funcional de bosque.</li>
+</ol>
+</div>
+<h3 id="04activedirectory-programacion-de-aula-5-sesiones">Programación de Aula (5 sesiones)<a class="headerlink" href="#04activedirectory-programacion-de-aula-5-sesiones" title="Permanent link">&para;</a></h3>
+<p>Esta unidad se imparte con una duración estimada de 5 sesiones lectivas:</p>
+<h4 id="04activedirectory-sesiones-1-2-introduccion-e-instalacion">Sesiones 1-2: Introducción e instalación<a class="headerlink" href="#04activedirectory-sesiones-1-2-introduccion-e-instalacion" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Teoría:</strong> Introducción a servicios de directorio. Active Directory Domain Services: características, arquitectura y estructura. Objetos del directorio.</td>
+<td>Explicación teórica</td>
+<td>CE3a, CE3b</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Práctica:</strong> Instalación de Active Directory Domain Services. Promoción a controlador de dominio. Configuración inicial.</td>
+<td><a href="#04activedirectory-">PR401</a></td>
+<td>CE3c, CE3d, CE3h</td>
+</tr>
+</tbody>
+</table>
+<h4 id="04activedirectory-sesiones-3-5-administracion-y-configuracion">Sesiones 3-5: Administración y configuración<a class="headerlink" href="#04activedirectory-sesiones-3-5-administracion-y-configuracion" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td><strong>Práctica:</strong> Creación y gestión de usuarios, grupos y unidades organizativas. Unión de clientes al dominio.</td>
+<td><a href="#04activedirectory-">PR401</a> (continuación)</td>
+<td>CE3d, CE3e, CE3g, CE3h</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Práctica:</strong> Configuración de políticas de grupo. Gestión de permisos y seguridad.</td>
+<td><a href="#04activedirectory-">PR401</a> (continuación)</td>
+<td>CE3f, CE3h</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Práctica:</strong> Verificación y documentación. Administración avanzada con PowerShell.</td>
+<td><a href="#04activedirectory-">PR401</a> (finalización)</td>
+<td>CE3e, CE3f, CE3h</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="04activedirectory-introduccion-a-los-servicios-de-directorio">Introducción a los Servicios de Directorio<a class="headerlink" href="#04activedirectory-introduccion-a-los-servicios-de-directorio" title="Permanent link">&para;</a></h2>
+<p>La organización de una red de trabajo empresarial supone un reto organizativo que el administrador del sistema debe afrontar con garantías de éxito. Para ello se dispone de herramientas organizativas como los <strong>servicios de directorio</strong>.</p>
+<p>Los <strong>servicios de directorio</strong> son un conjunto de aplicaciones que almacenan y administran toda la información sobre los elementos de una red de forma centralizada y estructurada.</p>
+<h3 id="04activedirectory-caracteristicas-principales">Características principales<a class="headerlink" href="#04activedirectory-caracteristicas-principales" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Cada <strong>recurso</strong> de la red se considera como un <strong>objeto</strong>, donde su <strong>información se almacena como atributos</strong>.</li>
+<li>Para la gestión de esta información, el <strong>servicio de directorio</strong> establece una serie de <strong>permisos de acceso y condiciones de seguridad</strong> que salvaguardan esta información.</li>
+<li>Ofrecen una <strong>infraestructura</strong> para localizar, manejar, administrar y organizar los componentes y recursos comunes de una red.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Recursos gestionados</p>
+<p>Los recursos pueden ser: <strong>volúmenes, carpetas, archivos, impresoras, usuarios, grupos, dispositivos, números de teléfono y un largo etcétera</strong>.</p>
+</div>
+<h3 id="04activedirectory-ldap-lightweight-directory-access-protocol">LDAP (Lightweight Directory Access Protocol)<a class="headerlink" href="#04activedirectory-ldap-lightweight-directory-access-protocol" title="Permanent link">&para;</a></h3>
+<p>El <strong>LDAP</strong> es un protocolo a nivel de aplicación que proporciona acceso a un servicio de directorio ordenado y distribuido para la búsqueda de información en un entorno de red.</p>
+<ul>
+<li>
+<p><strong>Origen</strong>: En la década de los 80, la especificación <strong>X.500</strong> utilizaba el protocolo <strong>DAP (Directory Access Protocol)</strong> basado en la pila de protocolos <strong>OSI</strong>. Con el auge de Internet y la generalización de <strong>TCP/IP</strong>, en <strong>1993</strong> se implementó <strong>LDAP</strong> como una versión más ligera que utiliza TCP/IP.</p>
+</li>
+<li>
+<p><strong>Funcionamiento</strong>: Un cliente inicia una sesión en un servidor LDAP solicitando información. El protocolo permite realizar consultas sobre la base de datos jerárquica del directorio.</p>
+</li>
+<li>
+<p><strong>Características principales</strong>:</p>
+</li>
+<li>Protocolo ligero y eficiente para acceso a servicios de directorio.</li>
+<li>Utiliza la pila de protocolos <strong>TCP/IP</strong>.</li>
+<li>Permite búsqueda y consulta de información de forma estructurada.</li>
+<li>Estándar ampliamente adoptado por diferentes servicios de directorio.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">LDAP como estándar</p>
+<p><strong>LDAP</strong> se ha convertido en el protocolo estándar para servicios de directorio, siendo utilizado por implementaciones como <strong>Active Directory</strong> (Microsoft), <strong>OpenLDAP</strong> (sistemas GNU/Linux) y <strong>SambaLDAP</strong>, entre otros.</p>
+</div>
+<hr />
+<h2 id="04activedirectory-active-directory">Active Directory<a class="headerlink" href="#04activedirectory-active-directory" title="Permanent link">&para;</a></h2>
+<p><strong>Active Directory</strong> es un servicio de directorio basado en <strong>LDAP</strong> que organiza y gestiona de forma jerárquica la información de los recursos de red, facilitando su administración, búsqueda y autenticación.</p>
+<p>Active Directory es la implementación de servicio de directorio creada por <strong>Microsoft</strong> para sus sistemas operativos de red. Se introdujo por primera vez en <strong>Windows 2000 Server</strong>, marcando un cambio fundamental en la forma en la que las redes Windows gestionaban usuarios, equipos y recursos de manera centralizada. Antes de Active Directory, Microsoft utilizaba el modelo de dominios de <strong>Windows NT</strong>, que tenía importantes limitaciones de escalabilidad y flexibilidad. </p>
+<p>Con Active Directory, Microsoft adoptó y adaptó el protocolo <strong>LDAP</strong>, incorporando además tecnologías como <strong>Kerberos</strong> para autenticación y el soporte de DNS para resolución de nombres, integrando estas tecnologías en la infraestructura de red empresarial. </p>
+<p>A lo largo de los años, Active Directory ha evolucionado incluyendo nuevas funciones y servicios, convirtiéndose en el pilar fundamental para la gestión de identidades y recursos en entornos Windows a nivel mundial.</p>
+<h2 id="04activedirectory-estructura-fisica-de-active-directory">Estructura física de Active Directory<a class="headerlink" href="#04activedirectory-estructura-fisica-de-active-directory" title="Permanent link">&para;</a></h2>
+<p>El <strong>Directorio Activo o Active Directory</strong>, durante este módulo se utilizarán indistintamente ambos nombres; forma parte del <strong>subsistema de seguridad</strong> de Windows Server ejecutándose en modo usuario. </p>
+<figure>
+  <img src="imagenes/02/001_EstructurafisicadeAD.png" width="900"/>
+  <figcaption>Estructura física de AD</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Las aplicaciones que se ejecutan en este modo no tienen acceso directo al sistema operativo ni al hardware, sino que como medida de seguridad, las peticiones realizadas a estos deben pasar previamente por un subsistema de seguridad y posteriormente por la capa de servicios ejecutivos.</p>
+</div>
+<!-- ### Arquitectura del subsistema de seguridad
+
+**Es un conjunto de componentes de seguridad** que componen el modelo de seguridad de Windows. Estos componentes garantizan que las aplicaciones no puedan acceder a los recursos sin autenticación y autorización. Los componentes del subsistema de seguridad se ejecutan en el contexto del proceso `Lsass.exe`, e incluyen lo siguiente:
+
+- Autoridad de seguridad local.
+- Servicio de inicio de sesión en red.
+- Servicio de administrador de cuentas de seguridad.
+- Servicio de servidor LSA (exige la aplicación de directivas de seguridad local).
+- Capa de Secure Sockets (Identificadores de sesiones seguros).
+- Protocolo de autenticación **Kerberos v5** y protocolo de autenticación **NTLM**.
+
+!!! note "Nota"
+    * **Kerberos** es un protocolo de autenticación de redes de ordenador creado por el **MIT** que permite a dos ordenadores en una red insegura demostrar su identidad mutuamente de manera segura.
+    * **NTLM**: En una red de Windows, **NT LAN Manager** es un conjunto de protocolos de seguridad de Microsoft destinados a proporcionar autenticación, integridad y confidencialidad a los usuarios. **NTLM** es el sucesor del protocolo de autenticación en Microsoft LAN Manager, un producto anterior de Microsoft. -->
+
+<h2 id="04activedirectory-arquitectura-cliente-servidor">Arquitectura cliente – servidor<a class="headerlink" href="#04activedirectory-arquitectura-cliente-servidor" title="Permanent link">&para;</a></h2>
+<p>Active Directory también esta basado en el modelo <strong>cliente-servidor</strong> es aquel en el que existen varios clientes, los cuales realizan peticiones a un servidor.</p>
+<figure>
+  <img src="imagenes/02/ClienteServidor.png" width="400"/>
+  <figcaption>Esquema de red cliente servidor</figcaption>
+</figure>
+
+<!-- Un servidor puede ser:
+
+- **Dedicado** : La máquina servidor sólo se dedica a tareas de servicios en la red
+- **No dedicado** : Además de los servicios, la máquina se puede usar como un puesto de trabajo más. -->
+
+<h2 id="04activedirectory-objetos-del-directorio-activo">Objetos del Directorio Activo<a class="headerlink" href="#04activedirectory-objetos-del-directorio-activo" title="Permanent link">&para;</a></h2>
+<p>El Directorio Activo <strong>es una implementación concreta del protocolo LDAP</strong>. Este protocolo trata los elementos de la red como
+objetos. Los tipos de objetos básicos que existen en el Directorio Activo son:</p>
+<ul>
+<li>Usuarios.</li>
+<li>Grupos.</li>
+<li>Equipos.</li>
+<li>Dominios.</li>
+<li>Impresoras.</li>
+<li>Unidades Organizativas.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Sin embargo los administradores de sistemas pueden crear nuevos tipos de objetos o añadir propiedades a alguna clase de
+los objetos modificando el esquema del Directorio Activo, para adaptar la estructura de la red a las necesidades particulares de la organización.</p>
+</div>
+<h3 id="04activedirectory-dominio">Dominio<a class="headerlink" href="#04activedirectory-dominio" title="Permanent link">&para;</a></h3>
+<p>Representa un conjunto de equipos (clientes y servidores) que comparten una política de seguridad y una base de datos común. En concreto para el <strong>Directorio Activo de Windows</strong> se trata de un conjunto de objetos de tipo equipo, usuario y otras clases de objetos que comparten una base de datos de directorio común.</p>
+<p>Los servidores pueden ser:</p>
+<ul>
+<li>
+<p><strong>Controladores de dominio</strong> : Contienen las cuentas de usuario y de otros datos del <strong>Directorio Activo</strong>. </p>
+<ul>
+<li>Debe haber al menos <strong>1 por cada dominio</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Servidores miembros del dominio</strong> : Se utilizan para almacenamiento de archivos y otros recursos compartidos en la red. No contienen información vital como cuentas de usuarios o políticas de grupos.</p>
+</li>
+</ul>
+<figure>
+  <img src="imagenes/02/MiembroDominioAD.png" width="600"/>
+  <figcaption>Servidores de Dominio</figcaption>
+</figure>
+
+<!-- ### Diferencia entre "Grupo de Trabajo" y "Dominio"
+
+Cabe recordar la diferencia entre la gestión de usuarios con los **Grupos de trabajo** y **Dominios**.
+
+- **Grupo de trabajo**: es un conjunto de ordenadores comunicados entre sí, que forman parte de un mismo grupo. No obstante toda la gestión de **políticas/grupos/usuarios/servicios/…** son individuales por cada máquina.El grupo de trabajo se configuraría en cada máquina desde:
+
+<figure>
+  <img src="imagenes/02/DiffGTDom.png" width="400"/>
+  <figcaption>Configuración "Grupo de Trabajo" y "Dominio".</figcaption>
+</figure>
+
+- **Dominio** como ya se ha visto (OpenLDAP) desde un servidor se puede gestionar todo, usuarios, servicios, seguridad, recursos accesibles, etc.
+
+!!! Note
+    Es decir, en un **directorio activo con dominio** se crea un usuario y desde cualquier máquina asociada al dominio se podría registrar, en el caso de un grupo de trabajo deberá estar creado el usuario manualmente en cada equipo del grupo de trabajo, y así con las políticas de grupo, etc. **Por lo tanto con el grupo de trabajo aumentaríamos la carga de gestión al enésimo usuario**.
+
+#### Ventajas/Desventajas de un "Grupo de Trabajo" frente a un "Dominio"
+
+- Es más **barato** (no necesita un servidor y licencias).
+- La gestión es mucho más tediosa porque tienes que hacerla equipo por equipo, mientras que en un dominio solo debes configurar el servidor, por tanto es **menos escalable** (imagina tener 200 ordenadores en un grupo de trabajo).
+- El grupo de trabajo es mucho más **inseguro** , puesto que es más fácil controlar políticas de seguridad a través de un servidor con políticas generalizadas para todos los equipos, ya que no todos los usuarios tienen un conocimiento suficiente de informática.
+- Con el grupo de trabajo será mucho **más tedioso implementar servicios** , por ejemplo un servidor de correo. -->
+
+<h3 id="04activedirectory-unidad-organizativa">Unidad Organizativa<a class="headerlink" href="#04activedirectory-unidad-organizativa" title="Permanent link">&para;</a></h3>
+<p>Las <strong>unidades organizativas</strong> nos ayudan a organizar los objetos de nuestro dominio (impresoras, usuarios, grupos, …).</p>
+<ul>
+<li>Es parecido a la estructura de directorios (carpetas) de un sistema operativo, <strong>por ejemplo</strong>, dentro de nuestro dominio podemos tener una unidad organizativa por cada departamento de la empresa.</li>
+</ul>
+<p>En el siguiente ejemplo vemos un dominio con una unidad organizativa para usuarios de "<em>Contabilidad</em>", "<em>Recursos Humanos</em>", "<em>Informáticos</em>"y "<em>Marketing</em>".</p>
+<figure>
+  <img src="imagenes/02/UO_AD.png" width="400"/>
+  <figcaption>Unidades Organizativas en Active Directory</figcaption>
+</figure>
+
+<h3 id="04activedirectory-arboles">Árboles:<a class="headerlink" href="#04activedirectory-arboles" title="Permanent link">&para;</a></h3>
+<p>Se da en redes muy grandes donde nos interesa segmentar en subdominios, de tal forma que el tráfico o las peticiones de los usuarios al servidor de un subdominio no llegan al servidor raíz y por nos ayuda con el balanceo de carga de trabajo y ahorro en el ancho de banda de la red. No obstante la gestión sigue siendo centralizada desde el servidor raíz. Similar a DNS.</p>
+<figure>
+  <img src="imagenes/02/DIT_AD.png" width="400"/>
+  <figcaption>Objetos en Active Directory.</figcaption>
+</figure>
+
+<h3 id="04activedirectory-bosques">Bosques<a class="headerlink" href="#04activedirectory-bosques" title="Permanent link">&para;</a></h3>
+<p>Un bosque es la unión de diferentes árboles o dominios que <strong>confían</strong> entre ellos, pero son dominios totalmente diferentes (USA.miempresa.com, EUROPA.miempresa.com y SPAIN.miempresa.com). </p>
+<ul>
+<li>Si se configura una confianza entre ellos los usuarios de un dominio tendrán la posibilidad acceder a los recursos (o a ciertos recursos) de otro dominio que compartan el mismo bosque.</li>
+</ul>
+<figure>
+  <img src="imagenes/02/EjemDIT_AD.png" width="400"/>
+  <figcaption>Ejemplo de Objetos en Active Directory.</figcaption>
+</figure>
+
+<h2 id="04activedirectory-roles-servicios">Roles (Servicios)<a class="headerlink" href="#04activedirectory-roles-servicios" title="Permanent link">&para;</a></h2>
+<p>Un rol de servidor es un <strong>conjunto de servicios que permiten a un equipo realizar una función específica</strong> para varios usuarios u otros equipos de una red. Básicamente está relacionado con el cometido de dicho servidor, un servidor puede tener múltiples roles.</p>
+<p>Ejemplos:</p>
+<ul>
+<li>Servidor <strong>DHCP</strong>.</li>
+<li>Servidor <strong>DNS</strong>.</li>
+<li>Servidor <strong>Active Directory</strong>.</li>
+<li>Servidor de virtualización (<strong>Hyper-V</strong>).</li>
+<li>Servidor Web.</li>
+<li>Acceso remoto.</li>
+<li>Servidor de impresión.</li>
+<li>Servidor de correo electrónico.</li>
+</ul>
+<p>A su vez, un rol puede tener diferentes funcionalidades o subroles, los cuales pueden estar activados o no. Dichos "subroles" son <strong>servicios de rol</strong>. </p>
+<!-- !!! Example
+    un Servidor **DNS** solo tiene una finalidad y, por lo tanto, no tienen servicios de rol disponibles. En cambio un Servicio de Archivos (para compartir ficheros) puede tener el servicio de rol para el protocolo NFS o no, es decir, puede tener habilitada la función de servidor de ficheros NFS. -->
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Network File System, o NFS</strong>, es un protocolo de nivel de aplicación, según el Modelo OSI. Es utilizado para sistemas de archivos distribuido en un entorno de red de computadoras de área local. Posibilita que distintos sistemas conectados a una misma red accedan a ficheros remotos como si se tratara de locales.</p>
+</div>
+<ul>
+<li>Para Agregar Roles:</li>
+</ul>
+<p><img alt="" src="imagenes/02/AddRolAD.png" /></p>
+<h3 id="04activedirectory-servicios-de-ad-en-windows-server">Servicios de AD en Windows Server<a class="headerlink" href="#04activedirectory-servicios-de-ad-en-windows-server" title="Permanent link">&para;</a></h3>
+<p>Cuando vayamos a añadir nuestro rol de Active Directory al servidor, veremos que tenemos diferentes roles de Active Directory:</p>
+<p><img alt="" src="imagenes/02/RolActiveD.png" /></p>
+<ul>
+<li>
+<p><strong>Active Directory Lightweight Directory Services</strong> : Se trata de un Active Directory "light", no require de un dominio para su uso, simplemente alberga opciones/características para ciertas aplicaciones que nos interese.</p>
+</li>
+<li>
+<p><strong>Active Directory Rights Management Services</strong> : Nos ayuda a gestionar la protección del acceso a nuestros ficheros del directorio activo. Por ejemplo si un documento se intenta abrir desde un usuario no autorizado.</p>
+</li>
+<li>
+<p><strong>Servicios de certificados de Active Directory</strong> : Simplemente gestiona la creación de certificados digitales. Es para entidades de certificación oficial (seguridad informática).</p>
+</li>
+<li>
+<p><strong>Servicios de dominio de Active Directory:</strong> Este va a ser la opción que veremos en el módulo. </p>
+</li>
+<li>
+<p><strong>Servicio de federación de Active Directory:</strong> Gestiona el acceso seguro desde dentro y desde fuera de tu red (Internet) a aplicaciones gestionadas en local por el servidor de Windows Active Directory. Obviamente con las credenciales de usuarios del active directory.</p>
+</li>
+</ul>
+<h2 id="04activedirectory-base-de-datos-y-autentificacion">Base de datos y Autentificación<a class="headerlink" href="#04activedirectory-base-de-datos-y-autentificacion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>La base de datos de los usuarios, almacenada a través de <strong>LDAP</strong> se almacena en los controladores de dominio. Además el fichero " <strong>ntds.dit</strong>" será el que almacene realmente dicha base de datos.</li>
+<li>La autenticación de los usuarios se realizará a través de <strong>Kerberos</strong>.</li>
+</ul>
+<h2 id="04activedirectory-actividades">Actividades<a class="headerlink" href="#04activedirectory-actividades" title="Permanent link">&para;</a></h2>
+<hr />
+<p><a name="PR401"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>PR401. Práctica: Configuración de Active Directory en AWS Academy</strong>. (RA.3 // CE3a, CE3b, CE3c, CE3d, CE3e, CE3f, CE3g y CE3h // 1-10p). </li>
+</ul>
+<p>En esta práctica aprenderás a configurar <strong>Active Directory Domain Services (AD DS)</strong> en una instancia de <strong>Windows Server</strong> en <strong>AWS Academy</strong> y unir clientes al dominio. El objetivo es familiarizarte con los servicios de directorio propietarios, la configuración de dominios y la administración centralizada de usuarios y equipos.</p>
+<div class="admonition note">
+<p class="admonition-title">Entorno educativo</p>
+<p>Esta práctica utiliza <strong>AWS Academy Learner Lab</strong>, una plataforma educativa que proporciona acceso a recursos de AWS con créditos limitados para estudiantes. Los recursos creados se eliminan automáticamente al finalizar el laboratorio.</p>
+</div>
+<blockquote>
+<p><strong>Resumen de tareas</strong></p>
+</blockquote>
+<ul>
+<li><strong>Accede a AWS Academy</strong> a través de Canvas e inicia el laboratorio AWS Academy Learner Lab.</li>
+<li><strong>Crea instancias de Windows Server 2025</strong> en AWS EC2 (servidor y cliente).</li>
+<li><strong>Configura DHCP en AWS</strong> para soportar el dominio de Active Directory.</li>
+<li><strong>Configura grupos de seguridad</strong> para permitir los servicios necesarios de Active Directory.</li>
+<li><strong>Instala Active Directory Domain Services</strong> y promueve el servidor a controlador de dominio.</li>
+<li><strong>Crea usuarios, grupos y unidades organizativas</strong> en el dominio.</li>
+<li><strong>Une un cliente al dominio</strong> y verifica la configuración.</li>
+<li><strong>Configura acceso remoto RDP</strong> para usuarios del dominio.</li>
+<li><strong>Documenta el proceso</strong>, mostrando los conceptos de servicios de directorio, pasos realizados, comandos utilizados y capturas de pantalla de la funcionalidad.</li>
+</ul>
+<blockquote>
+<p><strong>Criterios de evaluación</strong></p>
+</blockquote>
+<ul>
+<li>Configuración correcta de AWS Academy y acceso al laboratorio.</li>
+<li>Creación correcta de las instancias Windows Server 2025 en EC2.</li>
+<li>Configuración adecuada de DHCP en AWS para el dominio.</li>
+<li>Configuración correcta de grupos de seguridad para permitir servicios de Active Directory.</li>
+<li>Instalación y promoción exitosa a controlador de dominio.</li>
+</ul>
+<!-- - Creación y gestión correcta de usuarios, grupos y unidades organizativas. -->
+<ul>
+<li>Unión exitosa del cliente al dominio.</li>
+<li>Configuración correcta del acceso remoto para usuarios del dominio.</li>
+<li>Explicación clara de los conceptos de servicios de directorio y Active Directory.</li>
+<li>Documentación completa de la arquitectura y pasos seguidos con evidencias.</li>
+</ul>
+<blockquote>
+<p>Consulta el enunciado completo y detallado aquí:<br />
+<a href="#practicaactivedirectoryaws">Práctica: Configuración de Active Directory en AWS Academy</a></p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Entorno educativo: AWS Academy Learner Lab</p>
+<p><strong>AWS Academy Learner Lab</strong> proporciona un entorno controlado con créditos educativos limitados para que los estudiantes experimenten con servicios de AWS. El laboratorio tiene un tiempo limitado (normalmente 4 horas) y los recursos se eliminan automáticamente al finalizar. Es importante <strong>detener las instancias</strong> cuando no se usen para no consumir créditos innecesariamente. Los conceptos aprendidos son directamente aplicables a escenarios reales con AWS en producción.</p>
+</div>
+<hr /></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
                 .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3 ;  counter-increment: counter-index-2 }
@@ -3984,6 +4400,14 @@ enero febrero marzo abril</p>
             
                 .print-site-enumerate-headings #03accesoremoto h3:before { content: '4.' counter(counter-03accesoremoto-2) '.' counter(counter-03accesoremoto-3) ' ' }
                 .print-site-enumerate-headings #03accesoremoto h3 {  counter-increment: counter-03accesoremoto-3 }
+            
+.print-site-enumerate-headings #04activedirectory > h1:before { content: '5 ' }
+
+                .print-site-enumerate-headings #04activedirectory h2:before { content: '5.' counter(counter-04activedirectory-2) ' ' }
+                .print-site-enumerate-headings #04activedirectory h2 {  counter-reset: counter-04activedirectory-3 ;  counter-increment: counter-04activedirectory-2 }
+            
+                .print-site-enumerate-headings #04activedirectory h3:before { content: '5.' counter(counter-04activedirectory-2) '.' counter(counter-04activedirectory-3) ' ' }
+                .print-site-enumerate-headings #04activedirectory h3 {  counter-increment: counter-04activedirectory-3 }
             </style>
 
 
