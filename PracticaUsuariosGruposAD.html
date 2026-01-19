@@ -1,0 +1,1316 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/PracticaUsuariosGruposAD.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Práctica: Administración de Usuarios y Grupos en Active Directory - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Práctica: Administración de Usuarios y Grupos en Active Directory - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaUsuariosGruposAD.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/PracticaUsuariosGruposAD.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Práctica: Administración de Usuarios y Grupos en Active Directory - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaUsuariosGruposAD.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-administracion-de-usuarios-y-grupos-en-active-directory" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Práctica: Administración de Usuarios y Grupos en Active Directory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03AccesoRemoto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.- Servicios de acceso remoto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04ActiveDirectory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Servicios de Directorio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos previos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-administrar-usuarios-y-grupos" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Por qué administrar usuarios y grupos?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-de-administracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas de administración
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-crear-usuarios-del-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Crear usuarios del dominio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 1: Crear usuarios del dominio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-acceder-a-usuarios-y-equipos-de-active-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Acceder a Usuarios y Equipos de Active Directory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-crear-el-primer-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Crear el primer usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configurar-los-datos-del-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configurar los datos del usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configurar-la-contrasena" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configurar la contraseña
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-crear-el-segundo-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Crear el segundo usuario
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-crear-y-configurar-grupos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Crear y configurar grupos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2: Crear y configurar grupos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-un-grupo-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Crear un grupo global
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-anadir-usuarios-al-grupo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Añadir usuarios al grupo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Añadir usuarios al grupo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodo-1-desde-el-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Método 1: Desde el usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodo-2-desde-el-grupo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Método 2: Desde el grupo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-deshabilitar-y-habilitar-cuentas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Deshabilitar y habilitar cuentas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 3: Deshabilitar y habilitar cuentas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-deshabilitar-usuario2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Deshabilitar usuario2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verificar-que-la-cuenta-esta-deshabilitada" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Verificar que la cuenta está deshabilitada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-habilitar-usuario2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Habilitar usuario2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-configurar-restricciones-de-inicio-de-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Configurar restricciones de inicio de sesión
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 4: Configurar restricciones de inicio de sesión">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-restringir-usuario1-a-un-equipo-especifico" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Restringir usuario1 a un equipo específico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verificar-la-restriccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Verificar la restricción
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-configurar-horarios-de-inicio-de-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5: Configurar horarios de inicio de sesión
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 5: Configurar horarios de inicio de sesión">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configurar-horarios-para-usuario2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Configurar horarios para usuario2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurar-las-restricciones-horarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configurar las restricciones horarias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-verificar-las-restricciones-horarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Verificar las restricciones horarias
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-6-intentar-iniciar-sesion-en-el-controlador-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 6: Intentar iniciar sesión en el controlador de dominio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 6: Intentar iniciar sesión en el controlador de dominio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-intentar-iniciar-sesion-con-usuario2-en-el-dc" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Intentar iniciar sesión con usuario2 en el DC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-analisis" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Análisis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="practica-administracion-de-usuarios-y-grupos-en-active-directory">Práctica: Administración de Usuarios y Grupos en Active Directory<a class="headerlink" href="#practica-administracion-de-usuarios-y-grupos-en-active-directory" title="Permanent link">&para;</a></h1>
+<h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
+<p>Durante esta práctica aprenderás a crear, configurar y gestionar usuarios y grupos en <strong>Active Directory Domain Services</strong>. Esta práctica complementa la PR401 y te permitirá trabajar con la administración de objetos del directorio, configuraciones de cuentas y restricciones de acceso.</p>
+<p>Al finalizar esta práctica serás capaz de:</p>
+<ul>
+<li>Crear y configurar <strong>cuentas de usuario</strong> en Active Directory.</li>
+<li>Configurar <strong>propiedades de contraseña</strong> y opciones de cuenta.</li>
+<li>Crear y gestionar <strong>grupos</strong> de seguridad con diferentes ámbitos.</li>
+<li><strong>Añadir usuarios a grupos</strong> y gestionar pertenencias.</li>
+<li>Configurar <strong>restricciones de inicio de sesión</strong> (horarios y equipos permitidos).</li>
+<li><strong>Deshabilitar y habilitar</strong> cuentas de usuario.</li>
+<li>Documentar el proceso completo de administración.</li>
+</ul>
+<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Creación de usuarios</strong>:</li>
+</ol>
+<ul>
+<li>Crea dos usuarios (<code>usuario1</code> y <code>usuario2</code>) con la contraseña <code>Abc123!</code>.</li>
+<li>Configura las cuentas para que no tengan que cambiar la contraseña al iniciar sesión por primera vez.</li>
+</ul>
+<ol start="2">
+<li><strong>Creación y gestión de grupos</strong>:</li>
+</ol>
+<ul>
+<li>Crea un grupo global de seguridad llamado <code>Alumnos</code>.</li>
+<li>Añade ambos usuarios al grupo <code>Alumnos</code>.</li>
+</ul>
+<ol start="3">
+<li><strong>Deshabilitación de cuentas</strong>:</li>
+</ol>
+<ul>
+<li>Deshabilita la cuenta de <code>usuario2</code>.</li>
+<li>Captura el error al intentar acceder desde un equipo cliente.</li>
+<li>Habilita de nuevo la cuenta.</li>
+</ul>
+<ol start="4">
+<li><strong>Restricciones de equipos</strong>:</li>
+</ol>
+<ul>
+<li>Configura <code>usuario1</code> para que solo pueda iniciar sesión desde un equipo específico.</li>
+<li>Verifica que no puede iniciar sesión desde otros equipos.</li>
+</ul>
+<ol start="5">
+<li><strong>Restricciones horarias</strong>:</li>
+</ol>
+<ul>
+<li>Configura <code>usuario2</code> para que solo pueda iniciar sesión de lunes a viernes de 8:00 a 18:00.</li>
+<li>Captura la configuración de horarios.</li>
+</ul>
+<ol start="6">
+<li><strong>Análisis de permisos</strong>:</li>
+</ol>
+<ul>
+<li>Intenta iniciar sesión en el controlador de dominio con <code>usuario2</code>.</li>
+<li>Analiza por qué no puedes y qué se necesitaría para permitirlo.</li>
+</ul>
+<ol start="7">
+<li><strong>Documentación</strong>:</li>
+</ol>
+<ul>
+<li>Crea un documento que explique:<ul>
+<li>Los conceptos de usuarios y grupos en Active Directory.</li>
+<li>Los tipos y ámbitos de grupos.</li>
+<li>Los pasos realizados para la creación y configuración.</li>
+<li>Capturas de pantalla que demuestren el funcionamiento.</li>
+<li>Análisis de las restricciones y su funcionamiento.</li>
+</ul>
+</li>
+</ul>
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<p>Para la entrega de esta práctica, deberás proporcionar:</p>
+<ol>
+<li><strong>Documentación</strong>:</li>
+</ol>
+<ul>
+<li>Documento en Markdown con:<ul>
+<li>Descripción de usuarios y grupos en Active Directory.</li>
+<li>Tipos y ámbitos de grupos.</li>
+<li>Pasos seguidos para la creación de usuarios y grupos.</li>
+<li>Configuración de restricciones de inicio de sesión.</li>
+<li>Capturas de pantalla del proceso completo.</li>
+<li>Análisis de las restricciones y su funcionamiento.</li>
+<li>Respuestas a las preguntas planteadas.</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>Evidencias</strong>:</li>
+</ol>
+<ul>
+<li>Las capturas de pantalla deben mostrar:<ul>
+<li>Creación de usuarios en Active Directory.</li>
+<li>Configuración de contraseñas y opciones de cuenta.</li>
+<li>Creación de grupos.</li>
+<li>Añadir usuarios a grupos.</li>
+<li>Deshabilitación de cuenta y error al intentar iniciar sesión.</li>
+<li>Configuración de restricciones de equipos.</li>
+<li>Configuración de restricciones horarias.</li>
+<li>Verificación de las restricciones funcionando.</li>
+</ul>
+</li>
+</ul>
+<h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
+<p>Antes de comenzar, asegúrate de tener completada la <strong>PR401</strong> o tener:</p>
+<ul>
+<li><strong>Un dominio de Active Directory</strong> configurado y funcionando.</li>
+<li><strong>Acceso RDP</strong> al controlador de dominio con credenciales de administrador.</li>
+<li><strong>Al menos un equipo cliente</strong> unido al dominio.</li>
+<li><strong>Conocimiento básico</strong> de Active Directory y conceptos de dominio.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota importante</p>
+<p>Esta práctica asume que ya tienes un dominio de Active Directory configurado. Si no lo tienes, completa primero la PR401.</p>
+</div>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<h3 id="por-que-administrar-usuarios-y-grupos">¿Por qué administrar usuarios y grupos?<a class="headerlink" href="#por-que-administrar-usuarios-y-grupos" title="Permanent link">&para;</a></h3>
+<p>La administración eficiente de usuarios y grupos es fundamental en cualquier entorno de red empresarial. Permite:</p>
+<ul>
+<li><strong>Controlar el acceso</strong> a recursos de red de forma centralizada.</li>
+<li><strong>Simplificar la gestión</strong> de permisos mediante grupos en lugar de usuarios individuales.</li>
+<li><strong>Aplicar políticas</strong> de seguridad de forma consistente.</li>
+<li><strong>Facilitar la auditoría</strong> y el cumplimiento normativo.</li>
+</ul>
+<h3 id="herramientas-de-administracion">Herramientas de administración<a class="headerlink" href="#herramientas-de-administracion" title="Permanent link">&para;</a></h3>
+<p>Para administrar usuarios y grupos en Active Directory utilizaremos principalmente:</p>
+<ul>
+<li><strong>Usuarios y equipos de Active Directory (dsa.msc)</strong>: Herramienta gráfica principal para la administración de objetos del directorio.</li>
+<li><strong>PowerShell</strong>: Para tareas de administración automatizadas o masivas.</li>
+</ul>
+<blockquote>
+<p><strong>Recursos de apoyo</strong></p>
+</blockquote>
+<figure style="width: 100%; margin: 0; padding: 0;">
+  <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe src="https://www.youtube.com/embed/DyZKOorXoNo" title="Administración de usuarios y grupos en Active Directory" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+  </div>
+  <figcaption>Video tutorial: Administración de usuarios y grupos en Active Directory</figcaption>
+</figure>
+
+<figure style="width: 100%; margin: 0; padding: 0;">
+  <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe src="https://www.youtube.com/embed/8BYwjMwyP6k" title="Configuración avanzada de usuarios y grupos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+  </div>
+  <figcaption>Video tutorial: Configuración avanzada de usuarios y grupos</figcaption>
+</figure>
+
+<h2 id="paso-1-crear-usuarios-del-dominio">Paso 1: Crear usuarios del dominio<a class="headerlink" href="#paso-1-crear-usuarios-del-dominio" title="Permanent link">&para;</a></h2>
+<h3 id="1-acceder-a-usuarios-y-equipos-de-active-directory">1. Acceder a Usuarios y Equipos de Active Directory<a class="headerlink" href="#1-acceder-a-usuarios-y-equipos-de-active-directory" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Conecta mediante RDP</strong> a tu controlador de dominio.</li>
+<li><strong>Abre "Administrador del servidor"</strong> (Server Manager).</li>
+<li><strong>Haz clic en "Herramientas"</strong> → <strong>"Usuarios y equipos de Active Directory"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/001.png" width="850"/>
+  <figcaption>Acceso a Usuarios y Equipos de Active Directory</figcaption>
+</figure>
+
+<h3 id="2-crear-el-primer-usuario">2. Crear el primer usuario<a class="headerlink" href="#2-crear-el-primer-usuario" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En el panel izquierdo, <strong>expande tu dominio</strong> (ej: <code>empresa.local</code>).</li>
+<li><strong>Haz clic con el botón derecho</strong> sobre <strong>"Users"</strong>.</li>
+<li>Selecciona <strong>"Nuevo"</strong> → <strong>"Usuario"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/002.png" width="850"/>
+  <figcaption>Crear nuevo usuario</figcaption>
+</figure>
+
+<h3 id="3-configurar-los-datos-del-usuario">3. Configurar los datos del usuario<a class="headerlink" href="#3-configurar-los-datos-del-usuario" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En el asistente de creación de usuario, introduce:
+   - <strong>Nombre</strong>: <code>Usuario1</code>
+   - <strong>Iniciales</strong>: (opcional)
+   - <strong>Apellidos</strong>: (opcional)
+   - <strong>Nombre de inicio de sesión de usuario</strong>: <code>usuario1</code></li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/003.png" width="550"/>
+  <figcaption>Configuración de datos del usuario</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Normas para nombres de usuario</p>
+<ul>
+<li>Las cuentas de usuario <strong>deben ser únicas</strong> en todo el dominio.</li>
+<li>Los nombres pueden contener letras, números y algunos caracteres especiales.</li>
+<li>No se aceptan: <code>/</code>, <code>|</code>, <code>:</code>, <code>;</code>, <code>=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>*</code>.</li>
+<li>Máximo 20 caracteres.</li>
+</ul>
+</div>
+<ol start="2">
+<li><strong>Haz clic en "Siguiente"</strong>.</li>
+</ol>
+<h3 id="4-configurar-la-contrasena">4. Configurar la contraseña<a class="headerlink" href="#4-configurar-la-contrasena" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Introduce la contraseña: <code>Abc123!</code></li>
+<li><strong>Confirma la contraseña</strong>.</li>
+<li><strong>Desmarca</strong> la opción <strong>"El usuario debe cambiar la contraseña en el siguiente inicio de sesión"</strong>.</li>
+<li><strong>Marca</strong> la opción <strong>"La contraseña nunca expira"</strong> (solo para prácticas).</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/004.png" width="550"/>
+  <figcaption>Configuración de contraseña del usuario</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Seguridad en producción</p>
+<p>En un entorno de producción, <strong>nunca</strong> deberías desactivar la caducidad de contraseñas ni permitir contraseñas débiles. Estas configuraciones son solo para prácticas educativas.</p>
+</div>
+<ol start="5">
+<li><strong>Haz clic en "Siguiente"</strong> y luego en <strong>"Finalizar"</strong>.</li>
+</ol>
+<h3 id="5-crear-el-segundo-usuario">5. Crear el segundo usuario<a class="headerlink" href="#5-crear-el-segundo-usuario" title="Permanent link">&para;</a></h3>
+<p>Repite los pasos anteriores para crear un segundo usuario:</p>
+<ul>
+<li><strong>Nombre de inicio de sesión</strong>: <code>usuario2</code></li>
+<li><strong>Contraseña</strong>: <code>Abc123!</code></li>
+<li><strong>Mismas opciones de contraseña</strong> que usuario1</li>
+</ul>
+<h2 id="paso-2-crear-y-configurar-grupos">Paso 2: Crear y configurar grupos<a class="headerlink" href="#paso-2-crear-y-configurar-grupos" title="Permanent link">&para;</a></h2>
+<h3 id="1-crear-un-grupo-global">1. Crear un grupo global<a class="headerlink" href="#1-crear-un-grupo-global" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En <strong>Usuarios y equipos de Active Directory</strong>, <strong>haz clic con el botón derecho</strong> sobre <strong>"Users"</strong>.</li>
+<li>Selecciona <strong>"Nuevo"</strong> → <strong>"Grupo"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/015.png" width="900"/>
+  <figcaption>Crear nuevo grupo</figcaption>
+</figure>
+
+<ol start="3">
+<li>En el cuadro de diálogo:
+   - <strong>Nombre del grupo</strong>: <code>Alumnos</code>
+   - <strong>Ámbito del grupo</strong>: <strong>Global</strong> (por defecto)
+   - <strong>Tipo de grupo</strong>: <strong>Seguridad</strong> (por defecto)</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/016.png" width="450"/>
+  <figcaption>Configuración del nuevo grupo</figcaption>
+</figure>
+
+<ol start="4">
+<li><strong>Haz clic en "Aceptar"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/017.png" width="450"/>
+  <figcaption>Grupo creado en Active Directory</figcaption>
+</figure>
+
+<h3 id="2-anadir-usuarios-al-grupo">2. Añadir usuarios al grupo<a class="headerlink" href="#2-anadir-usuarios-al-grupo" title="Permanent link">&para;</a></h3>
+<h4 id="metodo-1-desde-el-usuario">Método 1: Desde el usuario<a class="headerlink" href="#metodo-1-desde-el-usuario" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Selecciona el usuario</strong> <code>usuario1</code>.</li>
+<li><strong>Haz clic con el botón derecho</strong> → <strong>"Agregar a un grupo"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/018.png" width="450"/>
+  <figcaption>Añadir usuario a grupo desde el usuario</figcaption>
+</figure>
+
+<ol start="3">
+<li>Escribe el nombre del grupo: <code>Alumnos</code>.</li>
+<li><strong>Haz clic en "Comprobar nombres"</strong> para verificar.</li>
+<li><strong>Haz clic en "Aceptar"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/019.png" width="550"/>
+  <figcaption>Búsqueda y verificación del grupo</figcaption>
+</figure>
+
+<ol start="6">
+<li>Verás un mensaje de confirmación:</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/020.png" width="550"/>
+  <figcaption>Confirmación de usuario añadido al grupo</figcaption>
+</figure>
+
+<ol start="7">
+<li>Repite el proceso para añadir <code>usuario2</code> al grupo <code>Alumnos</code>.</li>
+</ol>
+<h4 id="metodo-2-desde-el-grupo">Método 2: Desde el grupo<a class="headerlink" href="#metodo-2-desde-el-grupo" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Selecciona el grupo</strong> <code>Alumnos</code>.</li>
+<li><strong>Haz clic con el botón derecho</strong> → <strong>"Propiedades"</strong>.</li>
+<li>Ve a la pestaña <strong>"Miembros"</strong>.</li>
+<li><strong>Haz clic en "Agregar"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/022.png" width="850"/>
+  <figcaption>Propiedades del grupo - Pestaña General</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/023.png" width="850"/>
+  <figcaption>Propiedades del grupo - Pestaña Miembros</figcaption>
+</figure>
+
+<ol start="5">
+<li>Busca y añade los usuarios que desees.</li>
+<li><strong>Haz clic en "Aceptar"</strong>.</li>
+</ol>
+<h2 id="paso-3-deshabilitar-y-habilitar-cuentas">Paso 3: Deshabilitar y habilitar cuentas<a class="headerlink" href="#paso-3-deshabilitar-y-habilitar-cuentas" title="Permanent link">&para;</a></h2>
+<h3 id="1-deshabilitar-usuario2">1. Deshabilitar usuario2<a class="headerlink" href="#1-deshabilitar-usuario2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Selecciona el usuario</strong> <code>usuario2</code>.</li>
+<li><strong>Haz clic con el botón derecho</strong> → <strong>"Deshabilitar la cuenta"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/009.png" width="950"/>
+  <figcaption>Deshabilitar cuenta de usuario</figcaption>
+</figure>
+
+<ol start="3">
+<li><strong>Confirma</strong> la acción.</li>
+</ol>
+<h3 id="2-verificar-que-la-cuenta-esta-deshabilitada">2. Verificar que la cuenta está deshabilitada<a class="headerlink" href="#2-verificar-que-la-cuenta-esta-deshabilitada" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Conecta mediante RDP</strong> al equipo cliente unido al dominio.</li>
+<li><strong>Intenta iniciar sesión</strong> con <code>usuario2</code> y su contraseña.</li>
+<li>Deberías ver un <strong>mensaje de error</strong> indicando que la cuenta está deshabilitada.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Captura de pantalla requerida</p>
+<p>Debes capturar el mensaje de error que aparece al intentar iniciar sesión con una cuenta deshabilitada.</p>
+</div>
+<h3 id="3-habilitar-usuario2">3. Habilitar usuario2<a class="headerlink" href="#3-habilitar-usuario2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Vuelve al controlador de dominio.</li>
+<li><strong>Selecciona el usuario</strong> <code>usuario2</code>.</li>
+<li><strong>Haz clic con el botón derecho</strong> → <strong>"Habilitar la cuenta"</strong>.</li>
+<li><strong>Verifica</strong> que ahora puedes iniciar sesión con <code>usuario2</code>.</li>
+</ol>
+<h2 id="paso-4-configurar-restricciones-de-inicio-de-sesion">Paso 4: Configurar restricciones de inicio de sesión<a class="headerlink" href="#paso-4-configurar-restricciones-de-inicio-de-sesion" title="Permanent link">&para;</a></h2>
+<h3 id="1-restringir-usuario1-a-un-equipo-especifico">1. Restringir usuario1 a un equipo específico<a class="headerlink" href="#1-restringir-usuario1-a-un-equipo-especifico" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En <strong>Usuarios y equipos de Active Directory</strong>, <strong>selecciona el usuario</strong> <code>usuario1</code>.</li>
+<li><strong>Haz clic con el botón derecho</strong> → <strong>"Propiedades"</strong>.</li>
+<li>Ve a la pestaña <strong>"Cuenta"</strong>.</li>
+<li><strong>Haz clic en "Iniciar sesión en..."</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/012.png" width="750"/>
+  <figcaption>Configuración de equipos permitidos para inicio de sesión</figcaption>
+</figure>
+
+<ol start="5">
+<li>Selecciona <strong>"Los siguientes equipos"</strong>.</li>
+<li><strong>Haz clic en "Agregar"</strong>.</li>
+<li>Introduce el <strong>nombre del equipo</strong> (ej: <code>W10</code> o el nombre de tu equipo cliente).</li>
+<li><strong>Haz clic en "Comprobar nombres"</strong> y luego en <strong>"Aceptar"</strong>.</li>
+<li><strong>Haz clic en "Aceptar"</strong> para cerrar todas las ventanas.</li>
+</ol>
+<h3 id="2-verificar-la-restriccion">2. Verificar la restricción<a class="headerlink" href="#2-verificar-la-restriccion" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Si tienes <strong>otro equipo cliente</strong> unido al dominio, intenta iniciar sesión con <code>usuario1</code> desde ese equipo.</li>
+<li>Deberías ver un <strong>mensaje de error</strong> indicando que no puedes iniciar sesión desde ese equipo.</li>
+<li><strong>Verifica</strong> que sí puedes iniciar sesión desde el equipo especificado.</li>
+</ol>
+<h2 id="paso-5-configurar-horarios-de-inicio-de-sesion">Paso 5: Configurar horarios de inicio de sesión<a class="headerlink" href="#paso-5-configurar-horarios-de-inicio-de-sesion" title="Permanent link">&para;</a></h2>
+<h3 id="1-configurar-horarios-para-usuario2">1. Configurar horarios para usuario2<a class="headerlink" href="#1-configurar-horarios-para-usuario2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Selecciona el usuario</strong> <code>usuario2</code>.</li>
+<li><strong>Haz clic con el botón derecho</strong> → <strong>"Propiedades"</strong>.</li>
+<li>Ve a la pestaña <strong>"Cuenta"</strong>.</li>
+<li><strong>Haz clic en "Horas de inicio de sesión"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/010.png" width="450"/>
+  <figcaption>Acceso a configuración de horas de inicio de sesión</figcaption>
+</figure>
+
+<h3 id="2-configurar-las-restricciones-horarias">2. Configurar las restricciones horarias<a class="headerlink" href="#2-configurar-las-restricciones-horarias" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Por defecto, todas las horas están <strong>permitidas</strong> (aparecen en azul).</li>
+<li><strong>Selecciona todas las horas</strong> de <strong>lunes a viernes</strong> fuera del horario de 8:00 a 18:00.</li>
+<li>También selecciona <strong>todo el fin de semana</strong> (sábado y domingo).</li>
+<li><strong>Marca la opción "Inicio de sesión denegado"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/011.png" width="550"/>
+  <figcaption>Configuración de restricciones horarias</figcaption>
+</figure>
+
+<ol start="5">
+<li><strong>Haz clic en "Aceptar"</strong> para guardar los cambios.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Captura de pantalla requerida</p>
+<p>Debes capturar la pantalla de configuración de horarios mostrando las restricciones aplicadas.</p>
+</div>
+<h3 id="3-verificar-las-restricciones-horarias">3. Verificar las restricciones horarias<a class="headerlink" href="#3-verificar-las-restricciones-horarias" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Intenta iniciar sesión</strong> con <code>usuario2</code> fuera del horario permitido (por ejemplo, después de las 18:00 o en fin de semana).</li>
+<li>Deberías ver un <strong>mensaje de error</strong> indicando que no puedes iniciar sesión en ese momento.</li>
+</ol>
+<h2 id="paso-6-intentar-iniciar-sesion-en-el-controlador-de-dominio">Paso 6: Intentar iniciar sesión en el controlador de dominio<a class="headerlink" href="#paso-6-intentar-iniciar-sesion-en-el-controlador-de-dominio" title="Permanent link">&para;</a></h2>
+<h3 id="1-intentar-iniciar-sesion-con-usuario2-en-el-dc">1. Intentar iniciar sesión con usuario2 en el DC<a class="headerlink" href="#1-intentar-iniciar-sesion-con-usuario2-en-el-dc" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Intenta iniciar sesión</strong> en el controlador de dominio con <code>usuario2</code>.</li>
+<li><strong>Observa</strong> el resultado y el mensaje de error si aparece.</li>
+</ol>
+<h3 id="2-analisis">2. Análisis<a class="headerlink" href="#2-analisis" title="Permanent link">&para;</a></h3>
+<p>Responde a las siguientes preguntas en tu documentación:</p>
+<ul>
+<li>¿Por qué no puedes iniciar sesión en el controlador de dominio con <code>usuario2</code>?</li>
+<li>¿Qué podrías hacer para que <code>usuario2</code> pudiera iniciar sesión en el controlador de dominio?</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Revisa los grupos predefinidos y sus permisos, especialmente los grupos relacionados con el controlador de dominio.</p>
+</div>
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.microsoft.com/windows-server/identity/ad-ds/manage/understand-active-directory-users-and-computers">Documentación oficial de Active Directory Users and Computers</a></li>
+<li><a href="https://docs.microsoft.com/windows-server/identity/ad-ds/manage/understand-active-directory-users-and-computers">Guía de administración de usuarios en Active Directory</a></li>
+<li><a href="https://docs.microsoft.com/windows-server/identity/ad-ds/manage/understand-active-directory-groups">Tipos y ámbitos de grupos en Active Directory</a></li>
+<li><a href="https://docs.microsoft.com/windows-server/identity/ad-ds/manage/configure-user-account-properties">Configuración de restricciones de inicio de sesión</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

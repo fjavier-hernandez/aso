@@ -4087,8 +4087,8 @@ enero febrero marzo abril</p>
 <tr>
 <td>3</td>
 <td><strong>Práctica:</strong> Creación y gestión de usuarios, grupos y unidades organizativas. Unión de clientes al dominio.</td>
-<td><a href="#04activedirectory-">PR401</a> (continuación)</td>
-<td>CE3d, CE3e, CE3g, CE3h</td>
+<td><a href="#04activedirectory-">PR402</a></td>
+<td>CE3d, CE3e, CE3h</td>
 </tr>
 <tr>
 <td>4</td>
@@ -4315,10 +4315,199 @@ Cabe recordar la diferencia entre la gestión de usuarios con los **Grupos de tr
 </li>
 </ul>
 <h2 id="04activedirectory-base-de-datos-y-autentificacion">Base de datos y Autentificación<a class="headerlink" href="#04activedirectory-base-de-datos-y-autentificacion" title="Permanent link">&para;</a></h2>
+<p>Active Directory utiliza un sistema centralizado de almacenamiento y autenticación que garantiza la seguridad y consistencia de los datos en el dominio.</p>
+<h3 id="04activedirectory-base-de-datos-de-active-directory-ntdsdit">Base de datos de Active Directory (NTDS.dit)<a class="headerlink" href="#04activedirectory-base-de-datos-de-active-directory-ntdsdit" title="Permanent link">&para;</a></h3>
+<p>La base de datos de Active Directory se almacena en cada controlador de dominio en un archivo denominado <strong>NTDS.dit</strong> (Directory Information Tree). Este archivo contiene toda la información del directorio: usuarios, grupos, equipos, políticas, configuración del dominio, esquema y otros objetos.</p>
+<h4 id="04activedirectory-ubicacion-y-estructura">Ubicación y estructura<a class="headerlink" href="#04activedirectory-ubicacion-y-estructura" title="Permanent link">&para;</a></h4>
+<p>Por defecto, el archivo <strong>NTDS.dit</strong> y sus archivos relacionados se almacenan en la carpeta <code>%SystemRoot%\NTDS</code> (normalmente <code>C:\Windows\NTDS</code>) en cada controlador de dominio.</p>
+<figure>
+  <img src="imagenes/02/AutenticarLDAP.png" width="700"/>
+  <figcaption>Autenticación centralizada de usuarios contra la base de datos de Active Directory</figcaption>
+</figure>
+
+<h4 id="04activedirectory-componentes-de-la-base-de-datos">Componentes de la base de datos<a class="headerlink" href="#04activedirectory-componentes-de-la-base-de-datos" title="Permanent link">&para;</a></h4>
+<p>La carpeta NTDS contiene varios archivos importantes:</p>
 <ul>
-<li>La base de datos de los usuarios, almacenada a través de <strong>LDAP</strong> se almacena en los controladores de dominio. Además el fichero " <strong>ntds.dit</strong>" será el que almacene realmente dicha base de datos.</li>
-<li>La autenticación de los usuarios se realizará a través de <strong>Kerberos</strong>.</li>
+<li><strong>NTDS.dit</strong>: Archivo principal de base de datos que almacena todos los objetos de Active Directory usando el motor <strong>Extensible Storage Engine (ESE)</strong>.</li>
+<li><strong>Edb.log</strong>: Archivo de registro de transacciones actual donde se escriben primero los cambios pendientes antes de ser aplicados a la base de datos.</li>
+<li><strong>EdbXXXXX.log</strong>: Archivos de registro adicionales creados cuando el archivo principal se llena (numerados secuencialmente).</li>
+<li><strong>Edb.chk</strong>: Archivo de punto de control que rastrea qué transacciones del registro se han escrito en la base de datos. Es crucial para la recuperación en caso de fallos del sistema.</li>
+<li><strong>Res1.log y Res2.log</strong>: Archivos de reserva que proporcionan espacio en escenarios de bajo espacio en disco.</li>
 </ul>
+<h4 id="04activedirectory-estructura-interna-de-ntdsdit">Estructura interna de NTDS.dit<a class="headerlink" href="#04activedirectory-estructura-interna-de-ntdsdit" title="Permanent link">&para;</a></h4>
+<p>La base de datos está organizada en particiones lógicas (contextos de nomenclatura):</p>
+<ul>
+<li><strong>Partición de esquema</strong>: Define las clases de objetos y atributos que pueden crearse en el directorio.</li>
+<li><strong>Partición de configuración</strong>: Contiene información sobre la topología del bosque y los sitios de Active Directory.</li>
+<li><strong>Partición de dominio</strong>: Almacena todos los objetos del dominio (usuarios, grupos, equipos, unidades organizativas, etc.).</li>
+<li><strong>Particiones de aplicación</strong>: Particiones opcionales para datos específicos de aplicaciones.</li>
+</ul>
+<p>Dentro del archivo existen tablas principales:</p>
+<ul>
+<li><strong>Data Table</strong>: Almacena los atributos de los objetos.</li>
+<li><strong>Link Table</strong>: Almacena las relaciones entre objetos.</li>
+<li><strong>Security Descriptor Table</strong>: Almacena los descriptores de seguridad desde Windows Server 2003.</li>
+</ul>
+<h4 id="04activedirectory-replicacion-y-disponibilidad">Replicación y disponibilidad<a class="headerlink" href="#04activedirectory-replicacion-y-disponibilidad" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Cada controlador de dominio mantiene una copia completa de las particiones de dominio, esquema y configuración.</li>
+<li>Los cambios se replican automáticamente entre controladores de dominio mediante el protocolo de replicación de Active Directory.</li>
+<li>La base de datos se mantiene sincronizada entre todos los controladores de dominio del dominio.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Importante</p>
+<p>El archivo NTDS.dit está bloqueado mientras Active Directory está en ejecución. Para realizar operaciones de mantenimiento (como defragmentación), el controlador de dominio debe estar en Modo de Reparación de Servicios de Directorio (DSRM).</p>
+</div>
+<h3 id="04activedirectory-autenticacion-con-kerberos">Autenticación con Kerberos<a class="headerlink" href="#04activedirectory-autenticacion-con-kerberos" title="Permanent link">&para;</a></h3>
+<p>Active Directory utiliza el protocolo <strong>Kerberos v5</strong> como método principal de autenticación para proporcionar un acceso seguro a los recursos de red.</p>
+<h4 id="04activedirectory-que-es-kerberos">¿Qué es Kerberos?<a class="headerlink" href="#04activedirectory-que-es-kerberos" title="Permanent link">&para;</a></h4>
+<p><strong>Kerberos</strong> es un protocolo de autenticación de red diseñado en el <strong>MIT (Massachusetts Institute of Technology)</strong> que permite a dos equipos en una red insegura demostrar su identidad mutuamente de manera segura. Microsoft implementó Kerberos v5 como el protocolo de autenticación predeterminado en Active Directory desde Windows 2000 Server.</p>
+<h4 id="04activedirectory-caracteristicas-principales_1">Características principales<a class="headerlink" href="#04activedirectory-caracteristicas-principales_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Autenticación mutua</strong>: Tanto el cliente como el servidor verifican sus identidades.</li>
+<li><strong>Seguridad</strong>: Utiliza criptografía simétrica y evita el envío de contraseñas en texto plano por la red.</li>
+<li><strong>Single Sign-On (SSO)</strong>: Una vez autenticado, el usuario puede acceder a recursos sin volver a introducir credenciales durante un período de tiempo (válido para el ticket).</li>
+<li><strong>Autorización</strong>: No solo autentica, sino que también proporciona información de autorización mediante listas de control de acceso (ACLs).</li>
+</ul>
+<h4 id="04activedirectory-componentes-del-protocolo-kerberos">Componentes del protocolo Kerberos<a class="headerlink" href="#04activedirectory-componentes-del-protocolo-kerberos" title="Permanent link">&para;</a></h4>
+<p>El protocolo Kerberos involucra tres entidades principales:</p>
+<ol>
+<li><strong>Cliente</strong>: El usuario o servicio que solicita acceso a un recurso.</li>
+<li><strong>Servidor de recursos</strong>: El servicio o recurso al que el cliente quiere acceder.</li>
+<li><strong>Centro de distribución de claves (KDC - Key Distribution Center)</strong>: En Active Directory, el KDC es parte del controlador de dominio y está formado por:</li>
+</ol>
+<ul>
+<li><strong>Authentication Service (AS)</strong>: Autentica a los usuarios y emite tickets de concesión de tickets (TGT - Ticket Granting Tickets).</li>
+<li><strong>Ticket Granting Service (TGS)</strong>: Emite tickets de servicio para acceder a recursos específicos.</li>
+</ul>
+<h4 id="04activedirectory-proceso-de-autenticacion-kerberos">Proceso de autenticación Kerberos<a class="headerlink" href="#04activedirectory-proceso-de-autenticacion-kerberos" title="Permanent link">&para;</a></h4>
+<p>El proceso básico de autenticación Kerberos sigue estos pasos:</p>
+<ol>
+<li><strong>Solicitud inicial (AS-REQ)</strong>: El cliente envía una solicitud al KDC solicitando un TGT.</li>
+<li><strong>Respuesta del KDC (AS-REP)</strong>: El KDC valida las credenciales y devuelve un TGT cifrado con la clave del KDC.</li>
+<li><strong>Solicitud de ticket de servicio (TGS-REQ)</strong>: El cliente presenta el TGT al TGS para solicitar un ticket de servicio para un recurso específico.</li>
+<li><strong>Respuesta del TGS (TGS-REP)</strong>: El TGS valida el TGT y emite un ticket de servicio cifrado.</li>
+<li><strong>Acceso al recurso (AP-REQ)</strong>: El cliente presenta el ticket de servicio al servidor de recursos para acceder al servicio.</li>
+</ol>
+<figure>
+  <img src="https://learn.microsoft.com/en-us/windows-server/images/security-kerberos-authentication-protocol.png" alt="Esquema oficial de Kerberos" width="700"/>
+  <figcaption>Fuente: Microsoft Learn. Esquema oficial del funcionamiento del protocolo Kerberos.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">NTLM vs Kerberos en Active Directory</p>
+<p>Aunque Kerberos es el protocolo de autenticación predeterminado en Active Directory por su mayor seguridad (autenticación mutua, tickets temporales y compatibilidad SSO), también se soporta NTLM principalmente por compatibilidad con sistemas antiguos o cuando Kerberos no está disponible. Se recomienda siempre usar Kerberos, ya que NTLM es menos seguro y solo debe emplearse como alternativa heredada.</p>
+</div>
+<h2 id="04activedirectory-administracion-de-usuarios-y-grupos">Administración de Usuarios y Grupos<a class="headerlink" href="#04activedirectory-administracion-de-usuarios-y-grupos" title="Permanent link">&para;</a></h2>
+<p>La administración de usuarios y grupos es una de las tareas fundamentales en Active Directory. Permite gestionar de forma centralizada quién puede acceder a los recursos de la red y con qué permisos.</p>
+<h3 id="04activedirectory-usuarios-en-active-directory">Usuarios en Active Directory<a class="headerlink" href="#04activedirectory-usuarios-en-active-directory" title="Permanent link">&para;</a></h3>
+<p>Los usuarios del dominio deben tener una cuenta para poder acceder a los recursos del mismo tras su autenticación frente al controlador de dominio. La herramienta principal para administrar usuarios es <strong>Usuarios y equipos de Active Directory</strong> (dsa.msc), accesible desde el Panel del Administrador → Herramientas.</p>
+<h4 id="04activedirectory-caracteristicas-de-las-cuentas-de-usuario">Características de las cuentas de usuario<a class="headerlink" href="#04activedirectory-caracteristicas-de-las-cuentas-de-usuario" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Identificador único</strong>: Cada cuenta tiene un <strong>identificador de seguridad (SID)</strong> único que se asigna al crear la cuenta. Si se elimina una cuenta y se vuelve a crear con el mismo nombre, el SID será diferente y no se recuperarán los permisos originales.</p>
+</li>
+<li>
+<p><strong>Nombres de usuario</strong>:</p>
+</li>
+<li>
+<p>Deben ser <strong>únicos</strong> en todo el dominio.</p>
+</li>
+<li>Pueden contener letras (mayúsculas o minúsculas), números y caracteres alfanuméricos.</li>
+<li>No se aceptan: <code>/</code>, <code>|</code>, <code>:</code>, <code>;</code>, <code>=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>*</code>.</li>
+<li>
+<p>Máximo 20 caracteres.</p>
+</li>
+<li>
+<p><strong>Configuración de contraseñas</strong>, las opciones incluyen:</p>
+</li>
+<li>
+<p><strong>El usuario debe cambiar la contraseña en el siguiente inicio de sesión</strong>: Para que el administrador asigne una contraseña temporal que el usuario cambie al iniciar sesión.</p>
+</li>
+<li><strong>El usuario no puede cambiar la contraseña</strong>: Para cuentas genéricas compartidas (ej: cuenta para escáner).</li>
+<li><strong>La contraseña nunca expira</strong>: Desactiva la caducidad periódica (no recomendado en producción).</li>
+<li><strong>La cuenta está deshabilitada</strong>: Bloquea el acceso sin eliminar la cuenta, preservando permisos.</li>
+</ul>
+<h4 id="04activedirectory-gestion-de-cuentas">Gestión de cuentas<a class="headerlink" href="#04activedirectory-gestion-de-cuentas" title="Permanent link">&para;</a></h4>
+<p>En lugar de eliminar cuentas (proceso definitivo), es preferible <strong>deshabilitarlas</strong>. Esto permite:</p>
+<ul>
+<li>Bloquear el acceso temporalmente.</li>
+<li>Mantener los permisos y privilegios asociados.</li>
+<li>Habilitar la cuenta nuevamente si es necesario.</li>
+</ul>
+<p>Las cuentas se pueden configurar con propiedades detalladas: información general, restricciones de contraseña, horarios de inicio de sesión, equipos permitidos, perfiles y pertenencia a grupos.</p>
+<h3 id="04activedirectory-grupos-en-active-directory">Grupos en Active Directory<a class="headerlink" href="#04activedirectory-grupos-en-active-directory" title="Permanent link">&para;</a></h3>
+<p>Los grupos son contenedores que permiten definir conjuntos de usuarios y asignar permisos basándose en la pertenencia al grupo, en lugar de hacerlo usuario por usuario. Esto facilita la administración y reduce errores.</p>
+<h4 id="04activedirectory-tipos-de-grupos">Tipos de grupos<a class="headerlink" href="#04activedirectory-tipos-de-grupos" title="Permanent link">&para;</a></h4>
+<p>Existen dos tipos principales:</p>
+<ul>
+<li><strong>Grupos de seguridad</strong>: Permiten definir permisos para recursos del dominio mediante listas de control de acceso (ACLs). Son los más utilizados en la administración de red.</li>
+<li><strong>Grupos de distribución</strong>: No poseen características de seguridad, únicamente son listados de usuarios para mensajería.</li>
+</ul>
+<h4 id="04activedirectory-ambitos-de-grupos">Ámbitos de grupos<a class="headerlink" href="#04activedirectory-ambitos-de-grupos" title="Permanent link">&para;</a></h4>
+<p>Dentro de los grupos de seguridad existen tres ámbitos:</p>
+<ul>
+<li><strong>Grupo Universal</strong>: </li>
+<li>Permisos se extienden a diversos dominios.</li>
+<li>Puede contener usuarios o grupos de diferentes dominios.</li>
+<li>
+<p>Útil en grandes empresas con bosques de dominios.</p>
+</li>
+<li>
+<p><strong>Grupo Global</strong>: </p>
+</li>
+<li>Puede permitir acceso a recursos de cualquier dominio del árbol.</li>
+<li>Todos los miembros deben pertenecer al mismo dominio.</li>
+<li>
+<p>Ideal para redes de dominio único o cuando se planifica expandir.</p>
+</li>
+<li>
+<p><strong>Grupo Local del Dominio</strong>: </p>
+</li>
+<li>Miembros pueden provenir de otros dominios.</li>
+<li>Solo puede tener acceso a recursos dentro de su dominio.</li>
+<li>Para recursos específicos dentro de un único dominio.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Mejores prácticas</p>
+<ul>
+<li>Usar el ámbito más restringido que cumpla con los requisitos.</li>
+<li>En dominios únicos, los grupos globales suelen ser suficientes.</li>
+<li>Los grupos universales generan más tráfico de replicación en el catálogo global.</li>
+</ul>
+</div>
+<h4 id="04activedirectory-grupos-predefinidos">Grupos predefinidos<a class="headerlink" href="#04activedirectory-grupos-predefinidos" title="Permanent link">&para;</a></h4>
+<p>Active Directory crea automáticamente grupos predefinidos con permisos específicos:</p>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/013.png" width="900"/>
+  <figcaption>Grupos predefinidos en Active Directory</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/014.png" width="900"/>
+  <figcaption>Grupos Builtin</figcaption>
+</figure>
+
+<p>Algunos grupos destacados:</p>
+<ul>
+<li><strong>Usuarios del dominio</strong>: Contiene todas las cuentas de usuarios del dominio (global).</li>
+<li><strong>Administradores del dominio</strong>: Permite administración completa del dominio (global).</li>
+<li><strong>Administradores de empresa</strong>: Administración en todos los dominios del bosque (universal).</li>
+<li><strong>Administradores</strong>: Administración en el controlador de dominio (local).</li>
+<li><strong>Operadores de cuenta</strong>: Crear, editar y eliminar cuentas y grupos (local).</li>
+<li><strong>Usuarios</strong>: Permisos limitados para uso general (local).</li>
+</ul>
+<p>Estos grupos predefinidos ahorran tiempo considerable en tareas administrativas comunes.</p>
+<h4 id="04activedirectory-gestion-de-grupos">Gestión de grupos<a class="headerlink" href="#04activedirectory-gestion-de-grupos" title="Permanent link">&para;</a></h4>
+<p>Para crear y gestionar grupos se utiliza la misma herramienta que para usuarios: <strong>Usuarios y equipos de Active Directory</strong>. Los usuarios se pueden añadir a grupos de dos formas principales:</p>
+<ol>
+<li><strong>Desde el usuario</strong>: Seleccionar el usuario → "Agregar a un grupo".</li>
+<li><strong>Desde el grupo</strong>: Abrir propiedades del grupo → pestaña "Miembros" → "Agregar".</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Práctica detallada</p>
+<p>Para ver los pasos detallados de creación y configuración de usuarios y grupos, consulta la <a href="#04activedirectory-pr402">PR402: Administración de Usuarios y Grupos en Active Directory</a>.</p>
+</div>
 <h2 id="04activedirectory-actividades">Actividades<a class="headerlink" href="#04activedirectory-actividades" title="Permanent link">&para;</a></h2>
 <hr />
 <p><a name="PR401"></a></p>
@@ -4369,6 +4558,45 @@ Cabe recordar la diferencia entre la gestión de usuarios con los **Grupos de tr
 <p class="admonition-title">Entorno educativo: AWS Academy Learner Lab</p>
 <p><strong>AWS Academy Learner Lab</strong> proporciona un entorno controlado con créditos educativos limitados para que los estudiantes experimenten con servicios de AWS. El laboratorio tiene un tiempo limitado (normalmente 4 horas) y los recursos se eliminan automáticamente al finalizar. Es importante <strong>detener las instancias</strong> cuando no se usen para no consumir créditos innecesariamente. Los conceptos aprendidos son directamente aplicables a escenarios reales con AWS en producción.</p>
 </div>
+<hr />
+<p><a name="PR402"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>PR402. Práctica: Administración de Usuarios y Grupos en Active Directory</strong>. (RA.3 // CE3d, CE3e y CE3h // 1-10p). </li>
+</ul>
+<p>En esta práctica aprenderás a crear, configurar y gestionar usuarios y grupos en <strong>Active Directory Domain Services</strong>. El objetivo es familiarizarte con la administración de objetos del directorio, configuraciones de cuentas y restricciones de acceso.</p>
+<div class="admonition note">
+<p class="admonition-title">Entorno educativo</p>
+<p>Esta práctica requiere tener un dominio de Active Directory configurado. Si no lo tienes, completa primero la PR401.</p>
+</div>
+<blockquote>
+<p><strong>Resumen de tareas</strong></p>
+</blockquote>
+<ul>
+<li><strong>Crea usuarios del dominio</strong> con configuraciones de contraseña apropiadas.</li>
+<li><strong>Crea grupos de seguridad</strong> con diferentes ámbitos (global, local de dominio, universal).</li>
+<li><strong>Añade usuarios a grupos</strong> y gestiona pertenencias.</li>
+<li><strong>Deshabilita y habilita</strong> cuentas de usuario y verifica el comportamiento.</li>
+<li><strong>Configura restricciones de inicio de sesión</strong> (equipos permitidos y horarios).</li>
+<li><strong>Verifica las restricciones</strong> funcionando correctamente.</li>
+<li><strong>Documenta el proceso</strong>, mostrando los conceptos de usuarios y grupos, pasos realizados y capturas de pantalla de la funcionalidad.</li>
+</ul>
+<blockquote>
+<p><strong>Criterios de evaluación</strong></p>
+</blockquote>
+<ul>
+<li>Creación correcta de usuarios con configuraciones apropiadas.</li>
+<li>Creación correcta de grupos con ámbitos adecuados.</li>
+<li>Gestión correcta de pertenencias de usuarios a grupos.</li>
+<li>Configuración correcta de restricciones de inicio de sesión.</li>
+<li>Verificación exitosa de las restricciones funcionando.</li>
+<li>Explicación clara de los conceptos de usuarios, grupos y sus tipos.</li>
+<li>Análisis correcto de las restricciones y su funcionamiento.</li>
+<li>Documentación completa de la arquitectura y pasos seguidos con evidencias.</li>
+</ul>
+<blockquote>
+<p>Consulta el enunciado completo y detallado aquí:<br />
+<a href="#practicausuariosgruposad">Práctica: Administración de Usuarios y Grupos en Active Directory</a></p>
+</blockquote>
 <hr /></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }

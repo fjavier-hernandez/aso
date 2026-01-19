@@ -905,7 +905,7 @@
 </ol>
 <ul>
 <li><strong>AMI</strong>: Windows Server 2025 Base (o Windows 10/11 si está disponible)</li>
-<li><strong>Tipo</strong>: t2.medium o superior</li>
+<li><strong>Tipo</strong>: t3.large</li>
 <li><strong>Misma VPC y subred</strong> que el servidor</li>
 <li><strong>Grupo de seguridad</strong>: Permite RDP (3389)</li>
 <li><strong>Clave</strong>: La misma que usaste para el servidor</li>
@@ -947,11 +947,11 @@
 <li><strong>Haz clic en "Crear conjunto de opciones de DHCP"</strong> (Create DHCP options set).</li>
 </ol>
 <figure>
-  <img src="imagenes/05/054/022_dhcp_aws.png" width="950"/>
-  <figcaption>Configuración de DHCP en AWS</figcaption>
+  <img src="imagenes/05/054/ConfigDHCP1.png" width="950"/>
+  <figcaption>Pantalla de conjuntos de opciones de DHCP en AWS VPC</figcaption>
 </figure>
 
-<ol start="5">
+<ol>
 <li><strong>Configura los siguientes parámetros</strong>:</li>
 </ol>
 <ul>
@@ -968,6 +968,16 @@
 <li><strong>Evita usar</strong>: Dominios que ya existen en Internet (ej: <code>google.com</code>, <code>microsoft.com</code>)</li>
 </ul>
 </div>
+<figure>
+  <img src="imagenes/05/054/ConfigDHCP2.png" width="950"/>
+  <figcaption>Configuración de parámetros del conjunto de opciones de DHCP</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/05/054/ConfigDHCP5.png" width="950"/>
+  <figcaption>Configuración adicional de opciones DHCP (NetBIOS y etiquetas)</figcaption>
+</figure>
+
 <ol>
 <li><strong>Haz clic en "Crear conjunto de opciones de DHCP"</strong>.</li>
 </ol>
@@ -975,15 +985,29 @@
 <ol>
 <li>En el menú lateral de VPC, <strong>haz clic en "Sus VPC"</strong> (Your VPCs).</li>
 <li><strong>Selecciona tu VPC</strong> (normalmente hay una VPC predeterminada en AWS Academy).</li>
-<li><strong>Haz clic en "Acciones"</strong> → <strong>"Editar opciones de DHCP"</strong> (Edit DHCP options set).</li>
-<li><strong>Selecciona</strong> el conjunto de opciones que acabas de crear (ej: <code>DHCP_AD</code>).</li>
-<li><strong>Haz clic en "Guardar cambios"</strong>.</li>
 </ol>
 <figure>
-  <img src="imagenes/05/054/023_vpc_dhcp.png" width="950"/>
-  <figcaption>Asociación del conjunto de opciones DHCP a la VPC</figcaption>
+  <img src="imagenes/05/054/ConfigDHCP3.png" width="950"/>
+  <figcaption>Selección de VPC y menú de acciones</figcaption>
 </figure>
 
+<ol start="3">
+<li><strong>Haz clic en "Acciones"</strong> → <strong>"Editar la configuración de VPC"</strong> (Edit VPC configuration).</li>
+<li>En la sección <strong>"Configuración de DHCP"</strong>, selecciona el conjunto de opciones que acabas de crear (ej: <code>DHCP_AD</code>) en el menú desplegable <strong>"Conjunto de opciones de DHCP"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/05/054/ConfigDHCP4.png" width="950"/>
+  <figcaption>Edición de la configuración de VPC y selección del conjunto de opciones DHCP</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/05/054/ConfigDHCP6.png" width="650"/>
+  <figcaption>Pantalla "Editar la configuración de VPC" donde se asocia el conjunto de opciones de DHCP. Tras seleccionar el conjunto adecuado, haz clic en <b>Guardar</b> para aplicar los cambios.</figcaption>
+</figure>
+
+<ol start="5">
+<li><strong>Haz clic en "Guardar"</strong> para aplicar los cambios.</li>
+</ol>
 <h3 id="4-reiniciar-las-instancias">4. Reiniciar las instancias<a class="headerlink" href="#4-reiniciar-las-instancias" title="Permanent link">&para;</a></h3>
 <p>Para que los cambios de DHCP surtan efecto:</p>
 <ol>
