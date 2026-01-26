@@ -1,0 +1,1411 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/PracticaGestionGruposAD.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Práctica: Gestión de Grupos y Unidades Organizativas en Active Directory - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Práctica: Gestión de Grupos y Unidades Organizativas en Active Directory - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaGestionGruposAD.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/PracticaGestionGruposAD.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Práctica: Gestión de Grupos y Unidades Organizativas en Active Directory - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaGestionGruposAD.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-gestion-de-grupos-y-unidades-organizativas-en-active-directory" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Práctica: Gestión de Grupos y Unidades Organizativas en Active Directory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03AccesoRemoto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.- Servicios de acceso remoto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04ActiveDirectory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Servicios de Directorio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexto-area-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contexto: Area Studio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos previos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-organizar-el-directorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Por qué organizar el directorio?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-de-administracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas de administración
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-crear-unidades-organizativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Crear unidades organizativas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 1: Crear unidades organizativas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-unidades-organizativas-mediante-interfaz-grafica" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Crear unidades organizativas mediante interfaz gráfica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-crear-unidades-organizativas-mediante-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Crear unidades organizativas mediante PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-crear-usuarios-de-departamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Crear usuarios de departamento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2: Crear usuarios de departamento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-usuarios-mediante-interfaz-grafica" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Crear usuarios mediante interfaz gráfica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-crear-usuarios-mediante-powershell-metodo-individual" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Crear usuarios mediante PowerShell (método individual)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-crear-usuarios-masivamente-desde-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Crear usuarios masivamente desde CSV
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Crear usuarios masivamente desde CSV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-crear-el-archivo-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Crear el archivo CSV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-script-de-powershell-para-importar-desde-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Script de PowerShell para importar desde CSV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-verificar-usuarios-creados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Verificar usuarios creados
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-crear-grupos-de-departamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Crear grupos de departamento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 3: Crear grupos de departamento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-grupos-mediante-interfaz-grafica" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Crear grupos mediante interfaz gráfica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-anadir-usuarios-a-grupos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Añadir usuarios a grupos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-crear-grupos-mediante-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Crear grupos mediante PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-eliminar-usuarios-de-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Eliminar usuarios de prueba
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 4: Eliminar usuarios de prueba">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-eliminar-usuarios-mediante-interfaz-grafica" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Eliminar usuarios mediante interfaz gráfica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-eliminar-usuarios-mediante-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Eliminar usuarios mediante PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-verificar-la-estructura-organizativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5: Verificar la estructura organizativa
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 5: Verificar la estructura organizativa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-verificar-mediante-interfaz-grafica" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Verificar mediante interfaz gráfica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verificar-mediante-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Verificar mediante PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="practica-gestion-de-grupos-y-unidades-organizativas-en-active-directory">Práctica: Gestión de Grupos y Unidades Organizativas en Active Directory<a class="headerlink" href="#practica-gestion-de-grupos-y-unidades-organizativas-en-active-directory" title="Permanent link">&para;</a></h1>
+<h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
+<p>Durante esta práctica aprenderás a gestionar grupos, unidades organizativas y usuarios en <strong>Active Directory Domain Services</strong> para una organización empresarial. Esta práctica complementa la PR402 y te permitirá trabajar con estructuras organizativas más complejas, creación masiva de usuarios y organización jerárquica del directorio.</p>
+<p>Al finalizar esta práctica serás capaz de:</p>
+<ul>
+<li>Crear <strong>unidades organizativas</strong> para estructurar el dominio.</li>
+<li>Crear <strong>usuarios del dominio</strong> con diferentes roles y responsabilidades.</li>
+<li>Crear y gestionar <strong>grupos</strong> de seguridad para diferentes departamentos.</li>
+<li><strong>Organizar usuarios y grupos</strong> en unidades organizativas.</li>
+<li>Crear usuarios <strong>masivamente desde CSV</strong> usando PowerShell.</li>
+<li><strong>Eliminar usuarios</strong> de prueba de forma segura.</li>
+<li>Documentar la estructura organizativa del dominio.</li>
+</ul>
+<h2 id="contexto-area-studio">Contexto: Area Studio<a class="headerlink" href="#contexto-area-studio" title="Permanent link">&para;</a></h2>
+<p>Siguiendo con la configuración del <strong>Active Directory</strong> para <strong>Area Studio</strong>, una empresa que necesita organizar su estructura de usuarios y grupos por departamentos. Debes crear una estructura que refleje la organización de la empresa con sus responsables de departamento.</p>
+<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Creación de estructura organizativa</strong>:
+   - Crea unidades organizativas para los diferentes departamentos.
+   - Organiza usuarios y grupos dentro de las unidades organizativas apropiadas.</p>
+</li>
+<li>
+<p><strong>Creación de usuarios de departamento</strong>:
+   - Crea usuarios para los responsables de departamento de Area Studio.
+   - Configura las cuentas con las contraseñas y propiedades apropiadas.</p>
+</li>
+<li>
+<p><strong>Creación y gestión de grupos</strong>:
+   - Crea grupos de seguridad para cada departamento.
+   - Añade usuarios a los grupos correspondientes.</p>
+</li>
+<li>
+<p><strong>Limpieza de usuarios de prueba</strong>:
+   - Elimina los usuarios de prueba creados en prácticas anteriores.</p>
+</li>
+<li>
+<p><strong>Documentación</strong>:
+   - Documenta la estructura organizativa creada.
+   - Explica la jerarquía de unidades organizativas, grupos y usuarios.</p>
+</li>
+</ol>
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<p>Para la entrega de esta práctica, deberás proporcionar:</p>
+<ol>
+<li>
+<p><strong>Documentación</strong>:
+   - Documento en Markdown con:</p>
+<ul>
+<li>Descripción de la estructura organizativa creada.</li>
+<li>Diagrama o esquema de las unidades organizativas y su jerarquía.</li>
+<li>Pasos seguidos para la creación de usuarios, grupos y unidades organizativas.</li>
+<li>Capturas de pantalla del proceso completo.</li>
+<li>Explicación de la organización y su justificación.</li>
+</ul>
+</li>
+<li>
+<p><strong>Evidencias</strong>:
+   - Las capturas de pantalla deben mostrar:</p>
+<ul>
+<li>Creación de unidades organizativas.</li>
+<li>Creación de usuarios de departamento.</li>
+<li>Creación de grupos de departamento.</li>
+<li>Organización de usuarios y grupos en unidades organizativas.</li>
+<li>Eliminación de usuarios de prueba.</li>
+<li>Estructura final del directorio.</li>
+</ul>
+</li>
+</ol>
+<h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
+<p>Antes de comenzar, asegúrate de tener completada la <strong>PR402</strong> o tener:</p>
+<ul>
+<li><strong>Un dominio de Active Directory</strong> configurado y funcionando.</li>
+<li><strong>Acceso RDP</strong> al controlador de dominio con credenciales de administrador.</li>
+<li><strong>Usuarios de prueba</strong> creados en prácticas anteriores (usuario1, usuario2).</li>
+<li><strong>Conocimiento básico</strong> de usuarios, grupos y unidades organizativas en Active Directory.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota importante</p>
+<p>Esta práctica asume que ya tienes un dominio de Active Directory configurado y usuarios de prueba creados. Si no los tienes, completa primero la PR401 y PR402.</p>
+</div>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<h3 id="por-que-organizar-el-directorio">¿Por qué organizar el directorio?<a class="headerlink" href="#por-que-organizar-el-directorio" title="Permanent link">&para;</a></h3>
+<p>La organización eficiente del directorio de Active Directory es fundamental para:</p>
+<ul>
+<li><strong>Reflejar la estructura organizativa</strong> de la empresa.</li>
+<li><strong>Facilitar la administración</strong> mediante agrupaciones lógicas.</li>
+<li><strong>Aplicar políticas de grupo</strong> de forma selectiva por departamento.</li>
+<li><strong>Simplificar la delegación</strong> de permisos administrativos.</li>
+<li><strong>Mejorar la seguridad</strong> mediante una organización clara.</li>
+</ul>
+<h3 id="herramientas-de-administracion">Herramientas de administración<a class="headerlink" href="#herramientas-de-administracion" title="Permanent link">&para;</a></h3>
+<p>Para administrar unidades organizativas, usuarios y grupos utilizaremos:</p>
+<ul>
+<li><strong>Usuarios y equipos de Active Directory (dsa.msc)</strong>: Herramienta gráfica principal.</li>
+<li><strong>PowerShell</strong>: Para tareas masivas y automatización (creación desde CSV).</li>
+</ul>
+<blockquote>
+<p><strong>Recursos de apoyo</strong></p>
+</blockquote>
+<figure style="width: 100%; margin: 0; padding: 0;">
+  <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe src="https://www.youtube.com/embed/wqE7pB36Ueg" title="Gestión de grupos y unidades organizativas en Active Directory" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+  </div>
+  <figcaption>Video tutorial: Gestión de grupos y unidades organizativas en Active Directory</figcaption>
+</figure>
+
+<figure style="width: 100%; margin: 0; padding: 0;">
+  <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe src="https://www.youtube.com/embed/L1smwOwg9xs" title="Creación masiva de usuarios desde CSV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+  </div>
+  <figcaption>Video tutorial: Creación masiva de usuarios desde CSV con PowerShell</figcaption>
+</figure>
+
+<h2 id="paso-1-crear-unidades-organizativas">Paso 1: Crear unidades organizativas<a class="headerlink" href="#paso-1-crear-unidades-organizativas" title="Permanent link">&para;</a></h2>
+<p>Las unidades organizativas (OU) nos permiten organizar los objetos del dominio de forma jerárquica, reflejando la estructura de la empresa.</p>
+<h3 id="1-crear-unidades-organizativas-mediante-interfaz-grafica">1. Crear unidades organizativas mediante interfaz gráfica<a class="headerlink" href="#1-crear-unidades-organizativas-mediante-interfaz-grafica" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Conecta mediante RDP</strong> a tu controlador de dominio.</li>
+<li><strong>Abre "Usuarios y equipos de Active Directory"</strong> desde el Panel del Administrador → Herramientas.</li>
+<li><strong>Expande tu dominio</strong> (ej: <code>empresa.local</code>).</li>
+<li><strong>Haz clic con el botón derecho</strong> sobre el dominio.</li>
+<li>Selecciona <strong>"Nuevo"</strong> → <strong>"Unidad Organizativa"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/024.png" width="850"/>
+  <figcaption>Crear nueva unidad organizativa</figcaption>
+</figure>
+
+<ol start="6">
+<li><strong>Introduce el nombre</strong> de la unidad organizativa (ej: <code>Departamentos</code>).</li>
+<li><strong>Haz clic en "Aceptar"</strong>.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/025.png" width="650"/>
+  <figcaption>Configuración de nombre de la unidad organizativa</figcaption>
+</figure>
+
+<ol start="8">
+<li><strong>Crea las siguientes unidades organizativas</strong> dentro de <code>Departamentos</code>:
+   - <code>Gerencia</code>
+   - <code>IT</code>
+   - <code>Administracion</code>
+   - <code>Comercial</code>
+   - <code>RRHH</code></li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR06/028.png" width="850"/>
+  <figcaption>Estructura de unidades organizativas creadas</figcaption>
+</figure>
+
+<h3 id="2-crear-unidades-organizativas-mediante-powershell">2. Crear unidades organizativas mediante PowerShell<a class="headerlink" href="#2-crear-unidades-organizativas-mediante-powershell" title="Permanent link">&para;</a></h3>
+<p>También puedes crear unidades organizativas usando PowerShell:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Importar el módulo de Active Directory</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">Import-Module</span> <span class="n">ActiveDirectory</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c"># Crear la unidad organizativa principal</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nb">New-ADOrganizationalUnit</span> <span class="n">-Name</span> <span class="s2">&quot;Departamentos&quot;</span> <span class="n">-Path</span> <span class="s2">&quot;DC=empresa,DC=local&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c"># Crear unidades organizativas de departamentos</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="nb">New-ADOrganizationalUnit</span> <span class="n">-Name</span> <span class="s2">&quot;Gerencia&quot;</span> <span class="n">-Path</span> <span class="s2">&quot;OU=Departamentos,DC=empresa,DC=local&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nb">New-ADOrganizationalUnit</span> <span class="n">-Name</span> <span class="s2">&quot;IT&quot;</span> <span class="n">-Path</span> <span class="s2">&quot;OU=Departamentos,DC=empresa,DC=local&quot;</span>
+<span class="linenos" data-linenos="10 "></span><span class="nb">New-ADOrganizationalUnit</span> <span class="n">-Name</span> <span class="s2">&quot;Administracion&quot;</span> <span class="n">-Path</span> <span class="s2">&quot;OU=Departamentos,DC=empresa,DC=local&quot;</span>
+<span class="linenos" data-linenos="11 "></span><span class="nb">New-ADOrganizationalUnit</span> <span class="n">-Name</span> <span class="s2">&quot;Comercial&quot;</span> <span class="n">-Path</span> <span class="s2">&quot;OU=Departamentos,DC=empresa,DC=local&quot;</span>
+<span class="linenos" data-linenos="12 "></span><span class="nb">New-ADOrganizationalUnit</span> <span class="n">-Name</span> <span class="s2">&quot;RRHH&quot;</span> <span class="n">-Path</span> <span class="s2">&quot;OU=Departamentos,DC=empresa,DC=local&quot;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota sobre el Path</p>
+<p>Ajusta el <code>Path</code> según el nombre de tu dominio. Si tu dominio es <code>aso.com</code>, usa <code>DC=aso,DC=com</code>.</p>
+</div>
+<h2 id="paso-2-crear-usuarios-de-departamento">Paso 2: Crear usuarios de departamento<a class="headerlink" href="#paso-2-crear-usuarios-de-departamento" title="Permanent link">&para;</a></h2>
+<p>Debes crear usuarios para los responsables de departamento de Area Studio según la siguiente tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Apellido</th>
+<th>Inicio de sesión</th>
+<th>Posición</th>
+<th>Contraseña</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eduard</td>
+<td>Casavella</td>
+<td>eduard.casavella</td>
+<td>Gerente</td>
+<td>casavella1</td>
+</tr>
+<tr>
+<td>Pep</td>
+<td>Terrón</td>
+<td>pep.terron</td>
+<td>Responsable IT</td>
+<td>terron1</td>
+</tr>
+<tr>
+<td>Fran</td>
+<td>Delgado</td>
+<td>fran.delgado</td>
+<td>Administración</td>
+<td>delgado1</td>
+</tr>
+<tr>
+<td>Marcos</td>
+<td>Sabates</td>
+<td>marcos.sabates</td>
+<td>Comercial</td>
+<td>sabates1</td>
+</tr>
+<tr>
+<td>Irene</td>
+<td>Masot</td>
+<td>irene.masot</td>
+<td>RR HH</td>
+<td>masot1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-crear-usuarios-mediante-interfaz-grafica">1. Crear usuarios mediante interfaz gráfica<a class="headerlink" href="#1-crear-usuarios-mediante-interfaz-grafica" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Navega a la unidad organizativa</strong> correspondiente (ej: <code>Gerencia</code> para Eduard Casavella).</li>
+<li><strong>Haz clic con el botón derecho</strong> sobre la OU → <strong>"Nuevo"</strong> → <strong>"Usuario"</strong>.</li>
+<li><strong>Completa el asistente</strong> con los datos del usuario:
+   - <strong>Nombre</strong>: <code>Eduard</code>
+   - <strong>Iniciales</strong>: (opcional)
+   - <strong>Apellidos</strong>: <code>Casavella</code>
+   - <strong>Nombre de inicio de sesión de usuario</strong>: <code>eduard.casavella</code></li>
+<li><strong>Configura la contraseña</strong>: <code>casavella1</code></li>
+<li><strong>Desmarca</strong> "El usuario debe cambiar la contraseña en el siguiente inicio de sesión".</li>
+<li><strong>Marca</strong> "La contraseña nunca expira" (solo para prácticas).</li>
+<li><strong>Repite el proceso</strong> para cada usuario en su unidad organizativa correspondiente.</li>
+</ol>
+<h3 id="2-crear-usuarios-mediante-powershell-metodo-individual">2. Crear usuarios mediante PowerShell (método individual)<a class="headerlink" href="#2-crear-usuarios-mediante-powershell-metodo-individual" title="Permanent link">&para;</a></h3>
+<p>También puedes crear usuarios usando PowerShell:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Importar el módulo de Active Directory</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">Import-Module</span> <span class="n">ActiveDirectory</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c"># Crear usuario Eduard Casavella (Gerencia)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nv">$password1</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s2">&quot;casavella1&quot;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nb">New-ADUser</span> <span class="n">-Name</span> <span class="s2">&quot;Eduard Casavella&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="n">-GivenName</span> <span class="s2">&quot;Eduard&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="n">-Surname</span> <span class="s2">&quot;Casavella&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="n">-SamAccountName</span> <span class="s2">&quot;eduard.casavella&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="10 "></span>    <span class="n">-UserPrincipalName</span> <span class="s2">&quot;eduard.casavella@empresa.local&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="11 "></span>    <span class="n">-Path</span> <span class="s2">&quot;OU=Gerencia,OU=Departamentos,DC=empresa,DC=local&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="12 "></span>    <span class="n">-AccountPassword</span> <span class="nv">$password1</span> <span class="p">`</span>
+<span class="linenos" data-linenos="13 "></span>    <span class="n">-PasswordNeverExpires</span> <span class="nv">$true</span> <span class="p">`</span>
+<span class="linenos" data-linenos="14 "></span>    <span class="n">-Enabled</span> <span class="nv">$true</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="c"># Crear usuario Pep Terrón (IT)</span>
+<span class="linenos" data-linenos="17 "></span><span class="nv">$password2</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s2">&quot;terron1&quot;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos="18 "></span><span class="nb">New-ADUser</span> <span class="n">-Name</span> <span class="s2">&quot;Pep Terrón&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="19 "></span>    <span class="n">-GivenName</span> <span class="s2">&quot;Pep&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="20 "></span>    <span class="n">-Surname</span> <span class="s2">&quot;Terrón&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="21 "></span>    <span class="n">-SamAccountName</span> <span class="s2">&quot;pep.terron&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="22 "></span>    <span class="n">-UserPrincipalName</span> <span class="s2">&quot;pep.terron@empresa.local&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="23 "></span>    <span class="n">-Path</span> <span class="s2">&quot;OU=IT,OU=Departamentos,DC=empresa,DC=local&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="24 "></span>    <span class="n">-AccountPassword</span> <span class="nv">$password2</span> <span class="p">`</span>
+<span class="linenos" data-linenos="25 "></span>    <span class="n">-PasswordNeverExpires</span> <span class="nv">$true</span> <span class="p">`</span>
+<span class="linenos" data-linenos="26 "></span>    <span class="n">-Enabled</span> <span class="nv">$true</span>
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span><span class="c"># Crear usuario Fran Delgado (Administración)</span>
+<span class="linenos" data-linenos="29 "></span><span class="nv">$password3</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s2">&quot;delgado1&quot;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos="30 "></span><span class="nb">New-ADUser</span> <span class="n">-Name</span> <span class="s2">&quot;Fran Delgado&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="31 "></span>    <span class="n">-GivenName</span> <span class="s2">&quot;Fran&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="32 "></span>    <span class="n">-Surname</span> <span class="s2">&quot;Delgado&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="33 "></span>    <span class="n">-SamAccountName</span> <span class="s2">&quot;fran.delgado&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="34 "></span>    <span class="n">-UserPrincipalName</span> <span class="s2">&quot;fran.delgado@empresa.local&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="35 "></span>    <span class="n">-Path</span> <span class="s2">&quot;OU=Administracion,OU=Departamentos,DC=empresa,DC=local&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="36 "></span>    <span class="n">-AccountPassword</span> <span class="nv">$password3</span> <span class="p">`</span>
+<span class="linenos" data-linenos="37 "></span>    <span class="n">-PasswordNeverExpires</span> <span class="nv">$true</span> <span class="p">`</span>
+<span class="linenos" data-linenos="38 "></span>    <span class="n">-Enabled</span> <span class="nv">$true</span>
+<span class="linenos" data-linenos="39 "></span>
+<span class="linenos" data-linenos="40 "></span><span class="c"># Crear usuario Marcos Sabates (Comercial)</span>
+<span class="linenos" data-linenos="41 "></span><span class="nv">$password4</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s2">&quot;sabates1&quot;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos="42 "></span><span class="nb">New-ADUser</span> <span class="n">-Name</span> <span class="s2">&quot;Marcos Sabates&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="43 "></span>    <span class="n">-GivenName</span> <span class="s2">&quot;Marcos&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="44 "></span>    <span class="n">-Surname</span> <span class="s2">&quot;Sabates&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="45 "></span>    <span class="n">-SamAccountName</span> <span class="s2">&quot;marcos.sabates&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="46 "></span>    <span class="n">-UserPrincipalName</span> <span class="s2">&quot;marcos.sabates@empresa.local&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="47 "></span>    <span class="n">-Path</span> <span class="s2">&quot;OU=Comercial,OU=Departamentos,DC=empresa,DC=local&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="48 "></span>    <span class="n">-AccountPassword</span> <span class="nv">$password4</span> <span class="p">`</span>
+<span class="linenos" data-linenos="49 "></span>    <span class="n">-PasswordNeverExpires</span> <span class="nv">$true</span> <span class="p">`</span>
+<span class="linenos" data-linenos="50 "></span>    <span class="n">-Enabled</span> <span class="nv">$true</span>
+<span class="linenos" data-linenos="51 "></span>
+<span class="linenos" data-linenos="52 "></span><span class="c"># Crear usuario Irene Masot (RRHH)</span>
+<span class="linenos" data-linenos="53 "></span><span class="nv">$password5</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s2">&quot;masot1&quot;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos="54 "></span><span class="nb">New-ADUser</span> <span class="n">-Name</span> <span class="s2">&quot;Irene Masot&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="55 "></span>    <span class="n">-GivenName</span> <span class="s2">&quot;Irene&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="56 "></span>    <span class="n">-Surname</span> <span class="s2">&quot;Masot&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="57 "></span>    <span class="n">-SamAccountName</span> <span class="s2">&quot;irene.masot&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="58 "></span>    <span class="n">-UserPrincipalName</span> <span class="s2">&quot;irene.masot@empresa.local&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="59 "></span>    <span class="n">-Path</span> <span class="s2">&quot;OU=RRHH,OU=Departamentos,DC=empresa,DC=local&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="60 "></span>    <span class="n">-AccountPassword</span> <span class="nv">$password5</span> <span class="p">`</span>
+<span class="linenos" data-linenos="61 "></span>    <span class="n">-PasswordNeverExpires</span> <span class="nv">$true</span> <span class="p">`</span>
+<span class="linenos" data-linenos="62 "></span>    <span class="n">-Enabled</span> <span class="nv">$true</span>
+</code></pre></div>
+<h3 id="3-crear-usuarios-masivamente-desde-csv">3. Crear usuarios masivamente desde CSV<a class="headerlink" href="#3-crear-usuarios-masivamente-desde-csv" title="Permanent link">&para;</a></h3>
+<p>Para crear múltiples usuarios de forma eficiente, puedes usar un archivo CSV y PowerShell:</p>
+<h4 id="paso-1-crear-el-archivo-csv">Paso 1: Crear el archivo CSV<a class="headerlink" href="#paso-1-crear-el-archivo-csv" title="Permanent link">&para;</a></h4>
+<p>Crea un archivo llamado <code>usuarios.csv</code> con el siguiente contenido:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Nombre,Apellido,InicioSesion,Posicion,Contraseña,OU
+<span class="linenos" data-linenos="2 "></span>Eduard,Casavella,eduard.casavella,Gerente,casavella1,Gerencia
+<span class="linenos" data-linenos="3 "></span>Pep,Terrón,pep.terron,Responsable IT,terron1,IT
+<span class="linenos" data-linenos="4 "></span>Fran,Delgado,fran.delgado,Administración,delgado1,Administracion
+<span class="linenos" data-linenos="5 "></span>Marcos,Sabates,marcos.sabates,Comercial,sabates1,Comercial
+<span class="linenos" data-linenos="6 "></span>Irene,Masot,irene.masot,RR HH,masot1,RRHH
+</code></pre></div>
+<p>Guarda el archivo en una ubicación accesible (ej: <code>C:\Scripts\usuarios.csv</code>).</p>
+<h4 id="paso-2-script-de-powershell-para-importar-desde-csv">Paso 2: Script de PowerShell para importar desde CSV<a class="headerlink" href="#paso-2-script-de-powershell-para-importar-desde-csv" title="Permanent link">&para;</a></h4>
+<p>Crea y ejecuta el siguiente script de PowerShell:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Importar el módulo de Active Directory</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">Import-Module</span> <span class="n">ActiveDirectory</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c"># Definir el dominio (ajusta según tu dominio)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nv">$domain</span> <span class="p">=</span> <span class="s2">&quot;empresa.local&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nv">$domainDN</span> <span class="p">=</span> <span class="s2">&quot;DC=empresa,DC=local&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nv">$baseOU</span> <span class="p">=</span> <span class="s2">&quot;OU=Departamentos,$domainDN&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c"># Leer el archivo CSV</span>
+<span class="linenos" data-linenos="10 "></span><span class="nv">$usuarios</span> <span class="p">=</span> <span class="nb">Import-Csv</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Scripts\usuarios.csv&quot;</span> <span class="n">-Encoding</span> <span class="n">UTF8</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="c"># Crear cada usuario</span>
+<span class="linenos" data-linenos="13 "></span><span class="k">foreach</span> <span class="p">(</span><span class="nv">$usuario</span> <span class="k">in</span> <span class="nv">$usuarios</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="14 "></span>    <span class="c"># Convertir la contraseña a SecureString</span>
+<span class="linenos" data-linenos="15 "></span>    <span class="nv">$password</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="nv">$usuario</span><span class="p">.</span><span class="n">Contraseña</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span>    <span class="c"># Construir el path de la OU</span>
+<span class="linenos" data-linenos="18 "></span>    <span class="nv">$ouPath</span> <span class="p">=</span> <span class="s2">&quot;OU=</span><span class="p">$(</span><span class="nv">$usuario</span><span class="p">.</span><span class="n">OU</span><span class="p">)</span><span class="s2">,$baseOU&quot;</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span>    <span class="c"># Crear el usuario</span>
+<span class="linenos" data-linenos="21 "></span>    <span class="k">try</span> <span class="p">{</span>
+<span class="linenos" data-linenos="22 "></span>        <span class="nb">New-ADUser</span> <span class="n">-Name</span> <span class="s2">&quot;</span><span class="p">$(</span><span class="nv">$usuario</span><span class="p">.</span><span class="n">Nombre</span><span class="p">)</span><span class="s2"> </span><span class="p">$(</span><span class="nv">$usuario</span><span class="p">.</span><span class="n">Apellido</span><span class="p">)</span><span class="s2">&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="23 "></span>            <span class="n">-GivenName</span> <span class="nv">$usuario</span><span class="p">.</span><span class="n">Nombre</span> <span class="p">`</span>
+<span class="linenos" data-linenos="24 "></span>            <span class="n">-Surname</span> <span class="nv">$usuario</span><span class="p">.</span><span class="n">Apellido</span> <span class="p">`</span>
+<span class="linenos" data-linenos="25 "></span>            <span class="n">-SamAccountName</span> <span class="nv">$usuario</span><span class="p">.</span><span class="n">InicioSesion</span> <span class="p">`</span>
+<span class="linenos" data-linenos="26 "></span>            <span class="n">-UserPrincipalName</span> <span class="s2">&quot;</span><span class="p">$(</span><span class="nv">$usuario</span><span class="p">.</span><span class="n">InicioSesion</span><span class="p">)</span><span class="s2">@$domain&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="27 "></span>            <span class="n">-Path</span> <span class="nv">$ouPath</span> <span class="p">`</span>
+<span class="linenos" data-linenos="28 "></span>            <span class="n">-AccountPassword</span> <span class="nv">$password</span> <span class="p">`</span>
+<span class="linenos" data-linenos="29 "></span>            <span class="n">-PasswordNeverExpires</span> <span class="nv">$true</span> <span class="p">`</span>
+<span class="linenos" data-linenos="30 "></span>            <span class="n">-Enabled</span> <span class="nv">$true</span> <span class="p">`</span>
+<span class="linenos" data-linenos="31 "></span>            <span class="n">-Description</span> <span class="nv">$usuario</span><span class="p">.</span><span class="n">Posicion</span>
+<span class="linenos" data-linenos="32 "></span>
+<span class="linenos" data-linenos="33 "></span>        <span class="nb">Write-Host</span> <span class="s2">&quot;Usuario </span><span class="p">$(</span><span class="nv">$usuario</span><span class="p">.</span><span class="n">InicioSesion</span><span class="p">)</span><span class="s2"> creado correctamente en $ouPath&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+<span class="linenos" data-linenos="34 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="35 "></span>    <span class="k">catch</span> <span class="p">{</span>
+<span class="linenos" data-linenos="36 "></span>        <span class="nb">Write-Host</span> <span class="s2">&quot;Error al crear usuario </span><span class="p">$(</span><span class="nv">$usuario</span><span class="p">.</span><span class="n">InicioSesion</span><span class="p">)</span><span class="s2">: $_&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Red</span>
+<span class="linenos" data-linenos="37 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="38 "></span><span class="p">}</span>
+<span class="linenos" data-linenos="39 "></span>
+<span class="linenos" data-linenos="40 "></span><span class="nb">Write-Host</span> <span class="s2">&quot;Proceso de creación de usuarios completado.&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Cyan</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Personalización del script</p>
+<ul>
+<li>Ajusta la ruta del CSV según donde guardes el archivo.</li>
+<li>Modifica <code>$domain</code> y <code>$domainDN</code> según tu dominio.</li>
+<li>Si necesitas añadir más campos (email, teléfono, etc.), añádelos al CSV y al comando <code>New-ADUser</code>.</li>
+</ul>
+</div>
+<h4 id="paso-3-verificar-usuarios-creados">Paso 3: Verificar usuarios creados<a class="headerlink" href="#paso-3-verificar-usuarios-creados" title="Permanent link">&para;</a></h4>
+<p>Verifica que todos los usuarios se crearon correctamente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Listar todos los usuarios creados</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$usuarios</span> <span class="p">=</span> <span class="nb">Import-Csv</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Scripts\usuarios.csv&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">foreach</span> <span class="p">(</span><span class="nv">$usuario</span> <span class="k">in</span> <span class="nv">$usuarios</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="nv">$adUser</span> <span class="p">=</span> <span class="nb">Get-ADUser</span> <span class="n">-Identity</span> <span class="nv">$usuario</span><span class="p">.</span><span class="n">InicioSesion</span> <span class="n">-Properties</span> <span class="p">*</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="nb">Write-Host</span> <span class="s2">&quot;</span><span class="p">$(</span><span class="nv">$adUser</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span><span class="s2"> - </span><span class="p">$(</span><span class="nv">$adUser</span><span class="p">.</span><span class="n">DistinguishedName</span><span class="p">)</span><span class="s2">&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span>
+<span class="linenos" data-linenos="6 "></span><span class="p">}</span>
+</code></pre></div>
+<h2 id="paso-3-crear-grupos-de-departamento">Paso 3: Crear grupos de departamento<a class="headerlink" href="#paso-3-crear-grupos-de-departamento" title="Permanent link">&para;</a></h2>
+<p>Crea grupos de seguridad para cada departamento y añade los usuarios correspondientes.</p>
+<h3 id="1-crear-grupos-mediante-interfaz-grafica">1. Crear grupos mediante interfaz gráfica<a class="headerlink" href="#1-crear-grupos-mediante-interfaz-grafica" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Navega a la unidad organizativa</strong> del departamento (ej: <code>IT</code>).</li>
+<li><strong>Haz clic con el botón derecho</strong> sobre la OU → <strong>"Nuevo"</strong> → <strong>"Grupo"</strong>.</li>
+<li><strong>Configura el grupo</strong>:
+   - <strong>Nombre del grupo</strong>: <code>IT_Usuarios</code> (o similar)
+   - <strong>Ámbito del grupo</strong>: <strong>Global</strong>
+   - <strong>Tipo de grupo</strong>: <strong>Seguridad</strong></li>
+<li><strong>Haz clic en "Aceptar"</strong>.</li>
+<li><strong>Repite el proceso</strong> para cada departamento.</li>
+</ol>
+<h3 id="2-anadir-usuarios-a-grupos">2. Añadir usuarios a grupos<a class="headerlink" href="#2-anadir-usuarios-a-grupos" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Selecciona el grupo</strong> creado.</li>
+<li><strong>Haz clic con el botón derecho</strong> → <strong>"Propiedades"</strong>.</li>
+<li>Ve a la pestaña <strong>"Miembros"</strong>.</li>
+<li><strong>Haz clic en "Agregar"</strong>.</li>
+<li><strong>Busca y añade</strong> el usuario correspondiente al departamento.</li>
+</ol>
+<h3 id="3-crear-grupos-mediante-powershell">3. Crear grupos mediante PowerShell<a class="headerlink" href="#3-crear-grupos-mediante-powershell" title="Permanent link">&para;</a></h3>
+<p>También puedes crear grupos y añadir usuarios usando PowerShell:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Importar el módulo de Active Directory</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">Import-Module</span> <span class="n">ActiveDirectory</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c"># Crear grupos para cada departamento</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nb">New-ADGroup</span> <span class="n">-Name</span> <span class="s2">&quot;Gerencia_Usuarios&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="n">-GroupScope</span> <span class="n">Global</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="n">-GroupCategory</span> <span class="n">Security</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="n">-Path</span> <span class="s2">&quot;OU=Gerencia,OU=Departamentos,DC=empresa,DC=local&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="nb">New-ADGroup</span> <span class="n">-Name</span> <span class="s2">&quot;IT_Usuarios&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="11 "></span>    <span class="n">-GroupScope</span> <span class="n">Global</span> <span class="p">`</span>
+<span class="linenos" data-linenos="12 "></span>    <span class="n">-GroupCategory</span> <span class="n">Security</span> <span class="p">`</span>
+<span class="linenos" data-linenos="13 "></span>    <span class="n">-Path</span> <span class="s2">&quot;OU=IT,OU=Departamentos,DC=empresa,DC=local&quot;</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="nb">New-ADGroup</span> <span class="n">-Name</span> <span class="s2">&quot;Administracion_Usuarios&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="16 "></span>    <span class="n">-GroupScope</span> <span class="n">Global</span> <span class="p">`</span>
+<span class="linenos" data-linenos="17 "></span>    <span class="n">-GroupCategory</span> <span class="n">Security</span> <span class="p">`</span>
+<span class="linenos" data-linenos="18 "></span>    <span class="n">-Path</span> <span class="s2">&quot;OU=Administracion,OU=Departamentos,DC=empresa,DC=local&quot;</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="nb">New-ADGroup</span> <span class="n">-Name</span> <span class="s2">&quot;Comercial_Usuarios&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="21 "></span>    <span class="n">-GroupScope</span> <span class="n">Global</span> <span class="p">`</span>
+<span class="linenos" data-linenos="22 "></span>    <span class="n">-GroupCategory</span> <span class="n">Security</span> <span class="p">`</span>
+<span class="linenos" data-linenos="23 "></span>    <span class="n">-Path</span> <span class="s2">&quot;OU=Comercial,OU=Departamentos,DC=empresa,DC=local&quot;</span>
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span><span class="nb">New-ADGroup</span> <span class="n">-Name</span> <span class="s2">&quot;RRHH_Usuarios&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="26 "></span>    <span class="n">-GroupScope</span> <span class="n">Global</span> <span class="p">`</span>
+<span class="linenos" data-linenos="27 "></span>    <span class="n">-GroupCategory</span> <span class="n">Security</span> <span class="p">`</span>
+<span class="linenos" data-linenos="28 "></span>    <span class="n">-Path</span> <span class="s2">&quot;OU=RRHH,OU=Departamentos,DC=empresa,DC=local&quot;</span>
+<span class="linenos" data-linenos="29 "></span>
+<span class="linenos" data-linenos="30 "></span><span class="c"># Añadir usuarios a sus grupos correspondientes</span>
+<span class="linenos" data-linenos="31 "></span><span class="nb">Add-ADGroupMember</span> <span class="n">-Identity</span> <span class="s2">&quot;Gerencia_Usuarios&quot;</span> <span class="n">-Members</span> <span class="s2">&quot;eduard.casavella&quot;</span>
+<span class="linenos" data-linenos="32 "></span><span class="nb">Add-ADGroupMember</span> <span class="n">-Identity</span> <span class="s2">&quot;IT_Usuarios&quot;</span> <span class="n">-Members</span> <span class="s2">&quot;pep.terron&quot;</span>
+<span class="linenos" data-linenos="33 "></span><span class="nb">Add-ADGroupMember</span> <span class="n">-Identity</span> <span class="s2">&quot;Administracion_Usuarios&quot;</span> <span class="n">-Members</span> <span class="s2">&quot;fran.delgado&quot;</span>
+<span class="linenos" data-linenos="34 "></span><span class="nb">Add-ADGroupMember</span> <span class="n">-Identity</span> <span class="s2">&quot;Comercial_Usuarios&quot;</span> <span class="n">-Members</span> <span class="s2">&quot;marcos.sabates&quot;</span>
+<span class="linenos" data-linenos="35 "></span><span class="nb">Add-ADGroupMember</span> <span class="n">-Identity</span> <span class="s2">&quot;RRHH_Usuarios&quot;</span> <span class="n">-Members</span> <span class="s2">&quot;irene.masot&quot;</span>
+</code></pre></div>
+<h2 id="paso-4-eliminar-usuarios-de-prueba">Paso 4: Eliminar usuarios de prueba<a class="headerlink" href="#paso-4-eliminar-usuarios-de-prueba" title="Permanent link">&para;</a></h2>
+<p>Elimina los usuarios de prueba (<code>usuario1</code> y <code>usuario2</code>) creados en prácticas anteriores.</p>
+<div class="admonition warning">
+<p class="admonition-title">Importante sobre la eliminación</p>
+<p>Recuerda que al eliminar un usuario, se pierde su SID y no se pueden recuperar los permisos. Asegúrate de que estos usuarios no son necesarios antes de eliminarlos.</p>
+</div>
+<h3 id="1-eliminar-usuarios-mediante-interfaz-grafica">1. Eliminar usuarios mediante interfaz gráfica<a class="headerlink" href="#1-eliminar-usuarios-mediante-interfaz-grafica" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Abre "Usuarios y equipos de Active Directory"</strong>.</li>
+<li><strong>Navega a "Users"</strong> o a la OU donde están los usuarios de prueba.</li>
+<li><strong>Selecciona el usuario</strong> <code>usuario1</code>.</li>
+<li><strong>Haz clic con el botón derecho</strong> → <strong>"Eliminar"</strong>.</li>
+<li><strong>Confirma la eliminación</strong>.</li>
+<li><strong>Repite el proceso</strong> para <code>usuario2</code>.</li>
+</ol>
+<h3 id="2-eliminar-usuarios-mediante-powershell">2. Eliminar usuarios mediante PowerShell<a class="headerlink" href="#2-eliminar-usuarios-mediante-powershell" title="Permanent link">&para;</a></h3>
+<p>También puedes eliminar usuarios usando PowerShell:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Importar el módulo de Active Directory</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">Import-Module</span> <span class="n">ActiveDirectory</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c"># Eliminar usuarios de prueba</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nb">Remove-ADUser</span> <span class="n">-Identity</span> <span class="s2">&quot;usuario1&quot;</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nb">Remove-ADUser</span> <span class="n">-Identity</span> <span class="s2">&quot;usuario2&quot;</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c"># Verificar que se eliminaron</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">{</span><span class="n">SamAccountName</span> <span class="o">-eq</span> <span class="s2">&quot;usuario1&quot;</span><span class="p">}</span>  <span class="c"># No debe devolver nada</span>
+<span class="linenos" data-linenos="10 "></span><span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">{</span><span class="n">SamAccountName</span> <span class="o">-eq</span> <span class="s2">&quot;usuario2&quot;</span><span class="p">}</span>  <span class="c"># No debe devolver nada</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Alternativa: Deshabilitar en lugar de eliminar</p>
+<p>Si prefieres mantener los usuarios pero deshabilitarlos, puedes usar:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Disable-ADAccount</span> <span class="n">-Identity</span> <span class="s2">&quot;usuario1&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Disable-ADAccount</span> <span class="n">-Identity</span> <span class="s2">&quot;usuario2&quot;</span>
+</code></pre></div></p>
+</div>
+<h2 id="paso-5-verificar-la-estructura-organizativa">Paso 5: Verificar la estructura organizativa<a class="headerlink" href="#paso-5-verificar-la-estructura-organizativa" title="Permanent link">&para;</a></h2>
+<p>Verifica que toda la estructura está correctamente organizada.</p>
+<h3 id="1-verificar-mediante-interfaz-grafica">1. Verificar mediante interfaz gráfica<a class="headerlink" href="#1-verificar-mediante-interfaz-grafica" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Abre "Usuarios y equipos de Active Directory"</strong>.</li>
+<li><strong>Expande el dominio</strong> y las unidades organizativas.</li>
+<li><strong>Verifica</strong> que:
+   - Las unidades organizativas están creadas correctamente.
+   - Los usuarios están en sus unidades organizativas correspondientes.
+   - Los grupos están creados y tienen los miembros correctos.
+   - Los usuarios de prueba han sido eliminados.</li>
+</ol>
+<h3 id="2-verificar-mediante-powershell">2. Verificar mediante PowerShell<a class="headerlink" href="#2-verificar-mediante-powershell" title="Permanent link">&para;</a></h3>
+<p>Ejecuta los siguientes comandos para verificar la estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Importar el módulo de Active Directory</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">Import-Module</span> <span class="n">ActiveDirectory</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c"># Listar todas las unidades organizativas</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nb">Get-ADOrganizationalUnit</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">DistinguishedName</span> <span class="p">|</span> <span class="nb">Format-Table</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c"># Listar usuarios por OU</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-SearchBase</span> <span class="s2">&quot;OU=Gerencia,OU=Departamentos,DC=empresa,DC=local&quot;</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">SamAccountName</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-SearchBase</span> <span class="s2">&quot;OU=IT,OU=Departamentos,DC=empresa,DC=local&quot;</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">SamAccountName</span>
+<span class="linenos" data-linenos="10 "></span><span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-SearchBase</span> <span class="s2">&quot;OU=Administracion,OU=Departamentos,DC=empresa,DC=local&quot;</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">SamAccountName</span>
+<span class="linenos" data-linenos="11 "></span><span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-SearchBase</span> <span class="s2">&quot;OU=Comercial,OU=Departamentos,DC=empresa,DC=local&quot;</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">SamAccountName</span>
+<span class="linenos" data-linenos="12 "></span><span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-SearchBase</span> <span class="s2">&quot;OU=RRHH,OU=Departamentos,DC=empresa,DC=local&quot;</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">SamAccountName</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="c"># Listar grupos y sus miembros</span>
+<span class="linenos" data-linenos="15 "></span><span class="nb">Get-ADGroup</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-SearchBase</span> <span class="s2">&quot;OU=Departamentos,DC=empresa,DC=local&quot;</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+<span class="linenos" data-linenos="16 "></span>    <span class="nb">Write-Host</span> <span class="s2">&quot;Grupo: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span><span class="s2">&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Cyan</span>
+<span class="linenos" data-linenos="17 "></span>    <span class="nb">Get-ADGroupMember</span> <span class="n">-Identity</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">SamAccountName</span> <span class="p">|</span> <span class="nb">Format-Table</span>
+<span class="linenos" data-linenos="18 "></span>    <span class="nb">Write-Host</span> <span class="s2">&quot;&quot;</span>
+<span class="linenos" data-linenos="19 "></span><span class="p">}</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="c"># Verificar que los usuarios de prueba fueron eliminados</span>
+<span class="linenos" data-linenos="22 "></span><span class="nv">$usuariosPrueba</span> <span class="p">=</span> <span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">{</span><span class="n">SamAccountName</span> <span class="o">-like</span> <span class="s2">&quot;usuario*&quot;</span><span class="p">}</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+<span class="linenos" data-linenos="23 "></span><span class="k">if</span> <span class="p">(</span><span class="nv">$usuariosPrueba</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="24 "></span>    <span class="nb">Write-Host</span> <span class="s2">&quot;ADVERTENCIA: Aún existen usuarios de prueba&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span>
+<span class="linenos" data-linenos="25 "></span>    <span class="nv">$usuariosPrueba</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">SamAccountName</span>
+<span class="linenos" data-linenos="26 "></span><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="linenos" data-linenos="27 "></span>    <span class="nb">Write-Host</span> <span class="s2">&quot;OK: Los usuarios de prueba han sido eliminados&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+<span class="linenos" data-linenos="28 "></span><span class="p">}</span>
+</code></pre></div>
+<h2 id="tareas-a-realizar_1">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Creación de estructura organizativa</strong>:
+   - Crea la unidad organizativa principal <code>Departamentos</code>.
+   - Crea unidades organizativas para cada departamento (Gerencia, IT, Administración, Comercial, RRHH).</p>
+</li>
+<li>
+<p><strong>Creación de usuarios de departamento</strong>:
+   - Crea los 5 usuarios según la tabla proporcionada.
+   - Coloca cada usuario en su unidad organizativa correspondiente.
+   - Configura las contraseñas según la tabla.</p>
+</li>
+<li>
+<p><strong>Creación y gestión de grupos</strong>:
+   - Crea un grupo de seguridad para cada departamento.
+   - Añade el usuario correspondiente a cada grupo.</p>
+</li>
+<li>
+<p><strong>Limpieza de usuarios de prueba</strong>:
+   - Elimina los usuarios <code>usuario1</code> y <code>usuario2</code> creados en prácticas anteriores.</p>
+</li>
+<li>
+<p><strong>Documentación</strong>:
+   - Crea un documento que explique:</p>
+<ul>
+<li>La estructura organizativa creada.</li>
+<li>La justificación de la organización por departamentos.</li>
+<li>Los pasos realizados para la creación de usuarios, grupos y unidades organizativas.</li>
+<li>Capturas de pantalla de la estructura final.</li>
+<li>Si usaste PowerShell desde CSV, explica el proceso.</li>
+</ul>
+</li>
+</ol>
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.microsoft.com/windows-server/identity/ad-ds/manage/understand-active-directory-users-and-computers">Documentación oficial de Active Directory Users and Computers</a></li>
+<li><a href="https://docs.microsoft.com/windows-server/identity/ad-ds/manage/understand-active-directory-organizational-units">Guía de administración de unidades organizativas</a></li>
+<li><a href="https://docs.microsoft.com/powershell/module/activedirectory/new-aduser">Crear usuarios masivamente con PowerShell</a></li>
+<li><a href="https://docs.microsoft.com/windows-server/identity/ad-ds/manage/understand-active-directory-groups">Gestión de grupos en Active Directory</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

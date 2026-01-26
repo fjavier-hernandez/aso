@@ -664,9 +664,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-obtener-la-ip-publica" class="md-nav__link">
+  <a href="#1-obtener-archivo-de-escritorio-remoto" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Obtener la IP pública
+      1. Obtener archivo de escritorio remoto
     </span>
   </a>
   
@@ -1139,15 +1139,27 @@
 </figure> -->
 
 <h2 id="paso-3-conectar-mediante-rdp">Paso 3: Conectar mediante RDP<a class="headerlink" href="#paso-3-conectar-mediante-rdp" title="Permanent link">&para;</a></h2>
-<h3 id="1-obtener-la-ip-publica">1. Obtener la IP pública<a class="headerlink" href="#1-obtener-la-ip-publica" title="Permanent link">&para;</a></h3>
+<h3 id="1-obtener-archivo-de-escritorio-remoto">1. Obtener archivo de escritorio remoto<a class="headerlink" href="#1-obtener-archivo-de-escritorio-remoto" title="Permanent link">&para;</a></h3>
 <ol>
 <li>En la lista de instancias, <strong>selecciona tu instancia</strong>.</li>
-<li>En la pestaña <strong>"Detalles"</strong>, busca <strong>"Dirección IPv4 pública"</strong>.</li>
-<li><strong>Copia esta dirección IP</strong> (por ejemplo: <code>54.123.45.67</code>).</li>
+<li>Haz clic en el botón <strong>"Conectar"</strong> en la parte superior.</li>
+<li>En la pestaña <strong>"Cliente RDP"</strong>, haz clic en <strong>"Descargar archivo de escritorio remoto"</strong>.</li>
+<li>Se descargará un archivo <code>.rdp</code> preconfigurado con la IP pública y los datos de conexión.</li>
+<li>Haz doble clic en el archivo descargado para abrirlo con la aplicación de Escritorio Remoto.</li>
+<li>Cuando se solicite, introduce el usuario (<code>Administrator</code>) y la contraseña obtenida en el paso anterior.</li>
 </ol>
+<figure>
+  <img src="imagenes/05/054/018_DescargaArchivoER.png" width="950"/>
+  <figcaption>Descarga el archivo .rdp y verifica que la IP pública sea la correcta para conectar por RDP.</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p>El archivo <code>.rdp</code> <strong>deberá descargarse de nuevo cada vez que cambie la IP pública de la instancia</strong>. Si la instancia se detiene y arranca nuevamente, la IP pública puede variar, por lo que el archivo anterior dejará de funcionar.</p>
+</div>
 <!-- <figure>
-  <img src="imagenes/05/054/018_ip_publica.png" width="950"/>
-  <figcaption>Obtención de la dirección IP pública</figcaption>
+  <img src="imagenes/05/054/018B_ArchivoRDPdescargado.png" width="950"/>
+  <figcaption>Pantalla mostrando el archivo .rdp descargado listo para ejecutar la conexión mediante Escritorio Remoto.</figcaption>
 </figure> -->
 
 <h3 id="2-conectar-desde-windows">2. Conectar desde Windows<a class="headerlink" href="#2-conectar-desde-windows" title="Permanent link">&para;</a></h3>

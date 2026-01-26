@@ -612,6 +612,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#4-alternativa-instalar-y-promover-el-servidor-usando-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Alternativa: Instalar y promover el servidor usando PowerShell
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -642,6 +651,21 @@
       2. Unir el cliente al dominio
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="2. Unir el cliente al dominio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unir-el-cliente-al-dominio-mediante-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unir el cliente al dominio mediante PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -675,6 +699,21 @@
       1. Configurar escritorio remoto en el servidor o cliente
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="1. Configurar escritorio remoto en el servidor o cliente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurar-escritorio-remoto-mediante-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurar escritorio remoto mediante PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -790,15 +829,15 @@
 <li>Verifica que todas las reglas están correctamente configuradas.</li>
 </ul>
 <ol start="4">
-<li>
-<p><strong>Instalación de Active Directory</strong>:
-   - Instala el rol Active Directory Domain Services.
-   - Promueve el servidor a controlador de dominio.
-   - Verifica que el dominio se creó correctamente.</p>
-</li>
-<li>
-<p><strong>Unión del cliente al dominio</strong>:</p>
-</li>
+<li><strong>Instalación de Active Directory</strong>:</li>
+</ol>
+<ul>
+<li>Instala el rol Active Directory Domain Services.</li>
+<li>Promueve el servidor a controlador de dominio.</li>
+<li>Verifica que el dominio se creó correctamente.</li>
+</ul>
+<ol start="5">
+<li><strong>Unión del cliente al dominio</strong>:</li>
 </ol>
 <ul>
 <li>Verifica la conectividad y resolución DNS desde el cliente.</li>
@@ -922,6 +961,11 @@
 <li>Introduce un nombre descriptivo (ej: <code>DC01</code>, <code>SRV-AD01</code>, <code>SERVER-AD</code>).</li>
 <li><strong>Haz clic en "Siguiente"</strong> y <strong>reinicia</strong> la instancia cuando se solicite.</li>
 </ol>
+<figure>
+  <img src="imagenes/05/054/CambioNombreWSAD.png" width="700"/>
+  <figcaption>Pantalla de Windows Server donde se cambia el nombre antes de instalar Active Directory.</figcaption>
+</figure>
+
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>El nombre del equipo debe cumplir con las convenciones de nomenclatura de Windows:</p>
@@ -944,21 +988,30 @@
 <li>En la consola de AWS, <strong>busca "VPC"</strong> en la barra de búsqueda de servicios.</li>
 <li><strong>Haz clic en "VPC"</strong> para acceder al servicio.</li>
 <li>En el menú lateral, <strong>haz clic en "Conjuntos de opciones de DHCP"</strong>.</li>
-<li><strong>Haz clic en "Crear conjunto de opciones de DHCP"</strong> (Create DHCP options set).</li>
 </ol>
 <figure>
   <img src="imagenes/05/054/ConfigDHCP1.png" width="950"/>
   <figcaption>Pantalla de conjuntos de opciones de DHCP en AWS VPC</figcaption>
 </figure>
 
-<ol>
-<li><strong>Configura los siguientes parámetros</strong>:</li>
+<ol start="4">
+<li><strong>Haz clic en "Crear conjunto de opciones de DHCP" (Create DHCP options set), y rellena los campos del formulario de la siguiente manera</strong>:</li>
 </ol>
 <ul>
-<li><strong>Nombre del conjunto de opciones de DHCP</strong>: <code>DHCP_AD</code> (o el que prefieras)</li>
-<li><strong>Nombre de dominio</strong>: Introduce el nombre de dominio que usarás (ej: <code>empresa.local</code>, <code>miempresa.com</code>)</li>
-<li><strong>Servidores de nombres de dominio</strong>: Introduce la <strong>IP privada</strong> de tu servidor (ej: <code>172.31.49.71</code>)</li>
+<li><strong>Nombre</strong>: Escribe un nombre identificativo, por ejemplo: <code>DHCP_AD</code>.</li>
+<li><strong>Nombre de dominio</strong>: Introduce el dominio DNS que utilizarán tus equipos, por ejemplo: <code>empresa.local</code> o el nombre de dominio que vayas a utilizar en Active Directory.</li>
+<li><strong>Servidores de nombres de dominio</strong>: Escribe la <strong>IP privada</strong> de tu instancia de Windows Server (por ejemplo: <code>172.31.49.71</code>). Así, todos los clientes obtendrán como DNS principal tu controlador de dominio.</li>
+<li>Puedes dejar las demás opciones (NetBIOS, etiquetas) en blanco o su valor predeterminado, salvo que se indique lo contrario en tu práctica.</li>
 </ul>
+<figure>
+  <img src="imagenes/05/054/ConfigDHCP2.png" width="950"/>
+  <figcaption>Ejemplo de configuración de un nuevo conjunto de opciones de DHCP en AWS, indicando nombre de dominio y dirección del servidor DNS (Windows Server AD).</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p>Asegúrate de que la IP indicada como "servidor de nombres de dominio" sea <strong>exactamente</strong> la IP privada de tu Windows Server donde instalarás Active Directory. Si este valor no es correcto, los clientes no podrán usar el DNS del controlador de dominio y no funcionará la unión al dominio.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Convenciones de nombres de dominio</p>
 <p>Puedes usar:</p>
@@ -968,46 +1021,26 @@
 <li><strong>Evita usar</strong>: Dominios que ya existen en Internet (ej: <code>google.com</code>, <code>microsoft.com</code>)</li>
 </ul>
 </div>
-<figure>
-  <img src="imagenes/05/054/ConfigDHCP2.png" width="950"/>
-  <figcaption>Configuración de parámetros del conjunto de opciones de DHCP</figcaption>
-</figure>
-
-<figure>
-  <img src="imagenes/05/054/ConfigDHCP5.png" width="950"/>
-  <figcaption>Configuración adicional de opciones DHCP (NetBIOS y etiquetas)</figcaption>
-</figure>
-
-<ol>
-<li><strong>Haz clic en "Crear conjunto de opciones de DHCP"</strong>.</li>
-</ol>
 <h3 id="3-asociar-el-conjunto-de-opciones-a-la-vpc">3. Asociar el conjunto de opciones a la VPC<a class="headerlink" href="#3-asociar-el-conjunto-de-opciones-a-la-vpc" title="Permanent link">&para;</a></h3>
 <ol>
 <li>En el menú lateral de VPC, <strong>haz clic en "Sus VPC"</strong> (Your VPCs).</li>
 <li><strong>Selecciona tu VPC</strong> (normalmente hay una VPC predeterminada en AWS Academy).</li>
-</ol>
-<figure>
-  <img src="imagenes/05/054/ConfigDHCP3.png" width="950"/>
-  <figcaption>Selección de VPC y menú de acciones</figcaption>
-</figure>
-
-<ol start="3">
 <li><strong>Haz clic en "Acciones"</strong> → <strong>"Editar la configuración de VPC"</strong> (Edit VPC configuration).</li>
-<li>En la sección <strong>"Configuración de DHCP"</strong>, selecciona el conjunto de opciones que acabas de crear (ej: <code>DHCP_AD</code>) en el menú desplegable <strong>"Conjunto de opciones de DHCP"</strong>.</li>
 </ol>
 <figure>
   <img src="imagenes/05/054/ConfigDHCP4.png" width="950"/>
   <figcaption>Edición de la configuración de VPC y selección del conjunto de opciones DHCP</figcaption>
 </figure>
 
-<figure>
-  <img src="imagenes/05/054/ConfigDHCP6.png" width="650"/>
-  <figcaption>Pantalla "Editar la configuración de VPC" donde se asocia el conjunto de opciones de DHCP. Tras seleccionar el conjunto adecuado, haz clic en <b>Guardar</b> para aplicar los cambios.</figcaption>
-</figure>
-
-<ol start="5">
+<ol start="4">
+<li>En la sección <strong>"Configuración de DHCP"</strong>, selecciona el conjunto de opciones que acabas de crear (ej: <code>DHCP_AD</code>) en el menú desplegable <strong>"Conjunto de opciones de DHCP"</strong>.</li>
 <li><strong>Haz clic en "Guardar"</strong> para aplicar los cambios.</li>
 </ol>
+<figure>
+  <img src="imagenes/05/054/ConfigDHCP5.png" width="950"/>
+  <figcaption>Selección del VPC por defecto y asignación del Conjunto de DHCP creado.</figcaption>
+</figure>
+
 <h3 id="4-reiniciar-las-instancias">4. Reiniciar las instancias<a class="headerlink" href="#4-reiniciar-las-instancias" title="Permanent link">&para;</a></h3>
 <p>Para que los cambios de DHCP surtan efecto:</p>
 <ol>
@@ -1024,8 +1057,41 @@
 <p class="admonition-title">Nota importante</p>
 <p>Después de reiniciar, las instancias obtendrán nuevas configuraciones de red desde DHCP, incluyendo el nombre de dominio y el servidor DNS configurado.</p>
 </div>
+<ol start="3">
+<li>Tras el reinicio, <strong>verifica en el cliente</strong> que la configuración de red ha recibido el nombre de dominio y el servidor DNS correcto:</li>
+</ol>
+<ul>
+<li>Abre una terminal (<strong>cmd.exe</strong>) en el cliente y ejecuta:
+     <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ipconfig /all
+</code></pre></div></li>
+<li>
+<p>Busca la sección de tu adaptador de red y asegúrate de que:</p>
+<ul>
+<li>El <strong>servidor DNS</strong> sea la IP privada del Windows Server AD.</li>
+<li>El <strong>sufijo DNS</strong> coincida con el dominio configurado (ej: <code>empresa.local</code>).</li>
+</ul>
+</li>
+<li>
+<p>Si la información no ha cambiado, reinicia nuevamente el cliente o ejecuta directamente:
+     <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ipconfig /renew
+</code></pre></div></p>
+</li>
+<li>
+<p>Si todo es correcto, ya puedes continuar con la configuración de Active Directory y la unión de clientes al dominio.</p>
+</li>
+</ul>
+<figure>
+  <img src="imagenes/05/054/ComprobacionDNS.png" width="950"/>
+  <figcaption>Comprobación tras el reinicio: la IP privada del servidor aparece como servidor DNS en la configuración de red del cliente Windows.</figcaption>
+</figure>
+
 <h2 id="paso-3-configurar-el-grupo-de-seguridad-para-active-directory">Paso 3: Configurar el grupo de seguridad para Active Directory<a class="headerlink" href="#paso-3-configurar-el-grupo-de-seguridad-para-active-directory" title="Permanent link">&para;</a></h2>
 <p>Active Directory requiere varios puertos de red para funcionar correctamente. Debemos configurar el grupo de seguridad para permitir estos servicios.</p>
+<figure>
+  <img src="imagenes/05/054/SegServerDisplay.png" width="950"/>
+  <figcaption>Vista de la consola de AWS donde se visualizan y editan las reglas del grupo de seguridad asociado al servidor de Active Directory.</figcaption>
+</figure>
+
 <h3 id="puertos-necesarios-para-active-directory">Puertos necesarios para Active Directory<a class="headerlink" href="#puertos-necesarios-para-active-directory" title="Permanent link">&para;</a></h3>
 <p>Active Directory utiliza los siguientes puertos:</p>
 <ul>
@@ -1133,21 +1199,29 @@
 </tbody>
 </table>
 <figure>
-  <img src="imagenes/05/054/024_grupo_seguridad_ad.png" width="950"/>
+  <img src="imagenes/05/054/editarReglasEntradaGurpoSeg.png" width="950"/>
   <figcaption>Configuración del grupo de seguridad para Active Directory</figcaption>
 </figure>
 
 <div class="admonition warning">
 <p class="admonition-title">Seguridad en producción</p>
-<p>En un entorno de producción, <strong>NO</strong> deberías permitir estos puertos desde <code>0.0.0.0/0</code>. En su lugar:
-- Permite solo desde la VPC (ej: <code>172.31.0.0/16</code>)
-- O desde IPs específicas
-- Para prácticas educativas, <code>0.0.0.0/0</code> es aceptable</p>
+<p>En un entorno de producción, <strong>NO</strong> deberías permitir estos puertos desde <code>0.0.0.0/0</code>. En su lugar:</p>
+<ul>
+<li>Permite solo desde la VPC (ej: <code>172.31.0.0/16</code>)</li>
+<li>O desde IPs específicas</li>
+<li>Para prácticas educativas, <code>0.0.0.0/0</code> es aceptable</li>
+</ul>
 </div>
 <ol start="5">
 <li><strong>Haz clic en "Guardar reglas"</strong>.</li>
 </ol>
 <h2 id="paso-4-instalar-active-directory-domain-services">Paso 4: Instalar Active Directory Domain Services<a class="headerlink" href="#paso-4-instalar-active-directory-domain-services" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Guía paso a paso recomendada</p>
+<p>Consulta también la guía completa y visual de instalación de Active Directory en este enlace:<br />
+<a href="https://fjavier-hernandez.github.io/sor/06_AD1/063_AD_Install.html">Guía de instalación Active Directory paso a paso (fjavier-hernandez.github.io)</a></p>
+</div>
+<p>A continuación se detallan de manera resumida los pasos para instalar Active Directory, siguiendo la guía mencionada anteriormente.</p>
 <h3 id="1-conectar-al-servidor">1. Conectar al servidor<a class="headerlink" href="#1-conectar-al-servidor" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Conecta mediante RDP</strong> a tu instancia de Windows Server.</li>
@@ -1254,6 +1328,157 @@
 <p><strong>Vuelve a conectar mediante RDP</strong> al servidor (ahora deberás usar el formato <code>DOMINIO\Administrator</code> para iniciar sesión).</p>
 </li>
 </ol>
+<h3 id="4-alternativa-instalar-y-promover-el-servidor-usando-powershell">4. Alternativa: Instalar y promover el servidor usando PowerShell<a class="headerlink" href="#4-alternativa-instalar-y-promover-el-servidor-usando-powershell" title="Permanent link">&para;</a></h3>
+<p>También puedes instalar el rol de Active Directory Domain Services y promover el servidor a controlador de dominio completamente usando PowerShell. Este método es útil para automatización o si prefieres trabajar desde la línea de comandos.</p>
+<p><strong>Pasos completos usando PowerShell:</strong></p>
+<ol>
+<li>
+<p><strong>Abre PowerShell como Administrador</strong> en el servidor Windows.</p>
+</li>
+<li>
+<p><strong>Instala el rol de Active Directory Domain Services</strong>:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Instalar el rol AD DS con las herramientas de administración</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Install-WindowsFeature</span> <span class="n">-Name</span> <span class="n">AD-Domain-Services</span> <span class="n">-IncludeManagementTools</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># Verificar que se instaló correctamente</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Get-WindowsFeature</span> <span class="n">-Name</span> <span class="n">AD-Domain-Services</span>
+</code></pre></div>
+<figure>
+  <img src="imagenes/05/054/InstalaRolAD.png" width="850"/>
+  <figcaption>Resultado de instalación del rol "Servicios de dominio de Active Directory" con PowerShell.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Verificación de instalación</p>
+<p>El comando <code>Get-WindowsFeature</code> debería mostrar que el rol está instalado. Si ves <code>[X]</code> junto al nombre del rol, significa que está instalado correctamente.</p>
+</div>
+<ol>
+<li><strong>Verifica que el módulo ADDSDeployment está disponible</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Comprobar si el módulo está disponible (debe estar después de instalar AD DS)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Get-Module</span> <span class="n">-ListAvailable</span> <span class="n">-Name</span> <span class="n">ADDSDeployment</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># Comprobar si el módulo está cargado en la sesión actual</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Get-Module</span> <span class="n">-Name</span> <span class="n">ADDSDeployment</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Interpretación de los resultados</p>
+<ul>
+<li>Si <code>Get-Module -ListAvailable</code> muestra el módulo: El módulo está instalado, pero puede que no esté cargado en la sesión actual.</li>
+<li>Si <code>Get-Module -Name ADDSDeployment</code> muestra el módulo: El módulo ya está cargado en la sesión y no necesitas importarlo.</li>
+<li>Si no aparece ningún resultado después de instalar AD DS: Cierra y vuelve a abrir PowerShell como Administrador, o reinicia el servidor para volver a intentarlo.</li>
+</ul>
+</div>
+<ol start="2">
+<li><strong>Importa el módulo de Active Directory</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Importar el módulo (solo si no está cargado)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Import-Module</span> <span class="n">ADDSDeployment</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># O usar -Force para recargar el módulo si ya estaba cargado</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Import-Module</span> <span class="n">ADDSDeployment</span> <span class="n">-Force</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota sobre el módulo</p>
+<p>Si después de instalar AD DS sigues sin poder importar el módulo, intenta:</p>
+<ul>
+<li>Cerrar y volver a abrir PowerShell como Administrador</li>
+<li>O reiniciar el servidor para asegurar que todos los componentes se carguen correctamente</li>
+</ul>
+</div>
+<figure>
+  <img src="imagenes/05/054/VerificaImportaAD.png" width="850"/>
+  <figcaption>Verificación de que el módulo ADDSDeployment está disponible e importado en PowerShell.</figcaption>
+</figure>
+
+<ol>
+<li><strong>Ejecuta el comando para crear el bosque y promover el servidor</strong>:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nb">Install-ADDSForest</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="n">-DomainName</span> <span class="s2">&quot;empresa.local&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 3 "></span>    <span class="n">-DomainNetbiosName</span> <span class="s2">&quot;EMPRESA&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="n">-ForestMode</span> <span class="s2">&quot;WinThreshold&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="n">-DomainMode</span> <span class="s2">&quot;WinThreshold&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="n">-InstallDns</span><span class="p">:</span><span class="nv">$true</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="n">-CreateDnsDelegation</span><span class="p">:</span><span class="nv">$false</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="n">-DatabasePath</span> <span class="s2">&quot;C:\Windows\NTDS&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="n">-LogPath</span> <span class="s2">&quot;C:\Windows\NTDS&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="10 "></span>    <span class="n">-SysvolPath</span> <span class="s2">&quot;C:\Windows\SYSVOL&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="11 "></span>    <span class="n">-SafeModeAdministratorPassword</span> <span class="p">(</span><span class="nb">ConvertTo-SecureString</span> <span class="s2">&quot;TuContraseñaSegura123!&quot;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span><span class="p">)</span> <span class="p">`</span>
+<span class="linenos" data-linenos="12 "></span>    <span class="n">-Force</span><span class="p">:</span><span class="nv">$true</span>
+</code></pre></div></li>
+</ol>
+<p><strong>Parámetros explicados:</strong></p>
+<ul>
+<li><code>-DomainName</code>: Nombre del dominio DNS (debe coincidir con el configurado en DHCP)</li>
+<li><code>-DomainNetbiosName</code>: Nombre NetBIOS del dominio (máximo 15 caracteres)</li>
+<li><code>-ForestMode</code> y <code>-DomainMode</code>: Nivel funcional. Valores válidos según la versión de Windows Server:</li>
+<li><code>Win2008</code>: Windows Server 2008</li>
+<li><code>Win2008R2</code>: Windows Server 2008 R2</li>
+<li><code>Win2012</code>: Windows Server 2012</li>
+<li><code>Win2012R2</code>: Windows Server 2012 R2</li>
+<li><code>WinThreshold</code>: Windows Server 2016, 2019 y 2022</li>
+<li><code>Win2025</code>: Windows Server 2025</li>
+<li><code>Default</code>: Usa el nivel funcional por defecto según la versión del servidor</li>
+<li><code>-InstallDns:$true</code>: Instala el servidor DNS</li>
+<li><code>-CreateDnsDelegation:$false</code>: No crea delegación DNS (no necesario en AWS Academy)</li>
+<li><code>-DatabasePath</code>, <code>-LogPath</code>, <code>-SysvolPath</code>: Rutas para los archivos de AD (valores por defecto)</li>
+<li><code>-SafeModeAdministratorPassword</code>: Contraseña para el modo de recuperación de servicios de directorio (DSRM)</li>
+<li><code>-Force:$true</code>: Ejecuta sin confirmación interactiva</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Niveles funcionales recomendados</p>
+<ul>
+<li>Para <strong>Windows Server 2016, 2019 o 2022</strong>: Usa <code>WinThreshold</code></li>
+<li>Para <strong>Windows Server 2025</strong>: Usa <code>Win2025</code></li>
+<li>Si no estás seguro: Usa <code>Default</code> y Windows seleccionará automáticamente el nivel apropiado</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<ul>
+<li>El servidor se <strong>reiniciará automáticamente</strong> después de ejecutar el comando.</li>
+<li>Asegúrate de usar una <strong>contraseña segura</strong> para el modo seguro (DSRM).</li>
+<li>El proceso puede tardar <strong>10-15 minutos</strong> en completarse.</li>
+<li>Después del reinicio, deberás iniciar sesión con <code>DOMINIO\Administrator</code>.</li>
+</ul>
+</div>
+<p><strong>Ejemplo completo con valores personalizados:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Paso 1: Instalar el rol AD DS</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">Install-WindowsFeature</span> <span class="n">-Name</span> <span class="n">AD-Domain-Services</span> <span class="n">-IncludeManagementTools</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c"># Paso 2: Importar el módulo</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nb">Import-Module</span> <span class="n">ADDSDeployment</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c"># Paso 3: Crear el bosque y promover el servidor</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="nv">$SecurePassword</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s2">&quot;MiPasswordSeguro123!&quot;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="nb">Install-ADDSForest</span> <span class="p">`</span>
+<span class="linenos" data-linenos="11 "></span>    <span class="n">-DomainName</span> <span class="s2">&quot;aso.com&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="12 "></span>    <span class="n">-DomainNetbiosName</span> <span class="s2">&quot;aso&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="13 "></span>    <span class="n">-ForestMode</span> <span class="s2">&quot;WinThreshold&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="14 "></span>    <span class="n">-DomainMode</span> <span class="s2">&quot;WinThreshold&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="15 "></span>    <span class="n">-InstallDns</span><span class="p">:</span><span class="nv">$true</span> <span class="p">`</span>
+<span class="linenos" data-linenos="16 "></span>    <span class="n">-CreateDnsDelegation</span><span class="p">:</span><span class="nv">$false</span> <span class="p">`</span>
+<span class="linenos" data-linenos="17 "></span>    <span class="n">-SafeModeAdministratorPassword</span> <span class="nv">$SecurePassword</span> <span class="p">`</span>
+<span class="linenos" data-linenos="18 "></span>    <span class="n">-Force</span><span class="p">:</span><span class="nv">$true</span>
+</code></pre></div>
+<figure>
+  <img src="imagenes/05/054/BosquePromoverServer.png" width="950"/>
+  <figcaption>Promoción del servidor y creación del bosque en Active Directory</figcaption>
+</figure>
+
+<p><strong>Verificar el estado después del reinicio:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Verificar que el dominio se creó correctamente</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Get-ADDomain</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># Verificar que el servidor es controlador de dominio</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Get-ADDomainController</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c"># Verificar servicios de AD</span>
+<span class="linenos" data-linenos="8 "></span><span class="nb">Get-Service</span> <span class="n">NTDS</span><span class="p">,</span> <span class="n">DNS</span><span class="p">,</span> <span class="n">Netlogon</span>
+</code></pre></div>
 <h2 id="paso-5-unir-un-cliente-al-dominio">Paso 5: Unir un cliente al dominio<a class="headerlink" href="#paso-5-unir-un-cliente-al-dominio" title="Permanent link">&para;</a></h2>
 <h3 id="1-preparar-el-cliente">1. Preparar el cliente<a class="headerlink" href="#1-preparar-el-cliente" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1266,6 +1491,11 @@
 <li>Ejecuta <code>nslookup &lt;DOMINIO&gt;</code> (ej: <code>nslookup empresa.local</code>) para verificar la resolución DNS.</li>
 </ul>
 <h3 id="2-unir-el-cliente-al-dominio">2. Unir el cliente al dominio<a class="headerlink" href="#2-unir-el-cliente-al-dominio" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Guía paso a paso recomendada</p>
+<p>Consulta también la guía completa y visual para unir clientes al dominio en este enlace:<br />
+<a href="https://fjavier-hernandez.github.io/sor/06_AD1/063_AD_Install.html#unir-clientes-al-dominio">Unir clientes al dominio - Guía paso a paso (fjavier-hernandez.github.io)</a></p>
+</div>
 <ol>
 <li><strong>Abre "Configuración"</strong> → <strong>"Sistema"</strong> → <strong>"Acerca de"</strong>.</li>
 <li><strong>Haz clic en "Cambiar"</strong> junto a "Unirse a un dominio o grupo de trabajo" (o "Cambiar el nombre de este equipo").</li>
@@ -1276,15 +1506,47 @@
 </ol>
 <ul>
 <li><strong>Usuario</strong>: <code>Administrator</code> (o <code>DOMINIO\Administrator</code>)</li>
-<li><strong>Contraseña</strong>: La contraseña del administrador del dominio
-7. <strong>Haz clic en "Aceptar"</strong>.
-8. Verás un mensaje de bienvenida al dominio.
-9.  <strong>Reinicia</strong> el equipo cuando se solicite.</li>
+<li><strong>Contraseña</strong>: La contraseña del administrador del dominio</li>
 </ul>
-<figure>
+<ol start="7">
+<li><strong>Haz clic en "Aceptar"</strong>.</li>
+<li>Verás un mensaje de bienvenida al dominio.</li>
+<li><strong>Reinicia</strong> el equipo cuando se solicite.</li>
+</ol>
+<h4 id="unir-el-cliente-al-dominio-mediante-powershell"><strong>Unir el cliente al dominio mediante PowerShell</strong><a class="headerlink" href="#unir-el-cliente-al-dominio-mediante-powershell" title="Permanent link">&para;</a></h4>
+<p>También puedes unir el cliente al dominio usando PowerShell. Sigue estos pasos:</p>
+<ol>
+<li>
+<p><strong>Abre PowerShell como Administrador</strong> en la máquina cliente.</p>
+</li>
+<li>
+<p><strong>Ejecuta el siguiente comando para unir el equipo al dominio</strong>:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Add-Computer</span> <span class="n">-DomainName</span> <span class="s2">&quot;&lt;DOMINIO&gt;&quot;</span> <span class="n">-Credential</span> <span class="s2">&quot;&lt;DOMINIO&gt;\Administrator&quot;</span>
+</code></pre></div>
+<ul>
+<li>Reemplaza <code>&lt;DOMINIO&gt;</code> por el nombre del dominio (ejemplo: <code>empresa.local</code>).</li>
+<li>Tras ejecutar el comando, se te solicitará la contraseña de <code>Administrator</code> del dominio.</li>
+</ul>
+<ol start="3">
+<li><strong>Reinicia el equipo</strong> para completar la unión al dominio:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Restart-Computer</span>
+</code></pre></div>
+<ol start="4">
+<li><strong>Confirma que el equipo está unido al dominio</strong> después del reinicio:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_ComputerSystem</span><span class="p">).</span><span class="n">PartOfDomain</span>
+</code></pre></div>
+<ul>
+<li>Si el resultado es <code>True</code>, el equipo está correctamente unido al dominio.</li>
+</ul>
+<p><em>Estos pasos permiten automatizar la unión de equipos al dominio desde línea de comandos, útil para entornos de despliegue o scripting.</em></p>
+<!-- <figure>
   <img src="imagenes/05/054/025_cliente_dominio.png" width="950"/>
   <figcaption>Cliente unido al dominio de Active Directory</figcaption>
-</figure>
+</figure> -->
 
 <h3 id="3-verificar-la-union-al-dominio">3. Verificar la unión al dominio<a class="headerlink" href="#3-verificar-la-union-al-dominio" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1314,25 +1576,93 @@
 <ul>
 <li>Presiona <code>Windows + R</code></li>
 <li>Escribe <code>sysdm.cpl</code> y presiona Enter</li>
-<li>
-<p>O ve a <strong>"Panel de control"</strong> → <strong>"Sistema"</strong> → <strong>"Configuración avanzada del sistema"</strong>
-3. Ve a la pestaña <strong>"Remoto"</strong>.
-4. En <strong>"Escritorio remoto"</strong>, selecciona <strong>"Permitir conexiones remotas a este equipo"</strong>.
-5. <strong>Haz clic en "Seleccionar usuarios"</strong> (Select Users).
-6. <strong>Haz clic en "Agregar"</strong> (Add).
-7. En el campo de texto, introduce:</p>
-</li>
-<li>
-<p><strong>"Domain Users"</strong> para permitir a todos los usuarios del dominio</p>
-</li>
-<li>O un usuario específico (ej: <code>DOMINIO\usuario</code>)
-8. <strong>Haz clic en "Comprobar nombres"</strong> para verificar que se reconoce.
-9.  <strong>Haz clic en "Aceptar"</strong> en todas las ventanas.</li>
+<li>O ve a <strong>"Panel de control"</strong> → <strong>"Sistema"</strong> → <strong>"Configuración avanzada del sistema"</strong></li>
 </ul>
-<figure>
+<ol start="3">
+<li>Ve a la pestaña <strong>"Remoto"</strong>.</li>
+<li>En <strong>"Escritorio remoto"</strong>, selecciona <strong>"Permitir conexiones remotas a este equipo"</strong>.</li>
+<li><strong>Haz clic en "Seleccionar usuarios"</strong> (Select Users).</li>
+<li><strong>Haz clic en "Agregar"</strong> (Add).</li>
+<li>En el campo de texto, introduce:</li>
+</ol>
+<ul>
+<li><strong>"Domain Users"</strong> para permitir a todos los usuarios del dominio</li>
+<li>O un usuario específico (ej: <code>DOMINIO\usuario</code>)</li>
+</ul>
+<ol start="8">
+<li><strong>Haz clic en "Comprobar nombres"</strong> para verificar que se reconoce.</li>
+<li><strong>Haz clic en "Aceptar"</strong> en todas las ventanas.</li>
+</ol>
+<h4 id="configurar-escritorio-remoto-mediante-powershell">Configurar escritorio remoto mediante PowerShell<a class="headerlink" href="#configurar-escritorio-remoto-mediante-powershell" title="Permanent link">&para;</a></h4>
+<p>También puedes configurar el escritorio remoto usando PowerShell. Sigue estos pasos:</p>
+<ol>
+<li>
+<p><strong>Abre PowerShell como Administrador</strong> en el servidor o cliente.</p>
+</li>
+<li>
+<p><strong>Habilita el escritorio remoto</strong>:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Habilitar escritorio remoto</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="s1">&#39;HKLM:\System\CurrentControlSet\Control\Terminal Server&#39;</span> <span class="n">-name</span> <span class="s2">&quot;fDenyTSConnections&quot;</span> <span class="n">-Value</span> <span class="n">0</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># Habilitar el firewall para RDP</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Enable-NetFirewallRule</span> <span class="n">-DisplayGroup</span> <span class="s2">&quot;Remote Desktop&quot;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Añadir usuarios o grupos al escritorio remoto</strong>:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Añadir el grupo &quot;Domain Users&quot; (todos los usuarios del dominio)</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nv">$group</span> <span class="p">=</span> <span class="s2">&quot;Domain Users&quot;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nv">$sid</span> <span class="p">=</span> <span class="p">(</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">Principal</span><span class="p">.</span><span class="n">NTAccount</span><span class="p">(</span><span class="nv">$group</span><span class="p">)).</span><span class="n">Translate</span><span class="p">(</span><span class="no">[System.Security.Principal.SecurityIdentifier]</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="nv">$sidString</span> <span class="p">=</span> <span class="nv">$sid</span><span class="p">.</span><span class="n">Value</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c"># Obtener el SID del grupo de usuarios remotos</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nv">$remoteUsersSid</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">-Class</span> <span class="n">Win32_Group</span> <span class="n">-Filter</span> <span class="s2">&quot;Name=&#39;Remote Desktop Users&#39;&quot;</span><span class="p">).</span><span class="n">SID</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c"># Añadir el grupo Domain Users al grupo Remote Desktop Users</span>
+<span class="linenos" data-linenos="10 "></span><span class="nb">Add-LocalGroupMember</span> <span class="n">-Group</span> <span class="s2">&quot;Remote Desktop Users&quot;</span> <span class="n">-Member</span> <span class="nv">$group</span>
+</code></pre></div></p>
+</li>
+</ol>
+<p><strong>Alternativa: Añadir un usuario específico del dominio:</strong>
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Añadir un usuario específico del dominio</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$domainUser</span> <span class="p">=</span> <span class="s2">&quot;DOMINIO\usuario&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">Add-LocalGroupMember</span> <span class="n">-Group</span> <span class="s2">&quot;Remote Desktop Users&quot;</span> <span class="n">-Member</span> <span class="nv">$domainUser</span>
+</code></pre></div></p>
+<ol start="4">
+<li>
+<p><strong>Verificar la configuración</strong>:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Verificar que el escritorio remoto está habilitado</span>
+<span class="linenos" data-linenos="2 "></span><span class="p">(</span><span class="nb">Get-ItemProperty</span> <span class="n">-Path</span> <span class="s1">&#39;HKLM:\System\CurrentControlSet\Control\Terminal Server&#39;</span><span class="p">).</span><span class="n">fDenyTSConnections</span>
+<span class="linenos" data-linenos="3 "></span><span class="c"># Debe devolver 0 (habilitado) o 1 (deshabilitado)</span>
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="c"># Verificar los miembros del grupo Remote Desktop Users</span>
+<span class="linenos" data-linenos="6 "></span><span class="nb">Get-LocalGroupMember</span> <span class="n">-Group</span> <span class="s2">&quot;Remote Desktop Users&quot;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Verificar las reglas del firewall</strong>:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Verificar que las reglas de firewall están habilitadas</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Get-NetFirewallRule</span> <span class="n">-DisplayGroup</span> <span class="s2">&quot;Remote Desktop&quot;</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">-eq</span> <span class="nv">$true</span><span class="p">}</span>
+</code></pre></div></p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Comando completo en una sola línea</p>
+<p>Si quieres hacer todo en un solo paso, puedes ejecutar:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Habilitar RDP y añadir Domain Users</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="s1">&#39;HKLM:\System\CurrentControlSet\Control\Terminal Server&#39;</span> <span class="n">-name</span> <span class="s2">&quot;fDenyTSConnections&quot;</span> <span class="n">-Value</span> <span class="n">0</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">Enable-NetFirewallRule</span> <span class="n">-DisplayGroup</span> <span class="s2">&quot;Remote Desktop&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">Add-LocalGroupMember</span> <span class="n">-Group</span> <span class="s2">&quot;Remote Desktop Users&quot;</span> <span class="n">-Member</span> <span class="s2">&quot;Domain Users&quot;</span>
+</code></pre></div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota sobre Domain Users</p>
+<p>Si el equipo no está unido al dominio, el grupo "Domain Users" no existirá. En ese caso, usa usuarios locales o espera a unir el equipo al dominio primero.</p>
+</div>
+<!-- <figure>
   <img src="imagenes/05/054/026_escritorio_remoto_dominio.png" width="950"/>
   <figcaption>Configuración de escritorio remoto para usuarios del dominio</figcaption>
-</figure>
+</figure> -->
 
 <h3 id="2-conectar-usando-credenciales-del-dominio">2. Conectar usando credenciales del dominio<a class="headerlink" href="#2-conectar-usando-credenciales-del-dominio" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1345,10 +1675,10 @@
 <li><strong>Usuario</strong>: <code>DOMINIO\Usuario</code> (ej: <code>EMPRESA\Administrator</code>)</li>
 <li><strong>Contraseña</strong>: La contraseña del usuario del dominio</li>
 </ul>
-<figure>
+<!-- <figure>
   <img src="imagenes/05/054/027_rdp_dominio.png" width="950"/>
   <figcaption>Conexión RDP usando credenciales del dominio</figcaption>
-</figure>
+</figure> -->
 
 <ol>
 <li><strong>Acepta la advertencia</strong> de certificado si aparece.</li>
