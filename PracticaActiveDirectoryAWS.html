@@ -652,27 +652,21 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Unir el cliente al dominio">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#unir-el-cliente-al-dominio-mediante-powershell" class="md-nav__link">
+  <a href="#3-unir-el-cliente-al-dominio-mediante-powershell" class="md-nav__link">
     <span class="md-ellipsis">
-      Unir el cliente al dominio mediante PowerShell
+      3. Unir el cliente al dominio mediante PowerShell
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#3-verificar-la-union-al-dominio" class="md-nav__link">
+  <a href="#4-verificar-la-union-al-dominio" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Verificar la unión al dominio
+      4. Verificar la unión al dominio
     </span>
   </a>
   
@@ -1346,6 +1340,11 @@
 <span class="linenos" data-linenos="5 "></span><span class="nb">Get-WindowsFeature</span> <span class="n">-Name</span> <span class="n">AD-Domain-Services</span>
 </code></pre></div>
 <figure>
+  <img src="imagenes/05/054/InstallRolAD.png" width="850"/>
+  <figcaption>Instalación del rol "Active Directory Domain Services" usando PowerShell.</figcaption>
+</figure>
+
+<figure>
   <img src="imagenes/05/054/InstalaRolAD.png" width="850"/>
   <figcaption>Resultado de instalación del rol "Servicios de dominio de Active Directory" con PowerShell.</figcaption>
 </figure>
@@ -1479,6 +1478,21 @@
 <span class="linenos" data-linenos="7 "></span><span class="c"># Verificar servicios de AD</span>
 <span class="linenos" data-linenos="8 "></span><span class="nb">Get-Service</span> <span class="n">NTDS</span><span class="p">,</span> <span class="n">DNS</span><span class="p">,</span> <span class="n">Netlogon</span>
 </code></pre></div>
+<figure>
+  <img src="imagenes/05/054/VerificarAD.png" width="950"/>
+  <figcaption>Verificación del estado de Active Directory tras la configuración y reinicio del servidor.</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/05/054/VerificarControladorDomain.png" width="950"/>
+  <figcaption>Verificando que el servidor es un controlador de dominio correctamente configurado</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/05/054/VerificarServiciosAD.png" width="950"/>
+  <figcaption>Verificación de los servicios principales de Active Directory mediante PowerShell.</figcaption>
+</figure>
+
 <h2 id="paso-5-unir-un-cliente-al-dominio">Paso 5: Unir un cliente al dominio<a class="headerlink" href="#paso-5-unir-un-cliente-al-dominio" title="Permanent link">&para;</a></h2>
 <h3 id="1-preparar-el-cliente">1. Preparar el cliente<a class="headerlink" href="#1-preparar-el-cliente" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1513,7 +1527,7 @@
 <li>Verás un mensaje de bienvenida al dominio.</li>
 <li><strong>Reinicia</strong> el equipo cuando se solicite.</li>
 </ol>
-<h4 id="unir-el-cliente-al-dominio-mediante-powershell"><strong>Unir el cliente al dominio mediante PowerShell</strong><a class="headerlink" href="#unir-el-cliente-al-dominio-mediante-powershell" title="Permanent link">&para;</a></h4>
+<h3 id="3-unir-el-cliente-al-dominio-mediante-powershell">3. Unir el cliente al dominio mediante PowerShell<a class="headerlink" href="#3-unir-el-cliente-al-dominio-mediante-powershell" title="Permanent link">&para;</a></h3>
 <p>También puedes unir el cliente al dominio usando PowerShell. Sigue estos pasos:</p>
 <ol>
 <li>
@@ -1523,18 +1537,32 @@
 <p><strong>Ejecuta el siguiente comando para unir el equipo al dominio</strong>:</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Add-Computer</span> <span class="n">-DomainName</span> <span class="s2">&quot;&lt;DOMINIO&gt;&quot;</span> <span class="n">-Credential</span> <span class="s2">&quot;&lt;DOMINIO&gt;\Administrator&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nv">$dominio</span> <span class="p">=</span> <span class="s2">&quot;aso.com&quot;</span>   <span class="c"># Cambia por tu dominio (ej: empresa.local)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Add-Computer</span> <span class="n">-DomainName</span> <span class="nv">$dominio</span> <span class="n">-Credential</span> <span class="p">(</span><span class="nb">Get-Credential</span> <span class="s2">&quot;$dominio\Administrator&quot;</span><span class="p">)</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Atención</p>
 <ul>
-<li>Reemplaza <code>&lt;DOMINIO&gt;</code> por el nombre del dominio (ejemplo: <code>empresa.local</code>).</li>
-<li>Tras ejecutar el comando, se te solicitará la contraseña de <code>Administrator</code> del dominio.</li>
+<li><strong>Reemplaza</strong> <code>aso.com</code> por el nombre real de tu dominio.</li>
+<li>Se abrirá una ventana solicitando usuario y contraseña. <strong>Introduce la contraseña del administrador del servidor</strong> (la misma que usas para conectarte por RDP al controlador de dominio). El nombre de usuario ya debe aparecer rellenado (por ejemplo: <code>aso.com\Administrator</code>).</li>
 </ul>
-<ol start="3">
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo: unir el equipo al dominio con PowerShell</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Add-Computer</span> <span class="n">-DomainName</span> <span class="s2">&quot;aso.com&quot;</span> <span class="n">-Credential</span> <span class="p">(</span><span class="nb">Get-Credential</span> <span class="s2">&quot;ASO\Administrator&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<figure>
+  <img src="imagenes/05/054/UnirClienteAD.png" width="800"/>
+  <figcaption>Proceso gráfico de unión del cliente a un dominio de Active Directory.</figcaption>
+</figure>
+
+<ol>
 <li><strong>Reinicia el equipo</strong> para completar la unión al dominio:</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Restart-Computer</span>
 </code></pre></div>
-<ol start="4">
+<ol start="2">
 <li><strong>Confirma que el equipo está unido al dominio</strong> después del reinicio:</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_ComputerSystem</span><span class="p">).</span><span class="n">PartOfDomain</span>
@@ -1542,26 +1570,30 @@
 <ul>
 <li>Si el resultado es <code>True</code>, el equipo está correctamente unido al dominio.</li>
 </ul>
-<p><em>Estos pasos permiten automatizar la unión de equipos al dominio desde línea de comandos, útil para entornos de despliegue o scripting.</em></p>
+<figure>
+  <img src="imagenes/05/054/VerificarUnionClienteAD.png" width="800"/>
+  <figcaption>Verificación de la unión del cliente al dominio de Active Directory</figcaption>
+</figure>
+
 <!-- <figure>
   <img src="imagenes/05/054/025_cliente_dominio.png" width="950"/>
   <figcaption>Cliente unido al dominio de Active Directory</figcaption>
 </figure> -->
 
-<h3 id="3-verificar-la-union-al-dominio">3. Verificar la unión al dominio<a class="headerlink" href="#3-verificar-la-union-al-dominio" title="Permanent link">&para;</a></h3>
+<h3 id="4-verificar-la-union-al-dominio">4. Verificar la unión al dominio<a class="headerlink" href="#4-verificar-la-union-al-dominio" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Vuelve a conectar mediante RDP</strong> al cliente después del reinicio.</li>
 <li><strong>Verifica el dominio</strong>:</li>
 </ol>
 <ul>
 <li>Abre <strong>"Configuración"</strong> → <strong>"Sistema"</strong> → <strong>"Acerca de"</strong>.</li>
-<li>
-<p>Deberías ver <strong>"Dominio"</strong> seguido del nombre de tu dominio.
-3. <strong>Prueba el inicio de sesión con credenciales del dominio</strong>:</p>
-</li>
-<li>
-<p>Cierra sesión.</p>
-</li>
+<li>Deberías ver <strong>"Dominio"</strong> seguido del nombre de tu dominio.</li>
+</ul>
+<ol start="3">
+<li><strong>Prueba el inicio de sesión con credenciales del dominio</strong>:</li>
+</ol>
+<ul>
+<li>Cierra sesión.</li>
 <li>En la pantalla de inicio de sesión, haz clic en <strong>"Otra cuenta"</strong>.</li>
 <li>Introduce: <code>DOMINIO\Administrator</code> (ej: <code>EMPRESA\Administrator</code>).</li>
 <li>Introduce la contraseña del administrador del dominio.</li>
@@ -1623,12 +1655,17 @@
 </code></pre></div></p>
 </li>
 </ol>
+<figure>
+     <img src="imagenes/05/054/RDPClientPWSH.png" width="950"/>
+     <figcaption>Ejemplo de cliente RDP en Windows y uso de PowerShell para escritorio remoto</figcaption>
+</figure>
+
 <p><strong>Alternativa: Añadir un usuario específico del dominio:</strong>
    <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Añadir un usuario específico del dominio</span>
 <span class="linenos" data-linenos="2 "></span><span class="nv">$domainUser</span> <span class="p">=</span> <span class="s2">&quot;DOMINIO\usuario&quot;</span>
 <span class="linenos" data-linenos="3 "></span><span class="nb">Add-LocalGroupMember</span> <span class="n">-Group</span> <span class="s2">&quot;Remote Desktop Users&quot;</span> <span class="n">-Member</span> <span class="nv">$domainUser</span>
 </code></pre></div></p>
-<ol start="4">
+<ol>
 <li>
 <p><strong>Verificar la configuración</strong>:
    <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Verificar que el escritorio remoto está habilitado</span>
