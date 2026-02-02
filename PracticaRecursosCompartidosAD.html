@@ -783,7 +783,7 @@
 <li>Dentro de <code>Empresa_Datos</code>: subcarpetas por departamento (ej: <code>Ventas</code>, <code>Contabilidad</code>, <code>RRHH</code>).</li>
 </ul>
 <ol start="4">
-<li>Dentro de <code>Empresa_Users</code>, crea una subcarpeta por cada usuario (ej: <code>usuario1</code>, <code>usuario2</code>) o deja que se creen automáticamente al configurar el perfil.</li>
+<li>Dentro de <code>Empresa_Users</code>, crea una subcarpeta por cada usuario (ej: <code>eduard.casavella</code>, <code>pep.terron</code>) o deja que se creen automáticamente al configurar el perfil.</li>
 </ol>
 <h3 id="pwsh">PWSH<a class="headerlink" href="#pwsh" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Crear estructura base</span>
@@ -871,23 +871,40 @@
 <p>Cada usuario debe tener una subcarpeta dentro de <code>Empresa_Users</code> con permisos exclusivos para él. La variable <code>%username%</code> se sustituye automáticamente por el nombre del usuario.</p>
 <h3 id="gui_3">GUI<a class="headerlink" href="#gui_3" title="Permanent link">&para;</a></h3>
 <ol>
-<li>En <code>C:\Empresa_Users</code>, crea una subcarpeta por usuario (ej: <code>usuario1</code>, <code>usuario2</code>) o deja que se cree al asignar el perfil.</li>
+<li>En <code>C:\Empresa_Users</code>, crea una subcarpeta por usuario (ej: <code>eduard.casavella</code>, <code>pep.terron</code>) o deja que se cree al asignar el perfil.</li>
 <li><strong>Clic derecho</strong> en cada subcarpeta → <strong>Propiedades</strong> → <strong>Seguridad</strong>.</li>
 <li>Asigna <strong>Control total</strong> al usuario correspondiente y a <strong>Administradores del dominio</strong>.</li>
 <li>Si usas una única carpeta compartida con <code>%username%</code>, asegúrate de que el recurso compartido permita a cada usuario crear/acceder a su subcarpeta (permisos en la carpeta raíz con herencia).</li>
 </ol>
 <h3 id="pwsh_3">PWSH<a class="headerlink" href="#pwsh_3" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Crear carpeta personal para cada usuario y asignar permisos</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="nv">$usuarios</span> <span class="p">=</span> <span class="p">@(</span><span class="s2">&quot;usuario1&quot;</span><span class="p">,</span> <span class="s2">&quot;usuario2&quot;</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">foreach</span> <span class="p">(</span><span class="nv">$user</span> <span class="k">in</span> <span class="nv">$usuarios</span><span class="p">)</span> <span class="p">{</span>
-<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$userPath</span> <span class="p">=</span> <span class="s2">&quot;C:\Empresa_Users\$user&quot;</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="nb">New-Item</span> <span class="n">-Path</span> <span class="nv">$userPath</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
-<span class="linenos" data-linenos=" 6 "></span>    <span class="nv">$acl</span> <span class="p">=</span> <span class="nb">Get-Acl</span> <span class="nv">$userPath</span>
-<span class="linenos" data-linenos=" 7 "></span>    <span class="nv">$rule</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">AccessControl</span><span class="p">.</span><span class="n">FileSystemAccessRule</span><span class="p">(</span><span class="s2">&quot;$env:USERDOMAIN\$user&quot;</span><span class="p">,</span> <span class="s2">&quot;FullControl&quot;</span><span class="p">,</span> <span class="s2">&quot;ContainerInherit,ObjectInherit&quot;</span><span class="p">,</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Allow&quot;</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 8 "></span>    <span class="nv">$acl</span><span class="p">.</span><span class="n">AddAccessRule</span><span class="p">(</span><span class="nv">$rule</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 9 "></span>    <span class="nb">Set-Acl</span> <span class="nv">$userPath</span> <span class="nv">$acl</span>
-<span class="linenos" data-linenos="10 "></span><span class="p">}</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c"># Usuarios de la PR403 (Area Studio): responsables de departamento</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nv">$dominio</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-ADDomain</span><span class="p">).</span><span class="n">NetBIOSName</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="nv">$usuarios</span> <span class="p">=</span> <span class="p">@(</span><span class="s2">&quot;eduard.casavella&quot;</span><span class="p">,</span> <span class="s2">&quot;pep.terron&quot;</span><span class="p">,</span> <span class="s2">&quot;fran.delgado&quot;</span><span class="p">,</span> <span class="s2">&quot;marcos.sabates&quot;</span><span class="p">,</span> <span class="s2">&quot;irene.masot&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">foreach</span> <span class="p">(</span><span class="nv">$user</span> <span class="k">in</span> <span class="nv">$usuarios</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="c"># Verificar que el usuario existe en AD</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="nv">$adUser</span> <span class="p">=</span> <span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="s2">&quot;SamAccountName -eq &#39;$user&#39;&quot;</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="nv">$adUser</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="10 "></span>        <span class="nb">Write-Warning</span> <span class="s2">&quot;El usuario &#39;$user&#39; no existe en Active Directory. Omitiendo.&quot;</span>
+<span class="linenos" data-linenos="11 "></span>        <span class="k">continue</span>
+<span class="linenos" data-linenos="12 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="13 "></span>    <span class="nv">$userPath</span> <span class="p">=</span> <span class="s2">&quot;C:\Empresa_Users\$user&quot;</span>
+<span class="linenos" data-linenos="14 "></span>    <span class="nb">New-Item</span> <span class="n">-Path</span> <span class="nv">$userPath</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos="15 "></span>    <span class="nv">$acl</span> <span class="p">=</span> <span class="nb">Get-Acl</span> <span class="nv">$userPath</span>
+<span class="linenos" data-linenos="16 "></span>    <span class="nv">$identity</span> <span class="p">=</span> <span class="s2">&quot;$dominio\$user&quot;</span>
+<span class="linenos" data-linenos="17 "></span>    <span class="nv">$rule</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">AccessControl</span><span class="p">.</span><span class="n">FileSystemAccessRule</span><span class="p">(</span><span class="nv">$identity</span><span class="p">,</span> <span class="s2">&quot;FullControl&quot;</span><span class="p">,</span> <span class="s2">&quot;ContainerInherit,ObjectInherit&quot;</span><span class="p">,</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Allow&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos="18 "></span>    <span class="nv">$acl</span><span class="p">.</span><span class="n">AddAccessRule</span><span class="p">(</span><span class="nv">$rule</span><span class="p">)</span>
+<span class="linenos" data-linenos="19 "></span>    <span class="nb">Set-Acl</span> <span class="nv">$userPath</span> <span class="nv">$acl</span>
+<span class="linenos" data-linenos="20 "></span><span class="p">}</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Si aparece 'Some or all identity references could not be translated'</p>
+<p>Ese error indica que el sistema no puede resolver la identidad del usuario o grupo. Comprueba que:
+- Los usuarios de la PR403 <strong>existen en Active Directory</strong> (eduard.casavella, pep.terron, etc.). Completa la PR403 antes de ejecutar este script.
+- El script se ejecuta en el <strong>controlador de dominio</strong> o en un equipo unido al dominio.
+- Si <code>Get-ADDomain</code> falla, define el dominio manualmente: <code>$dominio = "EMPRESA"</code> (usa el nombre NETBIOS de tu dominio, no el FQDN).</p>
+</div>
 <hr />
 <h2 id="paso-5-configurar-carpeta-personal-y-carpeta-de-empresa-en-el-usuario">Paso 5: Configurar carpeta personal y carpeta de empresa en el usuario<a class="headerlink" href="#paso-5-configurar-carpeta-personal-y-carpeta-de-empresa-en-el-usuario" title="Permanent link">&para;</a></h2>
 <p>Configura en Active Directory que al iniciar sesión el usuario tenga:</p>
@@ -921,10 +938,10 @@
 <span class="linenos" data-linenos=" 4 "></span><span class="nv">$shareDatos</span> <span class="p">=</span> <span class="s2">&quot;Empresa_Datos&quot;</span>
 <span class="linenos" data-linenos=" 5 "></span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c"># Configurar carpeta personal (unidad X:) para un usuario</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="nb">Set-ADUser</span> <span class="n">-Identity</span> <span class="s2">&quot;usuario1&quot;</span> <span class="n">-HomeDrive</span> <span class="s2">&quot;X:&quot;</span> <span class="n">-HomeDirectory</span> <span class="s2">&quot;\\$servidor\$shareUsers\usuario1&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nb">Set-ADUser</span> <span class="n">-Identity</span> <span class="s2">&quot;eduard.casavella&quot;</span> <span class="n">-HomeDrive</span> <span class="s2">&quot;X:&quot;</span> <span class="n">-HomeDirectory</span> <span class="s2">&quot;\\$servidor\$shareUsers\eduard.casavella&quot;</span>
 <span class="linenos" data-linenos=" 8 "></span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c"># Para configurar varios usuarios desde una lista</span>
-<span class="linenos" data-linenos="10 "></span><span class="nv">$usuarios</span> <span class="p">=</span> <span class="p">@(</span><span class="s2">&quot;usuario1&quot;</span><span class="p">,</span> <span class="s2">&quot;usuario2&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c"># Para configurar varios usuarios desde una lista (usuarios de la PR403)</span>
+<span class="linenos" data-linenos="10 "></span><span class="nv">$usuarios</span> <span class="p">=</span> <span class="p">@(</span><span class="s2">&quot;eduard.casavella&quot;</span><span class="p">,</span> <span class="s2">&quot;pep.terron&quot;</span><span class="p">,</span> <span class="s2">&quot;fran.delgado&quot;</span><span class="p">,</span> <span class="s2">&quot;marcos.sabates&quot;</span><span class="p">,</span> <span class="s2">&quot;irene.masot&quot;</span><span class="p">)</span>
 <span class="linenos" data-linenos="11 "></span><span class="k">foreach</span> <span class="p">(</span><span class="nv">$user</span> <span class="k">in</span> <span class="nv">$usuarios</span><span class="p">)</span> <span class="p">{</span>
 <span class="linenos" data-linenos="12 "></span>    <span class="nb">Set-ADUser</span> <span class="n">-Identity</span> <span class="nv">$user</span> <span class="n">-HomeDrive</span> <span class="s2">&quot;X:&quot;</span> <span class="n">-HomeDirectory</span> <span class="s2">&quot;\\$servidor\$shareUsers\$user&quot;</span>
 <span class="linenos" data-linenos="13 "></span><span class="p">}</span>
@@ -1002,7 +1019,7 @@
 <span class="linenos" data-linenos="3 "></span><span class="nb">Get-ADDefaultDomainPasswordPolicy</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">LockoutDuration</span><span class="p">,</span> <span class="n">LockoutObservationWindow</span><span class="p">,</span> <span class="n">LockoutThreshold</span>
 <span class="linenos" data-linenos="4 "></span>
 <span class="linenos" data-linenos="5 "></span><span class="c"># Para desbloquear un usuario bloqueado:</span>
-<span class="linenos" data-linenos="6 "></span><span class="nb">Unlock-ADAccount</span> <span class="n">-Identity</span> <span class="s2">&quot;usuario1&quot;</span>
+<span class="linenos" data-linenos="6 "></span><span class="nb">Unlock-ADAccount</span> <span class="n">-Identity</span> <span class="s2">&quot;pep.terron&quot;</span>
 </code></pre></div>
 <hr />
 <h2 id="paso-8-aplicar-cambios-y-verificar">Paso 8: Aplicar cambios y verificar<a class="headerlink" href="#paso-8-aplicar-cambios-y-verificar" title="Permanent link">&para;</a></h2>
@@ -1027,11 +1044,11 @@
 <hr />
 <h2 id="paso-9-comprobaciones-de-acceso">Paso 9: Comprobaciones de acceso<a class="headerlink" href="#paso-9-comprobaciones-de-acceso" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Inicia sesión</strong> en el cliente con <code>usuario1</code> (perteneciente al grupo de Ventas, por ejemplo).</li>
+<li><strong>Inicia sesión</strong> en el cliente con uno de los usuarios de la PR403 (ej: <code>eduard.casavella</code> o <code>pep.terron</code>).</li>
 <li>Verifica que puede acceder a <code>X:\</code> (su carpeta personal) y crear archivos.</li>
 <li>Verifica que puede acceder a <code>Y:\</code> o a <code>\\DC01\Empresa_Datos\Ventas</code> si configuraste permisos por departamento.</li>
 <li>Intenta acceder a una carpeta de otro departamento: debe denegarse si los permisos están bien configurados.</li>
-<li><strong>Prueba el bloqueo de cuenta</strong>: introduce 4 veces una contraseña incorrecta con <code>usuario2</code>. La cuenta debe bloquearse. Desbloquéala desde el DC con <code>Unlock-ADAccount -Identity usuario2</code>.</li>
+<li><strong>Prueba el bloqueo de cuenta</strong>: introduce 4 veces una contraseña incorrecta con uno de los usuarios (ej: <code>pep.terron</code>). La cuenta debe bloquearse. Desbloquéala desde el DC con <code>Unlock-ADAccount -Identity pep.terron</code>.</li>
 </ol>
 <hr />
 

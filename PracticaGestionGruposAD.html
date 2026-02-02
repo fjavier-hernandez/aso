@@ -931,11 +931,15 @@
 <ol>
 <li><strong>Navega a la unidad organizativa</strong> correspondiente (ej: <code>Gerencia</code> para Eduard Casavella).</li>
 <li><strong>Haz clic con el botón derecho</strong> sobre la OU → <strong>"Nuevo"</strong> → <strong>"Usuario"</strong>.</li>
-<li><strong>Completa el asistente</strong> con los datos del usuario:
-   - <strong>Nombre</strong>: <code>Eduard</code>
-   - <strong>Iniciales</strong>: (opcional)
-   - <strong>Apellidos</strong>: <code>Casavella</code>
-   - <strong>Nombre de inicio de sesión de usuario</strong>: <code>eduard.casavella</code></li>
+<li><strong>Completa el asistente</strong> con los datos del usuario:</li>
+</ol>
+<ul>
+<li><strong>Nombre</strong>: <code>Eduard</code></li>
+<li><strong>Iniciales</strong>: (opcional)</li>
+<li><strong>Apellidos</strong>: <code>Casavella</code></li>
+<li><strong>Nombre de inicio de sesión de usuario</strong>: <code>eduard.casavella</code></li>
+</ul>
+<ol start="4">
 <li><strong>Configura la contraseña</strong>: <code>casavella1</code></li>
 <li><strong>Desmarca</strong> "El usuario debe cambiar la contraseña en el siguiente inicio de sesión".</li>
 <li><strong>Marca</strong> "La contraseña nunca expira" (solo para prácticas).</li>
@@ -1084,10 +1088,14 @@
 <ol>
 <li><strong>Navega a la unidad organizativa</strong> del departamento (ej: <code>IT</code>).</li>
 <li><strong>Haz clic con el botón derecho</strong> sobre la OU → <strong>"Nuevo"</strong> → <strong>"Grupo"</strong>.</li>
-<li><strong>Configura el grupo</strong>:
-   - <strong>Nombre del grupo</strong>: <code>IT_Usuarios</code> (o similar)
-   - <strong>Ámbito del grupo</strong>: <strong>Global</strong>
-   - <strong>Tipo de grupo</strong>: <strong>Seguridad</strong></li>
+<li><strong>Configura el grupo</strong>:</li>
+</ol>
+<ul>
+<li><strong>Nombre del grupo</strong>: <code>IT_Usuarios</code> (o similar)</li>
+<li><strong>Ámbito del grupo</strong>: <strong>Global</strong></li>
+<li><strong>Tipo de grupo</strong>: <strong>Seguridad</strong></li>
+</ul>
+<ol start="4">
 <li><strong>Haz clic en "Aceptar"</strong>.</li>
 <li><strong>Repite el proceso</strong> para cada departamento.</li>
 </ol>
@@ -1178,12 +1186,14 @@
 <ol>
 <li><strong>Abre "Usuarios y equipos de Active Directory"</strong>.</li>
 <li><strong>Expande el dominio</strong> y las unidades organizativas.</li>
-<li><strong>Verifica</strong> que:
-   - Las unidades organizativas están creadas correctamente.
-   - Los usuarios están en sus unidades organizativas correspondientes.
-   - Los grupos están creados y tienen los miembros correctos.
-   - Los usuarios de prueba han sido eliminados.</li>
+<li><strong>Verifica</strong> que:</li>
 </ol>
+<ul>
+<li>Las unidades organizativas están creadas correctamente.</li>
+<li>Los usuarios están en sus unidades organizativas correspondientes.</li>
+<li>Los grupos están creados y tienen los miembros correctos.</li>
+<li>Los usuarios de prueba han sido eliminados.</li>
+</ul>
 <h3 id="2-verificar-mediante-powershell">2. Verificar mediante PowerShell<a class="headerlink" href="#2-verificar-mediante-powershell" title="Permanent link">&para;</a></h3>
 <p>Ejecuta los siguientes comandos para verificar la estructura:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Importar el módulo de Active Directory</span>
@@ -1217,30 +1227,38 @@
 </code></pre></div>
 <h2 id="tareas-a-realizar_1">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar_1" title="Permanent link">&para;</a></h2>
 <ol>
-<li>
-<p><strong>Creación de estructura organizativa</strong>:
-   - Crea la unidad organizativa principal <code>Departamentos</code>.
-   - Crea unidades organizativas para cada departamento (Gerencia, IT, Administración, Comercial, RRHH).</p>
-</li>
-<li>
-<p><strong>Creación de usuarios de departamento</strong>:
-   - Crea los 5 usuarios según la tabla proporcionada.
-   - Coloca cada usuario en su unidad organizativa correspondiente.
-   - Configura las contraseñas según la tabla.</p>
-</li>
-<li>
-<p><strong>Creación y gestión de grupos</strong>:
-   - Crea un grupo de seguridad para cada departamento.
-   - Añade el usuario correspondiente a cada grupo.</p>
-</li>
-<li>
-<p><strong>Limpieza de usuarios de prueba</strong>:
-   - Elimina los usuarios <code>usuario1</code> y <code>usuario2</code> creados en prácticas anteriores.</p>
-</li>
-<li>
-<p><strong>Documentación</strong>:
-   - Crea un documento que explique:</p>
+<li><strong>Creación de estructura organizativa</strong>:</li>
+</ol>
 <ul>
+<li>Crea la unidad organizativa principal <code>Departamentos</code>.</li>
+<li>Crea unidades organizativas para cada departamento (Gerencia, IT, Administración, Comercial, RRHH).</li>
+</ul>
+<ol start="2">
+<li><strong>Creación de usuarios de departamento</strong>:</li>
+</ol>
+<ul>
+<li>Crea los 5 usuarios según la tabla proporcionada.</li>
+<li>Coloca cada usuario en su unidad organizativa correspondiente.</li>
+<li>Configura las contraseñas según la tabla.</li>
+</ul>
+<ol start="3">
+<li><strong>Creación y gestión de grupos</strong>:</li>
+</ol>
+<ul>
+<li>Crea un grupo de seguridad para cada departamento.</li>
+<li>Añade el usuario correspondiente a cada grupo.</li>
+</ul>
+<ol start="4">
+<li><strong>Limpieza de usuarios de prueba</strong>:</li>
+</ol>
+<ul>
+<li>Elimina los usuarios <code>usuario1</code> y <code>usuario2</code> creados en prácticas anteriores.</li>
+</ul>
+<ol start="5">
+<li><strong>Documentación</strong>:</li>
+</ol>
+<ul>
+<li>Crea un documento que explique:<ul>
 <li>La estructura organizativa creada.</li>
 <li>La justificación de la organización por departamentos.</li>
 <li>Los pasos realizados para la creación de usuarios, grupos y unidades organizativas.</li>
@@ -1248,7 +1266,7 @@
 <li>Si usaste PowerShell desde CSV, explica el proceso.</li>
 </ul>
 </li>
-</ol>
+</ul>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.microsoft.com/windows-server/identity/ad-ds/manage/understand-active-directory-users-and-computers">Documentación oficial de Active Directory Users and Computers</a></li>
