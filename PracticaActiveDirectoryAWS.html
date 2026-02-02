@@ -627,13 +627,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#paso-5-unir-un-cliente-al-dominio" class="md-nav__link">
+  <a href="#paso-5-preparacion-del-active-directory" class="md-nav__link">
     <span class="md-ellipsis">
-      Paso 5: Unir un cliente al dominio
+      Paso 5: Preparación del Active Directory
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Paso 5: Unir un cliente al dominio">
+    <nav class="md-nav" aria-label="Paso 5: Preparación del Active Directory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-un-usuario-y-anadirlo-a-domain-admins-interfaz-grafica" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Crear un usuario y añadirlo a Domain Admins (interfaz gráfica)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-crear-un-usuario-y-anadirlo-a-domain-admins-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Crear un usuario y añadirlo a Domain Admins (PowerShell)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-6-unir-un-cliente-al-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 6: Unir un cliente al dominio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 6: Unir un cliente al dominio">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -678,13 +711,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#paso-6-configurar-acceso-remoto-para-usuarios-del-dominio" class="md-nav__link">
+  <a href="#paso-7-configurar-acceso-remoto-para-usuarios-del-dominio" class="md-nav__link">
     <span class="md-ellipsis">
-      Paso 6: Configurar acceso remoto para usuarios del dominio
+      Paso 7: Configurar acceso remoto para usuarios del dominio
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Paso 6: Configurar acceso remoto para usuarios del dominio">
+    <nav class="md-nav" aria-label="Paso 7: Configurar acceso remoto para usuarios del dominio">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -726,13 +759,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#paso-7-verificar-la-configuracion" class="md-nav__link">
+  <a href="#paso-8-verificar-la-configuracion" class="md-nav__link">
     <span class="md-ellipsis">
-      Paso 7: Verificar la configuración
+      Paso 8: Verificar la configuración
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Paso 7: Verificar la configuración">
+    <nav class="md-nav" aria-label="Paso 8: Verificar la configuración">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -831,6 +864,12 @@
 <li>Verifica que el dominio se creó correctamente.</li>
 </ul>
 <ol start="5">
+<li><strong>Preparación del servidor</strong>:</li>
+</ol>
+<ul>
+<li>Crea un usuario en el dominio y añádelo al grupo <strong>Administradores del dominio</strong> (Domain Admins) para poder gestionar el dominio y unir clientes.</li>
+</ul>
+<ol start="6">
 <li><strong>Unión del cliente al dominio</strong>:</li>
 </ol>
 <ul>
@@ -838,7 +877,7 @@
 <li>Une el cliente al dominio.</li>
 <li>Verifica que el cliente aparece en el dominio.</li>
 </ul>
-<ol start="6">
+<ol start="7">
 <li><strong>Configuración de acceso remoto</strong>:</li>
 </ol>
 <ul>
@@ -846,7 +885,7 @@
 <li>Conecta usando credenciales del dominio.</li>
 <li>Verifica que el acceso funciona correctamente.</li>
 </ul>
-<ol start="7">
+<ol start="8">
 <li><strong>Documentación</strong>:</li>
 </ol>
 <ul>
@@ -872,6 +911,7 @@
 <li>Configuración de grupos de seguridad para Active Directory.</li>
 <li>Pasos seguidos para la instalación de AD DS.</li>
 <li>Proceso de promoción a controlador de dominio.</li>
+<li>Creación de un usuario administrador del dominio (Domain Admins).</li>
 <li>Pasos para unir un cliente al dominio.</li>
 <li>Configuración de acceso remoto para usuarios del dominio.</li>
 <li>Capturas de pantalla del proceso completo.</li>
@@ -890,6 +930,7 @@
 <li>Configuración del grupo de seguridad con los puertos de Active Directory.</li>
 <li>Instalación de Active Directory Domain Services.</li>
 <li>Promoción a controlador de dominio.</li>
+<li>Usuario del dominio añadido al grupo Domain Admins.</li>
 <li>Cliente unido al dominio.</li>
 <li>Configuración de escritorio remoto para usuarios del dominio.</li>
 <li>Conexión RDP usando credenciales del dominio.</li>
@@ -1493,7 +1534,67 @@
   <figcaption>Verificación de los servicios principales de Active Directory mediante PowerShell.</figcaption>
 </figure>
 
-<h2 id="paso-5-unir-un-cliente-al-dominio">Paso 5: Unir un cliente al dominio<a class="headerlink" href="#paso-5-unir-un-cliente-al-dominio" title="Permanent link">&para;</a></h2>
+<h2 id="paso-5-preparacion-del-active-directory">Paso 5: Preparación del Active Directory<a class="headerlink" href="#paso-5-preparacion-del-active-directory" title="Permanent link">&para;</a></h2>
+<p>Tras promover el servidor a controlador de dominio, es recomendable crear un usuario del dominio que pertenezca al grupo <strong>Administradores del dominio</strong> (Domain Admins). Así podrás usar esa cuenta para unir clientes, gestionar el dominio y conectarte por RDP sin depender únicamente de la cuenta <code>Administrator</code> integrada.</p>
+<h3 id="1-crear-un-usuario-y-anadirlo-a-domain-admins-interfaz-grafica">1. Crear un usuario y añadirlo a Domain Admins (interfaz gráfica)<a class="headerlink" href="#1-crear-un-usuario-y-anadirlo-a-domain-admins-interfaz-grafica" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Conecta mediante RDP</strong> al controlador de dominio con la cuenta <code>Administrator</code>.</li>
+<li><strong>Abre "Usuarios y equipos de Active Directory"</strong>:</li>
+</ol>
+<ul>
+<li>En el menú <strong>Inicio</strong>, escribe <strong>"Active Directory Users and Computers"</strong> o <strong>"dsa.msc"</strong> y ejecútalo.</li>
+</ul>
+<ol start="3">
+<li><strong>Crea el usuario</strong>:</li>
+</ol>
+<ul>
+<li>En el panel izquierdo, expande tu dominio (ej: <code>empresa.local</code>).</li>
+<li>Haz clic derecho en la carpeta <strong>"Users"</strong> (o en una unidad organizativa si la tienes) → <strong>Nuevo</strong> → <strong>Usuario</strong>.</li>
+<li><strong>Nombre</strong>: Nombre del usuario (ej: <code>admin.dominio</code>).</li>
+<li><strong>Nombre completo</strong>: Nombre para mostrar (ej: <code>Administrador del dominio</code>).</li>
+<li><strong>Contraseña</strong>: Elige una contraseña segura y marca <strong>"La contraseña no caduca"</strong> si es para prácticas.</li>
+<li>Haz clic en <strong>Siguiente</strong> y <strong>Finalizar</strong>.</li>
+</ul>
+<ol start="4">
+<li><strong>Añadir el usuario al grupo Domain Admins</strong>:</li>
+</ol>
+<ul>
+<li>En <strong>Usuarios y equipos de Active Directory</strong>, ve al contenedor <strong>"Users"</strong>.</li>
+<li>Haz doble clic en el grupo <strong>"Domain Admins"</strong>.</li>
+<li>Pestaña <strong>Miembros</strong> → <strong>Agregar</strong>.</li>
+<li>Escribe el nombre del usuario que acabas de crear (ej: <code>admin.dominio</code>) → <strong>Comprobar nombres</strong> → <strong>Aceptar</strong> → <strong>Aceptar</strong>.</li>
+</ul>
+<p>Desde ese momento puedes usar <code>DOMINIO\admin.dominio</code> (y su contraseña) para unir clientes al dominio, gestionar AD y conectarte por RDP como administrador del dominio.</p>
+<h3 id="2-crear-un-usuario-y-anadirlo-a-domain-admins-powershell">2. Crear un usuario y añadirlo a Domain Admins (PowerShell)<a class="headerlink" href="#2-crear-un-usuario-y-anadirlo-a-domain-admins-powershell" title="Permanent link">&para;</a></h3>
+<p>En el controlador de dominio, abre <strong>PowerShell como Administrador</strong> y ejecuta:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Variables: cambia por tu dominio y el nombre de usuario deseado</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nv">$nombreDominio</span> <span class="p">=</span> <span class="s2">&quot;empresa.local&quot;</span>   <span class="c"># ej: aso.com, empresa.local</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nv">$nombreUsuario</span> <span class="p">=</span> <span class="s2">&quot;admin.dominio&quot;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="nv">$nombreCompleto</span> <span class="p">=</span> <span class="s2">&quot;Administrador del dominio&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nv">$contraseña</span> <span class="p">=</span> <span class="s2">&quot;TuContraseñaSegura123!&quot;</span>   <span class="c"># Usa una contraseña segura</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c"># Crear la contraseña segura</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="nv">$pass</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="nv">$contraseña</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c"># Crear el usuario en el dominio</span>
+<span class="linenos" data-linenos="11 "></span><span class="nb">New-ADUser</span> <span class="n">-Name</span> <span class="nv">$nombreUsuario</span> <span class="p">`</span>
+<span class="linenos" data-linenos="12 "></span>  <span class="n">-DisplayName</span> <span class="nv">$nombreCompleto</span> <span class="p">`</span>
+<span class="linenos" data-linenos="13 "></span>  <span class="n">-UserPrincipalName</span> <span class="s2">&quot;$nombreUsuario@$nombreDominio&quot;</span> <span class="p">`</span>
+<span class="linenos" data-linenos="14 "></span>  <span class="n">-AccountPassword</span> <span class="nv">$pass</span> <span class="p">`</span>
+<span class="linenos" data-linenos="15 "></span>  <span class="n">-Enabled</span> <span class="nv">$true</span> <span class="p">`</span>
+<span class="linenos" data-linenos="16 "></span>  <span class="n">-PasswordNeverExpires</span> <span class="nv">$true</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span><span class="c"># Añadir el usuario al grupo Domain Admins</span>
+<span class="linenos" data-linenos="19 "></span><span class="nb">Add-ADGroupMember</span> <span class="n">-Identity</span> <span class="s2">&quot;Domain Admins&quot;</span> <span class="n">-Members</span> <span class="nv">$nombreUsuario</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="c"># Verificar que el usuario está en Domain Admins</span>
+<span class="linenos" data-linenos="22 "></span><span class="nb">Get-ADGroupMember</span> <span class="n">-Identity</span> <span class="s2">&quot;Domain Admins&quot;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Uso posterior</p>
+<p>Puedes usar <code>DOMINIO\admin.dominio</code> (ej: <code>EMPRESA\admin.dominio</code>) para unir clientes al dominio, configurar escritorio remoto y realizar tareas de administración del dominio en lugar de usar siempre <code>Administrator</code>.</p>
+</div>
+<h2 id="paso-6-unir-un-cliente-al-dominio">Paso 6: Unir un cliente al dominio<a class="headerlink" href="#paso-6-unir-un-cliente-al-dominio" title="Permanent link">&para;</a></h2>
 <h3 id="1-preparar-el-cliente">1. Preparar el cliente<a class="headerlink" href="#1-preparar-el-cliente" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Conecta mediante RDP</strong> a la instancia cliente.</li>
@@ -1598,7 +1699,7 @@
 <li>Introduce: <code>DOMINIO\Administrator</code> (ej: <code>EMPRESA\Administrator</code>).</li>
 <li>Introduce la contraseña del administrador del dominio.</li>
 </ul>
-<h2 id="paso-6-configurar-acceso-remoto-para-usuarios-del-dominio">Paso 6: Configurar acceso remoto para usuarios del dominio<a class="headerlink" href="#paso-6-configurar-acceso-remoto-para-usuarios-del-dominio" title="Permanent link">&para;</a></h2>
+<h2 id="paso-7-configurar-acceso-remoto-para-usuarios-del-dominio">Paso 7: Configurar acceso remoto para usuarios del dominio<a class="headerlink" href="#paso-7-configurar-acceso-remoto-para-usuarios-del-dominio" title="Permanent link">&para;</a></h2>
 <p>Para permitir que usuarios del dominio accedan mediante RDP a los equipos del dominio:</p>
 <h3 id="1-configurar-escritorio-remoto-en-el-servidor-o-cliente">1. Configurar escritorio remoto en el servidor o cliente<a class="headerlink" href="#1-configurar-escritorio-remoto-en-el-servidor-o-cliente" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1641,30 +1742,24 @@
 </code></pre></div></p>
 </li>
 <li>
-<p><strong>Añadir usuarios o grupos al escritorio remoto</strong>:
-   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Añadir el grupo &quot;Domain Users&quot; (todos los usuarios del dominio)</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="nv">$group</span> <span class="p">=</span> <span class="s2">&quot;Domain Users&quot;</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="nv">$sid</span> <span class="p">=</span> <span class="p">(</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">Principal</span><span class="p">.</span><span class="n">NTAccount</span><span class="p">(</span><span class="nv">$group</span><span class="p">)).</span><span class="n">Translate</span><span class="p">(</span><span class="no">[System.Security.Principal.SecurityIdentifier]</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="nv">$sidString</span> <span class="p">=</span> <span class="nv">$sid</span><span class="p">.</span><span class="n">Value</span>
-<span class="linenos" data-linenos=" 5 "></span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c"># Obtener el SID del grupo de usuarios remotos</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="nv">$remoteUsersSid</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">-Class</span> <span class="n">Win32_Group</span> <span class="n">-Filter</span> <span class="s2">&quot;Name=&#39;Remote Desktop Users&#39;&quot;</span><span class="p">).</span><span class="n">SID</span>
-<span class="linenos" data-linenos=" 8 "></span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c"># Añadir el grupo Domain Users al grupo Remote Desktop Users</span>
-<span class="linenos" data-linenos="10 "></span><span class="nb">Add-LocalGroupMember</span> <span class="n">-Group</span> <span class="s2">&quot;Remote Desktop Users&quot;</span> <span class="n">-Member</span> <span class="nv">$group</span>
-</code></pre></div></p>
+<p><strong>Añadir usuarios o grupos al escritorio remoto</strong>:</p>
 </li>
 </ol>
+<p>Para permitir a <strong>todos los usuarios del dominio</strong> (recomendado en prácticas), ejecuta este comando <strong>completo</strong> en una sola vez:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Add-LocalGroupMember</span> <span class="n">-Group</span> <span class="s2">&quot;Remote Desktop Users&quot;</span> <span class="n">-Member</span> <span class="s2">&quot;Domain Users&quot;</span>
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Si aparece 'The argument is null or empty'</p>
+<p>Ese error significa que se ha ejecutado <code>Add-LocalGroupMember</code> usando una variable (<code>$group</code> o <code>$domainUser</code>) que no está definida. <strong>Ejecuta el comando anterior tal cual</strong>, con el texto <code>"Domain Users"</code> entre comillas, o asegúrate de ejecutar todo el bloque de comandos que define la variable antes de usarla.</p>
+</div>
+<p><strong>Alternativa: Añadir un usuario específico del dominio</strong> (sustituye <code>EMPRESA</code> y <code>usuario</code> por tu dominio y nombre de usuario):
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">Add-LocalGroupMember</span> <span class="n">-Group</span> <span class="s2">&quot;Remote Desktop Users&quot;</span> <span class="n">-Member</span> <span class="s2">&quot;EMPRESA\usuario&quot;</span>
+</code></pre></div></p>
 <figure>
      <img src="imagenes/05/054/RDPClientPWSH.png" width="950"/>
      <figcaption>Ejemplo de cliente RDP en Windows y uso de PowerShell para escritorio remoto</figcaption>
 </figure>
 
-<p><strong>Alternativa: Añadir un usuario específico del dominio:</strong>
-   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Añadir un usuario específico del dominio</span>
-<span class="linenos" data-linenos="2 "></span><span class="nv">$domainUser</span> <span class="p">=</span> <span class="s2">&quot;DOMINIO\usuario&quot;</span>
-<span class="linenos" data-linenos="3 "></span><span class="nb">Add-LocalGroupMember</span> <span class="n">-Group</span> <span class="s2">&quot;Remote Desktop Users&quot;</span> <span class="n">-Member</span> <span class="nv">$domainUser</span>
-</code></pre></div></p>
 <ol>
 <li>
 <p><strong>Verificar la configuración</strong>:
@@ -1721,7 +1816,7 @@
 <li><strong>Acepta la advertencia</strong> de certificado si aparece.</li>
 <li>Deberías conectarte exitosamente usando las credenciales del dominio.</li>
 </ol>
-<h2 id="paso-7-verificar-la-configuracion">Paso 7: Verificar la configuración<a class="headerlink" href="#paso-7-verificar-la-configuracion" title="Permanent link">&para;</a></h2>
+<h2 id="paso-8-verificar-la-configuracion">Paso 8: Verificar la configuración<a class="headerlink" href="#paso-8-verificar-la-configuracion" title="Permanent link">&para;</a></h2>
 <h3 id="verificaciones-basicas">Verificaciones básicas<a class="headerlink" href="#verificaciones-basicas" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Verifica el dominio en el servidor</strong>:</li>

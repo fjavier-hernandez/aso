@@ -1,0 +1,1189 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/PracticaRecursosCompartidosAD.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Práctica: Gestión de recursos compartidos en Active Directory - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Práctica: Gestión de recursos compartidos en Active Directory - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaRecursosCompartidosAD.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/PracticaRecursosCompartidosAD.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Práctica: Gestión de recursos compartidos en Active Directory - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaRecursosCompartidosAD.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-gestion-de-recursos-compartidos-en-active-directory" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Práctica: Gestión de recursos compartidos en Active Directory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03AccesoRemoto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.- Servicios de acceso remoto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04ActiveDirectory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Servicios de Directorio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos previos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-crear-la-estructura-de-carpetas-en-disco" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Crear la estructura de carpetas en disco
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 1: Crear la estructura de carpetas en disco">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-compartir-carpetas-y-asignar-permisos-de-recursos-compartidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Compartir carpetas y asignar permisos de recursos compartidos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2: Compartir carpetas y asignar permisos de recursos compartidos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwsh_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-configurar-permisos-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Configurar permisos NTFS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 3: Configurar permisos NTFS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwsh_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-crear-carpetas-personales-para-cada-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Crear carpetas personales para cada usuario
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 4: Crear carpetas personales para cada usuario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwsh_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-configurar-carpeta-personal-y-carpeta-de-empresa-en-el-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5: Configurar carpeta personal y carpeta de empresa en el usuario
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 5: Configurar carpeta personal y carpeta de empresa en el usuario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwsh_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-6-configurar-gpo-de-contrasenas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 6: Configurar GPO de contraseñas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 6: Configurar GPO de contraseñas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwsh_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-7-configurar-gpo-de-bloqueo-de-cuenta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 7: Configurar GPO de bloqueo de cuenta
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 7: Configurar GPO de bloqueo de cuenta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwsh_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-8-aplicar-cambios-y-verificar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 8: Aplicar cambios y verificar
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 8: Aplicar cambios y verificar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwsh_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-9-comprobaciones-de-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 9: Comprobaciones de acceso
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="practica-gestion-de-recursos-compartidos-en-active-directory">Práctica: Gestión de recursos compartidos en Active Directory<a class="headerlink" href="#practica-gestion-de-recursos-compartidos-en-active-directory" title="Permanent link">&para;</a></h1>
+<h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
+<p>Durante esta práctica aprenderás a gestionar <strong>recursos compartidos</strong> en un dominio de Active Directory: crear estructuras de carpetas, configurar permisos NTFS y compartidos, asignar carpetas personales a usuarios y aplicar <strong>directivas de grupo (GPO)</strong> para políticas de contraseñas y bloqueo de cuenta.</p>
+<p>Al finalizar esta práctica serás capaz de:</p>
+<ul>
+<li>Crear la <strong>estructura de carpetas</strong> para una organización en el servidor.</li>
+<li>Configurar <strong>permisos de recursos compartidos</strong> y <strong>permisos NTFS</strong> con diferentes niveles de acceso.</li>
+<li>Asignar <strong>carpetas personales</strong> a usuarios del dominio.</li>
+<li>Configurar <strong>unidades de red</strong> (carpeta personal y carpeta de empresa) que se conecten al iniciar sesión.</li>
+<li>Aplicar <strong>GPO</strong> para directivas de contraseñas (vigencia, historial, longitud).</li>
+<li>Configurar <strong>bloqueo de cuenta</strong> tras intentos fallidos de contraseña.</li>
+<li>Documentar el proceso completo.</li>
+</ul>
+<h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Dominio de Active Directory configurado (PR401).</li>
+<li>Usuarios y grupos creados (PR402, PR403).</li>
+<li>Al menos un equipo cliente unido al dominio.</li>
+</ul>
+<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Crear estructura de carpetas</strong> en disco (ej: <code>C:\Empresa_Users</code>, <code>C:\Empresa_Datos</code> con subcarpetas por departamento).</li>
+<li><strong>Compartir carpetas</strong> y asignar permisos de recursos compartidos (solo miembros del grupo correspondiente).</li>
+<li><strong>Configurar permisos NTFS</strong> con diferentes niveles según el rol (Administradores, trabajadores nivel 1, etc.).</li>
+<li><strong>Realizar comprobaciones de acceso</strong> para verificar que los usuarios acceden correctamente según su grupo.</li>
+<li><strong>Crear estructura para carpetas particulares</strong> (ej: <code>C:\Empresa_Users</code> con subcarpetas por usuario).</li>
+<li><strong>Configurar carpeta personal y carpeta de empresa</strong> para que al iniciar sesión se conecten automáticamente en la unidad X: (personal) y Y: (empresa).</li>
+<li><strong>Configurar GPO de contraseñas</strong>: vigencia 90 días, historial 5 contraseñas, longitud mínima 4 caracteres, sin complejidad obligatoria.</li>
+<li><strong>Configurar GPO de bloqueo</strong>: 4 intentos fallidos bloquean la cuenta; contador se restablece tras 10 minutos.</li>
+<li><strong>Documentar</strong> el proceso con capturas de pantalla.</li>
+</ol>
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Documentación</strong> en Markdown con:</li>
+</ol>
+<ul>
+<li>Descripción de permisos compartidos vs NTFS.</li>
+<li>Pasos seguidos para crear la estructura y configurar permisos.</li>
+<li>Configuración de carpetas personales y GPO.</li>
+<li>Capturas de pantalla del proceso completo.</li>
+<li>Comprobaciones de acceso realizadas.</li>
+</ul>
+<ol start="2">
+<li><strong>Evidencias</strong>: capturas de las directivas de contraseña y bloqueo de cuenta configuradas.</li>
+</ol>
+<h2 id="documentacion">Documentación<a class="headerlink" href="#documentacion" title="Permanent link">&para;</a></h2>
+<p>Incluye en tu informe:</p>
+<ul>
+<li>Capturas de la estructura de carpetas creada.</li>
+<li>Capturas de los permisos compartidos y NTFS configurados.</li>
+<li>Capturas de la configuración del perfil del usuario (carpeta particular).</li>
+<li>Capturas de las directivas de contraseña y bloqueo de cuenta en la GPO.</li>
+<li>Capturas de las unidades de red conectadas al iniciar sesión.</li>
+<li>Descripción de las comprobaciones de acceso realizadas.</li>
+</ul>
+<hr />
+<h2 id="paso-1-crear-la-estructura-de-carpetas-en-disco">Paso 1: Crear la estructura de carpetas en disco<a class="headerlink" href="#paso-1-crear-la-estructura-de-carpetas-en-disco" title="Permanent link">&para;</a></h2>
+<p>Crea la estructura de carpetas en el controlador de dominio (o servidor de archivos). Por ejemplo: carpeta para usuarios (<code>Empresa_Users</code>), carpeta de datos compartidos (<code>Empresa_Datos</code>) con subcarpetas por departamento.</p>
+<h3 id="gui">GUI<a class="headerlink" href="#gui" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Conecta mediante RDP</strong> al controlador de dominio.</li>
+<li>Abre <strong>Explorador de archivos</strong> y navega a <code>C:\</code>.</li>
+<li><strong>Crea las carpetas</strong>:</li>
+</ol>
+<ul>
+<li><code>C:\Empresa_Users</code> (carpetas personales)</li>
+<li><code>C:\Empresa_Datos</code> (datos compartidos)</li>
+<li>Dentro de <code>Empresa_Datos</code>: subcarpetas por departamento (ej: <code>Ventas</code>, <code>Contabilidad</code>, <code>RRHH</code>).</li>
+</ul>
+<ol start="4">
+<li>Dentro de <code>Empresa_Users</code>, crea una subcarpeta por cada usuario (ej: <code>usuario1</code>, <code>usuario2</code>) o deja que se creen automáticamente al configurar el perfil.</li>
+</ol>
+<h3 id="pwsh">PWSH<a class="headerlink" href="#pwsh" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Crear estructura base</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">New-Item</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Empresa_Users&quot;</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nb">New-Item</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Empresa_Datos&quot;</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c"># Subcarpetas por departamento</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="p">@(</span><span class="s2">&quot;Ventas&quot;</span><span class="p">,</span> <span class="s2">&quot;Contabilidad&quot;</span><span class="p">,</span> <span class="s2">&quot;RRHH&quot;</span><span class="p">)</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="nb">New-Item</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Empresa_Datos\$_&quot;</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="p">}</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c"># Verificar</span>
+<span class="linenos" data-linenos="11 "></span><span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Empresa_Users&quot;</span><span class="p">,</span> <span class="s2">&quot;C:\Empresa_Datos&quot;</span> <span class="n">-Recurse</span>
+</code></pre></div>
+<hr />
+<h2 id="paso-2-compartir-carpetas-y-asignar-permisos-de-recursos-compartidos">Paso 2: Compartir carpetas y asignar permisos de recursos compartidos<a class="headerlink" href="#paso-2-compartir-carpetas-y-asignar-permisos-de-recursos-compartidos" title="Permanent link">&para;</a></h2>
+<p>Comparte las carpetas para que sean accesibles por red. Asigna permisos de recurso compartido: solo los miembros del grupo correspondiente deben poder acceder a cada carpeta.</p>
+<h3 id="gui_1">GUI<a class="headerlink" href="#gui_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Clic derecho</strong> sobre <code>C:\Empresa_Users</code> → <strong>Compartir con</strong> → <strong>Usuarios específicos</strong>.</li>
+<li><strong>Agrega</strong> el grupo de usuarios del dominio (ej: <code>Domain Users</code> o un grupo creado como <code>Empresa</code>) con <strong>Lectura/Escritura</strong>.</li>
+<li><strong>Haz clic en Compartir</strong> y anota la ruta de red (ej: <code>\\DC01\Empresa_Users</code>).</li>
+<li>Repite para <code>C:\Empresa_Datos</code> y sus subcarpetas según los grupos que deban acceder.</li>
+<li>Para más control, usa <strong>Propiedades</strong> → pestaña <strong>Compartir</strong> → <strong>Uso compartido avanzado</strong> → <strong>Permisos</strong> para asignar permisos por grupo.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR08/010.png" width="750"/>
+  <figcaption>Compartir carpeta con usuarios específicos</figcaption>
+</figure>
+
+<h3 id="pwsh_1">PWSH<a class="headerlink" href="#pwsh_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Compartir Empresa_Users con Domain Users (lectura/escritura)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">New-SmbShare</span> <span class="n">-Name</span> <span class="s2">&quot;Empresa_Users&quot;</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Empresa_Users&quot;</span> <span class="n">-ChangeAccess</span> <span class="s2">&quot;Domain Users&quot;</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># Compartir Empresa_Datos (lectura para todos los usuarios del dominio)</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">New-SmbShare</span> <span class="n">-Name</span> <span class="s2">&quot;Empresa_Datos&quot;</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Empresa_Datos&quot;</span> <span class="n">-ReadAccess</span> <span class="s2">&quot;Domain Users&quot;</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c"># Verificar recursos compartidos</span>
+<span class="linenos" data-linenos="8 "></span><span class="nb">Get-SmbShare</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="o">-like</span> <span class="s2">&quot;Empresa*&quot;</span> <span class="p">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Permisos de recurso compartido</p>
+<ul>
+<li><code>-FullAccess</code>: Control total  </li>
+<li><code>-ChangeAccess</code>: Lectura y escritura  </li>
+<li><code>-ReadAccess</code>: Solo lectura  </li>
+</ul>
+</div>
+<hr />
+<h2 id="paso-3-configurar-permisos-ntfs">Paso 3: Configurar permisos NTFS<a class="headerlink" href="#paso-3-configurar-permisos-ntfs" title="Permanent link">&para;</a></h2>
+<p>Los permisos NTFS complementan los permisos compartidos y permiten un control más granular. Configura diferentes niveles según el rol: Administradores (control total), trabajadores (lectura/escritura en su departamento), etc.</p>
+<h3 id="gui_2">GUI<a class="headerlink" href="#gui_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Clic derecho</strong> sobre <code>C:\Empresa_Users</code> → <strong>Propiedades</strong> → pestaña <strong>Seguridad</strong>.</li>
+<li><strong>Opciones avanzadas</strong> → <strong>Deshabilitar herencia</strong> → <strong>Convertir los permisos heredados en explícitos</strong> (para no heredar de C:).</li>
+<li><strong>Agregar</strong> el grupo correspondiente (ej: <code>Domain Users</code>) con <strong>Modificar</strong> o <strong>Control total</strong> según necesites.</li>
+<li>Elimina el grupo <strong>Usuarios</strong> si no quieres acceso genérico.</li>
+<li>Para cada subcarpeta de <code>Empresa_Datos</code>, asigna permisos solo al grupo del departamento correspondiente.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR08/022.png" width="550"/>
+  <figcaption>Configuración de permisos NTFS en Opciones avanzadas</figcaption>
+</figure>
+
+<h3 id="pwsh_2">PWSH<a class="headerlink" href="#pwsh_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Deshabilitar herencia y asignar permisos NTFS a Empresa_Users</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nv">$path</span> <span class="p">=</span> <span class="s2">&quot;C:\Empresa_Users&quot;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nv">$acl</span> <span class="p">=</span> <span class="nb">Get-Acl</span> <span class="nv">$path</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="nv">$acl</span><span class="p">.</span><span class="n">SetAccessRuleProtection</span><span class="p">(</span><span class="nv">$true</span><span class="p">,</span> <span class="nv">$false</span><span class="p">)</span>  <span class="c"># Deshabilitar herencia, no eliminar heredados</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nv">$rule</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">AccessControl</span><span class="p">.</span><span class="n">FileSystemAccessRule</span><span class="p">(</span><span class="s2">&quot;Domain Users&quot;</span><span class="p">,</span> <span class="s2">&quot;Modify&quot;</span><span class="p">,</span> <span class="s2">&quot;ContainerInherit,ObjectInherit&quot;</span><span class="p">,</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Allow&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nv">$acl</span><span class="p">.</span><span class="n">AddAccessRule</span><span class="p">(</span><span class="nv">$rule</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nb">Set-Acl</span> <span class="nv">$path</span> <span class="nv">$acl</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c"># Permisos para Administradores (control total)</span>
+<span class="linenos" data-linenos="10 "></span><span class="nv">$adminRule</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">AccessControl</span><span class="p">.</span><span class="n">FileSystemAccessRule</span><span class="p">(</span><span class="s2">&quot;Domain Admins&quot;</span><span class="p">,</span> <span class="s2">&quot;FullControl&quot;</span><span class="p">,</span> <span class="s2">&quot;ContainerInherit,ObjectInherit&quot;</span><span class="p">,</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Allow&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos="11 "></span><span class="nv">$acl</span><span class="p">.</span><span class="n">AddAccessRule</span><span class="p">(</span><span class="nv">$adminRule</span><span class="p">)</span>
+<span class="linenos" data-linenos="12 "></span><span class="nb">Set-Acl</span> <span class="nv">$path</span> <span class="nv">$acl</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Permisos efectivos</p>
+<p>Cuando se accede por red, se aplican <strong>ambos</strong> permisos (compartido y NTFS). El permiso efectivo es el <strong>más restrictivo</strong>.</p>
+</div>
+<hr />
+<h2 id="paso-4-crear-carpetas-personales-para-cada-usuario">Paso 4: Crear carpetas personales para cada usuario<a class="headerlink" href="#paso-4-crear-carpetas-personales-para-cada-usuario" title="Permanent link">&para;</a></h2>
+<p>Cada usuario debe tener una subcarpeta dentro de <code>Empresa_Users</code> con permisos exclusivos para él. La variable <code>%username%</code> se sustituye automáticamente por el nombre del usuario.</p>
+<h3 id="gui_3">GUI<a class="headerlink" href="#gui_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En <code>C:\Empresa_Users</code>, crea una subcarpeta por usuario (ej: <code>usuario1</code>, <code>usuario2</code>) o deja que se cree al asignar el perfil.</li>
+<li><strong>Clic derecho</strong> en cada subcarpeta → <strong>Propiedades</strong> → <strong>Seguridad</strong>.</li>
+<li>Asigna <strong>Control total</strong> al usuario correspondiente y a <strong>Administradores del dominio</strong>.</li>
+<li>Si usas una única carpeta compartida con <code>%username%</code>, asegúrate de que el recurso compartido permita a cada usuario crear/acceder a su subcarpeta (permisos en la carpeta raíz con herencia).</li>
+</ol>
+<h3 id="pwsh_3">PWSH<a class="headerlink" href="#pwsh_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Crear carpeta personal para cada usuario y asignar permisos</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nv">$usuarios</span> <span class="p">=</span> <span class="p">@(</span><span class="s2">&quot;usuario1&quot;</span><span class="p">,</span> <span class="s2">&quot;usuario2&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">foreach</span> <span class="p">(</span><span class="nv">$user</span> <span class="k">in</span> <span class="nv">$usuarios</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$userPath</span> <span class="p">=</span> <span class="s2">&quot;C:\Empresa_Users\$user&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="nb">New-Item</span> <span class="n">-Path</span> <span class="nv">$userPath</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="nv">$acl</span> <span class="p">=</span> <span class="nb">Get-Acl</span> <span class="nv">$userPath</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="nv">$rule</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">AccessControl</span><span class="p">.</span><span class="n">FileSystemAccessRule</span><span class="p">(</span><span class="s2">&quot;$env:USERDOMAIN\$user&quot;</span><span class="p">,</span> <span class="s2">&quot;FullControl&quot;</span><span class="p">,</span> <span class="s2">&quot;ContainerInherit,ObjectInherit&quot;</span><span class="p">,</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Allow&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="nv">$acl</span><span class="p">.</span><span class="n">AddAccessRule</span><span class="p">(</span><span class="nv">$rule</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="nb">Set-Acl</span> <span class="nv">$userPath</span> <span class="nv">$acl</span>
+<span class="linenos" data-linenos="10 "></span><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="paso-5-configurar-carpeta-personal-y-carpeta-de-empresa-en-el-usuario">Paso 5: Configurar carpeta personal y carpeta de empresa en el usuario<a class="headerlink" href="#paso-5-configurar-carpeta-personal-y-carpeta-de-empresa-en-el-usuario" title="Permanent link">&para;</a></h2>
+<p>Configura en Active Directory que al iniciar sesión el usuario tenga:</p>
+<ul>
+<li><strong>Unidad X:</strong> → carpeta personal (<code>\\servidor\Empresa_Users\%username%</code>)</li>
+<li><strong>Unidad Y:</strong> → carpeta de empresa/datos (<code>\\servidor\Empresa_Datos</code>)</li>
+</ul>
+<h3 id="gui_4">GUI<a class="headerlink" href="#gui_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Abre <strong>Usuarios y equipos de Active Directory</strong> (<code>dsa.msc</code>).</li>
+<li><strong>Selecciona el usuario</strong> → clic derecho → <strong>Propiedades</strong>.</li>
+<li>Pestaña <strong>Perfil</strong>:</li>
+</ol>
+<ul>
+<li><strong>Ruta de acceso al perfil</strong>: (opcional, para perfil móvil) <code>\\DC01\Empresa_Users$\%username%\perfil</code></li>
+<li><strong>Carpeta particular - Conectar</strong>: selecciona <strong>X:</strong></li>
+<li><strong>Carpeta particular - Ruta</strong>: <code>\\DC01\Empresa_Users\%username%</code></li>
+</ul>
+<ol start="4">
+<li>Para la carpeta de empresa (unidad Y:), usa un <strong>script de inicio de sesión</strong> o una GPO de redirección. Alternativa: crear un script que ejecute <code>net use Y: \\DC01\Empresa_Datos</code> y asignarlo en <strong>Script de inicio de sesión</strong> en el perfil del usuario.</li>
+</ol>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR09/001.png" width="550"/>
+  <figcaption>Configuración de carpeta particular en el perfil del usuario</figcaption>
+</figure>
+
+<h3 id="pwsh_4">PWSH<a class="headerlink" href="#pwsh_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c"># Variables: ajusta nombre del servidor y dominio</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nv">$servidor</span> <span class="p">=</span> <span class="s2">&quot;DC01&quot;</span>   <span class="c"># Nombre del controlador de dominio</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nv">$shareUsers</span> <span class="p">=</span> <span class="s2">&quot;Empresa_Users&quot;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="nv">$shareDatos</span> <span class="p">=</span> <span class="s2">&quot;Empresa_Datos&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c"># Configurar carpeta personal (unidad X:) para un usuario</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nb">Set-ADUser</span> <span class="n">-Identity</span> <span class="s2">&quot;usuario1&quot;</span> <span class="n">-HomeDrive</span> <span class="s2">&quot;X:&quot;</span> <span class="n">-HomeDirectory</span> <span class="s2">&quot;\\$servidor\$shareUsers\usuario1&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c"># Para configurar varios usuarios desde una lista</span>
+<span class="linenos" data-linenos="10 "></span><span class="nv">$usuarios</span> <span class="p">=</span> <span class="p">@(</span><span class="s2">&quot;usuario1&quot;</span><span class="p">,</span> <span class="s2">&quot;usuario2&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">foreach</span> <span class="p">(</span><span class="nv">$user</span> <span class="k">in</span> <span class="nv">$usuarios</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="12 "></span>    <span class="nb">Set-ADUser</span> <span class="n">-Identity</span> <span class="nv">$user</span> <span class="n">-HomeDrive</span> <span class="s2">&quot;X:&quot;</span> <span class="n">-HomeDirectory</span> <span class="s2">&quot;\\$servidor\$shareUsers\$user&quot;</span>
+<span class="linenos" data-linenos="13 "></span><span class="p">}</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="c"># Para la unidad Y: (carpeta empresa) se usa script de inicio de sesión o GPO</span>
+<span class="linenos" data-linenos="16 "></span><span class="c"># Ejemplo de script: net use Y: \\DC01\Empresa_Datos</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Unidad Y: (carpeta de empresa)</p>
+<p>Active Directory solo permite una carpeta particular por usuario (HomeDirectory). Para la unidad Y: con la carpeta de empresa, crea un <strong>script de inicio de sesión</strong> que ejecute <code>net use Y: \\servidor\Empresa_Datos</code> y asígnalo en la pestaña Perfil → <strong>Script de inicio de sesión</strong> del usuario, o usa una GPO de "Asignar unidad de red" aplicada a la UO correspondiente.</p>
+</div>
+<hr />
+<h2 id="paso-6-configurar-gpo-de-contrasenas">Paso 6: Configurar GPO de contraseñas<a class="headerlink" href="#paso-6-configurar-gpo-de-contrasenas" title="Permanent link">&para;</a></h2>
+<p>Configura la <strong>Default Domain Policy</strong> para que:</p>
+<ul>
+<li>Los usuarios cambien la contraseña cada <strong>90 días</strong>.</li>
+<li>Se guarden las <strong>5 contraseñas</strong> anteriores (historial).</li>
+<li>Longitud mínima <strong>4 caracteres</strong>.</li>
+<li><strong>Sin requisitos de complejidad</strong> (solo para prácticas).</li>
+</ul>
+<h3 id="gui_5">GUI<a class="headerlink" href="#gui_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Abre <strong>Administración de directivas de grupo</strong> (<code>gpmc.msc</code>).</li>
+<li>Expande <strong>Bosque</strong> → <strong>Dominios</strong> → tu dominio.</li>
+<li><strong>Clic derecho</strong> en <strong>Default Domain Policy</strong> → <strong>Editar</strong>.</li>
+<li>Navega a: <strong>Configuración del equipo</strong> → <strong>Directivas</strong> → <strong>Configuración de Windows</strong> → <strong>Configuración de seguridad</strong> → <strong>Directivas de cuenta</strong> → <strong>Directiva de contraseñas</strong>.</li>
+<li>Configura:</li>
+</ol>
+<ul>
+<li><strong>Vigencia máxima de la contraseña</strong>: 90 días</li>
+<li><strong>Longitud mínima de la contraseña</strong>: 4 caracteres</li>
+<li><strong>Exigir historial de contraseñas</strong>: 5 contraseñas</li>
+<li><strong>La contraseña debe cumplir los requisitos de complejidad</strong>: <strong>Deshabilitada</strong></li>
+</ul>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR08/050.png" width="850"/>
+  <figcaption>Directivas de contraseñas en Default Domain Policy</figcaption>
+</figure>
+
+<h3 id="pwsh_5">PWSH<a class="headerlink" href="#pwsh_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Configurar directivas de contraseña mediante secedit (política local) no aplica al dominio.</span>
+<span class="linenos" data-linenos="2 "></span><span class="c"># Para GPO desde PowerShell se usa el módulo GroupPolicy (más complejo).</span>
+<span class="linenos" data-linenos="3 "></span><span class="c"># Alternativa: usar las claves del registro que la GPO modifica.</span>
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="c"># La forma más directa es usar la GUI para GPO de dominio.</span>
+<span class="linenos" data-linenos="6 "></span><span class="c"># Para verificar la configuración actual:</span>
+<span class="linenos" data-linenos="7 "></span><span class="nb">Get-ADDefaultDomainPasswordPolicy</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">GPO desde PowerShell</p>
+<p>La configuración de GPO de dominio desde PowerShell requiere el módulo <code>GroupPolicy</code> y manipular los archivos de plantilla de la GPO. Para prácticas, se recomienda usar la <strong>interfaz gráfica</strong>. Para automatización avanzada, consulta <code>Set-GPPrefRegistryValue</code> y la estructura de GPO.</p>
+</div>
+<hr />
+<h2 id="paso-7-configurar-gpo-de-bloqueo-de-cuenta">Paso 7: Configurar GPO de bloqueo de cuenta<a class="headerlink" href="#paso-7-configurar-gpo-de-bloqueo-de-cuenta" title="Permanent link">&para;</a></h2>
+<p>Configura el bloqueo de cuenta tras <strong>4 intentos fallidos</strong> de contraseña. El contador se restablece tras <strong>10 minutos</strong> sin intentos.</p>
+<h3 id="gui_6">GUI<a class="headerlink" href="#gui_6" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En el <strong>Editor de directivas de grupo</strong> de <strong>Default Domain Policy</strong>.</li>
+<li>Navega a: <strong>Configuración del equipo</strong> → <strong>Directivas</strong> → <strong>Configuración de Windows</strong> → <strong>Configuración de seguridad</strong> → <strong>Directivas de cuenta</strong> → <strong>Directiva de bloqueo de cuenta</strong>.</li>
+<li>Configura:</li>
+</ol>
+<ul>
+<li><strong>Umbral de bloqueo de cuenta</strong>: 4 intentos</li>
+<li><strong>Duración del bloqueo de cuenta</strong>: 0 (bloqueo hasta que el administrador desbloquee) o 10 minutos si prefieres desbloqueo automático.</li>
+<li><strong>Restablecer el contador de bloqueo de cuenta después de</strong>: 10 minutos</li>
+</ul>
+<figure>
+  <img src="imagenes/02/PracticasAD/PR08/047.png" width="850"/>
+  <figcaption>Umbral de bloqueo de cuenta</figcaption>
+</figure>
+
+<h3 id="pwsh_6">PWSH<a class="headerlink" href="#pwsh_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Las directivas de bloqueo de cuenta son parte de la GPO de dominio.</span>
+<span class="linenos" data-linenos="2 "></span><span class="c"># Para verificar la configuración actual del dominio:</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">Get-ADDefaultDomainPasswordPolicy</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">LockoutDuration</span><span class="p">,</span> <span class="n">LockoutObservationWindow</span><span class="p">,</span> <span class="n">LockoutThreshold</span>
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="c"># Para desbloquear un usuario bloqueado:</span>
+<span class="linenos" data-linenos="6 "></span><span class="nb">Unlock-ADAccount</span> <span class="n">-Identity</span> <span class="s2">&quot;usuario1&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="paso-8-aplicar-cambios-y-verificar">Paso 8: Aplicar cambios y verificar<a class="headerlink" href="#paso-8-aplicar-cambios-y-verificar" title="Permanent link">&para;</a></h2>
+<h3 id="gui_7">GUI<a class="headerlink" href="#gui_7" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En el <strong>cliente</strong> unido al dominio, abre <strong>CMD</strong> o <strong>PowerShell</strong> y ejecuta: <code>gpupdate /force</code></li>
+<li><strong>Cierra sesión</strong> y vuelve a iniciar con un usuario del dominio.</li>
+<li>Verifica que aparecen las unidades <strong>X:</strong> (carpeta personal) e <strong>Y:</strong> (carpeta empresa si configuraste el script).</li>
+<li>Comprueba el acceso a las carpetas según el grupo del usuario.</li>
+<li>Para ver las directivas aplicadas: ejecuta <code>rsop.msc</code> en el cliente.</li>
+</ol>
+<h3 id="pwsh_7">PWSH<a class="headerlink" href="#pwsh_7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># En el cliente: forzar actualización de GPO</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">gpupdate</span> <span class="p">/</span><span class="n">force</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># Verificar unidades de red asignadas</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Get-PSDrive</span> <span class="n">-PSProvider</span> <span class="n">FileSystem</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">DisplayRoot</span> <span class="o">-like</span> <span class="s2">&quot;\\*&quot;</span> <span class="p">}</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c"># Ver directivas resultantes (abre rsop.msc)</span>
+<span class="linenos" data-linenos="8 "></span><span class="nb">Start-Process</span> <span class="n">rsop</span><span class="p">.</span><span class="n">msc</span>
+</code></pre></div>
+<hr />
+<h2 id="paso-9-comprobaciones-de-acceso">Paso 9: Comprobaciones de acceso<a class="headerlink" href="#paso-9-comprobaciones-de-acceso" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Inicia sesión</strong> en el cliente con <code>usuario1</code> (perteneciente al grupo de Ventas, por ejemplo).</li>
+<li>Verifica que puede acceder a <code>X:\</code> (su carpeta personal) y crear archivos.</li>
+<li>Verifica que puede acceder a <code>Y:\</code> o a <code>\\DC01\Empresa_Datos\Ventas</code> si configuraste permisos por departamento.</li>
+<li>Intenta acceder a una carpeta de otro departamento: debe denegarse si los permisos están bien configurados.</li>
+<li><strong>Prueba el bloqueo de cuenta</strong>: introduce 4 veces una contraseña incorrecta con <code>usuario2</code>. La cuenta debe bloquearse. Desbloquéala desde el DC con <code>Unlock-ADAccount -Identity usuario2</code>.</li>
+</ol>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>
