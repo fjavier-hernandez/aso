@@ -2,98 +2,134 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/index.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/01ShellScript.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/02PowerShell.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/03AccesoRemoto.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/04ActiveDirectory.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/05IntegracionSistemas.html</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/067_NFS.html</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/ActiveDirectory_Configuracion.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/ExamenShellScript.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/NFS1.html</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/NFS2.html</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/NFS3.html</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/PracticaActiveDirectoryAWS.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/PracticaDockerComposeSamba.html</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/PracticaGestionGruposAD.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/PracticaNFS.html</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/PracticaRecursosCompartidosAD.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/PracticaSSHtunnelingDocker.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/PracticaUsuariosGruposAD.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/PracticaWindowsServerAWS.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/ProgramacionAula.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/RAsASO.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/RetoGrupalActiveDirectory.html</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fjavier-hernandez.github.io/aso/RetoGrupalIntegracion.html</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/RetoGrupalPowerShell.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/RetoGrupalShellScript.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/Rubrica_Evaluacion_RetoPowerShell.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/Rubrica_Evaluacion_RetoShell.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/SolucionExamenShellScript.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/SolucionRetoGrupalShellScript.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/planning.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/tags.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://fjavier-hernandez.github.io/aso/imagenes/05/054/README_IMAGENES.html</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
 </urlset>

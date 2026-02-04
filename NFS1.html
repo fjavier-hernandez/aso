@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/RAsASO.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/NFS1.html">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>RAsASO - Administración de Sistemas Operativos</title>
+        <title>PT61. INSTALACIÓN Y CONFIGURACIÓN DE NFS EN SERVIDOR UBUNTU - Administración de Sistemas Operativos</title>
       
     
     
@@ -65,11 +65,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="RAsASO - Administración de Sistemas Operativos" >
+        <meta  property="og:title"  content="PT61. INSTALACIÓN Y CONFIGURACIÓN DE NFS EN SERVIDOR UBUNTU - Administración de Sistemas Operativos" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RAsASO.png" >
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/NFS1.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -77,15 +77,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/RAsASO.html" >
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/NFS1.html" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="RAsASO - Administración de Sistemas Operativos" >
+        <meta  name="twitter:title"  content="PT61. INSTALACIÓN Y CONFIGURACIÓN DE NFS EN SERVIDOR UBUNTU - Administración de Sistemas Operativos" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RAsASO.png" >
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/NFS1.png" >
       
     
     
@@ -106,6 +106,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#pt61-instalacion-y-configuracion-de-nfs-en-servidor-ubuntu" class="md-skip">
+          Saltar a contenido
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -138,7 +143,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RAsASO
+              PT61. INSTALACIÓN Y CONFIGURACIÓN DE NFS EN SERVIDOR UBUNTU
             
           </span>
         </div>
@@ -386,6 +391,52 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrega
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-nfs-en-servidor-ubuntu-2404" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de NFS en Servidor Ubuntu 24.04
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-nfs-en-servidor-ubuntu-2404" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de NFS en Servidor Ubuntu 24.04
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -400,98 +451,153 @@
                   
 
 
-  <h1>RAsASO</h1>
-
+<h1 id="pt61-instalacion-y-configuracion-de-nfs-en-servidor-ubuntu">PT61. INSTALACIÓN Y CONFIGURACIÓN DE NFS EN SERVIDOR UBUNTU<a class="headerlink" href="#pt61-instalacion-y-configuracion-de-nfs-en-servidor-ubuntu" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>En esta práctica se realiza la instalación y configuración de NFS en un servidor Ubuntu 24.04 con el objetivo de compartir una carpeta y que se acceda desde un cliente Ubuntu/Lubuntu.</p>
+<div class="admonition tip">
+<p class="admonition-title">Referencia teórica</p>
+<p>Para consultar la teoría de NFS (protocolo, características, versiones, ventajas y desventajas): <a href="067_NFS.html">NFS — Teoría y referencia</a>.</p>
+</div>
+<h2 id="entrega">Entrega<a class="headerlink" href="#entrega" title="Permanent link">&para;</a></h2>
+<p>En esta práctica se debe entregar un breve informe en <strong>pdf</strong>, en el "moodle", con capturas explicativas de:</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Las capturas deben ser realizadas del servidor ubuntu 22.04, pero de los resultados ejecutados desde una carpeta personal de un usuario creado por el alumnado, es decir, desde <code>/home/NombreAlumna</code> o <code>/home/NombreAlumno</code>.</p>
+</div>
+<ul>
+<li><strong>Figura 3</strong>: confirmación del servicio está ejecutándose correctamente (<code>systemctl status nfs-server</code>).</li>
+<li><strong>Figura 4</strong>: creación de carpetas compartidas.</li>
+<li><strong>Figura 5</strong>: Modificación de <code>/etc/exports</code>.</li>
+<li><strong>Figura 6</strong>: Creación archivo de prueba en carpeta compartida.</li>
+</ul>
+<p>A continuación se muestra una guía de pasos para la instalación de NFS en un servidor Ubuntu 24.04:</p>
+<h2 id="instalacion-de-nfs-en-servidor-ubuntu-2404">Instalación de NFS en Servidor Ubuntu 24.04<a class="headerlink" href="#instalacion-de-nfs-en-servidor-ubuntu-2404" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Administra el servicio de directorio interpretando especificaciones e integrándolo en una red.</li>
+<li>El primer paso para cualquier instalación es la actualización de paquetes del sistema:</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han identificado la función, los elementos y las estructuras lógicas del servicio de directorio.</p>
-<p>b) Se ha determinado y creado el esquema del servicio de directorio.</p>
-<p>c) Se ha realizado la instalación del servicio de directorio en el servidor.</p>
-<p>d) Se ha realizado la configuración y personalización del servicio de directorio.</p>
-<p>e) Se ha integrado el servicio de directorio con otros servicios.</p>
-<p>f) Se han aplicado filtros de búsqueda en el servicio de directorio.</p>
-<p>g) Se ha utilizado el servicio de directorio como mecanismo de acreditación centralizada de los usuarios en una red.</p>
-<p>h) Se ha realizado la configuración del cliente para su integración en el servicio de directorio.</p>
-<p>i) Se han utilizado herramientas gráficas y comandos para la administración del servicio de directorio.</p>
-<p>j) Se ha documentado la estructura e implantación del servicio de directorio.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span>-y
+</code></pre></div>
+<figure>
+  <img src="./imagenes/07/073/gifs/001G.gif"/>
+  <figcaption><b>Figura 1:</b> Actualización del sistema Ubuntu 22.04.</figcaption>
+</figure>
+
 <ol start="2">
-<li>Administra procesos del sistema describiéndolos y aplicando criterios de seguridad y eficiencia.  </li>
+<li>Se instala NFS.</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han descrito el concepto de proceso del sistema, tipos, estados y ciclo de vida.</p>
-<p>b) Se han utilizado interrupciones y excepciones para describir los eventos internos del procesador.</p>
-<p>c) Se ha diferenciado entre proceso, hilo y trabajo.</p>
-<p>d) Se han realizado tareas de creación, manipulación y terminación de procesos.</p>
-<p>e) Se ha utilizado el sistema de archivos como medio lógico para el registro e identificación de los procesos del sistema.</p>
-<p>f) Se han utilizado herramientas gráficas y comandos para el control y seguimiento de los procesos del sistema.</p>
-<p>g) Se ha comprobado la secuencia de arranque del sistema, los procesos implicados y la relación entre ellos.</p>
-<p>h) Se han tomado medidas de seguridad ante la aparición de procesos no identificados.</p>
-<p>i) Se han documentado los procesos habituales del sistema, su función y relación entre ellos.</p>
+<p>El paquete que necesitamos se llama nfs-kernel-server. Además, su instalación provoca que se instalen, a modo de dependencias, dos paquetes más:</p>
+<ul>
+<li>
+<p><strong>nfs-common</strong>, que contiene los programas que nos permitirán usar NFS, tanto en el lado cliente como en el lado servidor. Entre ellos se encuentran los comandos lockd, statd, showmount y nfsstat.</p>
+</li>
+<li>
+<p><strong>rpcbind</strong>, un servicio que convierte los identificadores de programa RPC (Remote Procedure Call) en direcciones universales.</p>
+</li>
+</ul>
+<p>Para instarlo se utiliza el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nfs-kernel-server<span class="w"> </span>-y
+</code></pre></div>
+<figure>
+  <img src="./imagenes/07/073/gifs/002G.gif"/>
+  <figcaption><b>Figura 2:</b> Instalación de NFS.</figcaption>
+</figure>
+
 <ol start="3">
-<li>Gestiona la automatización de tareas del sistema, aplicando criterios de eficiencia y utilizando comandos y herramientas gráficas.  </li>
+<li>Se comprueba la instalación con el comando:</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han descrito las ventajas de la automatización de las tareas repetitivas en el sistema.</p>
-<p>b) Se han utilizado los comandos del sistema para la planificación de tareas.</p>
-<p>c) Se han establecido restricciones de seguridad.</p>
-<p>d) Se han realizado planificaciones de tareas repetitivas o puntuales relacionadas con la administración del sistema.</p>
-<p>e) Se ha automatizado la administración de cuentas.</p>
-<p>f) Se han instalado y configurado herramientas gráficas para la planificación de tareas.</p>
-<p>g) Se han utilizado herramientas gráficas para la planificación de tareas.</p>
-<p>h) Se han documentado los procesos programados como tareas automáticas.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nfs-server
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Ubuntu 24.04</p>
+<p>En Ubuntu 24.04, NFSv4 es la versión predeterminada. El servicio <code>nfs-server</code> agrupa los daemons necesarios (rpcbind, nfsd, mountd).</p>
+</div>
+<figure>
+  <img src="./imagenes/07/073/gifs/003G.gif"/>
+  <figcaption><b>Figura 3:</b> Comprobación de NFS.</figcaption>
+</figure>
+
+<h2 id="configuracion-de-nfs-en-servidor-ubuntu-2404">Configuración de NFS en Servidor Ubuntu 24.04<a class="headerlink" href="#configuracion-de-nfs-en-servidor-ubuntu-2404" title="Permanent link">&para;</a></h2>
+<p>En este aparatado se realiza:</p>
+<ul>
+<li>
+<p>Se crea una carpeta en el directorio raíz de tu servidor con el nombre almacenamiento y se asegura de que es accesible por cualquier usuario del sistema.</p>
+</li>
+<li>
+<p>Se realiza las operaciones necesarias para exportar a NFS la carpeta <strong>/compartida</strong> y la carpeta <strong>/home</strong>.</p>
+</li>
+<li>
+<p>Se crea un archivo de prueba en la carpeta <strong>/compartida</strong> e inicia o reinicia (según sea necesario) el servicio NFS.</p>
+</li>
+</ul>
+<ol>
+<li>Creación carpeta y cambio de permisos.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>~/compartida
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>chown<span class="w"> </span>nobody:nogroup<span class="w"> </span>~/compartida
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">777</span><span class="w"> </span>~/compartida
+</code></pre></div>
+<figure>
+  <img src="./imagenes/07/073/gifs/004G.gif"/>
+  <figcaption><b>Figura 4:</b> Creación carpeta de NFS.</figcaption>
+</figure>
+
+<ol start="2">
+<li>Compartir el contenido de las carpetas.</li>
+</ol>
+<p>Para compartir el contenido de la carpeta creada se debe editar el archivo <code>/etc/exports</code>. Este es el archivo donde se indican a NFS las carpetas que se van a compartir (exportar, en la terminología NFS). Para editar el archivo se debe tener en cuenta:</p>
+<ul>
+<li>Cada carpeta exportada debe estar en una línea diferente de este archivo, aunque una línea muy larga puede continuarse en la línea siguiente poniendo al final una barra invertida (‘\’).</li>
+<li>Las líneas tienen el siguiente formato:</li>
+</ul>
+<div class="admonition quote">
+<p class="admonition-title">Formato líneas</p>
+<p>ruta cliente_1(opciones) cliente_2(opciones) …</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado</p>
+<p>No hay espacios en la definición de un cliente, sólo entre un cliente y otro, y entre el primero y la ruta de la carpeta.</p>
+</div>
+<p>Se observa que cada cliente tiene dos partes:</p>
+<p><strong>a)</strong> La primera identifica al ordenador cliente, se puede utilizar rangos de direcciones de IP, un nombre DNS, caracteres comodín para representar todo el nombre del cliente o una parte. Podemos utilizar los comodines siguientes:</p>
+<p><strong>"?"</strong>, Para representar un carácter cualquiera.</p>
+<p><strong>"*"</strong>, Para representar cualquier conjunto de caracteres. </p>
+<p>La segunda será una lista de opciones para compartir. Entre las opciones que podemos utilizar, se encuentran las siguientes:</p>
+<ul>
+<li><strong>ro(read-only)</strong>: La carpeta compartida será de sólo lectura. Es la opción predeterminada.</li>
+<li><strong>rw (read-write)</strong>: El usuario podrá realizar cambios en el contenido de la carpeta compartida.</li>
+<li><strong>root_squash</strong>: Evita que los usuarios con privilegios administrativos los mantengan, sobre la carpeta compartida, cuando se conectan remotamente. En su lugar, se les trata como un usuario <code>“nfsnobody”</code> que es un usuario con permisos mínimos. Es la opción predeterminada.</li>
+<li><strong>no_root_squash</strong>: Deshabilita la característica anterior.</li>
+<li><strong>sync</strong>: Evita responder peticiones antes de escribir los cambios pendientes en disco. De tal forma que cada cambio que recibe la escribe en disco y luego confirma que ha sido escrita correctamente. Es la opción predeterminada.</li>
+<li><strong>async</strong>: Deshabilita la característica anterior. Mejora el rendimiento a cambio de que exista el riesgo de corrupción en los archivos o, incluso, en todo el sistema de archivos, si se produjese una interrupción del fluido eléctrico o un bloqueo del sistema. Recibe la orden de escritura y confirma al cliente que ha sido realizada con éxito (mentira, ya que no ha sido realizada), acto seguido puede recibir X órdenes de otros clientes y a todos les hará lo mismo, finalmente realiza escribe todos los cambios a la vez. Por tanto es más rápido que el método síncrono ya que no debe realizar tantos accesos a memoria.</li>
+<li><strong>subtree_check</strong>: Cuando el directorio compartido es un subdirectorio de un sistema de archivos mayor, <strong>NFS</strong> comprueba los directorios por encima de éste para verificar sus permisos y características. Es la opción predeterminada.</li>
+<li><strong>no_subtree_check</strong>: Deshabilita la característica anterior, lo que hace que el envío de la lista de archivos sea más rápido, pero puede reducir la seguridad.</li>
+</ul>
+<p>En este caso se debe añadir una línea para el <code>/home</code>, puesto que es donde se ubica la carpeta compartida y para la carpeta <code>/compartida</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>/home<span class="w"> </span>*<span class="o">(</span>rw,sync,no_root_squash,no_subtree_check<span class="o">)</span>
+<span class="linenos" data-linenos="2 "></span>~/compartida<span class="w"> </span>*<span class="o">(</span>rw,sync,no_subtree_check<span class="o">)</span>
+</code></pre></div>
+<ol start="3">
+<li>Iniciar/reiniciar el servicio NFS.</li>
+</ol>
+<p>Siempre que se hagan cambios en el archivo <code>/etc/exports</code>, se debe aplicar la configuración y reiniciar el servicio:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>exportfs<span class="w"> </span>-a
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nfs-kernel-server
+</code></pre></div>
+<figure>
+  <img src="./imagenes/07/073/gifs/005G.gif"/>
+  <figcaption><b>Figura 5:</b> Exportar carpetas home y compartida y reiniciar servicio.</figcaption>
+</figure>
+
 <ol start="4">
-<li>Administra de forma remota el sistema operativo en red valorando su importancia y aplicando criterios de seguridad.</li>
+<li>Crear un archivo en una carpeta compartida.</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han descrito métodos de acceso y administración remota de sistemas.</p>
-<p>b) Se ha diferenciado entre los servicios orientados a sesión y los no orientados a sesión.</p>
-<p>c) Se han utilizado herramientas de administración remota suministradas por el propio sistema operativo.</p>
-<p>d) Se han instalado servicios de acceso y administración remota.</p>
-<p>e) Se han utilizado comandos y herramientas gráficas para gestionar los servicios de acceso y administración remota.</p>
-<p>f) Se han creado cuentas de usuario para el acceso remoto.</p>
-<p>g) Se han realizado pruebas de acceso y administración remota entre sistemas heterogéneos.</p>
-<p>h) Se han utilizado mecanismos de encriptación de la información transferida.</p>
-<p>i) Se han documentado los procesos y servicios del sistema administrados de forma remota.</p>
-<ol start="5">
-<li>Administra servidores de impresión describiendo sus funciones e integrándolos en una red.</li>
-</ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se ha descrito la funcionalidad de los sistemas y servidores de impresión.</p>
-<p>b) Se han identificado los puertos y los protocolos utilizados.</p>
-<p>c) Se han utilizado las herramientas para la gestión de impresoras integradas en el sistema operativo.</p>
-<p>d) Se ha instalado y configurado un servidor de impresión en entorno Web.</p>
-<p>e) Se han creado y clasificado impresoras lógicas.</p>
-<p>f) Se han creado grupos de impresión.</p>
-<p>g) Se han gestionado impresoras y colas de trabajos mediante comandos y herramientas gráficas.</p>
-<p>h) Se han compartido impresoras en red entre sistemas operativos diferentes.</p>
-<p>i) Se ha documentado la configuración del servidor de impresión y de las impresoras creadas.</p>
-<ol start="6">
-<li>Integra sistemas operativos libres y propietarios, justificando y garantizando su interoperabilidad.</li>
-</ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se ha identificado la necesidad de compartir recursos en red entre diferentes sistemas operativos.</p>
-<p>b) Se han establecido niveles de seguridad para controlar el acceso del cliente a los recursos compartidos en red.</p>
-<p>c) Se ha comprobado la conectividad de la red en un escenario heterogéneo.</p>
-<p>d) Se ha descrito la funcionalidad de los servicios que permiten compartir recursos en red.</p>
-<p>e) Se han instalado y configurado servicios para compartir recursos en red.</p>
-<p>f) Se ha comprobado el funcionamiento de los servicios instalados.</p>
-<p>g) Se ha trabajado en grupo para acceder a sistemas de archivos e impresoras en red desde equipos con diferentes sistemas operativos.</p>
-<p>h) Se ha documentado la configuración de los servicios instalados.  </p>
-<ol start="7">
-<li>Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.</li>
-</ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han utilizado y combinado las estructuras del lenguaje para crear guiones.</p>
-<p>b) Se han utilizado herramientas para depurar errores sintácticos y de ejecución.</p>
-<p>c) Se han interpretado guiones de configuración del sistema operativo.</p>
-<p>d) Se han realizado cambios y adaptaciones de guiones del sistema.</p>
-<p>e) Se han creado y probado guiones de administración de servicios.</p>
-<p>f) Se han creado y probado guiones de automatización de tareas.</p>
-<p>g) Se han implantado guiones en sistemas libres y propietarios.</p>
-<p>h) Se han consultado y utilizado librerías de funciones.</p>
-<p>i) Se han documentado los guiones creados.</p>
+<p>Para confirmar que se tiene acceso al contenido de la carpeta compartida por un cliente se crea una archivo de prueba.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>touch<span class="w"> </span>~/compartida/prueba.txt
+</code></pre></div>
+<figure>
+  <img src="./imagenes/07/073/gifs/006G.gif"/>
+  <figcaption><b>Figura 6:</b> Creación archivo de prueba en carpeta compartida.</figcaption>
+</figure>
 
 
 

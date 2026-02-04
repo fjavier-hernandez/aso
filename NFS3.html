@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/RAsASO.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/NFS3.html">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>RAsASO - Administración de Sistemas Operativos</title>
+        <title>Instalación y configuración en un cliente Windows 10/11 - Administración de Sistemas Operativos</title>
       
     
     
@@ -65,11 +65,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="RAsASO - Administración de Sistemas Operativos" >
+        <meta  property="og:title"  content="Instalación y configuración en un cliente Windows 10/11 - Administración de Sistemas Operativos" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RAsASO.png" >
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/NFS3.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -77,15 +77,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/RAsASO.html" >
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/NFS3.html" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="RAsASO - Administración de Sistemas Operativos" >
+        <meta  name="twitter:title"  content="Instalación y configuración en un cliente Windows 10/11 - Administración de Sistemas Operativos" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RAsASO.png" >
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/NFS3.png" >
       
     
     
@@ -106,6 +106,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#instalacion-y-configuracion-en-un-cliente-windows-1011" class="md-skip">
+          Saltar a contenido
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -138,7 +143,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RAsASO
+              Instalación y configuración en un cliente Windows 10/11
             
           </span>
         </div>
@@ -386,6 +391,52 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrega
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-nfs-en-windows-1011" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación NFS en Windows 10/11
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceso-puntual-a-la-carpeta-compartida" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceso puntual a la carpeta compartida
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#montar-las-carpetas-nfs-automaticamente-durante-el-inicio-de-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Montar las carpetas NFS automáticamente durante el inicio de Windows
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -400,98 +451,124 @@
                   
 
 
-  <h1>RAsASO</h1>
-
+<h1 id="instalacion-y-configuracion-en-un-cliente-windows-1011">Instalación y configuración en un cliente Windows 10/11<a class="headerlink" href="#instalacion-y-configuracion-en-un-cliente-windows-1011" title="Permanent link">&para;</a></h1>
+<p>En esta práctica se realiza la instalación y configuración de NFS en un cliente Windows 10 u 11 con el objetivo de acceder a la carpeta compartida en el servidor NFS.</p>
+<div class="admonition tip">
+<p class="admonition-title">Referencia teórica</p>
+<p>Para consultar la teoría de NFS (protocolo, características, versiones, ventajas y desventajas): <a href="067_NFS.html">NFS — Teoría y referencia</a>.</p>
+</div>
+<h2 id="entrega">Entrega<a class="headerlink" href="#entrega" title="Permanent link">&para;</a></h2>
+<p>En esta práctica se debe entregar un breve informe en <strong>pdf</strong>, en el "moodle", con capturas explicativas de:</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Las capturas deben ser realizadas del servidor ubuntu 22.04, pero de los resultados ejecutados desde una carpeta personal de un usuario creado por el alumnado, es decir, desde <code>/home/NombreAlumna</code> o <code>/home/NombreAlumno</code>.</p>
+</div>
+<ul>
+<li><strong>Figura 2:</strong> Instalación NFS en "WindowsClient".</li>
+<li><strong>Figura 3:</strong> Acceso a las carpetas compartidas de  NFS de forma esporádica.</li>
+<li><strong>Figura 5:</strong> Edición <strong>nfs.bat</strong>.</li>
+<li>Comprobación se crea automáticamente la carpeta compartida.</li>
+</ul>
+<h2 id="instalacion-nfs-en-windows-1011">Instalación NFS en Windows 10/11<a class="headerlink" href="#instalacion-nfs-en-windows-1011" title="Permanent link">&para;</a></h2>
+<p>A continuación se muestran los pasos para la instalación:</p>
 <ol>
-<li>Administra el servicio de directorio interpretando especificaciones e integrándolo en una red.</li>
+<li>Ejecutar <code>appwiz.cpl</code> (Win+R) o acceder a <strong>Panel de control</strong> → <strong>Programas y características</strong> → <strong>Activar o desactivar características de Windows</strong>.</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han identificado la función, los elementos y las estructuras lógicas del servicio de directorio.</p>
-<p>b) Se ha determinado y creado el esquema del servicio de directorio.</p>
-<p>c) Se ha realizado la instalación del servicio de directorio en el servidor.</p>
-<p>d) Se ha realizado la configuración y personalización del servicio de directorio.</p>
-<p>e) Se ha integrado el servicio de directorio con otros servicios.</p>
-<p>f) Se han aplicado filtros de búsqueda en el servicio de directorio.</p>
-<p>g) Se ha utilizado el servicio de directorio como mecanismo de acreditación centralizada de los usuarios en una red.</p>
-<p>h) Se ha realizado la configuración del cliente para su integración en el servicio de directorio.</p>
-<p>i) Se han utilizado herramientas gráficas y comandos para la administración del servicio de directorio.</p>
-<p>j) Se ha documentado la estructura e implantación del servicio de directorio.</p>
+<figure>
+  <img src="./imagenes/07/073/gifs/014G.gif"/>
+  <figcaption><b>Figura 1:</b> Acceso a Programas y características.</figcaption>
+</figure>
+
 <ol start="2">
-<li>Administra procesos del sistema describiéndolos y aplicando criterios de seguridad y eficiencia.  </li>
+<li>A continuación se hace clic sobre el enlace <strong>Activar o desactivar las características de Windows</strong>, en el panel izquierdo de la ventana.</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han descrito el concepto de proceso del sistema, tipos, estados y ciclo de vida.</p>
-<p>b) Se han utilizado interrupciones y excepciones para describir los eventos internos del procesador.</p>
-<p>c) Se ha diferenciado entre proceso, hilo y trabajo.</p>
-<p>d) Se han realizado tareas de creación, manipulación y terminación de procesos.</p>
-<p>e) Se ha utilizado el sistema de archivos como medio lógico para el registro e identificación de los procesos del sistema.</p>
-<p>f) Se han utilizado herramientas gráficas y comandos para el control y seguimiento de los procesos del sistema.</p>
-<p>g) Se ha comprobado la secuencia de arranque del sistema, los procesos implicados y la relación entre ellos.</p>
-<p>h) Se han tomado medidas de seguridad ante la aparición de procesos no identificados.</p>
-<p>i) Se han documentado los procesos habituales del sistema, su función y relación entre ellos.</p>
-<ol start="3">
-<li>Gestiona la automatización de tareas del sistema, aplicando criterios de eficiencia y utilizando comandos y herramientas gráficas.  </li>
+<ul>
+<li>
+<p>De este modo, se consigue que se abra una nueva ventana, en este caso, titulada <strong>Características de Windows</strong>. En ella, se debe desplazar hacia abajo, hasta encontrar una categoría titulada Servicios para NFS.</p>
+</li>
+<li>
+<p>Una vez localizada, se despliega para mostrar su contenido y, en su interior, se debe marcar las opciones Cliente para <strong>NFS</strong> y <strong>Herramientas administrativas</strong>.</p>
+</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/073/gifs/015G.gif"/>
+  <figcaption><b>Figura 2:</b> Marcado NFS y Herramientas administrativas.</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Después de este paso se queda instalado NFS en el cliente.</p>
+</div>
+<h2 id="acceso-puntual-a-la-carpeta-compartida">Acceso puntual a la carpeta compartida<a class="headerlink" href="#acceso-puntual-a-la-carpeta-compartida" title="Permanent link">&para;</a></h2>
+<p>Para acceder a los datos compartidos por el servidor NFS de un modo esporádico, se puede abriendo una nueva ventana del explorador de archivos y, en su barra de direcciones, escribir la dirección IP del servidor precedida de dos barras inclinadas (\). En este caso:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="se">\\</span><span class="m">192</span>.168.2.4
+</code></pre></div>
+<figure>
+  <img src="./imagenes/07/073/gifs/016G.gif"/>
+  <figcaption><b>Figura 3:</b> Acceso a las carpetas compartidas de  NFS de forma esporádica.</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<ul>
+<li>Si existen problemas de acceso se puede revisar:</li>
+<li>Permisos carpetas superiores a la /compartida, configurar a 755, son los predeterminados del NFS nativo de Windows.</li>
+<li>añadir la ruta completa de /compartida si esta configurada en /etc/exports con la virgulilla.</li>
+</ul>
+</div>
+<h2 id="montar-las-carpetas-nfs-automaticamente-durante-el-inicio-de-windows">Montar las carpetas NFS automáticamente durante el inicio de Windows<a class="headerlink" href="#montar-las-carpetas-nfs-automaticamente-durante-el-inicio-de-windows" title="Permanent link">&para;</a></h2>
+<p>El sistema operativo Windows dispone de una carpeta especial, llamada Inicio, donde se pueden incluir archivos para que se ejecuten durante el arranque del equipo.</p>
+<ol>
+<li>Para abrirla, se usa la combinación de teclas <code>Windows + R</code> o escribir en la barra de búsqueda ejecutar, para obtener la ventana Ejecutar. En ella, se escribe la siguiente orden:</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han descrito las ventajas de la automatización de las tareas repetitivas en el sistema.</p>
-<p>b) Se han utilizado los comandos del sistema para la planificación de tareas.</p>
-<p>c) Se han establecido restricciones de seguridad.</p>
-<p>d) Se han realizado planificaciones de tareas repetitivas o puntuales relacionadas con la administración del sistema.</p>
-<p>e) Se ha automatizado la administración de cuentas.</p>
-<p>f) Se han instalado y configurado herramientas gráficas para la planificación de tareas.</p>
-<p>g) Se han utilizado herramientas gráficas para la planificación de tareas.</p>
-<p>h) Se han documentado los procesos programados como tareas automáticas.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>shell:startup
+</code></pre></div>
+<ol start="2">
+<li>
+<p>Al hacerlo, se abrirá el Explorador de archivos, mostrando el contenido de la carpeta Inicio. Interesa que se muestren las extensiones de los archivos, a continuación se hace clic sobre el menú <code>Vista</code>, y se debe marcar la opción de <code>Mostrar extensiones de los archivos</code></p>
+</li>
+<li>
+<p>A continuación, clic con el botón derecho del ratón, sobre cualquier espacio libre de la ventana, para crear un nuevo archivo de texto con el nombre <code>nfs.bat</code>.</p>
+</li>
+</ol>
+<figure>
+  <img src="./imagenes/07/073/gifs/017G.gif"/>
+  <figcaption><b>Figura 4:</b> Creación <b>nfs.bat</b> en carpeta <b>Inicio</b></figcaption>
+</figure>
+
 <ol start="4">
-<li>Administra de forma remota el sistema operativo en red valorando su importancia y aplicando criterios de seguridad.</li>
+<li>
+<p>Se edita el archivo para darle contenido. Se hace clic, con el botón derecho del ratón, sobre su nombre y en el menú de contexto que aparece, hacemos clic sobre la opción Editar.</p>
+</li>
+<li>
+<p>El resultado será una nueva ventana del <code>Bloc de notas</code>, con su espacio de trabajo completamente limpio. En él, se escribe lo siguiente:</p>
+</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han descrito métodos de acceso y administración remota de sistemas.</p>
-<p>b) Se ha diferenciado entre los servicios orientados a sesión y los no orientados a sesión.</p>
-<p>c) Se han utilizado herramientas de administración remota suministradas por el propio sistema operativo.</p>
-<p>d) Se han instalado servicios de acceso y administración remota.</p>
-<p>e) Se han utilizado comandos y herramientas gráficas para gestionar los servicios de acceso y administración remota.</p>
-<p>f) Se han creado cuentas de usuario para el acceso remoto.</p>
-<p>g) Se han realizado pruebas de acceso y administración remota entre sistemas heterogéneos.</p>
-<p>h) Se han utilizado mecanismos de encriptación de la información transferida.</p>
-<p>i) Se han documentado los procesos y servicios del sistema administrados de forma remota.</p>
-<ol start="5">
-<li>Administra servidores de impresión describiendo sus funciones e integrándolos en una red.</li>
-</ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se ha descrito la funcionalidad de los sistemas y servidores de impresión.</p>
-<p>b) Se han identificado los puertos y los protocolos utilizados.</p>
-<p>c) Se han utilizado las herramientas para la gestión de impresoras integradas en el sistema operativo.</p>
-<p>d) Se ha instalado y configurado un servidor de impresión en entorno Web.</p>
-<p>e) Se han creado y clasificado impresoras lógicas.</p>
-<p>f) Se han creado grupos de impresión.</p>
-<p>g) Se han gestionado impresoras y colas de trabajos mediante comandos y herramientas gráficas.</p>
-<p>h) Se han compartido impresoras en red entre sistemas operativos diferentes.</p>
-<p>i) Se ha documentado la configuración del servidor de impresión y de las impresoras creadas.</p>
-<ol start="6">
-<li>Integra sistemas operativos libres y propietarios, justificando y garantizando su interoperabilidad.</li>
-</ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se ha identificado la necesidad de compartir recursos en red entre diferentes sistemas operativos.</p>
-<p>b) Se han establecido niveles de seguridad para controlar el acceso del cliente a los recursos compartidos en red.</p>
-<p>c) Se ha comprobado la conectividad de la red en un escenario heterogéneo.</p>
-<p>d) Se ha descrito la funcionalidad de los servicios que permiten compartir recursos en red.</p>
-<p>e) Se han instalado y configurado servicios para compartir recursos en red.</p>
-<p>f) Se ha comprobado el funcionamiento de los servicios instalados.</p>
-<p>g) Se ha trabajado en grupo para acceder a sistemas de archivos e impresoras en red desde equipos con diferentes sistemas operativos.</p>
-<p>h) Se ha documentado la configuración de los servicios instalados.  </p>
-<ol start="7">
-<li>Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.</li>
-</ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han utilizado y combinado las estructuras del lenguaje para crear guiones.</p>
-<p>b) Se han utilizado herramientas para depurar errores sintácticos y de ejecución.</p>
-<p>c) Se han interpretado guiones de configuración del sistema operativo.</p>
-<p>d) Se han realizado cambios y adaptaciones de guiones del sistema.</p>
-<p>e) Se han creado y probado guiones de administración de servicios.</p>
-<p>f) Se han creado y probado guiones de automatización de tareas.</p>
-<p>g) Se han implantado guiones en sistemas libres y propietarios.</p>
-<p>h) Se han consultado y utilizado librerías de funciones.</p>
-<p>i) Se han documentado los guiones creados.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mount<span class="w"> </span>-o<span class="w"> </span>anon<span class="w"> </span><span class="m">192</span>.168.2.4:/home/sor/compartida<span class="w"> </span>N:
+</code></pre></div>
+<ul>
+<li>
+<p>Donde:</p>
+</li>
+<li>
+<p>El argumento -o anon hará que la carpeta se monte usando un usuario anónimo.</p>
+</li>
+<li>
+<p>A continuación, se incluye la dirección IP del servidor y la ruta de la carpeta compartida.</p>
+</li>
+<li>
+<p>Por último, se incluye la letra de unidad que usará Windows para referirse a la carpeta.</p>
+</li>
+</ul>
+<figure>
+  <img src="./imagenes/07/073/gifs/018G.gif"/>
+  <figcaption><b>Figura 5:</b> Edición <b>nfs.bat</b></figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Por último solo quedaría comprobar tras el reinicio que se monta automáticamente la carpeta compartida.</p>
+</div>
 
 
 

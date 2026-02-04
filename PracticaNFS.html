@@ -1,0 +1,1136 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/PracticaNFS.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Práctica: Instalación y configuración de NFS en contenedor Ubuntu Server - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Práctica: Instalación y configuración de NFS en contenedor Ubuntu Server - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaNFS.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/PracticaNFS.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Práctica: Instalación y configuración de NFS en contenedor Ubuntu Server - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaNFS.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-instalacion-y-configuracion-de-nfs-en-contenedor-ubuntu-server" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Práctica: Instalación y configuración de NFS en contenedor Ubuntu Server
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03AccesoRemoto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.- Servicios de acceso remoto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04ActiveDirectory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Servicios de Directorio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05IntegracionSistemas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.- Integración de Sistemas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos previos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-0-crear-el-contenedor-servidor-nfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 0: Crear el contenedor servidor NFS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1-configuracion-del-servidor-nfs-dentro-del-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parte 1: Configuración del servidor NFS (dentro del contenedor)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 1: Configuración del servidor NFS (dentro del contenedor)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-actualizacion-e-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Actualización e instalación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-crear-carpeta-compartida-y-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Crear carpeta compartida y permisos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-configurar-exportaciones-modificacion-de-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Configurar exportaciones (modificación de archivos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-iniciar-servicios-e-exportar" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Iniciar servicios e exportar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-crear-archivo-de-prueba-en-el-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 Crear archivo de prueba en el servidor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-salir-del-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6 Salir del contenedor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2-cliente-en-contenedor-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parte 2: Cliente en contenedor Ubuntu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-3-comprobacion-desde-la-maquina-host-obligatorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parte 3: Comprobación desde la máquina host (obligatorio)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 3: Comprobación desde la máquina host (obligatorio)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-requisitos-del-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Requisitos del host
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-montar-desde-windows-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Montar desde Windows (principal)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32b-montar-desde-wsl2-alternativa-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2b Montar desde WSL2 (alternativa en Windows)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32c-montar-desde-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2c Montar desde Linux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32d-montar-desde-macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2d Montar desde macOS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-comprobar-en-el-contenedor-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Comprobar en el contenedor servidor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificación final
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limpieza" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limpieza
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="practica-instalacion-y-configuracion-de-nfs-en-contenedor-ubuntu-server">Práctica: Instalación y configuración de NFS en contenedor Ubuntu Server<a class="headerlink" href="#practica-instalacion-y-configuracion-de-nfs-en-contenedor-ubuntu-server" title="Permanent link">&para;</a></h1>
+<h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
+<p>Durante esta práctica aprenderás a instalar y configurar <strong>NFS</strong> (Network File System) en un <strong>contenedor Ubuntu Server 24.04</strong> y a acceder a las carpetas compartidas desde un cliente contenedor y desde la <strong>máquina host</strong>.</p>
+<p>Al finalizar esta práctica serás capaz de:</p>
+<ul>
+<li>Crear y ejecutar contenedores Ubuntu Server con Docker.</li>
+<li>Instalar el servidor NFS (<code>nfs-kernel-server</code>) dentro del contenedor.</li>
+<li>Configurar las exportaciones en <code>/etc/exports</code>.</li>
+<li>Montar carpetas NFS desde un cliente contenedor.</li>
+<li><strong>Comprobar el acceso desde la máquina host</strong> (obligatorio).</li>
+<li>Configurar montaje automático en cliente Linux (<code>/etc/fstab</code>) y en Windows (script de inicio).</li>
+<li>Documentar el proceso con capturas de pantalla.</li>
+</ul>
+<h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Docker</strong> instalado en el host (Linux, macOS o Windows).</li>
+<li><strong>Host con soporte NFS</strong>: puede ser <strong>cualquier sistema</strong> (Windows, Linux, macOS o WSL2). Principalmente se usará <strong>Windows</strong> como host.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">NFS en contenedor</p>
+<p>El servidor NFS requiere módulos del kernel. El contenedor debe ejecutarse con <code>--privileged</code> para que NFS funcione correctamente.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Formato de /etc/exports</p>
+<p>No debe haber espacios entre el cliente y las opciones: <code>ruta cliente(opciones)</code>. Un espacio antes de <code>(</code> provocaría un error.</p>
+</div>
+<hr />
+<h2 id="paso-0-crear-el-contenedor-servidor-nfs">Paso 0: Crear el contenedor servidor NFS<a class="headerlink" href="#paso-0-crear-el-contenedor-servidor-nfs" title="Permanent link">&para;</a></h2>
+<p>Crea y ejecuta un contenedor Ubuntu Server 24.04 publicando los puertos NFS para que el host pueda conectarse:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Crear red para que los contenedores se comuniquen</span>
+<span class="linenos" data-linenos=" 2 "></span>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>red-nfs
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Crear y ejecutar contenedor servidor NFS (Ubuntu 24.04)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># --privileged: necesario para módulos del kernel de NFS</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1"># -p: publicar puertos para que el host pueda montar el recurso</span>
+<span class="linenos" data-linenos=" 7 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>nfs-server<span class="w"> </span>--privileged<span class="w"> </span>--network<span class="w"> </span>red-nfs<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">  </span>-p<span class="w"> </span><span class="m">2049</span>:2049<span class="w"> </span>-p<span class="w"> </span><span class="m">111</span>:111<span class="w"> </span>-p<span class="w"> </span><span class="m">111</span>:111/udp<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span>-v<span class="w"> </span>nfs-data:/compartida<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span>ubuntu:24.04<span class="w"> </span>sleep<span class="w"> </span>infinity
+</code></pre></div>
+<p>Entra al contenedor para configurarlo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nfs-server<span class="w"> </span>bash
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Captura obligatoria</p>
+<p>Realiza una captura del comando <code>docker run</code> y la salida de <code>docker ps</code> mostrando el contenedor en ejecución.</p>
+</div>
+<hr />
+<h2 id="parte-1-configuracion-del-servidor-nfs-dentro-del-contenedor">Parte 1: Configuración del servidor NFS (dentro del contenedor)<a class="headerlink" href="#parte-1-configuracion-del-servidor-nfs-dentro-del-contenedor" title="Permanent link">&para;</a></h2>
+<h3 id="11-actualizacion-e-instalacion">1.1 Actualización e instalación<a class="headerlink" href="#11-actualizacion-e-instalacion" title="Permanent link">&para;</a></h3>
+<p>Dentro del contenedor <code>nfs-server</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>apt<span class="w"> </span>update
+<span class="linenos" data-linenos="2 "></span>apt<span class="w"> </span>install<span class="w"> </span>nfs-kernel-server<span class="w"> </span>nano<span class="w"> </span>-y
+</code></pre></div>
+<p>El paquete <code>nfs-kernel-server</code> instala como dependencias:</p>
+<ul>
+<li><strong>nfs-common</strong>: programas para usar NFS (cliente y servidor): <code>lockd</code>, <code>statd</code>, <code>showmount</code>, <code>nfsstat</code>.</li>
+<li><strong>rpcbind</strong>: servicio que convierte identificadores RPC en direcciones universales.</li>
+</ul>
+<h3 id="12-crear-carpeta-compartida-y-permisos">1.2 Crear carpeta compartida y permisos<a class="headerlink" href="#12-crear-carpeta-compartida-y-permisos" title="Permanent link">&para;</a></h3>
+<p>La carpeta <code>/compartida</code> ya existe (volumen montado). Asigna permisos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>chown<span class="w"> </span>nobody:nogroup<span class="w"> </span>/compartida
+<span class="linenos" data-linenos="2 "></span>chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>/compartida
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Captura obligatoria</p>
+<p>Captura la salida de <code>ls -la /compartida</code> mostrando los permisos asignados.</p>
+</div>
+<h3 id="13-configurar-exportaciones-modificacion-de-archivos">1.3 Configurar exportaciones (modificación de archivos)<a class="headerlink" href="#13-configurar-exportaciones-modificacion-de-archivos" title="Permanent link">&para;</a></h3>
+<p><strong>Archivo a modificar:</strong> <code>/etc/exports</code> (dentro del contenedor servidor)</p>
+<p>Pasos para editar:</p>
+<ol>
+<li>Ejecuta <code>nano /etc/exports</code></li>
+<li>Añade <strong>una sola línea</strong> al final del archivo (o sustituye el contenido si está vacío)</li>
+<li>Escribe exactamente: <code>/compartida *(rw,sync,no_subtree_check,insecure)</code></li>
+<li><strong>Importante</strong>: no debe haber espacio entre <code>*</code> y <code>(rw,...)</code> — un espacio provocaría error</li>
+<li>Guarda: Ctrl+O, Enter, Ctrl+X</li>
+</ol>
+<p>Contenido que debe quedar en el archivo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>/compartida *(rw,sync,no_subtree_check,insecure)
+</code></pre></div>
+<p>Verifica el contenido con:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>cat<span class="w"> </span>/etc/exports
+</code></pre></div>
+<p>La salida esperada debe ser exactamente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>/compartida *(rw,sync,no_subtree_check,insecure)
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Captura obligatoria</p>
+<p>Realiza una captura mostrando la salida de <code>cat /etc/exports</code> con la línea correcta.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Opciones de /etc/exports</p>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>Cualquier cliente puede acceder (comodín)</td>
+</tr>
+<tr>
+<td><code>rw</code></td>
+<td>Lectura y escritura</td>
+</tr>
+<tr>
+<td><code>ro</code></td>
+<td>Solo lectura (predeterminado)</td>
+</tr>
+<tr>
+<td><code>sync</code></td>
+<td>Escribir en disco antes de confirmar (recomendado)</td>
+</tr>
+<tr>
+<td><code>no_subtree_check</code></td>
+<td>Mejor rendimiento; desactiva verificación de subárbol</td>
+</tr>
+<tr>
+<td><code>insecure</code></td>
+<td>Permite clientes en puertos &gt; 1024 (necesario en contenedores)</td>
+</tr>
+<tr>
+<td><code>root_squash</code></td>
+<td>root remoto se trata como nobody (seguridad)</td>
+</tr>
+<tr>
+<td><code>no_root_squash</code></td>
+<td>Desactiva root_squash (menos seguro)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="14-iniciar-servicios-e-exportar">1.4 Iniciar servicios e exportar<a class="headerlink" href="#14-iniciar-servicios-e-exportar" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Iniciar rpcbind (requerido por NFS)</span>
+<span class="linenos" data-linenos=" 2 "></span>service<span class="w"> </span>rpcbind<span class="w"> </span>start
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Iniciar NFS</span>
+<span class="linenos" data-linenos=" 5 "></span>service<span class="w"> </span>nfs-kernel-server<span class="w"> </span>start
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Aplicar exportaciones</span>
+<span class="linenos" data-linenos=" 8 "></span>exportfs<span class="w"> </span>-a
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Verificar estado del servicio</span>
+<span class="linenos" data-linenos="11 "></span>service<span class="w"> </span>nfs-kernel-server<span class="w"> </span>status
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1"># Verificar exportaciones</span>
+<span class="linenos" data-linenos="14 "></span>exportfs<span class="w"> </span>-v
+<span class="linenos" data-linenos="15 "></span>showmount<span class="w"> </span>-e<span class="w"> </span>localhost
+</code></pre></div>
+<p>La salida de <code>showmount -e localhost</code> debe mostrar <code>/compartida</code> y la de <code>exportfs -v</code> debe confirmar las opciones.</p>
+<div class="admonition tip">
+<p class="admonition-title">Captura obligatoria</p>
+<p>Realiza una captura mostrando la salida de <code>exportfs -v</code> y <code>showmount -e localhost</code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Si el servicio no arranca</p>
+<p>En algunos contenedores minimales puedes iniciar los daemons manualmente: <code>rpcbind</code>, <code>rpc.nfsd 8</code>, <code>rpc.mountd</code>.</p>
+</div>
+<h3 id="15-crear-archivo-de-prueba-en-el-servidor">1.5 Crear archivo de prueba en el servidor<a class="headerlink" href="#15-crear-archivo-de-prueba-en-el-servidor" title="Permanent link">&para;</a></h3>
+<p>Para confirmar que la carpeta está accesible:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>touch<span class="w"> </span>/compartida/prueba_servidor.txt
+<span class="linenos" data-linenos="2 "></span>ls<span class="w"> </span>-la<span class="w"> </span>/compartida
+</code></pre></div>
+<h3 id="16-salir-del-contenedor">1.6 Salir del contenedor<a class="headerlink" href="#16-salir-del-contenedor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">exit</span>
+</code></pre></div>
+<hr />
+<h2 id="parte-2-cliente-en-contenedor-ubuntu">Parte 2: Cliente en contenedor Ubuntu<a class="headerlink" href="#parte-2-cliente-en-contenedor-ubuntu" title="Permanent link">&para;</a></h2>
+<p>Crea un contenedor cliente en la misma red (Ubuntu 24.04):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>nfs-cliente<span class="w"> </span>--network<span class="w"> </span>red-nfs<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span>ubuntu:24.04<span class="w"> </span>sleep<span class="w"> </span>infinity
+</code></pre></div>
+<p>Entra al cliente e instala el paquete NFS:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nfs-cliente<span class="w"> </span>bash
+</code></pre></div>
+<p>Dentro del cliente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>apt<span class="w"> </span>update
+<span class="linenos" data-linenos=" 2 "></span>apt<span class="w"> </span>install<span class="w"> </span>nfs-common<span class="w"> </span>-y
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Crear punto de montaje</span>
+<span class="linenos" data-linenos=" 5 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/nfs
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Montar (usa el nombre del contenedor servidor como hostname)</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># NFSv4 es el predeterminado en Ubuntu 24.04</span>
+<span class="linenos" data-linenos=" 9 "></span>mount<span class="w"> </span>-t<span class="w"> </span>nfs<span class="w"> </span>nfs-server:/compartida<span class="w"> </span>/mnt/nfs
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># Verificar</span>
+<span class="linenos" data-linenos="12 "></span>df<span class="w"> </span>-h
+<span class="linenos" data-linenos="13 "></span>ls<span class="w"> </span>-la<span class="w"> </span>/mnt/nfs
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="c1"># Crear archivo de prueba</span>
+<span class="linenos" data-linenos="16 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Prueba NFS desde contenedor&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/mnt/nfs/test_contenedor.txt
+<span class="linenos" data-linenos="17 "></span>cat<span class="w"> </span>/mnt/nfs/test_contenedor.txt
+</code></pre></div>
+<p>Sal del cliente: <code>exit</code></p>
+<div class="admonition tip">
+<p class="admonition-title">Captura obligatoria</p>
+<p>Captura el montaje, <code>df -h</code>, <code>ls -la /mnt/nfs</code> y el archivo creado.</p>
+</div>
+<hr />
+<h2 id="parte-3-comprobacion-desde-la-maquina-host-obligatorio">Parte 3: Comprobación desde la máquina host (obligatorio)<a class="headerlink" href="#parte-3-comprobacion-desde-la-maquina-host-obligatorio" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Comprobación obligatoria</p>
+<p>La verificación desde el <strong>host</strong> es <strong>obligatoria</strong> y no puede omitirse. Demuestra la interoperabilidad entre el contenedor NFS y el sistema anfitrión. Sin esta comprobación la práctica no se considera completada.</p>
+</div>
+<h3 id="31-requisitos-del-host">3.1 Requisitos del host<a class="headerlink" href="#31-requisitos-del-host" title="Permanent link">&para;</a></h3>
+<p>El host puede ser <strong>cualquier sistema</strong>, principalmente <strong>Windows</strong>:</p>
+<ul>
+<li><strong>Windows</strong> (Pro/Enterprise/Education): activar Cliente para NFS (ver 3.2).</li>
+<li><strong>WSL2</strong> (Windows): usar Ubuntu en WSL2 con <code>nfs-common</code> (ver 3.2b).</li>
+<li><strong>Linux</strong> (Ubuntu, Debian, etc.): <code>sudo apt install nfs-common</code> (ver 3.2c).</li>
+<li><strong>macOS</strong>: soporte NFS nativo (ver 3.2d).</li>
+</ul>
+<h3 id="32-montar-desde-windows-principal">3.2 Montar desde Windows (principal)<a class="headerlink" href="#32-montar-desde-windows-principal" title="Permanent link">&para;</a></h3>
+<p>En <strong>Windows 10/11</strong> (PowerShell o CMD como administrador):</p>
+<ol>
+<li>
+<p><strong>Activar Cliente para NFS</strong>:
+   - Ejecutar <code>appwiz.cpl</code> (Win+R) → <strong>Activar o desactivar características de Windows</strong>
+   - O: Configuración → Aplicaciones → Características opcionales → Más características de Windows
+   - Buscar <strong>Servicios para NFS</strong> → expandir → marcar <strong>Cliente para NFS</strong> y <strong>Herramientas administrativas</strong>
+   - Reiniciar si es necesario.</p>
+</li>
+<li>
+<p><strong>Montar el recurso</strong> (usa una letra de unidad libre, por ejemplo <code>N:</code>):</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mount localhost:/compartida N:
+</code></pre></div>
+<ol start="3">
+<li><strong>Verificar</strong> (Explorador de archivos o CMD):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>dir N:
+</code></pre></div>
+<p>Deberías ver <code>test_contenedor.txt</code> y <code>prueba_servidor.txt</code>. Crear archivo de prueba:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>echo Prueba NFS desde HOST &gt; N:\test_host.txt
+<span class="linenos" data-linenos="2 "></span>type N:\test_host.txt
+</code></pre></div>
+<ol start="4">
+<li><strong>Desmontar al finalizar</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>umount N:
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Windows Home</p>
+<p>En Windows Home el Cliente NFS no está disponible. Usa <strong>WSL2</strong> (apartado 3.2b) como alternativa.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Montaje automático en Windows (opcional)</p>
+<p>Para montar NFS al iniciar Windows, crea un archivo <code>nfs.bat</code> en la carpeta de inicio:
+- Ejecutar <code>shell:startup</code> para abrir la carpeta Inicio
+- Crear <code>nfs.bat</code> con contenido: <code>mount -o anon localhost:/compartida N:</code>
+- El script se ejecutará al iniciar sesión.</p>
+</div>
+<h3 id="32b-montar-desde-wsl2-alternativa-en-windows">3.2b Montar desde WSL2 (alternativa en Windows)<a class="headerlink" href="#32b-montar-desde-wsl2-alternativa-en-windows" title="Permanent link">&para;</a></h3>
+<p>En la distribución Ubuntu de WSL2, en una terminal del host:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nfs-common<span class="w"> </span>-y
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/nfs-host
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>nfs<span class="w"> </span>localhost:/compartida<span class="w"> </span>/mnt/nfs-host
+<span class="linenos" data-linenos="4 "></span>ls<span class="w"> </span>-la<span class="w"> </span>/mnt/nfs-host
+<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Prueba NFS desde HOST&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/mnt/nfs-host/test_host.txt
+<span class="linenos" data-linenos="6 "></span>sudo<span class="w"> </span>umount<span class="w"> </span>/mnt/nfs-host
+</code></pre></div>
+<h3 id="32c-montar-desde-linux">3.2c Montar desde Linux<a class="headerlink" href="#32c-montar-desde-linux" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nfs-common<span class="w"> </span>-y
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/nfs-host
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>nfs<span class="w"> </span>localhost:/compartida<span class="w"> </span>/mnt/nfs-host
+<span class="linenos" data-linenos="4 "></span>ls<span class="w"> </span>-la<span class="w"> </span>/mnt/nfs-host
+<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Prueba NFS desde HOST&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/mnt/nfs-host/test_host.txt
+<span class="linenos" data-linenos="6 "></span>sudo<span class="w"> </span>umount<span class="w"> </span>/mnt/nfs-host
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Montaje automático en Linux (opcional)</p>
+<p>Para montar al arrancar, añade en <code>/etc/fstab</code>:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>localhost:/compartida /mnt/nfs-host nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
+</code></pre></div>
+Las opciones <code>nofail</code> y <code>auto</code> evitan que el sistema falle si el servidor NFS no está disponible al arrancar.</p>
+</div>
+<h3 id="32d-montar-desde-macos">3.2d Montar desde macOS<a class="headerlink" href="#32d-montar-desde-macos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/nfs-host
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>nfs<span class="w"> </span>-o<span class="w"> </span>resvport<span class="w"> </span>localhost:/compartida<span class="w"> </span>/mnt/nfs-host
+<span class="linenos" data-linenos="3 "></span>ls<span class="w"> </span>-la<span class="w"> </span>/mnt/nfs-host
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Prueba NFS desde HOST&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/mnt/nfs-host/test_host.txt
+<span class="linenos" data-linenos="5 "></span>sudo<span class="w"> </span>umount<span class="w"> </span>/mnt/nfs-host
+</code></pre></div>
+<h3 id="33-comprobar-en-el-contenedor-servidor">3.3 Comprobar en el contenedor servidor<a class="headerlink" href="#33-comprobar-en-el-contenedor-servidor" title="Permanent link">&para;</a></h3>
+<p>El archivo creado desde el host debe ser visible en el contenedor:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nfs-server<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/compartida
+</code></pre></div>
+<p>Debes ver <code>test_contenedor.txt</code>, <code>test_host.txt</code> y <code>prueba_servidor.txt</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Captura obligatoria</p>
+<p>Realiza una captura mostrando: montaje en el host, listado de archivos (en Windows: <code>dir N:</code>; en Linux/macOS/WSL2: <code>ls -la /mnt/nfs-host</code>), creación de <code>test_host.txt</code> y verificación con <code>docker exec nfs-server ls -la /compartida</code> (todos los archivos visibles).</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Si mount falla con «Connection refused»</p>
+<p>Verifica que los puertos están publicados: <code>docker port nfs-server</code>. Debe mostrar 2049 y 111. Reinicia el contenedor si es necesario.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Problemas de acceso en Windows</p>
+<ul>
+<li>Permisos de carpetas superiores: configurar a 755 si hay errores.</li>
+<li>Usar la ruta completa en <code>/etc/exports</code> si se usa <code>~</code> (virgulilla).</li>
+</ul>
+</div>
+<hr />
+<h2 id="verificacion-final">Verificación final<a class="headerlink" href="#verificacion-final" title="Permanent link">&para;</a></h2>
+<p>Resumen de comprobaciones obligatorias:</p>
+<ol>
+<li><strong>Desde contenedor cliente</strong>: archivo <code>test_contenedor.txt</code> creado y visible.</li>
+<li><strong>Desde host</strong>: montaje correcto (en Windows: unidad <code>N:</code>; en Linux/macOS/WSL2: <code>/mnt/nfs-host</code>), archivo <code>test_host.txt</code> creado.</li>
+<li><strong>En servidor</strong>: todos los archivos visibles con <code>docker exec nfs-server ls -la /compartida</code>.</li>
+</ol>
+<hr />
+<h2 id="limpieza">Limpieza<a class="headerlink" href="#limpieza" title="Permanent link">&para;</a></h2>
+<p>Para eliminar los contenedores y la red al finalizar:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Desmontar primero si montaste en el host</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># Windows: umount N:</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># Linux/macOS/WSL2: sudo umount /mnt/nfs-host</span>
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span>docker<span class="w"> </span>stop<span class="w"> </span>nfs-server<span class="w"> </span>nfs-cliente
+<span class="linenos" data-linenos="6 "></span>docker<span class="w"> </span>rm<span class="w"> </span>nfs-server<span class="w"> </span>nfs-cliente
+<span class="linenos" data-linenos="7 "></span>docker<span class="w"> </span>network<span class="w"> </span>rm<span class="w"> </span>red-nfs
+<span class="linenos" data-linenos="8 "></span>docker<span class="w"> </span>volume<span class="w"> </span>rm<span class="w"> </span>nfs-data
+</code></pre></div>
+<hr />
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Documento</strong> con capturas de:</li>
+</ol>
+<ul>
+<li>Creación del contenedor servidor NFS (comando <code>docker run</code> y <code>docker ps</code>).</li>
+<li>Permisos de la carpeta compartida (<code>ls -la /compartida</code>).</li>
+<li>Contenido de <code>/etc/exports</code> (salida de <code>cat /etc/exports</code>).</li>
+<li>Salida de <code>exportfs -v</code> y <code>showmount -e</code>.</li>
+<li>Montaje y acceso desde el contenedor cliente.</li>
+<li><strong>Montaje y acceso desde la máquina host</strong> (obligatorio; Windows, Linux, macOS o WSL2; incluir montaje, listado, creación de <code>test_host.txt</code> y verificación en servidor).</li>
+<li>Archivos visibles en el servidor (<code>docker exec nfs-server ls -la /compartida</code>).</li>
+</ul>
+<ol start="2">
+<li><strong>Explicación</strong> de las opciones utilizadas en <code>/etc/exports</code> y por qué se usa <code>--privileged</code> en el contenedor.</li>
+</ol>
+<h2 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Contenedor Ubuntu Server 24.04 creado correctamente con puertos publicados.</li>
+<li>Instalación correcta del servidor NFS dentro del contenedor.</li>
+<li>Configuración correcta de <code>/etc/exports</code> (formato sin espacios erróneos).</li>
+<li>Montaje correcto desde el contenedor cliente.</li>
+<li><strong>Comprobación obligatoria desde la máquina host</strong> (montaje, lectura, escritura).</li>
+<li>Verificación de que los archivos creados desde cliente y host son visibles en el servidor.</li>
+<li>Documentación completa con todas las capturas requeridas.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

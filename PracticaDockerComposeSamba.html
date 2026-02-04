@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/RAsASO.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/PracticaDockerComposeSamba.html">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>RAsASO - Administración de Sistemas Operativos</title>
+        <title>Práctica: Samba con Docker Compose - Administración de Sistemas Operativos</title>
       
     
     
@@ -65,11 +65,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="RAsASO - Administración de Sistemas Operativos" >
+        <meta  property="og:title"  content="Práctica: Samba con Docker Compose - Administración de Sistemas Operativos" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RAsASO.png" >
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaDockerComposeSamba.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -77,15 +77,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/RAsASO.html" >
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/PracticaDockerComposeSamba.html" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="RAsASO - Administración de Sistemas Operativos" >
+        <meta  name="twitter:title"  content="Práctica: Samba con Docker Compose - Administración de Sistemas Operativos" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RAsASO.png" >
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaDockerComposeSamba.png" >
       
     
     
@@ -106,6 +106,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#practica-samba-con-docker-compose" class="md-skip">
+          Saltar a contenido
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -138,7 +143,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RAsASO
+              Práctica: Samba con Docker Compose
             
           </span>
         </div>
@@ -386,6 +391,139 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos previos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-preparar-el-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Preparar el entorno
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-crear-el-archivo-composeyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Crear el archivo compose.yaml
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-levantar-el-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Levantar el contenedor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-acceder-desde-el-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Acceder desde el cliente
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 4: Acceder desde el cliente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desde-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desde Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desde-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desde Linux
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5: Verificación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-6-gestion-del-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 6: Gestión del contenedor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -400,98 +538,173 @@
                   
 
 
-  <h1>RAsASO</h1>
-
+<h1 id="practica-samba-con-docker-compose">Práctica: Samba con Docker Compose<a class="headerlink" href="#practica-samba-con-docker-compose" title="Permanent link">&para;</a></h1>
+<h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
+<p>Durante esta práctica aprenderás a desplegar un servidor <strong>Samba</strong> en contenedor usando <strong>Docker Compose</strong>. El objetivo es compartir carpetas entre sistemas heterogéneos (Linux y Windows) de forma sencilla y reproducible.</p>
+<p>Al finalizar esta práctica serás capaz de:</p>
+<ul>
+<li>Utilizar <strong>Docker Compose</strong> para definir y ejecutar servicios multi-contenedor.</li>
+<li>Desplegar un contenedor Samba con configuración declarativa en YAML.</li>
+<li>Acceder a carpetas compartidas desde clientes Windows y Linux.</li>
+<li>Documentar el proceso de configuración.</li>
+</ul>
+<h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Docker</strong> instalado (Docker Engine o Docker Desktop).</li>
+<li><strong>Docker Compose V2</strong> disponible (incluido en Docker Desktop y en instalaciones recientes de Docker Engine).</li>
+<li>Cliente Windows o Linux para verificar el acceso.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Docker Compose V2</p>
+<p>Desde 2020, Docker Compose V2 se ejecuta como plugin de Docker: <code>docker compose</code> (con espacio). El comando antiguo <code>docker-compose</code> (con guion) está en desuso. Verifica con <code>docker compose version</code>.</p>
+</div>
+<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Administra el servicio de directorio interpretando especificaciones e integrándolo en una red.</li>
+<li>Crear la estructura de directorios del proyecto.</li>
+<li>Crear el archivo <code>compose.yaml</code> (o <code>docker-compose.yml</code>) con el servicio Samba.</li>
+<li>Levantar el contenedor con <code>docker compose up -d</code>.</li>
+<li>Acceder a la carpeta compartida desde un cliente Windows y/o Linux.</li>
+<li>Verificar permisos y funcionamiento.</li>
+<li>Documentar el proceso con capturas de pantalla.</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han identificado la función, los elementos y las estructuras lógicas del servicio de directorio.</p>
-<p>b) Se ha determinado y creado el esquema del servicio de directorio.</p>
-<p>c) Se ha realizado la instalación del servicio de directorio en el servidor.</p>
-<p>d) Se ha realizado la configuración y personalización del servicio de directorio.</p>
-<p>e) Se ha integrado el servicio de directorio con otros servicios.</p>
-<p>f) Se han aplicado filtros de búsqueda en el servicio de directorio.</p>
-<p>g) Se ha utilizado el servicio de directorio como mecanismo de acreditación centralizada de los usuarios en una red.</p>
-<p>h) Se ha realizado la configuración del cliente para su integración en el servicio de directorio.</p>
-<p>i) Se han utilizado herramientas gráficas y comandos para la administración del servicio de directorio.</p>
-<p>j) Se ha documentado la estructura e implantación del servicio de directorio.</p>
-<ol start="2">
-<li>Administra procesos del sistema describiéndolos y aplicando criterios de seguridad y eficiencia.  </li>
+<h2 id="paso-1-preparar-el-entorno">Paso 1: Preparar el entorno<a class="headerlink" href="#paso-1-preparar-el-entorno" title="Permanent link">&para;</a></h2>
+<p>Crea el directorio del proyecto y la carpeta que se compartirá:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/docker/samba/compartido
+<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/docker/samba
+</code></pre></div>
+<p>Asigna permisos de escritura a la carpeta compartida:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>-R<span class="w"> </span><span class="nv">$HOME</span>/docker/samba/compartido
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Producción</p>
+<p>En un entorno de producción, usa permisos más restrictivos y usuarios/grupos específicos en lugar de <code>chmod 777</code>.</p>
+</div>
+<h2 id="paso-2-crear-el-archivo-composeyaml">Paso 2: Crear el archivo compose.yaml<a class="headerlink" href="#paso-2-crear-el-archivo-composeyaml" title="Permanent link">&para;</a></h2>
+<p>Crea el archivo de configuración. Puedes usar <code>compose.yaml</code> (recomendado) o <code>docker-compose.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">services</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">samba</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">samba</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dperson/samba:latest</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">      </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Europe/Madrid&#39;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;137:137/udp&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;138:138/udp&quot;</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;139:139/tcp&quot;</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;445:445/tcp&quot;</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="nt">read_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="nt">tmpfs</span><span class="p">:</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$HOME/docker/samba/compartido:/sordata:z</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-s</span><span class="nv"> </span><span class="s">&quot;Compartida;/sordata&quot;</span><span class="nv"> </span><span class="s">-n&#39;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Parámetros principales</p>
+<table>
+<thead>
+<tr>
+<th>Parámetro</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>volumes</code></td>
+<td>Monta la carpeta local en <code>/sordata</code> dentro del contenedor. La opción <code>:z</code> permite compartir con SELinux.</td>
+</tr>
+<tr>
+<td><code>137-138</code></td>
+<td>Puertos NetBIOS (UDP/TCP).</td>
+</tr>
+<tr>
+<td><code>139-445</code></td>
+<td>Puertos SMB.</td>
+</tr>
+<tr>
+<td><code>restart: unless-stopped</code></td>
+<td>Reinicia el contenedor automáticamente salvo si se detuvo manualmente.</td>
+</tr>
+<tr>
+<td><code>command</code></td>
+<td><code>-s "NombreCompartido;ruta"</code> define el recurso compartido. <code>-n</code> habilita NetBIOS.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="paso-3-levantar-el-contenedor">Paso 3: Levantar el contenedor<a class="headerlink" href="#paso-3-levantar-el-contenedor" title="Permanent link">&para;</a></h2>
+<p>Ejecuta Docker Compose (comando actual, con espacio):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Comando correcto</p>
+<p>Usa <code>docker compose</code> (con espacio), <strong>no</strong> <code>docker-compose</code> (con guion). El comando con guion corresponde a la versión antigua.</p>
+</div>
+<p>Verifica que el contenedor está en ejecución:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>ps
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>ps
+</code></pre></div>
+<h2 id="paso-4-acceder-desde-el-cliente">Paso 4: Acceder desde el cliente<a class="headerlink" href="#paso-4-acceder-desde-el-cliente" title="Permanent link">&para;</a></h2>
+<h3 id="desde-windows">Desde Windows<a class="headerlink" href="#desde-windows" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Abre el <strong>Explorador de archivos</strong>.</li>
+<li>En la barra de direcciones escribe: <code>\\IP_SERVIDOR\Compartida</code></li>
+<li>Sustituye <code>IP_SERVIDOR</code> por la IP del equipo donde corre Docker (ej: <code>192.168.1.100</code>).</li>
+<li>Si se solicita, usa credenciales genéricas (la imagen <code>dperson/samba</code> permite acceso sin autenticación por defecto en modo simple).</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han descrito el concepto de proceso del sistema, tipos, estados y ciclo de vida.</p>
-<p>b) Se han utilizado interrupciones y excepciones para describir los eventos internos del procesador.</p>
-<p>c) Se ha diferenciado entre proceso, hilo y trabajo.</p>
-<p>d) Se han realizado tareas de creación, manipulación y terminación de procesos.</p>
-<p>e) Se ha utilizado el sistema de archivos como medio lógico para el registro e identificación de los procesos del sistema.</p>
-<p>f) Se han utilizado herramientas gráficas y comandos para el control y seguimiento de los procesos del sistema.</p>
-<p>g) Se ha comprobado la secuencia de arranque del sistema, los procesos implicados y la relación entre ellos.</p>
-<p>h) Se han tomado medidas de seguridad ante la aparición de procesos no identificados.</p>
-<p>i) Se han documentado los procesos habituales del sistema, su función y relación entre ellos.</p>
-<ol start="3">
-<li>Gestiona la automatización de tareas del sistema, aplicando criterios de eficiencia y utilizando comandos y herramientas gráficas.  </li>
+<h3 id="desde-linux">Desde Linux<a class="headerlink" href="#desde-linux" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Instalar cliente SMB si no está instalado</span>
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>cifs-utils
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Montar la carpeta compartida</span>
+<span class="linenos" data-linenos="5 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/samba
+<span class="linenos" data-linenos="6 "></span>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>cifs<span class="w"> </span>//IP_SERVIDOR/Compartida<span class="w"> </span>/mnt/samba<span class="w"> </span>-o<span class="w"> </span>guest
+</code></pre></div>
+<p>O accede desde el gestor de archivos: <strong>Conectar al servidor</strong> → <code>smb://IP_SERVIDOR/Compartida</code></p>
+<h2 id="paso-5-verificacion">Paso 5: Verificación<a class="headerlink" href="#paso-5-verificacion" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Crea un archivo de texto de prueba en la carpeta compartida desde el servidor (en <code>$HOME/docker/samba/compartido</code>).</li>
+<li>Comprueba que el archivo es visible desde el cliente Windows o Linux.</li>
+<li>Crea un archivo desde el cliente y verifica que aparece en el servidor.</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han descrito las ventajas de la automatización de las tareas repetitivas en el sistema.</p>
-<p>b) Se han utilizado los comandos del sistema para la planificación de tareas.</p>
-<p>c) Se han establecido restricciones de seguridad.</p>
-<p>d) Se han realizado planificaciones de tareas repetitivas o puntuales relacionadas con la administración del sistema.</p>
-<p>e) Se ha automatizado la administración de cuentas.</p>
-<p>f) Se han instalado y configurado herramientas gráficas para la planificación de tareas.</p>
-<p>g) Se han utilizado herramientas gráficas para la planificación de tareas.</p>
-<p>h) Se han documentado los procesos programados como tareas automáticas.</p>
-<ol start="4">
-<li>Administra de forma remota el sistema operativo en red valorando su importancia y aplicando criterios de seguridad.</li>
+<h2 id="paso-6-gestion-del-contenedor">Paso 6: Gestión del contenedor<a class="headerlink" href="#paso-6-gestion-del-contenedor" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Detener el contenedor</span>
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>compose<span class="w"> </span>down
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Ver logs</span>
+<span class="linenos" data-linenos="5 "></span>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>samba
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Reiniciar</span>
+<span class="linenos" data-linenos="8 "></span>docker<span class="w"> </span>compose<span class="w"> </span>restart
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Persistencia de datos</p>
+<p>Los archivos en <code>$HOME/docker/samba/compartido</code> se conservan aunque se elimine el contenedor, ya que están en un volumen montado del host.</p>
+</div>
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Documento Markdown</strong> con:
+   - Capturas del archivo <code>compose.yaml</code> y de la salida de <code>docker compose ps</code>.
+   - Capturas del acceso desde Windows y/o Linux.
+   - Explicación de los parámetros utilizados.
+   - Problemas encontrados y soluciones aplicadas.</p>
+</li>
+<li>
+<p><strong>Archivo</strong> <code>compose.yaml</code> o <code>docker-compose.yml</code> utilizado.</p>
+</li>
 </ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han descrito métodos de acceso y administración remota de sistemas.</p>
-<p>b) Se ha diferenciado entre los servicios orientados a sesión y los no orientados a sesión.</p>
-<p>c) Se han utilizado herramientas de administración remota suministradas por el propio sistema operativo.</p>
-<p>d) Se han instalado servicios de acceso y administración remota.</p>
-<p>e) Se han utilizado comandos y herramientas gráficas para gestionar los servicios de acceso y administración remota.</p>
-<p>f) Se han creado cuentas de usuario para el acceso remoto.</p>
-<p>g) Se han realizado pruebas de acceso y administración remota entre sistemas heterogéneos.</p>
-<p>h) Se han utilizado mecanismos de encriptación de la información transferida.</p>
-<p>i) Se han documentado los procesos y servicios del sistema administrados de forma remota.</p>
-<ol start="5">
-<li>Administra servidores de impresión describiendo sus funciones e integrándolos en una red.</li>
-</ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se ha descrito la funcionalidad de los sistemas y servidores de impresión.</p>
-<p>b) Se han identificado los puertos y los protocolos utilizados.</p>
-<p>c) Se han utilizado las herramientas para la gestión de impresoras integradas en el sistema operativo.</p>
-<p>d) Se ha instalado y configurado un servidor de impresión en entorno Web.</p>
-<p>e) Se han creado y clasificado impresoras lógicas.</p>
-<p>f) Se han creado grupos de impresión.</p>
-<p>g) Se han gestionado impresoras y colas de trabajos mediante comandos y herramientas gráficas.</p>
-<p>h) Se han compartido impresoras en red entre sistemas operativos diferentes.</p>
-<p>i) Se ha documentado la configuración del servidor de impresión y de las impresoras creadas.</p>
-<ol start="6">
-<li>Integra sistemas operativos libres y propietarios, justificando y garantizando su interoperabilidad.</li>
-</ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se ha identificado la necesidad de compartir recursos en red entre diferentes sistemas operativos.</p>
-<p>b) Se han establecido niveles de seguridad para controlar el acceso del cliente a los recursos compartidos en red.</p>
-<p>c) Se ha comprobado la conectividad de la red en un escenario heterogéneo.</p>
-<p>d) Se ha descrito la funcionalidad de los servicios que permiten compartir recursos en red.</p>
-<p>e) Se han instalado y configurado servicios para compartir recursos en red.</p>
-<p>f) Se ha comprobado el funcionamiento de los servicios instalados.</p>
-<p>g) Se ha trabajado en grupo para acceder a sistemas de archivos e impresoras en red desde equipos con diferentes sistemas operativos.</p>
-<p>h) Se ha documentado la configuración de los servicios instalados.  </p>
-<ol start="7">
-<li>Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.</li>
-</ol>
-<p>Criterios de evaluación:</p>
-<p>a) Se han utilizado y combinado las estructuras del lenguaje para crear guiones.</p>
-<p>b) Se han utilizado herramientas para depurar errores sintácticos y de ejecución.</p>
-<p>c) Se han interpretado guiones de configuración del sistema operativo.</p>
-<p>d) Se han realizado cambios y adaptaciones de guiones del sistema.</p>
-<p>e) Se han creado y probado guiones de administración de servicios.</p>
-<p>f) Se han creado y probado guiones de automatización de tareas.</p>
-<p>g) Se han implantado guiones en sistemas libres y propietarios.</p>
-<p>h) Se han consultado y utilizado librerías de funciones.</p>
-<p>i) Se han documentado los guiones creados.</p>
+<h2 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Creación correcta de la estructura de directorios.</li>
+<li>Archivo compose.yaml válido y funcional.</li>
+<li>Contenedor Samba en ejecución.</li>
+<li>Acceso correcto desde al menos un cliente (Windows o Linux).</li>
+<li>Documentación completa con evidencias.</li>
+</ul>
 
 
 

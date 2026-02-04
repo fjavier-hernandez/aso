@@ -6,9 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Reto que integra Samba (Docker Compose) y NFS en instancias AWS con clientes de verificación">
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/planning.html">
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/RetoGrupalIntegracion.html">
       
       
       
@@ -18,7 +20,7 @@
     
     
       
-        <title>Planificación ASO (120h) - Administración de Sistemas Operativos</title>
+        <title>Reto Grupal - Recursos compartidos en AWS - Administración de Sistemas Operativos</title>
       
     
     
@@ -65,11 +67,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Planificación ASO (120h) - Administración de Sistemas Operativos" >
+        <meta  property="og:title"  content="Reto Grupal - Recursos compartidos en AWS - Administración de Sistemas Operativos" >
       
-        <meta  property="og:description"  content="None" >
+        <meta  property="og:description"  content="Reto que integra Samba (Docker Compose) y NFS en instancias AWS con clientes de verificación" >
       
-        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/planning.png" >
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RetoGrupalIntegracion.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -77,15 +79,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/planning.html" >
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/RetoGrupalIntegracion.html" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Planificación ASO (120h) - Administración de Sistemas Operativos" >
+        <meta  name="twitter:title"  content="Reto Grupal - Recursos compartidos en AWS - Administración de Sistemas Operativos" >
       
-        <meta  name="twitter:description"  content="None" >
+        <meta  name="twitter:description"  content="Reto que integra Samba (Docker Compose) y NFS en instancias AWS con clientes de verificación" >
       
-        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/planning.png" >
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RetoGrupalIntegracion.png" >
       
     
     
@@ -108,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#planificacion-aso-120h" class="md-skip">
+        <a href="#reto-grupal-recursos-compartidos-samba-y-nfs-en-aws" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -143,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Planificación ASO (120h)
+              Reto Grupal - Recursos compartidos en AWS
             
           </span>
         </div>
@@ -401,100 +403,83 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-shellscripting-10h" class="md-nav__link">
+  <a href="#objetivo-del-reto" class="md-nav__link">
     <span class="md-ellipsis">
-      1.- ShellScripting (10h)
+      Objetivo del Reto
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-programacion-de-scripts-10h" class="md-nav__link">
+  <a href="#arquitectura-del-escenario" class="md-nav__link">
     <span class="md-ellipsis">
-      2.- Programación de Scripts (10h)
+      Arquitectura del escenario
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-servicios-de-directorio-libres-ldap-12h" class="md-nav__link">
+  <a href="#tareas-a-realizar" class="md-nav__link">
     <span class="md-ellipsis">
-      3.- Servicios de Directorio Libres: LDAP (12h)
+      Tareas a realizar
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-servicios-de-directorio-propietarios-active-directory-16h" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.- Servicios de Directorio Propietarios: Active Directory (16h)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-integracion-de-sistemas-libre-nfs-12h" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.- Integración de Sistemas Libre: NFS (12h)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-integracion-de-sistemas-propietarios-samba-10h" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.- Integración de Sistemas Propietarios: SAMBA (10h)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-administracion-de-procesos-del-sistema-14h" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.- Administración de procesos del Sistema (14h)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-informacion-del-sistema-operativo-14h" class="md-nav__link">
-    <span class="md-ellipsis">
-      8.- Información del sistema operativo (14h)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-servicios-de-acceso-y-administracion-remota-14h" class="md-nav__link">
-    <span class="md-ellipsis">
-      9.- Servicios de acceso y administración remota (14h)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-administracion-de-servidores-de-impresion-8h" class="md-nav__link">
-    <span class="md-ellipsis">
-      10.- Administración de Servidores de Impresión (8h)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10.- Administración de Servidores de Impresión (8h)">
+    <nav class="md-nav" aria-label="Tareas a realizar">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#segunda-evaluacion" class="md-nav__link">
+  <a href="#fase-1-preparacion-en-aws-15-min" class="md-nav__link">
     <span class="md-ellipsis">
-      Segunda evaluación
+      Fase 1: Preparación en AWS (15 min)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fase-2-servidor-samba-con-docker-compose-20-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fase 2: Servidor Samba con Docker Compose (20 min)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fase-3-servidor-nfs-20-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fase 3: Servidor NFS (20 min)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fase-4-verificacion-desde-clientes-25-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fase 4: Verificación desde clientes (25 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fase 4: Verificación desde clientes (25 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cliente-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cliente Linux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cliente-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cliente Windows
     </span>
   </a>
   
@@ -502,6 +487,47 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fase-5-documentacion-20-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fase 5: Documentación (20 min)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
   
 </li>
       
@@ -520,408 +546,205 @@
                   
 
 
-<h1 id="planificacion-aso-120h">Planificación ASO (120h)<a class="headerlink" href="#planificacion-aso-120h" title="Permanent link">&para;</a></h1>
-<h2 id="1-shellscripting-10h">1.- ShellScripting (10h)<a class="headerlink" href="#1-shellscripting-10h" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">APARTADO</th>
-<th>DESCRIPCIÓN</th>
-<th>TIPO ACTIVIDAD</th>
-<th>TIEMPO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>1.1</code></td>
-<td>ShellScripting, creación scripts, variables, parámetros, operadores.</td>
-<td>Iniciales</td>
-<td>4h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>1.2</code></td>
-<td>ShellScripting, Redirecciones, tuberias.</td>
-<td>Desarrollo</td>
-<td>3h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>1.3</code></td>
-<td>Control de flujo en Shell, vectores.</td>
-<td>Refuerzo y ampliación</td>
-<td>3h</td>
-</tr>
-</tbody>
-</table>
-<h2 id="2-programacion-de-scripts-10h">2.- Programación de Scripts (10h)<a class="headerlink" href="#2-programacion-de-scripts-10h" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">APARTADO</th>
-<th>DESCRIPCIÓN</th>
-<th>TIPO ACTIVIDAD</th>
-<th>TIEMPO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>2.1</code></td>
-<td>PowerShell, creación scripts, variables, parámetros, operadores.</td>
-<td>Iniciales</td>
-<td>3h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>2.2</code></td>
-<td>PowerShell, Control de flujo, y vectores.</td>
-<td>Desarrollo</td>
-<td>3h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>2.3</code></td>
-<td>Python, creación scripts, automatización Redes.</td>
-<td>Refuerzo y ampliación</td>
-<td>4h</td>
-</tr>
-</tbody>
-</table>
-<h2 id="3-servicios-de-directorio-libres-ldap-12h">3.- Servicios de Directorio Libres: LDAP (12h)<a class="headerlink" href="#3-servicios-de-directorio-libres-ldap-12h" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">APARTADO</th>
-<th>DESCRIPCIÓN</th>
-<th>TIPO ACTIVIDAD</th>
-<th>TIEMPO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>3.1</code></td>
-<td>Servicios Directorio, LDAP, Autentificación usuarios (PAM, NSS).</td>
-<td>Iniciales</td>
-<td>4h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>3.2</code></td>
-<td>LDAP, módelo información, Esquema.</td>
-<td>Desarrollo</td>
-<td>4h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>3.3</code></td>
-<td>LDAP, Configuración, herramientas de gestión.</td>
-<td>Refuerzo y ampliación</td>
-<td>4h</td>
-</tr>
-</tbody>
-</table>
-<h2 id="4-servicios-de-directorio-propietarios-active-directory-16h">4.- Servicios de Directorio Propietarios: Active Directory (16h)<a class="headerlink" href="#4-servicios-de-directorio-propietarios-active-directory-16h" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">APARTADO</th>
-<th>DESCRIPCIÓN</th>
-<th>TIPO ACTIVIDAD</th>
-<th>TIEMPO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>4.1</code></td>
-<td>Active Directory, configuración básica Windows Server.</td>
-<td>Iniciales</td>
-<td>5h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>4.2</code></td>
-<td>Active Directory, Instalación AD, Creación estructura empresa.</td>
-<td>Desarrollo</td>
-<td>5h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>4.3</code></td>
-<td>AD, Permisos, directivas de grupo, perfiles y relaciones de confianza.</td>
-<td>Ampliación</td>
-<td>6h</td>
-</tr>
-</tbody>
-</table>
-<h2 id="5-integracion-de-sistemas-libre-nfs-12h">5.- Integración de Sistemas Libre: NFS (12h)<a class="headerlink" href="#5-integracion-de-sistemas-libre-nfs-12h" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">APARTADO</th>
-<th>DESCRIPCIÓN</th>
-<th>TIPO ACTIVIDAD</th>
-<th>TIEMPO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>6.1</code></td>
-<td>Escenarios heterogéneos, Protocolos para redes heterogéneas, servicios de compartición de recursos.</td>
-<td>Iniciales</td>
-<td>2h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>5.1</code></td>
-<td>NFS, Instalación, Permisos en NFS.</td>
-<td>Iniciales</td>
-<td>2h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>5.2</code></td>
-<td>NFS, Montaje automático de un cliente NFS, configuración de ficheros.</td>
-<td>Desarrollo</td>
-<td>4h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>5.3</code></td>
-<td>NextCloud, Instalación, configuración de ficheros y permisos de usuario.</td>
-<td>Ampliación</td>
-<td>3h</td>
-</tr>
-</tbody>
-</table>
-<h2 id="6-integracion-de-sistemas-propietarios-samba-10h">6.- Integración de Sistemas Propietarios: SAMBA (10h)<a class="headerlink" href="#6-integracion-de-sistemas-propietarios-samba-10h" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">APARTADO</th>
-<th>DESCRIPCIÓN</th>
-<th>TIPO ACTIVIDAD</th>
-<th>TIEMPO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>6.1</code></td>
-<td>Escenarios heterogéneos, Protocolos para redes heterogéneas, servicios de compartición de recursos.</td>
-<td>Iniciales</td>
-<td>2h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>6.2</code></td>
-<td>SAMBA, fichero configuración, Creación directorio compartido, Integración de permisos.</td>
-<td>Desarrollo</td>
-<td>4h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>6.3</code></td>
-<td>SAMBA, Administración de servicios con RSAT, perfiles de ususario y carpetas personales, cuotas.</td>
-<td>Ampliación</td>
-<td>3h</td>
-</tr>
-</tbody>
-</table>
-<h2 id="7-administracion-de-procesos-del-sistema-14h">7.- Administración de procesos del Sistema (14h)<a class="headerlink" href="#7-administracion-de-procesos-del-sistema-14h" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">APARTADO</th>
-<th>DESCRIPCIÓN</th>
-<th>TIPO ACTIVIDAD</th>
-<th>TIEMPO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>7.1</code></td>
-<td>Procesos. Tipos. Estados. Estructura. Trancisiones, Hilos.</td>
-<td>Iniciales</td>
-<td>2h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>7.2</code></td>
-<td>Planificador, Tipos de algoritmos de planificación, Sincronización e interrupciones entre procesos.</td>
-<td>Desarrollo I</td>
-<td>2h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>7.3</code></td>
-<td>Gestión de procesos con Shell, Powershell y Python.</td>
-<td>Desarrollo II</td>
-<td>6h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>7.4</code></td>
-<td>Secuencia de arranque del sistema. Demonios y servicios, <code>systemd</code>.</td>
-<td>Ampliación</td>
-<td>4h</td>
-</tr>
-</tbody>
-</table>
-<h2 id="8-informacion-del-sistema-operativo-14h">8.- Información del sistema operativo (14h)<a class="headerlink" href="#8-informacion-del-sistema-operativo-14h" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">APARTADO</th>
-<th>DESCRIPCIÓN</th>
-<th>TIPO ACTIVIDAD</th>
-<th>TIEMPO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>8.1</code></td>
-<td>Estructura directorios. Búsqueda de información del sistema. Órdenes. Herramientas gráficas.</td>
-<td>Iniciales</td>
-<td>2h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>8.2</code></td>
-<td>VFS, DFS, Herramientas gráficas Rendimiento. Estadísticas.</td>
-<td>Desarrollo I</td>
-<td>4h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>8.3</code></td>
-<td>Planificación de Tareas, Programacor de atreas, <code>crontab</code>.</td>
-<td>Desarrollo II</td>
-<td>4h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>8.4</code></td>
-<td>Servicio Monitorización, Nagios, PRTG, OpenNMS.</td>
-<td>Ampliación</td>
-<td>4h</td>
-</tr>
-</tbody>
-</table>
-<h2 id="9-servicios-de-acceso-y-administracion-remota-14h">9.- Servicios de acceso y administración remota (14h)<a class="headerlink" href="#9-servicios-de-acceso-y-administracion-remota-14h" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">APARTADO</th>
-<th>DESCRIPCIÓN</th>
-<th>TIPO ACTIVIDAD</th>
-<th>TIEMPO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>9.1</code></td>
-<td>Escritorio Remoto  RDP, xRDP y RemoteAPP</td>
-<td>Iniciales y Desarrollo I</td>
-<td>4h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>9.2</code></td>
-<td>Acceso remoto en modo texto <code>SSH</code>.</td>
-<td>Desarrollo II</td>
-<td>4h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>9.3</code></td>
-<td>Herramientas gráficas externas, RealVNC, TeamViewer y AnyDesk.</td>
-<td>Desarrollo III</td>
-<td>4h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>9.4</code></td>
-<td>Apache Guacamole.</td>
-<td>Ampliación</td>
-<td>2h</td>
-</tr>
-</tbody>
-</table>
-<h2 id="10-administracion-de-servidores-de-impresion-8h">10.- Administración de Servidores de Impresión (8h)<a class="headerlink" href="#10-administracion-de-servidores-de-impresion-8h" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">APARTADO</th>
-<th>DESCRIPCIÓN</th>
-<th>TIPO ACTIVIDAD</th>
-<th>TIEMPO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>10.1</code></td>
-<td>Sistemas de Impresión, Puertos y protocolos de impresión</td>
-<td>Iniciales</td>
-<td>2h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>10.2</code></td>
-<td>Órdenes para la gestión de impresoras y trabajos.</td>
-<td>Desarrollo I</td>
-<td>2h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>10.3</code></td>
-<td>Servidor de impresión en GNU/Linux, <code>CUPS</code>.</td>
-<td>Desarrollo II</td>
-<td>2h</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>10.4</code></td>
-<td>Administración de los Servicios de Impresión en Windows Server.</td>
-<td>Desarrollo II</td>
-<td>2h</td>
-</tr>
-</tbody>
-</table>
-<!-- * La duración del módulo es de **120 horas lectivas**, a razón de **6 horas semanales**, y se desarrolla a lo largo de los **dos primeros trimestres del curso**.
-* Se ha planificado basándose en **3 sesiones lectivas por semana**, con **2 horas de duración cada una de ellas**. -->
-
-<!-- ## Unidades didácticas / Temporalización
-
-A continuación se muestran las unidades didácticas y una estimación temporal de cada una de ellas, repartidas en cada evaluación con una duración aproximada de **30 sesiones por evaluación**.
-
-### Primera evaluación
-
-1. **ShellScripting. (6 sesiones, 12 horas)**
-    * ShellScripting, creación scripts, variables, parámetros, operadores.
-    * ShellScripting, Re-direcciones, tuberías.
-    * Control de flujo en Shell, vectores.
-2. **PowerShell. (6 sesiones, 12 horas)**
-    * PowerShell, creación scripts, variables, parámetros, operadores.
-    * PowerShell, Control de flujo, y vectores.
-    <!-- * Docker. -->
-<p>&lt;!-- 3. <strong>Administración de Procesos del Sistema. (6 sesiones, 12 horas)</strong>
-    * Procesos. Tipos. Estados. Estructura. Transiciones, Hilos.
-    * Planificador, Tipos de algoritmos de planificación, Sincronización e interrupciones entre procesos.
-    * Gestión de procesos, demonios/servicios con Shell y Powershell.
-4. <strong>Servicios de Directorio Libres: LDAP. (6 sesiones, 12 horas)</strong>
-    * Servicios Directorio, LDAP, Autentificación usuarios (PAM, NSS).
-    * LDAP, modelo información, Esquema.
-    * LDAP, Configuración, herramientas de gestión.
-5. <strong>Servicios de Directorio Propietarios: Active Directory (6 sesiones, 12 horas).</strong>
-    * Active Directory, configuración básica Windows Server.
-    * Active Directory, Instalación AD, Creación estructura empresa.
-    * AD, Permisos, directivas de grupo, perfiles y relaciones de confianza.</p>
-<h3 id="segunda-evaluacion">Segunda evaluación<a class="headerlink" href="#segunda-evaluacion" title="Permanent link">&para;</a></h3>
-<ol start="6">
-<li><strong>Integración de Sistemas Libre: NFS (6 sesiones, 12 horas).</strong><ul>
-<li>Escenarios heterogéneos, Protocolos para redes heterogéneas, servicios de recursos compartidos.</li>
-<li>NFS, Instalación, Permisos, Montaje automático de un cliente NFS, configuración de ficheros.</li>
-<li>NextCloud, Instalación, configuración de ficheros y permisos de usuario.</li>
-</ul>
-</li>
-<li><strong>Integración de Sistemas Propietarios: SAMBA (6 sesiones, 12 horas).</strong><ul>
-<li>SAMBA, fichero configuración, Creación directorio compartido, Integración de permisos.</li>
-<li>SAMBA, Administración de servicios con RSAT, perfiles de usuario y carpetas personales, cuotas.</li>
-</ul>
-</li>
-<li><strong>Información del sistema operativo (6 sesiones, 12 horas).</strong><ul>
-<li>Estructura directorios. Búsqueda de información del sistema. Rendimiento. Estadísticas.</li>
-<li>Planificación de Tareas, Programador de tareas, <code>crontab</code>.</li>
-<li>Servicio Monitorización, Nagios, PRTG, OpenNMS.</li>
-</ul>
-</li>
-<li><strong>Servicios de acceso y administración remota (6 sesiones, 12 horas).</strong> <ul>
-<li>Acceso remoto en modo texto <code>SSH</code>. Tunelización.</li>
-<li>Escritorio Remoto:  RDP y xRDP. Acceso remoto de equipos en el AD con PWSH.</li>
-<li>Herramientas gráficas externas, TeamViewer, AnyDesk y Apache Guacamole.</li>
-</ul>
-</li>
-<li><strong>Administración de Servidores de Impresión (6 sesiones, 12 horas).</strong><ul>
-<li>Sistemas de Impresión, Puertos y protocolos de impresión.</li>
-<li>Servidor de impresión en GNU/Linux, <code>CUPS</code>. Órdenes para la gestión de impresoras y trabajos.</li>
-<li>Administración de los Servicios de Impresión en Windows Server.</li>
-</ul>
-</li>
+<h1 id="reto-grupal-recursos-compartidos-samba-y-nfs-en-aws">RETO GRUPAL: Recursos compartidos Samba y NFS en AWS<a class="headerlink" href="#reto-grupal-recursos-compartidos-samba-y-nfs-en-aws" title="Permanent link">&para;</a></h1>
+<p><strong>Módulo:</strong> Administración de Sistemas Operativos (ASO)<br />
+<strong>Unidad:</strong> Integración de Sistemas Operativos (Tema 6)<br />
+<strong>Modalidad:</strong> Trabajo en grupo (2-3 personas)<br />
+<strong>Puntuación:</strong> 30 puntos (sobre 100)<br />
+<strong>Criterios evaluados:</strong> CE6a, CE6b, CE6c, CE6d, CE6e, CE6f, CE6g y CE6h  </p>
+<p>Este reto integra las prácticas <a href="PracticaNFS.html">PR601</a> y <a href="PracticaDockerComposeSamba.html">PR602</a> en un escenario cloud con <strong>AWS Academy</strong>.</p>
+<hr />
+<h2 id="objetivo-del-reto">Objetivo del Reto<a class="headerlink" href="#objetivo-del-reto" title="Permanent link">&para;</a></h2>
+<p>Desplegar en <strong>AWS</strong> un escenario heterogéneo con:</p>
+<ol>
+<li><strong>Servidor Samba</strong> en contenedor (Docker Compose) sobre una instancia Ubuntu.</li>
+<li><strong>Servidor NFS</strong> en una instancia Ubuntu.</li>
+<li><strong>Clientes de verificación</strong>: al menos un cliente Linux y un cliente Windows que accedan a ambos recursos compartidos.</li>
 </ol>
+<p>Debes demostrar la interoperabilidad entre sistemas libres y propietarios en un entorno cloud.</p>
+<hr />
+<h2 id="arquitectura-del-escenario">Arquitectura del escenario<a class="headerlink" href="#arquitectura-del-escenario" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>                    AWS VPC
+<span class="linenos" data-linenos=" 2 "></span>    ┌─────────────────────────────────────────────────┐
+<span class="linenos" data-linenos=" 3 "></span>    │                                                 │
+<span class="linenos" data-linenos=" 4 "></span>    │  ┌─────────────┐    ┌─────────────┐            │
+<span class="linenos" data-linenos=" 5 "></span>    │  │ Ubuntu      │    │ Ubuntu      │            │
+<span class="linenos" data-linenos=" 6 "></span>    │  │ Samba       │    │ NFS Server  │            │
+<span class="linenos" data-linenos=" 7 "></span>    │  │ (Docker     │    │             │            │
+<span class="linenos" data-linenos=" 8 "></span>    │  │  Compose)   │    │             │            │
+<span class="linenos" data-linenos=" 9 "></span>    │  └──────┬──────┘    └──────┬──────┘            │
+<span class="linenos" data-linenos="10 "></span>    │         │                  │                    │
+<span class="linenos" data-linenos="11 "></span>    │         │    SMB/CIFS      │    NFS             │
+<span class="linenos" data-linenos="12 "></span>    │         │                  │                    │
+<span class="linenos" data-linenos="13 "></span>    │  ┌──────┴──────────────────┴──────┐            │
+<span class="linenos" data-linenos="14 "></span>    │  │         Clientes                │            │
+<span class="linenos" data-linenos="15 "></span>    │  │  ┌──────────┐  ┌──────────┐   │            │
+<span class="linenos" data-linenos="16 "></span>    │  │  │ Ubuntu   │  │ Windows   │   │            │
+<span class="linenos" data-linenos="17 "></span>    │  │  │ Cliente  │  │ Cliente   │   │            │
+<span class="linenos" data-linenos="18 "></span>    │  │  └──────────┘  └──────────┘   │            │
+<span class="linenos" data-linenos="19 "></span>    │  └───────────────────────────────┘            │
+<span class="linenos" data-linenos="20 "></span>    │                                                 │
+<span class="linenos" data-linenos="21 "></span>    └─────────────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
+<h3 id="fase-1-preparacion-en-aws-15-min">Fase 1: Preparación en AWS (15 min)<a class="headerlink" href="#fase-1-preparacion-en-aws-15-min" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Crea <strong>4 instancias</strong> en EC2 (misma VPC y subred):</li>
+</ol>
+<ul>
+<li><strong>samba-server</strong>: Ubuntu 22.04, t3.micro, con Docker instalado.</li>
+<li><strong>nfs-server</strong>: Ubuntu 22.04, t3.micro.</li>
+<li><strong>cliente-linux</strong>: Ubuntu 22.04 o Amazon Linux, t3.micro.</li>
+<li><strong>cliente-windows</strong>: Windows Server 2022 o Windows 10, t3.micro.</li>
+</ul>
+<ol start="2">
+<li>Configura los <strong>Security Groups</strong>:</li>
+</ol>
+<ul>
+<li>Samba: puertos 137, 138 (UDP), 139, 445 (TCP).</li>
+<li>NFS: puertos 111, 2049 (TCP/UDP).</li>
+<li>RDP: puerto 3389 para el cliente Windows.</li>
+<li>SSH: puerto 22 para las instancias Linux.</li>
+</ul>
+<ol start="3">
+<li>Anota las <strong>IP privadas</strong> de cada instancia.</li>
+</ol>
+<h3 id="fase-2-servidor-samba-con-docker-compose-20-min">Fase 2: Servidor Samba con Docker Compose (20 min)<a class="headerlink" href="#fase-2-servidor-samba-con-docker-compose-20-min" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Conéctate por SSH a <strong>samba-server</strong>.</li>
+<li>Instala Docker y Docker Compose (si no está preinstalado):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>docker.io<span class="w"> </span>docker-compose-plugin<span class="w"> </span>-y
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span>ubuntu
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Cerrar sesión y volver a conectar para aplicar el grupo</span>
+</code></pre></div>
+<ol start="3">
+<li>Crea el proyecto y el <code>compose.yaml</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/docker/samba/compartido
+<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span>~/docker/samba
+<span class="linenos" data-linenos="3 "></span>chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>compartido
+</code></pre></div>
+<ol start="4">
+<li>Crea <code>compose.yaml</code> con el servicio Samba (ver <a href="PracticaDockerComposeSamba.html">PR602</a>).</li>
+<li>Ejecuta: <code>docker compose up -d</code></li>
+<li>Verifica: <code>docker compose ps</code></li>
+</ol>
+<h3 id="fase-3-servidor-nfs-20-min">Fase 3: Servidor NFS (20 min)<a class="headerlink" href="#fase-3-servidor-nfs-20-min" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Conéctate por SSH a <strong>nfs-server</strong>.</li>
+<li>Instala y configura NFS (ver <a href="PracticaNFS.html">PR601</a>):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nfs-kernel-server<span class="w"> </span>-y
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/compartida
+<span class="linenos" data-linenos="4 "></span>sudo<span class="w"> </span>chown<span class="w"> </span>nobody:nogroup<span class="w"> </span>/compartida
+<span class="linenos" data-linenos="5 "></span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>/compartida
+</code></pre></div>
+<ol start="3">
+<li>Edita <code>/etc/exports</code> (usa la subred de tu VPC, ej: <code>172.31.0.0/16</code>):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>/compartida 172.31.0.0/16(rw,sync,no_subtree_check)
+</code></pre></div>
+<ol start="4">
+<li>Aplica: <code>sudo exportfs -a &amp;&amp; sudo systemctl restart nfs-kernel-server</code></li>
+</ol>
+<h3 id="fase-4-verificacion-desde-clientes-25-min">Fase 4: Verificación desde clientes (25 min)<a class="headerlink" href="#fase-4-verificacion-desde-clientes-25-min" title="Permanent link">&para;</a></h3>
+<h4 id="cliente-linux">Cliente Linux<a class="headerlink" href="#cliente-linux" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Conéctate por SSH a <strong>cliente-linux</strong>.</li>
+<li><strong>Acceso a Samba</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>cifs-utils<span class="w"> </span>-y
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/samba
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>cifs<span class="w"> </span>//IP_SAMBA_SERVER/Compartida<span class="w"> </span>/mnt/samba<span class="w"> </span>-o<span class="w"> </span>guest
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Crear archivo de prueba</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Prueba Samba&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/mnt/samba/test_samba.txt
+</code></pre></div>
+<ol start="3">
+<li><strong>Acceso a NFS</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nfs-common<span class="w"> </span>-y
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/nfs
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>mount<span class="w"> </span>IP_NFS_SERVER:/compartida<span class="w"> </span>/mnt/nfs
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Prueba NFS&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/mnt/nfs/test_nfs.txt
+</code></pre></div>
+<h4 id="cliente-windows">Cliente Windows<a class="headerlink" href="#cliente-windows" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Conéctate por RDP a <strong>cliente-windows</strong>.</li>
+<li><strong>Acceso a Samba</strong>: Explorador de archivos → <code>\\IP_SAMBA_SERVER\Compartida</code></li>
+<li><strong>Acceso a NFS</strong> (si está disponible): Habilitar "Cliente NFS" en características de Windows. Montar: <code>mount -o anon IP_NFS_SERVER:/compartida Z:</code></li>
+</ol>
+<h3 id="fase-5-documentacion-20-min">Fase 5: Documentación (20 min)<a class="headerlink" href="#fase-5-documentacion-20-min" title="Permanent link">&para;</a></h3>
+<p>Documenta el proceso con capturas de:</p>
+<ul>
+<li>Instancias creadas en AWS.</li>
+<li>Security Groups configurados.</li>
+<li>Samba en ejecución (<code>docker compose ps</code>).</li>
+<li>NFS exportado (<code>showmount -e</code>).</li>
+<li>Acceso desde cliente Linux a Samba y NFS.</li>
+<li>Acceso desde cliente Windows a Samba.</li>
+<li>Archivos de prueba creados en ambos recursos compartidos.</li>
+</ul>
+<hr />
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Documento Markdown</strong> con capturas y explicación de cada fase.</li>
+<li><strong>Archivos</strong> <code>compose.yaml</code> y contenido de <code>/etc/exports</code> utilizados.</li>
+<li><strong>Diagrama</strong> del escenario de red (opcional).</li>
+</ol>
+<hr />
+<h2 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Puntos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instancias AWS creadas correctamente</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Security Groups configurados</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Samba con Docker Compose funcionando</td>
+<td>6</td>
+</tr>
+<tr>
+<td>NFS servidor configurado y exportando</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Acceso desde cliente Linux (Samba + NFS)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Acceso desde cliente Windows (Samba)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Documentación completa</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>30</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="PracticaNFS.html">PR601: Instalación y configuración de NFS</a></li>
+<li><a href="PracticaDockerComposeSamba.html">PR602: Samba con Docker Compose</a></li>
+</ul>
 
 
 
