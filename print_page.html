@@ -4928,21 +4928,23 @@ Cabe recordar la diferencia entre la gestión de usuarios con los **Grupos de tr
 <h2 id="05integracionsistemas-introduccion-escenarios-heterogeneos">Introducción: Escenarios heterogéneos<a class="headerlink" href="#05integracionsistemas-introduccion-escenarios-heterogeneos" title="Permanent link">&para;</a></h2>
 <p>Un <strong>escenario heterogéneo</strong> es aquel en el que conviven en una red equipos con distintas arquitecturas y sistemas operativos (Windows, GNU/Linux, macOS). El intercambio de datos solo es posible <strong>si ambos extremos de la comunicación entienden el mismo protocolo</strong>.</p>
 <figure>
-  <img src="imagenes/06/061/001.png" width="550"/>
-  <figcaption>Escenario heterogéneo con diferentes sistemas operativos</figcaption>
+  <img src="imagenes/06/01/001.png" width="550"/>
+  <figcaption> Diferentes Logotipos de sistemas Linux, Windows y macOS</figcaption>
 </figure>
 
 <h3 id="05integracionsistemas-protocolos-para-redes-heterogeneas">Protocolos para redes heterogéneas<a class="headerlink" href="#05integracionsistemas-protocolos-para-redes-heterogeneas" title="Permanent link">&para;</a></h3>
+<p>Cuando hablamos de compartir archivos y carpetas en red, nos referimos fundamentalmente al uso de <strong>sistemas de archivos en red</strong>. Un sistema de archivos es un conjunto de normas y procedimientos para almacenar y organizar la información en los dispositivos de almacenamiento, utilizando para ello protocolos y servicios especializados.</p>
 <p>Los protocolos más utilizados para compartir recursos entre sistemas diferentes son:</p>
 <ul>
 <li><strong>SMB/CIFS</strong> (Server Message Block / Common Internet File System): Permite compartir archivos, impresoras y otros dispositivos entre equipos Windows, GNU/Linux y macOS. Desarrollado originalmente por IBM; Microsoft lo adoptó y amplió (CIFS desde 1998).</li>
 <li><strong>NFS</strong> (Network File System): Protocolo de nivel de aplicación desarrollado por <strong>Sun Microsystems en 1985</strong>. Utilizado para sistemas de archivos distribuidos en redes de área local. Compatible con UNIX, GNU/Linux y macOS; Windows tiene soporte nativo desde versiones recientes.</li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Otros protocolos</p>
-<p><strong>Apple Filing Protocol (AFP)</strong> forma parte de Apple File Service y ofrece servicios de archivos compartidos para macOS en equipos Macintosh.</p>
+<p class="admonition-title"><strong>Efemerides</strong></p>
+<p>El protocolo <strong>SMB</strong> cambió de nombre en 1998 y pasó a llamarse <strong>Common Internet File System (CIFS)</strong>. A día de hoy, este protocolo es el que todavía se utiliza en los sistemas Windows para compartir archivos.</p>
 </div>
 <h3 id="05integracionsistemas-sistemas-de-archivos-compartidos-en-red">Sistemas de archivos compartidos en red<a class="headerlink" href="#05integracionsistemas-sistemas-de-archivos-compartidos-en-red" title="Permanent link">&para;</a></h3>
+<p>La siguiente tabla resume los principales sistemas y protocolos que permiten compartir archivos y recursos en red. Cada uno de ellos está diseñado para facilitar la interoperabilidad entre diferentes sistemas operativos, haciendo posible el trabajo en entornos donde conviven equipos con plataformas diversas como Linux, Windows o macOS.</p>
 <table>
 <thead>
 <tr>
@@ -4973,25 +4975,10 @@ Cabe recordar la diferencia entre la gestión de usuarios con los **Grupos de tr
 </tr>
 </tbody>
 </table>
-<h3 id="05integracionsistemas-samba">Samba<a class="headerlink" href="#05integracionsistemas-samba" title="Permanent link">&para;</a></h3>
-<p><strong>Samba</strong> es una implementación libre del protocolo SMB/CIFS de Microsoft para sistemas tipo UNIX. Permite que equipos con GNU/Linux, macOS o Unix actúen como <strong>servidores</strong> o <strong>clientes</strong> en redes Windows.</p>
-<figure>
-  <img src="imagenes/06/061/003.png" width="550"/>
-  <figcaption>Samba integrando sistemas Linux y Windows</figcaption>
-</figure>
-
-<div class="admonition abstract">
-<p class="admonition-title">Importancia de Samba</p>
-<p>Samba se ha convertido en un estándar en redes donde conviven sistemas GNU/Linux y Windows, siendo uno de los logros más reconocidos del software libre.</p>
+<div class="admonition note">
+<p class="admonition-title">Otros protocolos</p>
+<p><strong>Apple Filing Protocol (AFP)</strong> forma parte de Apple File Service y ofrece servicios de archivos compartidos para macOS en equipos Macintosh.</p>
 </div>
-<h3 id="05integracionsistemas-situacion-de-aprendizaje">Situación de aprendizaje<a class="headerlink" href="#05integracionsistemas-situacion-de-aprendizaje" title="Permanent link">&para;</a></h3>
-<p>Partiendo de una empresa de consultoría <strong>InfraTech S.L.</strong> dedicada a la administración de sistemas, te encargan implementar servicios de recursos compartidos para <strong>Comercial Mediterránea</strong>, una empresa de distribución:</p>
-<ul>
-<li><strong>Servidor</strong>: Ubuntu Server con el software necesario.</li>
-<li><strong>Clientes</strong>: Windows 10.</li>
-<li><strong>Usuarios</strong>: Responsables de departamento (Gerencia, IT, Administración, Comercial, RRHH).</li>
-</ul>
-<p>Debes configurar el intercambio de archivos entre el servidor Linux y los clientes Windows.</p>
 <h3 id="05integracionsistemas-servicios-complementarios">Servicios complementarios<a class="headerlink" href="#05integracionsistemas-servicios-complementarios" title="Permanent link">&para;</a></h3>
 <p>Para una configuración completa de recursos compartidos en redes heterogéneas suelen utilizarse:</p>
 <ul>
@@ -5001,11 +4988,96 @@ Cabe recordar la diferencia entre la gestión de usuarios con los **Grupos de tr
 <li><strong>NTP</strong>: Sincronización de reloj entre equipos.</li>
 </ul>
 <hr />
-<h2 id="05integracionsistemas-nfs-network-file-system">NFS (Network File System)<a class="headerlink" href="#05integracionsistemas-nfs-network-file-system" title="Permanent link">&para;</a></h2>
-<p><strong>NFS</strong> es un protocolo de nivel de aplicación que da nombre también al servicio que lo implementa. No es un sistema de archivos en sí, sino el <strong>protocolo</strong> que permite compartir datos entre equipos heterogéneos. Fue creado por <strong>Sun Microsystems en 1985</strong> y está implementado sobre <strong>XDR</strong> (presentación) y <strong>ONC RPC</strong> (sesión).</p>
+<h2 id="05integracionsistemas-samba">Samba<a class="headerlink" href="#05integracionsistemas-samba" title="Permanent link">&para;</a></h2>
+<p><strong>Samba</strong> es una implementación libre del protocolo SMB/CIFS de Microsoft para sistemas tipo UNIX. Permite que equipos con GNU/Linux, macOS o Unix actúen como <strong>servidores</strong> o <strong>clientes</strong> en redes Windows.</p>
 <figure>
-  <img src="imagenes/07/073/001.png" width="230" style="float: right;"/>
+  <img src="imagenes/06/01/002.png"/>
 </figure>
+
+<div class="admonition abstract">
+<p class="admonition-title">Importancia de Samba</p>
+<p>Samba se ha convertido en un estándar en redes donde conviven sistemas GNU/Linux y Windows, siendo uno de los logros más reconocidos del software libre.</p>
+</div>
+<figure>
+  <img src="imagenes/06/01/003.png" style="width:100%;max-width:100%;" />
+  <figcaption>Samba integrando sistemas Linux y Windows</figcaption>
+</figure>
+
+<h3 id="05integracionsistemas-samba-domain-controller-samba-dc">Samba Domain Controller (Samba DC)<a class="headerlink" href="#05integracionsistemas-samba-domain-controller-samba-dc" title="Permanent link">&para;</a></h3>
+<p><strong>Samba</strong> puede actuar como <strong>controlador de dominio (DC)</strong> compatible con Active Directory desde la versión 4.0 (2012). Opera en el nivel funcional de <strong>Windows Server 2008 R2</strong>, suficiente para gestionar redes con Windows 10/11.</p>
+<div class="admonition tip">
+<p class="admonition-title">Componentes de Samba DC</p>
+<ul>
+<li><strong>LDAP</strong>: Back-end de Active Directory.</li>
+<li><strong>Kerberos</strong>: Autenticación segura (MIT Kerberos).</li>
+<li><strong>Samba</strong>: Protocolo SMB/CIFS.</li>
+</ul>
+</div>
+<p>Los <strong>servicios de directorio</strong> almacenan y administran la información de los elementos de una red (usuarios, equipos, recursos). </p>
+<div class="admonition note">
+<p class="admonition-title">Recordatorio: conceptos de servicios de directorio</p>
+<p>Recuerda que en el tema de <strong>servicios de directorio</strong> ya se analizaron los conceptos fundamentales que se aplican aquí:<br />
+<strong>directorio</strong>, <strong>dominio</strong>, <strong>objeto</strong>, <strong>unidad organizativa</strong>, <strong>grupo</strong>, <strong>controlador de dominio</strong>, <strong>árbol</strong> y <strong>bosque</strong>.</p>
+</div>
+<h4 id="05integracionsistemas-docker-compose-y-samba">Docker Compose y Samba<a class="headerlink" href="#05integracionsistemas-docker-compose-y-samba" title="Permanent link">&para;</a></h4>
+<p><strong>Docker Compose</strong> permite definir y ejecutar aplicaciones multi-contenedor mediante un archivo <strong>YAML</strong>. Sustituye los largos comandos <code>docker run</code> por una configuración declarativa en <code>compose.yaml</code> o <code>docker-compose.yml</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Flujo de trabajo</p>
+<p>Contenedores → <code>docker run</code> → <code>docker compose</code> (archivo YAML)</p>
+</div>
+<p>Desde <strong>Docker Compose V2</strong>, el comando es <code>docker compose</code> (con espacio), no <code>docker-compose</code>. La herramienta se incluye con Docker Desktop y en instalaciones modernas de Docker Engine.</p>
+<h4 id="05integracionsistemas-ventajas-de-docker-compose">Ventajas de Docker Compose<a class="headerlink" href="#05integracionsistemas-ventajas-de-docker-compose" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Definición declarativa de servicios en YAML.</li>
+<li>Menos argumentos que <code>docker run</code>.</li>
+<li>Gestión sencilla de volúmenes y redes.</li>
+<li>Reproducibilidad del entorno.</li>
+</ul>
+<hr />
+<h2 id="05integracionsistemas-nfs-network-file-system">NFS (Network File System)<a class="headerlink" href="#05integracionsistemas-nfs-network-file-system" title="Permanent link">&para;</a></h2>
+<div style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 1.5em; width: 100%; box-sizing: border-box;">
+  <!-- Imagen a la izquierda, ocupa el mismo alto que el abstract, ajustable y responsiva -->
+  <div style="flex: 0 0 180px; min-width: 120px; display: flex; align-items: stretch;">
+    <img 
+      src="imagenes/07/073/001.png" 
+      alt="NFS Esquema"
+      style="height: 100%; width: auto; max-width: 170px; max-height: 280px; border-radius: 3px; display: block; box-sizing: border-box; object-fit: contain;"
+    />
+  </div>
+  <div style="flex: 1 1 350px; min-width: 0; display: flex; align-items: stretch;">
+    <div class="admonition abstract" style="height: 100%; margin: 0;">
+      <p class="admonition-title">¿Qué es NFS?</p>
+      <p>
+        <strong>NFS</strong> es un protocolo de nivel de aplicación que también da nombre al servicio que lo implementa. No es un sistema de archivos en sí, sino el <strong>protocolo</strong> que permite compartir datos entre equipos heterogéneos. Fue creado por <strong>Sun Microsystems en 1985</strong> y está implementado sobre <strong>XDR</strong> (capa de presentación) y <strong>ONC RPC</strong> (capa de sesión).
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+@media (max-width: 750px) {
+  .admonition.abstract, .admonition .admonition-title {
+    font-size: 1em;
+  }
+  /* Cambia a disposición vertical en pantallas pequeñas */
+  [style*="display: flex;"][style*="gap: 1.5em;"] {
+    flex-direction: column !important;
+    gap: 0.7em !important;
+  }
+  [style*="display: flex;"][style*="gap: 1.5em;"] > div {
+    min-width: 0 !important;
+    width: 100% !important;
+    align-items: flex-start !important;
+  }
+  [style*="display: flex;"][style*="gap: 1.5em;"] img {
+    max-width: 96vw !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 180px !important;
+    margin-bottom: 0.5em !important;
+  }
+}
+</style>
 
 <div class="admonition quote">
 <p class="admonition-title">Versiones de NFS</p>
@@ -5027,12 +5099,13 @@ Cabe recordar la diferencia entre la gestión de usuarios con los **Grupos de tr
 <p class="admonition-title">NFS en Windows</p>
 <p>Para usar NFS en Windows se requiere <strong>Windows 8 Enterprise</strong> o superior, o software de terceros.</p>
 </div>
-<p>Para ampliar la teoría de NFS (protocolo, versiones, opciones de <code>/etc/exports</code>): <a href="#067_nfs">Referencia NFS</a>.</p>
+<!-- Para ampliar la teoría de NFS (protocolo, versiones, opciones de `/etc/exports`): [Referencia NFS](067_NFS.md). -->
+
 <h3 id="05integracionsistemas-arquitectura-cliente-servidor">Arquitectura cliente-servidor<a class="headerlink" href="#05integracionsistemas-arquitectura-cliente-servidor" title="Permanent link">&para;</a></h3>
 <p>NFS se basa en la arquitectura cliente-servidor. El <strong>VFS</strong> (Virtual File System) es una capa de abstracción que permite a las aplicaciones acceder a distintos tipos de sistemas de archivos de forma uniforme.</p>
 <figure>
-  <img src="imagenes/07/073/002.png" width="750"/>
-  <figcaption>Esquema de red NFS</figcaption>
+  <img src="imagenes/07/073/nfs_architecture_modern.png" width="750" alt="Arquitectura de red NFS"/>
+  <figcaption>Esquema de arquitectura de red NFS: clientes (Windows, Linux, macOS) conectados al servidor a través de la LAN.</figcaption>
 </figure>
 
 <h3 id="05integracionsistemas-ventajas-y-desventajas-de-nfs">Ventajas y desventajas de NFS<a class="headerlink" href="#05integracionsistemas-ventajas-y-desventajas-de-nfs" title="Permanent link">&para;</a></h3>
@@ -5059,48 +5132,10 @@ Cabe recordar la diferencia entre la gestión de usuarios con los **Grupos de tr
 <li>Carencia en control de permisos: usa UID/GID del servidor (se suele combinar con LDAP).</li>
 </ul>
 <hr />
-<h2 id="05integracionsistemas-samba-domain-controller-samba-dc">Samba Domain Controller (Samba DC)<a class="headerlink" href="#05integracionsistemas-samba-domain-controller-samba-dc" title="Permanent link">&para;</a></h2>
-<p><strong>Samba</strong> puede actuar como <strong>controlador de dominio (DC)</strong> compatible con Active Directory desde la versión 4.0 (2012). Opera en el nivel funcional de <strong>Windows Server 2008 R2</strong>, suficiente para gestionar redes con Windows 10/11.</p>
-<div class="admonition tip">
-<p class="admonition-title">Componentes de Samba DC</p>
-<ul>
-<li><strong>LDAP</strong>: Back-end de Active Directory.</li>
-<li><strong>Kerberos</strong>: Autenticación segura (MIT Kerberos).</li>
-<li><strong>Samba</strong>: Protocolo SMB/CIFS.</li>
-</ul>
-</div>
-<p>Los <strong>servicios de directorio</strong> almacenan y administran la información de los elementos de una red (usuarios, equipos, recursos). Conceptos clave: directorio, dominio, objeto, unidad organizativa, grupo, controlador de dominio, árbol, bosque.</p>
-<hr />
-<h2 id="05integracionsistemas-docker-compose-y-samba">Docker Compose y Samba<a class="headerlink" href="#05integracionsistemas-docker-compose-y-samba" title="Permanent link">&para;</a></h2>
-<p><strong>Docker Compose</strong> permite definir y ejecutar aplicaciones multi-contenedor mediante un archivo <strong>YAML</strong>. Sustituye los largos comandos <code>docker run</code> por una configuración declarativa en <code>compose.yaml</code> o <code>docker-compose.yml</code>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Flujo de trabajo</p>
-<p>Contenedores → <code>docker run</code> → <code>docker compose</code> (archivo YAML)</p>
-</div>
-<p>Desde <strong>Docker Compose V2</strong>, el comando es <code>docker compose</code> (con espacio), no <code>docker-compose</code>. La herramienta se incluye con Docker Desktop y en instalaciones modernas de Docker Engine.</p>
-<h3 id="05integracionsistemas-ventajas-de-docker-compose">Ventajas de Docker Compose<a class="headerlink" href="#05integracionsistemas-ventajas-de-docker-compose" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Definición declarativa de servicios en YAML.</li>
-<li>Menos argumentos que <code>docker run</code>.</li>
-<li>Gestión sencilla de volúmenes y redes.</li>
-<li>Reproducibilidad del entorno.</li>
-</ul>
-<hr />
 <h2 id="05integracionsistemas-actividades">Actividades<a class="headerlink" href="#05integracionsistemas-actividades" title="Permanent link">&para;</a></h2>
-<hr />
 <p><a name="pr601"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>PR601. Práctica: Instalación y configuración de NFS en contenedor</strong>. (RA.6 // CE6d, CE6e, CE6f y CE6h // 1-10p).</li>
-</ul>
-<p>Instalación y configuración de NFS en un contenedor Ubuntu Server y acceso desde un cliente (contenedor Ubuntu o Windows). Creación de carpetas compartidas, configuración de <code>/etc/exports</code>, montaje en cliente y verificación del acceso.</p>
-<blockquote>
-<p>Consulta el enunciado completo aquí:</p>
-<p><a href="#practicanfs">Práctica: NFS en contenedor Ubuntu Server</a></p>
-</blockquote>
-<hr />
-<p><a name="pr602"></a></p>
-<ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>PR602. Práctica: Samba con Docker Compose</strong>. (RA.6 // CE6b, CE6e, CE6f, CE6g y CE6h // 1-10p).</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>PR601. Práctica: Samba con Docker Compose</strong>. (RA.6 // CE6b, CE6e, CE6f, CE6g y CE6h // 1-10p).</li>
 </ul>
 <p>Despliegue de un servidor Samba en contenedor usando <strong>Docker Compose</strong>. Acceso a la carpeta compartida desde clientes Windows y Linux. Configuración de permisos y verificación del funcionamiento.</p>
 <blockquote>
@@ -5108,6 +5143,26 @@ Cabe recordar la diferencia entre la gestión de usuarios con los **Grupos de tr
 <p><a href="#practicadockercomposesamba">Práctica: Samba con Docker Compose</a></p>
 </blockquote>
 <hr />
+<p><a name="pr602"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>PR602. Práctica: Instalación y configuración de NFS en contenedor</strong>. (RA.6 // CE6d, CE6e, CE6f y CE6h // 1-10p).</li>
+</ul>
+<p>Instalación y configuración de NFS en un contenedor Ubuntu Server y acceso desde un cliente (contenedor Ubuntu o Windows). Creación de carpetas compartidas, configuración de <code>/etc/exports</code>, montaje en cliente y verificación del acceso.</p>
+<blockquote>
+<p>Consulta el enunciado completo aquí:</p>
+<p><a href="#practicanfs">Práctica: NFS en contenedor Ubuntu Server</a></p>
+</blockquote>
+<hr />
+<!-- ### Situación de aprendizaje
+
+Partiendo de una empresa de consultoría **InfraTech S.L.** dedicada a la administración de sistemas, te encargan implementar servicios de recursos compartidos para **Comercial Mediterránea**, una empresa de distribución:
+
+- **Servidor**: Ubuntu Server con el software necesario.
+- **Clientes**: Windows 10.
+- **Usuarios**: Responsables de departamento (Gerencia, IT, Administración, Comercial, RRHH).
+
+Debes configurar el intercambio de archivos entre el servidor Linux y los clientes Windows. -->
+
 <p><a name="reto_integra"></a></p>
 <ul>
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>RG606. Reto Grupal: Recursos compartidos Samba y NFS en AWS</strong>. (RA.6 // CE6a, CE6b, CE6c, CE6d, CE6e, CE6f, CE6g y CE6h // 30p). Trabajo en grupos de 2-3 personas para desplegar en AWS un escenario con servidor Samba (Docker Compose) y servidor NFS, con clientes Linux y Windows para verificar el acceso a ambos recursos compartidos.<ul>
