@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/PracticaDockerComposeSamba.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/SambaDockerCompose_Detalle.html">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Práctica: Samba con Docker Compose - Administración de Sistemas Operativos</title>
+        <title>Samba con Docker Compose — Contenido avanzado - Administración de Sistemas Operativos</title>
       
     
     
@@ -65,11 +65,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Práctica: Samba con Docker Compose - Administración de Sistemas Operativos" >
+        <meta  property="og:title"  content="Samba con Docker Compose — Contenido avanzado - Administración de Sistemas Operativos" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaDockerComposeSamba.png" >
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/SambaDockerCompose_Detalle.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -77,15 +77,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/PracticaDockerComposeSamba.html" >
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/SambaDockerCompose_Detalle.html" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Práctica: Samba con Docker Compose - Administración de Sistemas Operativos" >
+        <meta  name="twitter:title"  content="Samba con Docker Compose — Contenido avanzado - Administración de Sistemas Operativos" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaDockerComposeSamba.png" >
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/SambaDockerCompose_Detalle.png" >
       
     
     
@@ -108,7 +108,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-samba-con-docker-compose" class="md-skip">
+        <a href="#samba-con-docker-compose-contenido-avanzado" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -143,7 +143,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica: Samba con Docker Compose
+              Samba con Docker Compose — Contenido avanzado
             
           </span>
         </div>
@@ -401,123 +401,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivos" class="md-nav__link">
+  <a href="#explicacion-detallada-de-parametros-y-conceptos" class="md-nav__link">
     <span class="md-ellipsis">
-      Objetivos
+      Explicación detallada de parámetros y conceptos
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#requisitos-previos" class="md-nav__link">
+  <a href="#como-tener-permisos-de-escritura-al-acceder-desde-el-host" class="md-nav__link">
     <span class="md-ellipsis">
-      Requisitos previos
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tareas-a-realizar" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tareas a realizar
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-1-preparar-el-entorno" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 1: Preparar el entorno
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-2-crear-el-archivo-composeyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 2: Crear el archivo compose.yaml
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-3-levantar-el-contenedor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 3: Levantar el contenedor
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-4-acceder-desde-el-cliente" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 4: Acceder desde el cliente
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Paso 4: Acceder desde el cliente">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#desde-windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      Desde Windows
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#desde-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Desde Linux
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-5-verificacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 5: Verificación
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-6-gestion-del-contenedor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 6: Gestión del contenedor
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entregables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Entregables
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#criterios-de-evaluacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Criterios de evaluación
+      Cómo tener permisos de escritura al acceder desde el host
     </span>
   </a>
   
@@ -538,199 +433,92 @@
                   
 
 
-<h1 id="practica-samba-con-docker-compose">Práctica: Samba con Docker Compose<a class="headerlink" href="#practica-samba-con-docker-compose" title="Permanent link">&para;</a></h1>
-<h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
-<p>Durante esta práctica aprenderás a desplegar un servidor <strong>Samba</strong> en contenedor usando <strong>Docker Compose</strong>. El objetivo es compartir carpetas entre sistemas heterogéneos (Linux y Windows) de forma sencilla y reproducible.</p>
-<p>Al finalizar esta práctica serás capaz de:</p>
+<h1 id="samba-con-docker-compose-contenido-avanzado">Samba con Docker Compose — Contenido avanzado<a class="headerlink" href="#samba-con-docker-compose-contenido-avanzado" title="Permanent link">&para;</a></h1>
+<p>Este documento amplía la <a href="PracticaDockerComposeSamba.html">Práctica: Samba con Docker Compose</a> con una explicación detallada de los parámetros del <code>compose.yaml</code> y cómo configurar permisos de escritura al acceder desde el host.</p>
+<hr />
+<h2 id="explicacion-detallada-de-parametros-y-conceptos">Explicación detallada de parámetros y conceptos<a class="headerlink" href="#explicacion-detallada-de-parametros-y-conceptos" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Utilizar <strong>Docker Compose</strong> para definir y ejecutar servicios multi-contenedor.</li>
-<li>Desplegar un contenedor Samba con configuración declarativa en YAML.</li>
-<li>Acceder a carpetas compartidas desde clientes Windows y Linux.</li>
-<li>Documentar el proceso de configuración.</li>
-</ul>
-<h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Docker</strong> instalado (Docker Engine o Docker Desktop).</li>
-<li><strong>Docker Compose V2</strong> disponible (incluido en Docker Desktop y en instalaciones recientes de Docker Engine).</li>
-<li>Cliente Windows o Linux para verificar el acceso.</li>
+<li><strong><code>volumes</code></strong><br />
+  Define qué carpeta del <strong>host</strong> se monta dentro del contenedor y en qué ruta.<br />
+  Sintaxis: <code>ruta_en_host:ruta_en_contenedor[:opciones]</code>.<br />
+  En el ejemplo, <code>$HOME/docker/samba/compartido</code> (tu carpeta local) se monta en <code>/sordata</code> dentro del contenedor. Todo lo que Samba escribe en <code>/sordata</code> se guarda realmente en tu disco en <code>compartido</code>.  </li>
+<li><strong><code>:z</code></strong> (o <code>:Z</code>): etiqueta SELinux para que el contenedor pueda acceder al volumen. Usa <code>:z</code> si el contenido puede ser compartido entre contenedores; <code>:Z</code> si es exclusivo de uno. En sistemas sin SELinux (p. ej. muchas instalaciones por defecto) no es obligatorio pero no perjudica.</li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Docker Compose V2</p>
-<p>Desde 2020, Docker Compose V2 se ejecuta como plugin de Docker: <code>docker compose</code> (con espacio). El comando antiguo <code>docker-compose</code> (con guion) está en desuso. Verifica con <code>docker compose version</code>.</p>
+<p class="admonition-title">¿Qué es SELinux?</p>
+<p><strong>SELinux (Security-Enhanced Linux)</strong> es un módulo de seguridad del núcleo de Linux que implementa un sistema de control de acceso obligatorio (<strong>MAC – Mandatory Access Control</strong>).<br />
+Su objetivo principal es limitar lo que los procesos y usuarios pueden hacer, incluso si son root, para reforzar la seguridad del sistema frente a accesos indebidos y ataques.<br />
+Esto puede afectar el acceso a volúmenes montados por contenedores, por lo que las opciones <code>:z</code> o <code>:Z</code> en los volúmenes ayudan a que el contenedor Samba pueda acceder correctamente a los datos bajo políticas SELinux estrictas.</p>
 </div>
-<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crear la estructura de directorios del proyecto.</li>
-<li>Crear el archivo <code>compose.yaml</code> (o <code>docker-compose.yml</code>) con el servicio Samba.</li>
-<li>Levantar el contenedor con <code>docker compose up -d</code>.</li>
-<li>Acceder a la carpeta compartida desde un cliente Windows y/o Linux.</li>
-<li>Verificar permisos y funcionamiento.</li>
-<li>Documentar el proceso con capturas de pantalla.</li>
-</ol>
-<blockquote>
-<p><strong>Recursos</strong></p>
-</blockquote>
-<div class="admonition note">
-<p class="admonition-title">Docker Compose y Samba en el vídeo</p>
-<p>La explicación de <strong>Docker Compose y Samba</strong> en el siguiente vídeo comienza a partir del <strong>minuto 8:05</strong>.</p>
-</div>
-<figure style="width: 100%; margin: 0; padding: 0;">
-  <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-    <iframe src="https://www.youtube.com/embed/KatK-fdktk4?start=485" title="Samba con Docker Compose" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-  </div>
-  <figcaption>Video tutorial: Samba con Docker Compose (Docker Compose Samba a partir del minuto 8:05)</figcaption>
-</figure>
-
-<h2 id="paso-1-preparar-el-entorno">Paso 1: Preparar el entorno<a class="headerlink" href="#paso-1-preparar-el-entorno" title="Permanent link">&para;</a></h2>
-<p>Crea el directorio del proyecto y la carpeta que se compartirá:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/docker/samba/compartido
-<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/docker/samba
-</code></pre></div>
-<p>Asigna permisos de escritura a la carpeta compartida:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>-R<span class="w"> </span><span class="nv">$HOME</span>/docker/samba/compartido
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Producción</p>
-<p>En un entorno de producción, usa permisos más restrictivos y usuarios/grupos específicos en lugar de <code>chmod 777</code>.</p>
-</div>
-<h2 id="paso-2-crear-el-archivo-composeyaml">Paso 2: Crear el archivo compose.yaml<a class="headerlink" href="#paso-2-crear-el-archivo-composeyaml" title="Permanent link">&para;</a></h2>
-<p>Crea el archivo de configuración. Puedes usar <code>compose.yaml</code> (recomendado) o <code>docker-compose.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">services</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">samba</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">samba</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dperson/samba:latest</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">      </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Europe/Madrid&#39;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;137:137/udp&quot;</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;138:138/udp&quot;</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;139:139/tcp&quot;</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;445:445/tcp&quot;</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="nt">read_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="nt">tmpfs</span><span class="p">:</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$HOME/docker/samba/compartido:/sordata:z</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-s</span><span class="nv"> </span><span class="s">&quot;Compartida;/sordata&quot;</span><span class="nv"> </span><span class="s">-n&#39;</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Parámetros principales</p>
-<table>
-<thead>
-<tr>
-<th>Parámetro</th>
-<th>Función</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>volumes</code></td>
-<td>Monta la carpeta local en <code>/sordata</code> dentro del contenedor. La opción <code>:z</code> permite</td>
-</tr>
-<tr>
-<td>compartir con SELinux.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>137-138</code></td>
-<td>Puertos NetBIOS (UDP/TCP).</td>
-</tr>
-<tr>
-<td><code>139-445</code></td>
-<td>Puertos SMB.</td>
-</tr>
-<tr>
-<td><code>restart: unless-stopped</code></td>
-<td>Reinicia el contenedor automáticamente salvo si se detuvo</td>
-</tr>
-<tr>
-<td>manualmente.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>command</code></td>
-<td><code>-s "NombreCompartido;ruta"</code> define el recurso compartido. <code>-n</code> habilita NetBIOS.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Contenido avanzado</p>
-<p>Si quieres profundizar en <strong>cada parámetro</strong> del <code>compose.yaml</code> (volúmenes, puertos NetBIOS/SMB, SELinux, <code>command</code>, <code>read_only</code>, etc.) y en <strong>cómo configurar permisos de escritura</strong> al acceder desde el host o desde clientes Windows/Linux, consulta el documento: <strong><a href="SambaDockerCompose_Detalle.html">Samba con Docker Compose — Contenido avanzado</a></strong>.</p>
-</div>
-<h2 id="paso-3-levantar-el-contenedor">Paso 3: Levantar el contenedor<a class="headerlink" href="#paso-3-levantar-el-contenedor" title="Permanent link">&para;</a></h2>
-<p>Ejecuta Docker Compose (comando actual, con espacio):</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Comando correcto</p>
-<p>Usa <code>docker compose</code> (con espacio), <strong>no</strong> <code>docker-compose</code> (con guion). El comando con guion corresponde a la versión antigua.</p>
-</div>
-<p>Verifica que el contenedor está en ejecución:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>ps
-<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>ps
-</code></pre></div>
-<h2 id="paso-4-acceder-desde-el-cliente">Paso 4: Acceder desde el cliente<a class="headerlink" href="#paso-4-acceder-desde-el-cliente" title="Permanent link">&para;</a></h2>
-<h3 id="desde-windows">Desde Windows<a class="headerlink" href="#desde-windows" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Abre el <strong>Explorador de archivos</strong>.</li>
-<li>En la barra de direcciones escribe: <code>\\IP_SERVIDOR\Compartida</code></li>
-<li>Sustituye <code>IP_SERVIDOR</code> por la IP del equipo donde corre Docker (ej: <code>192.168.1.100</code>).</li>
-<li>Si se solicita, usa credenciales genéricas (la imagen <code>dperson/samba</code> permite acceso sin autenticación por defecto en modo simple).</li>
-</ol>
-<h3 id="desde-linux">Desde Linux<a class="headerlink" href="#desde-linux" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Instalar cliente SMB si no está instalado</span>
-<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>cifs-utils
-<span class="linenos" data-linenos="3 "></span>
-<span class="linenos" data-linenos="4 "></span><span class="c1"># Montar la carpeta compartida</span>
-<span class="linenos" data-linenos="5 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/samba
-<span class="linenos" data-linenos="6 "></span>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>cifs<span class="w"> </span>//IP_SERVIDOR/Compartida<span class="w"> </span>/mnt/samba<span class="w"> </span>-o<span class="w"> </span>guest
-</code></pre></div>
-<p>O accede desde el gestor de archivos: <strong>Conectar al servidor</strong> → <code>smb://IP_SERVIDOR/Compartida</code></p>
-<h2 id="paso-5-verificacion">Paso 5: Verificación<a class="headerlink" href="#paso-5-verificacion" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea un archivo de texto de prueba en la carpeta compartida desde el servidor (en <code>$HOME/docker/samba/compartido</code>).</li>
-<li>Comprueba que el archivo es visible desde el cliente Windows o Linux.</li>
-<li>Crea un archivo desde el cliente y verifica que aparece en el servidor.</li>
-</ol>
-<h2 id="paso-6-gestion-del-contenedor">Paso 6: Gestión del contenedor<a class="headerlink" href="#paso-6-gestion-del-contenedor" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Detener el contenedor</span>
-<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>compose<span class="w"> </span>down
-<span class="linenos" data-linenos="3 "></span>
-<span class="linenos" data-linenos="4 "></span><span class="c1"># Ver logs</span>
-<span class="linenos" data-linenos="5 "></span>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>samba
-<span class="linenos" data-linenos="6 "></span>
-<span class="linenos" data-linenos="7 "></span><span class="c1"># Reiniciar</span>
-<span class="linenos" data-linenos="8 "></span>docker<span class="w"> </span>compose<span class="w"> </span>restart
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Persistencia de datos</p>
-<p>Los archivos en <code>$HOME/docker/samba/compartido</code> se conservan aunque se elimine el contenedor, ya que están en un volumen montado del host.</p>
-</div>
-<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Documento Markdown</strong> con:</li>
-</ol>
 <ul>
-<li>Capturas del archivo <code>compose.yaml</code> y de la salida de <code>docker compose ps</code>.</li>
-<li>Capturas del acceso desde Windows y/o Linux.</li>
-<li>Explicación de los parámetros utilizados.</li>
-<li>Problemas encontrados y soluciones aplicadas.</li>
+<li><strong>Puertos publicados (<code>ports</code>)</strong><br />
+  Los puertos del contenedor se exponen al host para que los clientes (Windows, Linux) puedan conectarse al Samba del contenedor.  </li>
+<li><strong>137/udp, 138/udp</strong>: <strong>NetBIOS Name Service</strong> y <strong>NetBIOS Datagram</strong>. Sirven para que los clientes encuentren el servidor por nombre (p. ej. en "Red" de Windows) sin tener que usar solo la IP.  </li>
+<li><strong>139/tcp</strong>: <strong>NetBIOS Session Service</strong>, usado por el protocolo SMB antiguo.  </li>
+<li>
+<p><strong>445/tcp</strong>: <strong>SMB directo sobre TCP</strong> (sin NetBIOS). Es el que suelen usar las versiones modernas de SMB.<br />
+  Sin publicar estos puertos, el acceso desde otro equipo a la carpeta compartida no funcionaría.</p>
+</li>
+<li>
+<p><strong><code>restart: unless-stopped</code></strong><br />
+  Política de reinicio del contenedor: Docker lo reinicia si se cae o si el host se reinicia, <strong>salvo</strong> que tú lo hayas parado con <code>docker compose stop</code> o <code>docker stop</code>. Así el recurso compartido queda disponible de forma continua.</p>
+</li>
+<li>
+<p><strong><code>command</code></strong><br />
+  Comando con el que arranca el proceso Samba dentro del contenedor (la imagen <code>dperson/samba</code> lo interpreta).  </p>
+</li>
+<li><strong><code>-s "Compartida;/sordata"</code></strong>: define un recurso compartido; el nombre que verán los clientes es <code>Compartida</code> y la ruta dentro del contenedor es <code>/sordata</code>. Puedes añadir más recursos con más <code>-s "Nombre;ruta"</code>.  </li>
+<li>
+<p><strong><code>-n</code></strong>: activa el servidor <strong>NetBIOS</strong> (necesario para que el servidor aparezca por nombre en la red y para que funcionen los puertos 137–139).</p>
+</li>
+<li>
+<p><strong><code>read_only: true</code></strong><br />
+  Deja el <strong>sistema de archivos raíz</strong> del contenedor en solo lectura (más seguro). Los <strong>volúmenes montados</strong> (como <code>/sordata</code>) siguen siendo escribibles si no se indica lo contrario, así que la carpeta compartida puede seguir teniendo lectura y escritura.</p>
+</li>
+<li>
+<p><strong><code>tmpfs: - /tmp</code></strong><br />
+  Monta un sistema de archivos temporal en RAM en <code>/tmp</code>. Samba puede usar <code>/tmp</code> para archivos temporales; al ser en memoria, no se persisten y se vacían al reiniciar el contenedor.</p>
+</li>
+<li>
+<p><strong><code>stdin_open: true</code> y <code>tty: true</code></strong><br />
+  Mantienen abiertos la entrada estándar y una terminal, lo que facilita que el contenedor no se cierre y que puedas usar <code>docker attach</code> si la imagen lo soporta.</p>
+</li>
 </ul>
+<hr />
+<h2 id="como-tener-permisos-de-escritura-al-acceder-desde-el-host">Cómo tener permisos de escritura al acceder desde el host<a class="headerlink" href="#como-tener-permisos-de-escritura-al-acceder-desde-el-host" title="Permanent link">&para;</a></h2>
+<p>Si al acceder desde Windows o Linux (o desde el propio host) la carpeta compartida es de solo lectura o no puedes crear/borrar archivos, suele deberse a <strong>permisos en la carpeta del host</strong> o a <strong>opciones del recurso compartido</strong>.</p>
+<ol>
+<li><strong>Permisos en la carpeta del host</strong><br />
+   La ruta que montas (p. ej. <code>$HOME/docker/samba/compartido</code>) debe ser escribible por el usuario con el que corre Samba dentro del contenedor (en esta imagen suele ser <code>root</code>). Para pruebas puedes usar:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span><span class="nv">$HOME</span>/docker/samba/compartido
+</code></pre></div>
+<p>En producción es mejor usar un grupo dedicado y <code>chown</code>/<code>chmod</code> adecuados en lugar de <code>777</code>.</p>
 <ol start="2">
-<li><strong>Archivo</strong> <code>compose.yaml</code> o <code>docker-compose.yml</code> utilizado.</li>
+<li>
+<p><strong>Asegurar que el recurso sea de lectura y escritura en Samba</strong><br />
+   La imagen <code>dperson/samba</code> en modo simple suele dar escritura por defecto. Si usas opciones avanzadas o otra imagen, revisa que el recurso no esté definido como solo lectura.</p>
+</li>
+<li>
+<p><strong>Compose con recurso compartido explícito de lectura/escritura</strong><br />
+   La imagen <code>dperson/samba</code> permite definir en <code>-s</code> si el recurso es solo lectura. La sintaxis es:</p>
+</li>
 </ol>
-<h2 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Creación correcta de la estructura de directorios.</li>
-<li>Archivo compose.yaml válido y funcional.</li>
-<li>Contenedor Samba en ejecución.</li>
-<li>Acceso correcto desde al menos un cliente (Windows o Linux).</li>
-<li>Documentación completa con evidencias.</li>
-</ul>
+<p><code>-s "nombre;ruta;browse;readonly;guest;users;admins;writelist;comment"</code></p>
+<p>Para <strong>lectura y escritura</strong>, pon <strong><code>readonly</code> en <code>no</code></strong>. Ejemplo con volumen en modo lectura/escritura explícito (<code>:rw,z</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$HOME/docker/samba/compartido:/sordata:rw,z</span>
+<span class="linenos" data-linenos="3 "></span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-s</span><span class="nv"> </span><span class="s">&quot;Compartida;/sordata;yes;no&quot;</span><span class="nv"> </span><span class="s">-n&#39;</span>
+</code></pre></div>
+<p>Aquí <code>yes</code> es <em>browse</em> (visible en la red) y <code>no</code> es <em>readonly</em> (recurso escribible). El resto de parámetros quedan por defecto.</p>
+<ol start="4">
+<li><strong>Comprobar desde el host</strong><br />
+   Tras <code>docker compose up -d</code>, verifica que puedes escribir en la misma carpeta desde el host:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>touch<span class="w"> </span><span class="nv">$HOME</span>/docker/samba/compartido/prueba_desde_host.txt
+<span class="linenos" data-linenos="2 "></span>ls<span class="w"> </span>-la<span class="w"> </span><span class="nv">$HOME</span>/docker/samba/compartido
+</code></pre></div>
+<p>Si eso funciona pero desde el cliente Samba (Windows/Linux) no, el problema está en la configuración o permisos de Samba; si no puedes escribir ni desde el host, el fallo está en los permisos del directorio (<code>chmod</code>/<code>chown</code>).</p>
 
 
 
