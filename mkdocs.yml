@@ -6,9 +6,10 @@ nav:
   - "Inicio": "index.md"
   - "1.- ShellScripting": "01ShellScript.md"
   - "2.- PowerShell": "02PowerShell.md"
-  # - "3.- UD3: Administración de procesos del sistema":
-  # - "4.- Servicios de Directorio Libres: LDAP":
-  # - "5.- Servicios de Directorio Propietarios: Active Directory":
+  - "3.- Servicios de acceso remoto": "03AccesoRemoto.md"
+  - "4.- Servicios de Directorio": "04ActiveDirectory.md"
+  - "5.- Integración de Sistemas": "05IntegracionSistemas.md"
+  - "6.- Procesos del Sistema": "06Procesos.md"
   # - "6.- Integración de sistemas operativos en red libres y propietarios":
   # - "7.- Información del sistema":
   # - "8.- Servicios de acceso y administración remota":

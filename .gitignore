@@ -1,0 +1,8 @@
+# Build output (mkdocs gh-deploy sube esto a gh-pages por separado)
+site/
+
+# Cache de plugins (p. ej. social)
+.cache/
+
+# macOS
+.DS_Store

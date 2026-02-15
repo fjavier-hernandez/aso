@@ -715,10 +715,10 @@ Crea una **función** para cada tarea realizada en este script.
 
 <a name="RETO_GRUPAL"></a>
 
-* :material-trophy: **RG214**. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h y CE7i // 30p). Trabajo en grupos de 2 personas para crear un sistema completo de gestión de servicios de Windows que integre todos los conceptos aprendidos durante la unidad.
+* :material-trophy: **RG214**. (RA.7 // CE7a, CE7b, CE7c, CE7d, CE7e, CE7f, CE7g, CE7h y CE7i // 30p). Trabajo en grupos de 2-3 personas para crear un sistema completo de gestión de servicios de Windows que integre todos los conceptos aprendidos durante la unidad.
     * **[RETO GRUPAL: Sistema de Gestión de Servicios de Windows](RetoGrupalPowerShell.md)**.  
-    * [Consulta aquí la solución detallada del reto grupal](SolucionRetoGrupalPowerShell.md)
-* :clipboard: **Rúbrica de Evaluación:** Consulta los criterios de evaluación detallados en la [Rúbrica de Evaluación del Reto PowerShell](Rubrica_Evaluacion_RetoPowerShell.md).
+    <!-- * [Consulta aquí la solución detallada del reto grupal](SolucionRetoGrupalPowerShell.md) -->
+<!-- * :clipboard: **Rúbrica de Evaluación:** Consulta los criterios de evaluación detallados en la [Rúbrica de Evaluación del Reto PowerShell](Rubrica_Evaluacion_RetoPowerShell.md). -->
 
 
 ---

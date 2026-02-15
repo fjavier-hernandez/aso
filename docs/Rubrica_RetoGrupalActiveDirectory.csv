@@ -1,0 +1,28 @@
+criterion,level,level_description,score
+Dominio AD instalado y DC funcionando,No conseguido,No se ha instalado el dominio o el DC no funciona,0
+Dominio AD instalado y DC funcionando,Parcial,Instalado con errores o sin configurar correctamente,1.5
+Dominio AD instalado y DC funcionando,Conseguido,Dominio y DC instalados y funcionando correctamente,3
+OUs creadas correctamente,No conseguido,OUs no creadas o estructura incorrecta,0
+OUs creadas correctamente,Parcial,Solo parte de las OUs creadas o mal ubicadas,1
+OUs creadas correctamente,Conseguido,OUs TechCorp y departamentos creados correctamente,2
+20 usuarios creados desde CSV en sus OUs,No conseguido,Menos de 15 usuarios o no desde CSV,0
+20 usuarios creados desde CSV en sus OUs,Parcial,Entre 15 y 19 usuarios o con errores en OUs,2.5
+20 usuarios creados desde CSV en sus OUs,Conseguido,20 usuarios creados desde CSV en sus OUs correctas,5
+Grupos creados y usuarios asignados,No conseguido,Grupos no creados o usuarios no asignados,0
+Grupos creados y usuarios asignados,Parcial,Grupos creados pero asignación incompleta,1.5
+Grupos creados y usuarios asignados,Conseguido,Grupos por departamento creados y todos los usuarios asignados,3
+Cliente unido al dominio y RDP funcionando,No conseguido,Cliente no unido o RDP no operativo,0
+Cliente unido al dominio y RDP funcionando,Parcial,Unido al dominio pero RDP sin configurar o con fallos,1.5
+Cliente unido al dominio y RDP funcionando,Conseguido,Cliente unido al dominio y RDP funcionando para Domain Users,3
+Recursos compartidos y carpetas personales,No conseguido,Recursos no creados o carpetas personales sin configurar,0
+Recursos compartidos y carpetas personales,Parcial,Recursos creados pero permisos o carpetas personales incompletos,2.5
+Recursos compartidos y carpetas personales,Conseguido,TechCorp_Users y TechCorp_Datos compartidos con carpetas personales asignadas,5
+GPO de contraseñas y bloqueo configuradas,No conseguido,GPO no configuradas,0
+GPO de contraseñas y bloqueo configuradas,Parcial,Solo una de las dos configurada o con valores incorrectos,1.5
+GPO de contraseñas y bloqueo configuradas,Conseguido,Directiva de contraseñas y bloqueo configuradas según enunciado,3
+Verificación exitosa y documentación,No conseguido,Sin documentación o verificación no realizada,0
+Verificación exitosa y documentación,Parcial,Documentación incompleta o verificación parcial,1.5
+Verificación exitosa y documentación,Conseguido,Documento con capturas y script de verificación ejecutado correctamente,3
+Uso de PowerShell automatización,No conseguido,No se han usado scripts o todo manual,0
+Uso de PowerShell automatización,Parcial,Scripts usados de forma parcial o con errores,1.5
+Uso de PowerShell automatización,Conseguido,Scripts 02-CrearEstructuraAD y 04-RecursosCompartidos utilizados correctamente,3
