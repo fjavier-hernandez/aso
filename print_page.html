@@ -354,6 +354,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06Procesos.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.- Procesos del Sistema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -427,6 +447,15 @@
   <a href="#05integracionsistemas" class="md-nav__link">
     <span class="md-ellipsis">
       5.- Integración de Sistemas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06procesos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.- Procesos del Sistema
     </span>
   </a>
   
@@ -589,7 +618,7 @@
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="#.">6. Administración de Procesos del Sistema</a></td>
+<td style="text-align: left;"><a href="#06procesos">6. Administración de Procesos del Sistema</a></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
@@ -5170,7 +5199,1243 @@ Debes configurar el intercambio de archivos entre el servidor Linux y los client
 </ul>
 </li>
 </ul>
-<hr /></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+<hr /></section><section class="print-page" id="06procesos" heading-number="7"><h1 id="06procesos-procesos-del-sistema">Procesos del Sistema<a class="headerlink" href="#06procesos-procesos-del-sistema" title="Permanent link">&para;</a></h1>
+<p>En esta unidad se trabaja la <strong>administración de procesos</strong>: qué son, cómo los planifica el sistema operativo, la relación con los hilos, y cómo listar, priorizar o finalizar procesos desde Shell y PowerShell, así como el arranque del sistema y la administración de servicios.</p>
+<h2 id="06procesos-propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#06procesos-propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>En esta unidad vamos a trabajar el <strong>RA2 de ASO</strong>:</p>
+<blockquote>
+<p><strong>RA2.</strong> <em>Administra procesos del sistema describiéndolos y aplicando criterios de seguridad y eficiencia.</em></p>
+</blockquote>
+<h3 id="06procesos-criterios-de-evaluacion-ra2">Criterios de evaluación (RA2)<a class="headerlink" href="#06procesos-criterios-de-evaluacion-ra2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CE2a</strong>: Se han descrito los procesos del sistema, sus estados y la función del planificador.</li>
+<li><strong>CE2b</strong>: Se han diferenciado procesos e hilos y los mecanismos de sincronización.</li>
+<li><strong>CE2c</strong>: Se han gestionado procesos desde el Shell (listar, prioridad, primer/segundo plano, finalizar).</li>
+<li><strong>CE2d</strong>: Se han gestionado procesos desde PowerShell.</li>
+<li><strong>CE2e</strong>: Se ha descrito el arranque del sistema y el papel de los servicios (systemd).</li>
+<li><strong>CE2f</strong>: Se han administrado servicios con systemctl (iniciar, detener, habilitar, deshabilitar, estado).</li>
+<li><strong>CE2g</strong>: Se ha desarrollado una herramienta de gestión del sistema (script con interfaz) y se ha documentado su uso.</li>
+</ul>
+<h2 id="06procesos-contenidos">Contenidos<a class="headerlink" href="#06procesos-contenidos" title="Permanent link">&para;</a></h2>
+<p><strong>Bloque 1 — Planificador y procesos (Sesión 1)</strong><br />
+Tipos y estados de procesos. BCP. Multiprogramación. Algoritmos de planificación (FIFO, SJF, SRTF, prioridades, Round Robin).</p>
+<p><strong>Bloque 2 — Hilos y sincronización (Sesión 1–2)</strong><br />
+Definición de hilo. Multihilo. Señales, mensajes, exclusión mutua. Herramientas gráficas (monitor del sistema, monitor de recursos).</p>
+<p><strong>Bloque 3 — Gestión de procesos en Shell (Sesión 2)</strong><br />
+Comandos <code>ps</code>, <code>pstree</code>, <code>top</code>. Procesos en primer y segundo plano. <code>jobs</code>, <code>fg</code>, <code>bg</code>. Prioridad con <code>renice</code>. Finalizar procesos con <code>kill</code>.</p>
+<p><strong>Bloque 4 — Gestión de procesos en PowerShell (Sesión 2–3)</strong><br />
+<code>Get-Process</code>, <code>Stop-Process</code>, <code>Start-Process</code>. Filtros y propiedades. Procesos en remoto.</p>
+<p><strong>Bloque 5 — Arranque del sistema y servicios (Sesión 3)</strong><br />
+Secuencia de arranque (BIOS, bootloader, kernel, init). GRUB. Windows BCD. Daemons y systemd.</p>
+<p><strong>Bloque 6 — Administración de servicios (Sesión 3–4)</strong><br />
+<code>systemctl start/stop/restart</code>, <code>enable/disable</code>, <code>status</code>. Unidades, destinos, enmascarar.</p>
+<div class="admonition question">
+<p class="admonition-title">Actividades iniciales</p>
+<ol>
+<li>¿Qué es un proceso y qué información guarda el sistema para cada uno?</li>
+<li>¿Qué diferencia hay entre proceso en primer plano y en segundo plano?</li>
+<li>¿Qué es un hilo y por qué puede interesar el multihilo?</li>
+<li>Nombra tres comandos para ver procesos en Linux.</li>
+<li>¿Qué es un daemon o servicio y cuándo se inicia?</li>
+</ol>
+</div>
+<h3 id="06procesos-programacion-de-aula-4-sesiones">Programación de Aula (4 sesiones)<a class="headerlink" href="#06procesos-programacion-de-aula-4-sesiones" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Planificador, estados, algoritmos. Hilos y sincronización.</td>
+<td>Teoría y ejemplos de planificación</td>
+<td>CE2a, CE2b</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Gestión de procesos en Shell y PowerShell.</td>
+<td>Prácticas en terminal</td>
+<td>CE2c, CE2d</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Arranque del sistema. Systemd y servicios.</td>
+<td>Comandos systemctl, estados</td>
+<td>CE2e, CE2f</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Reto:</strong> Gestor del sistema con Python y tkinter.</td>
+<td><a href="#retogrupalprocesos">Reto Procesos</a></td>
+<td>CE2g</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="06procesos-1-planificador-procesos-tipos-estados-y-estructura">1. Planificador: procesos, tipos, estados y estructura<a class="headerlink" href="#06procesos-1-planificador-procesos-tipos-estados-y-estructura" title="Permanent link">&para;</a></h2>
+<p><strong>Un proceso es una instancia de un programa en ejecución.</strong> Cada vez que se lanza un programa se crea un proceso; si se lanza el mismo programa dos veces, hay dos procesos distintos.</p>
+<p>Cuando el usuario o una aplicación pide la ejecución de un programa, el sistema operativo debe proveer los recursos necesarios: espacio en memoria para instrucciones y datos, y control de ficheros y dispositivos de E/S.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>La <strong>CPU</strong> ejecuta un solo proceso en cada instante. Para optimizar el rendimiento se usan técnicas como la <em>multiprogramación</em> y el <em>multihilado</em>.</p>
+</div>
+<p><strong>La multiprogramación</strong> es una técnica de multiplexación que permite la ejecución "simultánea" de múltiples procesos en un único procesador: en realidad hay un único proceso ejecutándose en el procesador a la vez, pero se produce una ilusión de paralelismo.</p>
+<figure>
+  <img src="imagenes/03/031/001.png" width="850" alt="Ejemplo de multiprogramación"/>
+  <figcaption>Ejemplo de multiprogramación</figcaption>
+</figure>
+
+<h3 id="06procesos-estructura">Estructura<a class="headerlink" href="#06procesos-estructura" title="Permanent link">&para;</a></h3>
+<p>Los procesos se estructuran de <strong>forma jerárquica</strong>. El sistema operativo lanza el primero y a partir de este se crean los demás.</p>
+<p>El sistema operativo mantiene una <strong>estructura de control</strong> por proceso, llamada <strong>BCP</strong> (Bloque de Control de Proceso), que suele contener:</p>
+<ol>
+<li><strong>PID</strong> (Process IDentifier): identificador único del proceso.</li>
+<li><strong>Estado del proceso</strong>: listo, en ejecución o bloqueado.</li>
+<li><strong>Registros del procesador</strong>: para restaurar el estado en cada conmutación.</li>
+<li><strong>Gestión de memoria</strong>: espacio de direcciones y memoria asignada.</li>
+<li><strong>Ficheros</strong> con los que opera el proceso.</li>
+<li><strong>Procesadores</strong> en los que puede ejecutarse (en sistemas multiprocesador).</li>
+<li>En sistemas tipo UNIX: <strong>proceso padre</strong> y relaciones entre procesos.</li>
+<li><strong>Estadísticas</strong>: tiempo de lanzamiento, tiempo activo, etc.</li>
+</ol>
+<figure>
+  <img src="imagenes/03/031/002.png" width="350" alt="Componentes del BCP"/>
+  <figcaption>Componentes del BCP</figcaption>
+</figure>
+
+<h3 id="06procesos-tipos-de-procesos">Tipos de procesos<a class="headerlink" href="#06procesos-tipos-de-procesos" title="Permanent link">&para;</a></h3>
+<p>Según la interacción con el usuario:</p>
+<ul>
+<li><strong>Primer plano (foreground)</strong>: requieren intervención del usuario.</li>
+<li><strong>Segundo plano (background)</strong>: se ejecutan sin intervención directa.</li>
+</ul>
+<p>Según el modo de ejecución:</p>
+<ul>
+<li><strong>Modo kernel</strong>: acceso privilegiado; la mayoría de procesos del SO.</li>
+<li><strong>Modo usuario</strong>: procesos de usuario y aplicaciones.</li>
+</ul>
+<p>Según quién los ejecuta:</p>
+<ul>
+<li><strong>Procesos del sistema</strong>: lanzados por el SO.</li>
+<li><strong>Procesos de usuario</strong>: lanzados por un usuario.</li>
+</ul>
+<p>También se habla de procesos <strong>monohilo</strong> o <strong>multihilo</strong>.</p>
+<h3 id="06procesos-estados">Estados<a class="headerlink" href="#06procesos-estados" title="Permanent link">&para;</a></h3>
+<p>Tres estados básicos:</p>
+<ul>
+<li><strong>En ejecución</strong>: el proceso tiene asignada la CPU.</li>
+<li><strong>Listo (en espera)</strong>: preparado para recibir el procesador; suele respetarse un orden de llegada.</li>
+<li><strong>Bloqueado</strong>: esperando un recurso para poder continuar.</li>
+</ul>
+<figure>
+  <img src="imagenes/03/031/003.png" width="650" alt="Estados de un proceso"/>
+  <figcaption>Estados en los que puede estar un proceso</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pueden existir más estados intermedios. Otros útiles: <strong>Parado</strong> (pausado por señal, p. ej. sleep), <strong>Zombie</strong> (hijo terminado que no puede comunicarse con el padre).</p>
+</div>
+<h3 id="06procesos-transiciones-de-estados">Transiciones de estados<a class="headerlink" href="#06procesos-transiciones-de-estados" title="Permanent link">&para;</a></h3>
+<p>Al ejecutar un programa:</p>
+<ol>
+<li>Se crea una entrada en la tabla de procesos.</li>
+<li>Se asigna un PID.</li>
+<li>Se asignan recursos y memoria.</li>
+<li>Se cargan páginas del programa en RAM.</li>
+<li>El proceso pasa a la lista de espera para que el planificador le conceda el procesador.</li>
+</ol>
+<p>El planificador cambia los estados según el algoritmo, el quantum o la disponibilidad de recursos. La transición que <strong>no debe ocurrir</strong> (si el planificador es correcto) es pasar directamente de <strong>En espera</strong> o <strong>Bloqueado</strong> a <strong>En ejecución</strong> sin pasar por la concesión del planificador.</p>
+<figure>
+  <img src="imagenes/03/031/004.png" width="650" alt="Transiciones de estados"/>
+  <figcaption>Transiciones de estados de un proceso</figcaption>
+</figure>
+
+<h3 id="06procesos-el-planificador">El planificador<a class="headerlink" href="#06procesos-el-planificador" title="Permanent link">&para;</a></h3>
+<p>El planificador decide <strong>qué proceso o hilo</strong> usa el procesador y <strong>cuánto tiempo</strong>. Los algoritmos suelen buscar:</p>
+<ul>
+<li>Equidad, eficacia, tiempo de respuesta y de regreso, y rendimiento.</li>
+</ul>
+<p><strong>Tipos de algoritmos de planificación:</strong></p>
+<h4 id="06procesos-fcfsfifo"><strong>FCFS/FIFO</strong><a class="headerlink" href="#06procesos-fcfsfifo" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Primero en llegar, primero en ser servido; no expulsivo; fácil pero tiempo de espera alto. </li>
+<li>En <strong>FIFO</strong>, el proceso que <strong>solicita la CPU primero</strong> es el primero en obtenerla. Es el algoritmo de planificación más simple: se mantiene una cola por orden de llegada y el planificador asigna la CPU al proceso que está al frente de la cola. No es expulsivo: un proceso no es interrumpido hasta que termina su ráfaga de CPU (o se bloquea por E/S).</li>
+</ul>
+<p><strong>Características</strong></p>
+<ul>
+<li>No expulsivo: el proceso mantiene la CPU hasta que termina su tiempo de ráfaga o se bloquea.</li>
+<li>Los trabajos se ejecutan siempre por orden de llegada.</li>
+<li>Fácil de implementar y de entender.</li>
+<li>Inconveniente: el tiempo de espera medio puede ser alto, sobre todo si primero llegan procesos largos.</li>
+</ul>
+<p><strong>Ejemplo numérico</strong></p>
+<p>Supongamos cuatro procesos que llegan en el orden P1, P2, P3, P4, con estos tiempos de ráfaga de CPU (en unidades de tiempo):</p>
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Tiempo de ráfaga (CPU)</th>
+<th>Orden de llegada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>2</td>
+<td>1º</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>4</td>
+<td>2º</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>3</td>
+<td>3º</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>3</td>
+<td>4º</td>
+</tr>
+</tbody>
+</table>
+<p>Con FIFO se ejecutan estrictamente en ese orden: primero P1, luego P2, luego P3, luego P4.</p>
+<figure>
+  <img src="imagenes/03/031/ejemplo_fifo.png" width="750" alt="Ejemplo FIFO - diagrama Gantt"/>
+  <figcaption>Diagrama Gantt del ejemplo FIFO: P1 (0–2), P2 (2–6), P3 (6–9), P4 (9–12)</figcaption>
+</figure>
+
+<p><strong>Cálculo de tiempos</strong></p>
+<ul>
+<li><strong>Tiempo de espera</strong> (waiting time): tiempo que el proceso pasa en la cola de listos antes de empezar a ejecutarse.</li>
+<li><strong>Tiempo de retorno</strong> (turnaround time): tiempo desde la llegada hasta que el proceso termina (espera + tiempo de CPU).</li>
+</ul>
+<p>En este ejemplo:</p>
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Tiempo de espera</th>
+<th>Tiempo de retorno</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>0</td>
+<td>0 + 2 = <strong>2</strong></td>
+</tr>
+<tr>
+<td>P2</td>
+<td>2</td>
+<td>2 + 4 = <strong>6</strong></td>
+</tr>
+<tr>
+<td>P3</td>
+<td>6</td>
+<td>6 + 3 = <strong>9</strong></td>
+</tr>
+<tr>
+<td>P4</td>
+<td>9</td>
+<td>9 + 3 = <strong>12</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Tiempo de espera medio</strong> = (0 + 2 + 6 + 9) / 4 = <strong>17/4 = 4,25</strong> unidades.</li>
+<li><strong>Tiempo de retorno medio</strong> = (2 + 6 + 9 + 12) / 4 = <strong>29/4 = 7,25</strong> unidades.</li>
+</ul>
+<p>P1 no espera; P2, P3 y P4 esperan más porque llegan después y hay que esperar a que terminen los anteriores. Si el primer proceso tuviera un tiempo de CPU muy grande, los demás sufrirían un tiempo de espera alto (efecto "convoy").</p>
+<h4 id="06procesos-sjf-shortest-job-first"><strong>SJF</strong> (Shortest Job First)<a class="headerlink" href="#06procesos-sjf-shortest-job-first" title="Permanent link">&para;</a></h4>
+<ul>
+<li>El de menor tiempo de ejecución primero; no expulsivo; minimiza tiempo de espera medio pero requiere conocer o estimar las ráfagas.</li>
+<li>Se selecciona para ejecutar el proceso <strong>con menor tiempo de ráfaga</strong> (duración de CPU) entre los que están listos. No es expulsivo: una vez que un proceso tiene la CPU, la mantiene hasta terminar su ráfaga.</li>
+</ul>
+<p><strong>Características</strong></p>
+<ul>
+<li>No expulsivo.</li>
+<li>Minimiza el tiempo de espera medio cuando los trabajos tienen duraciones muy distintas.</li>
+<li>Requiere conocer (o estimar) el tiempo de CPU de cada proceso de antemano.</li>
+</ul>
+<p><strong>Ejemplo numérico</strong></p>
+<p>Mismos cuatro procesos que en FIFO, ordenados ahora por <strong>tiempo de ráfaga</strong> (de menor a mayor): P1(2), P3(3), P4(3), P2(4).</p>
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Tiempo de ráfaga (CPU)</th>
+<th>Orden de ejecución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>2</td>
+<td>1º</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>3</td>
+<td>2º</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>3</td>
+<td>3º</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>4</td>
+<td>4º</td>
+</tr>
+</tbody>
+</table>
+<figure>
+  <img src="imagenes/03/031/ejemplo_sjf.png" width="750" alt="Ejemplo SJF - diagrama Gantt"/>
+  <figcaption>Diagrama Gantt SJF: P1 (0–2), P3 (2–5), P4 (5–8), P2 (8–12)</figcaption>
+</figure>
+
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Tiempo de espera</th>
+<th>Tiempo de retorno</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>P2</td>
+<td>8</td>
+<td><strong>12</strong></td>
+</tr>
+<tr>
+<td>P3</td>
+<td>2</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td>P4</td>
+<td>5</td>
+<td><strong>8</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Tiempo de espera medio</strong> = (0 + 8 + 2 + 5) / 4 = <strong>15/4 = 3,75</strong> unidades.</li>
+<li><strong>Tiempo de retorno medio</strong> = (2 + 12 + 5 + 8) / 4 = <strong>27/4 = 6,75</strong> unidades.</li>
+</ul>
+<hr />
+<h4 id="06procesos-srtf-shortest-remaining-time-first"><strong>SRTF</strong> (Shortest Remaining Time First)<a class="headerlink" href="#06procesos-srtf-shortest-remaining-time-first" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Variante expulsiva de SJF: el de menor tiempo restante primero; expulsivo; buenos tiempos de espera cuando llegan trabajos cortos.</li>
+<li>Igual que SJF, pero <strong>expulsivo</strong>: si llega un proceso cuyo tiempo restante de CPU es <strong>menor</strong> que el del proceso que está ejecutando, se le cede la CPU al nuevo. Se elige siempre el proceso con <strong>menor tiempo restante</strong> entre los listos.</li>
+</ul>
+<p><strong>Características</strong></p>
+<ul>
+<li>Expulsivo.</li>
+<li>Suele dar buenos tiempos de espera cuando hay trabajos cortos que llegan después.</li>
+<li>Requiere conocer (o estimar) el tiempo de CPU y las llegadas.</li>
+</ul>
+<p><strong>Ejemplo numérico</strong></p>
+<p>Cuatro procesos con <strong>llegada</strong> y <strong>ráfaga</strong>: P1(llegada 0, ráfaga 8), P2(1, 4), P3(2, 2), P4(3, 1). En cada instante se ejecuta el de <strong>menor tiempo restante</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Llegada</th>
+<th>Ráfaga (CPU)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Orden de ejecución: 0–1 P1; 1–2 P2 (4 &lt; 7 restante de P1); 2–3 P3 (2 &lt; 4); 3–4 P4 (1 &lt; 2); 4–6 P3; 6–10 P2; 10–17 P1.</p>
+<figure>
+  <img src="imagenes/03/031/ejemplo_srtf.png" width="750" alt="Ejemplo SRTF - diagrama Gantt"/>
+  <figcaption>Diagrama Gantt SRTF: espera (rosa) y ejecución (rojo) por proceso</figcaption>
+</figure>
+
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Tiempo de espera</th>
+<th>Tiempo de retorno</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>9</td>
+<td><strong>17</strong></td>
+</tr>
+<tr>
+<td>P2</td>
+<td>5</td>
+<td><strong>9</strong></td>
+</tr>
+<tr>
+<td>P3</td>
+<td>2</td>
+<td><strong>4</strong></td>
+</tr>
+<tr>
+<td>P4</td>
+<td>0</td>
+<td><strong>1</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Tiempo de espera medio</strong> = (9 + 5 + 2 + 0) / 4 = <strong>4</strong> unidades.</li>
+<li><strong>Tiempo de retorno medio</strong> = (17 + 9 + 4 + 1) / 4 = <strong>7,75</strong> unidades.</li>
+</ul>
+<hr />
+<h4 id="06procesos-prioridades"><strong>Prioridades</strong><a class="headerlink" href="#06procesos-prioridades" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Los de mayor prioridad se ejecutan antes; puede ser expulsivo o no según la política; flexible para sistemas con prioridades (tiempo real, interactivos).</li>
+<li>Cada proceso tiene una <strong>prioridad</strong> (por ejemplo, un número: menor = más prioridad). El planificador elige el proceso listo con <strong>mayor prioridad</strong>. Si es <strong>no expulsivo</strong>, una vez en CPU termina su ráfaga; si es <strong>expulsivo</strong>, al llegar uno de mayor prioridad se le cede la CPU.</li>
+</ul>
+<p><strong>Prioridades no expulsivo</strong></p>
+<p>Mismos cuatro procesos con <strong>prioridad</strong> (1 = máxima): P1(prior 3, ráfaga 2), P2(1, 4), P3(2, 3), P4(4, 3). Orden de ejecución: P2 → P3 → P1 → P4.</p>
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Prioridad</th>
+<th>Ráfaga</th>
+<th>Orden</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P2</td>
+<td>1</td>
+<td>4</td>
+<td>1º</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>2</td>
+<td>3</td>
+<td>2º</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>3</td>
+<td>2</td>
+<td>3º</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>4</td>
+<td>3</td>
+<td>4º</td>
+</tr>
+</tbody>
+</table>
+<figure>
+  <img src="imagenes/03/031/ejemplo_prior_noexp.png" width="750" alt="Prioridades no expulsivo - Gantt"/>
+  <figcaption>Prioridades no expulsivo: P2 (0–4), P3 (4–7), P1 (7–9), P4 (9–12)</figcaption>
+</figure>
+
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Tiempo de espera</th>
+<th>Tiempo de retorno</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>7</td>
+<td><strong>9</strong></td>
+</tr>
+<tr>
+<td>P2</td>
+<td>0</td>
+<td><strong>4</strong></td>
+</tr>
+<tr>
+<td>P3</td>
+<td>4</td>
+<td><strong>7</strong></td>
+</tr>
+<tr>
+<td>P4</td>
+<td>9</td>
+<td><strong>12</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prioridades expulsivo</strong></p>
+<p>P1(0, 5, prior 2), P2(1, 3, prior 1), P3(2, 2, prior 3). Al llegar P2 en 1, tiene prior 1 &gt; 2, así que <strong>expulsa</strong> a P1. Orden: 0–1 P1; 1–4 P2; 4–9 P1; 9–11 P3.</p>
+<figure>
+  <img src="imagenes/03/031/ejemplo_prior_exp.png" width="750" alt="Prioridades expulsivo - Gantt"/>
+  <figcaption>Prioridades expulsivo: llegadas en 0, 1 y 2; P2 interrumpe a P1</figcaption>
+</figure>
+
+<hr />
+<h4 id="06procesos-round-robin"><strong>Round Robin</strong><a class="headerlink" href="#06procesos-round-robin" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Turnos con un <em>quantum</em> fijo; expulsivo por tiempo; evita inanición y reparte la CPU entre todos.</li>
+<li>Todos los procesos listos forman una <strong>cola</strong>; cada uno recibe la CPU durante un <strong>quantum</strong> (p. ej. 2 unidades). Si no termina en ese tiempo, pasa al <strong>final de la cola</strong> y se ejecuta el siguiente. Así se reparte la CPU entre todos y no hay inanición.</li>
+</ul>
+<p><strong>Características</strong></p>
+<ul>
+<li>Quantum fijo (reloj).</li>
+<li>Todos los procesos avanzan; los cortos terminan antes, los largos van por rachas.</li>
+<li>Suele aumentar el tiempo de espera medio respecto a FIFO o SJF cuando las ráfagas son muy dispares.</li>
+</ul>
+<p><strong>Ejemplo numérico</strong></p>
+<p>Mismos cuatro procesos P1(2), P2(4), P3(3), P4(3), <strong>quantum = 2</strong>. Orden de llegada P1, P2, P3, P4.</p>
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Ráfaga (CPU)</th>
+<th>Quantum = 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>2</td>
+<td>0–2 (termina)</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>4</td>
+<td>2–4, 8–10 (termina)</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>3</td>
+<td>4–6, 10–11 (termina)</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>3</td>
+<td>6–8, 11–12 (termina)</td>
+</tr>
+</tbody>
+</table>
+<figure>
+  <img src="imagenes/03/031/ejemplo_rr.png" width="750" alt="Ejemplo Round Robin - diagrama Gantt"/>
+  <figcaption>Round Robin (Q=2): turnos entre P1, P2, P3, P4 hasta que cada uno termina</figcaption>
+</figure>
+
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Tiempo de espera</th>
+<th>Tiempo de retorno</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>P2</td>
+<td>6</td>
+<td><strong>10</strong></td>
+</tr>
+<tr>
+<td>P3</td>
+<td>8</td>
+<td><strong>11</strong></td>
+</tr>
+<tr>
+<td>P4</td>
+<td>9</td>
+<td><strong>12</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Tiempo de espera medio</strong> = (0 + 6 + 8 + 9) / 4 = <strong>23/4 = 5,75</strong> unidades.</li>
+<li><strong>Tiempo de retorno medio</strong> = (2 + 10 + 11 + 12) / 4 = <strong>35/4 = 8,75</strong> unidades.</li>
+</ul>
+<hr />
+<h2 id="06procesos-2-hilos">2. Hilos<a class="headerlink" href="#06procesos-2-hilos" title="Permanent link">&para;</a></h2>
+<p>Un <strong>hilo</strong> (thread), hebra o proceso ligero es la secuencia de instrucciones más elemental que puede ser gestionada por el planificador.</p>
+<div class="admonition info">
+<p class="admonition-title">NOTA</p>
+<p>Un proceso puede ejecutarse como <strong>un solo hilo</strong> (una secuencia de instrucciones). En <strong>multihilo</strong>, partes del mismo proceso pueden ejecutarse en paralelo (varios hilos del mismo programa).</p>
+</div>
+<p><strong>Diferencia principal</strong>: un proceso tiene su propio BCP y espacio de recursos; los hilos comparten el espacio de memoria y recursos del proceso. Por eso es importante la <strong>sincronización entre hilos</strong>.</p>
+<figure>
+  <img src="imagenes/03/031/005.png" width="650" alt="Procesos e hilos en el navegador"/>
+  <figcaption>Estados de procesos e hilos en el navegador</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/03/031/006.png" width="650" alt="Procesos e hilos"/>
+  <figcaption>Procesos e hilos a nivel usuario y kernel</figcaption>
+</figure>
+
+<p>Cada hilo tiene identificador, contador de programa y pila propios. Tipos:</p>
+<ul>
+<li><strong>Hilos a nivel de usuario</strong>: creados por el programador; el núcleo no los gestiona; la sincronización es responsabilidad del programa.</li>
+<li><strong>Hilos a nivel de kernel</strong>: gestionados por el SO; en sistemas multinúcleo pueden ejecutarse en paralelo.</li>
+</ul>
+<p><strong>Ventajas de los hilos frente a procesos:</strong> más ligeros, cambio de contexto más barato, mayor agilidad si una parte se bloquea, y mejor aprovechamiento en multinúcleo.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Un proceso multihilo no termina hasta que terminan todos sus hilos.</p>
+</div>
+<h3 id="06procesos-sincronizacion-y-comunicacion-entre-procesos">Sincronización y comunicación entre procesos<a class="headerlink" href="#06procesos-sincronizacion-y-comunicacion-entre-procesos" title="Permanent link">&para;</a></h3>
+<p>Procesos que deben comunicarse o sincronizarse usan <strong>señales</strong> y otros mecanismos:</p>
+<ul>
+<li><strong>Mensajes</strong>: colas de mensajes para compartir información (incluso en equipos remotos).</li>
+<li><strong>Señales</strong>: para sincronizar; cada señal tiene un comportamiento por defecto (p. ej. pausar o terminar). Se pueden enviar desde el SO (p. ej. Ctrl+C) o desde programas.</li>
+<li><strong>Interrupciones y excepciones</strong>: las interrupciones son señales de dispositivos o software al procesador; las excepciones se producen por errores (p. ej. división por cero).</li>
+</ul>
+<p><strong>Interrupción</strong></p>
+<p>Una <strong>interrupción</strong> implica lo siguiente:</p>
+<ul>
+<li>Es una señal que llega al procesador para que detenga su tarea actual y atienda un suceso. Puede ser:<ul>
+<li>De hardware: Por ejemplo, un dispositivo de E/S que requiere atención.</li>
+<li>De software: Por ejemplo, una llamada al sistema hecha por un programa.</li>
+</ul>
+</li>
+<li>Cuando ocurre una interrupción:<ul>
+<li>El procesador <strong>guarda el estado</strong> del proceso actual.</li>
+<li><strong>Salta</strong> a la rutina específica que maneja esa interrupción (manejador).</li>
+<li>Tras atender la interrupción, <strong>restaura el estado</strong> y continúa con el proceso que fue interrumpido.</li>
+</ul>
+</li>
+<li>Las <strong>excepciones</strong> funcionan de forma similar, pero son provocadas por condiciones anómalas durante la ejecución:<ul>
+<li>Ejemplos: división por cero, acceso inválido a memoria, etc.</li>
+<li>El sistema debe reaccionar, por ejemplo, terminando el proceso o mostrando un error.</li>
+</ul>
+</li>
+<li>Es posible <strong>inhibir las interrupciones por software</strong> en determinados tramos críticos, para evitar que una operación importante se quede a medias por una interrupción inesperada.</li>
+</ul>
+<figure>
+  <img src="imagenes/03/031/interrupcion.png" width="750" alt="Flujo de una interrupción"/>
+  <figcaption>Resumen del concepto de interrupción: señal, guardado de contexto, manejador y vuelta al proceso</figcaption>
+</figure>
+
+<h3 id="06procesos-casos-y-soluciones-de-sincronizacion">Casos y soluciones de sincronización<a class="headerlink" href="#06procesos-casos-y-soluciones-de-sincronizacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Condiciones de competencia</strong></li>
+</ul>
+<p>Una <strong>condición de competencia</strong> ocurre cuando:</p>
+<ul>
+<li><strong>Dos o más procesos acceden al mismo recurso</strong> (por ejemplo, una variable en memoria, un archivo o un dispositivo).</li>
+<li><strong>El resultado final depende del orden en que se ejecutan las instrucciones</strong> de cada proceso.</li>
+<li>Por ejemplo:<ul>
+<li>Si el planificador asigna la CPU primero a P1 y luego a P2, el valor del recurso será uno determinado.</li>
+<li>Si el orden es otro (primero P2, luego P1), el valor puede cambiar o se puede perder alguna actualización.</li>
+</ul>
+</li>
+<li><strong>Sin mecanismos de sincronización</strong> (como exclusión mutua, cerraduras, etc.):<ul>
+<li>El programa se vuelve <strong>no determinista</strong>.</li>
+<li>Pueden aparecer fallos difíciles de reproducir.</li>
+</ul>
+</li>
+</ul>
+<figure>
+  <img src="imagenes/03/031/condiciones_competencia.png" width="750" alt="Condiciones de competencia"/>
+  <figcaption>Condiciones de competencia: P1 y P2 acceden al mismo recurso; el resultado depende del orden de ejecución</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title">Solución principal: Exclusión mutua</p>
+<p>La solución más utilizada para evitar condiciones de competencia es la <strong>exclusión mutua</strong> mediante una <strong>sección crítica</strong>: solo un proceso puede modificar el recurso compartido en cada momento. Se suelen emplear mecanismos como <strong>semáforos</strong>, <strong>variables cerradura</strong> o <strong>monitores</strong> para gestionar este acceso.</p>
+</div>
+<p><strong>Exclusión mutua</strong></p>
+<p>La <strong>exclusión mutua</strong> evita que dos procesos accedan a la vez al mismo recurso (o a la misma zona de código que lo modifica). La <strong>sección crítica</strong> es el tramo del programa donde se usa ese recurso compartido. La regla es: <strong>solo un proceso puede estar dentro de su sección crítica</strong> en cada instante. Para entrar, el proceso debe “adquirir” el permiso (p. ej. mediante un semáforo o una cerradura); al salir, lo libera para que otro pueda entrar. Así se evitan condiciones de competencia sobre el recurso.</p>
+<figure>
+  <img src="imagenes/03/031/exclusion_mutua.png" width="750" alt="Exclusión mutua y sección crítica"/>
+  <figcaption>Exclusión mutua: un solo proceso en la sección crítica; el otro espera hasta que se libere</figcaption>
+</figure>
+
+<p><strong>Interbloqueo (abrazo)</strong></p>
+<p>El <strong>interbloqueo</strong> se da cuando dos o más procesos se bloquean entre sí. Sus características principales son:</p>
+<ul>
+<li>Cada proceso posee un recurso y necesita otro que está en manos del otro proceso.</li>
+<li>Ningún proceso libera su recurso hasta conseguir el recurso que necesita.</li>
+<li>Se genera una situación de espera infinita (deadlock) y ningún proceso puede avanzar.</li>
+<li>Ejemplo típico:<ul>
+<li><strong>P1</strong> tiene <strong>R1</strong> y espera <strong>R2</strong>.</li>
+<li><strong>P2</strong> tiene <strong>R2</strong> y espera <strong>R1</strong>.</li>
+</ul>
+</li>
+</ul>
+<figure>
+  <img src="imagenes/03/031/interbloqueo.png" width="750" alt="Interbloqueo entre dos procesos"/>
+  <figcaption>Interbloqueo: P1 retiene R1 y espera R2; P2 retiene R2 y espera R1</figcaption>
+</figure>
+
+<p><strong>Para evitar el interbloqueo se pueden emplear, entre otros, los siguientes métodos:</strong></p>
+<ul>
+<li>Protocolos para el orden de solicitud de recursos.</li>
+<li>Uso de temporizadores (timeouts) para liberar recursos tras un cierto tiempo de espera.</li>
+<li>Detección y recuperación de situaciones de interbloqueo.</li>
+<li>Evitar que se cumplan simultáneamente las siguientes 4 condiciones típicas:<ul>
+<li>Exclusión mutua</li>
+<li>Retención y espera</li>
+<li>No expropiación</li>
+<li>Espera circular</li>
+</ul>
+</li>
+</ul>
+<h3 id="06procesos-herramientas-graficas">Herramientas gráficas<a class="headerlink" href="#06procesos-herramientas-graficas" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GNU/Linux</strong>: <code>ksysguard</code> (KDE), <code>gnome-system-monitor</code> (GNOME). En Debian/Ubuntu: Aplicaciones → Herramientas del sistema → Monitor del sistema.</li>
+</ul>
+<figure>
+  <img src="imagenes/03/031/MonitorLinux.png" width="750" alt="Monitor de recursos Linux"/>
+  <figcaption>Monitor de recursos (Linux)</figcaption>
+</figure>
+
+<ul>
+<li><strong>Windows</strong>: Administrador de tareas → pestaña Rendimiento → Monitor de recursos (procesos y subprocesos).</li>
+</ul>
+<figure>
+  <img src="imagenes/03/031/MonitorWin.png" width="750" alt="Monitor de recursos Windows"/>
+  <figcaption>Monitor de recursos (Windows)</figcaption>
+</figure>
+
+<ul>
+<li><strong>macOS</strong>: Monitor de actividad, con subprocesos enumerados.</li>
+</ul>
+<figure>
+  <img src="imagenes/03/031/MonitorMac.png" width="750" alt="Monitor de actividad Mac"/>
+  <figcaption>Monitor de actividad (Mac)</figcaption>
+</figure>
+
+<hr />
+<h2 id="06procesos-3-gestion-de-procesos-en-shell-linux">3. Gestión de procesos en Shell (Linux)<a class="headerlink" href="#06procesos-3-gestion-de-procesos-en-shell-linux" title="Permanent link">&para;</a></h2>
+<p>Cuando un proceso genera otro, se denomina <strong>padre</strong> al proceso original y <strong>hijo</strong> al generado. Por ejemplo, la terminal es en sí misma un proceso; al ejecutar un comando como <code>ls -l</code>, el sistema crea un proceso hijo del shell para ejecutar dicha instrucción.</p>
+<h3 id="06procesos-listado-de-comandos-bash-de-procesos">Listado de comandos bash de procesos<a class="headerlink" href="#06procesos-listado-de-comandos-bash-de-procesos" title="Permanent link">&para;</a></h3>
+<h4 id="06procesos-identificacion-de-procesos">Identificación de procesos<a class="headerlink" href="#06procesos-identificacion-de-procesos" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>top<span class="w">                    </span><span class="c1"># Listar todos los procesos de forma interactiva</span>
+<span class="linenos" data-linenos=" 2 "></span>htop<span class="w">                   </span><span class="c1"># Listar todos los procesos de forma interactiva</span>
+<span class="linenos" data-linenos=" 3 "></span>ps<span class="w"> </span>all<span class="w">                 </span><span class="c1"># Listar todos los procesos</span>
+<span class="linenos" data-linenos=" 4 "></span>pidof<span class="w"> </span>foo<span class="w">              </span><span class="c1"># Devolver el PID de todos los procesos foo</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span>CTRL+Z<span class="w">                 </span><span class="c1"># Suspender un proceso en primer plano</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nb">bg</span><span class="w">                     </span><span class="c1"># Reanudar un proceso suspendido y ejecutarlo en segundo plano</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="nb">fg</span><span class="w">                     </span><span class="c1"># Traer el último proceso en segundo plano al primer plano</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nb">fg</span><span class="w"> </span><span class="m">1</span><span class="w">                   </span><span class="c1"># Traer al primer plano el proceso en segundo plano con ese PID</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span>sleep<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="p">&amp;</span><span class="w">             </span><span class="c1"># Pausar 30 segundos y ejecutar el proceso en segundo plano</span>
+<span class="linenos" data-linenos="12 "></span><span class="nb">jobs</span><span class="w">                   </span><span class="c1"># Listar todos los trabajos en segundo plano</span>
+<span class="linenos" data-linenos="13 "></span><span class="nb">jobs</span><span class="w"> </span>-p<span class="w">                </span><span class="c1"># Listar todos los trabajos en segundo plano con su PID</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span>lsof<span class="w">                   </span><span class="c1"># Listar todos los archivos abiertos y el proceso que los usa</span>
+<span class="linenos" data-linenos="16 "></span>lsof<span class="w"> </span>-itcp:4000<span class="w">        </span><span class="c1"># Devolver el proceso que escucha en el puerto 4000</span>
+</code></pre></div>
+<h4 id="06procesos-prioridad-de-procesos">Prioridad de procesos<a class="headerlink" href="#06procesos-prioridad-de-procesos" title="Permanent link">&para;</a></h4>
+<p>Las prioridades van de -20 (máxima) a 19 (mínima).</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nice<span class="w"> </span>-n<span class="w"> </span>-20<span class="w"> </span>foo<span class="w">        </span><span class="c1"># Cambiar la prioridad del proceso por nombre</span>
+<span class="linenos" data-linenos="2 "></span>renice<span class="w"> </span><span class="m">20</span><span class="w"> </span>PID<span class="w">          </span><span class="c1"># Cambiar la prioridad del proceso por PID</span>
+<span class="linenos" data-linenos="3 "></span>ps<span class="w"> </span>-o<span class="w"> </span>ni<span class="w"> </span>PID<span class="w">           </span><span class="c1"># Mostrar la prioridad del proceso con ese PID</span>
+</code></pre></div>
+<h4 id="06procesos-finalizar-procesos">Finalizar procesos<a class="headerlink" href="#06procesos-finalizar-procesos" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>CTRL+C<span class="w">                 </span><span class="c1"># Finalizar un proceso en primer plano</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">kill</span><span class="w"> </span>PID<span class="w">               </span><span class="c1"># Finalizar el proceso por PID de forma ordenada (señal TERM).</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>PID<span class="w">            </span><span class="c1"># Finalizar forzadamente el proceso por PID (señal SIGKILL).</span>
+<span class="linenos" data-linenos="4 "></span>pkill<span class="w"> </span>foo<span class="w">              </span><span class="c1"># Finalizar el proceso por nombre de forma ordenada (señal TERM).</span>
+<span class="linenos" data-linenos="5 "></span>pkill<span class="w"> </span>-9<span class="w"> </span>foo<span class="w">           </span><span class="c1"># Finalizar forzadamente el proceso por nombre (señal SIGKILL).</span>
+<span class="linenos" data-linenos="6 "></span>killall<span class="w"> </span>foo<span class="w">            </span><span class="c1"># Finalizar todos los procesos con ese nombre de forma ordenada.</span>
+</code></pre></div>
+<h3 id="06procesos-explicacion-de-comandos-principales">Explicación de comandos principales<a class="headerlink" href="#06procesos-explicacion-de-comandos-principales" title="Permanent link">&para;</a></h3>
+<h4 id="06procesos-comando-ps">Comando <code>ps</code><a class="headerlink" href="#06procesos-comando-ps" title="Permanent link">&para;</a></h4>
+<p>Muestra información sobre procesos en ejecución.</p>
+<ul>
+<li><code>ps</code>: procesos del usuario actual.</li>
+<li><strong>-a</strong>: procesos de todos los usuarios con terminal (tty).</li>
+<li><strong>-x</strong>: procesos sin terminal asociado (p. ej. daemons).</li>
+<li><strong>-e</strong>: todos los procesos.</li>
+<li><strong>-f</strong>: formato extendido (PPID, STIME, etc.).</li>
+<li><strong>-ef</strong>: todos con formato extendido.</li>
+<li><strong>-u usuario</strong>: procesos de un usuario.</li>
+</ul>
+<p>Columnas típicas: <strong>PID</strong>, terminal (TTY), tiempo de CPU, nombre del proceso.</p>
+<div class="admonition example">
+<p class="admonition-title">Salida de ps -f (Ubuntu)</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>root@sor:/home/sor# ps -f
+<span class="linenos" data-linenos="2 "></span>UID          PID    PPID  C STIME TTY          TIME CMD
+<span class="linenos" data-linenos="3 "></span>root        2201    2200  0 16:24 pts/1    00:00:00 sudo su
+<span class="linenos" data-linenos="4 "></span>root        2202    2201  0 16:24 pts/1    00:00:00 su
+<span class="linenos" data-linenos="5 "></span>root        2203    2202  0 16:24 pts/1    00:00:00 bash
+<span class="linenos" data-linenos="6 "></span>root        2337    2203  0 16:29 pts/1    00:00:00 ps -f
+</code></pre></div>
+</div>
+<!-- <figure>
+  <img src="imagenes/03/033/psExam.png" width="75%" alt="Resultado ps -f"/>
+  <figcaption>Resultado comando ps -f</figcaption>
+</figure> -->
+
+<h4 id="06procesos-comando-pstree">Comando <code>pstree</code><a class="headerlink" href="#06procesos-comando-pstree" title="Permanent link">&para;</a></h4>
+<p>Muestra los procesos en forma de <strong>árbol</strong>, mostrando las relaciones padre-hijo.</p>
+<div class="admonition example">
+<p class="admonition-title">Salida de pstree (fragmento, Ubuntu)</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>root@sor:/home/sor# pstree
+<span class="linenos" data-linenos=" 2 "></span>systemd─┬─ModemManager───3*[{ModemManager}]
+<span class="linenos" data-linenos=" 3 "></span>        ├─agetty
+<span class="linenos" data-linenos=" 4 "></span>        ├─containerd───8*[{containerd}]
+<span class="linenos" data-linenos=" 5 "></span>        ├─containerd-shim─┬─tini─┬─nmbd
+<span class="linenos" data-linenos=" 6 "></span>        │                 │      └─smbd─┬─cleanupd
+<span class="linenos" data-linenos=" 7 "></span>        │                 │             └─smbd-notifyd
+<span class="linenos" data-linenos=" 8 "></span>        │                 └─10*[{containerd-shim}]
+<span class="linenos" data-linenos=" 9 "></span>        ├─containerd-shim─┬─s6-svscan─┬─s6-supervise───s6-linux-init-s
+<span class="linenos" data-linenos="10 "></span>        │                 │           ├─s6-supervise───sshd.pam
+<span class="linenos" data-linenos="11 "></span>        │                 │           └─...
+<span class="linenos" data-linenos="12 "></span>        ├─cron
+<span class="linenos" data-linenos="13 "></span>        ├─dbus-daemon
+<span class="linenos" data-linenos="14 "></span>        ├─dockerd─┬─docker-proxy───...
+<span class="linenos" data-linenos="15 "></span>        │         └─...
+<span class="linenos" data-linenos="16 "></span>        ├─login───bash
+<span class="linenos" data-linenos="17 "></span>        └─...
+</code></pre></div>
+</div>
+<!-- <figure>
+  <img src="imagenes/03/033/pstreeEx.png" width="85%" alt="Resultado pstree"/>
+  <figcaption>Resultado comando pstree</figcaption>
+</figure> -->
+
+<h3 id="06procesos-comando-top">Comando <code>top</code><a class="headerlink" href="#06procesos-comando-top" title="Permanent link">&para;</a></h3>
+<p>Listado de procesos que se <strong>actualiza periódicamente</strong>. Permite ver evolución de CPU, memoria, número de tareas, etc. Con la tecla <strong>r</strong> se puede cambiar la prioridad (nice) de un proceso indicando su PID (solo root puede asignar prioridades negativas).</p>
+<div class="admonition example">
+<p class="admonition-title">Salida de top (primeras líneas, Ubuntu)</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>top - 16:29:49 up 13 min,  2 users,  load average: 0,00, 0,00, 0,00
+<span class="linenos" data-linenos=" 2 "></span>Tasks: 160 total,   1 running, 159 sleeping,   0 stopped,   0 zombie
+<span class="linenos" data-linenos=" 3 "></span>%Cpu(s):  0,0 us,  0,1 sy,  0,0 ni, 99,9 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
+<span class="linenos" data-linenos=" 4 "></span>MiB Mem :   3902,3 total,   3206,3 free,    379,8 used,    466,8 buff/cache
+<span class="linenos" data-linenos=" 5 "></span>MiB Swap:      0,0 total,      0,0 free,      0,0 used.   3522,5 avail Mem
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+<span class="linenos" data-linenos=" 8 "></span>    333 root      20   0       0      0      0 I   0,3   0,0   0:00.53 kworker/0:3-events
+<span class="linenos" data-linenos=" 9 "></span>    698 root      20   0 1861432  42112  27904 S   0,3   1,1   0:01.83 containerd
+<span class="linenos" data-linenos="10 "></span>   2339 root      20   0   11776   5376   3328 R   0,3   0,1   0:00.03 top
+<span class="linenos" data-linenos="11 "></span>      1 root      20   0   21948  12112   8528 S   0,0   0,3   0:00.81 systemd
+<span class="linenos" data-linenos="12 "></span>      2 root      20   0       0      0      0 S   0,0   0,0   0:00.00 kthreadd
+<span class="linenos" data-linenos="13 "></span>      4 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/R-rcu_g
+</code></pre></div>
+</div>
+<!-- <figure>
+  <img src="imagenes/03/033/005.png" width="85%" alt="Resultado top"/>
+  <figcaption>Resultado comando top</figcaption>
+</figure> -->
+
+<h3 id="06procesos-primer-plano-y-segundo-plano">Primer plano y segundo plano<a class="headerlink" href="#06procesos-primer-plano-y-segundo-plano" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Primer plano</strong>: el proceso con el que se interactúa; el terminal queda "bloqueado" hasta que termina.</li>
+<li><strong>Segundo plano</strong>: se lanza con <strong><code>&amp;</code></strong> al final del comando (p. ej. <code>sleep 10 &amp;</code>). El terminal sigue disponible.</li>
+</ul>
+<p>Al lanzar en segundo plano se muestra un número entre corchetes (número de trabajo) y el PID.</p>
+<div class="admonition example">
+<p class="admonition-title">sleep en segundo plano y jobs (Ubuntu)</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>root@sor:/home/sor# sleep 10 &amp;
+<span class="linenos" data-linenos="2 "></span>[1] 2366
+<span class="linenos" data-linenos="3 "></span>root@sor:/home/sor# jobs
+<span class="linenos" data-linenos="4 "></span>[1]+  Running                 sleep 10 &amp;
+</code></pre></div>
+</div>
+<!-- <figure>
+  <img src="imagenes/03/033/006.png" width="75%" alt="sleep 10 en segundo plano"/>
+  <figcaption>Resultado comando sleep 10 &</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/03/033/007.png" width="75%" alt="Comando jobs"/>
+  <figcaption>Resultado comando jobs</figcaption>
+</figure> -->
+
+<ul>
+<li><strong><code>jobs</code></strong>: lista los trabajos en segundo plano.</li>
+<li><strong><code>fg %n</code></strong>: lleva el trabajo <code>n</code> a primer plano.</li>
+<li><strong><code>bg %n</code></strong>: para pasar a segundo plano un proceso que está en primer plano, primero se suspende con <strong>Ctrl+Z</strong> y luego se ejecuta <code>bg %n</code>.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Uso de fg y bg</p>
+<p>Con un trabajo <code>[1]</code> en segundo plano, <strong><code>fg %1</code></strong> lo trae a primer plano; si un proceso está detenido (Ctrl+Z), <strong><code>bg %1</code></strong> lo reanuda en segundo plano.</p>
+</div>
+<!-- <figure>
+  <img src="imagenes/03/033/008.png" width="75%" alt="fg %1"/>
+  <figcaption>Pasar a primer plano con fg %1</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/03/033/009.png" width="75%" alt="bg"/>
+  <figcaption>Pasar a segundo plano con bg</figcaption>
+</figure> -->
+
+<h3 id="06procesos-prioridad-renice">Prioridad: <code>renice</code><a class="headerlink" href="#06procesos-prioridad-renice" title="Permanent link">&para;</a></h3>
+<p>En Linux la prioridad (nice) va de <strong>-20</strong> (más prioridad) a <strong>20</strong> (menos prioridad). Solo root puede usar valores negativos.</p>
+<ul>
+<li><strong><code>renice -n prioridad -p PID</code></strong>: cambia la prioridad del proceso con ese PID.</li>
+<li><strong><code>renice -g</code></strong>: por grupo. <strong><code>renice -u</code></strong>: por usuario.</li>
+</ul>
+<p>Para ver la prioridad: <code>ps ax -o pid,ni,cmd</code> (columna <strong>ni</strong> = nice).</p>
+<div class="admonition example">
+<p class="admonition-title">renice (Ubuntu, como root)</p>
+<p>Se lanza <code>sleep</code> en segundo plano; con <code>ps ax -o pid,ni,cmd | grep sleep</code> se localiza el PID y la prioridad (ni); luego <code>renice -n 10 -p PID</code> cambia la prioridad:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>root@sor:/home/sor# sleep 10 &amp;
+<span class="linenos" data-linenos="2 "></span>[1] 2366
+<span class="linenos" data-linenos="3 "></span>root@sor:/home/sor# jobs
+<span class="linenos" data-linenos="4 "></span>[1]+  Running                 sleep 10 &amp;
+<span class="linenos" data-linenos="5 "></span>root@sor:/home/sor# ps ax -o pid,ni,cmd | grep sleep
+<span class="linenos" data-linenos="6 "></span>   2394   0 grep --color=auto sleep
+<span class="linenos" data-linenos="7 "></span>[1]+  Done                    sleep 10
+<span class="linenos" data-linenos="8 "></span>root@sor:/home/sor# renice -n 10 -p 2394
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Sobre este ejemplo</p>
+<p>En este ejemplo el proceso <code>sleep</code> terminó antes de ejecutar <code>renice</code>. Para practicar <code>renice</code> conviene usar un proceso de mayor duración (p. ej. <code>sleep 60 &amp;</code>) y aplicar <code>renice</code> al PID de ese proceso, no al de <code>grep</code>.</p>
+</div>
+<!-- <figure>
+  <img src="imagenes/03/033/010.png" width="75%" alt="Prioridad proceso sleep"/>
+  <figcaption>Búsqueda del proceso sleep y su prioridad</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/03/033/011.png" width="75%" alt="Resultado renice"/>
+  <figcaption>Resultado comando renice</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/03/033/012.png" width="75%" alt="Nueva prioridad sleep"/>
+  <figcaption>Nueva prioridad del proceso sleep</figcaption>
+</figure> -->
+
+<h3 id="06procesos-finalizar-procesos-kill">Finalizar procesos: <code>kill</code><a class="headerlink" href="#06procesos-finalizar-procesos-kill" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">kill</span><span class="w"> </span>PID<span class="w">           </span><span class="c1"># solicitud de terminación (SIGTERM, 15)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>PID<span class="w">        </span><span class="c1"># terminación forzada (SIGKILL)</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">kill</span><span class="w"> </span>-1<span class="w"> </span>PID<span class="w">        </span><span class="c1"># SIGHUP, reiniciar proceso</span>
+<span class="linenos" data-linenos="4 "></span>killall<span class="w"> </span>nombre_programa<span class="w">   </span><span class="c1"># termina todos los procesos con ese nombre</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">kill (Ubuntu)</p>
+<p>Se lanza un proceso en segundo plano, se obtiene su PID y se finaliza con <code>kill</code> (señal 15, terminación ordenada):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>root@sor:/home/sor# sleep 120 &amp;
+<span class="linenos" data-linenos="2 "></span>[1] 2450
+<span class="linenos" data-linenos="3 "></span>root@sor:/home/sor# kill 2450
+<span class="linenos" data-linenos="4 "></span>root@sor:/home/sor# jobs
+<span class="linenos" data-linenos="5 "></span>[1]+  Terminated              sleep 120
+</code></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Terminación forzada</p>
+<p>Si el proceso no responde a <code>kill</code>, se puede forzar con <strong><code>kill -9 PID</code></strong> (SIGKILL). Con <strong><code>killall nombre</code></strong> se finalizan todos los procesos cuyo nombre coincida (p. ej. <code>killall sleep</code>).</p>
+</div>
+<hr />
+<h2 id="06procesos-4-gestion-de-procesos-en-powershell">4. Gestión de procesos en PowerShell<a class="headerlink" href="#06procesos-4-gestion-de-procesos-en-powershell" title="Permanent link">&para;</a></h2>
+<p>Para listar cmdlets relacionados con procesos: <code>Get-Command *process*</code>.</p>
+<h3 id="06procesos-obtener-procesos">Obtener procesos<a class="headerlink" href="#06procesos-obtener-procesos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Get-Process</code></strong> (sin parámetros): procesos del equipo local.</li>
+<li><strong><code>Get-Process | Sort-Object CPU -Descending | Select-Object -First 10</code></strong>: los 10 que más CPU consumen.</li>
+<li><strong><code>Get-Process -Id PID</code></strong>: por identificador (si no existe, da error).</li>
+<li><strong><code>Get-Process -Name patrón</code></strong>: por nombre; admite comodines (p. ej. <code>ex*</code>).</li>
+<li><strong><code>Get-Process -Name a*,b*</code></strong>: varios nombres.</li>
+<li><strong><code>(Get-Process -Name pwsh).Path</code></strong>, <strong><code>(Get-Process -Name pwsh).WS</code></strong>: propiedades concretas (ruta, memoria de trabajo).</li>
+<li><strong><code>Get-Process -Name PowerShell -ComputerName localhost, Server01, Server02</code></strong>: procesos en equipos remotos (parámetro <strong>ComputerName</strong>). Para ver el equipo: <code>Format-Table -Property ID, ProcessName, MachineName</code>.</li>
+</ul>
+<p>El proceso <strong>Idle</strong> (id 0) representa el tiempo en que la CPU no está trabajando.</p>
+<div class="admonition example">
+<p class="admonition-title">Get-Process: listar y filtrar</p>
+<p>Listar procesos por nombre y los 5 que más CPU consumen:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">Get-Process</span> <span class="n">-Name</span> <span class="n">pwsh</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Id</span><span class="p">,</span> <span class="n">ProcessName</span><span class="p">,</span> <span class="n">CPU</span><span class="p">,</span> <span class="n">WorkingSet</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span> <span class="n">Id</span> <span class="n">ProcessName</span>    <span class="n">CPU</span> <span class="n">WorkingSet</span>
+<span class="linenos" data-linenos=" 4 "></span> <span class="p">--</span> <span class="p">-----------</span>    <span class="p">---</span> <span class="p">----------</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="n">1234</span> <span class="n">pwsh</span>         <span class="n">12</span><span class="p">,</span><span class="n">50</span>   <span class="n">185654321</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">Get-Process</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">CPU</span> <span class="n">-Descending</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="n">5</span> <span class="n">Id</span><span class="p">,</span> <span class="n">ProcessName</span><span class="p">,</span> <span class="n">CPU</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span> <span class="n">Id</span> <span class="n">ProcessName</span>     <span class="n">CPU</span>
+<span class="linenos" data-linenos="10 "></span> <span class="p">--</span> <span class="p">-----------</span>     <span class="p">---</span>
+<span class="linenos" data-linenos="11 "></span><span class="n">456</span> <span class="n">explorer</span>      <span class="n">125</span><span class="p">,</span><span class="n">30</span>
+<span class="linenos" data-linenos="12 "></span><span class="n">789</span> <span class="n">chrome</span>         <span class="n">98</span><span class="p">,</span><span class="n">12</span>
+<span class="linenos" data-linenos="13 "></span><span class="n">1234</span> <span class="n">pwsh</span>           <span class="n">12</span><span class="p">,</span><span class="n">50</span>
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Propiedades de un proceso</p>
+<p>Obtener la ruta y la memoria de trabajo (WS) de un proceso por nombre:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="p">(</span><span class="nb">Get-Process</span> <span class="n">-Name</span> <span class="n">pwsh</span><span class="p">).</span><span class="n">Path</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">C</span><span class="p">:\</span><span class="n">Program</span> <span class="n">Files</span><span class="p">\</span><span class="n">PowerShell</span><span class="p">\</span><span class="n">7</span><span class="p">\</span><span class="n">pwsh</span><span class="p">.</span><span class="n">exe</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="p">(</span><span class="nb">Get-Process</span> <span class="n">-Name</span> <span class="n">pwsh</span><span class="p">).</span><span class="n">WorkingSet</span>
+<span class="linenos" data-linenos="5 "></span><span class="n">185654321</span>
+</code></pre></div>
+</div>
+<h3 id="06procesos-detener-procesos">Detener procesos<a class="headerlink" href="#06procesos-detener-procesos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Stop-Process -Name nombre</code></strong> o <strong><code>Stop-Process -Id PID</code></strong>.</li>
+<li><strong><code>Stop-Process -Name t*,e* -Confirm</code></strong>: pide confirmación por cada coincidencia.</li>
+<li>Procesos que no responden: <strong><code>Get-Process | Where-Object { $_.Responding -eq $false } | Stop-Process</code></strong>.</li>
+<li>En remoto (Stop-Process no tiene ComputerName): <strong><code>Invoke-Command -ComputerName Server01 { Stop-Process Powershell }</code></strong>.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Stop-Process: finalizar por nombre o PID</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">Get-Process</span> <span class="n">-Name</span> <span class="n">notepad</span>
+<span class="linenos" data-linenos="2 "></span> <span class="n">Id</span> <span class="n">ProcessName</span>
+<span class="linenos" data-linenos="3 "></span> <span class="p">--</span> <span class="p">-----------</span>
+<span class="linenos" data-linenos="4 "></span><span class="n">5678</span> <span class="n">notepad</span>
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">Stop-Process</span> <span class="n">-Id</span> <span class="n">5678</span>
+<span class="linenos" data-linenos="7 "></span>
+<span class="linenos" data-linenos="8 "></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">Stop-Process</span> <span class="n">-Name</span> <span class="n">notepad</span> <span class="n">-Force</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Sobre -Force</p>
+<p>El parámetro <strong>-Force</strong> permite terminar procesos que no responden sin pedir confirmación.</p>
+</div>
+<h3 id="06procesos-iniciar-procesos">Iniciar procesos<a class="headerlink" href="#06procesos-iniciar-procesos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Start-Process -FilePath ruta\ejecutable</code></strong> (p. ej. <code>C:\windows\notepad.exe</code>).</li>
+<li>Para abrir aplicaciones por protocolo: <strong><code>Start-Process Microsoft-edge://</code></strong>.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Start-Process: abrir aplicación</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">Start-Process</span> <span class="n">notepad</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">Start-Process</span> <span class="n">-FilePath</span> <span class="s2">&quot;C:\Windows\System32\notepad.exe&quot;</span> <span class="n">-ArgumentList</span> <span class="s2">&quot;C:\temp\notas.txt&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">Start-Process</span> <span class="s2">&quot;https://www.ejemplo.org&quot;</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Sobre Start-Process</p>
+<p>Sin parámetros adicionales, <code>Start-Process notepad</code> abre el Bloc de notas. Con <strong>-ArgumentList</strong> se pasan argumentos al ejecutable. Con una URL se abre el navegador por defecto.</p>
+</div>
+<hr />
+<h2 id="06procesos-5-arranque-del-sistema-y-servicios">5. Arranque del sistema y servicios<a class="headerlink" href="#06procesos-5-arranque-del-sistema-y-servicios" title="Permanent link">&para;</a></h2>
+<p>El <strong>arranque (boot)</strong> es la secuencia que pone en marcha el hardware, carga el gestor de arranque, el kernel y, por último, los servicios del sistema. En la práctica interesa conocer las <strong>cuatro fases</strong> (comunes a Linux) y qué son los <strong>servicios</strong> y <strong>systemd</strong>.</p>
+<figure>
+  <img src="imagenes/03/035/001.png" width="650" alt="Pasos arranque"/>
+  <figcaption>Pasos del arranque de un sistema informático</figcaption>
+</figure>
+
+<h3 id="06procesos-arranque-en-linux-4-etapas">Arranque en Linux (4 etapas)<a class="headerlink" href="#06procesos-arranque-en-linux-4-etapas" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>BIOS/UEFI</strong> — POST, detección de hardware y carga del cargador de arranque desde MBR o GPT.</li>
+<li><strong>Cargador de arranque (GRUB)</strong> — Lee la configuración (p. ej. <code>/boot/grub/grub.cfg</code>, <code>/etc/default/grub</code>); muestra menú para elegir kernel; <code>update-grub</code> aplica cambios. LILO es una alternativa antigua que escribe la configuración en el MBR.</li>
+<li><strong>Kernel</strong> — Se carga y descomprime; initrd aporta drivers; el kernel arranca el primer proceso de usuario (init).</li>
+<li><strong>Init / systemd</strong> — Arranque en espacio de usuario: montaje de sistemas de archivos y puesta en marcha de <strong>servicios</strong> (daemons).</li>
+</ol>
+<figure>
+  <img src="imagenes/03/035/002.png" width="650" alt="Pasos arranque Linux"/>
+  <figcaption>Pasos del arranque en Linux</figcaption>
+</figure>
+
+<!-- Esquemas MBR/GPT y ejemplos GRUB: detalle opcional
+<figure><img src="imagenes/03/035/003.png" width="650" alt="Esquema MBR"/><figcaption>Esquema MBR</figcaption></figure>
+<figure><img src="imagenes/03/035/003_B.png" width="650" alt="Esquema GPT"/><figcaption>Esquema GPT</figcaption></figure>
+<figure><img src="imagenes/03/035/004_A.png" width="650" alt="Ejemplo GRUB"/><figcaption>Ejemplo de GRUB</figcaption></figure>
+<figure><img src="imagenes/03/035/004_B.png" width="650" alt="Ejemplo GRUB menú"/><figcaption>Ejemplo de GRUB (menú)</figcaption></figure>
+-->
+
+<h3 id="06procesos-arranque-en-windows">Arranque en Windows<a class="headerlink" href="#06procesos-arranque-en-windows" title="Permanent link">&para;</a></h3>
+<p>El arranque se controla con <strong>BCD</strong> (Boot Configuration Data, <code>\boot\BCD</code>) y <strong>Bootmgr.exe</strong>. Secuencia resumida: BIOS → MBR → Bootmgr → BCD → menú → carga del kernel (Winload, ntoskrnl) y de los subsistemas (smss, winlogon) hasta la pantalla de inicio de sesión. Para editar opciones de arranque: <strong>msconfig</strong>, <strong>bcdedit</strong> o PowerShell.</p>
+<figure><img src="imagenes/03/035/006_B.png" width="650" alt="Bootmgr"/><figcaption>Bootmgr (Windows Server)</figcaption></figure>
+
+<h3 id="06procesos-daemon-y-servicio">Daemon y servicio<a class="headerlink" href="#06procesos-daemon-y-servicio" title="Permanent link">&para;</a></h3>
+<p>Un <strong>daemon</strong> (Linux/UNIX) o <strong>servicio</strong> (Windows) es un programa que se ejecuta en segundo plano, sin ventana para el usuario, y que suele iniciarse con el sistema (p. ej. servidor web, SSH, impresoras). En Linux los logs suelen estar en <code>/var/log/</code> o vía <strong>syslog</strong>.</p>
+<figure><img src="imagenes/03/035/008.png" width="750" alt="Daemons"/><figcaption>Ejemplo de daemons</figcaption></figure>
+
+<h3 id="06procesos-systemd">Systemd<a class="headerlink" href="#06procesos-systemd" title="Permanent link">&para;</a></h3>
+<p><strong>Systemd</strong> es el gestor de sistema e init en la mayoría de distribuciones Linux actuales: unifica el arranque y la gestión de servicios, es el primer proceso en espacio de usuario (PID 1) y se administra con <strong><code>systemctl</code></strong> (ver siguiente sección).</p>
+<figure>
+  <img src="imagenes/03/035/010.png" width="750" alt="Arquitectura systemd"/>
+  <figcaption>Arquitectura de systemd</figcaption>
+</figure>
+
+<!-- Imagen de inicio systemd (Fedora 17): opcional
+<figure><img src="imagenes/03/035/009.png" width="750" alt="Inicio systemd"/><figcaption>Inicio de systemd (Fedora 17)</figcaption></figure>
+-->
+
+<hr />
+<h2 id="06procesos-6-administracion-de-servicios-systemd">6. Administración de servicios (systemd)<a class="headerlink" href="#06procesos-6-administracion-de-servicios-systemd" title="Permanent link">&para;</a></h2>
+<h3 id="06procesos-iniciar-y-detener">Iniciar y detener<a class="headerlink" href="#06procesos-iniciar-y-detener" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>nombre.service
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>nombre.service
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nombre.service
+<span class="linenos" data-linenos="4 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nombre.service
+<span class="linenos" data-linenos="5 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload-or-restart<span class="w"> </span>nombre.service
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Iniciar, reiniciar y detener un servicio</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>ssh
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>ssh
+<span class="linenos" data-linenos="3 "></span>●<span class="w"> </span>ssh.service<span class="w"> </span>-<span class="w"> </span>OpenBSD<span class="w"> </span>Secure<span class="w"> </span>Shell<span class="w"> </span>server
+<span class="linenos" data-linenos="4 "></span><span class="w">     </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/lib/systemd/system/ssh.service<span class="p">;</span><span class="w"> </span>enabled<span class="o">)</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">     </span>Active:<span class="w"> </span>active<span class="w"> </span><span class="o">(</span>running<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Mon<span class="w"> </span><span class="m">2024</span>-01-15<span class="w"> </span><span class="m">10</span>:00:00<span class="w"> </span>UTC<span class="p">;</span><span class="w"> </span>5s<span class="w"> </span>ago
+<span class="linenos" data-linenos="6 "></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>ssh
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Sobre el nombre de la unidad</p>
+<p>Se puede omitir el sufijo <code>.service</code> (p. ej. <code>ssh</code> en lugar de <code>ssh.service</code>).</p>
+</div>
+<h3 id="06procesos-habilitar-y-deshabilitar-en-el-arranque">Habilitar y deshabilitar en el arranque<a class="headerlink" href="#06procesos-habilitar-y-deshabilitar-en-el-arranque" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nombre.service
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>nombre.service
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">enable no inicia el servicio</p>
+<p><strong>enable</strong> solo hace que el servicio se inicie en el próximo arranque. Para ponerlo en marcha en la sesión actual hay que usar además <strong><code>start</code></strong>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Habilitar y deshabilitar en el arranque</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>systemctl<span class="w"> </span>is-enabled<span class="w"> </span>ssh
+<span class="linenos" data-linenos="2 "></span>enabled
+<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>ssh
+<span class="linenos" data-linenos="4 "></span>$<span class="w"> </span>systemctl<span class="w"> </span>is-enabled<span class="w"> </span>ssh
+<span class="linenos" data-linenos="5 "></span>disabled
+<span class="linenos" data-linenos="6 "></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ssh
+</code></pre></div>
+</div>
+<h3 id="06procesos-estado">Estado<a class="headerlink" href="#06procesos-estado" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>systemctl<span class="w"> </span>status<span class="w"> </span>nombre.service
+<span class="linenos" data-linenos="2 "></span>systemctl<span class="w"> </span>is-active<span class="w"> </span>nombre.service
+<span class="linenos" data-linenos="3 "></span>systemctl<span class="w"> </span>is-enabled<span class="w"> </span>nombre.service
+<span class="linenos" data-linenos="4 "></span>systemctl<span class="w"> </span>is-failed<span class="w"> </span>nombre.service
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Consultar estado de un servicio</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>systemctl<span class="w"> </span>is-active<span class="w"> </span>nginx
+<span class="linenos" data-linenos="2 "></span>active
+<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span>systemctl<span class="w"> </span>is-enabled<span class="w"> </span>nginx
+<span class="linenos" data-linenos="4 "></span>enabled
+<span class="linenos" data-linenos="5 "></span>$<span class="w"> </span>systemctl<span class="w"> </span>is-failed<span class="w"> </span>nginx
+<span class="linenos" data-linenos="6 "></span>inactive
+</code></pre></div>
+</div>
+<h3 id="06procesos-listar-unidades">Listar unidades<a class="headerlink" href="#06procesos-listar-unidades" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>systemctl</code></strong> o <strong><code>systemctl list-units</code></strong>: unidades activas.</li>
+<li><strong><code>systemctl list-units --all</code></strong>: todas las cargadas.</li>
+<li><strong><code>systemctl list-units --type=service</code></strong>: solo servicios.</li>
+<li><strong><code>systemctl list-unit-files</code></strong>: archivos de unidad y estado (enabled, disabled, static, masked).</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Listar servicios activos y archivos de unidad</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>$<span class="w"> </span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--type<span class="o">=</span>service<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-15
+<span class="linenos" data-linenos=" 2 "></span>UNIT<span class="w">                      </span>LOAD<span class="w">   </span>ACTIVE<span class="w"> </span>SUB<span class="w">     </span>DESCRIPTION
+<span class="linenos" data-linenos=" 3 "></span>cron.service<span class="w">              </span>loaded<span class="w"> </span>active<span class="w"> </span>running<span class="w"> </span>Regular<span class="w"> </span>background<span class="w"> </span>program
+<span class="linenos" data-linenos=" 4 "></span>dbus.service<span class="w">              </span>loaded<span class="w"> </span>active<span class="w"> </span>running<span class="w"> </span>D-Bus<span class="w"> </span>System<span class="w"> </span>Message<span class="w"> </span>Bus
+<span class="linenos" data-linenos=" 5 "></span>ssh.service<span class="w">               </span>loaded<span class="w"> </span>active<span class="w"> </span>running<span class="w"> </span>OpenBSD<span class="w"> </span>Secure<span class="w"> </span>Shell<span class="w"> </span>server
+<span class="linenos" data-linenos=" 6 "></span>systemd-journald.service<span class="w">   </span>loaded<span class="w"> </span>active<span class="w"> </span>running<span class="w"> </span>Journal<span class="w"> </span>Service
+<span class="linenos" data-linenos=" 7 "></span>...
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span>$<span class="w"> </span>systemctl<span class="w"> </span>list-unit-files<span class="w"> </span>--type<span class="o">=</span>service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;ssh|nginx|cron&#39;</span>
+<span class="linenos" data-linenos="10 "></span>cron.service<span class="w">      </span>enabled
+<span class="linenos" data-linenos="11 "></span>nginx.service<span class="w">     </span>disabled
+<span class="linenos" data-linenos="12 "></span>ssh.service<span class="w">       </span>enabled
+</code></pre></div>
+</div>
+<h3 id="06procesos-otras-operaciones">Otras operaciones<a class="headerlink" href="#06procesos-otras-operaciones" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>systemctl cat nombre.service</code></strong>: contenido del archivo de la unidad.</li>
+<li><strong><code>systemctl list-dependencies nombre.service</code></strong>: dependencias.</li>
+<li><strong><code>systemctl show nombre.service</code></strong>: propiedades.</li>
+<li><strong>Enmascarar</strong> (impedir que se inicie): <strong><code>sudo systemctl mask nombre.service</code></strong>. <strong>Desenmascarar</strong>: <strong><code>sudo systemctl unmask nombre.service</code></strong>.</li>
+<li><strong>Editar</strong>: <strong><code>sudo systemctl edit nombre.service</code></strong> (fragmento override) o <strong><code>sudo systemctl edit --full nombre.service</code></strong>. Tras cambios: <strong><code>sudo systemctl daemon-reload</code></strong>.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ver dependencias y enmascarar</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>systemctl<span class="w"> </span>list-dependencies<span class="w"> </span>ssh.service<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-10
+<span class="linenos" data-linenos="2 "></span>ssh.service
+<span class="linenos" data-linenos="3 "></span>●<span class="w"> </span>├─system.slice
+<span class="linenos" data-linenos="4 "></span>●<span class="w"> </span>└─basic.target
+<span class="linenos" data-linenos="5 "></span>●<span class="w">   </span>├─...
+<span class="linenos" data-linenos="6 "></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>nombre.service
+<span class="linenos" data-linenos="7 "></span>Created<span class="w"> </span>symlink<span class="w"> </span>/etc/systemd/system/nombre.service<span class="w"> </span>→<span class="w"> </span>/dev/null.
+<span class="linenos" data-linenos="8 "></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>unmask<span class="w"> </span>nombre.service
+<span class="linenos" data-linenos="9 "></span>Removed<span class="w"> </span>/etc/systemd/system/nombre.service.
+</code></pre></div>
+</div>
+<h3 id="06procesos-destinos-runlevels">Destinos (runlevels)<a class="headerlink" href="#06procesos-destinos-runlevels" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>systemctl get-default</code></strong>: destino por defecto.</li>
+<li><strong><code>systemctl set-default graphical.target</code></strong>: cambiar destino por defecto.</li>
+<li><strong><code>systemctl list-unit-files --type=target</code></strong>: destinos disponibles.</li>
+<li><strong><code>sudo systemctl isolate multi-user.target</code></strong>: cambiar a modo multiusuario (sin gráfico).</li>
+<li><strong><code>sudo systemctl rescue</code></strong>, <strong><code>sudo systemctl halt</code></strong>, <strong><code>sudo systemctl poweroff</code></strong>, <strong><code>sudo systemctl reboot</code></strong>: atajos para rescate, apagado y reinicio.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Destino por defecto y destinos disponibles</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>systemctl<span class="w"> </span>get-default
+<span class="linenos" data-linenos="2 "></span>graphical.target
+<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span>systemctl<span class="w"> </span>list-unit-files<span class="w"> </span>--type<span class="o">=</span>target<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;graphical|multi-user&#39;</span>
+<span class="linenos" data-linenos="4 "></span>graphical.target<span class="w">    </span>static
+<span class="linenos" data-linenos="5 "></span>multi-user.target<span class="w">   </span>static
+<span class="linenos" data-linenos="6 "></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>set-default<span class="w"> </span>multi-user.target
+<span class="linenos" data-linenos="7 "></span>Created<span class="w"> </span>symlink<span class="w"> </span>/etc/systemd/system/default.target<span class="w"> </span>→<span class="w"> </span>/usr/lib/systemd/system/multi-user.target.
+</code></pre></div>
+</div>
+<hr />
+<h2 id="06procesos-actividades">Actividades<a class="headerlink" href="#06procesos-actividades" title="Permanent link">&para;</a></h2>
+<p>En esta unidad se plantean <strong>dos retos individuales</strong> de depuración: un script Python con interfaz gráfica (tkinter) que integra comandos de gestión de procesos. El alumnado elige <strong>uno</strong> de los dos según el entorno (Linux/WSL o Windows). Cada reto tiene una <strong>puntuación máxima de 30 puntos</strong> y se evalúa según los criterios indicados.</p>
+<div class="admonition tip">
+<p class="admonition-title">Antes de los retos</p>
+<p>Si no tienes experiencia con Python, puedes apoyarte en la <strong><a href="#introduccionpython">Introducción a Python</a></strong> antes de abordar los enunciados.</p>
+</div>
+<hr />
+<h3 id="06procesos-reto-1-gestor-de-procesos-con-shell-linux-wsl-ampliacion-025-de-la-nota-final">Reto 1: Gestor de procesos con Shell (Linux / WSL). <strong>Ampliación +0,25 de la nota final.</strong><a class="headerlink" href="#06procesos-reto-1-gestor-de-procesos-con-shell-linux-wsl-ampliacion-025-de-la-nota-final" title="Permanent link">&para;</a></h3>
+<p><strong>Puntuación:</strong> 30 puntos<br />
+<strong>Criterios evaluados:</strong> CE2c (gestión de procesos desde el Shell), CE2g (herramienta de gestión y documentación)<br />
+<strong>Modalidad:</strong> Individual<br />
+<strong>Entorno:</strong> Linux o WSL (comandos: <code>ps</code>, <code>pstree</code>, <code>jobs</code>, <code>kill</code>, <code>renice</code>).</p>
+<p>Depuración de un script Python con interfaz gráfica que utiliza comandos Shell para listar procesos, mostrar el árbol de procesos, listar trabajos en segundo plano, finalizar un proceso por PID y cambiar la prioridad (renice). El enunciado incluye código con errores que hay que identificar, justificar y corregir.</p>
+<p><a class="md-button" href="#retoindividualprocesosshell"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.5 1.5 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1m0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> Ver enunciado del reto — Shell</a></p>
+<hr />
+<h3 id="06procesos-reto-2-gestor-de-procesos-con-powershell-windows-ampliacion-025-de-la-nota-final">Reto 2: Gestor de procesos con PowerShell (Windows). <strong>Ampliación +0,25 de la nota final.</strong><a class="headerlink" href="#06procesos-reto-2-gestor-de-procesos-con-powershell-windows-ampliacion-025-de-la-nota-final" title="Permanent link">&para;</a></h3>
+<p><strong>Puntuación:</strong> 30 puntos<br />
+<strong>Criterios evaluados:</strong> CE2d (gestión de procesos desde PowerShell), CE2g (herramienta de gestión y documentación)<br />
+<strong>Modalidad:</strong> Individual<br />
+<strong>Entorno:</strong> Windows con PowerShell (cmdlets: <code>Get-Process</code>, <code>Stop-Process</code>, <code>Start-Process</code>).</p>
+<p>Depuración de un script Python con interfaz gráfica que utiliza cmdlets de PowerShell para listar procesos, mostrar los que más CPU consumen, finalizar un proceso por PID e iniciar un proceso. El enunciado incluye código con errores que hay que identificar, justificar y corregir.</p>
+<p><a class="md-button" href="#retoindividualprocesospowershell"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.5 1.5 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1m0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> Ver enunciado del reto — PowerShell</a></p></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
                 .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3 ;  counter-increment: counter-index-2 }
@@ -5217,6 +6482,14 @@ Debes configurar el intercambio de archivos entre el servidor Linux y los client
             
                 .print-site-enumerate-headings #05integracionsistemas h3:before { content: '6.' counter(counter-05integracionsistemas-2) '.' counter(counter-05integracionsistemas-3) ' ' }
                 .print-site-enumerate-headings #05integracionsistemas h3 {  counter-increment: counter-05integracionsistemas-3 }
+            
+.print-site-enumerate-headings #06procesos > h1:before { content: '7 ' }
+
+                .print-site-enumerate-headings #06procesos h2:before { content: '7.' counter(counter-06procesos-2) ' ' }
+                .print-site-enumerate-headings #06procesos h2 {  counter-reset: counter-06procesos-3 ;  counter-increment: counter-06procesos-2 }
+            
+                .print-site-enumerate-headings #06procesos h3:before { content: '7.' counter(counter-06procesos-2) '.' counter(counter-06procesos-3) ' ' }
+                .print-site-enumerate-headings #06procesos h3 {  counter-increment: counter-06procesos-3 }
             </style>
 
 
