@@ -1,0 +1,1438 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/RetoPracticoTechCorp.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Reto práctico 1: Active Directory en AWS (TechCorp) - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="RetoPracticoTechCorp - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RetoPracticoTechCorp.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/RetoPracticoTechCorp.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="RetoPracticoTechCorp - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/RetoPracticoTechCorp.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reto-practico-1-active-directory-en-aws-techcorp" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reto práctico 1: Active Directory en AWS (TechCorp)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03AccesoRemoto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.- Servicios de acceso remoto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04ActiveDirectory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Servicios de Directorio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05IntegracionSistemas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.- Integración de Sistemas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06Procesos.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.- Procesos del Sistema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07AutomatizacionMonitorizacion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.- Automatización y monitorización
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos previos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enfoque-infraestructura-como-codigo-configuracion-con-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enfoque: infraestructura como código + configuración con scripts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enfoque: infraestructura como código + configuración con scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-general-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura general del proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura general del proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carpeta-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carpeta terraform/:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carpeta-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carpeta scripts/:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejecucion-de-los-scripts-desde-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejecución de los scripts desde Terraform
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fase-0-repositorio-de-partida-1520-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fase 0 — Repositorio de partida (15–20 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fase 0 — Repositorio de partida (15–20 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pasos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-instalar-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Instalar AWS CLI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurar-aws-cli-con-credenciales-de-aws-academy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configurar AWS CLI con credenciales de AWS Academy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-instalar-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Instalar Terraform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-clonar-o-descargar-el-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Clonar o descargar el repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-revisar-la-estructura-del-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Revisar la estructura del repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-key-pair-en-aws-academy-para-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Key Pair en AWS Academy para Terraform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-configurar-variables-necesarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Configurar variables necesarias
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entregable-de-la-fase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregable de la fase
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fase-1-despliegue-e-instalacion-automatica-45-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fase 1 — Despliegue e instalación automática (45 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fase 1 — Despliegue e instalación automática (45 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entregable-de-la-fase_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregable de la fase
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fase-2-verificacion-del-despliegue-automatico-45-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fase 2 — Verificación del despliegue automático (45 min)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fase 2 — Verificación del despliegue automático (45 min)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entregable-de-la-fase_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregable de la fase
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables-globales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables globales
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion-30-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación (30 puntos)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-reto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Siguiente reto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencia
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="reto-practico-1-active-directory-en-aws-techcorp">Reto práctico 1: Active Directory en AWS (TechCorp)<a class="headerlink" href="#reto-practico-1-active-directory-en-aws-techcorp" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>Modalidad:</strong> Individual o en parejas (según criterio del profesor).</li>
+<li><strong>Duración estimada:</strong> 1,5–2 horas (Fase 0 + Fase 1 + Fase 2).</li>
+<li><strong>Puntuación:</strong> 30 puntos.</li>
+<li><strong>Criterios evaluados:</strong> CE3d (despliegues repetibles), CE3e (automatización), CE3h (documentación).</li>
+<li><strong>Entorno:</strong> Cuenta AWS (educativa o con créditos), Terraform instalado, AWS CLI configurado, cliente RDP.</li>
+</ul>
+<p>El reto toma como <strong>punto de partida</strong> un repositorio de referencia con el proyecto resuelto (Terraform + scripts PowerShell). Tu tarea es <strong>clonarlo, configurarlo, ejecutarlo y corregir los errores</strong> que aparezcan al probarlo (región, AMI, variables, user_data, scripts, permisos, etc.). Al final debes tener un despliegue funcional y documentar qué fallos encontraste y cómo los resolviste.</p>
+<h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
+<p>Al finalizar el reto serás capaz de:</p>
+<ul>
+<li>Usar un repositorio de IaC como punto de partida: clonar, revisar la estructura y configurar las variables necesarias.</li>
+<li>Ejecutar <code>terraform apply</code> sobre el proyecto y <strong>detectar y corregir errores</strong> que surjan durante el despliegue o la ejecución de los scripts (en Terraform, en el user_data o en los scripts PowerShell).</li>
+<li>Verificar que el entorno queda operativo (DC01 como DC, OUs, usuarios, Cliente unido al dominio) y documentar las correcciones realizadas.</li>
+</ul>
+<h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Cuenta AWS Academy:</strong> utilizarás tu cuenta de <strong>AWS Academy</strong> (laboratorio del módulo). Será necesario configurar las credenciales en tu equipo con <strong><code>aws configure</code></strong> usando las credenciales de acceso (Access Key ID y Secret Access Key) que te proporciona el laboratorio. Para saber cómo obtenerlas y configurarlas, consulta los <strong>vídeos de la teoría</strong> de la unidad (Automatización y monitorización) y la documentación del laboratorio.</li>
+<li><strong>Terraform</strong> ≥ 1.0 (<code>terraform version</code>) instalado en tu máquina.</li>
+<li><strong>Par de claves</strong> en EC2: crea un par de claves en la consola de EC2 (dentro de tu laboratorio AWS Academy) para poder obtener la contraseña de RDP de las instancias Windows.</li>
+<li>Conocimiento básico de <strong>Active Directory</strong> y de <strong>Windows Server</strong> (RDP). Conocimiento básico de Terraform y PowerShell ayuda a localizar y corregir errores.</li>
+<li><strong>Par de claves</strong> en EC2 para poder obtener la contraseña de RDP de las instancias Windows.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">¿Cómo instalar AWS CLI en Visual Studio Code o Cursor?</p>
+<ul>
+<li><strong>Instalación de AWS CLI en Visual Studio Code o Cursor:</strong><br />
+  Tanto Visual Studio Code como Cursor son editores que permiten utilizar un terminal integrado, desde el cual 
+  puedes instalar AWS CLI fácilmente.<br />
+  1. Abre una terminal integrada desde VS Code o Cursor (<code>Ctrl + ñ</code> en Windows o `Ctrl + Shift + `` en Mac/
+  Linux).
+  2. Ejecuta el comando de instalación según tu sistema operativo, por ejemplo en Windows:
+     <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">msiexec</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">i</span> <span class="n">https</span><span class="p">://</span><span class="n">awscli</span><span class="p">.</span><span class="n">amazonaws</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">AWSCLIV2</span><span class="p">.</span><span class="n">msi</span>
+</code></pre></div>
+     o en Mac/Linux:
+     <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>curl<span class="w"> </span><span class="s2">&quot;https://awscli.amazonaws.com/AWSCLIV2.pkg&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;AWSCLIV2.pkg&quot;</span>
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>installer<span class="w"> </span>-pkg<span class="w"> </span>AWSCLIV2.pkg<span class="w"> </span>-target<span class="w"> </span>/
+</code></pre></div>
+     o siguiendo la <a href="https://docs.aws.amazon.com/cli/latest/userguide/
+     getting-started-install.html">guía oficial de instalación</a>.
+  3. Verifica la instalación con:
+     <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>aws<span class="w"> </span>--version
+</code></pre></div>
+  Ambos editores (VS Code y Cursor) soportan la operación de AWS CLI desde su terminal integrada, facilitando 
+  la gestión de recursos en AWS desde el entorno de desarrollo.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Configurar AWS CLI con credenciales de AWS Academy</p>
+<p>Para usar el código del reto con tu laboratorio de <strong>AWS Academy</strong>:
+1. En el portal de AWS Academy, inicia tu laboratorio y accede a <strong>Credenciales de AWS</strong> (o <strong>AWS Details</strong> / <strong>Show</strong> para ver la Access Key y la Secret Key).
+2. En tu equipo, abre una terminal (por ejemplo en VS Code o Cursor con <code>Ctrl + ñ</code> o <code>Ctrl + \``) y ejecuta:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>aws<span class="w"> </span>configure
+</code></pre></div>
+3. Introduce cuando se te pida: **AWS Access Key ID** y **AWS Secret Access Key** (las del laboratorio), **region** (p. ej.</code>us-east-1` o la que indique el laboratorio) y opcionalmente el formato de salida (puedes dejar por defecto).
+4. Comprueba que la configuración es correcta con:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity
+</code></pre></div>
+Para más detalle sobre la instalación de AWS CLI o la obtención de credenciales, consulta los <strong>vídeos de la teoría</strong> de la unidad 7 (Automatización y monitorización) y la <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">guía oficial de AWS CLI</a>.</p>
+</div>
+<hr />
+<h2 id="enfoque-infraestructura-como-codigo-configuracion-con-scripts">Enfoque: infraestructura como código + configuración con scripts<a class="headerlink" href="#enfoque-infraestructura-como-codigo-configuracion-con-scripts" title="Permanent link">&para;</a></h2>
+<p>La infraestructura se define en Terraform (carpeta <strong><code>terraform/</code></strong>) y la configuración interna (AD, OUs, usuarios, unión al dominio, recursos compartidos, GPO) se ejecuta mediante scripts PowerShell (carpeta <strong><code>scripts/</code></strong>) orquestados por Terraform. Necesitas ambas carpetas según la estructura indicada.</p>
+<table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>Herramienta</th>
+<th>Qué automatiza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Infraestructura</strong></td>
+<td>Terraform</td>
+<td>VPC, subred, Security Group, opciones de DHCP (dominio + DNS), instancias EC2 (DC01 y Cliente). Todo lo que es "recursos en AWS".</td>
+</tr>
+<tr>
+<td><strong>Configuración interna</strong></td>
+<td>Scripts PowerShell</td>
+<td>Nombre del equipo, instalación del rol AD DS, promoción a controlador de dominio, usuario admin del dominio, OUs y usuarios desde CSV (20 usuarios TechCorp), grupos por departamento, unión del cliente al dominio, habilitar RDP para Domain Users, recursos compartidos y carpetas personales, GPO (contraseñas y bloqueo). Todo lo que ocurre <em>dentro</em> del sistema operativo.</td>
+</tr>
+</tbody>
+</table>
+<p>Con este reparto, un único flujo (por ejemplo <code>terraform apply</code> + ejecución de scripts en orden o vía user_data) puede dejar el entorno completo listo sin pasos manuales en consola.</p>
+<h3 id="estructura-general-del-proyecto">Estructura general del proyecto<a class="headerlink" href="#estructura-general-del-proyecto" title="Permanent link">&para;</a></h3>
+<p>El <a href="https://github.com/fjavier-hernandez/techcorp-ad-iac">repositorio de referencia</a> sigue esta estructura. En la raíz del repo aparece la carpeta <strong><code>techcorp-ad-iac/</code></strong>; dentro tienes <strong><code>terraform/</code></strong> y <strong><code>scripts/</code></strong>. En <code>terraform/</code> encontrarás además las plantillas <strong><code>userdata_dc01.ps1.tpl</code></strong> y <strong><code>userdata_cliente.ps1.tpl</code></strong> que inyectan los scripts en el user_data de cada instancia.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>techcorp-ad-iac/
+<span class="linenos" data-linenos=" 2 "></span>├── terraform/                 # Infraestructura como código
+<span class="linenos" data-linenos=" 3 "></span>│   ├── provider.tf
+<span class="linenos" data-linenos=" 4 "></span>│   ├── main.tf                 # VPC, subnet, SG, dhcp options, EC2
+<span class="linenos" data-linenos=" 5 "></span>│   ├── variables.tf
+<span class="linenos" data-linenos=" 6 "></span>│   ├── outputs.tf
+<span class="linenos" data-linenos=" 7 "></span>│   ├── terraform.tfvars.example
+<span class="linenos" data-linenos=" 8 "></span>│   ├── userdata_dc01.ps1.tpl   # User data DC01 (01 + programación 02-05)
+<span class="linenos" data-linenos=" 9 "></span>│   └── userdata_cliente.ps1.tpl
+<span class="linenos" data-linenos="10 "></span>├── scripts/                    # Configuración interna (PowerShell)
+<span class="linenos" data-linenos="11 "></span>│   ├── dc01/                   # Scripts que se ejecutan en el DC01 (orden 01 → 05)
+<span class="linenos" data-linenos="12 "></span>│   │   ├── 01-rename-and-ad.ps1      # Nombre del equipo, AD DS, promover a DC
+<span class="linenos" data-linenos="13 "></span>│   │   ├── 02-admin-user.ps1         # Usuario administrador del dominio (admin.dominio)
+<span class="linenos" data-linenos="14 "></span>│   │   ├── 03-CrearEstructuraAD.ps1  # OUs TechCorp, 20 usuarios desde CSV, grupos por depto
+<span class="linenos" data-linenos="15 "></span>│   │   ├── 04-RecursosCompartidos.ps1 # Carpetas compartidas, carpetas personales (X:)
+<span class="linenos" data-linenos="16 "></span>│   │   ├── 05-GPO.ps1                # GPO: contraseñas (vigencia, historial, longitud) y bloqueo
+<span class="linenos" data-linenos="17 "></span>│   │   └── techcorp_usuarios.csv     # Datos de los 20 usuarios (alineado al reto grupal)
+<span class="linenos" data-linenos="18 "></span>│   └── cliente/                # Scripts que se ejecutan en el Cliente
+<span class="linenos" data-linenos="19 "></span>│       └── 01-join-domain.ps1         # Unir al dominio; en DC01: habilitar RDP para Domain Users
+<span class="linenos" data-linenos="20 "></span>└── README.md                   # Orden de ejecución y requisitos
+</code></pre></div>
+<h4 id="carpeta-terraform"><strong>Carpeta <code>terraform/</code>:</strong><a class="headerlink" href="#carpeta-terraform" title="Permanent link">&para;</a></h4>
+<p>Contenidos principales definidos en modo lista:</p>
+<ul>
+<li>VPC (Virtual Private Cloud)</li>
+<li>Subred pública</li>
+<li>Security Group con reglas para:  <ul>
+<li>RDP (puerto 3389)  </li>
+<li><strong>Puertos de Active Directory:</strong> <code>53</code>, <code>88</code>, <code>135</code>, <code>389</code>, <code>445</code>, <code>636</code>, <code>3268</code>, <code>3269</code>, <code>49152-65535</code></li>
+</ul>
+</li>
+<li>Opciones de DHCP:<ul>
+<li>Nombre de dominio (ejemplo: <code>techcorp.local</code>)</li>
+<li>Servidor DNS: IP privada del DC01</li>
+</ul>
+</li>
+<li>Instancias EC2:<ul>
+<li>DC01</li>
+<li>Cliente</li>
+</ul>
+</li>
+<li>Outputs típicos:<ul>
+<li>IP pública y privada del DC01</li>
+<li>IP del Cliente</li>
+<li>ID de la VPC</li>
+</ul>
+</li>
+</ul>
+<h4 id="carpeta-scripts"><strong>Carpeta <code>scripts/</code>:</strong><a class="headerlink" href="#carpeta-scripts" title="Permanent link">&para;</a></h4>
+<p>Scripts PowerShell para la configuración del entorno Windows, organizados así:</p>
+<ul>
+<li><strong>En DC01</strong> (orden de ejecución 01 → 05):<ol>
+<li>Nombre del equipo, instalación del rol AD DS y promoción a controlador de dominio (DC)</li>
+<li>Creación del usuario administrador del dominio</li>
+<li>Creación de OUs por departamento (Gerencia, IT, Administración, Comercial, RRHH), 20 usuarios desde CSV y grupos</li>
+<li>Configuración de recursos compartidos (TechCorp_Users, TechCorp_Datos) y carpetas personales</li>
+<li>Configuración de GPO de contraseñas y bloqueo (pueden usar el módulo GroupPolicy de PowerShell: <code>New-GPO</code>, enlaces, etc.)</li>
+<li>(Opcional) Automatización para habilitar RDP a Domain Users en DC01</li>
+</ol>
+</li>
+<li><strong>En el Cliente:</strong><ul>
+<li>Script para unir el equipo al dominio</li>
+</ul>
+</li>
+</ul>
+<h3 id="ejecucion-de-los-scripts-desde-terraform">Ejecución de los scripts desde Terraform<a class="headerlink" href="#ejecucion-de-los-scripts-desde-terraform" title="Permanent link">&para;</a></h3>
+<p>Se puede integrar en Terraform que los scripts se ejecuten <strong>en el servidor (DC01) o en el cliente</strong> cuando se lanza <code>terraform apply</code>, de modo que un único flujo cree la infraestructura y aplique la configuración en cada host.</p>
+<table>
+<thead>
+<tr>
+<th>Enfoque</th>
+<th>Cómo funciona</th>
+<th>Dónde se ejecutan los scripts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>User data</strong></td>
+<td>Cada instancia EC2 recibe en <code>user_data</code> un bloque PowerShell (o la ruta a un script en S3). Se ejecuta al <strong>primer arranque</strong>. En DC01 puede incluir el 01 (nombre + AD + reinicio) y un "launcher" que, tras el reinicio, ejecute 02 → 05 (p. ej. tarea programada al inicio). En el Cliente, <code>user_data</code> con el script de unión al dominio.</td>
+<td>En la propia instancia (DC01 o Cliente) al arrancar.</td>
+</tr>
+<tr>
+<td><strong>SSM Run Command</strong></td>
+<td>Las instancias llevan un rol IAM que permite <strong>Systems Manager</strong>. Tras crearlas, Terraform usa un <code>null_resource</code> + <code>local-exec</code> (o un recurso que invoque <code>aws ssm send-command</code>) para enviar la ejecución de los scripts a cada instancia en el orden correcto: primero 02 → 05 en DC01 (cuando el DC esté listo), luego el script de unión en el Cliente. Los scripts pueden estar en S3 o copiarse antes.</td>
+<td>En DC01 y en el Cliente, orquestado por Terraform tras el <code>apply</code>.</td>
+</tr>
+<tr>
+<td><strong>Provisioner <code>remote-exec</code></strong> (WinRM)</td>
+<td>Terraform se conecta por <strong>WinRM</strong> a las instancias Windows y ejecuta comandos (p. ej. descargar y ejecutar los scripts). Requiere WinRM configurado (puerto 5986 HTTPS), por ejemplo mediante un <code>user_data</code> mínimo en el primer arranque. Con <code>depends_on</code> y varios <code>null_resource</code> se puede ordenar: primero scripts en DC01, luego en el Cliente.</td>
+<td>En la instancia a la que se conecta cada provisioner (DC01 o Cliente).</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>De forma general, a cada <strong><code>aws_instance</code></strong> se le asigna el mecanismo elegido (<code>user_data</code>, SSM o remote-exec). Al ejecutar <strong><code>terraform apply</code></strong>, la infraestructura se crea y los scripts se lanzan en cada máquina sin pasos manuales.</p>
+</div>
+<p><strong>Flujo típico:</strong></p>
+<ol>
+<li>Terraform crea:</li>
+</ol>
+<ul>
+<li>Red (VPC)</li>
+<li>Opciones de DHCP</li>
+<li>Security Groups</li>
+<li>Instancias EC2</li>
+<li>
+<p>(Si usas <code>user_data</code>, cada máquina ejecuta su script al arrancar automáticamente)
+2. En DC01:</p>
+</li>
+<li>
+<p>Se ejecutan los scripts en el siguiente orden: 01 → 05</p>
+</li>
+<li>
+<p>(Si aplica, reinicio tras el script 01: nombre y promoción a AD)
+3. En el Cliente:</p>
+</li>
+<li>
+<p>Se ejecuta el script para unir el equipo al dominio</p>
+</li>
+<li>(Este paso debe realizarse después de que DC01 esté completamente listo, especialmente si usas SSM o remote-exec)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Notas adicionales</p>
+<p>La implementación concreta (qué recurso Terraform y qué mecanismo exacto se utiliza —p. ej. <code>aws_vpc_dhcp_options</code>, <code>user_data</code>, <code>null_resource</code> con SSM— y el contenido de los scripts PowerShell) se adapta según las necesidades del reto. Con ello, <code>terraform apply</code> realiza toda la configuración en el orden adecuado, en servidor y cliente, sin intervención manual.</p>
+</div>
+<p><strong>Fases del reto:</strong></p>
+<ul>
+<li><strong>Fase 0:</strong> Obtener el código de partida desde el repositorio de referencia (clone o descarga), revisar la estructura y configurar las variables.</li>
+<li><strong>Fase 1:</strong> Ejecutar el despliegue (<code>terraform init</code>, <code>plan</code>, <code>apply</code>), identificar errores que surjan al probar y corregirlos (Terraform, user_data, scripts, región, AMI, etc.).</li>
+<li><strong>Fase 2:</strong> Verificar el resultado una vez corregidos los errores (DC01 como DC, OUs, usuarios, Cliente unido al dominio).</li>
+</ul>
+<hr />
+<h2 id="fase-0-repositorio-de-partida-1520-min">Fase 0 — Repositorio de partida (15–20 min)<a class="headerlink" href="#fase-0-repositorio-de-partida-1520-min" title="Permanent link">&para;</a></h2>
+<h3 id="objetivo">Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h3>
+<p>Tener instalados y configurados <strong>AWS CLI</strong> y <strong>Terraform</strong> en tu equipo, obtener el proyecto de referencia como punto de partida, revisar su estructura (terraform/ + scripts/) y configurar las variables necesarias para tu cuenta AWS Academy y tu región.</p>
+<h3 id="pasos">Pasos<a class="headerlink" href="#pasos" title="Permanent link">&para;</a></h3>
+<h4 id="1-instalar-aws-cli">1. Instalar AWS CLI<a class="headerlink" href="#1-instalar-aws-cli" title="Permanent link">&para;</a></h4>
+<p>Instala la AWS CLI en tu sistema según tu sistema operativo. Consulta los <strong>vídeos de la teoría</strong> de la unidad y la <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">guía oficial de instalación</a>. Ejemplos rápidos:</p>
+<ul>
+<li><strong>Windows:</strong> descarga el instalador MSI desde la documentación de AWS o ejecuta (PowerShell como administrador):<br />
+<code>msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi</code></li>
+<li><strong>macOS:</strong><br />
+<code>curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"</code> y luego <code>sudo installer -pkg AWSCLIV2.pkg -target /</code></li>
+<li><strong>Linux (Debian/Ubuntu):</strong><br />
+<code>sudo apt install awscli</code> o sigue la guía oficial.</li>
+</ul>
+<p>Comprueba con: <code>aws --version</code>.</p>
+<h4 id="2-configurar-aws-cli-con-credenciales-de-aws-academy">2. Configurar AWS CLI con credenciales de AWS Academy<a class="headerlink" href="#2-configurar-aws-cli-con-credenciales-de-aws-academy" title="Permanent link">&para;</a></h4>
+<p>Las credenciales del laboratorio son <strong>temporales</strong> e incluyen un <strong>session token</strong>. El comando <code>aws configure</code> no pide el session token, por lo que hay que escribir las credenciales en el archivo <code>~/.aws/credentials</code> (o copiar el bloque que da el laboratorio). Sigue estos subpasos:</p>
+<p><strong>2.1 — Obtener las credenciales en AWS Academy</strong></p>
+<ul>
+<li>En el portal de <strong>AWS Academy</strong>, inicia tu laboratorio (<strong>Start Lab</strong>).</li>
+<li>Pulsa <strong>AWS Details</strong> (o <strong>Cloud Access</strong>) en el panel del laboratorio.</li>
+<li>Se abrirá una ventana con el título <strong>AWS CLI</strong> y la instrucción de copiar el contenido en <code>~/.aws/credentials</code>. Verás un bloque con:</li>
+<li><code>[default]</code></li>
+<li><code>aws_access_key_id=...</code></li>
+<li><code>aws_secret_access_key=...</code></li>
+<li><code>aws_session_token=...</code> (cadena larga)</li>
+<li>Copia <strong>todo</strong> ese bloque (las cuatro líneas).</li>
+</ul>
+<p><img alt="Captura pantalla credenciales AWS Academy" src="imagenes/07/CredencialesLab.png" /></p>
+<p><em>Ejemplo de cómo copiar el bloque de credenciales desde el laboratorio de AWS Academy para pegar en <code>~/.aws/credentials</code>.</em></p>
+<p><strong>2.2 — Escribir las credenciales en tu equipo</strong></p>
+<ul>
+<li>En tu máquina (macOS, Linux o Git Bash/WSL en Windows), abre el archivo de credenciales:
+  <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano<span class="w"> </span>~/.aws/credentials
+</code></pre></div>
+  (Si no existe la carpeta <code>~/.aws</code>, créala antes: <code>mkdir -p ~/.aws</code>.)</li>
+<li>Pega el bloque que copiaste del laboratorio, de modo que quede algo así:
+  <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">[default]</span>
+<span class="linenos" data-linenos="2 "></span><span class="na">aws_access_key_id</span><span class="o">=</span><span class="s">ASIA...</span>
+<span class="linenos" data-linenos="3 "></span><span class="na">aws_secret_access_key</span><span class="o">=</span><span class="s">...</span>
+<span class="linenos" data-linenos="4 "></span><span class="na">aws_session_token</span><span class="o">=</span><span class="s">IQoJb3JpZ2lu...</span>
+</code></pre></div></li>
+<li>Guarda y cierra (en nano: <code>Ctrl+O</code>, Enter, <code>Ctrl+X</code>).</li>
+</ul>
+<p><strong>2.3 — Configurar región y formato de salida</strong></p>
+<ul>
+<li>Crea o edita el archivo de configuración:
+  <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano<span class="w"> </span>~/.aws/config
+</code></pre></div></li>
+<li>Asegúrate de que tenga una sección <code>[default]</code> con la <strong>región correcta</strong> de tu laboratorio. Por ejemplo (la región debe ser una válida de AWS, como <code>us-east-1</code>, <code>us-west-2</code> o <code>eu-west-1</code>; no uses <code>eu-east-1</code>, que no existe):
+  <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">[default]</span>
+<span class="linenos" data-linenos="2 "></span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">us-east-1</span>
+<span class="linenos" data-linenos="3 "></span><span class="na">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">json</span>
+</code></pre></div></li>
+<li>Guarda y cierra.</li>
+</ul>
+<p><strong>2.4 — Comprobar que la configuración funciona</strong></p>
+<ul>
+<li>En la terminal ejecuta:
+  <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity
+</code></pre></div></li>
+<li>Si la configuración es correcta, verás un JSON con <code>UserId</code>, <code>Account</code> y <code>Arn</code>. Si aparece un error de conexión al endpoint, revisa que la <strong>región</strong> en <code>~/.aws/config</code> sea la que indica tu laboratorio (p. ej. <code>us-east-1</code>).</li>
+</ul>
+<h4 id="3-instalar-terraform">3. Instalar Terraform<a class="headerlink" href="#3-instalar-terraform" title="Permanent link">&para;</a></h4>
+<p>Instala Terraform en tu equipo según tu sistema operativo. Consulta los <strong>vídeos de la teoría</strong> de la unidad. Algunas opciones:</p>
+<ul>
+<li><strong>Windows:</strong> descarga el binario desde <a href="https://www.terraform.io/downloads">terraform.io</a> o con Chocolatey: <code>choco install terraform</code>.</li>
+<li><strong>macOS:</strong> con Homebrew: <code>brew install terraform</code>.</li>
+<li><strong>Linux:</strong> descarga el binario o usa el repositorio de HashiCorp (ver documentación oficial). En Amazon Linux 2023 puedes usar:<br />
+<code>sudo yum install -y yum-utils &amp;&amp; sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo &amp;&amp; sudo yum -y install terraform</code></li>
+</ul>
+<p>Comprueba con: <code>terraform version</code>.</p>
+<h4 id="4-clonar-o-descargar-el-repositorio">4. Clonar o descargar el repositorio<a class="headerlink" href="#4-clonar-o-descargar-el-repositorio" title="Permanent link">&para;</a></h4>
+<p>Repositorio de partida: <strong><a href="https://github.com/fjavier-hernandez/techcorp-ad-iac">https://github.com/fjavier-hernandez/techcorp-ad-iac</a></strong> (Terraform + scripts PowerShell, user_data para DC01 y Cliente).</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/fjavier-hernandez/techcorp-ad-iac.git
+<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span>techcorp-ad-iac
+</code></pre></div>
+<p>Si no usas Git, descarga el ZIP desde GitHub y descomprímelo.</p>
+<h4 id="5-revisar-la-estructura-del-repositorio">5. Revisar la estructura del repositorio<a class="headerlink" href="#5-revisar-la-estructura-del-repositorio" title="Permanent link">&para;</a></h4>
+<p>Asegúrate de que el repositorio descargado tiene la siguiente estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>techcorp-ad-iac/
+<span class="linenos" data-linenos=" 2 "></span>├── terraform/
+<span class="linenos" data-linenos=" 3 "></span>│   ├── provider.tf
+<span class="linenos" data-linenos=" 4 "></span>│   ├── main.tf
+<span class="linenos" data-linenos=" 5 "></span>│   ├── variables.tf
+<span class="linenos" data-linenos=" 6 "></span>│   ├── outputs.tf
+<span class="linenos" data-linenos=" 7 "></span>│   ├── terraform.tfvars.example
+<span class="linenos" data-linenos=" 8 "></span>│   ├── userdata_dc01.ps1.tpl
+<span class="linenos" data-linenos=" 9 "></span>│   └── userdata_cliente.ps1.tpl
+<span class="linenos" data-linenos="10 "></span>└── scripts/
+<span class="linenos" data-linenos="11 "></span>    ├── dc01/
+<span class="linenos" data-linenos="12 "></span>    │   ├── 01-xxxx.ps1
+<span class="linenos" data-linenos="13 "></span>    │   ├── 02-xxxx.ps1
+<span class="linenos" data-linenos="14 "></span>    │   ├── 03-xxxx.ps1
+<span class="linenos" data-linenos="15 "></span>    │   ├── 04-xxxx.ps1
+<span class="linenos" data-linenos="16 "></span>    │   ├── 05-xxxx.ps1
+<span class="linenos" data-linenos="17 "></span>    │   └── techcorp_usuarios.csv
+<span class="linenos" data-linenos="18 "></span>    └── cliente/
+<span class="linenos" data-linenos="19 "></span>        └── 01-join-domain.ps1
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<ul>
+<li>Los nombres de scripts pueden variar ligeramente, pero deberían existir los archivos principales y plantillas indicadas arriba.</li>
+<li>Lee el <strong>README</strong> del repositorio para comprender el uso de variables, los pasos de despliegue y el funcionamiento de los scripts.</li>
+</ul>
+</div>
+<h4 id="6-key-pair-en-aws-academy-para-terraform">6. Key Pair en AWS Academy para Terraform<a class="headerlink" href="#6-key-pair-en-aws-academy-para-terraform" title="Permanent link">&para;</a></h4>
+<p>Para que Terraform pueda lanzar las instancias EC2 necesitas un par de claves registrado en EC2. En AWS Academy el PEM que descargas desde <em>AWS Details</em> <strong>no</strong> está registrado como key pair en EC2, por lo que hay que importarlo. Sigue estos subpasos:</p>
+<p><strong>6.1 — Abrir AWS Academy y acceder al laboratorio</strong></p>
+<ul>
+<li>Accede a tu laboratorio de AWS Academy.</li>
+<li>Pulsa <strong>Start Lab</strong>.</li>
+<li>En la consola del laboratorio, asegúrate de estar en la región correcta (por ejemplo, <code>us-east-1</code>).</li>
+</ul>
+<p><strong>6.2 — Obtener el PEM desde AWS Details</strong></p>
+<ul>
+<li>Pulsa <strong>AWS Details</strong> en el panel derecho.</li>
+<li>Busca la sección <strong>SSH Key</strong>.</li>
+<li>Haz clic en <strong>Download PEM</strong>.</li>
+<li>Guarda el archivo <code>.pem</code> en tu máquina (por ejemplo <code>academy-temp.pem</code>).</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">PEM de AWS Academy</p>
+<p>Este PEM no está registrado como key pair en EC2, por eso Terraform no lo reconoce directamente. Hay que importar la clave pública en EC2 (pasos siguientes).</p>
+</div>
+<p><strong>6.3 — Extraer la clave pública desde el PEM</strong></p>
+<p>En tu máquina local (Linux/macOS) abre una terminal y ejecuta:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ssh-keygen<span class="w"> </span>-y<span class="w"> </span>-f<span class="w"> </span>academy-temp.pem<span class="w"> </span>&gt;<span class="w"> </span>academy-temp.pub
+</code></pre></div>
+<p>(En Windows puedes usar Git Bash o WSL.) Esto genera un archivo <code>.pub</code> con la clave pública que EC2 puede usar.</p>
+<p><strong>6.4 — Crear un key pair en EC2 usando la clave pública</strong></p>
+<ul>
+<li>Ve a <strong>EC2 → Key Pairs</strong> en la consola de AWS Academy.</li>
+<li>Pulsa <strong>Import Key Pair</strong>.</li>
+<li>Pon un nombre para el key pair (por ejemplo: <code>academy-key</code>).</li>
+<li>En <strong>Public Key</strong> pega el <strong>contenido completo</strong> del archivo <code>academy-temp.pub</code>.</li>
+<li>Pulsa <strong>Import</strong>.</li>
+</ul>
+<p>Ahora tienes un key pair registrado en EC2 que Terraform puede usar.</p>
+<p><strong>6.5 — Usar el nombre del key pair en Terraform</strong></p>
+<p>En tu archivo <code>terraform.tfvars</code> (ver paso 7) deberás poner:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="na">key_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;academy-key&quot;</span>
+</code></pre></div>
+<p>El valor debe coincidir exactamente con el nombre que le diste al key pair en el paso anterior. Guarda el archivo <code>.pem</code> original: lo necesitarás para obtener la contraseña de RDP de las instancias Windows (EC2 → Conectar → Obtener contraseña de Windows).</p>
+<h4 id="7-configurar-variables-necesarias">7. Configurar variables necesarias<a class="headerlink" href="#7-configurar-variables-necesarias" title="Permanent link">&para;</a></h4>
+<p><strong>7.1 — Copiar el archivo de ejemplo</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>cp<span class="w"> </span>terraform/terraform.tfvars.example<span class="w"> </span>terraform/terraform.tfvars
+</code></pre></div>
+<p><strong>7.2 — Editar <code>terraform/terraform.tfvars</code></strong></p>
+<p>Completa las siguientes variables obligatorias:</p>
+<ul>
+<li><strong><code>key_name</code></strong>: Nombre del key pair que creaste en EC2 (por ejemplo <code>academy-key</code>). Debe existir en tu cuenta y tu región.</li>
+<li><strong><code>safe_mode_password</code></strong>: Contraseña de DSRM (recuperación del modo seguro de Active Directory).</li>
+<li><strong><code>domain_admin_password</code></strong>: Contraseña del usuario administrador del dominio (<code>admin.dominio</code>).</li>
+<li><strong><code>aws_region</code></strong> <em>(opcional)</em>: Cambia solo si no usas la región por defecto (por ejemplo, <code>eu-west-1</code>). Debe coincidir con la región donde esté tu laboratorio (p. ej. <code>us-east-1</code>).</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p>Nunca subas el archivo <code>terraform.tfvars</code> a repositorios públicos si contiene contraseñas o información sensible.</p>
+</div>
+<h3 id="entregable-de-la-fase">Entregable de la fase<a class="headerlink" href="#entregable-de-la-fase" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>AWS CLI</strong> y <strong>Terraform</strong> instalados y configurados.<ul>
+<li>Verifica AWS CLI con credenciales de AWS Academy ejecutando:<br>
+  <code>aws sts get-caller-identity</code></li>
+</ul>
+</li>
+<li>Repositorio clonado o descargado, estructura revisada.</li>
+<li>Archivo <code>terraform.tfvars</code> completado con:<ul>
+<li><code>key_name</code></li>
+<li><code>safe_mode_password</code></li>
+<li><code>domain_admin_password</code></li>
+<li><code>aws_region</code> <em>(si aplica)</em></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="fase-1-despliegue-e-instalacion-automatica-45-min">Fase 1 — Despliegue e instalación automática (45 min)<a class="headerlink" href="#fase-1-despliegue-e-instalacion-automatica-45-min" title="Permanent link">&para;</a></h2>
+<h3 id="objetivo_1">Objetivo<a class="headerlink" href="#objetivo_1" title="Permanent link">&para;</a></h3>
+<p>Ejecutar <code>terraform init</code>, <code>terraform plan</code> y <code>terraform apply</code> sobre el proyecto obtenido en la Fase 0. <strong>Identificar y corregir los errores</strong> que aparezcan (por ejemplo: región distinta, AMI no disponible en tu región, variables sin definir, fallos en el user_data o en los scripts PowerShell, permisos IAM, timeouts). Repetir hasta lograr un despliegue completo y que los scripts se ejecuten en DC01 y en el Cliente. Comprobar los outputs y la conectividad por RDP.</p>
+<h3 id="pasos_1">Pasos<a class="headerlink" href="#pasos_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Ejecutar Terraform</strong><br />
+   Desde la carpeta <strong><code>terraform/</code></strong> del repositorio (o <code>techcorp-ad-iac/terraform</code> si clonaste el repo con esa estructura):
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">cd</span><span class="w"> </span>techcorp-ad-iac/terraform<span class="w">   </span><span class="c1"># o cd terraform según dónde esté tu terraform.tfvars</span>
+<span class="linenos" data-linenos="2 "></span>terraform<span class="w"> </span>init
+<span class="linenos" data-linenos="3 "></span>terraform<span class="w"> </span>plan
+<span class="linenos" data-linenos="4 "></span>terraform<span class="w"> </span>apply
+</code></pre></div>
+   Revisa el plan antes de confirmar con <code>yes</code>.</p>
+</li>
+<li>
+<p><strong>Identificar errores y corregirlos</strong><br />
+   Si <code>plan</code> o <code>apply</code> fallan, anota el mensaje de error (por ejemplo: AMI no encontrada, variable no definida, error de sintaxis en el user_data). Ajusta el código según tu entorno:</p>
+</li>
+</ol>
+<ul>
+<li><strong>Región:</strong> si usas otra región, verifica que la AMI de Windows Server exista allí y actualiza <code>aws_region</code> o el <code>provider</code>.</li>
+<li><strong>AMI:</strong> el repositorio puede usar una AMI por defecto; si no es válida en tu región, define en <code>variables.tf</code>/<code>terraform.tfvars</code> una AMI de Windows Server 2019/2022 para tu región.</li>
+<li><strong>Variables:</strong> asegúrate de que <code>key_name</code>, <code>safe_mode_password</code> y <code>domain_admin_password</code> están en <code>terraform.tfvars</code> y que el par de claves existe en EC2.</li>
+<li><strong>User_data / scripts:</strong> si los scripts fallan al ejecutarse (por ejemplo en la consola de EC2 o en los logs), revisa las plantillas <code>userdata_dc01.ps1.tpl</code> y <code>userdata_cliente.ps1.tpl</code> y los scripts en <code>scripts/dc01/</code> y <code>scripts/cliente/</code>; corrige rutas, codificación o parámetros si es necesario.
+   Vuelve a ejecutar <code>terraform apply</code> (o solo <code>apply</code> si ya inicializaste) tras cada corrección.</li>
+</ul>
+<ol start="3">
+<li><strong>Anotar outputs y conectar por RDP</strong><br />
+   Cuando el despliegue termine sin errores de Terraform, ejecuta <code>terraform output</code> y anota la IP pública de DC01 y la del Cliente. Conéctate por RDP a ambas instancias (usuario <code>Administrator</code>; la contraseña se obtiene con la clave <code>.pem</code> en EC2 → Conectar → Obtener contraseña de Windows). Comprueba que las máquinas responden. Ten en cuenta que los scripts pueden tardar varios minutos (en DC01: 01 reinicia, luego 02–05; en el Cliente: espera al DC y luego une al dominio).</li>
+</ol>
+<h3 id="entregable-de-la-fase_1">Entregable de la fase<a class="headerlink" href="#entregable-de-la-fase_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Despliegue completado con <code>terraform apply</code> sin errores (o con errores corregidos). <strong>Documentación breve de los errores encontrados y de las correcciones aplicadas</strong> (archivo, variable o script modificado y por qué). Captura o anotación de los outputs y comprobación de RDP.</li>
+</ul>
+<hr />
+<h2 id="fase-2-verificacion-del-despliegue-automatico-45-min">Fase 2 — Verificación del despliegue automático (45 min)<a class="headerlink" href="#fase-2-verificacion-del-despliegue-automatico-45-min" title="Permanent link">&para;</a></h2>
+<h3 id="objetivo_2">Objetivo<a class="headerlink" href="#objetivo_2" title="Permanent link">&para;</a></h3>
+<p>Una vez que el despliegue de la Fase 1 se complete sin errores (o con los errores ya corregidos), <strong>verificar</strong> que el resultado es correcto: DC01 actúa como controlador de dominio, existen las OUs y los usuarios (según el CSV), el Cliente está unido al dominio y, si el código del repositorio lo incluye, los recursos compartidos y las GPO están aplicados. Solo verificación; no hay pasos de configuración manual.</p>
+<h3 id="pasos_2">Pasos<a class="headerlink" href="#pasos_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Esperar a que terminen los scripts</strong><br />
+   El repositorio de referencia usa <strong>user_data</strong>: en DC01 se ejecuta primero el equivalente a <code>01-rename-and-ad.ps1</code> (nombre, AD DS, promoción a DC, reinicio) y tras el reinicio una tarea programada ejecuta en orden 02 → 05. En el Cliente, el user_data espera a que el DC responda (LDAP) y luego ejecuta <code>01-join-domain.ps1</code>. Pueden pasar <strong>varios minutos</strong> (15–30 o más) hasta que todo esté listo. Revisa el estado en la consola EC2 o espera antes de verificar.</p>
+</li>
+<li>
+<p><strong>Comprobar DC01</strong><br />
+   Conéctate por RDP a DC01. Verifica que el equipo tiene el nombre correcto (p. ej. DC01), que el rol Active Directory está instalado y que el servidor es controlador de dominio del bosque/dominio configurado (p. ej. <code>techcorp.local</code>).</p>
+</li>
+<li>
+<p><strong>Comprobar OUs y usuarios</strong><br />
+   En DC01, abre <strong>Usuarios y equipos de Active Directory</strong> (o usa PowerShell con <code>Get-ADOrganizationalUnit</code>, <code>Get-ADUser</code>). Comprueba que existe la OU raíz (p. ej. TechCorp), las OUs por departamento (Gerencia, IT, Administración, Comercial, RRHH) y los 20 usuarios creados desde el CSV, así como los grupos por departamento.</p>
+</li>
+<li>
+<p><strong>Comprobar recursos compartidos y GPO (si aplica)</strong><br />
+   El <a href="https://github.com/fjavier-hernandez/techcorp-ad-iac">repositorio de referencia</a> incluye <code>04-RecursosCompartidos.ps1</code> y <code>05-GPO.ps1</code>. Verifica que existen las carpetas compartidas (TechCorp_Users, TechCorp_Datos), las carpetas personales asignadas (unidad X:) y las GPO de contraseñas y bloqueo.</p>
+</li>
+<li>
+<p><strong>Comprobar el Cliente</strong><br />
+   Conéctate por RDP al Cliente. Verifica con <code>ipconfig /all</code> que el sufijo DNS es el dominio (p. ej. <code>techcorp.local</code>) y que el servidor DNS es la IP privada del DC01. Comprueba que el equipo está unido al dominio (Configuración → Sistema → Acerca de, o <code>Get-WmiObject Win32_ComputerSystem</code>). Inicia sesión con un usuario del dominio (p. ej. del CSV) y, si aplica, comprueba que la unidad X: (carpeta personal) está disponible.</p>
+</li>
+</ol>
+<h3 id="entregable-de-la-fase_2">Entregable de la fase<a class="headerlink" href="#entregable-de-la-fase_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Capturas o descripción breve que acrediten: DC01 como controlador de dominio, OUs y usuarios creados, Cliente unido al dominio y, si aplica, recursos compartidos y GPO. Inicio de sesión en el Cliente con un usuario del dominio.</li>
+</ul>
+<hr />
+<h2 id="entregables-globales">Entregables globales<a class="headerlink" href="#entregables-globales" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Código del proyecto</strong> partiendo del <a href="https://github.com/fjavier-hernandez/techcorp-ad-iac">repositorio de referencia</a>: copia o fork del repo con las <strong>correcciones</strong> que hayas aplicado (terraform/ y scripts/). Si prefieres no publicar el código, entrega un documento que describa qué archivos o variables modificaste y con qué valor o contenido (sin incluir contraseñas en claro).</li>
+<li><strong>Documentación de errores y correcciones:</strong> lista o tabla con los <strong>errores</strong> que aparecieron al ejecutar <code>terraform plan</code> / <code>terraform apply</code> o al revisar los scripts (por ejemplo: AMI no encontrada, variable faltante, fallo en user_data), y la <strong>solución</strong> aplicada en cada caso (archivo modificado, cambio realizado). Es el principal entregable para acreditar que has probado el código y corregido los fallos.</li>
+<li><strong>README o documento</strong> con: requisitos, pasos para clonar/configurar (Fase 0), ejecutar init/plan/apply (Fase 1), verificación (Fase 2), cómo acceder por RDP y cómo destruir los recursos (<code>terraform destroy</code>). Puedes basarte en el README del repositorio de referencia y ampliarlo con tus notas.</li>
+<li><strong>Resumen o capturas</strong> de la Fase 0 (repositorio clonado, variables configuradas), Fase 1 (apply exitoso o errores corregidos, outputs) y Fase 2 (verificación: DC01, OUs, usuarios, Cliente unido al dominio, inicio de sesión con usuario del dominio).</li>
+</ol>
+<p>Al finalizar el reto puedes mantener el entorno para realizar el <a href="RetoPracticoTechCorp2.html">Reto práctico 2 — Monitorización y auditoría</a> o ejecutar <strong><code>terraform destroy</code></strong> para eliminar los recursos y no dejar costes activos en AWS.</p>
+<h2 id="criterios-de-evaluacion-30-puntos">Criterios de evaluación (30 puntos)<a class="headerlink" href="#criterios-de-evaluacion-30-puntos" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Puntos</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fase 0 — Repositorio de partida</strong></td>
+<td>5</td>
+<td>Repositorio clonado o descargado; estructura revisada; <code>terraform.tfvars</code> configurado (key_name, contraseñas, región si aplica); par de claves EC2 creado si era necesario.</td>
+</tr>
+<tr>
+<td><strong>Fase 1 — Despliegue y corrección de errores</strong></td>
+<td>12</td>
+<td><code>terraform apply</code> ejecutado; errores identificados y documentados; correcciones aplicadas (Terraform, variables, user_data o scripts) hasta lograr despliegue completo; outputs y RDP verificados.</td>
+</tr>
+<tr>
+<td><strong>Fase 2 — Verificación</strong></td>
+<td>8</td>
+<td>Verificación correcta: DC01 como DC, OUs y usuarios desde CSV, Cliente unido al dominio; recursos compartidos y GPO si aplica; inicio de sesión en el Cliente con usuario del dominio.</td>
+</tr>
+<tr>
+<td><strong>Documentación</strong></td>
+<td>5</td>
+<td>Documentación de errores y correcciones; README o documento con pasos (Fase 0, 1, 2), variables y acceso RDP (CE3h, CE3e).</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>30</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="siguiente-reto">Siguiente reto<a class="headerlink" href="#siguiente-reto" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="RetoPracticoTechCorp2.html">Reto práctico 2 — Monitorización y auditoría (TechCorp)</a>: alarmas CloudWatch, CloudTrail y opcionalmente EventBridge (30 puntos).</li>
+</ul>
+<h2 id="referencia">Referencia<a class="headerlink" href="#referencia" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Repositorio de partida (reto resuelto):</strong> <a href="https://github.com/fjavier-hernandez/techcorp-ad-iac">techcorp-ad-iac</a> — Despliegue con Terraform en AWS de una arquitectura mínima para Active Directory (TechCorp).</li>
+<li><strong>Estructura y enfoque del proyecto:</strong> apartado «Proyecto TechCorp» en <a href="07AutomatizacionMonitorizacion.html">07 Automatización y monitorización</a>.</li>
+<li><strong>Prácticas relacionadas:</strong> <a href="PracticaActiveDirectoryAWS.html">PracticaActiveDirectoryAWS</a> (DHCP, promoción a DC), <a href="RetoGrupalActiveDirectory.html">RetoGrupalActiveDirectory</a> (OUs, 20 usuarios, CSV, recursos compartidos, GPO).</li>
+<li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs">Terraform AWS Provider</a>.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

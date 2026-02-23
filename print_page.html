@@ -374,6 +374,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07AutomatizacionMonitorizacion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.- Automatización y monitorización
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -456,6 +476,15 @@
   <a href="#06procesos" class="md-nav__link">
     <span class="md-ellipsis">
       6.- Procesos del Sistema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07automatizacionmonitorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.- Automatización y monitorización
     </span>
   </a>
   
@@ -628,7 +657,7 @@
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="#.">7. Automatización y monitorización</a></td>
+<td style="text-align: left;"><a href="#07automatizacionmonitorizacion">7. Automatización y monitorización</a></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;">X</td>
@@ -6435,7 +6464,662 @@ Secuencia de arranque (BIOS, bootloader, kernel, init). GRUB. Windows BCD. Daemo
 <strong>Modalidad:</strong> Individual<br />
 <strong>Entorno:</strong> Windows con PowerShell (cmdlets: <code>Get-Process</code>, <code>Stop-Process</code>, <code>Start-Process</code>).</p>
 <p>Depuración de un script Python con interfaz gráfica que utiliza cmdlets de PowerShell para listar procesos, mostrar los que más CPU consumen, finalizar un proceso por PID e iniciar un proceso. El enunciado incluye código con errores que hay que identificar, justificar y corregir.</p>
-<p><a class="md-button" href="#retoindividualprocesospowershell"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.5 1.5 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1m0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> Ver enunciado del reto — PowerShell</a></p></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+<p><a class="md-button" href="#retoindividualprocesospowershell"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.5 1.5 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1m0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> Ver enunciado del reto — PowerShell</a></p></section><section class="print-page" id="07automatizacionmonitorizacion" heading-number="8"><h1 id="07automatizacionmonitorizacion-automatizacion-y-monitorizacion-en-aws">Automatización y Monitorización en AWS<a class="headerlink" href="#07automatizacionmonitorizacion-automatizacion-y-monitorizacion-en-aws" title="Permanent link">&para;</a></h1>
+<p>En esta unidad se trabaja la <strong>automatización de infraestructura</strong> y la <strong>monitorización</strong> en AWS: <strong>Infraestructura como Código (IaC)</strong> con <strong>Terraform</strong>, <strong>CloudWatch</strong> para métricas y alarmas, <strong>CloudTrail</strong> para auditoría de API y <strong>EventBridge</strong> para automatización reactiva, con un <strong>reto práctico</strong> de Active Directory en AWS (TechCorp).</p>
+<h2 id="07automatizacionmonitorizacion-propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#07automatizacionmonitorizacion-propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>En esta unidad vamos a trabajar el <strong>RA3 de ASO</strong>:</p>
+<blockquote>
+<p><strong>RA3.</strong> <em>Gestiona la automatización de tareas del sistema, aplicando criterios de eficiencia y utilizando comandos y herramientas gráficas.</em></p>
+</blockquote>
+<p>Se relaciona con el <strong>objetivo general (15)</strong> del módulo: <em>Aplicar técnicas de monitorización interpretando los resultados y relacionándolos con las medidas correctoras para diagnosticar y corregir las disfunciones.</em></p>
+<h3 id="07automatizacionmonitorizacion-criterios-de-evaluacion-ra3">Criterios de evaluación (RA3)<a class="headerlink" href="#07automatizacionmonitorizacion-criterios-de-evaluacion-ra3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CE3a</strong>: Se han descrito las ventajas de la automatización (incl. IaC y reproducibilidad).</li>
+<li><strong>CE3b</strong>: Se han utilizado comandos/herramientas para la planificación y despliegue (Terraform CLI).</li>
+<li><strong>CE3c</strong>: Se han establecido restricciones de seguridad (estado remoto, credenciales, redes).</li>
+<li><strong>CE3d</strong>: Se han realizado despliegues repetibles (infraestructura con Terraform).</li>
+<li><strong>CE3e</strong>: Se ha automatizado la administración (scripts o IaC asociados al reto).</li>
+<li><strong>CE3f</strong>: Se han instalado y configurado herramientas para monitorización (CloudWatch).</li>
+<li><strong>CE3g</strong>: Se han utilizado herramientas gráficas para planificación y monitorización (consola AWS).</li>
+<li><strong>CE3h</strong>: Se ha documentado el proceso (README, variables, flujo init/plan/apply/destroy).</li>
+</ul>
+<h2 id="07automatizacionmonitorizacion-contenidos">Contenidos<a class="headerlink" href="#07automatizacionmonitorizacion-contenidos" title="Permanent link">&para;</a></h2>
+<p><strong>Bloque 1 — Infraestructura como Código (IaC)</strong><br />
+Concepto de IaC. Declarativo vs imperativo. Reproducibilidad, idempotencia, versionado. Terraform: providers, recursos, variables y outputs, ciclo init/plan/apply/destroy. Proyecto TechCorp (VPC, subred, Security Group, EC2 DC01 y Cliente).</p>
+<p><strong>Bloque 2 — Monitorización y eventos en AWS</strong><br />
+CloudWatch (métricas, alarmas, logs, dashboards). CloudTrail (auditoría de API). EventBridge (eventos y reglas). Relación entre los tres servicios.</p>
+<p><strong>Bloque 3 — Automatización con Terraform</strong><br />
+Alarmas CloudWatch y SNS con Terraform. CloudTrail y EventBridge como código (opcional).</p>
+<p><strong>Bloque 4 — Reto práctico TechCorp</strong><br />
+Despliegue de infraestructura, instalación de AD, monitorización y auditoría/eventos (ver enunciado en Actividades).</p>
+<div class="admonition question">
+<p class="admonition-title">Actividades iniciales</p>
+<ol>
+<li>¿Qué ventajas tiene definir la infraestructura como código frente a crearla manualmente en la consola?</li>
+<li>¿Qué comando de Terraform muestra los cambios sin aplicarlos?</li>
+<li>¿Para qué sirve el archivo <code>terraform.tfstate</code> y por qué no debe subirse a un repositorio público?</li>
+<li>¿Qué servicio de AWS permite crear alarmas cuando la CPU de una instancia supera un umbral?</li>
+<li>¿Qué servicio de AWS registra quién ejecutó una acción sobre un recurso y cuándo?</li>
+</ol>
+</div>
+<h3 id="07automatizacionmonitorizacion-programacion-de-aula-4-sesiones">Programación de Aula (4 sesiones)<a class="headerlink" href="#07automatizacionmonitorizacion-programacion-de-aula-4-sesiones" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>IaC y Terraform. Ciclo de vida, estructura, proyecto TechCorp.</td>
+<td>init/plan/apply, ejemplos</td>
+<td>CE3a, CE3b, CE3d</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CloudWatch, CloudTrail, EventBridge.</td>
+<td>Métricas, alarmas, trails, reglas</td>
+<td>CE3f, CE3g, Objetivo 15</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Alarmas y SNS con Terraform. CloudTrail y EventBridge opcionales.</td>
+<td>Código de monitorización</td>
+<td>CE3c, CE3h</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Reto práctico:</strong> TechCorp (4 fases, 3 h).</td>
+<td><a href="#retopracticotechcorp">Reto TechCorp</a></td>
+<td>CE3e, CE3h, Objetivo 15</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="07automatizacionmonitorizacion-1-infraestructura-como-codigo-iac">1. Infraestructura como Código (IaC)<a class="headerlink" href="#07automatizacionmonitorizacion-1-infraestructura-como-codigo-iac" title="Permanent link">&para;</a></h2>
+<h3 id="07automatizacionmonitorizacion-concepto-de-infraestructura-como-codigo">Concepto de Infraestructura como Código<a class="headerlink" href="#07automatizacionmonitorizacion-concepto-de-infraestructura-como-codigo" title="Permanent link">&para;</a></h3>
+<p>La <strong>Infraestructura como Código (IaC)</strong> consiste en definir, aprovisionar y gestionar infraestructura (servidores, redes, bases de datos) mediante <strong>archivos de configuración</strong> legibles por máquina, en lugar de hacerlo manualmente con consolas gráficas o comandos sueltos. Los recursos se describen en código, lo que permite automatizar su creación y modificación, versionar la infraestructura igual que el código de una aplicación y garantizar entornos reproducibles y consistentes.</p>
+<h4 id="07automatizacionmonitorizacion-declarativo-vs-imperativo">Declarativo vs imperativo<a class="headerlink" href="#07automatizacionmonitorizacion-declarativo-vs-imperativo" title="Permanent link">&para;</a></h4>
+<p>La <strong>Infraestructura como Código (IaC)</strong> permite definir la infraestructura con archivos de texto que se pueden versionar y reutilizar, facilitando la automatización y asegurando despliegues consistentes y repetibles como si fuera software. Existen dos enfoques principales: el imperativo (describe paso a paso cómo hacer los cambios mediante scripts) y el declarativo (define el estado final deseado y la herramienta realiza los cambios necesarios). Usar IaC aporta mayor seguridad, control y trabajo colaborativo sobre la infraestructura.</p>
+<p>A continuación, se muestra una tabla comparativa entre los enfoques imperativo y declarativo en la gestión de infraestructura.  </p>
+<table>
+<thead>
+<tr>
+<th>Enfoque</th>
+<th>Descripción</th>
+<th>Cuándo usarlo / Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Imperativo</strong></td>
+<td>Indicas <strong>paso a paso</strong> cómo hacerlo (ej.: "crea una VM, luego instala nginx, luego abre el puerto 80"). Ofrece control detallado pero es más frágil.</td>
+<td>Tareas puntuales, automatización mediante scripts (shell, PowerShell), operaciones secuenciales o migraciones donde necesitas control total de cada paso.</td>
+</tr>
+<tr>
+<td><strong>Declarativo</strong></td>
+<td>Describes el <strong>estado final deseado</strong>; la herramienta decide cómo lograrlo (ej.: "quiero una VM con nginx y puerto 80 abierto"). Más mantenible y predecible. Terraform es declarativo.</td>
+<td>Infraestructuras completas, sistemas escalables, despliegues en la nube y entornos repetibles donde se busca coherencia, consistencia y automatización; herramientas: Terraform, Ansible en modo declarativo, manifiestos Kubernetes.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="07automatizacionmonitorizacion-caracteristicas-clave-de-la-iac">Características clave de la IaC<a class="headerlink" href="#07automatizacionmonitorizacion-caracteristicas-clave-de-la-iac" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Reproducibilidad:</strong> Permite crear entornos <strong>idénticos</strong> (desarrollo, pruebas, producción) reutilizando el mismo código y variables. Así, cualquier persona o pipeline puede desplegar la infraestructura sin pasos manuales no documentados.</li>
+<li><strong>Idempotencia:</strong> Al aplicar varias veces la misma configuración declarativa se garantiza obtener <strong>el mismo resultado</strong> sin duplicar recursos. Por ejemplo, Terraform compara el estado deseado (código) y el actual (tfstate), aplicando solo los cambios necesarios.</li>
+<li><strong>Versionado de infraestructura:</strong> Los archivos de configuración (<code>.tf</code>) pueden gestionarse con <strong>Git</strong>, lo que permite auditar, revertir, revisar y colaborar en los cambios a la infraestructura. Es fundamental ignorar el archivo <code>terraform.tfstate</code> y secretos sensibles mediante <code>.gitignore</code> o backends remotos.</li>
+</ul>
+<h4 id="07automatizacionmonitorizacion-beneficios-en-entornos-empresariales">Beneficios en entornos empresariales<a class="headerlink" href="#07automatizacionmonitorizacion-beneficios-en-entornos-empresariales" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Automatización:</strong> menos errores humanos y despliegues más rápidos.</li>
+<li><strong>Auditoría y trazabilidad:</strong> todo cambio queda reflejado en el código y en el historial de versiones.</li>
+<li><strong>Escalabilidad:</strong> desplegar múltiples entornos o recursos de forma sistemática.</li>
+<li><strong>Consistencia:</strong> se evita la "deriva de configuración" entre entornos.</li>
+</ul>
+<h3 id="07automatizacionmonitorizacion-comparativa-rapida-cloudformation-vs-terraform">Comparativa rápida: CloudFormation vs Terraform<a class="headerlink" href="#07automatizacionmonitorizacion-comparativa-rapida-cloudformation-vs-terraform" title="Permanent link">&para;</a></h3>
+<p>Aunque <strong>Terraform</strong> es la herramienta IaC más habitual en entornos multi-nube o cuando quieres independencia del proveedor, AWS ofrece su propia alternativa nativa: <strong>AWS CloudFormation</strong>. Ambos permiten describir la infraestructura en archivos de texto y automatizar su despliegue, pero presentan diferencias clave:</p>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th><strong>CloudFormation</strong></th>
+<th><strong>Terraform</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Proveedor</strong></td>
+<td>AWS (solo infra AWS, integración 100%)</td>
+<td>HashiCorp (multi-nube: AWS, Azure, GCP, SaaS, local, etc.)</td>
+</tr>
+<tr>
+<td><strong>Lenguaje</strong></td>
+<td>YAML o JSON</td>
+<td>HCL (propio de Terraform, más legible), también JSON</td>
+</tr>
+<tr>
+<td><strong>Enfoque</strong></td>
+<td>Declarativo</td>
+<td>Declarativo</td>
+</tr>
+<tr>
+<td><strong>Gestión del estado</strong></td>
+<td>AWS lo gestiona internamente ("stacks")</td>
+<td>Archivo <code>terraform.tfstate</code> local o en backend remoto</td>
+</tr>
+<tr>
+<td><strong>Modularidad</strong></td>
+<td>Soporta "nested stacks" (pila dentro de pila)</td>
+<td>Soporta módulos reutilizables y publicables</td>
+</tr>
+<tr>
+<td><strong>Recursos soportados</strong></td>
+<td>Todos los servicios y novedades AWS rápidamente</td>
+<td>AWS, Azure, GCP, VMware, GitHub, y cientos más</td>
+</tr>
+<tr>
+<td><strong>Madurez</strong></td>
+<td>Muy alta para AWS; integrado en consola AWS</td>
+<td>Alta, usada en empresas multi-nube y DevOps</td>
+</tr>
+<tr>
+<td><strong>Extensibilidad</strong></td>
+<td>Limitada a AWS y servicios vinculados</td>
+<td>Ampliable por providers y módulos de la comunidad</td>
+</tr>
+<tr>
+<td><strong>Aprendizaje</strong></td>
+<td>Más fácil si solo operas con AWS</td>
+<td>Más genérico y portable entre nubes</td>
+</tr>
+</tbody>
+</table>
+<h4 id="07automatizacionmonitorizacion-resumen">Resumen<a class="headerlink" href="#07automatizacionmonitorizacion-resumen" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>CloudFormation</strong> es ideal si solo necesitas trabajar con AWS, quieres integración nativa, plantillas precreadas o desplegar recursos de AWS tan pronto como están disponibles.</li>
+<li><strong>Terraform</strong> es más flexible y reutilizable si vas a gestionar recursos en varios proveedores de nube o buscas portabilidad del código IaC entre plataformas. Es preferido en escenarios multi-cloud o para equipos DevOps que gestionan infraestructuras mixtas.</li>
+<li>En cuanto a la sintaxis, <strong>HCL de Terraform</strong> es generalmente más legible y modular, mientras que CloudFormation usa YAML/JSON más verboso.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Resumen</p>
+<p><strong>Terraform</strong> es el estándar de facto en entornos <em>multi-nube</em> para Infraestructura como Código, mientras que <strong>CloudFormation</strong> es la solución específica y nativa de <em>AWS</em>.</p>
+</div>
+<hr />
+<h3 id="07automatizacionmonitorizacion-terraform">Terraform<a class="headerlink" href="#07automatizacionmonitorizacion-terraform" title="Permanent link">&para;</a></h3>
+<p><strong>Terraform</strong> es una herramienta de IaC creada por <strong>HashiCorp</strong>. Usa el lenguaje <strong>HCL</strong> (HashiCorp Configuration Language) en archivos <code>.tf</code>. Funciona con múltiples proveedores (AWS, Azure, GCP, etc.) y es <strong>declarativo</strong>: defines el resultado y Terraform ejecuta los cambios necesarios.</p>
+<div class="admonition note">
+<p class="admonition-title">Documentación oficial de Terraform en español</p>
+<p>Puedes consultar la documentación oficial y recursos de Terraform en: <a href="https://developer.hashicorp.com/terraform/docs">Terraform Documentación</a></p>
+</div>
+<h4 id="07automatizacionmonitorizacion-que-es-terraform">¿Qué es Terraform?<a class="headerlink" href="#07automatizacionmonitorizacion-que-es-terraform" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Gestiona infraestructura en nubes públicas (AWS, Azure, GCP), plataformas privadas (VMware, OpenStack), servicios SaaS (GitHub, Cloudflare) e infraestructura local (archivos, contenedores).</li>
+<li>Características principales: lenguaje declarativo (HCL), gestión de dependencias entre recursos, multi‑cloud, planificación antes de aplicar (<code>terraform plan</code>), gestión del estado (tfstate), modularidad e integración con CI/CD.</li>
+</ul>
+<p>A continuación, puedes ver un vídeo introductorio que resume los conceptos clave de Infraestructura como Código y Terraform:</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 1em; margin-bottom: 1em;">
+  <iframe src="https://www.youtube.com/embed/7SNPPH6yKus?start=504"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="Introducción a Terraform e Infraestructura como Código"></iframe>
+</div>
+
+<p style="text-align: center; font-size: 1.1em; margin-top: 0.5em;">
+  Vídeo explicativo en español sobre Infraestructura como Código (IaC) y Terraform: concepto, ventajas del enfoque declarativo y primeros pasos.
+</p>
+
+<div class="admonition note">
+<p class="admonition-title">Resumen del vídeo: Terraform vs CloudFormation (min 8:24–14:38)</p>
+<ul>
+<li><strong>Del min 0:00 al 8:19:</strong> Se muestra el uso de <strong>CloudFormation en AWS</strong> (plantilla LAMP, diseñador visual, lanzar y borrar stack).</li>
+<li><strong>Del min 8:24 al 14:38:</strong>  <ul>
+<li>Comparativa de <strong>Terraform como herramienta multi-nube</strong> frente a CloudFormation.</li>
+<li>Clonado de un repositorio en <strong>Cloud9</strong>.</li>
+<li>Instalación de <strong>Terraform</strong> en Cloud9.</li>
+<li>Creación de un fichero declarativo <code>main.tf</code> para:<ul>
+<li>Un Security Group "ring" con el puerto 22 abierto.</li>
+<li>Un key pair "key".</li>
+<li>Una instancia EC2 T2 micro "riser".</li>
+</ul>
+</li>
+<li>Ejecución de los comandos principales: <code>terraform init</code>, <code>terraform apply</code> y <code>terraform destroy</code>.</li>
+<li>Introducción a la <strong>IaC (Infraestructura como Código)</strong> y el concepto de datacenter definido por software gracias a Terraform.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Repositorio de ejemplo Terraform</p>
+<p>Puedes encontrar un ejemplo práctico de uso de Terraform para desplegar máquinas EC2 en AWS en el siguiente repositorio público de GitHub: <a href="https://github.com/santos-pardos/tf-ec2">https://github.com/santos-pardos/tf-ec2</a></p>
+</div>
+<h3 id="07automatizacionmonitorizacion-instalacion-de-terraform">Instalación de Terraform<a class="headerlink" href="#07automatizacionmonitorizacion-instalacion-de-terraform" title="Permanent link">&para;</a></h3>
+<p>Para empezar a trabajar con Terraform, primero necesitas instalarlo en tu sistema. Terraform es una herramienta multiplataforma, por lo que puedes instalarlo en <strong>Windows, macOS o Linux</strong>. La forma recomendada de instalar Terraform es descargar el binario oficial desde la web de HashiCorp o usar un gestor de paquetes.</p>
+<h4 id="07automatizacionmonitorizacion-pasos-rapidos">Pasos rápidos<a class="headerlink" href="#07automatizacionmonitorizacion-pasos-rapidos" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Descarga el binario oficial</strong><br />
+   Visita la página oficial de descargas:<br />
+<a href="https://developer.hashicorp.com/terraform/downloads">https://developer.hashicorp.com/terraform/downloads</a></li>
+</ol>
+<p>Allí selecciona tu sistema operativo y arquitectura, descarga el archivo <code>.zip</code> y descomprímelo.</p>
+<ol start="2">
+<li><strong>Coloca el ejecutable en tu PATH</strong><br />
+   Copia el archivo ejecutable <code>terraform</code> (o <code>terraform.exe</code> en Windows) en una ruta que esté en tu variable de entorno PATH, por ejemplo:</li>
+</ol>
+<ul>
+<li><strong>Linux/macOS</strong>:<br />
+     <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>mv<span class="w"> </span>terraform<span class="w"> </span>/usr/local/bin/
+</code></pre></div></li>
+<li><strong>Windows</strong>:<br />
+     Copia <code>terraform.exe</code> a una carpeta incluida en PATH, o agrega la carpeta donde lo colocaste a la variable de entorno PATH.</li>
+</ul>
+<ol start="3">
+<li><strong>Verifica la instalación</strong><br />
+   Abre una terminal y ejecuta:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>terraform<span class="w"> </span>version
+</code></pre></div>
+   Deberías ver la versión instalada.</li>
+</ol>
+<h4 id="07automatizacionmonitorizacion-instalacion-con-gestor-de-paquetes">Instalación con gestor de paquetes<a class="headerlink" href="#07automatizacionmonitorizacion-instalacion-con-gestor-de-paquetes" title="Permanent link">&para;</a></h4>
+<p>También puedes instalar Terraform con un gestor de paquetes, lo que facilita mantenerlo actualizado:</p>
+<ul>
+<li>
+<p><strong>macOS (Homebrew):</strong>
+  <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>brew<span class="w"> </span>tap<span class="w"> </span>hashicorp/tap
+<span class="linenos" data-linenos="2 "></span>brew<span class="w"> </span>install<span class="w"> </span>hashicorp/tap/terraform
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Windows (Chocolatey):</strong>
+  <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">choco</span> <span class="n">install</span> <span class="n">terraform</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Linux (apt):</strong>
+  <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://apt.releases.hashicorp.com/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/hashicorp-archive-keyring.gpg
+<span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/hashicorp.list
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>terraform
+</code></pre></div></p>
+</li>
+</ul>
+<p>Para otros métodos o sistemas operativos, consulta siempre la documentación oficial:
+👉 <a href="https://developer.hashicorp.com/terraform/install">Guía oficial de instalación de Terraform</a></p>
+<blockquote>
+<p><em>La instalación recomendada y las instrucciones actualizadas están siempre disponibles en la documentación oficial. Consulta allí para posibles cambios o pasos especiales según tu sistema operativo.</em></p>
+</blockquote>
+<hr />
+<h4 id="07automatizacionmonitorizacion-providers">Providers<a class="headerlink" href="#07automatizacionmonitorizacion-providers" title="Permanent link">&para;</a></h4>
+<p>Los <strong>providers</strong> son plugins que permiten a Terraform hablar con APIs externas (AWS, Azure, local, random, etc.). Se declaran en el bloque <code>terraform</code> y se descargan con <code>terraform init</code>. Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 5.0&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="p">}</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="p">}</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="p">}</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.region</span>
+<span class="linenos" data-linenos="11 "></span><span class="p">}</span>
+</code></pre></div>
+<h4 id="07automatizacionmonitorizacion-recursos">Recursos<a class="headerlink" href="#07automatizacionmonitorizacion-recursos" title="Permanent link">&para;</a></h4>
+<p>Los <strong>recursos</strong> son los elementos que Terraform crea o gestiona (instancias EC2, VPC, Security Groups, etc.). Se definen con bloques <code>resource "tipo" "nombre_local" { ... }</code>. Terraform calcula el orden de creación y destrucción según las dependencias.</p>
+<h4 id="07automatizacionmonitorizacion-variables-y-outputs">Variables y outputs<a class="headerlink" href="#07automatizacionmonitorizacion-variables-y-outputs" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Variables</strong> (<code>variable</code> en <code>variables.tf</code> o en archivos <code>.tf</code>): parametrizan la configuración (región, AMI, tipo de instancia). Se pueden asignar en <code>terraform.tfvars</code> o por línea de comandos.</li>
+<li><strong>Outputs</strong> (<code>output</code> en <code>outputs.tf</code>): exponen valores al final del <code>apply</code> (IPs públicas, IDs de recursos), útiles para otros sistemas o para el operador.</li>
+</ul>
+<h4 id="07automatizacionmonitorizacion-ciclo-de-vida-init-plan-apply-destroy">Ciclo de vida: init, plan, apply, destroy<a class="headerlink" href="#07automatizacionmonitorizacion-ciclo-de-vida-init-plan-apply-destroy" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>terraform init</strong></td>
+<td>Inicializa el proyecto, descarga providers y prepara el backend. Ejecutar al empezar o al cambiar providers.</td>
+</tr>
+<tr>
+<td><strong>terraform plan</strong></td>
+<td>Compara el estado deseado (código) con el actual (tfstate) y muestra los cambios que se aplicarían <strong>sin ejecutarlos</strong>.</td>
+</tr>
+<tr>
+<td><strong>terraform apply</strong></td>
+<td>Aplica los cambios (crea, modifica o elimina recursos). Pide confirmación a menos que uses <code>-auto-approve</code>. Actualiza el tfstate.</td>
+</tr>
+<tr>
+<td><strong>terraform destroy</strong></td>
+<td>Elimina todos los recursos gestionados por Terraform. Útil para limpiar entornos de prueba.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Buenas prácticas</p>
+<ul>
+<li><strong>Revisa siempre los cambios con <code>terraform plan</code> antes de ejecutar <code>terraform apply</code></strong>. El comando <code>plan</code> te muestra exactamente qué recursos se crearán, actualizarán o eliminarán, ayudando a evitar errores o modificaciones no deseadas. Nunca apliques cambios a ciegas en producción directamente con <code>apply</code>.</li>
+<li><strong>No subas los archivos de estado (<code>terraform.tfstate</code>, <code>terraform.tfstate.backup</code>) ni la carpeta <code>.terraform/</code> al repositorio Git</strong>. El estado contiene información sensible y referencias a toda tu infraestructura. Añade estos archivos al <code>.gitignore</code>.</li>
+<li><strong>En proyectos colaborativos, usa siempre un backend remoto</strong> (como S3, Terraform Cloud, Azure Storage, etc.). Esto permite que todos los miembros del equipo compartan el mismo estado y <strong>evita conflictos y corrupción de estado</strong>. Además, habilita <strong>bloqueo de estado</strong> (state locking) para que no se puedan ejecutar dos <code>apply</code> simultáneamente sobre el mismo estado, lo que puede provocar errores graves y pérdida de sincronización.</li>
+<li><strong>Haz respaldos frecuentes del estado</strong> y, si es posible, habilita el versionado en el backend (por ejemplo, de un bucket S3) para poder recuperar versiones anteriores si hay algún problema.</li>
+</ul>
+</div>
+<h4 id="07automatizacionmonitorizacion-buenas-practicas-basicas">Buenas prácticas básicas<a class="headerlink" href="#07automatizacionmonitorizacion-buenas-practicas-basicas" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Mantener una estructura modular (módulos por componente o entorno).</li>
+<li>Definir versiones explícitas de Terraform y providers (<code>required_version</code>, <code>version</code> en <code>required_providers</code>).</li>
+<li>Usar nombres descriptivos en variables, outputs y recursos.</li>
+<li>Documentar en README las variables requeridas y el flujo init/plan/apply/destroy.</li>
+<li>No guardar credenciales en código; usar variables de entorno o sistemas de secretos.</li>
+</ul>
+<hr />
+<p>Para consolidar y visualizar estos conceptos, a continuación encontrarás un vídeo explicativo que repasa el ciclo de vida de Terraform y detalla buenas prácticas.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 1em; margin-bottom: 1em;">
+  <iframe src="https://www.youtube.com/embed/ad6pbgmDUhE?start=1121"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="Terraform — ciclo de vida y buenas prácticas"></iframe>
+</div>
+
+<p style="text-align: center; font-size: 1.1em; margin-top: 0.5em;">
+  Vídeo explicativo en español sobre el ciclo de vida de Terraform (init, plan, apply, destroy) y buenas prácticas de uso.
+</p>
+
+<div class="admonition note">
+<p class="admonition-title">Resumen del vídeo de Terraform</p>
+<ul>
+<li><strong>Terraform en este vídeo:</strong> del <strong>min 18:41</strong> al <strong>min 36:10</strong>.</li>
+<li>Se explican los siguientes aspectos:<ul>
+<li>Introducción a Terraform y HashiCorp (después de mostrar CloudFormation).</li>
+<li>Instalación de Terraform en Linux (usando el repositorio de HashiCorp y <code>dnf install terraform</code>).</li>
+<li>Creación de un archivo <code>main.tf</code> básico para lanzar una instancia EC2.</li>
+<li>Ciclo de vida de Terraform: <code>init</code> → <code>plan</code> → <code>apply</code> → <code>destroy</code>.</li>
+<li>Configuración de credenciales AWS con <code>aws configure</code>.</li>
+<li>Ejecución de los comandos <code>plan</code>, <code>apply</code> y destrucción con <code>destroy</code>.</li>
+<li>Demostración de un ejemplo de arquitectura más grande (uso de variables, configuración de backend S3, estructura en tres capas, balanceadores, RDS).</li>
+</ul>
+</li>
+<li>A partir del min 36:11 se presenta OpenTofu, un fork de Terraform.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Ejemplos Terraform en AWS</p>
+<ul>
+<li>Repositorio con ejemplos de Terraform en AWS (basados en <em>Terraform: Up and Running</em>): hello-world, servidor único, webserver, cluster con ALB, S3, state remoto, módulos y bucles. Incluye instalación de Terraform/OpenTofu en Amazon Linux 2023: <a href="https://github.com/santos-pardos/terraform-aws-examples">terraform-aws-examples</a>.</li>
+<li>Ejemplo de arquitectura de tres capas en AWS (web, aplicación, base de datos) con VPC, subredes, ALB, Auto Scaling Groups y RDS, desplegable con Terraform: <a href="https://github.com/santos-pardos/tf-multi-tier-architecture">tf-multi-tier-architecture</a>.</li>
+</ul>
+</div>
+<hr />
+<h2 id="07automatizacionmonitorizacion-2-monitorizacion-y-eventos-en-aws">2. Monitorización y Eventos en AWS<a class="headerlink" href="#07automatizacionmonitorizacion-2-monitorizacion-y-eventos-en-aws" title="Permanent link">&para;</a></h2>
+<p>En esta sección se amplía el enfoque más allá de "solo CloudWatch": se integran <strong>CloudWatch</strong> (métricas y alarmas), <strong>CloudTrail</strong> (auditoría de API) y <strong>EventBridge</strong> (automatización reactiva basada en eventos).</p>
+<h3 id="07automatizacionmonitorizacion-amazon-cloudwatch">Amazon CloudWatch<a class="headerlink" href="#07automatizacionmonitorizacion-amazon-cloudwatch" title="Permanent link">&para;</a></h3>
+<p><strong>Amazon CloudWatch</strong> es el servicio nativo de AWS para monitorización. Permite recopilar métricas, crear alarmas, almacenar y consultar logs, y construir dashboards.</p>
+<h4 id="07automatizacionmonitorizacion-que-es-cloudwatch">¿Qué es CloudWatch?<a class="headerlink" href="#07automatizacionmonitorizacion-que-es-cloudwatch" title="Permanent link">&para;</a></h4>
+<p>Servicio que proporciona:</p>
+<ul>
+<li><strong>Métricas:</strong> datos numéricos sobre recursos (CPU, red, disco, etc.) y métricas personalizadas.</li>
+<li><strong>Alarmas:</strong> umbrales sobre métricas que disparan acciones (notificaciones SNS, Auto Scaling, etc.).</li>
+<li><strong>Logs:</strong> centralización de logs de aplicaciones y sistemas (CloudWatch Logs).</li>
+<li><strong>Dashboards:</strong> paneles gráficos para visualizar métricas y alarmas.</li>
+</ul>
+<h4 id="07automatizacionmonitorizacion-metricas-ec2-relevantes">Métricas EC2 relevantes<a class="headerlink" href="#07automatizacionmonitorizacion-metricas-ec2-relevantes" title="Permanent link">&para;</a></h4>
+<p>En el namespace <strong>AWS/EC2</strong> se publican, entre otras, las siguientes métricas para instancias EC2 (aplicables directamente al DC01 y al Cliente del reto):</p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CPUUtilization</strong></td>
+<td>Porcentaje de uso de CPU.</td>
+</tr>
+<tr>
+<td><strong>NetworkIn</strong> / <strong>NetworkOut</strong></td>
+<td>Bytes entrantes/salientes.</td>
+</tr>
+<tr>
+<td><strong>StatusCheckFailed</strong></td>
+<td>Comprueba si la instancia o el sistema fallan (1 = fallo).</td>
+</tr>
+<tr>
+<td><strong>DiskReadOps</strong> / <strong>DiskWriteOps</strong></td>
+<td>Operaciones de lectura/escrita en disco (cuando hay volumen EBS).</td>
+</tr>
+</tbody>
+</table>
+<p>Otras útiles: <code>StatusCheckFailed_Instance</code>, <code>StatusCheckFailed_System</code>, métricas de EBS si usas volúmenes adicionales.</p>
+<h4 id="07automatizacionmonitorizacion-alarmas-cloudwatch">Alarmas CloudWatch<a class="headerlink" href="#07automatizacionmonitorizacion-alarmas-cloudwatch" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Umbral:</strong> valor que dispara la alarma (ej. CPU &gt; 80 %).</li>
+<li><strong>Periodo:</strong> intervalo de agregación de la métrica (ej. 300 segundos).</li>
+<li><strong>Evaluación:</strong> número de períodos consecutivos que deben cumplir la condición (ej. 1 de 1, o 2 de 2 para evitar falsos positivos).</li>
+<li><strong>Acciones:</strong> típicamente un <strong>tópico SNS</strong> que envía email o dispara una función Lambda. Opcionalmente Auto Scaling.</li>
+<li><strong>Estados:</strong> OK, ALARM, INSUFFICIENT_DATA. Las alarmas pasan a ALARM cuando se cumple la condición.</li>
+</ul>
+<p>Ejemplos aplicados al reto TechCorp:</p>
+<ul>
+<li><strong>CPU &gt; 80 %:</strong> alarma sobre <code>CPUUtilization</code> para la instancia DC01 (o Cliente) con umbral 80, período 300 s, estadística Average. Acción: notificación SNS.</li>
+<li><strong>Fallo de estado de instancia:</strong> alarma sobre <code>StatusCheckFailed</code> con umbral 1 (cualquier fallo). Útil para detectar problemas de hipervisor o sistema operativo.</li>
+</ul>
+<h4 id="07automatizacionmonitorizacion-cloudwatch-logs">CloudWatch Logs<a class="headerlink" href="#07automatizacionmonitorizacion-cloudwatch-logs" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Centralización de logs:</strong> puedes enviar logs de las instancias (Windows Event Log, aplicaciones) a CloudWatch Logs mediante el <strong>CloudWatch Agent</strong> o el agente unificado.</li>
+<li><strong>Integración con agentes:</strong> en Windows se instala el agente y se configura qué logs enviar; en el reto puede quedar como ampliación futura si el tiempo se centra en métricas y alarmas nativas.</li>
+</ul>
+<hr />
+<h3 id="07automatizacionmonitorizacion-amazon-cloudtrail-auditoria">Amazon CloudTrail (Auditoría)<a class="headerlink" href="#07automatizacionmonitorizacion-amazon-cloudtrail-auditoria" title="Permanent link">&para;</a></h3>
+<p><strong>Amazon CloudTrail</strong> es un servicio que registra las <strong>llamadas a la API</strong> de AWS: quién hizo qué, sobre qué recurso, cuándo y con qué resultado.</p>
+<h4 id="07automatizacionmonitorizacion-que-es-cloudtrail">¿Qué es CloudTrail?<a class="headerlink" href="#07automatizacionmonitorizacion-que-es-cloudtrail" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Registra <strong>eventos de gestión</strong> (crear, modificar, eliminar recursos) y, si se habilita, <strong>eventos de datos</strong> (acceso a S3, etc.).</li>
+<li>Cada evento incluye: identidad (usuario, rol, cuenta), servicio, acción, recurso afectado, hora y resultado (éxito o error).</li>
+</ul>
+<h4 id="07automatizacionmonitorizacion-conceptos-clave">Conceptos clave<a class="headerlink" href="#07automatizacionmonitorizacion-conceptos-clave" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Trail:</strong> configuración que define qué eventos se registran y dónde se almacenan (bucket S3, opcionalmente envío a CloudWatch Logs).</li>
+<li><strong>Eventos de gestión:</strong> llamadas a APIs que cambian recursos (RunInstances, CreateSecurityGroup, etc.).</li>
+<li><strong>Eventos de datos:</strong> operaciones sobre datos (GetObject en S3). Su registro puede generar mucho volumen y coste.</li>
+</ul>
+<h4 id="07automatizacionmonitorizacion-integracion-con-s3-y-cloudwatch-logs">Integración con S3 y CloudWatch Logs<a class="headerlink" href="#07automatizacionmonitorizacion-integracion-con-s3-y-cloudwatch-logs" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Los eventos se almacenan en un <strong>bucket S3</strong> (formato de logs de CloudTrail). Puedes habilitar <strong>entrega a CloudWatch Logs</strong> para analizar con métricas filtradas o para que EventBridge consuma eventos.</li>
+</ul>
+<h4 id="07automatizacionmonitorizacion-aplicacion-practica-en-techcorp">Aplicación práctica en TechCorp<a class="headerlink" href="#07automatizacionmonitorizacion-aplicacion-practica-en-techcorp" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Detectar cambios en Security Groups:</strong> quién modificó las reglas del SG del DC01 o del Cliente.</li>
+<li><strong>Ver quién lanza instancias:</strong> eventos <code>RunInstances</code> en la cuenta/región.</li>
+<li><strong>Auditoría de cambios en infraestructura AD:</strong> cambios en EC2, VPC o IAM relacionados con el proyecto.</li>
+</ul>
+<p>En el reto se puede activar un trail (por consola o con Terraform) y comprobar que, al modificar un Security Group o lanzar una instancia, el evento aparece en CloudTrail.</p>
+<hr />
+<h3 id="07automatizacionmonitorizacion-amazon-eventbridge-automatizacion-reactiva">Amazon EventBridge (Automatización reactiva)<a class="headerlink" href="#07automatizacionmonitorizacion-amazon-eventbridge-automatizacion-reactiva" title="Permanent link">&para;</a></h3>
+<p><strong>Amazon EventBridge</strong> es un bus de eventos que permite capturar eventos, aplicar reglas (patterns) y enviarlos a <strong>targets</strong> (Lambda, SNS, SQS, etc.) para automatizar reacciones.</p>
+<h4 id="07automatizacionmonitorizacion-que-es-eventbridge">¿Qué es EventBridge?<a class="headerlink" href="#07automatizacionmonitorizacion-que-es-eventbridge" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Captura eventos</strong> de fuentes AWS (CloudWatch Events, CloudTrail, servicios como EC2, etc.) o de aplicaciones propias.</li>
+<li><strong>Reglas:</strong> definen qué eventos interesan (pattern) y a qué target enviarlos.</li>
+<li><strong>Targets:</strong> funciones Lambda, tópicos SNS, colas SQS, etc.</li>
+</ul>
+<h4 id="07automatizacionmonitorizacion-conceptos-clave_1">Conceptos clave<a class="headerlink" href="#07automatizacionmonitorizacion-conceptos-clave_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Event Bus:</strong> canal por el que fluyen los eventos (por defecto el bus de la cuenta).</li>
+<li><strong>Rule:</strong> nombre, pattern (filtro) y uno o más targets.</li>
+<li><strong>Pattern:</strong> criterios sobre el evento (servicio, tipo de evento, atributos como tags).</li>
+<li><strong>Target:</strong> destino de los eventos que coinciden con la regla.</li>
+</ul>
+<h4 id="07automatizacionmonitorizacion-ejemplo-aplicado-a-techcorp">Ejemplo aplicado a TechCorp<a class="headerlink" href="#07automatizacionmonitorizacion-ejemplo-aplicado-a-techcorp" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Evento:</strong> creación de instancia EC2 (<code>RunInstances</code> vía CloudTrail o evento de estado EC2).</li>
+<li><strong>Regla:</strong> si el tag <code>Role</code> = <code>"DomainController"</code> (o <code>Name</code> contiene "DC01").</li>
+<li><strong>Acción:</strong> enviar notificación SNS o invocar una Lambda que registre el evento o ejecute una tarea automatizada.</li>
+</ul>
+<p>Relación entre servicios:</p>
+<ul>
+<li><strong>CloudTrail</strong> genera eventos de API → se pueden enviar a EventBridge (o a CloudWatch Logs).</li>
+<li><strong>CloudWatch</strong> monitoriza métricas y alarmas → las alarmas pueden disparar SNS o integraciones.</li>
+<li><strong>EventBridge</strong> automatiza reacciones ante eventos (cambios de recurso, estados de instancia, etc.).</li>
+</ul>
+<hr />
+<h2 id="07automatizacionmonitorizacion-3-automatizacion-con-terraform">3. Automatización con Terraform<a class="headerlink" href="#07automatizacionmonitorizacion-3-automatizacion-con-terraform" title="Permanent link">&para;</a></h2>
+<p>En esta sección se integra la <strong>monitorización y las notificaciones como código</strong>: alarmas CloudWatch, SNS y, de forma opcional, CloudTrail y EventBridge definidos con Terraform.</p>
+<h3 id="07automatizacionmonitorizacion-alarmas-cloudwatch-con-terraform">Alarmas CloudWatch con Terraform<a class="headerlink" href="#07automatizacionmonitorizacion-alarmas-cloudwatch-con-terraform" title="Permanent link">&para;</a></h3>
+<p>El recurso <strong><code>aws_cloudwatch_metric_alarm</code></strong> permite definir alarmas en código y asociarlas a las instancias creadas por Terraform (referenciando <code>aws_instance.dc01.id</code>, etc.). Así, cada vez que se despliegue la infraestructura, las alarmas se crean automáticamente.</p>
+<p>Ejemplo: alarma de CPU &gt; 80 % para DC01, con período 300 s, estadística Average y una acción SNS (tópico creado en el apartado SNS para notificaciones).</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_cloudwatch_metric_alarm&quot;</span><span class="w"> </span><span class="nv">&quot;cpu_dc01&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="na">alarm_name</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CPU_Alta_DC01&quot;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="na">comparison_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GreaterThanThreshold&quot;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="na">evaluation_periods</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="na">metric_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CPUUtilization&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="na">namespace</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AWS/EC2&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="na">period</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="na">statistic</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Average&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="na">threshold</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">80</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="na">alarm_description</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Alarma si CPU DC01 &gt; 80%&quot;</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="nb">dimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="na">InstanceId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.dc01.id</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="p">}</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="na">alarm_actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_sns_topic.alerta_admin.arn</span><span class="p">]</span>
+<span class="linenos" data-linenos="15 "></span><span class="p">}</span>
+</code></pre></div>
+<h3 id="07automatizacionmonitorizacion-sns-para-notificaciones">SNS para notificaciones<a class="headerlink" href="#07automatizacionmonitorizacion-sns-para-notificaciones" title="Permanent link">&para;</a></h3>
+<p>El recurso <strong><code>aws_sns_topic</code></strong> crea un tópico SNS. Con <strong><code>aws_sns_topic_subscription</code></strong> puedes suscribir un email (u otro endpoint) al tópico. Las alarmas CloudWatch usan <code>alarm_actions = [aws_sns_topic.alerta_admin.arn]</code> para enviar la notificación cuando la alarma pasa a ALARM.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_sns_topic&quot;</span><span class="w"> </span><span class="nv">&quot;alerta_admin&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;TechCorp-AlertaAdministradores&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="p">}</span>
+<span class="linenos" data-linenos="4 "></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_sns_topic_subscription&quot;</span><span class="w"> </span><span class="nv">&quot;email&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">  </span><span class="na">topic_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_sns_topic.alerta_admin.arn</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">  </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;email&quot;</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">  </span><span class="na">endpoint</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin@ejemplo.com&quot;</span>
+<span class="linenos" data-linenos="8 "></span><span class="p">}</span>
+</code></pre></div>
+<p>Tras el primer <code>apply</code>, confirma la suscripción desde el email recibido.</p>
+<h3 id="07automatizacionmonitorizacion-activacion-basica-de-cloudtrail-con-terraform-opcional-guiado">Activación básica de CloudTrail con Terraform (opcional guiado)<a class="headerlink" href="#07automatizacionmonitorizacion-activacion-basica-de-cloudtrail-con-terraform-opcional-guiado" title="Permanent link">&para;</a></h3>
+<p>Con el recurso <strong><code>aws_cloudtrail</code></strong> puedes definir un trail que registre eventos de gestión en la cuenta. Parámetros típicos: nombre, bucket S3 para los logs (creado previamente o con Terraform), opción <strong>is_multi_region_trail</strong> para multi‑región. Opcionalmente <strong>cloud_watch_logs_group_arn</strong> y <strong>cloud_watch_logs_role_arn</strong> para enviar eventos a CloudWatch Logs. En el reto puede plantearse como tarea guiada (crear bucket, política, trail y comprobar un evento).</p>
+<h3 id="07automatizacionmonitorizacion-regla-basica-eventbridge-con-terraform-opcional-guiado">Regla básica EventBridge con Terraform (opcional guiado)<a class="headerlink" href="#07automatizacionmonitorizacion-regla-basica-eventbridge-con-terraform-opcional-guiado" title="Permanent link">&para;</a></h3>
+<p>Con <strong><code>aws_cloudwatch_event_rule</code></strong> (EventBridge rule) y <strong><code>aws_cloudwatch_event_target</code></strong> puedes definir una regla que reaccione a eventos. Ejemplo conceptual: evento fuente <strong>CloudTrail</strong> (o evento de EC2), pattern que filtre por <code>RunInstances</code> o por tag, y target <strong>SNS</strong> para notificación. En el reto puede quedar como ampliación opcional guiada: crear la regla, lanzar una instancia o modificar un SG y ver la notificación o el registro.</p>
+<hr />
+<p>A continuación, te proponemos un vídeo práctico en el que verás cómo se aplican estos conceptos de automatización y monitorización en AWS usando Terraform, integrando alarmas, notificaciones y herramientas como CloudWatch y SNS. </p>
+<p>Este ejemplo complementa lo explicado anteriormente y te ayudará a visualizar el flujo completo de despliegue, configuración y supervisión automatizada en un entorno real.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 1em; margin-bottom: 1em;">
+  <iframe src="https://www.youtube.com/embed/T_Pz1ksb9ng"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="Terraform con AWS — ejemplo práctico"></iframe>
+</div>
+
+<p style="text-align: center; font-size: 1.1em; margin-top: 0.5em;">
+  Vídeo explicativo en español sobre tres servicios de AWS: monitorización tradicional (CloudWatch), arquitecturas dirigidas a eventos (Event Bridge) y auditorías de seguridad (CloudTrail).
+</p>
+
+<div class="admonition note">
+<p class="admonition-title">Resumen del vídeo: Monitorización en AWS (CloudWatch, EventBridge, CloudTrail)</p>
+<p>El vídeo presenta <strong>tres servicios de monitorización y auditoría</strong> en AWS, útiles para prácticas e incluso para concursos AWS. Contenido resumido:</p>
+<ul>
+<li><strong>Introducción (0:00–1:00):</strong> Monitorización tradicional, auditorías de seguridad y arquitecturas dirigidas a eventos.</li>
+<li><strong>Función Lambda de ejemplo (1:00–4:00):</strong> Se usa una función Lambda (Python, boto3) que para instancias EC2 en la región de Irlanda. Se crea y despliega la función <em>demo_da</em> para testearla; al ejecutarla, las dos máquinas se paran. Esto se hace para que la acción quede registrada y se pueda ver después en CloudWatch y CloudTrail.</li>
+<li><strong>CloudWatch — monitorización tradicional (4:00–14:30):</strong><ul>
+<li><strong>Métricas:</strong> Consulta de métricas de la cuenta (balanceadores, contenedores, bases de datos, etc.); agregar métricas a <strong>tableros de monitorización</strong> y crear widgets.</li>
+<li><strong>Alarmas:</strong> Crear una alarma a partir de una métrica (umbral, por ejemplo 10.000), configurar notificaciones vía <strong>SNS</strong> (ej. correo) para cuando se dispare la alarma.</li>
+<li><strong>Grupos de logs:</strong> Los logs de la función Lambda aparecen en CloudWatch (memoria, CPU, tiempo de ejecución, facturación). <strong>Log Insights</strong> permite consultar logs con un lenguaje tipo consulta (no SQL) y humanizar la visualización; se pueden agregar resultados al panel. Se mencionan <strong>Open Search</strong> y <strong>Amazon Managed Grafana</strong> para entornos con muchos logs (no disponibles en AWS Academy).</li>
+<li>Muchos servicios (EC2, RDS, Lambda, etc.) envían métricas a CloudWatch por defecto; desde cada servicio se puede <em>Añadir a un tablero</em>.</li>
+<li><strong>Eventos</strong> en CloudWatch: se comenta que ha pasado a llamarse <strong>Event Bridge</strong>.</li>
+</ul>
+</li>
+<li><strong>Event Bridge — arquitecturas dirigidas a eventos (14:30–18:10):</strong> Reglas y buses de eventos: se selecciona un <strong>evento</strong> (p. ej. “instancia EC2 terminada”) como origen y un <strong>destino</strong> (p. ej. Datadog o una pipeline) como respuesta. Así se construyen workflows que reaccionan a eventos (p. ej. levantar otra EC2 si se borra una). En AWS Academy no permite crear reglas, pero se muestra el asistente de creación.</li>
+<li><strong>CloudTrail — auditorías de seguridad (18:10–fin):</strong> Registra <strong>quién</strong> ha hecho <strong>qué</strong> en <strong>qué momento</strong>. En <strong>Event history</strong> (últimos 90 días) se ve, por ejemplo, que las instancias fueron paradas por la función Lambda <em>demod</em> con su rol. Para cuentas reales se explica crear un <strong>Trail</strong> y guardar todos los eventos de todas las regiones en un bucket S3 (encriptado con KMS) para auditoría y cumplimiento. Los eventos son densos; para analizarlos bien se recomienda enviarlos a Open Search, Grafana o servicios similares.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Repositorios de ejemplo Terraform en AWS</p>
+<p>Para practicar lo mostrado en el vídeo puedes usar estos repositorios públicos de GitHub:</p>
+<ul>
+<li>Ejemplo básico EC2: <a href="https://github.com/santos-pardos/tf-ec2">tf-ec2</a>.</li>
+<li>Ejemplos variados (hello-world, webserver, cluster, S3, módulos): <a href="https://github.com/santos-pardos/terraform-aws-examples">terraform-aws-examples</a>.</li>
+<li>Arquitectura multi-nivel (VPC, ALB, ASG, RDS): <a href="https://github.com/santos-pardos/tf-multi-tier-architecture">tf-multi-tier-architecture</a>.</li>
+</ul>
+</div>
+<hr />
+<h2 id="07automatizacionmonitorizacion-actividades">Actividades<a class="headerlink" href="#07automatizacionmonitorizacion-actividades" title="Permanent link">&para;</a></h2>
+<!-- **Tarea opcional avanzada:**  
+- Crear y enviar una métrica personalizada con namespace `TechCorp/AD` usando la CLI de AWS y visualizarla en CloudWatch.
+
+!!! tip "Antes del reto"
+    Asegúrate de tener cuenta AWS con permisos para EC2, VPC, CloudWatch, SNS y, si aplica, CloudTrail y EventBridge. Terraform y AWS CLI instalados y configurados. El código del proyecto TechCorp (apartado «Proyecto TechCorp» del tema 7) te sirve de base para la Fase 1. -->
+
+<h3 id="07automatizacionmonitorizacion-reto-practico-1-infraestructura-y-active-directory-techcorp-60-puntos">Reto práctico 1: Infraestructura y Active Directory (TechCorp) — 60 puntos<a class="headerlink" href="#07automatizacionmonitorizacion-reto-practico-1-infraestructura-y-active-directory-techcorp-60-puntos" title="Permanent link">&para;</a></h3>
+<p><strong>Duración estimada:</strong> 1,5 h (2 fases de ~45 min). <strong>Modalidad:</strong> Individual o en parejas. <strong>Criterios:</strong> CE3d, CE3e, CE3h.</p>
+<p>Despliegue en AWS de una arquitectura mínima para Active Directory (TechCorp):</p>
+<ul>
+<li>
+<p><strong>Fase 1:</strong> Infraestructura con Terraform:</p>
+<ul>
+<li>VPC</li>
+<li>Subred</li>
+<li>Security Group</li>
+<li>DHCP</li>
+<li>Instancia EC2 DC01</li>
+<li>Instancia EC2 Cliente</li>
+</ul>
+</li>
+<li>
+<p><strong>Fase 2:</strong> Configuración de Active Directory:</p>
+<ul>
+<li>Instalación de Active Directory en DC01</li>
+<li>Creación de OUs (Unidades Organizativas)</li>
+<li>Creación de usuarios (por ejemplo, desde un archivo CSV)</li>
+<li>Unión del Cliente al dominio</li>
+</ul>
+</li>
+<li>
+<p>La infraestructura se define con Terraform (IaC).</p>
+</li>
+<li>La configuración interna puede automatizarse con scripts de PowerShell (usando <code>user_data</code>, SSM o <code>remote-exec</code>).</li>
+</ul>
+<p><a class="md-button" href="#retopracticotechcorp"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.5 1.5 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1m0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> Ver enunciado completo — Reto 1 (TechCorp)</a></p>
+<hr />
+<h3 id="07automatizacionmonitorizacion-reto-practico-2-monitorizacion-y-auditoria-techcorp-ampliacion-025-de-la-nota-final">Reto práctico 2: Monitorización y auditoría (TechCorp) — <strong>Ampliación +0,25 de la nota final.</strong><a class="headerlink" href="#07automatizacionmonitorizacion-reto-practico-2-monitorizacion-y-auditoria-techcorp-ampliacion-025-de-la-nota-final" title="Permanent link">&para;</a></h3>
+<p><strong>Duración estimada:</strong> 1,5 h (2 fases de ~45 min). <strong>Modalidad:</strong> Individual o en parejas. <strong>Criterios:</strong> CE3f, CE3g, CE3h, Objetivo 15.</p>
+<p>Sobre el entorno TechCorp ya desplegado (Reto 1 o equivalente), realiza las siguientes fases:</p>
+<ul>
+<li>
+<p><strong>Fase 3:</strong>  </p>
+<ul>
+<li>Configura alarmas en CloudWatch para:  <ul>
+<li>CPU &gt; 80 %  </li>
+<li>StatusCheckFailed  </li>
+</ul>
+</li>
+<li>Visualiza las métricas correspondientes.</li>
+<li>(Opcional) Crea un dashboard para monitorización.</li>
+</ul>
+</li>
+<li>
+<p><strong>Fase 4:</strong></p>
+<ul>
+<li>Habilita CloudTrail para registrar eventos de gestión.</li>
+<li>Comprueba quién ha realizado cada acción en la cuenta.</li>
+<li>(Opcional)  <ul>
+<li>Crea una regla en EventBridge para reaccionar ante eventos específicos.</li>
+<li>Envía una métrica personalizada al namespace <code>TechCorp/AD</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a class="md-button" href="#retopracticotechcorp2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.5 1.5 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1m0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> Ver enunciado completo — Reto 2 (TechCorp)</a></p></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
                 .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3 ;  counter-increment: counter-index-2 }
@@ -6490,6 +7174,14 @@ Secuencia de arranque (BIOS, bootloader, kernel, init). GRUB. Windows BCD. Daemo
             
                 .print-site-enumerate-headings #06procesos h3:before { content: '7.' counter(counter-06procesos-2) '.' counter(counter-06procesos-3) ' ' }
                 .print-site-enumerate-headings #06procesos h3 {  counter-increment: counter-06procesos-3 }
+            
+.print-site-enumerate-headings #07automatizacionmonitorizacion > h1:before { content: '8 ' }
+
+                .print-site-enumerate-headings #07automatizacionmonitorizacion h2:before { content: '8.' counter(counter-07automatizacionmonitorizacion-2) ' ' }
+                .print-site-enumerate-headings #07automatizacionmonitorizacion h2 {  counter-reset: counter-07automatizacionmonitorizacion-3 ;  counter-increment: counter-07automatizacionmonitorizacion-2 }
+            
+                .print-site-enumerate-headings #07automatizacionmonitorizacion h3:before { content: '8.' counter(counter-07automatizacionmonitorizacion-2) '.' counter(counter-07automatizacionmonitorizacion-3) ' ' }
+                .print-site-enumerate-headings #07automatizacionmonitorizacion h3 {  counter-increment: counter-07automatizacionmonitorizacion-3 }
             </style>
 
 
