@@ -1091,6 +1091,10 @@ Para más detalle sobre la instalación de AWS CLI o la obtención de credencial
 </div>
 <h4 id="6-key-pair-en-aws-academy-para-terraform">6. Key Pair en AWS Academy para Terraform<a class="headerlink" href="#6-key-pair-en-aws-academy-para-terraform" title="Permanent link">&para;</a></h4>
 <p>Para que Terraform pueda lanzar las instancias EC2 necesitas un par de claves registrado en EC2. En AWS Academy el PEM que descargas desde <em>AWS Details</em> <strong>no</strong> está registrado como key pair en EC2, por lo que hay que importarlo. Sigue estos subpasos:</p>
+<div class="admonition warning">
+<p class="admonition-title">Cada vez que abras un laboratorio</p>
+<p>Hay que repetir este paso <strong>cada vez que inicies un nuevo laboratorio</strong> (o que el entorno se reinicie). Cada sesión de lab tiene su propio PEM y su propia cuenta; los key pairs que importes no se conservan entre sesiones. Tras <strong>Start Lab</strong>, descarga de nuevo el PEM, extrae la clave pública, importa el key pair en EC2 y actualiza <code>key_name</code> en <code>terraform.tfvars</code> si cambiaste el nombre.</p>
+</div>
 <p><strong>6.1 — Abrir AWS Academy y acceder al laboratorio</strong></p>
 <ul>
 <li>Accede a tu laboratorio de AWS Academy.</li>
