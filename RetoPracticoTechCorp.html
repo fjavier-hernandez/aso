@@ -414,6 +414,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08ServidoresImpresion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.- Administración de Servidores de Impresión
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1211,21 +1231,60 @@ Para más detalle sobre la instalación de AWS CLI o la obtención de credencial
 </li>
 <li>
 <p><strong>Comprobar DC01</strong><br />
-   Conéctate por RDP a DC01. Verifica que el equipo tiene el nombre correcto (p. ej. DC01), que el rol Active Directory está instalado y que el servidor es controlador de dominio del bosque/dominio configurado (p. ej. <code>techcorp.local</code>).</p>
-</li>
-<li>
-<p><strong>Comprobar OUs y usuarios</strong><br />
-   En DC01, abre <strong>Usuarios y equipos de Active Directory</strong> (o usa PowerShell con <code>Get-ADOrganizationalUnit</code>, <code>Get-ADUser</code>). Comprueba que existe la OU raíz (p. ej. TechCorp), las OUs por departamento (Gerencia, IT, Administración, Comercial, RRHH) y los 20 usuarios creados desde el CSV, así como los grupos por departamento.</p>
-</li>
-<li>
-<p><strong>Comprobar recursos compartidos y GPO (si aplica)</strong><br />
-   El <a href="https://github.com/fjavier-hernandez/techcorp-ad-iac">repositorio de referencia</a> incluye <code>04-RecursosCompartidos.ps1</code> y <code>05-GPO.ps1</code>. Verifica que existen las carpetas compartidas (TechCorp_Users, TechCorp_Datos), las carpetas personales asignadas (unidad X:) y las GPO de contraseñas y bloqueo.</p>
-</li>
-<li>
-<p><strong>Comprobar el Cliente</strong><br />
-   Conéctate por RDP al Cliente. Verifica con <code>ipconfig /all</code> que el sufijo DNS es el dominio (p. ej. <code>techcorp.local</code>) y que el servidor DNS es la IP privada del DC01. Comprueba que el equipo está unido al dominio (Configuración → Sistema → Acerca de, o <code>Get-WmiObject Win32_ComputerSystem</code>). Inicia sesión con un usuario del dominio (p. ej. del CSV) y, si aplica, comprueba que la unidad X: (carpeta personal) está disponible.</p>
+   Conéctate por RDP a DC01 y ejecuta en PowerShell (como Administrador):</p>
 </li>
 </ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Nombre del equipo</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$env:COMPUTERNAME</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># Rol AD DS instalado</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Get-WindowsFeature</span> <span class="n">-Name</span> <span class="n">AD-Domain-Services</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">InstallState</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c"># Dominio y que este equipo es DC</span>
+<span class="linenos" data-linenos="8 "></span><span class="nb">Get-ADDomain</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">DNSRoot</span>
+<span class="linenos" data-linenos="9 "></span><span class="nb">Get-ADDomainController</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Domain</span>
+</code></pre></div>
+<p>Debe mostrarse el nombre DC01, el rol instalado y el dominio (p. ej. <code>techcorp.local</code>).</p>
+<ol start="3">
+<li><strong>Comprobar OUs y usuarios</strong><br />
+   En DC01, en PowerShell:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nb">Import-Module</span> <span class="n">ActiveDirectory</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nv">$domainDN</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-ADDomain</span><span class="p">).</span><span class="n">DistinguishedName</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nv">$baseOU</span> <span class="p">=</span> <span class="s2">&quot;OU=TechCorp,$domainDN&quot;</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c"># OUs bajo TechCorp (Gerencia, IT, Administracion, Comercial, RRHH)</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nb">Get-ADOrganizationalUnit</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-SearchBase</span> <span class="nv">$baseOU</span> <span class="n">-SearchScope</span> <span class="n">OneLevel</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c"># Número de usuarios en la estructura TechCorp</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="p">(</span><span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-SearchBase</span> <span class="nv">$baseOU</span> <span class="n">-SearchScope</span> <span class="n">Subtree</span><span class="p">).</span><span class="n">Count</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="c"># Grupos por departamento</span>
+<span class="linenos" data-linenos="12 "></span><span class="nb">Get-ADGroup</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-SearchBase</span> <span class="nv">$baseOU</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span>
+</code></pre></div>
+<p>Comprueba que hay 5 OUs, 20 usuarios (o los que tenga tu CSV) y los grupos (p. ej. Gerencia_Usuarios, IT_Usuarios, etc.).</p>
+<ol start="4">
+<li><strong>Comprobar recursos compartidos y GPO (si aplica)</strong><br />
+   El <a href="https://github.com/fjavier-hernandez/techcorp-ad-iac">repositorio de referencia</a> incluye <code>04-RecursosCompartidos.ps1</code> y <code>05-GPO.ps1</code>. En DC01, en PowerShell:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Carpetas compartidas (TechCorp_Users, TechCorp_Datos)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Get-SmbShare</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="o">-like</span> <span class="s2">&quot;TechCorp*&quot;</span> <span class="p">}</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Path</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># GPO vinculadas al dominio (para comprobar que existen directivas)</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">Get-GPO</span> <span class="n">-All</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">DisplayName</span><span class="p">,</span> <span class="n">GpoStatus</span>
+</code></pre></div>
+<p>Verifica que existen las rutas compartidas y las GPO; las de contraseñas y bloqueo suelen estar en la directiva por defecto del dominio o en GPO creadas por el script.</p>
+<ol start="5">
+<li><strong>Comprobar el Cliente</strong><br />
+   Conéctate por RDP al Cliente y ejecuta en PowerShell:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c"># Sufijo DNS y servidor DNS (debe ser la IP privada del DC01)</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">Get-DnsClient</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">ConnectionSpecificSuffix</span><span class="p">,</span> <span class="n">ServerAddresses</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c"># Equipo unido al dominio</span>
+<span class="linenos" data-linenos="5 "></span><span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_ComputerSystem</span><span class="p">).</span><span class="n">Domain</span>
+</code></pre></div>
+<p>Debe mostrarse el sufijo del dominio (p. ej. <code>techcorp.local</code>) y el dominio <code>techcorp.local</code>. Después inicia sesión con un usuario del dominio (p. ej. del CSV) y comprueba que la unidad X: (carpeta personal) está disponible: <code>Get-PSDrive -Name X</code>.</p>
 <h3 id="entregable-de-la-fase_2">Entregable de la fase<a class="headerlink" href="#entregable-de-la-fase_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Capturas o descripción breve que acrediten: DC01 como controlador de dominio, OUs y usuarios creados, Cliente unido al dominio y, si aplica, recursos compartidos y GPO. Inicio de sesión en el Cliente con un usuario del dominio.</li>

@@ -1,0 +1,1169 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Servidor de impresión en Windows Server en AWS, rol Print and Document Services, gestión de colas, permisos y actividad práctica.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/08ServidoresImpresion.html">
+      
+      
+        <link rel="prev" href="07AutomatizacionMonitorizacion.html">
+      
+      
+      
+      <link rel="icon" href="imagenes/aso.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Administración de Servidores de Impresión - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Administración de Servidores de Impresión - Administración de Sistemas Operativos" >
+      
+        <meta  property="og:description"  content="Servidor de impresión en Windows Server en AWS, rol Print and Document Services, gestión de colas, permisos y actividad práctica." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/08ServidoresImpresion.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/08ServidoresImpresion.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Administración de Servidores de Impresión - Administración de Sistemas Operativos" >
+      
+        <meta  name="twitter:description"  content="Servidor de impresión en Windows Server en AWS, rol Print and Document Services, gestión de colas, permisos y actividad práctica." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/08ServidoresImpresion.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#administracion-de-servidores-de-impresion-en-windows-server-aws" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Administración de Servidores de Impresión
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  <img src="imagenes/aso.svg" alt="logo">
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01ShellScript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- ShellScripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02PowerShell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03AccesoRemoto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.- Servicios de acceso remoto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04ActiveDirectory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Servicios de Directorio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05IntegracionSistemas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.- Integración de Sistemas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06Procesos.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.- Procesos del Sistema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07AutomatizacionMonitorizacion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.- Automatización y monitorización
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    8.- Administración de Servidores de Impresión
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="08ServidoresImpresion.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    8.- Administración de Servidores de Impresión
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propuesta-didactica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenidos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programacion-de-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación de Aula
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-funcion-del-servidor-de-impresion-en-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Función del servidor de impresión en red
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rol-print-and-document-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Rol Print and Document Services
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-agregar-impresoras-por-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Agregar impresoras por TCP/IP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-comparticion-y-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Compartición y permisos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-integracion-en-aws-dominio-y-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Integración en AWS: dominio y Security Groups
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-iis-y-servidor-de-impresion-en-windows-server-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vídeo: IIS y Servidor de impresión en Windows Server (AWS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Actividades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actividad-servidor-de-impresion-en-windows-server-aws-025-en-la-nota-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad: Servidor de impresión en Windows Server (AWS) — +0,25 en la nota final
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propuesta-didactica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenidos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programacion-de-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación de Aula
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-funcion-del-servidor-de-impresion-en-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Función del servidor de impresión en red
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rol-print-and-document-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Rol Print and Document Services
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-agregar-impresoras-por-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Agregar impresoras por TCP/IP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-comparticion-y-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Compartición y permisos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-integracion-en-aws-dominio-y-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Integración en AWS: dominio y Security Groups
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-iis-y-servidor-de-impresion-en-windows-server-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vídeo: IIS y Servidor de impresión en Windows Server (AWS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Actividades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actividad-servidor-de-impresion-en-windows-server-aws-025-en-la-nota-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad: Servidor de impresión en Windows Server (AWS) — +0,25 en la nota final
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="administracion-de-servidores-de-impresion-en-windows-server-aws">Administración de Servidores de Impresión en Windows Server (AWS)<a class="headerlink" href="#administracion-de-servidores-de-impresion-en-windows-server-aws" title="Permanent link">&para;</a></h1>
+<p>En esta unidad se trabaja la <strong>administración del servidor de impresión</strong> en <strong>Windows Server</strong> desplegado en <strong>AWS</strong>: instalación del rol <strong>Print and Document Services</strong>, configuración de impresoras por red (TCP/IP), drivers, compartición y permisos, en un entorno integrado con Active Directory.</p>
+<h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>En esta unidad se trabaja la administración de servicios de impresión en red:</p>
+<blockquote>
+<p>Gestionar el <strong>servidor de impresión</strong> en Windows Server: instalación del rol, agregar impresoras por TCP/IP, configurar permisos y compartición para usuarios del dominio en un escenario AWS (EC2, dominio Active Directory).</p>
+</blockquote>
+<h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Conocer la función del servidor de impresión en una red corporativa.</li>
+<li>Instalar y configurar el rol <em>Print and Document Services</em> en Windows Server.</li>
+<li>Agregar impresoras por dirección TCP/IP y gestionar drivers.</li>
+<li>Compartir impresoras y asignar permisos (impresión, gestión de documentos).</li>
+<li>Integrar el servidor de impresión en un entorno Windows Server en AWS (unión al dominio, Security Groups).</li>
+</ul>
+<h2 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h2>
+<p><strong>Bloque 1 — Servidor de impresión en Windows Server</strong><br />
+Función del servidor de impresión en red. Rol <em>Print and Document Services</em>. Consola <em>Print Management</em>. Tipos de servidor de impresión (estándar, con LPD, por Internet); elección del servidor estándar para entornos corporativos.</p>
+<p><strong>Bloque 2 — Instalación y configuración en AWS</strong><br />
+Requisitos: Windows Server en EC2, unión al dominio (DNS apuntando al DC, Security Groups que permitan tráfico entre instancias Windows). Instalación del rol desde <em>Server Manager</em> → <em>Add roles and features</em>.</p>
+<p><strong>Bloque 3 — Impresoras por TCP/IP y drivers</strong><br />
+Agregar impresora por dirección IP. Asistente <em>Add Printer</em>: puerto TCP/IP, detección de impresora en red. Si la impresora no se encuentra, instalación manual con driver genérico (p. ej. HP PCL6). Configuración de puertos y nombre de la impresora compartida.</p>
+<p><strong>Bloque 4 — Compartición y permisos</strong><br />
+Compartir la impresora en red con un nombre reconocible (p. ej. <em>HP Presentadores</em>). Permisos de seguridad: <em>Print</em> (enviar trabajos), <em>Manage documents</em> (gestionar cola de otros). Asignación a usuarios o grupos del dominio (p. ej. quitar <em>Everyone</em> y dar solo a un usuario como María). Buenas prácticas: usuarios normales solo <em>Print</em>, administradores <em>Manage printers</em>.</p>
+<p><strong>Bloque 5 — Actividad práctica</strong><br />
+Realizar el servidor de impresión explicado en el vídeo sobre Windows Server en AWS (unión al dominio, rol de impresión, impresora por TCP/IP o simulada, permisos). Ver enunciado en Actividades.</p>
+<div class="admonition question">
+<p class="admonition-title">Actividades iniciales</p>
+<ol>
+<li>¿Qué ventajas tiene centralizar las impresoras en un servidor de impresión frente a conectar cada impresora directamente a un equipo?</li>
+<li>¿Qué puerto o protocolo se utiliza normalmente para agregar una impresora de red por IP?</li>
+<li>¿Qué diferencia hay entre el permiso <em>Print</em> y <em>Manage documents</em> en una impresora compartida?</li>
+</ol>
+</div>
+<h3 id="programacion-de-aula">Programación de Aula<a class="headerlink" href="#programacion-de-aula" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Servidor de impresión: función, rol Print and Document Services, consola Print Management.</td>
+<td>Teoría y visionado del vídeo.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Instalación en AWS: unión al dominio, Security Groups, instalación del rol. Impresoras por TCP/IP y drivers.</td>
+<td>Práctica guiada.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Compartición y permisos. Integración con usuarios del dominio.</td>
+<td>Actividad: servidor de impresión en AWS (+0,25).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-funcion-del-servidor-de-impresion-en-red">1. Función del servidor de impresión en red<a class="headerlink" href="#1-funcion-del-servidor-de-impresion-en-red" title="Permanent link">&para;</a></h2>
+<p>En un entorno corporativo, el <strong>servidor de impresión</strong> centraliza las impresoras en uno o varios servidores. Los clientes (Windows, Linux u otros) envían trabajos a las colas del servidor, que gestiona drivers, prioridades y permisos. Así se evita instalar cada impresora en cada equipo y se facilita el control de quién puede imprimir y quién puede administrar la cola.</p>
+<p>En <strong>Windows Server</strong>, el rol <strong>Print and Document Services</strong> proporciona:</p>
+<ul>
+<li><strong>Print Management</strong>: consola para agregar impresoras, gestionar colas, drivers y formularios.</li>
+<li><strong>Impresoras por TCP/IP</strong>: agregar impresoras por dirección IP (puerto estándar).</li>
+<li><strong>Compartición</strong>: publicar la impresora en la red con un nombre y permisos por usuario o grupo.</li>
+</ul>
+<p>En entornos <strong>virtualizados o en la nube</strong> (p. ej. AWS), el servidor de impresión suele ser una instancia Windows Server unida al dominio, con los mismos requisitos de red que el resto de servidores (DNS, Security Groups que permitan tráfico entre miembros del dominio).</p>
+<hr />
+<h2 id="2-rol-print-and-document-services">2. Rol Print and Document Services<a class="headerlink" href="#2-rol-print-and-document-services" title="Permanent link">&para;</a></h2>
+<p>La instalación del rol se realiza desde <strong>Server Manager</strong> → <strong>Add roles and features</strong>. Al elegir <strong>Print and Document Services</strong> se ofrecen opciones:</p>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Print Server</strong></td>
+<td>Servidor de impresión estándar. Es la opción habitual en una red corporativa.</td>
+</tr>
+<tr>
+<td><strong>Print Server (Internet)</strong></td>
+<td>Servidor de impresión accesible vía Internet (escenario menos común).</td>
+</tr>
+<tr>
+<td><strong>LPD Service</strong></td>
+<td>Servicio Line Printer Daemon para clientes que usan el protocolo LPD (p. ej. algunos sistemas Unix).</td>
+</tr>
+</tbody>
+</table>
+<p>Para la mayoría de los casos se selecciona <strong>Print Server</strong>. Tras la instalación aparecen herramientas en <strong>Server Manager</strong> → <strong>Tools</strong>, en particular <strong>Print Management</strong>, desde donde se gestionan impresoras, drivers, puertos y formularios.</p>
+<hr />
+<h2 id="3-agregar-impresoras-por-tcpip">3. Agregar impresoras por TCP/IP<a class="headerlink" href="#3-agregar-impresoras-por-tcpip" title="Permanent link">&para;</a></h2>
+<p>Desde <strong>Print Management</strong> (o <em>Devices and Printers</em> → <em>Add a printer</em>) se puede <strong>agregar una impresora por TCP/IP</strong>:</p>
+<ol>
+<li>Elegir <strong>Add printer</strong> → <strong>Add a TCP/IP or Web Services printer by IP address</strong>.</li>
+<li>Indicar la <strong>dirección IP</strong> de la impresora (o del equipo que hace de impresora de red). En un laboratorio sin impresora física se puede usar la IP del propio servidor para simular; la impresora no responderá pero permitirá completar el asistente eligiendo un driver manualmente.</li>
+<li>Si el sistema <strong>detecta</strong> la impresora en la red, instalará el driver automáticamente. Si no la encuentra (impresora apagada o IP inexistente), se puede continuar y en el siguiente paso elegir un <strong>driver genérico</strong> (p. ej. <em>Microsoft Open XPS</em>, <em>HP</em> genérico, <em>PCL6</em>) para crear la cola.</li>
+<li>Asignar un <strong>nombre</strong> a la impresora y, si se desea, <strong>compartirla</strong> con un nombre para la red (p. ej. <em>HP Presentadores</em>).</li>
+</ol>
+<p>En la pestaña <strong>Ports</strong> de las propiedades de la impresora se comprueba el puerto TCP/IP configurado (dirección IP y puerto estándar si aplica).</p>
+<hr />
+<h2 id="4-comparticion-y-permisos">4. Compartición y permisos<a class="headerlink" href="#4-comparticion-y-permisos" title="Permanent link">&para;</a></h2>
+<p>Una vez creada la impresora, en sus <strong>Properties</strong> → <strong>Sharing</strong> se puede:</p>
+<ul>
+<li>Marcar <strong>Share this printer</strong> y dar un <strong>Share name</strong> (sin espacios en el nombre suele evitar problemas).</li>
+<li>Los clientes del dominio podrán buscar la impresora por ese nombre (p. ej. <code>\\SW25isprinters\HP Presentadores</code>).</li>
+</ul>
+<p>En <strong>Security</strong> (propiedades de la impresora) se configuran los <strong>permisos</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Permiso</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Print</strong></td>
+<td>El usuario puede enviar trabajos a la impresora.</td>
+</tr>
+<tr>
+<td><strong>Manage documents</strong></td>
+<td>El usuario puede pausar, reanudar o eliminar trabajos de la cola (propios y de otros).</td>
+</tr>
+<tr>
+<td><strong>Manage printers</strong></td>
+<td>El usuario puede cambiar propiedades de la impresora, compartirla y gestionar permisos.</td>
+</tr>
+</tbody>
+</table>
+<p>Por defecto, <strong>Everyone</strong> puede imprimir. En un entorno controlado suele quitarse <em>Everyone</em> y asignarse <strong>Print</strong> solo a los usuarios o grupos que deban usar esa impresora (p. ej. un usuario como María o un grupo <em>Presentadores</em>). Los administradores suelen tener <em>Manage printers</em> para administrar el servidor de impresión.</p>
+<hr />
+<h2 id="5-integracion-en-aws-dominio-y-security-groups">5. Integración en AWS: dominio y Security Groups<a class="headerlink" href="#5-integracion-en-aws-dominio-y-security-groups" title="Permanent link">&para;</a></h2>
+<p>Para que el servidor de impresión funcione en una red Windows en AWS:</p>
+<ol>
+<li><strong>Unión al dominio:</strong> La instancia Windows Server (EC2) debe tener su <strong>DNS</strong> apuntando a la IP del controlador de dominio (DC). Desde <strong>Propiedades del sistema</strong> se une al dominio (p. ej. <em>miempresa.com</em>) con un usuario con permisos (p. ej. administrador del dominio o una cuenta delegada). Tras el reinicio, se puede iniciar sesión con un usuario del dominio.</li>
+<li><strong>Security Groups:</strong> En AWS, las instancias deben pertenecer a un <strong>Security Group</strong> que permita el tráfico necesario entre los equipos Windows: no solo RDP (3389), sino también los puertos que Active Directory y el acceso a recursos compartidos (incluidas impresoras) requieren. Si solo está abierto el 3389, la máquina no podrá unirse al dominio ni los clientes podrán ver las impresoras compartidas. Es habitual crear un grupo (p. ej. <em>Windows Server</em>) que permita RDP desde tu IP y tráfico entre las instancias de la cuenta en esa VPC.</li>
+<li><strong>OU de servidores:</strong> En Active Directory se suelen crear unidades organizativas (OU) para los servidores que no son controladores de dominio, para aplicar directivas específicas. El servidor de impresión se mueve a esa OU (p. ej. <em>Servidores</em>) desde <em>Computers</em>.</li>
+</ol>
+<p>Con esto, el servidor de impresión queda integrado en la red corporativa y los usuarios del dominio pueden agregar la impresora compartida desde sus equipos.</p>
+<hr />
+<h2 id="video-iis-y-servidor-de-impresion-en-windows-server-aws">Vídeo: IIS y Servidor de impresión en Windows Server (AWS)<a class="headerlink" href="#video-iis-y-servidor-de-impresion-en-windows-server-aws" title="Permanent link">&para;</a></h2>
+<p>A continuación puedes ver un vídeo práctico en el que se instalan en un mismo Windows Server en AWS el rol <strong>Internet Information Services (IIS)</strong> y el rol <strong>Servidor de impresión</strong>. Se muestra la unión de un servidor <em>standalone</em> al dominio, la instalación de ambos roles y la configuración de una impresora por TCP/IP (incluida la gestión de drivers y permisos). El vídeo comienza en el momento en que se aborda la instalación de roles (IIS e impresión).</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 1em; margin-bottom: 1em;">
+  <iframe src="https://www.youtube.com/embed/UewPcO7ZG48?start=181"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="IIS y Servidor de impresión en Windows Server (AWS)"></iframe>
+</div>
+
+<p style="text-align: center; font-size: 1.1em; margin-top: 0.5em;">
+  Vídeo en español: instalación de IIS y del servidor de impresión en Windows Server en AWS, unión al dominio y configuración de una impresora por TCP/IP.
+</p>
+
+<div class="admonition note">
+<p class="admonition-title">Resumen del vídeo: IIS y Servidor de impresión en Windows Server (AWS)</p>
+<p>El vídeo muestra la instalación de <strong>dos roles</strong> en una misma instancia Windows Server en EC2: <strong>Internet Information Services (IIS)</strong> y <strong>Servidor de impresión</strong> (<em>Print and Document Services</em>), en un entorno con Active Directory ya desplegado (vídeo anterior).</p>
+<ul>
+<li><strong>Contexto:</strong> Se parte de un controlador de dominio (DC01) y de un servidor <em>standalone</em> recién creado en AWS. El objetivo es unir ese servidor al dominio e instalar en él IIS e impresión.</li>
+<li><strong>Preparación del servidor:</strong> Primera conexión por RDP con el usuario <em>Administrator</em> y contraseña descomprimida desde la consola AWS. Cambio de nombre del equipo (p. ej. <em>SW25isprinters</em>), reinicio. Configuración de <strong>DNS</strong> del adaptador de red con la <strong>IP del controlador de dominio</strong> para poder unir la máquina al dominio.</li>
+<li><strong>Unión al dominio:</strong> En Propiedades del sistema → Cambiar → Dominio, se indica el nombre del dominio (p. ej. <em>miempresa.com</em>). Si falla, suele deberse a: nombre de dominio incorrecto, DNS que no apunta al DC, o <strong>Security Group</strong> en AWS que no permite tráfico entre instancias. Se cambia el Security Group de la instancia (y del DC) a uno que abra RDP y el tráfico entre máquinas Windows. Tras unir al dominio con un usuario con permisos (p. ej. <em>santos</em>), reinicio. A partir de entonces se inicia sesión con usuario del dominio (p. ej. <em>miempresa\santos</em>).</li>
+<li><strong>Creación de OU en AD:</strong> En el DC se crea una OU <em>Servidores</em> para colocar los servidores que no son controladores de dominio y poder aplicar directivas. El nuevo servidor se mueve desde <em>Computers</em> a <em>Servidores</em>.</li>
+<li><strong>Instalación de roles:</strong> En el servidor unido al dominio, <em>Server Manager</em> → Add roles and features. Se seleccionan <strong>Web Server (IIS)</strong> y <strong>Print and Document Services</strong>. Para impresión se elige <strong>Print Server</strong> (estándar). Se aceptan las características por defecto de IIS y se completa la instalación.</li>
+<li><strong>Print Management:</strong> Tras la instalación, en Tools aparece <strong>Print Management</strong>. Desde ahí se agrega una impresora por <strong>TCP/IP</strong> (dirección IP). Si la impresora no existe en la red, el asistente no la detecta y se puede continuar eligiendo un driver genérico (p. ej. HP, PCL6) para crear la cola. Se asigna nombre a la impresora (p. ej. <em>HP Presentadores</em>) y se comparte.</li>
+<li><strong>Permisos de impresora:</strong> En Propiedades de la impresora → Security se quita <em>Everyone</em> y se asigna a usuarios concretos (p. ej. solo <em>María</em>) el permiso <strong>Print</strong>, de modo que solo esos usuarios puedan imprimir. <em>Manage documents</em> y <em>Manage printers</em> se reservan para administradores.</li>
+<li><strong>IIS (resumen):</strong> Se muestra la carpeta por defecto <em>C:\inetpub\wwwroot</em> y cómo sustituir la página por defecto por otra (p. ej. un juego descargado). Desde el DC se puede acceder a la página web por nombre del servidor o por alias DNS (CNAME <em>intranet</em>, <em>portal empleado</em>) configurados en el servidor DNS del dominio.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Requisitos para la actividad</p>
+<p>Para realizar la actividad de servidor de impresión necesitas: cuenta <strong>AWS</strong> (p. ej. AWS Academy), una instancia <strong>Windows Server</strong> en EC2, un <strong>controlador de dominio</strong> en la misma VPC y un <strong>Security Group</strong> que permita RDP y tráfico entre instancias Windows. Consulta el vídeo anterior de instalación de Active Directory si aún no tienes el dominio desplegado.</p>
+</div>
+<hr />
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<h3 id="actividad-servidor-de-impresion-en-windows-server-aws-025-en-la-nota-final">Actividad: Servidor de impresión en Windows Server (AWS) — <strong>+0,25 en la nota final</strong><a class="headerlink" href="#actividad-servidor-de-impresion-en-windows-server-aws-025-en-la-nota-final" title="Permanent link">&para;</a></h3>
+<p><strong>Duración estimada:</strong> 1–1,5 h. <strong>Modalidad:</strong> Individual o en parejas.</p>
+<p>Realiza el <strong>servidor de impresión</strong> explicado en el vídeo anterior:</p>
+<ul>
+<li>Tener (o crear) un entorno en AWS con al menos un <strong>controlador de dominio</strong> (Windows Server) y un <strong>servidor miembro</strong> (Windows Server) en la misma VPC.</li>
+<li>Asegurar que el <strong>DNS</strong> del servidor miembro apunta al DC y que los <strong>Security Groups</strong> permiten el tráfico necesario entre instancias Windows (no solo RDP).</li>
+<li>Unir el servidor miembro al dominio.</li>
+<li>Instalar el rol <strong>Print and Document Services</strong> (Print Server estándar) en el servidor miembro.</li>
+<li>Agregar al menos <strong>una impresora</strong> por TCP/IP (puede ser la IP del propio servidor para simular si no hay impresora física; en ese caso elegir un driver genérico cuando el asistente no la detecte).</li>
+<li>Compartir la impresora con un nombre y configurar <strong>permisos</strong> (p. ej. quitar <em>Everyone</em> y dar solo <em>Print</em> a un usuario del dominio).</li>
+<li>Documentar con capturas: servidor unido al dominio, rol instalado, impresora en Print Management, permisos configurados. Opcional: comprobar desde un cliente del dominio que la impresora aparece y está accesible.</li>
+</ul>
+<p><a class="md-button" href="PracticaServidorImpresionAWS.html"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.5 1.5 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1m0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> Ver enunciado completo — Servidor de impresión (AWS)</a></p>
+<hr />
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/administration/print-services/print-services">Windows Server: Print and Document Services</a></li>
+<li><a href="04ActiveDirectory.html">04 Servicios de Directorio (Active Directory)</a>: requisitos de dominio y DNS para unir servidores.</li>
+<li><a href="03AccesoRemoto.html">03 Acceso remoto</a>: RDP y conexión a instancias Windows en AWS.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="07AutomatizacionMonitorizacion.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 7.- Automatización y monitorización">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                7.- Automatización y monitorización
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

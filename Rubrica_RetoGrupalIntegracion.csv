@@ -1,0 +1,22 @@
+criterion,level,level_description,score
+Instancias AWS creadas correctamente,No conseguido,No se han creado las cuatro instancias o faltan alguna,0
+Instancias AWS creadas correctamente,Parcial,Instancias creadas con errores o falta alguna de las cuatro,1.5
+Instancias AWS creadas correctamente,Conseguido,Cuatro instancias creadas correctamente en la misma VPC,3
+Security Groups configurados,No conseguido,Security Groups no configurados o puertos incorrectos,0
+Security Groups configurados,Parcial,Solo parte de los puertos configurados o con errores,1.5
+Security Groups configurados,Conseguido,Puertos Samba NFS RDP y SSH configurados correctamente,3
+Samba con Docker Compose funcionando,No conseguido,Samba no desplegado o no funciona,0
+Samba con Docker Compose funcionando,Parcial,Contenedor levantado pero recurso compartido incompleto o con fallos,3
+Samba con Docker Compose funcionando,Conseguido,Servidor Samba con Docker Compose operativo y recurso compartido accesible,6
+NFS servidor configurado y exportando,No conseguido,NFS no instalado o no exporta el directorio,0
+NFS servidor configurado y exportando,Parcial,NFS instalado pero exportación incompleta o con errores,3
+NFS servidor configurado y exportando,Conseguido,NFS configurado y directorio exportado correctamente,6
+Acceso desde cliente Linux Samba y NFS,No conseguido,Cliente Linux no accede a ninguno o solo a uno sin verificación,0
+Acceso desde cliente Linux Samba y NFS,Parcial,Acceso a uno de los dos o sin archivos de prueba en ambos,2
+Acceso desde cliente Linux Samba y NFS,Conseguido,Cliente Linux monta y accede a Samba y NFS con archivos de prueba,4
+Acceso desde cliente Windows Samba,No conseguido,Cliente Windows no accede al recurso Samba,0
+Acceso desde cliente Windows Samba,Parcial,Acceso parcial o con errores de configuración,2
+Acceso desde cliente Windows Samba,Conseguido,Cliente Windows accede correctamente al recurso compartido Samba,4
+Documentación completa,No conseguido,Sin documentación o capturas insuficientes,0
+Documentación completa,Parcial,Documentación incompleta o faltan archivos compose o exports,2
+Documentación completa,Conseguido,Documento con capturas de todas las fases y archivos entregados,4

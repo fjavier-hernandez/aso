@@ -6,11 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resumen de conceptos básicos de Python para seguir los retos y prácticas que usan scripts en este módulo.">
+        <meta name="description" content="Actividad de 1–1,5 h para desplegar y configurar el servidor de impresión explicado en el vídeo del tema 8. Puntuación +0,25 en la nota final.">
       
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/IntroduccionPython.html">
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/aso/PracticaServidorImpresionAWS.html">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Introducción a Python - Administración de Sistemas Operativos</title>
+        <title>Práctica — Servidor de impresión en Windows Server (AWS) - Administración de Sistemas Operativos</title>
       
     
     
@@ -67,11 +67,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Introducción a Python - Administración de Sistemas Operativos" >
+        <meta  property="og:title"  content="Práctica — Servidor de impresión en Windows Server (AWS) - Administración de Sistemas Operativos" >
       
-        <meta  property="og:description"  content="Resumen de conceptos básicos de Python para seguir los retos y prácticas que usan scripts en este módulo." >
+        <meta  property="og:description"  content="Actividad de 1–1,5 h para desplegar y configurar el servidor de impresión explicado en el vídeo del tema 8. Puntuación +0,25 en la nota final." >
       
-        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/IntroduccionPython.png" >
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaServidorImpresionAWS.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -79,15 +79,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/IntroduccionPython.html" >
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/aso/PracticaServidorImpresionAWS.html" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Introducción a Python - Administración de Sistemas Operativos" >
+        <meta  name="twitter:title"  content="Práctica — Servidor de impresión en Windows Server (AWS) - Administración de Sistemas Operativos" >
       
-        <meta  name="twitter:description"  content="Resumen de conceptos básicos de Python para seguir los retos y prácticas que usan scripts en este módulo." >
+        <meta  name="twitter:description"  content="Actividad de 1–1,5 h para desplegar y configurar el servidor de impresión explicado en el vídeo del tema 8. Puntuación +0,25 en la nota final." >
       
-        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/IntroduccionPython.png" >
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/aso/assets/images/social/PracticaServidorImpresionAWS.png" >
       
     
     
@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduccion-a-python" class="md-skip">
+        <a href="#actividad-servidor-de-impresion-en-windows-server-aws" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introducción a Python
+              Práctica — Servidor de impresión en Windows Server (AWS)
             
           </span>
         </div>
@@ -463,144 +463,120 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#material-de-referencia" class="md-nav__link">
+  <a href="#objetivos" class="md-nav__link">
     <span class="md-ellipsis">
-      Material de referencia
+      Objetivos
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-hola-mundo-y-ejecucion" class="md-nav__link">
+  <a href="#requisitos-previos" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Hola mundo y ejecución
+      Requisitos previos
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-variables-y-tipos" class="md-nav__link">
+  <a href="#fase-1-preparar-el-servidor-y-unirlo-al-dominio" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Variables y tipos
+      Fase 1 — Preparar el servidor y unirlo al dominio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fase 1 — Preparar el servidor y unirlo al dominio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entregable-de-la-fase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregable de la fase
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fase-2-instalar-el-rol-e-configurar-la-impresora" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fase 2 — Instalar el rol e configurar la impresora
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fase 2 — Instalar el rol e configurar la impresora">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entregable-de-la-fase_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregable de la fase
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables-globales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables globales
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-operadores" class="md-nav__link">
+  <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Operadores
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-cadenas-de-texto-strings" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Cadenas de texto (strings)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-listas" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Listas
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-tuplas" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Tuplas
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-conjuntos-sets" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Conjuntos (sets)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-diccionarios" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Diccionarios
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-condicionales" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Condicionales
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-bucles" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. Bucles
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-funciones" class="md-nav__link">
-    <span class="md-ellipsis">
-      11. Funciones
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-clases-y-objetos" class="md-nav__link">
-    <span class="md-ellipsis">
-      12. Clases y objetos
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-excepciones" class="md-nav__link">
-    <span class="md-ellipsis">
-      13. Excepciones
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#14-modulos-e-importacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      14. Módulos e importación
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#relacion-con-los-retos-del-modulo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Relación con los retos del módulo
+      Referencias
     </span>
   </a>
   
@@ -621,165 +597,82 @@
                   
 
 
-<h1 id="introduccion-a-python">Introducción a Python<a class="headerlink" href="#introduccion-a-python" title="Permanent link">&para;</a></h1>
-<p>Esta página resume los <strong>conceptos básicos de Python</strong> necesarios para realizar los retos y prácticas del módulo que utilizan scripts (por ejemplo, los gestores de procesos con tkinter y subprocess). El contenido se apoya en el repositorio <strong><a href="https://github.com/mouredev/Hello-Python">Hello-Python</a></strong>, de <a href="https://github.com/mouredev">MoureDev</a>, concretamente en la carpeta <strong><a href="https://github.com/mouredev/Hello-Python/tree/main/Basic">Basic</a></strong>, donde encontrarás ejemplos ejecutables de cada tema.</p>
-<h2 id="material-de-referencia">Material de referencia<a class="headerlink" href="#material-de-referencia" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Recurso</th>
-<th>Enlace</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Repositorio Hello-Python</td>
-<td><a href="https://github.com/mouredev/Hello-Python">https://github.com/mouredev/Hello-Python</a></td>
-</tr>
-<tr>
-<td>Ejemplos Basic (00–13)</td>
-<td><a href="https://github.com/mouredev/Hello-Python/tree/main/Basic">https://github.com/mouredev/Hello-Python/tree/main/Basic</a></td>
-</tr>
-</tbody>
-</table>
-<p>Puedes clonar el repositorio y ejecutar los scripts en tu entorno:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mouredev/Hello-Python.git
-<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span>Hello-Python/Basic
-<span class="linenos" data-linenos="3 "></span>python<span class="w"> </span>00_helloworld.py
-</code></pre></div>
-<hr />
-<h2 id="1-hola-mundo-y-ejecucion">1. Hola mundo y ejecución<a class="headerlink" href="#1-hola-mundo-y-ejecucion" title="Permanent link">&para;</a></h2>
-<p>El punto de partida: un script que imprime por consola y cómo ejecutarlo con <code>python</code> o <code>py</code>.</p>
+<h1 id="actividad-servidor-de-impresion-en-windows-server-aws">Actividad: Servidor de impresión en Windows Server (AWS)<a class="headerlink" href="#actividad-servidor-de-impresion-en-windows-server-aws" title="Permanent link">&para;</a></h1>
 <ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/00_helloworld.py">00_helloworld.py</a></li>
+<li><strong>Modalidad:</strong> Individual o en parejas.</li>
+<li><strong>Duración estimada:</strong> 1–1,5 horas.</li>
+<li><strong>Puntuación:</strong> +0,25 en la nota final.</li>
+<li><strong>Entorno:</strong> Cuenta AWS (p. ej. AWS Academy) con posibilidad de crear instancias Windows Server en EC2.</li>
+<li><strong>Referencia:</strong> Vídeo del tema <a href="08ServidoresImpresion.html">08 Servidores de Impresión</a> (IIS y Servidor de impresión en Windows Server).</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, Python!&quot;</span><span class="p">)</span>
-</code></pre></div>
-<hr />
-<h2 id="2-variables-y-tipos">2. Variables y tipos<a class="headerlink" href="#2-variables-y-tipos" title="Permanent link">&para;</a></h2>
-<p>En Python no se declara el tipo: se asigna un valor y la variable toma su tipo. Tipos básicos: <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>.</p>
+<h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
+<p>Al finalizar la actividad serás capaz de:</p>
 <ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/01_variables.py">01_variables.py</a></li>
+<li>Unir una instancia Windows Server al dominio Active Directory en AWS (DNS, Security Groups).</li>
+<li>Instalar el rol <strong>Print and Document Services</strong> (Print Server estándar) en un servidor miembro.</li>
+<li>Agregar una impresora por <strong>TCP/IP</strong> (real o simulada con driver genérico).</li>
+<li>Compartir la impresora y configurar <strong>permisos</strong> (impresión solo para usuarios autorizados del dominio).</li>
+<li>Documentar el proceso con capturas.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;Admin&quot;</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">version</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="linenos" data-linenos="3 "></span><span class="n">activo</span> <span class="o">=</span> <span class="kc">True</span>
-</code></pre></div>
-<hr />
-<h2 id="3-operadores">3. Operadores<a class="headerlink" href="#3-operadores" title="Permanent link">&para;</a></h2>
-<p>Operadores aritméticos (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>, <code>**</code>), de comparación (<code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>) y lógicos (<code>and</code>, <code>or</code>, <code>not</code>).</p>
+<h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/02_operators.py">02_operators.py</a></li>
+<li><strong>Entorno en AWS</strong> con al menos un <strong>controlador de dominio</strong> (Windows Server) en una VPC. Si no lo tienes, sigue antes el vídeo o la práctica de instalación de Active Directory en AWS.</li>
+<li><strong>Security Group</strong> que permita:</li>
+<li>RDP (3389) para conectarte a las instancias.</li>
+<li>Tráfico entre las instancias Windows de tu cuenta en esa VPC (para que el servidor pueda unirse al dominio y los clientes accedan a recursos).</li>
+<li>Usuario con permisos para unir equipos al dominio (p. ej. administrador del dominio o cuenta delegada).</li>
 </ul>
 <hr />
-<h2 id="4-cadenas-de-texto-strings">4. Cadenas de texto (strings)<a class="headerlink" href="#4-cadenas-de-texto-strings" title="Permanent link">&para;</a></h2>
-<p>Concatenación, índices, rebanadas, métodos como <code>.strip()</code>, <code>.split()</code>, <code>.format()</code> o f-strings.</p>
-<ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/03_strings.py">03_strings.py</a></li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">texto</span> <span class="o">=</span> <span class="s2">&quot;  proceso  &quot;</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">limpio</span> <span class="o">=</span> <span class="n">texto</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="linenos" data-linenos="3 "></span><span class="n">mensaje</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;PID: </span><span class="si">{</span><span class="n">pid</span><span class="si">}</span><span class="s2">&quot;</span>
-</code></pre></div>
+<h2 id="fase-1-preparar-el-servidor-y-unirlo-al-dominio">Fase 1 — Preparar el servidor y unirlo al dominio<a class="headerlink" href="#fase-1-preparar-el-servidor-y-unirlo-al-dominio" title="Permanent link">&para;</a></h2>
+<h3 id="objetivo">Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h3>
+<p>Tener una instancia Windows Server en EC2, con nombre adecuado, DNS apuntando al DC y unida al dominio.</p>
+<h3 id="pasos">Pasos<a class="headerlink" href="#pasos" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Crear o usar una instancia Windows Server</strong> en EC2 (misma VPC y subred que el DC). Tamaño recomendado al menos t3.small para mayor fluidez.</li>
+<li><strong>Conectar por RDP</strong> con el usuario <em>Administrator</em> y la contraseña que obtengas desde la consola AWS (Get Windows password con la clave PEM).</li>
+<li><strong>Cambiar el nombre del equipo</strong> (p. ej. <em>PrintServer01</em>) desde Configuración → Sistema → Acerca de → Cambiar nombre. Reiniciar cuando se pida.</li>
+<li><strong>Configurar DNS:</strong> En Configuración de red (o Panel de control → Centro de redes → Cambiar configuración del adaptador → Propiedades de la tarjeta → TCP/IPv4), poner como <strong>DNS preferido</strong> la <strong>IP privada del controlador de dominio</strong>. Comprobar con <code>ipconfig /all</code> que el DNS es el correcto.</li>
+<li><strong>Ajustar Security Group</strong> en AWS: Si la instancia tiene un grupo que solo abre RDP, cámbialo por uno que permita también el tráfico entre instancias Windows (o el que uses para el DC). Aplica el mismo grupo al DC si aún no lo tiene.</li>
+<li><strong>Unir al dominio:</strong> Propiedades del sistema → Cambiar → Dominio → indicar el nombre del dominio (p. ej. <em>miempresa.com</em>). Cuando pida credenciales, usar un usuario con permisos (p. ej. administrador del dominio). Reiniciar.</li>
+<li><strong>Volver a conectar por RDP</strong> iniciando sesión con un usuario del dominio (p. ej. <em>dominio\usuario</em>).</li>
+</ol>
+<h3 id="entregable-de-la-fase">Entregable de la fase<a class="headerlink" href="#entregable-de-la-fase" title="Permanent link">&para;</a></h3>
+<p>Captura que muestre el equipo unido al dominio (Propiedades del sistema o <code>SystemPropertiesComputerName</code>).</p>
 <hr />
-<h2 id="5-listas">5. Listas<a class="headerlink" href="#5-listas" title="Permanent link">&para;</a></h2>
-<p>Listas mutables: <code>[]</code>, índices, rebanadas, <code>.append()</code>, <code>.insert()</code>, recorrido con <code>for</code>.</p>
-<ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/04_lists.py">04_lists.py</a></li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">procesos</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;init&quot;</span><span class="p">,</span> <span class="s2">&quot;bash&quot;</span><span class="p">,</span> <span class="s2">&quot;python&quot;</span><span class="p">]</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">procesos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;nginx&quot;</span><span class="p">)</span>
-</code></pre></div>
+<h2 id="fase-2-instalar-el-rol-e-configurar-la-impresora">Fase 2 — Instalar el rol e configurar la impresora<a class="headerlink" href="#fase-2-instalar-el-rol-e-configurar-la-impresora" title="Permanent link">&para;</a></h2>
+<h3 id="objetivo_1">Objetivo<a class="headerlink" href="#objetivo_1" title="Permanent link">&para;</a></h3>
+<p>Instalar el rol Print and Document Services, agregar una impresora por TCP/IP (o simulada) y configurar compartición y permisos.</p>
+<h3 id="pasos_1">Pasos<a class="headerlink" href="#pasos_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Instalar el rol:</strong> Abrir <strong>Server Manager</strong> → <strong>Add roles and features</strong>. Seleccionar el servidor, en Roles marcar <strong>Print and Document Services</strong>. En las opciones del rol elegir <strong>Print Server</strong> (estándar). Completar el asistente y esperar a que finalice la instalación.</li>
+<li><strong>Abrir Print Management:</strong> Herramientas → <strong>Print Management</strong> (o desde Server Manager → Tools).</li>
+<li><strong>Agregar impresora por TCP/IP:</strong>
+   - Clic derecho en <em>Printers</em> → <strong>Add Printer</strong> → <strong>Add a TCP/IP or Web Services printer by IP address</strong>.
+   - Dirección IP: si tienes una impresora real en la red, usa su IP. Si no, puedes usar la <strong>IP del propio servidor</strong> (la verás en <code>ipconfig</code>) para simular; el asistente no encontrará la impresora pero permitirá continuar.
+   - Si no detecta la impresora: seguir el asistente y cuando pida el driver, elegir uno <strong>genérico</strong> (p. ej. fabricante <em>HP</em>, modelo <em>PCL6</em> o similar, o <em>Microsoft Open XPS</em>). Asignar un nombre a la impresora (p. ej. <em>HP Presentadores</em>) y marcar <strong>Share this printer</strong> con un nombre de recurso compartido (sin espacios).</li>
+<li><strong>Permisos:</strong> Propiedades de la impresora → <strong>Security</strong>. Quitar <em>Everyone</em> si está. Añadir un usuario del dominio (p. ej. el que uses para pruebas) con permiso <strong>Print</strong>. Dejar <em>Manage printers</em> para administradores si lo deseas.</li>
+<li><strong>Comprobar:</strong> En la pestaña <strong>Ports</strong> verificar que el puerto TCP/IP tiene la IP correcta. En <strong>Sharing</strong> verificar el nombre de recurso compartido.</li>
+</ol>
+<h3 id="entregable-de-la-fase_1">Entregable de la fase<a class="headerlink" href="#entregable-de-la-fase_1" title="Permanent link">&para;</a></h3>
+<p>Capturas de: Print Management con la impresora instalada; ventana de permisos (Security) de la impresora; opcional: cliente del dominio con la impresora agregada y visible.</p>
 <hr />
-<h2 id="6-tuplas">6. Tuplas<a class="headerlink" href="#6-tuplas" title="Permanent link">&para;</a></h2>
-<p>Secuencias inmutables: <code>()</code>, útiles para datos que no deben cambiar (por ejemplo, pares clave-valor o configuraciones).</p>
+<h2 id="entregables-globales">Entregables globales<a class="headerlink" href="#entregables-globales" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Documento</strong> (Markdown o PDF) con:
+   - Breve descripción del entorno (DC, servidor de impresión, VPC/Security Group).
+   - Capturas de la Fase 1 (servidor unido al dominio) y de la Fase 2 (rol instalado, impresora en Print Management, permisos).
+   - Opcional: captura desde un equipo cliente del dominio mostrando la impresora compartida disponible.</p>
+</li>
+<li>
+<p><strong>Criterios de evaluación:</strong> Se valorará la unión correcta al dominio, la instalación del rol, la impresora agregada y compartida, la configuración de permisos y la claridad de la documentación.</p>
+</li>
+</ol>
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/05_tuples.py">05_tuples.py</a></li>
+<li><a href="08ServidoresImpresion.html">08 Administración de Servidores de Impresión</a>: teoría y vídeo IIS + Servidor de impresión.</li>
+<li><a href="04ActiveDirectory.html">04 Servicios de Directorio (Active Directory)</a>: instalación del dominio en AWS si aún no lo tienes.</li>
 </ul>
-<hr />
-<h2 id="7-conjuntos-sets">7. Conjuntos (sets)<a class="headerlink" href="#7-conjuntos-sets" title="Permanent link">&para;</a></h2>
-<p>Colecciones sin orden y sin duplicados: <code>set()</code>, operaciones de conjuntos.</p>
-<ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/06_sets.py">06_sets.py</a></li>
-</ul>
-<hr />
-<h2 id="8-diccionarios">8. Diccionarios<a class="headerlink" href="#8-diccionarios" title="Permanent link">&para;</a></h2>
-<p>Pares clave-valor: <code>{}</code>, acceso por clave, <code>.get()</code>, <code>.keys()</code>, <code>.values()</code>, <code>.items()</code>.</p>
-<ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/07_dicts.py">07_dicts.py</a></li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">opciones</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="s2">&quot;Listar&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="s2">&quot;Top CPU&quot;</span><span class="p">}</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">valor</span> <span class="o">=</span> <span class="n">opciones</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;desconocido&quot;</span><span class="p">)</span>
-</code></pre></div>
-<hr />
-<h2 id="9-condicionales">9. Condicionales<a class="headerlink" href="#9-condicionales" title="Permanent link">&para;</a></h2>
-<p><code>if</code>, <code>elif</code>, <code>else</code>. Indentación obligatoria (bloques con espacios o tabulaciones).</p>
-<ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/08_conditionals.py">08_conditionals.py</a></li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="linenos" data-linenos="2 "></span>    <span class="nb">print</span><span class="p">(</span><span class="n">stdout</span><span class="p">)</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">else</span><span class="p">:</span>
-<span class="linenos" data-linenos="4 "></span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error:&quot;</span><span class="p">,</span> <span class="n">stderr</span><span class="p">)</span>
-</code></pre></div>
-<hr />
-<h2 id="10-bucles">10. Bucles<a class="headerlink" href="#10-bucles" title="Permanent link">&para;</a></h2>
-<p><code>for elemento in secuencia:</code> y <code>while condicion:</code>. <code>break</code>, <code>continue</code>, <code>range()</code>.</p>
-<ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/09_loops.py">09_loops.py</a></li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-<span class="linenos" data-linenos="2 "></span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</code></pre></div>
-<hr />
-<h2 id="11-funciones">11. Funciones<a class="headerlink" href="#11-funciones" title="Permanent link">&para;</a></h2>
-<p>Definición con <code>def</code>, parámetros, <code>return</code>. Valores por defecto y argumentos nombrados.</p>
-<ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/10_functions.py">10_functions.py</a></li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">def</span> <span class="nf">run_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-<span class="linenos" data-linenos="2 "></span>    <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span>
-</code></pre></div>
-<hr />
-<h2 id="12-clases-y-objetos">12. Clases y objetos<a class="headerlink" href="#12-clases-y-objetos" title="Permanent link">&para;</a></h2>
-<p>Definición de clases con <code>class</code>, <code>__init__</code>, métodos y atributos. Herencia básica.</p>
-<ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/11_classes.py">11_classes.py</a></li>
-</ul>
-<p>En los retos de procesos se usa una clase para la ventana de tkinter (por ejemplo, <code>GestorProcesosApp</code>).</p>
-<hr />
-<h2 id="13-excepciones">13. Excepciones<a class="headerlink" href="#13-excepciones" title="Permanent link">&para;</a></h2>
-<p><code>try</code>, <code>except</code>, <code>finally</code>. Capturar errores para no interrumpir el programa (por ejemplo, <code>subprocess.TimeoutExpired</code> o <code>FileNotFoundError</code>).</p>
-<ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/12_exceptions.py">12_exceptions.py</a></li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">try</span><span class="p">:</span>
-<span class="linenos" data-linenos="2 "></span>    <span class="n">r</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">TimeoutExpired</span><span class="p">:</span>
-<span class="linenos" data-linenos="4 "></span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Timeout&quot;</span><span class="p">)</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="linenos" data-linenos="6 "></span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-</code></pre></div>
-<hr />
-<h2 id="14-modulos-e-importacion">14. Módulos e importación<a class="headerlink" href="#14-modulos-e-importacion" title="Permanent link">&para;</a></h2>
-<p>Uso de <code>import</code> para cargar módulos estándar (<code>tkinter</code>, <code>subprocess</code>) o propios. <code>from módulo import nombre</code>.</p>
-<ul>
-<li><strong>Ejemplo en el repo:</strong> <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/13_modules.py">13_modules.py</a> y <a href="https://github.com/mouredev/Hello-Python/blob/main/Basic/my_module.py">my_module.py</a></li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">import</span> <span class="nn">subprocess</span>
-<span class="linenos" data-linenos="2 "></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">messagebox</span><span class="p">,</span> <span class="n">scrolledtext</span>
-</code></pre></div>
-<hr />
-<h2 id="relacion-con-los-retos-del-modulo">Relación con los retos del módulo<a class="headerlink" href="#relacion-con-los-retos-del-modulo" title="Permanent link">&para;</a></h2>
-<p>En los retos de <strong>gestor de procesos</strong> (Shell y PowerShell) se utilizan sobre todo:</p>
-<ul>
-<li><strong>tkinter</strong>: ventanas, botones, áreas de texto (<code>tk</code>, <code>Button</code>, <code>ScrolledText</code>).</li>
-<li><strong>subprocess</strong>: ejecutar comandos del sistema y capturar salida (<code>subprocess.run</code>, <code>capture_output=True</code>, <code>text=True</code>).</li>
-<li><strong>Estructura en clase</strong>: una clase con <code>__init__</code> que crea la ventana y asocia cada botón a un método.</li>
-<li><strong>Manejo de excepciones</strong>: <code>try/except</code> para timeouts o fallos al ejecutar comandos.</li>
-</ul>
-<p>Si es tu primera vez con Python, conviene repasar al menos: variables, condicionales, funciones, excepciones y módulos, y luego revisar los ejemplos de la carpeta <a href="https://github.com/mouredev/Hello-Python/tree/main/Basic">Basic</a> en el repositorio Hello-Python.</p>
 
 
 
