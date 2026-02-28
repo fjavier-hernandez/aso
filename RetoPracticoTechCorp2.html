@@ -18,7 +18,7 @@
     
     
       
-        <title>Reto práctico 2: Monitorización y auditoría (TechCorp) - Administración de Sistemas Operativos</title>
+        <title>RG702: Monitorización y auditoría (TechCorp) - Administración de Sistemas Operativos</title>
       
     
     
@@ -108,7 +108,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#reto-practico-2-monitorizacion-y-auditoria-techcorp" class="md-skip">
+        <a href="#rg702-monitorizacion-y-auditoria-techcorp" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -143,7 +143,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Reto práctico 2: Monitorización y auditoría (TechCorp)
+              RG702: Monitorización y auditoría (TechCorp)
             
           </span>
         </div>
@@ -563,9 +563,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#entregables-globales-del-reto-2" class="md-nav__link">
+  <a href="#entregables-globales-del-rg702" class="md-nav__link">
     <span class="md-ellipsis">
-      Entregables globales del reto 2
+      Entregables globales del RG702
     </span>
   </a>
   
@@ -604,13 +604,13 @@
                   
 
 
-<h1 id="reto-practico-2-monitorizacion-y-auditoria-techcorp">Reto práctico 2: Monitorización y auditoría (TechCorp)<a class="headerlink" href="#reto-practico-2-monitorizacion-y-auditoria-techcorp" title="Permanent link">&para;</a></h1>
+<h1 id="rg702-monitorizacion-y-auditoria-techcorp">RG702: Monitorización y auditoría (TechCorp)<a class="headerlink" href="#rg702-monitorizacion-y-auditoria-techcorp" title="Permanent link">&para;</a></h1>
 <ul>
 <li><strong>Modalidad:</strong> Individual o en parejas (según criterio del profesor).</li>
 <li><strong>Duración estimada:</strong> 1,5 horas (2 fases de ~45 min).</li>
 <li><strong>Puntuación:</strong> 30 puntos.</li>
 <li><strong>Criterios evaluados:</strong> CE3f, CE3g (monitorización), CE3h (documentación), Objetivo 15 (técnicas de monitorización e interpretación de resultados).</li>
-<li><strong>Entorno:</strong> Cuenta AWS con el entorno TechCorp ya desplegado (DC01 y Cliente en EC2), o haber completado el <a href="RetoPracticoTechCorp.html">Reto práctico 1 — TechCorp</a>.</li>
+<li><strong>Entorno:</strong> Cuenta AWS con el entorno TechCorp ya desplegado (DC01 y Cliente en EC2), o haber completado el <a href="RetoPracticoTechCorp.html">RG701 — TechCorp</a>.</li>
 </ul>
 <h2 id="objetivos">Objetivos<a class="headerlink" href="#objetivos" title="Permanent link">&para;</a></h2>
 <p>Al finalizar el reto serás capaz de:</p>
@@ -622,7 +622,7 @@
 </ul>
 <h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Entorno TechCorp en marcha:</strong> instancias EC2 DC01 y Cliente creadas (por el <a href="RetoPracticoTechCorp.html">Reto práctico 1</a> o manualmente). No es necesario que AD esté totalmente configurado para las fases de monitorización y auditoría.</li>
+<li><strong>Entorno TechCorp en marcha:</strong> instancias EC2 DC01 y Cliente creadas (por el <a href="RetoPracticoTechCorp.html">RG701</a> o manualmente). No es necesario que AD esté totalmente configurado para las fases de monitorización y auditoría.</li>
 <li><strong>Cuenta AWS</strong> con permisos para CloudWatch, SNS, CloudTrail y, si aplica, EventBridge.</li>
 <li><strong>AWS CLI</strong> configurado (<code>aws sts get-caller-identity</code>) para la parte opcional de métrica personalizada.</li>
 </ul>
@@ -688,7 +688,7 @@
 <li>Trail de CloudTrail activo. Captura o descripción del evento visto en CloudTrail tras modificar el Security Group. Si se ha hecho: descripción de la regla EventBridge y captura de la métrica personalizada en CloudWatch.</li>
 </ul>
 <hr />
-<h2 id="entregables-globales-del-reto-2">Entregables globales del reto 2<a class="headerlink" href="#entregables-globales-del-reto-2" title="Permanent link">&para;</a></h2>
+<h2 id="entregables-globales-del-rg702">Entregables globales del RG702<a class="headerlink" href="#entregables-globales-del-rg702" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Código Terraform</strong> (si has definido alarmas, SNS, CloudTrail o EventBridge en IaC) o capturas de la consola de AWS mostrando la configuración de alarmas y del trail.</li>
 <li><strong>Resumen o capturas</strong> de la Fase 3 (alarmas y métricas en CloudWatch) y de la Fase 4 (evento en CloudTrail y, si aplica, regla EventBridge y métrica personalizada).</li>
@@ -727,7 +727,7 @@
 </table>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="RetoPracticoTechCorp.html">Reto práctico 1 — TechCorp (Fases 1 y 2)</a>: despliegue con Terraform e instalación de Active Directory.</li>
+<li><a href="RetoPracticoTechCorp.html">RG701 — TechCorp (Fases 1 y 2)</a>: despliegue con Terraform e instalación de Active Directory.</li>
 <li><a href="07AutomatizacionMonitorizacion.html">07 Automatización y monitorización</a>: teoría de CloudWatch, CloudTrail y EventBridge.</li>
 <li><a href="https://docs.aws.amazon.com/cloudwatch/">Amazon CloudWatch</a>, <a href="https://docs.aws.amazon.com/cloudtrail/">AWS CloudTrail</a>, <a href="https://docs.aws.amazon.com/eventbridge/">Amazon EventBridge</a>.</li>
 </ul>
