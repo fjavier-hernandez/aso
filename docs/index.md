@@ -55,7 +55,7 @@ A continuación, en la siguiente tabla y a modo de mapa general, se muestran las
 | [4. Servicios de directorio]()    |  X |   |    |   |    | |   |
 | [5. Integración de Sistemas](05IntegracionSistemas.md)                |   |  |    |  |    |  X  |   |
 | [6. Administración de Procesos del Sistema](06Procesos.md)   |   | X  |  |   |    |    |   |
-| [7. Automatización y monitorización]()           |   |  | X  |   |    |    |   |
+| [7. Automatización y monitorización](07AutomatizacionMonitorizacion.md)           |   |  | X  |   |    |    |   |
 | [8. Administración de Servidores de Impresión]()      |   |  | |  | X  |    |   |
 | **Total - 133 h** <br> **Porcentaje**                          | X<br>20% | X<br>10%  | X<br>10% | X<br>10% | X<br>10%  | X<br>20% | X<br>20%  | 
 

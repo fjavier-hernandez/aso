@@ -9,7 +9,7 @@ subtitle: Reto Grupal Integración
 **Módulo:** Administración de Sistemas Operativos (ASO)  
 **Unidad:** Integración de Sistemas Operativos (Tema 6)  
 **Modalidad:** Trabajo en grupo (2-3 personas)  
-**Puntuación:** 30 puntos (sobre 100)  
+**Puntuación:** 30 puntos — [Ver rúbrica de evaluación](Rubrica_RetoGrupalIntegracion.md)  
 **Criterios evaluados:** CE6a, CE6b, CE6c, CE6d, CE6e, CE6f, CE6g y CE6h  
 
 Este reto integra las prácticas [PR601](PracticaNFS.md) y [PR602](PracticaDockerComposeSamba.md) en un escenario cloud con **AWS Academy**.
@@ -185,6 +185,8 @@ Documenta el proceso con capturas de:
 | Acceso desde cliente Windows (Samba) | 4 |
 | Documentación completa | 4 |
 | **Total** | **30** |
+
+> **Ver rúbrica de evaluación:** [Rúbrica del reto — criterios y niveles](Rubrica_RetoGrupalIntegracion.md) (para conocer cómo se valorará cada criterio).
 
 ---
 

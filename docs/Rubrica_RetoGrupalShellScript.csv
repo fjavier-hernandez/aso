@@ -1,0 +1,16 @@
+criterion,level,level_description,score
+Funcionalidad del sistema,No conseguido,Sistema no funcional o con errores críticos. Pocas funcionalidades implementadas.,0.000
+Funcionalidad del sistema,Parcial,Sistema parcialmente funcional. Mayoría de funcionalidades con algunos errores o limitaciones.,7.500
+Funcionalidad del sistema,Conseguido,Sistema completamente funcional. Menú principal CRUD servidores monitoreo backups logs y configuración operativos. Sin errores de ejecución.,15.000
+Estructura del código,No conseguido,Código desorganizado sin modularización ni comentarios.,0.000
+Estructura del código,Parcial,Código organizado con modularización parcial y comentarios básicos.,2.500
+Estructura del código,Conseguido,Código modular con archivos por módulo comentarios detallados separación de responsabilidades y nomenclatura clara.,5.000
+Uso de conceptos ShellScript,No conseguido,Uso incorrecto de técnicas. Conceptos mal implementados.,0.000
+Uso de conceptos ShellScript,Parcial,Uso básico de variables bucles funciones y comandos del sistema con algunas limitaciones.,2.500
+Uso de conceptos ShellScript,Conseguido,Uso correcto de variables bucles funciones parámetros redirecciones y comandos del sistema.,5.000
+Documentación,No conseguido,Sin README o instrucciones. Documentación ausente.,0.000
+Documentación,Parcial,README básico con instrucciones limitadas o documentación parcial.,1.500
+Documentación,Conseguido,README completo con instalación uso explicación de módulos y capturas de pantalla.,3.000
+Creatividad e innovación,No conseguido,Sin mejoras adicionales. Solo funcionalidades básicas.,0.000
+Creatividad e innovación,Parcial,Algunas mejoras o funcionalidades adicionales limitadas.,1.000
+Creatividad e innovación,Conseguido,Funcionalidades adicionales innovadoras o mejoras creativas al sistema.,2.000

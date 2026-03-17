@@ -707,7 +707,7 @@ En esta práctica aprenderás a configurar un **túnel SSH** utilizando un conte
 
 <a name="PR302"></a>
 
-* :material-trophy: **PR302. Práctica: Acceso remoto a Windows Server en AWS Academy**. (RA.4 // CE4a, CE4c, CE4d, CE4e, CE4f, CE4g y CE4i // 1-10p). 
+* :material-trophy: **PR302. Práctica: Acceso remoto a Windows Server en AWS Academy**. (RA.4 // CE4a, CE4c, CE4d, CE4e, CE4f, CE4g y CE4i // **No Evaluable**). 
 
 En esta práctica aprenderás a crear y configurar una instancia de **Windows Server** en **AWS Academy** y acceder a ella mediante **Escritorio Remoto (RDP)**. El objetivo es familiarizarte con la computación en la nube, la creación de máquinas virtuales en AWS y la configuración de acceso remoto mediante RDP.
 

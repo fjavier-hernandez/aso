@@ -511,7 +511,7 @@ El **interbloqueo** se da cuando dos o más procesos se bloquean entre sí. Sus 
 
 Cuando un proceso genera otro, se denomina **padre** al proceso original y **hijo** al generado. Por ejemplo, la terminal es en sí misma un proceso; al ejecutar un comando como `ls -l`, el sistema crea un proceso hijo del shell para ejecutar dicha instrucción.
 
-### listado de comandos bash de procesos
+### Listado de comandos bash de procesos
 
 #### Identificación de procesos
 
@@ -571,30 +571,76 @@ Muestra información sobre procesos en ejecución.
 
 Columnas típicas: **PID**, terminal (TTY), tiempo de CPU, nombre del proceso.
 
-!!! example "Ejemplo 'ps -f'"
+!!! example "Salida de ps -f (Ubuntu)"
+    ```text
+    root@sor:/home/sor# ps -f
+    UID          PID    PPID  C STIME TTY          TIME CMD
+    root        2201    2200  0 16:24 pts/1    00:00:00 sudo su
+    root        2202    2201  0 16:24 pts/1    00:00:00 su
+    root        2203    2202  0 16:24 pts/1    00:00:00 bash
+    root        2337    2203  0 16:29 pts/1    00:00:00 ps -f
+    ```
 
-<figure>
+<!-- <figure>
   <img src="imagenes/03/033/psExam.png" width="75%" alt="Resultado ps -f"/>
   <figcaption>Resultado comando ps -f</figcaption>
-</figure>
+</figure> -->
 
-### Comando `pstree`
+#### Comando `pstree`
 
 Muestra los procesos en forma de **árbol**, mostrando las relaciones padre-hijo.
 
-<figure>
-  <img src="imagenes/03/033/004.png" width="85%" alt="Resultado pstree"/>
+!!! example "Salida de pstree (fragmento, Ubuntu)"
+    ```text
+    root@sor:/home/sor# pstree
+    systemd─┬─ModemManager───3*[{ModemManager}]
+            ├─agetty
+            ├─containerd───8*[{containerd}]
+            ├─containerd-shim─┬─tini─┬─nmbd
+            │                 │      └─smbd─┬─cleanupd
+            │                 │             └─smbd-notifyd
+            │                 └─10*[{containerd-shim}]
+            ├─containerd-shim─┬─s6-svscan─┬─s6-supervise───s6-linux-init-s
+            │                 │           ├─s6-supervise───sshd.pam
+            │                 │           └─...
+            ├─cron
+            ├─dbus-daemon
+            ├─dockerd─┬─docker-proxy───...
+            │         └─...
+            ├─login───bash
+            └─...
+    ```
+
+<!-- <figure>
+  <img src="imagenes/03/033/pstreeEx.png" width="85%" alt="Resultado pstree"/>
   <figcaption>Resultado comando pstree</figcaption>
-</figure>
+</figure> -->
 
 ### Comando `top`
 
 Listado de procesos que se **actualiza periódicamente**. Permite ver evolución de CPU, memoria, número de tareas, etc. Con la tecla **r** se puede cambiar la prioridad (nice) de un proceso indicando su PID (solo root puede asignar prioridades negativas).
 
-<figure>
+!!! example "Salida de top (primeras líneas, Ubuntu)"
+    ```text
+    top - 16:29:49 up 13 min,  2 users,  load average: 0,00, 0,00, 0,00
+    Tasks: 160 total,   1 running, 159 sleeping,   0 stopped,   0 zombie
+    %Cpu(s):  0,0 us,  0,1 sy,  0,0 ni, 99,9 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
+    MiB Mem :   3902,3 total,   3206,3 free,    379,8 used,    466,8 buff/cache
+    MiB Swap:      0,0 total,      0,0 free,      0,0 used.   3522,5 avail Mem
+
+        PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+        333 root      20   0       0      0      0 I   0,3   0,0   0:00.53 kworker/0:3-events
+        698 root      20   0 1861432  42112  27904 S   0,3   1,1   0:01.83 containerd
+       2339 root      20   0   11776   5376   3328 R   0,3   0,1   0:00.03 top
+          1 root      20   0   21948  12112   8528 S   0,0   0,3   0:00.81 systemd
+          2 root      20   0       0      0      0 S   0,0   0,0   0:00.00 kthreadd
+          4 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/R-rcu_g
+    ```
+
+<!-- <figure>
   <img src="imagenes/03/033/005.png" width="85%" alt="Resultado top"/>
   <figcaption>Resultado comando top</figcaption>
-</figure>
+</figure> -->
 
 ### Primer plano y segundo plano
 
@@ -603,7 +649,15 @@ Listado de procesos que se **actualiza periódicamente**. Permite ver evolución
 
 Al lanzar en segundo plano se muestra un número entre corchetes (número de trabajo) y el PID.
 
-<figure>
+!!! example "sleep en segundo plano y jobs (Ubuntu)"
+    ```text
+    root@sor:/home/sor# sleep 10 &
+    [1] 2366
+    root@sor:/home/sor# jobs
+    [1]+  Running                 sleep 10 &
+    ```
+
+<!-- <figure>
   <img src="imagenes/03/033/006.png" width="75%" alt="sleep 10 en segundo plano"/>
   <figcaption>Resultado comando sleep 10 &</figcaption>
 </figure>
@@ -611,13 +665,16 @@ Al lanzar en segundo plano se muestra un número entre corchetes (número de tra
 <figure>
   <img src="imagenes/03/033/007.png" width="75%" alt="Comando jobs"/>
   <figcaption>Resultado comando jobs</figcaption>
-</figure>
+</figure> -->
 
 - **`jobs`**: lista los trabajos en segundo plano.
 - **`fg %n`**: lleva el trabajo `n` a primer plano.
 - **`bg %n`**: para pasar a segundo plano un proceso que está en primer plano, primero se suspende con **Ctrl+Z** y luego se ejecuta `bg %n`.
 
-<figure>
+!!! tip "Uso de fg y bg"
+    Con un trabajo `[1]` en segundo plano, **`fg %1`** lo trae a primer plano; si un proceso está detenido (Ctrl+Z), **`bg %1`** lo reanuda en segundo plano.
+
+<!-- <figure>
   <img src="imagenes/03/033/008.png" width="75%" alt="fg %1"/>
   <figcaption>Pasar a primer plano con fg %1</figcaption>
 </figure>
@@ -625,7 +682,7 @@ Al lanzar en segundo plano se muestra un número entre corchetes (número de tra
 <figure>
   <img src="imagenes/03/033/009.png" width="75%" alt="bg"/>
   <figcaption>Pasar a segundo plano con bg</figcaption>
-</figure>
+</figure> -->
 
 ### Prioridad: `renice`
 
@@ -636,7 +693,24 @@ En Linux la prioridad (nice) va de **-20** (más prioridad) a **20** (menos prio
 
 Para ver la prioridad: `ps ax -o pid,ni,cmd` (columna **ni** = nice).
 
-<figure>
+!!! example "renice (Ubuntu, como root)"
+    Se lanza `sleep` en segundo plano; con `ps ax -o pid,ni,cmd | grep sleep` se localiza el PID y la prioridad (ni); luego `renice -n 10 -p PID` cambia la prioridad:
+
+    ```text
+    root@sor:/home/sor# sleep 10 &
+    [1] 2366
+    root@sor:/home/sor# jobs
+    [1]+  Running                 sleep 10 &
+    root@sor:/home/sor# ps ax -o pid,ni,cmd | grep sleep
+       2394   0 grep --color=auto sleep
+    [1]+  Done                    sleep 10
+    root@sor:/home/sor# renice -n 10 -p 2394
+    ```
+
+!!! note "Sobre este ejemplo"
+    En este ejemplo el proceso `sleep` terminó antes de ejecutar `renice`. Para practicar `renice` conviene usar un proceso de mayor duración (p. ej. `sleep 60 &`) y aplicar `renice` al PID de ese proceso, no al de `grep`.
+
+<!-- <figure>
   <img src="imagenes/03/033/010.png" width="75%" alt="Prioridad proceso sleep"/>
   <figcaption>Búsqueda del proceso sleep y su prioridad</figcaption>
 </figure>
@@ -649,7 +723,7 @@ Para ver la prioridad: `ps ax -o pid,ni,cmd` (columna **ni** = nice).
 <figure>
   <img src="imagenes/03/033/012.png" width="75%" alt="Nueva prioridad sleep"/>
   <figcaption>Nueva prioridad del proceso sleep</figcaption>
-</figure>
+</figure> -->
 
 ### Finalizar procesos: `kill`
 
@@ -659,6 +733,20 @@ kill -9 PID        # terminación forzada (SIGKILL)
 kill -1 PID        # SIGHUP, reiniciar proceso
 killall nombre_programa   # termina todos los procesos con ese nombre
 ```
+
+!!! example "kill (Ubuntu)"
+    Se lanza un proceso en segundo plano, se obtiene su PID y se finaliza con `kill` (señal 15, terminación ordenada):
+
+    ```text
+    root@sor:/home/sor# sleep 120 &
+    [1] 2450
+    root@sor:/home/sor# kill 2450
+    root@sor:/home/sor# jobs
+    [1]+  Terminated              sleep 120
+    ```
+
+!!! tip "Terminación forzada"
+    Si el proceso no responde a `kill`, se puede forzar con **`kill -9 PID`** (SIGKILL). Con **`killall nombre`** se finalizan todos los procesos cuyo nombre coincida (p. ej. `killall sleep`).
 
 ---
 
@@ -678,6 +766,36 @@ Para listar cmdlets relacionados con procesos: `Get-Command *process*`.
 
 El proceso **Idle** (id 0) representa el tiempo en que la CPU no está trabajando.
 
+!!! example "Get-Process: listar y filtrar"
+    Listar procesos por nombre y los 5 que más CPU consumen:
+
+    ```powershell
+    PS C:\> Get-Process -Name pwsh | Select-Object Id, ProcessName, CPU, WorkingSet
+
+     Id ProcessName    CPU WorkingSet
+     -- -----------    --- ----------
+    1234 pwsh         12,50   185654321
+
+    PS C:\> Get-Process | Sort-Object CPU -Descending | Select-Object -First 5 Id, ProcessName, CPU
+
+     Id ProcessName     CPU
+     -- -----------     ---
+    456 explorer      125,30
+    789 chrome         98,12
+    1234 pwsh           12,50
+    ```
+
+!!! example "Propiedades de un proceso"
+    Obtener la ruta y la memoria de trabajo (WS) de un proceso por nombre:
+
+    ```powershell
+    PS C:\> (Get-Process -Name pwsh).Path
+    C:\Program Files\PowerShell\7\pwsh.exe
+
+    PS C:\> (Get-Process -Name pwsh).WorkingSet
+    185654321
+    ```
+
 ### Detener procesos
 
 - **`Stop-Process -Name nombre`** o **`Stop-Process -Id PID`**.
@@ -685,16 +803,41 @@ El proceso **Idle** (id 0) representa el tiempo en que la CPU no está trabajand
 - Procesos que no responden: **`Get-Process | Where-Object { $_.Responding -eq $false } | Stop-Process`**.
 - En remoto (Stop-Process no tiene ComputerName): **`Invoke-Command -ComputerName Server01 { Stop-Process Powershell }`**.
 
+!!! example "Stop-Process: finalizar por nombre o PID"
+    ```powershell
+    PS C:\> Get-Process -Name notepad
+     Id ProcessName
+     -- -----------
+    5678 notepad
+
+    PS C:\> Stop-Process -Id 5678
+
+    PS C:\> Stop-Process -Name notepad -Force
+    ```
+
+!!! note "Sobre -Force"
+    El parámetro **-Force** permite terminar procesos que no responden sin pedir confirmación.
+
 ### Iniciar procesos
 
 - **`Start-Process -FilePath ruta\ejecutable`** (p. ej. `C:\windows\notepad.exe`).
 - Para abrir aplicaciones por protocolo: **`Start-Process Microsoft-edge://`**.
 
+!!! example "Start-Process: abrir aplicación"
+    ```powershell
+    PS C:\> Start-Process notepad
+    PS C:\> Start-Process -FilePath "C:\Windows\System32\notepad.exe" -ArgumentList "C:\temp\notas.txt"
+    PS C:\> Start-Process "https://www.ejemplo.org"
+    ```
+
+!!! note "Sobre Start-Process"
+    Sin parámetros adicionales, `Start-Process notepad` abre el Bloc de notas. Con **-ArgumentList** se pasan argumentos al ejecutable. Con una URL se abre el navegador por defecto.
+
 ---
 
 ## 5. Arranque del sistema y servicios
 
-El **arranque (boot)** es el proceso que inicia el gestor de arranque e inicializa el sistema operativo y los dispositivos.
+El **arranque (boot)** es la secuencia que pone en marcha el hardware, carga el gestor de arranque, el kernel y, por último, los servicios del sistema. En la práctica interesa conocer las **cuatro fases** (comunes a Linux) y qué son los **servicios** y **systemd**.
 
 <figure>
   <img src="imagenes/03/035/001.png" width="650" alt="Pasos arranque"/>
@@ -703,76 +846,47 @@ El **arranque (boot)** es el proceso que inicia el gestor de arranque e iniciali
 
 ### Arranque en Linux (4 etapas)
 
-1. **BIOS**: POST, reconocimiento de hardware, carga del cargador de arranque.
-2. **Cargador de arranque (GRUB o LILO)**: desde MBR o GPT; menú para elegir SO o kernel; en GRUB el archivo de configuración está en el sistema de archivos (p. ej. `/boot/grub/grub.cfg`, `/etc/default/grub`; `update-grub` para aplicar cambios).
-3. **Kernel**: se carga y descomprime; se cargan drivers (initrd); el kernel busca el proceso de inicio (init).
-4. **Init / systemd**: arranque en espacio de usuario; comprobación y montaje de sistemas de archivos, puesta en marcha de servicios.
+1. **BIOS/UEFI** — POST, detección de hardware y carga del cargador de arranque desde MBR o GPT.
+2. **Cargador de arranque (GRUB)** — Lee la configuración (p. ej. `/boot/grub/grub.cfg`, `/etc/default/grub`); muestra menú para elegir kernel; `update-grub` aplica cambios. LILO es una alternativa antigua que escribe la configuración en el MBR.
+3. **Kernel** — Se carga y descomprime; initrd aporta drivers; el kernel arranca el primer proceso de usuario (init).
+4. **Init / systemd** — Arranque en espacio de usuario: montaje de sistemas de archivos y puesta en marcha de **servicios** (daemons).
 
 <figure>
   <img src="imagenes/03/035/002.png" width="650" alt="Pasos arranque Linux"/>
   <figcaption>Pasos del arranque en Linux</figcaption>
 </figure>
 
-<figure>
-  <img src="imagenes/03/035/003.png" width="650" alt="Esquema MBR"/>
-  <figcaption>Esquema MBR</figcaption>
-</figure>
-
-<figure>
-  <img src="imagenes/03/035/003_B.png" width="650" alt="Esquema GPT"/>
-  <figcaption>Esquema GPT</figcaption>
-</figure>
-
-**GRUB** entiende sistemas de archivos (ext2/3/4), tiene interfaz de comandos y lee su configuración desde archivo. **LILO** es más antiguo, no tiene línea de comandos y escribe la configuración en el MBR; un error puede dejar el disco inútil para arrancar.
-
-<figure>
-  <img src="imagenes/03/035/004_A.png" width="650" alt="Ejemplo GRUB"/>
-  <figcaption>Ejemplo de GRUB</figcaption>
-</figure>
-
-<figure>
-  <img src="imagenes/03/035/004_B.png" width="650" alt="Ejemplo GRUB menú"/>
-  <figcaption>Ejemplo de GRUB (menú)</figcaption>
-</figure>
+<!-- Esquemas MBR/GPT y ejemplos GRUB: detalle opcional
+<figure><img src="imagenes/03/035/003.png" width="650" alt="Esquema MBR"/><figcaption>Esquema MBR</figcaption></figure>
+<figure><img src="imagenes/03/035/003_B.png" width="650" alt="Esquema GPT"/><figcaption>Esquema GPT</figcaption></figure>
+<figure><img src="imagenes/03/035/004_A.png" width="650" alt="Ejemplo GRUB"/><figcaption>Ejemplo de GRUB</figcaption></figure>
+<figure><img src="imagenes/03/035/004_B.png" width="650" alt="Ejemplo GRUB menú"/><figcaption>Ejemplo de GRUB (menú)</figcaption></figure>
+-->
 
 ### Arranque en Windows
 
-- **BCD** (Boot Configuration Data) en `\boot\BCD`.
-- **Bootmgr.exe**: administrador y cargador de arranque.
-- Secuencia: BIOS → MBR → sector de arranque → Bootmgr → BCD → menú → carga del kernel (Winload, ntoskrnl, smss, winlogon, servicios e interfaz de login).
-- En Windows Server: Bootmgr, Winload, Winresume (reanudación desde hibernación). Edición del arranque: **msconfig**, **bcdedit** o PowerShell.
+El arranque se controla con **BCD** (Boot Configuration Data, `\boot\BCD`) y **Bootmgr.exe**. Secuencia resumida: BIOS → MBR → Bootmgr → BCD → menú → carga del kernel (Winload, ntoskrnl) y de los subsistemas (smss, winlogon) hasta la pantalla de inicio de sesión. Para editar opciones de arranque: **msconfig**, **bcdedit** o PowerShell.
 
-<figure>
-  <img src="imagenes/03/035/006_B.png" width="650" alt="Bootmgr"/>
-  <figcaption>Características Bootmgr (Windows Server)</figcaption>
-</figure>
+<figure><img src="imagenes/03/035/006_B.png" width="650" alt="Bootmgr"/><figcaption>Bootmgr (Windows Server)</figcaption></figure>
 
-### Daemon / servicio
+### Daemon y servicio
 
-Un **daemon** (en UNIX) o **servicio** es un programa que se ejecuta en segundo plano, sin interfaz directa con el usuario, y suele iniciarse con el SO. Ejemplo: **httpd** para un servidor web. Los logs suelen estar en `/var/log/` o mediante **syslogd**.
+Un **daemon** (Linux/UNIX) o **servicio** (Windows) es un programa que se ejecuta en segundo plano, sin ventana para el usuario, y que suele iniciarse con el sistema (p. ej. servidor web, SSH, impresoras). En Linux los logs suelen estar en `/var/log/` o vía **syslog**.
 
-<figure>
-  <img src="imagenes/03/035/008.png" width="750" alt="Daemons"/>
-  <figcaption>Ejemplo de daemons</figcaption>
-</figure>
+<figure><img src="imagenes/03/035/008.png" width="750" alt="Daemons"/><figcaption>Ejemplo de daemons</figcaption></figure>
 
 ### Systemd
 
-**Systemd** es el gestor de sistema e init en la mayoría de distribuciones Linux modernas. Sustituye al init clásico de System V/BSD. Características:
-
-- Sistema de inicio que unifica el arranque y los servicios.
-- Primer proceso en espacio de usuario (proceso padre de los demás).
-- Herramienta principal: **`systemctl`**.
-
-<figure>
-  <img src="imagenes/03/035/009.png" width="750" alt="Inicio systemd"/>
-  <figcaption>Inicio de systemd (Fedora 17)</figcaption>
-</figure>
+**Systemd** es el gestor de sistema e init en la mayoría de distribuciones Linux actuales: unifica el arranque y la gestión de servicios, es el primer proceso en espacio de usuario (PID 1) y se administra con **`systemctl`** (ver siguiente sección).
 
 <figure>
   <img src="imagenes/03/035/010.png" width="750" alt="Arquitectura systemd"/>
   <figcaption>Arquitectura de systemd</figcaption>
 </figure>
+
+<!-- Imagen de inicio systemd (Fedora 17): opcional
+<figure><img src="imagenes/03/035/009.png" width="750" alt="Inicio systemd"/><figcaption>Inicio de systemd (Fedora 17)</figcaption></figure>
+-->
 
 ---
 
@@ -788,7 +902,18 @@ sudo systemctl reload nombre.service
 sudo systemctl reload-or-restart nombre.service
 ```
 
-Se puede omitir el sufijo `.service` en muchos casos.
+!!! example "Iniciar, reiniciar y detener un servicio"
+    ```bash
+    $ sudo systemctl start ssh
+    $ sudo systemctl status ssh
+    ● ssh.service - OpenBSD Secure Shell server
+         Loaded: loaded (/lib/systemd/system/ssh.service; enabled)
+         Active: active (running) since Mon 2024-01-15 10:00:00 UTC; 5s ago
+    $ sudo systemctl stop ssh
+    ```
+
+!!! note "Sobre el nombre de la unidad"
+    Se puede omitir el sufijo `.service` (p. ej. `ssh` en lugar de `ssh.service`).
 
 ### Habilitar y deshabilitar en el arranque
 
@@ -797,7 +922,18 @@ sudo systemctl enable nombre.service
 sudo systemctl disable nombre.service
 ```
 
-Habilitar no inicia el servicio en la sesión actual; para eso hay que usar además `start`.
+!!! note "enable no inicia el servicio"
+    **enable** solo hace que el servicio se inicie en el próximo arranque. Para ponerlo en marcha en la sesión actual hay que usar además **`start`**.
+
+!!! example "Habilitar y deshabilitar en el arranque"
+    ```bash
+    $ systemctl is-enabled ssh
+    enabled
+    $ sudo systemctl disable ssh
+    $ systemctl is-enabled ssh
+    disabled
+    $ sudo systemctl enable ssh
+    ```
 
 ### Estado
 
@@ -808,12 +944,38 @@ systemctl is-enabled nombre.service
 systemctl is-failed nombre.service
 ```
 
+!!! example "Consultar estado de un servicio"
+    ```bash
+    $ systemctl is-active nginx
+    active
+    $ systemctl is-enabled nginx
+    enabled
+    $ systemctl is-failed nginx
+    inactive
+    ```
+
 ### Listar unidades
 
 - **`systemctl`** o **`systemctl list-units`**: unidades activas.
 - **`systemctl list-units --all`**: todas las cargadas.
 - **`systemctl list-units --type=service`**: solo servicios.
 - **`systemctl list-unit-files`**: archivos de unidad y estado (enabled, disabled, static, masked).
+
+!!! example "Listar servicios activos y archivos de unidad"
+    ```bash
+    $ systemctl list-units --type=service | head -15
+    UNIT                      LOAD   ACTIVE SUB     DESCRIPTION
+    cron.service              loaded active running Regular background program
+    dbus.service              loaded active running D-Bus System Message Bus
+    ssh.service               loaded active running OpenBSD Secure Shell server
+    systemd-journald.service   loaded active running Journal Service
+    ...
+
+    $ systemctl list-unit-files --type=service | grep -E 'ssh|nginx|cron'
+    cron.service      enabled
+    nginx.service     disabled
+    ssh.service       enabled
+    ```
 
 ### Otras operaciones
 
@@ -823,6 +985,19 @@ systemctl is-failed nombre.service
 - **Enmascarar** (impedir que se inicie): **`sudo systemctl mask nombre.service`**. **Desenmascarar**: **`sudo systemctl unmask nombre.service`**.
 - **Editar**: **`sudo systemctl edit nombre.service`** (fragmento override) o **`sudo systemctl edit --full nombre.service`**. Tras cambios: **`sudo systemctl daemon-reload`**.
 
+!!! example "Ver dependencias y enmascarar"
+    ```bash
+    $ systemctl list-dependencies ssh.service | head -10
+    ssh.service
+    ● ├─system.slice
+    ● └─basic.target
+    ●   ├─...
+    $ sudo systemctl mask nombre.service
+    Created symlink /etc/systemd/system/nombre.service → /dev/null.
+    $ sudo systemctl unmask nombre.service
+    Removed /etc/systemd/system/nombre.service.
+    ```
+
 ### Destinos (runlevels)
 
 - **`systemctl get-default`**: destino por defecto.
@@ -831,10 +1006,48 @@ systemctl is-failed nombre.service
 - **`sudo systemctl isolate multi-user.target`**: cambiar a modo multiusuario (sin gráfico).
 - **`sudo systemctl rescue`**, **`sudo systemctl halt`**, **`sudo systemctl poweroff`**, **`sudo systemctl reboot`**: atajos para rescate, apagado y reinicio.
 
+!!! example "Destino por defecto y destinos disponibles"
+    ```bash
+    $ systemctl get-default
+    graphical.target
+    $ systemctl list-unit-files --type=target | grep -E 'graphical|multi-user'
+    graphical.target    static
+    multi-user.target   static
+    $ sudo systemctl set-default multi-user.target
+    Created symlink /etc/systemd/system/default.target → /usr/lib/systemd/system/multi-user.target.
+    ```
+
 ---
 
 ## Actividades
 
-La actividad principal de esta unidad es el **Reto Procesos** (individual): diseñar e implementar un **Gestor del Sistema** con interfaz gráfica (Python + tkinter), inspirado en la Prueba 2 del examen de procesos selectivos (listar procesos, listar carpetas, fecha y hora, buscar archivos, salir).
+En esta unidad se plantean **dos retos individuales** de depuración: un script Python con interfaz gráfica (tkinter) que integra comandos de gestión de procesos. El alumnado elige **uno** de los dos según el entorno (Linux/WSL o Windows). Cada reto tiene una **puntuación máxima de 30 puntos** y se evalúa según los criterios indicados.
 
-[:octicons-tag-24: Ver enunciado del reto](RetoGrupalProcesos.md){ .md-button }
+!!! tip "Antes de los retos"
+    Si no tienes experiencia con Python, puedes apoyarte en la **[Introducción a Python](IntroduccionPython.md)** antes de abordar los enunciados.
+
+---
+
+### RG601: Gestor de procesos con Shell (Linux / WSL). **Ampliación +0,25 de la nota final.**
+
+**Puntuación:** 30 puntos  
+**Criterios evaluados:** CE2c (gestión de procesos desde el Shell), CE2g (herramienta de gestión y documentación)  
+**Modalidad:** Individual  
+**Entorno:** Linux o WSL (comandos: `ps`, `pstree`, `jobs`, `kill`, `renice`).
+
+Depuración de un script Python con interfaz gráfica que utiliza comandos Shell para listar procesos, mostrar el árbol de procesos, listar trabajos en segundo plano, finalizar un proceso por PID y cambiar la prioridad (renice). El enunciado incluye código con errores que hay que identificar, justificar y corregir.
+
+[:octicons-tag-24: Ver enunciado del reto — Shell (RG601)](RetoIndividualProcesosShell.md){ .md-button }
+
+---
+
+### RG602: Gestor de procesos con PowerShell (Windows). **Ampliación +0,25 de la nota final.**
+
+**Puntuación:** 30 puntos  
+**Criterios evaluados:** CE2d (gestión de procesos desde PowerShell), CE2g (herramienta de gestión y documentación)  
+**Modalidad:** Individual  
+**Entorno:** Windows con PowerShell (cmdlets: `Get-Process`, `Stop-Process`, `Start-Process`).
+
+Depuración de un script Python con interfaz gráfica que utiliza cmdlets de PowerShell para listar procesos, mostrar los que más CPU consumen, finalizar un proceso por PID e iniciar un proceso. El enunciado incluye código con errores que hay que identificar, justificar y corregir.
+
+[:octicons-tag-24: Ver enunciado del reto — PowerShell (RG602)](RetoIndividualProcesosPowerShell.md){ .md-button }

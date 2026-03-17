@@ -1,12 +1,14 @@
 # RÚBRICA DE EVALUACIÓN - RETO GRUPAL SHELLSCRIPT
 ## Sistema de Gestión de Servidores
 
+Esta rúbrica evalúa el [Reto Grupal: Sistema de Gestión de Servidores](RetoGrupalShellScript.md). Los criterios y las funcionalidades requeridas están alineados con el enunciado de dicho reto.
+
 ### INFORMACIÓN GENERAL
 - **Asignatura:** Administración de Sistemas Operativos (ASO)
 - **Unidad:** ShellScript
 - **Tipo de actividad:** Reto Grupal
 - **Peso en la calificación:** 30 puntos (sobre 100)
-- **Modalidad:** Trabajo en grupo (3-4 estudiantes)
+- **Modalidad:** Trabajo en grupo (2 personas)
 
 ---
 
@@ -21,14 +23,14 @@
 | **Satisfactorio (7-9)** | 7-9 | ⚠️ Sistema parcialmente funcional<br/>⚠️ Funcionalidades principales implementadas<br/>❌ Algunos errores importantes<br/>❌ Limitaciones en el funcionamiento |
 | **Insuficiente (0-6)** | 0-6 | ❌ Sistema no funcional o con errores críticos<br/>❌ Pocas funcionalidades implementadas<br/>❌ Múltiples errores de ejecución<br/>❌ No cumple requisitos básicos |
 
-**Funcionalidades requeridas:**
+**Funcionalidades requeridas (según enunciado del reto):**
 
-- ✅ Menú principal interactivo
-- ✅ Gestión CRUD de servidores
-- ✅ Monitoreo con ping
-- ✅ Sistema de backups
-- ✅ Gestión de logs
-- ✅ Configuración del sistema
+- ✅ Menú principal interactivo con navegación entre módulos
+- ✅ Gestión CRUD de servidores (listar, añadir, buscar, modificar, eliminar)
+- ✅ Monitoreo: estado con `ping`, uso de recursos (`free`, `df`, `top`/`ps`), visualización de logs
+- ✅ Sistema de backups (crear, restaurar, listar, eliminar; formato `.tar.gz`)
+- ✅ Gestión de logs (registro de acciones con fecha y hora; sistema y errores)
+- ✅ Configuración del sistema (archivo centralizado, rutas, directorios)
 
 ---
 
@@ -41,11 +43,11 @@
 | **Satisfactorio (3)** | 3 | ⚠️ Código organizado pero con limitaciones<br/>⚠️ Comentarios básicos<br/>⚠️ Modularización parcial<br/>❌ Algunos problemas de estructura |
 | **Insuficiente (0-2)** | 0-2 | ❌ Código desorganizado<br/>❌ Falta de comentarios<br/>❌ Sin modularización<br/>❌ Difícil de entender y mantener |
 
-**Aspectos evaluados:**
+**Aspectos evaluados (según estructura del reto):**
 
-- ✅ Modularización en archivos separados
+- ✅ Modularización en archivos separados (`menu_principal.sh`, `funciones_servidor.sh`, `monitoreo.sh`, `backup.sh`, etc.)
 - ✅ Comentarios explicativos detallados
-- ✅ Organización lógica del código
+- ✅ Organización lógica del código y separación de responsabilidades
 - ✅ Nomenclatura clara y consistente
 
 ---
@@ -59,13 +61,13 @@
 | **Satisfactorio (3)** | 3 | ⚠️ Uso básico de técnicas<br/>⚠️ Implementación funcional pero limitada<br/>❌ Algunos conceptos mal aplicados |
 | **Insuficiente (0-2)** | 0-2 | ❌ Uso incorrecto de técnicas<br/>❌ Conceptos mal implementados<br/>❌ Falta de aplicación de conocimientos |
 
-**Técnicas evaluadas:**
+**Técnicas evaluadas (según enunciado del reto):**
 
-- ✅ Variables locales y globales
+- ✅ Variables locales y globales, parámetros (`$1`, `$#`, etc.)
 - ✅ Estructuras de control (if, case, while, for)
-- ✅ Funciones y parámetros
+- ✅ Funciones y modularización (`source` para cargar módulos)
 - ✅ Redirecciones y tuberías
-- ✅ Comandos del sistema (ping, ps, df, tar, grep)
+- ✅ Comandos del sistema (ping, ps, df, free, top, tar, gzip, grep, date)
 
 ---
 
@@ -97,8 +99,9 @@
 | **Satisfactorio (0.5)** | 0.5 | ⚠️ Funcionalidades básicas adicionales |
 | **Insuficiente (0)** | 0 | ❌ Sin mejoras adicionales<br/>❌ Solo funcionalidades básicas |
 
-**Funcionalidades extra valoradas:**
+**Funcionalidades extra valoradas (opcionales; también pueden sumar en puntos extra):**
 
+- ✅ Servidores simulados (here documents, ejecución en segundo plano, netcat) — recomendado en el enunciado
 - ✅ Autenticación de usuarios
 - ✅ Gráficos ASCII con estadísticas
 - ✅ Notificaciones por email
@@ -107,7 +110,9 @@
 
 ---
 
-## PUNTOS EXTRA (Hasta +8 puntos)
+## PUNTOS EXTRA (Hasta +8 puntos) — Opcional
+
+Los puntos extra son **voluntarios**. La puntuación base de la tarea es **30 puntos**. Si el profesor los considera, puede sumar hasta +8 por las siguientes funcionalidades (coinciden con el enunciado del reto):
 
 | Funcionalidad | Puntos | Descripción |
 |---------------|--------|-------------|
@@ -116,6 +121,9 @@
 | **Notificaciones Email** | +2 | Alertas automáticas por correo electrónico |
 | **Interfaz Colores** | +1 | Uso de `tput` para colores en terminal |
 | **Alertas Sonoras** | +1 | Notificaciones con sonidos del sistema |
+
+!!! note "Uso en Aules"
+    Si la tarea se califica solo con la rúbrica de 30 puntos, configura la puntuación máxima de la tarea en 30. Si se usan puntos extra, puede configurarse una puntuación máxima mayor (p. ej. 38) y añadir criterios o notas manuales para las funcionalidades extra.
 
 ---
 

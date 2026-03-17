@@ -10,11 +10,11 @@ Un **servicio de directorio** es un software que centraliza y organiza la inform
 
 ## Propuesta didáctica
 
-En esta unidad vamos a trabajar el **RA3 de ASO**:
+En esta unidad vamos a trabajar el **RA1 de ASO**:
 
-> **RA3.** *Administra servicios de directorio, identificando su estructura y aplicando criterios de seguridad.*
+> **RA1.** *Administra servicios de directorio, identificando su estructura y aplicando criterios de seguridad.*
 
-### Criterios de evaluación (RA3)
+### Criterios de evaluación (RA1)
 
 A lo largo de la unidad se trabajarán y evidenciarán los siguientes criterios:
 
@@ -649,7 +649,7 @@ Entre las configuraciones más útiles mediante GPO destacan:
 
 <a name="PR401"></a>
 
-* :material-trophy: **PR401. Práctica: Configuración de Active Directory en AWS Academy**. (RA.3 // CE3a, CE3b, CE3c, CE3d, CE3e, CE3f, CE3g y CE3h // 1-10p). 
+* :material-trophy: **PR401. Práctica: Configuración de Active Directory en AWS Academy**. (RA.1 // CE3a, CE3b, CE3c, CE3d, CE3e, CE3f, CE3g y CE3h // 1-10p). 
 
 En esta práctica aprenderás a configurar **Active Directory Domain Services (AD DS)** en una instancia de **Windows Server** en **AWS Academy** y unir clientes al dominio. El objetivo es familiarizarte con los servicios de directorio propietarios, la configuración de dominios y la administración centralizada de usuarios y equipos.
 
@@ -694,7 +694,7 @@ En esta práctica aprenderás a configurar **Active Directory Domain Services (A
 
 <a name="pr402"></a>
 
-* :material-trophy: **PR402. Práctica: Administración de Usuarios y Grupos en Active Directory**. (RA.3 // CE3d, CE3e y CE3h // **OPCIONAL – NO EVALUABLE**)
+* :material-trophy: **PR402. Práctica: Administración de Usuarios y Grupos en Active Directory**. (RA.1 // CE3d, CE3e y CE3h // **OPCIONAL – NO EVALUABLE**)
 
 En esta práctica aprenderás a crear, configurar y gestionar usuarios y grupos en **Active Directory Domain Services**. El objetivo es familiarizarte con la administración de objetos del directorio, configuraciones de cuentas y restricciones de acceso.
 
@@ -731,7 +731,7 @@ En esta práctica aprenderás a crear, configurar y gestionar usuarios y grupos 
 
 <a name="pr403"></a>
 
-* :material-trophy: **PR403. Práctica: Gestión de Grupos y Unidades Organizativas en Active Directory**. (RA.3 // CE3d, CE3e, CE3f y CE3h // 1-10p). 
+* :material-trophy: **PR403. Práctica: Gestión de Grupos y Unidades Organizativas en Active Directory**. (RA.1 // CE3d, CE3e, CE3f y CE3h // 1-10p). 
 
 En esta práctica aprenderás a gestionar grupos, unidades organizativas y usuarios en **Active Directory Domain Services** para una organización empresarial. El objetivo es trabajar con estructuras organizativas más complejas, creación masiva de usuarios y organización jerárquica del directorio.
 
@@ -768,7 +768,7 @@ En esta práctica aprenderás a gestionar grupos, unidades organizativas y usuar
 
 <a name="PR404"></a>
 
-* :material-trophy: **PR404. Práctica: Gestión de recursos compartidos en Active Directory**. (RA.3 // CE3e, CE3f y CE3h // 1-10p). 
+* :material-trophy: **PR404. Práctica: Gestión de recursos compartidos en Active Directory**. (RA.1 // CE3e, CE3f y CE3h // 1-10p). 
 
 En esta práctica aprenderás a gestionar **recursos compartidos** en un dominio de Active Directory: crear estructuras de carpetas, configurar permisos NTFS y compartidos, asignar carpetas personales a usuarios y aplicar **directivas de grupo (GPO)** para políticas de contraseñas y bloqueo de cuenta.
 
@@ -805,7 +805,7 @@ En esta práctica aprenderás a gestionar **recursos compartidos** en un dominio
 
 <a name="RETO AD"></a>
 
-* :material-trophy: **RG405**. (RA.3 // CE3a, CE3b, CE3c, CE3d, CE3e, CE3f, CE3g y CE3h // 30p). Trabajo individual para configurar desde cero la infraestructura de Active Directory de una empresa ficticia (TechCorp Solutions) con 20 usuarios, integrando todos los conceptos aprendidos durante la unidad.
+* :material-trophy: **RG405**. (RA.1 // CE3a, CE3b, CE3c, CE3d, CE3e, CE3f, CE3g y CE3h // 30p). Trabajo individual para configurar desde cero la infraestructura de Active Directory de una empresa ficticia (TechCorp Solutions) con 20 usuarios, integrando todos los conceptos aprendidos durante la unidad.
     * **[RETO INDIVIDUAL: Active Directory Completo — TechCorp Solutions](RetoGrupalActiveDirectory.md)**.
 
 ---

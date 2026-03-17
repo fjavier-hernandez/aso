@@ -10,10 +10,8 @@ nav:
   - "4.- Servicios de Directorio": "04ActiveDirectory.md"
   - "5.- Integración de Sistemas": "05IntegracionSistemas.md"
   - "6.- Procesos del Sistema": "06Procesos.md"
-  # - "6.- Integración de sistemas operativos en red libres y propietarios":
-  # - "7.- Información del sistema":
-  # - "8.- Servicios de acceso y administración remota":
-  # - "9.- Administración de Servidores de Impresión":
+  - "7.- Automatización y monitorización": "07AutomatizacionMonitorizacion.md"
+  - "8.- Administración de Servidores de Impresión": "08ServidoresImpresion.md"
   # - Tags: "tags.md"
 
 theme:

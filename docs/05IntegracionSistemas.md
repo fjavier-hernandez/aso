@@ -259,9 +259,9 @@ NFS se basa en la arquitectura cliente-servidor. El **VFS** (Virtual File System
 
 ## Actividades
 
-<a name="pr601"></a>
+<a name="pr501"></a>
 
-* :material-trophy: **PR601. Práctica: Samba con Docker Compose**. (RA.6 // CE6b, CE6e, CE6f, CE6g y CE6h // 1-10p).
+* :material-trophy: **PR501. Práctica: Samba con Docker Compose**. (RA.6 // CE6b, CE6e, CE6f, CE6g y CE6h // 1-10p).
 
 Despliegue de un servidor Samba en contenedor usando **Docker Compose**. Acceso a la carpeta compartida desde clientes Windows y Linux. Configuración de permisos y verificación del funcionamiento.
 
@@ -271,9 +271,9 @@ Despliegue de un servidor Samba en contenedor usando **Docker Compose**. Acceso 
 
 ---
 
-<a name="pr602"></a>
+<a name="pr502"></a>
 
-* :material-trophy: **PR602. Práctica: Instalación y configuración de NFS en contenedor**. (RA.6 // CE6d, CE6e, CE6f y CE6h // 1-10p).
+* :material-trophy: **PR502. Práctica: Instalación y configuración de NFS en contenedor**. (RA.6 // CE6d, CE6e, CE6f y CE6h // 1-10p).
 
 Instalación y configuración de NFS en un contenedor Ubuntu Server y acceso desde un cliente (contenedor Ubuntu o Windows). Creación de carpetas compartidas, configuración de `/etc/exports`, montaje en cliente y verificación del acceso.
 
@@ -295,7 +295,7 @@ Debes configurar el intercambio de archivos entre el servidor Linux y los client
 
 <a name="reto_integra"></a>
 
-* :material-trophy: **RG606. Reto Grupal: Recursos compartidos Samba y NFS en AWS**. (RA.6 // CE6a, CE6b, CE6c, CE6d, CE6e, CE6f, CE6g y CE6h // 30p). Trabajo en grupos de 2-3 personas para desplegar en AWS un escenario con servidor Samba (Docker Compose) y servidor NFS, con clientes Linux y Windows para verificar el acceso a ambos recursos compartidos.
+* :material-trophy: **RG503. Reto Grupal: Recursos compartidos Samba y NFS en AWS**. (RA.6 // CE6a, CE6b, CE6c, CE6d, CE6e, CE6f, CE6g y CE6h // 30p). Trabajo en grupos de 2-3 personas para desplegar en AWS un escenario con servidor Samba (Docker Compose) y servidor NFS, con clientes Linux y Windows para verificar el acceso a ambos recursos compartidos.
     * **[RETO GRUPAL: Recursos compartidos Samba y NFS en AWS](RetoGrupalIntegracion.md)**.
 
 ---

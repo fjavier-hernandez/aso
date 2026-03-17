@@ -1,0 +1,16 @@
+criterion,level,level_description,score
+Funcionalidad del sistema,No conseguido,Sistema no funcional o con errores críticos. Pocas funcionalidades implementadas.,0.000
+Funcionalidad del sistema,Parcial,Sistema parcialmente funcional. Mayoría de funcionalidades con algunos errores o limitaciones.,7.500
+Funcionalidad del sistema,Conseguido,Sistema completamente funcional. Menú principal CRUD servicios monitoreo backups logs y configuración operativos. Manejo de errores con try-catch.,15.000
+Estructura del código,No conseguido,Código desorganizado sin modularización ni comentarios.,0.000
+Estructura del código,Parcial,Código organizado con modularización parcial y comentarios básicos.,2.500
+Estructura del código,Conseguido,Código modular en archivos ps1 con comentarios detallados separación de responsabilidades y nomenclatura Verbo-Sustantivo.,5.000
+Uso de conceptos PowerShell,No conseguido,Uso incorrecto de técnicas. Conceptos mal implementados.,0.000
+Uso de conceptos PowerShell,Parcial,Uso básico de variables estructuras de control funciones y cmdlets con algunas limitaciones.,2.500
+Uso de conceptos PowerShell,Conseguido,Uso correcto de variables tipadas bucles funciones cmdlets objetos y manejo de CSV. Try-catch integrado.,5.000
+Documentación,No conseguido,Sin README o instrucciones. Documentación ausente.,0.000
+Documentación,Parcial,README básico con instrucciones limitadas o documentación parcial.,1.500
+Documentación,Conseguido,README completo con instalación uso explicación de módulos política de ejecución y capturas de pantalla.,3.000
+Defensa del proyecto y testing,No conseguido,Demostración incompleta o sin testing. Explicación confusa o ausente.,0.000
+Defensa del proyecto y testing,Parcial,Demostración básica y testing limitado. Explicación parcial del código.,1.000
+Defensa del proyecto y testing,Conseguido,Demostración fluida testing exhaustivo explicación clara del código y respuestas precisas. Duración 20-30 min.,2.000
